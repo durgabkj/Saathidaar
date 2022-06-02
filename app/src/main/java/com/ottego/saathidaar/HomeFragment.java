@@ -19,6 +19,7 @@ public class HomeFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     DashBoardFragment dashBoardFragment=new DashBoardFragment();
     MyProfileFragment myProfileFragment=new MyProfileFragment();
+    PartnerPreferenceFragment partnerPreferenceFragment=new PartnerPreferenceFragment();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -77,6 +78,17 @@ public class HomeFragment extends Fragment {
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
 
                 fragmentTransaction.replace(R.id.fcvSathidarDashboard,myProfileFragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+
+        b.tvHomePartnerPreference.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fcvSathidarDashboard,partnerPreferenceFragment);
                 fragmentTransaction.commit();
             }
         });

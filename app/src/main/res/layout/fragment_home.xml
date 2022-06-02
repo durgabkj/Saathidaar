@@ -43,6 +43,7 @@
                 android:background="@drawable/gradient_button"
                 android:text="My Profile"/>
             <TextView
+                android:id="@+id/tvHomePartnerPreference"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

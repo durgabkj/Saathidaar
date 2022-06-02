@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".PartnerPreferenceFragment">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Birth and Horoscope Details"
+    android:textStyle="bold"
+    android:textColor="@color/colorPrimary"/>
+
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Name"
+
+        />
+    <Spinner
+        android:id="@+id/To_Units"
+        style="@style/spinner_style" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:layout_marginTop="20dp"
+
+        />
+    <EditText
+        android:id="@+id/etAddUsermail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/PersonalDataTextView"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Role"
+        android:layout_marginTop="20dp"
+
+        />
+    <EditText
+        android:id="@+id/etAddUserRole"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:inputType="number"
+        style="@style/PersonalDataTextView"
+        />
+
+
+
+   <TextView
+       android:layout_width="100dp"
+       android:layout_height="40dp"
+       android:text="Save"
+       android:padding="8dp"
+       android:textAlignment="center"
+       android:background="@drawable/gradient_button"/>
+
+</LinearLayout>
