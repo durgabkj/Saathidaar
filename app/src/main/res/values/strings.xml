@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Saathidaar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="basic_lifestyle"><u>Basic &amp; Lifestyles</u></string>
+
+    <string name="Education_background"><u>Education &amp; Career</u></string>
+    <string name="religious_background"><u>Religious_background</u></string>
+    <string name="location"><u>Location Of Groom</u></string>
+    <string name="mycontact"><u>My Contact Details</u></string>
+    <string name="Family_details"><u>Family_details</u></string>
+
+</resources>

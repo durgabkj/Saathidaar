@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment"
+    android:orientation="vertical">
+
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/NewMatch"
+                android:layout_width="140dp"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:layout_marginStart="2dp"
+                android:background="@drawable/gradient_button"
+                android:text="New Matches"
+
+                />
+            <TextView
+                android:id="@+id/MyMatch"
+                android:layout_width="140dp"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                style="@style/Button_style"
+                android:background="@drawable/gradient_button"
+                android:text="My Matches"/>
+            <TextView
+                android:id="@+id/TodayMatch"
+                android:layout_width="140dp"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                style="@style/Button_style"
+                android:background="@drawable/gradient_button"
+                android:text="Today's Matches"/>
+            <TextView
+                android:id="@+id/MatchSortlist"
+                android:layout_width="140dp"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/gradient_button"
+                style="@style/Button_style"
+                android:text="ShortLists"/>
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+
+</LinearLayout>

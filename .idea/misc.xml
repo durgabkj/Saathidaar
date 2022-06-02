@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/gradient_button.xml" value="0.1515" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/ic_back.xml" value="0.135" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/ic_baseline_cloud_upload_24.xml" value="0.1515" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/ic_baseline_mail_24.xml" value="0.1465" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/ic_next.xml" value="0.1095" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/ic_outline_mail_24.xml" value="0.1375" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/layout_bg.xml" value="0.1465" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/seleted.xml" value="0.135" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/tab_indicater.xml" value="0.1465" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/textview_selection.xml" value="0.1515" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/unselected.xml" value="0.135" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/white_button_bg.xml" value="0.1465" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_home.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_landing.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_navigation.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_account.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_dash_board.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_family_info.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_home.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_inbox.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_matches.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_my_profile.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_my_prpfile.xml" value="0.2" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_mysathidar.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_navigation.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_personal_info.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_premium.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_professional_info.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_profile.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_landing_page.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/menu/buttom_navigation_menu.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/menu/menu_add.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1095" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
