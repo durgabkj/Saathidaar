@@ -22,7 +22,7 @@
     </style>
 
     <style name="PersonalDataTextView" parent="Widget.AppCompat.TextView">
-        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginTop">6dp</item>
         <item name="android:drawablePadding">10dp</item>
         <item name="fontFamily">@font/nunito_regular</item>
         <item name="android:textColor">@color/black</item>
@@ -86,5 +86,23 @@
         <item name="android:paddingBottom">5dp</item>
         <item name="android:popupBackground">#DFFFFFFF</item>
     </style>
+
+    <style name="Widget.App.Tooltip" parent="Widget.MaterialComponents.Tooltip">
+        <item name="android:textAppearance">@style/TextAppearance.App.Tooltip</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.App.Tooltip" parent="TextAppearance.MaterialComponents.Tooltip">
+        <item name="android:textColor">@color/white</item>
+
+    </style>
+
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:colorPrimary">#00397F</item>
+        <item name="android:textColorPrimary">#22397F</item>
+        <item name="android:colorAccent">#00397F</item>
+        <item name="colorPrimaryDark">#22397F</item>
+    </style>
+
 
 </resources>

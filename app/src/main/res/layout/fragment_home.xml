@@ -53,6 +53,7 @@
                 android:background="@drawable/gradient_button"
                 android:text="Partner Preference"/>
             <TextView
+                android:id="@+id/tvHoroscope"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:padding="5dp"

@@ -8,14 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ottego.multipleselectionspinner.MultipleSelection;
 import com.ottego.saathidaar.databinding.FragmentPartnerPreferenceBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PartnerPreferenceFragment extends Fragment {
 FragmentPartnerPreferenceBinding b;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    MultipleSelection multipleSelection;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -48,7 +52,31 @@ FragmentPartnerPreferenceBinding b;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        b=FragmentPartnerPreferenceBinding.inflate(getLayoutInflater());
-        return inflater.inflate(R.layout.fragment_partner_preference, container, false);
+
+        View view= inflater.inflate(R.layout.fragment_partner_preference, container, false);
+multipleSelection=view.findViewById(R.id.multi_Selection);
+       multipleSelection.setItems(getItems());
+        multipleSelection.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(View view, boolean isSelected, int position) {
+//                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onSelectionCleared() {
+//                Toast.makeText(MainActivity.this, "All items are unselected", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return view;
     }
-}
+
+    private List getItems() {
+        ArrayList<String> alphabetsList = new ArrayList<>();
+//        for (char i = 'A'; i <= 'Z'; i++)
+//            alphabetsList.add(Character.toString(i));
+        alphabetsList.add("hello");
+        return alphabetsList;
+    }
+
+    }
