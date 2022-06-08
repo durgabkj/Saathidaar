@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/bg_edit_text.xml" value="0.1535" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/chip_selection.xml" value="0.1665" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/gradient_button.xml" value="0.1515" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/gradient_for_app.xml" value="0.1535" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/gray_transparent_bg.xml" value="0.163" />
@@ -54,6 +55,7 @@
         <entry key="..\:/Saathidaar/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1095" />
         <entry key="..\:/Saathidaar/multipleselectionspinner/src/main/res/drawable/ic_check_black_24dp.xml" value="0.1" />
         <entry key="..\:/Saathidaar/multipleselectionspinner/src/main/res/layout/multi_popup_menu_item.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/multipleselectionspinner/src/main/res/layout/popup_menu.xml" value="0.23802083333333332" />
       </map>
     </option>
   </component>
