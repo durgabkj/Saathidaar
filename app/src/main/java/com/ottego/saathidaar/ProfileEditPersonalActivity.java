@@ -213,8 +213,6 @@ Context context;
         }).start();
 
     }
-
-
     /* Get the real path from the URI */
     public String getPathFromURI(Uri contentUri) {
         String res = null;

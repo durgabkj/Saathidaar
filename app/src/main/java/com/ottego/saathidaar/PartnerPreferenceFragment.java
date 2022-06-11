@@ -42,7 +42,7 @@ public class PartnerPreferenceFragment extends Fragment {
 
 
     // Initialize variables
-    Spinner spMin,spMax,spFromHeight,spToHeight;
+    Spinner spMin,spMax,spFromHeight,spToHeight,UserAnnualIncome;
 
     ArrayList<String> AgeList =new ArrayList<>();
     ArrayList<String> minList=new ArrayList<>();
@@ -97,7 +97,7 @@ public class PartnerPreferenceFragment extends Fragment {
         // assign variables
         spMin=view.findViewById(R.id.sp_min);
         spMax= view.findViewById(R.id.sp_max);
-
+        UserAnnualIncome=view.findViewById(R.id.UserAnnualIncome);
         multi_SelectionCountry.setItems(getItems());
         multi_SelectionCountry.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
             @Override
@@ -117,11 +117,19 @@ public class PartnerPreferenceFragment extends Fragment {
         multipleMaritalStatusSelectionCheckBox();
        // multipleReligionSelectionCheckBox();
         multi_SelectionmultiProfessionArea();
-
+incomeSelection();
         Height();
         SpinnerAge();
         return view;
     }
+
+    private void incomeSelection() {
+            String[] income = getResources().getStringArray(R.array.Income);
+            ArrayAdapter incomeAdapter = new ArrayAdapter(getContext(), R.layout.dropdown_item, income);
+            //Setting the ArrayAdapter data on the Spinner
+        UserAnnualIncome.setAdapter(incomeAdapter);
+        }
+
 
     private void Height() {
         String[] fromHeight = getResources().getStringArray(R.array.Height);

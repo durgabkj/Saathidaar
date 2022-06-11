@@ -223,4 +223,49 @@
         <item>Heart Aliments</item>
         <item>Other</item>
     </string-array>
+
+
+
+
+    <string-array name="Income">
+        <item>Select</item>
+        <item>Upto INR 1 Lakh</item>
+        <item>INR 1 Lakh to 2 Lakh</item>
+        <item>INR 2 Lakh to 4 Lakh</item>
+        <item>INR 4 Lakh to 7 Lakh</item>
+        <item>INR 7 Lakh to 10 Lakh</item>
+        <item>INR 10 Lakh to 15 Lakh</item>
+        <item>INR 15 Lakh to 20 Lakh</item>
+        <item>INR 20 Lakh to 30 Lakh</item>
+        <item>INR 30 Lakh to 50 Lakh</item>
+        <item>INR 50 Lakh to 75 Lakh</item>
+        <item>INR 75 Lakh to 1 Crore</item>
+        <item>INR 1 Crore above</item>
+        <item>Not applicable</item>
+    </string-array>
+
+
+    <string-array name="FatherAndStatus">
+        <item>Select</item>
+        <item>Employed</item>
+        <item>Business</item>
+        <item>Not Employed</item>
+        <item>Pass Away</item>
+    </string-array>
+
+    <string-array name="Affluence">
+        <item>selected</item>
+        <item>Affluent</item>
+        <item>Upper Middle Class</item>
+        <item>Middle Class</item>
+        <item>Lower Middle Class</item>
+    </string-array>
+
+
+    <string-array name="FamilyType">
+        <item>selected</item>
+        <item>Joint</item>
+        <item>Nuclear</item>
+    </string-array>
+
 </resources>
