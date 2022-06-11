@@ -7,72 +7,153 @@
     tools:context=".HomeFragment"
     android:orientation="vertical">
 
-
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioGroup
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
-            <TextView
+            <RadioButton
                 android:id="@+id/btnDashboard"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
                 android:padding="5dp"
                 android:textAlignment="center"
-                android:textColor="@color/white"
-                android:layout_marginStart="2dp"
-                android:background="@drawable/gradient_button"
                 android:text="DashBoard"
+                android:layout_margin="5dp"
+                android:shadowColor="#000000"
+                android:shadowDx="1.5"
+                android:shadowDy="1.3"
+                android:shadowRadius="0.1"
+                android:background="@drawable/radio_selector"
+                android:textColor="@drawable/text_color"
+                android:elevation="4dp"
+                android:button="@android:color/transparent"/>
 
-                />
-            <TextView
+            <RadioButton
                 android:id="@+id/tvMyProfile"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
                 android:padding="5dp"
                 android:textAlignment="center"
-                style="@style/Button_style"
-                android:background="@drawable/gradient_button"
-                android:text="My Profile"/>
-            <TextView
+                android:text="Profile"
+                android:shadowColor="#000000"
+                android:shadowDx="1.5"
+                android:shadowDy="1.3"
+                android:shadowRadius="1.6"
+                android:layout_margin="5dp"
+                android:background="@drawable/radio_selector"
+                android:textColor="@drawable/text_color"
+                android:elevation="4dp"
+                android:button="@android:color/transparent"/>
+
+            <RadioButton
                 android:id="@+id/tvHomePartnerPreference"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="30dp"
                 android:padding="5dp"
                 android:textAlignment="center"
-                style="@style/Button_style"
-                android:background="@drawable/gradient_button"
-                android:text="Partner Preference"/>
-            <TextView
+                android:text="Partner Preference"
+                android:shadowColor="#000000"
+                android:shadowDx="1.5"
+                android:shadowDy="1.3"
+                android:shadowRadius="1.6"
+                android:layout_margin="5dp"
+                android:background="@drawable/radio_selector"
+                android:textColor="@drawable/text_color"
+                android:elevation="4dp"
+                android:button="@android:color/transparent"/>
+
+            <RadioButton
                 android:id="@+id/tvHoroscope"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
                 android:padding="5dp"
                 android:textAlignment="center"
-                android:layout_weight="1"
-                android:background="@drawable/gradient_button"
-                style="@style/Button_style"
-                android:text="Horoscope"/>
+                android:text="Horoscope"
+                android:shadowColor="#000000"
+                android:shadowDx="1.5"
+                android:shadowDy="1.3"
+                android:shadowRadius="1.6"
+                android:layout_margin="5dp"
+                android:background="@drawable/radio_selector"
+                android:textColor="@drawable/text_color"
+                android:elevation="4dp"
+                android:button="@android:color/transparent"/>
+        </RadioGroup>
 
 
-        </LinearLayout>
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            >-->
+<!--            <TextView-->
+<!--                android:id="@+id/btnDashboard"-->
+<!--                android:layout_width="140dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:padding="5dp"-->
+<!--                android:textAlignment="center"-->
+<!--                android:layout_marginStart="2dp"-->
+<!--                android:text="DashBoard"-->
+<!--                android:shadowColor="#000000"-->
+<!--                android:shadowDx="1.5"-->
+<!--                android:shadowDy="1.3"-->
+<!--                android:shadowRadius="1.6"-->
+<!--                android:background="@drawable/radio_selector"-->
+<!--                android:textColor="@drawable/text_color"-->
+<!--                android:elevation="4dp"-->
+<!--                android:button="@android:color/transparent"-->
+
+<!--                />-->
+<!--            <TextView-->
+<!--                android:id="@+id/tvMyProfile"-->
+<!--                android:layout_width="140dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:padding="5dp"-->
+<!--                android:textAlignment="center"-->
+<!--                style="@style/Button_style"-->
+<!--                android:background="@drawable/gradient_button"-->
+<!--                android:text="My Profile"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/tvHomePartnerPreference"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:padding="5dp"-->
+<!--                android:textAlignment="center"-->
+<!--                style="@style/Button_style"-->
+<!--                android:background="@drawable/gradient_button"-->
+<!--                android:text="Partner Preference"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/tvHoroscope"-->
+<!--                android:layout_width="140dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="5dp"-->
+<!--                android:textAlignment="center"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@drawable/gradient_button"-->
+<!--                style="@style/Button_style"-->
+<!--                android:text="Horoscope"/>-->
+
+
+<!--        </LinearLayout>-->
     </HorizontalScrollView>
+
+
 
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcvSathidarDashboard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp" />
 
 
 </LinearLayout>

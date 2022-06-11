@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp"
     android:orientation="vertical"
     tools:context=".PersonalInfoFragment">
@@ -16,17 +17,33 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/basic_lifestyle"
+        android:textSize="16dp"
+        android:layout_marginStart="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/basic_lifestyle"
-                android:textSize="16dp"
-                android:layout_marginStart="5dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
-                />
+    <ImageView
+        android:id="@+id/iv_cameraEditPersonalInfo"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="100dp"
+        android:padding="5dp"
+        app:srcCompat="@drawable/ic_baseline_create_24" />
+
+
+</LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"

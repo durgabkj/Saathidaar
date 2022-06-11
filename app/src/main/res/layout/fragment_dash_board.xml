@@ -63,7 +63,7 @@
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:padding="5dp"
-                                app:srcCompat="@drawable/ic_camera" />
+                                app:srcCompat="@drawable/ic_round_camera_alt_24" />
                         </com.google.android.material.card.MaterialCardView>
                     </FrameLayout>
 

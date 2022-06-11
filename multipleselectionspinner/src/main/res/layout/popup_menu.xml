@@ -8,15 +8,17 @@
 
     <EditText
         android:id="@+id/search_field"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@android:color/transparent"
-        android:hint="Search.."
-        android:lines="1"
-        android:maxLines="1"
-        android:paddingLeft="10dp"
-        android:singleLine="true"
-        android:textColor="#525252" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:autofillHints="Type to search"
+        android:background="@drawable/default_border"
+        android:hint="Type to search"
+        android:inputType="text"
+        android:padding="5dp">
+
+        <requestFocus />
+    </EditText>
 
     <View
         android:layout_width="match_parent"

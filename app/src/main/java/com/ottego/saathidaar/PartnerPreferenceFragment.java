@@ -1,5 +1,6 @@
 package com.ottego.saathidaar;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -26,7 +27,7 @@ public class PartnerPreferenceFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    MultipleSelection multi_SelectionCountry,  multi_SelectionMotherTongue ,multi_SelectionQualification,multi_SelectionWorkingWith;
+    MultipleSelection multi_SelectionCountry, multi_SelectionProfessionArea, multi_SelectionMotherTongue ,multi_SelectionQualification,multi_SelectionWorkingWith;
 
     TextView textView,tvMultipleMaritalStatus;
     boolean[] selectedLanguage;
@@ -41,7 +42,8 @@ public class PartnerPreferenceFragment extends Fragment {
 
 
     // Initialize variables
-    Spinner spMin,spMax;
+    Spinner spMin,spMax,spFromHeight,spToHeight;
+
     ArrayList<String> AgeList =new ArrayList<>();
     ArrayList<String> minList=new ArrayList<>();
     ArrayList<String> maxList=new ArrayList<>();
@@ -88,6 +90,10 @@ public class PartnerPreferenceFragment extends Fragment {
         multi_SelectionQualification=view.findViewById(R.id.multi_SelectionQualification);
         tvMultipleMaritalStatus=view.findViewById(R.id.tvMultipleMaritalStatus);
         multi_SelectionWorkingWith=view.findViewById(R.id.multi_SelectionWorkingWith);
+        multi_SelectionProfessionArea=view.findViewById(R.id.multi_SelectionProfessionArea);
+        spToHeight=view.findViewById(R.id.spToHeight);
+        spFromHeight=view.findViewById(R.id.spFromHeight);
+        spToHeight=view.findViewById(R.id.spToHeight);
         // assign variables
         spMin=view.findViewById(R.id.sp_min);
         spMax= view.findViewById(R.id.sp_max);
@@ -110,8 +116,140 @@ public class PartnerPreferenceFragment extends Fragment {
         multipleSelectionQualification();
         multipleMaritalStatusSelectionCheckBox();
        // multipleReligionSelectionCheckBox();
+        multi_SelectionmultiProfessionArea();
+
+        Height();
         SpinnerAge();
         return view;
+    }
+
+    private void Height() {
+        String[] fromHeight = getResources().getStringArray(R.array.Height);
+        ArrayAdapter aa = new ArrayAdapter(requireActivity(), R.layout.dropdown_item, fromHeight);
+        //Setting the ArrayAdapter data on the Spinner
+        spFromHeight.setAdapter(aa);
+        spToHeight.setAdapter(aa);
+    }
+
+    private void multi_SelectionmultiProfessionArea() {
+        multi_SelectionProfessionArea.setItems(getProfessionAreaItems());
+        multi_SelectionProfessionArea.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(View view, boolean isSelected, int position) {
+//                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onSelectionCleared() {
+//                Toast.makeText(MainActivity.this, "All items are unselected", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private List getProfessionAreaItems() {
+        ArrayList<String> ProfessionAreaList = new ArrayList<>();
+        ProfessionAreaList.add("Banking Professional");
+        ProfessionAreaList.add("Chartered Accountant");
+        ProfessionAreaList.add("Company Secretary");
+        ProfessionAreaList.add("Finance Professional");
+        ProfessionAreaList.add("M.Eng (Hons)");
+        ProfessionAreaList.add("Engineering Diploma");
+        ProfessionAreaList.add("Investment Professional");
+        ProfessionAreaList.add("Accounting Professional");
+        ProfessionAreaList.add("Admin Professional");
+        ProfessionAreaList.add("Actor");
+        ProfessionAreaList.add("Advertising Professional");
+        ProfessionAreaList.add("Entertainment Professional");
+        ProfessionAreaList.add("Event Manager");
+        ProfessionAreaList.add("Journalist");
+        ProfessionAreaList.add("Media Professional");
+        ProfessionAreaList.add("Public Relations Professional");
+        ProfessionAreaList.add("Farming");
+        ProfessionAreaList.add("Horticulturist");
+        ProfessionAreaList.add("Agricultural Professional (Others)");
+        ProfessionAreaList.add("Air Hostess / Flight Attendant");
+        ProfessionAreaList.add("Pilot / Co-Pilot");
+        ProfessionAreaList.add("Other Airline Professional");
+        ProfessionAreaList.add("Architect");
+        ProfessionAreaList.add("Interior Designer");
+        ProfessionAreaList.add("Landscape Architect");
+        ProfessionAreaList.add("Animator");
+        ProfessionAreaList.add("Commercial Artist");
+        ProfessionAreaList.add("Web / UX Designers");
+        ProfessionAreaList.add("Artist (Others)");
+        ProfessionAreaList.add("Beautician");
+        ProfessionAreaList.add("Fashion Designer");
+        ProfessionAreaList.add("Hairstylist");
+        ProfessionAreaList.add("Jewellery Designer");
+        ProfessionAreaList.add("Designer (Others)");
+        ProfessionAreaList.add("Customer Support / BPO / KPO Professional");
+        ProfessionAreaList.add("IAS / IRS / IES / IFS");
+        ProfessionAreaList.add("Indian Police Services (IPS)");
+        ProfessionAreaList.add("BCom (Hons)");
+        ProfessionAreaList.add("PGD Finance");
+        ProfessionAreaList.add("BCA");
+        ProfessionAreaList.add("B.IT");
+        ProfessionAreaList.add("BCS");
+        ProfessionAreaList.add("BA Computer Science");
+        ProfessionAreaList.add("Law Enforcement Employee (Others)");
+        ProfessionAreaList.add("Airforce");
+        ProfessionAreaList.add("Army");
+        ProfessionAreaList.add("Navy");
+        ProfessionAreaList.add("Defense Services (Others)");
+        ProfessionAreaList.add("Lecturer");
+        ProfessionAreaList.add("Professor");
+        ProfessionAreaList.add("Research Assistant");
+        ProfessionAreaList.add("Research Scholar");
+        ProfessionAreaList.add("Teacher");
+        ProfessionAreaList.add("Training Professional (Others)");
+        ProfessionAreaList.add("Civil Engineer");
+        ProfessionAreaList.add("Electronics / Telecom Engineer");
+        ProfessionAreaList.add("Mechanical / Production Engineer");
+        ProfessionAreaList.add("Non IT Engineer (Others)");
+        ProfessionAreaList.add("Chef / Sommelier / Food Critic");
+        ProfessionAreaList.add("Catering Professional");
+        ProfessionAreaList.add("Hotel");
+        ProfessionAreaList.add("Software Developer / Programmer");
+        ProfessionAreaList.add("Software Consultant");
+        ProfessionAreaList.add("Hardware");
+        ProfessionAreaList.add("Software Professional (Others)");
+        ProfessionAreaList.add("Lawyer");
+        ProfessionAreaList.add("Legal Professional (Others)");
+        ProfessionAreaList.add("Legal Assistant");
+        ProfessionAreaList.add("Dentist");
+        ProfessionAreaList.add("Doctor");
+        ProfessionAreaList.add("Medical Transcriptionist");
+        ProfessionAreaList.add("Nurse");
+        ProfessionAreaList.add("Pharmacist");
+        ProfessionAreaList.add("Physician Assistant");
+        ProfessionAreaList.add("Physiotherapist / Occupational Therapist");
+        ProfessionAreaList.add("Psychologist");
+        ProfessionAreaList.add("Surgeon");
+        ProfessionAreaList.add("Veterinary Doctor");
+        ProfessionAreaList.add("Therapist (Others)");
+        ProfessionAreaList.add("Medical / Healthcare Professional (Others)T");
+        ProfessionAreaList.add("Merchant Naval Officer");
+        ProfessionAreaList.add("Mariner");
+        ProfessionAreaList.add("Marketing Professional");
+        ProfessionAreaList.add("Sales Professional");
+        ProfessionAreaList.add("Biologist / Botanist");
+        ProfessionAreaList.add("Physicist");
+        ProfessionAreaList.add("Science Professional (Others)");
+        ProfessionAreaList.add("CxO / Chairman / Director / President");
+        ProfessionAreaList.add("VP / AVP / GM / DGM");
+        ProfessionAreaList.add("Sr. Manager / Manager");
+        ProfessionAreaList.add("Consultant / Supervisor / Team Leads");
+        ProfessionAreaList.add("Team Member / Staff");
+        ProfessionAreaList.add("Agent / Broker / Trader / Contractor");
+        ProfessionAreaList.add("Business Owner / Entrepreneur");
+        ProfessionAreaList.add("Politician");
+        ProfessionAreaList.add("Social Worker / Volunteer / NGO");
+        ProfessionAreaList.add("Sportsman");
+        ProfessionAreaList.add("Travel");
+        ProfessionAreaList.add("Writer");
+        ProfessionAreaList.add("Student");
+        ProfessionAreaList.add("Retired");
+        ProfessionAreaList.add("Not working");
+       return ProfessionAreaList;
     }
 
     private void multi_SelectionWorkingWith() {

@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ProfileEditPersonalActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/mtAddUserToolBar"
+            style="@style/CustomMaterialToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+            app:title="Personal Data"
+            app:titleCentered="true" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+
+            <FrameLayout
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle">
+
+                    <ImageView
+                        android:id="@+id/profilePic"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:background="@color/white"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/local" />
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:id="@+id/iv_camera"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_baseline_create_24" />
+                </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
+
+
+            <!--                <com.google.android.material.imageview.ShapeableImageView-->
+            <!--                    android:id="@+id/ivEditPhoto"-->
+            <!--                    android:layout_width="100dp"-->
+            <!--                    android:layout_height="100dp"-->
+            <!--                    android:layout_gravity="center"-->
+            <!--                    android:backgroundTint="#F0E0E0F3"-->
+            <!--                    android:layout_marginBottom="40dp"-->
+            <!--                    android:background="@drawable/white_border_rounded_corner"-->
+            <!--                    android:src="@drawable/eventlogo" />-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Name"
+                android:textColor="@color/colorPrimary"
+
+                />
+
+            <EditText
+                android:id="@+id/etAddUserName"
+                style="@style/PersonalDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Email"
+                android:textColor="@color/colorPrimary"
+
+                />
+
+            <EditText
+                android:id="@+id/etAddUsermail"
+                style="@style/PersonalDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Email" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Description About You"
+                android:textColor="@color/colorPrimary"
+
+                />
+
+            <EditText
+                android:id="@+id/etAddUserDescription"
+                style="@style/PersonalDataTextView"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:hint="Enter New Note"
+                android:maxLines="40"
+                android:lines="5"
+                android:scrollbars="vertical"
+                android:maxLength="300"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="left"
+                android:imeOptions="actionDone"
+                android:layout_marginTop="8dp"
+                android:contentDescription="Enter Input Here"
+                android:layout_marginBottom="8dp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout_gravity="right"
+                >
+                <TextView
+                    android:id="@+id/tvCountWord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:layout_gravity="right"
+                  />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/300"
+                    android:layout_gravity="right"
+                   />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date Of Birth"
+                android:textColor="@color/colorPrimary"
+
+                />
+
+            <Button
+                android:id="@+id/mbDatePicker"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:hint="Select D.O.B"
+
+                android:textColor="@color/white"
+                app:cornerRadius="5dp"
+                app:icon="@drawable/ic_outline_date_range_24"
+                app:iconGravity="end" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Age"
+                android:textColor="@color/colorPrimary" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_edit_text"
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
+
+                <Spinner
+                    android:id="@+id/multi_SelectionAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
+                    android:importantForAutofill="no"
+                    android:maxLines="1"
+                    app:showSearch="true"
+                    app:sort="true" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Marital Status" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_edit_text"
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
+
+                <Spinner
+                    android:id="@+id/tvEditMaritalStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
+                    android:importantForAutofill="no"
+                    android:maxLines="1"
+                    app:showSearch="true"
+                    app:sort="true" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Height" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_edit_text"
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
+
+                <Spinner
+                    android:id="@+id/spUserHeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
+                    android:importantForAutofill="no"
+                    android:maxLines="1"
+                    app:showSearch="true"
+                    app:sort="true" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Grew Up In" />
+
+            <EditText
+                android:id="@+id/etAddUserGrewUpIn"
+                style="@style/PersonalDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Grew Up In" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Blood Group" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_edit_text"
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
+
+                <Spinner
+                    android:id="@+id/spUserBloodGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
+                    android:importantForAutofill="no"
+                    android:maxLines="1"
+                    app:showSearch="true"
+                    app:sort="true" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Diet" />
+
+            <RadioGroup
+                android:id="@+id/rgVegNonVegType"
+                style="@style/ShapeAppearanceEditTextView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/bg_edit_text"
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/mrbVeg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="Veg" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/mrbNonVeg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="No Non-Veg" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/mrbBoth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Both" />
+
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Location"
+                android:textColor="@color/colorPrimary"
+
+                />
+
+            <EditText
+                android:id="@+id/etAddUserLocation"
+                style="@style/PersonalDataTextView"
+                android:hint="Type your Location..."
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Mother Tongue"
+                android:textColor="@color/colorPrimary"
+
+                />
+
+            <TextView
+                android:id="@+id/tvMotherTongue"
+                style="@style/PersonalDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                android:gravity="center_vertical"
+                android:hint="Select Mother Tongue"
+                android:padding="10dp"
+                />
+            // android:background="@android:drawable/editbox_background"
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Blood Group" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_edit_text"
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
+
+                <Spinner
+                    android:id="@+id/spUserHealthDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
+                    android:importantForAutofill="no"
+                    android:maxLines="1"
+                    app:showSearch="true"
+                    app:sort="true" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:background="#E1DCDE">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    android:textSize="16sp"
+                    android:text="Religion Details"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Religion"
+                android:textColor="@color/colorPrimary"
+
+                />
+
+            <TextView
+                android:id="@+id/tvUserReligion"
+                style="@style/PersonalDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                android:gravity="center_vertical"
+                android:hint="Select Mother Tongue"
+                android:padding="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Community"
+                android:textColor="@color/colorPrimary"
+
+                />
+
+            <TextView
+                android:id="@+id/tvUserCommunity"
+                style="@style/PersonalDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                android:gravity="center_vertical"
+                android:hint="Select Mother Tongue"
+                android:padding="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Sub Community"
+                android:textColor="@color/colorPrimary"
+
+                />
+
+            <TextView
+                android:id="@+id/tvUserSubCommunity"
+                style="@style/PersonalDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                android:gravity="center_vertical"
+                android:hint="Select Mother Tongue"
+                android:padding="10dp"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Gotra/Gotram"
+                android:textColor="@color/colorPrimary"
+
+                />
+
+            <TextView
+                android:id="@+id/tvUserGotra"
+                style="@style/PersonalDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                android:gravity="center_vertical"
+                android:hint="Select Mother Tongue"
+                android:padding="10dp"
+                />
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12sp"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="save"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
