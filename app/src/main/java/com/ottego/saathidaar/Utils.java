@@ -3,8 +3,6 @@ package com.ottego.saathidaar;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -12,10 +10,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.ottego.saathidaar.MySingleton;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.Date;
@@ -30,6 +24,9 @@ import java.util.Objects;
 public class Utils {
     public static String URL = "https://financetrik.com/app/news/";
     public static int SERVER_TIMEOUT = 30000;
+    public static String userUrl ="http://192.168.1.37:9094/api/users/";
+    public static String memberUrl ="http://192.168.1.37:9094/api/member/";
+    public static String role_user="USER";
 
     public final static boolean isValidEmail(CharSequence target) {
         if (target == null) {
@@ -58,7 +55,7 @@ public class Utils {
 
 
     public static void sendDeviceId(final Context context) {
-        final String url_device = Utils.URL + "deviceidset.php";
+        final String url_device = Utils.userUrl + "deviceidset.php";
         //final SessionManager sessionManager = new SessionManager(context);
         SharedPreferences pref = context.getSharedPreferences("firebase_sh", 0);
         final String firebaseId = pref.getString("firebaseid", null);

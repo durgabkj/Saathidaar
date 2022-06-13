@@ -14,6 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Saathidaar">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OtpVerificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LandingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfessionalDetailEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".FamilyProfileActivity"
             android:exported="false" />
         <activity
@@ -21,9 +33,6 @@
             android:exported="false" />
         <activity
             android:name=".NavigationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LandingActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
