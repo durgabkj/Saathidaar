@@ -20,6 +20,7 @@ import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -40,6 +41,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.material.navigation.NavigationBarView;
 import com.ottego.saathidaar.Model.DataModelReligion;
 import com.ottego.saathidaar.databinding.ActivityProfileEditPersonalBinding;
 
@@ -74,6 +77,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     Calendar calendar = Calendar.getInstance();
     ArrayList<String> religionList = new ArrayList<>();
     ArrayAdapter<String> religionAdapter;
+    ArrayList<String> communityList = new ArrayList<>();
+    ArrayAdapter<String> communityAdapter;
     EditText editText;
     ListView listView;
     private String format = "";
@@ -116,7 +121,47 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         HealthDetails();
         religionList();
         handlePermission();
+communityList();
 
+    }
+    private void listener() {
+
+        b.mbDatePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(context, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener, year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onDateSet(DatePicker v, int year, int month, int day) {
+                Calendar userAge = new GregorianCalendar(year, month, day);
+                Calendar minAdultAge = new GregorianCalendar();
+                minAdultAge.add(Calendar.YEAR, -18);
+                String currentDateString = SimpleDateFormat.getDateInstance(DateFormat.FULL).format(userAge.getTime());
+                date = year + "-" + month + "-" + day;
+                if (minAdultAge.before(userAge)) {
+                    Toast.makeText(context, "Please Select valid date", Toast.LENGTH_LONG).show();
+                } else {
+                    b.mbDatePicker.setText(currentDateString);
+                }
+            }
+        };
+
+        b.ivCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openImageChooser();
+            }
+        });
 
     }
 
@@ -172,7 +217,11 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                         // when item selected from list
                         // set selected item on textView
                         b.tvUserReligion.setText(religionAdapter.getItem(position));
+                        Log.e("position",religionAdapter.getItem((int) id));
                         religionList.clear();
+
+                        communityData();
+
                         // Dismiss dialog
                         dialog.dismiss();
                     }
@@ -181,6 +230,46 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         });
 
     }
+
+    private void communityData() {
+        String selectedCountry = b.tvUserReligion.getText().toString().trim();
+        String url = "http://192.168.1.40:9094/api/get/cast-name/by/religion_name/" + selectedCountry;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf(response));
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        JSONArray jsonArray = response.getJSONArray("cast");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String cast = jsonObject1.getString("cast_name");
+//                                            Log.e("cast", cast);
+                            communityList.add(cast);
+                            Log.e("cast-list", String.valueOf(communityList));
+                        }
+                    }
+                    communityAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, communityList);
+//                                    // set adapter
+                    listView.setAdapter(communityAdapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+    }
+
 
     private void getReligionList(String url) {
         Log.e("url", url);
@@ -216,48 +305,127 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+       // listView.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) context);
     }
 
-    private void listener() {
-
-        b.mbDatePicker.setOnClickListener(new View.OnClickListener() {
+    private void communityList() {
+        b.tvUserCommunity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog dialog = new DatePickerDialog(context, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener, year, month, day);
+                communityData();
+
+                // Initialize dialog
+                dialog = new Dialog(context);
+
+                // set custom dialog
+                dialog.setContentView(R.layout.searchable_dropdown_item);
+
+                // set custom height and width
+                dialog.getWindow().setLayout(800, 900);
+
+                // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
-            }
-        });
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onDateSet(DatePicker v, int year, int month, int day) {
-                Calendar userAge = new GregorianCalendar(year, month, day);
-                Calendar minAdultAge = new GregorianCalendar();
-                minAdultAge.add(Calendar.YEAR, -18);
-                String currentDateString = SimpleDateFormat.getDateInstance(DateFormat.FULL).format(userAge.getTime());
-                date = year + "-" + month + "-" + day;
-                if (minAdultAge.before(userAge)) {
-                    Toast.makeText(context, "Please Select valid date", Toast.LENGTH_LONG).show();
-                } else {
-                    b.mbDatePicker.setText(currentDateString);
-                }
-            }
-        };
 
-        b.ivCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openImageChooser();
+                // show dialog
+                dialog.show();
+
+                // Initialize and assign variable
+                listView = dialog.findViewById(R.id.list_view);
+                EditText editText = dialog.findViewById(R.id.edit_text);
+                // Initialize array adapter
+                communityAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, communityList);
+                // set adapter
+                listView.setAdapter(communityAdapter);
+
+                editText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        communityAdapter.getFilter().filter(s);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // when item selected from list
+                        // set selected item on textView
+                        b.tvUserCommunity.setText(communityAdapter.getItem(position));
+                        Log.e("position",communityAdapter.getItem((int) id));
+                        communityList.clear();
+                dialog.dismiss();
+                        // Dismiss dialog
+                        dialog.dismiss();
+                    }
+                });
+
             }
         });
 
     }
+
+//
+//    @Override
+//    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//        if (adapterView.getId() == R.id.list_view) {
+//            communityList.clear();
+//            String selectedCountry = adapterView.getSelectedItem().toString();
+//            String url = "http://192.168.1.40:9094/api/get/cast-name/" + selectedCountry;
+//
+//            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+//                    url, null, new Response.Listener<JSONObject>() {
+//                @Override
+//                public void onResponse(JSONObject response) {
+//                    Log.e("response", String.valueOf(response));
+//                    try {
+//                        String code = response.getString("results");
+//                        if (code.equalsIgnoreCase("1")) {
+//                            JSONArray jsonArray = response.getJSONArray("cast");
+//                            for (int i = 0; i < jsonArray.length(); i++) {
+//                                JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+//                                String cast = jsonObject1.getString("cast_name");
+//                                Log.e("cast", cast);
+//                                communityList.add(cast);
+//                                Log.e("cast-list", String.valueOf(communityList));
+//                            }
+//                        }
+//                        communityAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, communityList);
+//                        // set adapter
+//                        listView.setAdapter(communityAdapter);
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }, new Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(VolleyError error) {
+//
+//                }
+//            });
+//            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+//            MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+//        }
+//    }
+//
+//        @Override
+//        public void onNothingSelected (AdapterView < ? > adapterView){
+//
+//        }
+
+
+
 
     private void handlePermission() {
 
