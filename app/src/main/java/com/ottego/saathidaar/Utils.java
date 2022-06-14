@@ -24,8 +24,8 @@ import java.util.Objects;
 public class Utils {
     public static String URL = "https://financetrik.com/app/news/";
     public static int SERVER_TIMEOUT = 30000;
-    public static String userUrl ="http://192.168.1.37:9094/api/users/";
-    public static String memberUrl ="http://192.168.1.37:9094/api/member/";
+    public static String userUrl ="http://192.168.1.40:9094/api/users/";
+    public static String memberUrl ="http://192.168.1.40:9094/api/member/";
     public static String role_user="USER";
 
     public final static boolean isValidEmail(CharSequence target) {
@@ -52,7 +52,6 @@ public class Utils {
             return null;
         }
     }
-
 
     public static void sendDeviceId(final Context context) {
         final String url_device = Utils.userUrl + "deviceidset.php";

@@ -25,16 +25,16 @@ SessionManager sessionManager;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (sessionManager.isLoggedIn()) {
-                    startActivity(new Intent(context, NavigationActivity.class));
-                } else {
-                    startActivity(new Intent(context, LandingActivity.class));
-                }
+//                if (sessionManager.isLoggedIn()) {
+//                    startActivity(new Intent(context, NavigationActivity.class));
+//                } else {
+//                    startActivity(new Intent(context, LandingActivity.class));
+//                }
+//
+//                finish();
 
-                finish();
-
-//                Intent intent=new Intent(MainActivity.this,NavigationActivity.class);
-//                startActivity(intent);
+                Intent intent=new Intent(MainActivity.this,NavigationActivity.class);
+                startActivity(intent);
             }
 
         }, 2000);

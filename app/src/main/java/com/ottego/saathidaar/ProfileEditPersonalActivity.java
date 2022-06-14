@@ -1,11 +1,5 @@
 package com.ottego.saathidaar;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -16,19 +10,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -39,15 +29,24 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.ottego.multipleselectionspinner.MultipleSelection;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.ottego.saathidaar.Model.DataModelReligion;
 import com.ottego.saathidaar.databinding.ActivityProfileEditPersonalBinding;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,36 +54,57 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class ProfileEditPersonalActivity extends AppCompatActivity {
-ActivityProfileEditPersonalBinding b;
-Context context;
-    ArrayList<String> AgeList =new ArrayList<>();
-    ArrayList<String> minList=new ArrayList<>();
+    // String currentDate = DateFormat.getDateInstance(DateFormat.DEFAULT).format(calendar.getTime());
+// Permissions for accessing the storage
+    private static final int SELECT_PICTURE = 100;
+    private static final String TAG = "SelectImageActivity";
+    public String ReligionUrl = "http://192.168.1.40:9094/api/get/religion-name";
+    ActivityProfileEditPersonalBinding b;
+    Context context;
+    ArrayList<String> AgeList = new ArrayList<>();
+    ArrayList<String> minList = new ArrayList<>();
     ArrayAdapter<String> minAdapter;
-
+    DataModelReligion data;
     ArrayList<String> motherTongueList;
     Dialog dialog;
-
     //For MaritalStatus....
-    ArrayList<String> maritalList=new ArrayList<>();
-
-    private String format = "";
+    ArrayList<String> maritalList = new ArrayList<>();
     String date = "";
-    String image="";
-    private DatePickerDialog.OnDateSetListener mDateSetListener;
+    String image = "";
     Calendar calendar = Calendar.getInstance();
-   // String currentDate = DateFormat.getDateInstance(DateFormat.DEFAULT).format(calendar.getTime());
-// Permissions for accessing the storage
-   private static final int SELECT_PICTURE = 100;
-    private static final String TAG = "SelectImageActivity";
+    ArrayList<String> religionList = new ArrayList<>();
+    ArrayAdapter<String> religionAdapter;
+    EditText editText;
+    ListView listView;
+    private String format = "";
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
+
+    public static void openAppSettings(final Activity context) {
+        if (context == null) {
+            return;
+        }
+        final Intent i = new Intent();
+        i.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        i.addCategory(Intent.CATEGORY_DEFAULT);
+        i.setData(Uri.parse("package:" + context.getPackageName()));
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        i.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        context.startActivity(i);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       b=ActivityProfileEditPersonalBinding.inflate(getLayoutInflater());
-      context=ProfileEditPersonalActivity.this;
+        b = ActivityProfileEditPersonalBinding.inflate(getLayoutInflater());
+        context = ProfileEditPersonalActivity.this;
         setContentView(b.getRoot());
 
-       // b.mbDatePicker.setText(currentDate);
+        // Initialize dialog
+        dialog = new Dialog(context);
+
+
+        // b.mbDatePicker.setText(currentDate);
 
         listener();
         ageDropDown();
@@ -94,11 +114,109 @@ Context context;
         motherTongueSpinner();
         limitWord();
         HealthDetails();
-
+        religionList();
         handlePermission();
+
 
     }
 
+    private void religionList() {
+        b.tvUserReligion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                getReligionList(ReligionUrl);
+
+                // Initialize dialog
+                dialog = new Dialog(context);
+
+                // set custom dialog
+                dialog.setContentView(R.layout.searchable_dropdown_item);
+
+                // set custom height and width
+                dialog.getWindow().setLayout(800, 900);
+
+                // set transparent background
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                // show dialog
+                dialog.show();
+
+                // Initialize and assign variable
+                listView = dialog.findViewById(R.id.list_view);
+                EditText editText = dialog.findViewById(R.id.edit_text);
+                // Initialize array adapter
+                // ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1);
+
+
+                editText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        religionAdapter.getFilter().filter(s);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // when item selected from list
+                        // set selected item on textView
+                        b.tvUserReligion.setText(religionAdapter.getItem(position));
+                        religionList.clear();
+                        // Dismiss dialog
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+
+    }
+
+    private void getReligionList(String url) {
+        Log.e("url", url);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf(response));
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        JSONArray jsonArray = response.getJSONArray("religion");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String religion = jsonObject1.getString("religion_name");
+                            Log.e("Religion", religion);
+                            religionList.add(religion);
+                            Log.e("Religion-list", String.valueOf(religionList));
+                        }
+                    }
+                    religionAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, religionList);
+                    // set adapter
+                    listView.setAdapter(religionAdapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+    }
 
     private void listener() {
 
@@ -141,7 +259,6 @@ Context context;
 
     }
 
-
     private void handlePermission() {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -157,7 +274,7 @@ Context context;
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,  String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
             case SELECT_PICTURE:
                 for (int i = 0; i < permissions.length; i++) {
@@ -182,7 +299,6 @@ Context context;
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
     }
-
 
     public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
 
@@ -213,6 +329,7 @@ Context context;
         }).start();
 
     }
+
     /* Get the real path from the URI */
     public String getPathFromURI(Uri contentUri) {
         String res = null;
@@ -225,7 +342,6 @@ Context context;
         cursor.close();
         return res;
     }
-
 
     private void showSettingsAlert() {
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
@@ -248,21 +364,6 @@ Context context;
         alertDialog.show();
     }
 
-    public static void openAppSettings(final Activity context) {
-        if (context == null) {
-            return;
-        }
-        final Intent i = new Intent();
-        i.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-        i.addCategory(Intent.CATEGORY_DEFAULT);
-        i.setData(Uri.parse("package:" + context.getPackageName()));
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        i.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-        context.startActivity(i);
-    }
-
-
     private void HealthDetails() {
         String[] healthList = getResources().getStringArray(R.array.Health);
         ArrayAdapter healthAdapter = new ArrayAdapter(context, R.layout.dropdown_item, healthList);
@@ -281,9 +382,9 @@ Context context;
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 b.etAddUserDescription.length();
 
-                String s=b.etAddUserDescription.getText().toString().trim();
-                int num=s.length();
-               b.tvCountWord.setText(""+(int)num);
+                String s = b.etAddUserDescription.getText().toString().trim();
+                int num = s.length();
+                b.tvCountWord.setText("" + (int) num);
             }
 
             @Override
@@ -293,39 +394,12 @@ Context context;
         });
     }
 
-
-
-
-
-
-//    public String BitMapToString(Bitmap userImage1) {
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        userImage1.compress(Bitmap.CompressFormat.JPEG, 60, baos);
-//        byte[] b = baos.toByteArray();
-//        image = Base64.encodeToString(b, Base64.DEFAULT);
-//        return image;
-//    }
-//
-//    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
-//        int width = image.getWidth();
-//        int height = image.getHeight();
-//
-//        float bitmapRatio = (float)width / (float) height;
-//        if (bitmapRatio > 1) {
-//            width = maxSize;
-//            height = (int) (width / bitmapRatio);
-//        } else {
-//            height = maxSize;
-//            width = (int) (height * bitmapRatio);
-//        }
-//        return Bitmap.createScaledBitmap(image, width, height, true);
-//    }
-
     private void motherTongueSpinner() {
-
-
+        //motl.clear
+        //for loop
+        //motl.add(model.religion_name);
         // initialize array list
-        motherTongueList=new ArrayList<>();
+        motherTongueList = new ArrayList<>();
         motherTongueList.add("Hindi");
         motherTongueList.add("Marathi");
         motherTongueList.add("Punjabi");
@@ -335,7 +409,6 @@ Context context;
         motherTongueList.add("Urdu");
         motherTongueList.add("Kannada");
         motherTongueList.add("English");
-
         motherTongueList.add("Tamil");
         motherTongueList.add("Odia");
         motherTongueList.add("Marwari");
@@ -345,7 +418,6 @@ Context context;
         motherTongueList.add("Bhojpuri");
         motherTongueList.add("Chattisgarhi");
         motherTongueList.add("Haryanavi");
-
         motherTongueList.add("Himachali/Pahari");
         motherTongueList.add("Kashmiri");
         motherTongueList.add("Malayalam");
@@ -359,14 +431,13 @@ Context context;
         b.tvMotherTongue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Initialize dialog
-                dialog=new Dialog(context);
+
 
                 // set custom dialog
                 dialog.setContentView(R.layout.searchable_dropdown_item);
 
                 // set custom height and width
-                dialog.getWindow().setLayout(800,900);
+                dialog.getWindow().setLayout(800, 900);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -375,11 +446,11 @@ Context context;
                 dialog.show();
 
                 // Initialize and assign variable
-                EditText editText=dialog.findViewById(R.id.edit_text);
-                ListView listView=dialog.findViewById(R.id.list_view);
+                EditText editText = dialog.findViewById(R.id.edit_text);
+                ListView listView = dialog.findViewById(R.id.list_view);
 
                 // Initialize array adapter
-                ArrayAdapter<String> adapter=new ArrayAdapter<>(context, android.R.layout.simple_list_item_1,motherTongueList);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, motherTongueList);
 
                 // set adapter
                 listView.setAdapter(adapter);
@@ -416,11 +487,11 @@ Context context;
     }
 
     private void bloodGroup() {
-            String[] bloodGroup = getResources().getStringArray(R.array.BloodGroup);
-            ArrayAdapter blood = new ArrayAdapter(context, R.layout.dropdown_item, bloodGroup);
-            //Setting the ArrayAdapter data on the Spinner
-            b.spUserBloodGroup.setAdapter(blood);
-        }
+        String[] bloodGroup = getResources().getStringArray(R.array.BloodGroup);
+        ArrayAdapter blood = new ArrayAdapter(context, R.layout.dropdown_item, bloodGroup);
+        //Setting the ArrayAdapter data on the Spinner
+        b.spUserBloodGroup.setAdapter(blood);
+    }
 
     private void userHeight() {
         String[] Height = getResources().getStringArray(R.array.Height);
@@ -430,34 +501,32 @@ Context context;
     }
 
     private void maritalStatus() {
-      maritalList.add("Never Married");
+        maritalList.add("Never Married");
         maritalList.add("Divorce");
         maritalList.add("Widowed");
         maritalList.add("Awaiting Divorce");
         maritalList.add("Annulled");
 
         // Initialize adapter
-        ArrayAdapter<String> maritalAdapter = new ArrayAdapter<>(context,R.layout.dropdown_item,maritalList);
-    b.tvEditMaritalStatus.setAdapter(maritalAdapter);
+        ArrayAdapter<String> maritalAdapter = new ArrayAdapter<>(context, R.layout.dropdown_item, maritalList);
+        b.tvEditMaritalStatus.setAdapter(maritalAdapter);
     }
 
     private void ageDropDown() {
         // use for loop
-        for(int i=18;i<=70;i++)
-        {
+        for (int i = 18; i <= 70; i++) {
             // add values in price list
-            AgeList.add(" "+i+ " Years");
+            AgeList.add(" " + i + " Years");
             // check condition
-            if(i>1)
-            {
+            if (i > 1) {
                 // Not include first value  in max list
-                minList.add(i+" Years");
+                minList.add(i + " Years");
             }
 
         }
 
         // Initialize adapter
-        minAdapter=new ArrayAdapter<>(context,R.layout.dropdown_item,minList);
+        minAdapter = new ArrayAdapter<>(context, R.layout.dropdown_item, minList);
 
         // set adapter
         b.multiSelectionAge.setAdapter(minAdapter);

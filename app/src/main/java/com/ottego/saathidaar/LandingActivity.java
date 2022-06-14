@@ -56,7 +56,7 @@ public class LandingActivity extends AppCompatActivity {
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
             binding.spinner1.setAdapter(adapter);
 
-            int imgarray[] = {R.drawable.firstimg, R.drawable.femalelogo, R.drawable.malelogo, R.id.male};
+            int imgarray[] = {R.drawable.firstimg, R.drawable.femalelogo, R.id.male};
             flipper = (ViewFlipper) findViewById(R.id.flipper);
 
             for (int i = 0; i < imgarray.length; i++)

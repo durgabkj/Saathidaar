@@ -54,8 +54,10 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         b = FragmentHomeBinding.inflate(inflater, container, false);
 
-
-
+        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fcvSathidarDashboard,dashBoardFragment);
+        fragmentTransaction.commit();
 
 
         b.btnDashboard.setOnClickListener(new View.OnClickListener() {
