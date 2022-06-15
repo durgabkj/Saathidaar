@@ -78,8 +78,87 @@
                                 app:showSearch="true"
                                 app:sort="true" />
 
-
                         </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llCompanyName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:visibility="gone"
+                        android:orientation="horizontal"
+                        >
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.8"
+                            android:layout_gravity="center"
+                            android:text="Company Name" />
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:id="@+id/etFatherCompanyName"
+                            style="@style/PersonalDataTextView"
+                            android:hint="Enter Company Name"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/llDesignation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:visibility="gone"
+                        android:orientation="horizontal"
+                        >
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.8"
+                            android:layout_gravity="center"
+                            android:text="Designation" />
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:id="@+id/etFatherDesignation"
+                            style="@style/PersonalDataTextView"
+                            android:hint="Enter Designation"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llBusiness"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:visibility="gone"
+                        android:orientation="horizontal"
+                        >
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.8"
+                            android:layout_gravity="center"
+                            android:text="Nature of Business" />
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:id="@+id/etFatherNatureBusiness"
+                            style="@style/PersonalDataTextView"
+                            android:hint="Nature of Business"/>
 
                     </LinearLayout>
 
@@ -122,6 +201,81 @@
 
 
                         </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llMCompany"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal"
+                        >
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.8"
+                            android:layout_gravity="center"
+                            android:text="Company Name" />
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:id="@+id/etMotherCompanyName"
+                            style="@style/PersonalDataTextView"
+                            android:hint="Enter Company Name"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                       android:id="@+id/llMNatureBusiness"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal"
+                        >
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.8"
+                            android:layout_gravity="center"
+                            android:text="Nature of Business" />
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:id="@+id/etMotherNatureBusiness"
+                            style="@style/PersonalDataTextView"
+                            android:hint="Nature of Business"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/llMDesignation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal"
+                        >
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.8"
+                            android:layout_gravity="center"
+                            android:text="Designation" />
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:id="@+id/etMotherDesignation"
+                            style="@style/PersonalDataTextView"
+                            android:hint="Enter Designation"/>
 
                     </LinearLayout>
                     <LinearLayout

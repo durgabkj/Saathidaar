@@ -293,7 +293,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Health Issue" />
+                android:text="Blood Group" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -324,40 +324,31 @@
                 android:layout_marginTop="10dp"
                 android:text="Diet" />
 
-            <RadioGroup
-                android:id="@+id/rgVegNonVegType"
-                style="@style/ShapeAppearanceEditTextView"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="1dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/bg_edit_text"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
+
+                <Spinner
+                    android:id="@+id/tvEditDiet"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
+                    android:importantForAutofill="no"
+                    android:maxLines="1"
+                    app:showSearch="true"
+                    app:sort="true" />
+
+            </LinearLayout>
 
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/mrbVeg"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:text="Veg" />
-
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/mrbNonVeg"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:text="No Non-Veg" />
-
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/mrbBoth"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Both" />
-
-
-            </RadioGroup>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -400,7 +391,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Blood Group" />
+                android:text="Health Issue" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -465,7 +456,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Community"
+                android:text="Cast"
                 android:textColor="@color/colorPrimary"
 
                 />
@@ -477,7 +468,7 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                 android:gravity="center_vertical"
-                android:hint="Select Mother Tongue"
+                android:hint="Select your cast"
                 android:padding="10dp"
                 />
 
@@ -485,21 +476,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Sub Community"
+                android:text="Sub Cast"
                 android:textColor="@color/colorPrimary"
 
                 />
 
-            <TextView
+            <EditText
                 android:id="@+id/tvUserSubCommunity"
                 style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                android:gravity="center_vertical"
-                android:hint="Select Mother Tongue"
-                android:padding="10dp"
-                />
+                android:layout_height="40dp"
+                android:hint="Sub Cast" />
 
 
             <TextView
@@ -515,12 +502,8 @@
                 android:id="@+id/tvUserGotra"
                 style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                android:gravity="center_vertical"
-                android:hint="Select Mother Tongue"
-                android:padding="10dp"
-                />
+                android:layout_height="40dp"
+                android:hint="Enter your Gotra" />
 
             <Button
                 android:id="@+id/btnSave"

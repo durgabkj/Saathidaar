@@ -27,7 +27,7 @@ public class PartnerPreferenceFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    MultipleSelection multi_SelectionCountry, multi_SelectionProfessionArea, multi_SelectionMotherTongue ,multi_SelectionQualification,multi_SelectionWorkingWith;
+    MultipleSelection multi_SelectionReligion, multi_SelectionProfessionArea, multi_SelectionMotherTongue ,multi_SelectionQualification,multi_SelectionWorkingWith;
 
     TextView textView,tvMultipleMaritalStatus;
     boolean[] selectedLanguage;
@@ -84,7 +84,7 @@ public class PartnerPreferenceFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_partner_preference, container, false);
         // assign variable
-        multi_SelectionCountry = view.findViewById(R.id.multi_SelectionCountry);
+      //  multi_SelectionReligion= view.findViewById(R.id.tvMultipleReligion);
        // multi_Selection = view.findViewById(R.id.multi_Selection);
         multi_SelectionMotherTongue=view.findViewById(R.id.multi_SelectionMotherTongue);
         multi_SelectionQualification=view.findViewById(R.id.multi_SelectionQualification);
@@ -98,8 +98,22 @@ public class PartnerPreferenceFragment extends Fragment {
         spMin=view.findViewById(R.id.sp_min);
         spMax= view.findViewById(R.id.sp_max);
         UserAnnualIncome=view.findViewById(R.id.UserAnnualIncome);
-        multi_SelectionCountry.setItems(getItems());
-        multi_SelectionCountry.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
+
+        multi_SelectionWorkingWith();
+         multipleSelectionMotherTongue();
+        multipleSelectionQualification();
+        multipleMaritalStatusSelectionCheckBox();
+       // multipleReligionSelectionCheckBox();
+        multi_SelectionmultiProfessionArea();
+        incomeSelection();
+        Height();
+        SpinnerAge();
+        return view;
+    }
+
+    private void multipleReligionSelectionCheckBox() {
+        multi_SelectionReligion.setItems(getItems());
+        multi_SelectionReligion.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
             @Override
             public void onItemSelected(View view, boolean isSelected, int position) {
 //                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
@@ -111,16 +125,14 @@ public class PartnerPreferenceFragment extends Fragment {
                 Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
             }
         });
-        multi_SelectionWorkingWith();
-         multipleSelectionMotherTongue();
-        multipleSelectionQualification();
-        multipleMaritalStatusSelectionCheckBox();
-       // multipleReligionSelectionCheckBox();
-        multi_SelectionmultiProfessionArea();
-incomeSelection();
-        Height();
-        SpinnerAge();
-        return view;
+    }
+    // dropDown With Search
+    private List getItems() {
+        ArrayList<String> countryList = new ArrayList<>();
+//        for (char i = 'A'; i <= 'Z'; i++)
+        countryList.add("dxcfvgbhnj");
+//            alphabetsList.add(Character.toString(i));
+        return countryList;
     }
 
     private void incomeSelection() {
@@ -129,8 +141,6 @@ incomeSelection();
             //Setting the ArrayAdapter data on the Spinner
         UserAnnualIncome.setAdapter(incomeAdapter);
         }
-
-
     private void Height() {
         String[] fromHeight = getResources().getStringArray(R.array.Height);
         ArrayAdapter aa = new ArrayAdapter(requireActivity(), R.layout.dropdown_item, fromHeight);
@@ -138,7 +148,6 @@ incomeSelection();
         spFromHeight.setAdapter(aa);
         spToHeight.setAdapter(aa);
     }
-
     private void multi_SelectionmultiProfessionArea() {
         multi_SelectionProfessionArea.setItems(getProfessionAreaItems());
         multi_SelectionProfessionArea.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
@@ -588,97 +597,91 @@ incomeSelection();
     }
 
 
-    private void multipleReligionSelectionCheckBox() {
+//    private void multipleReligionSelectionCheckBox() {
+//
+//        // initialize selected language array
+//        selectedLanguage = new boolean[ReligionArray.length];
+//
+//        textView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                // Initialize alert dialog
+//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//
+//                // set title
+//                builder.setTitle("Select Language");
+//
+//                // set dialog non cancelable
+//                builder.setCancelable(false);
+//
+//                builder.setMultiChoiceItems(ReligionArray, selectedLanguage, new DialogInterface.OnMultiChoiceClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+//                        // check condition
+//                        if (b) {
+//                            // when checkbox selected
+//                            // Add position  in lang list
+//                            religionList.add(i);
+//                            // Sort array list
+//                            Collections.sort(religionList);
+//                        } else {
+//                            // when checkbox unselected
+//                            // Remove position from langList
+//                            religionList.remove(Integer.valueOf(i));
+//                        }
+//                    }
+//                });
+//
+//                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        // Initialize string builder
+//                        StringBuilder stringBuilder = new StringBuilder();
+//                        // use for loop
+//                        for (int j = 0; j < religionList.size(); j++) {
+//                            // concat array value
+//                            stringBuilder.append(ReligionArray[religionList.get(j)]);
+//                            // check condition
+//                            if (j != religionList.size() - 1) {
+//                                // When j value  not equal
+//                                // to lang list size - 1
+//                                // add comma
+//                                stringBuilder.append(", ");
+//                            }
+//                        }
+//                        // set text on textView
+//                        textView.setText(stringBuilder.toString());
+//                    }
+//                });
+//
+//                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        // dismiss dialog
+//                        dialogInterface.dismiss();
+//                    }
+//                });
+//                builder.setNeutralButton("Clear All", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        // use for loop
+//                        for (int j = 0; j < selectedLanguage.length; j++) {
+//                            // remove all selection
+//                            selectedLanguage[j] = false;
+//                            // clear language list
+//                            religionList.clear();
+//                            // clear text view value
+//                            textView.setText("");
+//                        }
+//                    }
+//                });
+//                // show dialog
+//                builder.show();
+//            }
+//        });
+//    }
 
-        // initialize selected language array
-        selectedLanguage = new boolean[ReligionArray.length];
 
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                // Initialize alert dialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-
-                // set title
-                builder.setTitle("Select Language");
-
-                // set dialog non cancelable
-                builder.setCancelable(false);
-
-                builder.setMultiChoiceItems(ReligionArray, selectedLanguage, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i, boolean b) {
-                        // check condition
-                        if (b) {
-                            // when checkbox selected
-                            // Add position  in lang list
-                            religionList.add(i);
-                            // Sort array list
-                            Collections.sort(religionList);
-                        } else {
-                            // when checkbox unselected
-                            // Remove position from langList
-                            religionList.remove(Integer.valueOf(i));
-                        }
-                    }
-                });
-
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // Initialize string builder
-                        StringBuilder stringBuilder = new StringBuilder();
-                        // use for loop
-                        for (int j = 0; j < religionList.size(); j++) {
-                            // concat array value
-                            stringBuilder.append(ReligionArray[religionList.get(j)]);
-                            // check condition
-                            if (j != religionList.size() - 1) {
-                                // When j value  not equal
-                                // to lang list size - 1
-                                // add comma
-                                stringBuilder.append(", ");
-                            }
-                        }
-                        // set text on textView
-                        textView.setText(stringBuilder.toString());
-                    }
-                });
-
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // dismiss dialog
-                        dialogInterface.dismiss();
-                    }
-                });
-                builder.setNeutralButton("Clear All", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // use for loop
-                        for (int j = 0; j < selectedLanguage.length; j++) {
-                            // remove all selection
-                            selectedLanguage[j] = false;
-                            // clear language list
-                            religionList.clear();
-                            // clear text view value
-                            textView.setText("");
-                        }
-                    }
-                });
-                // show dialog
-                builder.show();
-            }
-        });
-    }
-
-// dropDown With Search
-    private List getItems() {
-        ArrayList<String> countryList = new ArrayList<>();
-//        for (char i = 'A'; i <= 'Z'; i++)
-//            alphabetsList.add(Character.toString(i));
-       return countryList;
-    }
 
 }

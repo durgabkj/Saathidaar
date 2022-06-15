@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class SessionManager {
-
-
     private static final String PREF_NAME = "userData";
     private static final String IS_LOGIN = "isLogin";
     private static SharedPreferences pref;

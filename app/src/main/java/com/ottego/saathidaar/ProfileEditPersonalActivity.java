@@ -20,7 +20,6 @@ import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -41,8 +40,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.google.android.material.navigation.NavigationBarView;
 import com.ottego.saathidaar.Model.DataModelReligion;
 import com.ottego.saathidaar.databinding.ActivityProfileEditPersonalBinding;
 
@@ -50,11 +47,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProfileEditPersonalActivity extends AppCompatActivity {
     // String currentDate = DateFormat.getDateInstance(DateFormat.DEFAULT).format(calendar.getTime());
@@ -62,9 +60,11 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     private static final int SELECT_PICTURE = 100;
     private static final String TAG = "SelectImageActivity";
     public String ReligionUrl = "http://192.168.1.40:9094/api/get/religion-name";
+    public String url=Utils.URL+"";
+
     ActivityProfileEditPersonalBinding b;
     Context context;
-    ArrayList<String> AgeList = new ArrayList<>();
+    ArrayList<String> AgeList = new ArrayList<String>();
     ArrayList<String> minList = new ArrayList<>();
     ArrayAdapter<String> minAdapter;
     DataModelReligion data;
@@ -83,6 +83,26 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     ListView listView;
     private String format = "";
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+
+    String name = "";
+    String email = "";
+   String description="";
+    String age = "";
+    String Dob = "";
+    String Marital_status = "";
+    String Height = "";
+    String GrewUpIn = "";
+    String bloodGroup = "";
+    String Diet = "";
+    String Location = "";
+    String MotherTongue = "";
+    String HealthDetail = "";
+    String Religion = "";
+    String cast = "";
+    String subCast = "";
+    String Gothram = "";
+
+
 
     public static void openAppSettings(final Activity context) {
         if (context == null) {
@@ -121,10 +141,33 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         HealthDetails();
         religionList();
         handlePermission();
-communityList();
+        communityList();
+        dietList();
 
     }
+
+    private void dietList() {
+        String[] dietGroup = getResources().getStringArray(R.array.DietGroup);
+        ArrayAdapter diet = new ArrayAdapter(context, R.layout.dropdown_item, dietGroup);
+        //Setting the ArrayAdapter data on the Spinner
+        b.tvEditDiet.setAdapter(diet);
+    }
+
     private void listener() {
+
+
+        b.btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkForm()) {
+                    submitForm();
+                }
+
+            }
+        });
+
+
+
 
         b.mbDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,12 +189,14 @@ communityList();
                 Calendar userAge = new GregorianCalendar(year, month, day);
                 Calendar minAdultAge = new GregorianCalendar();
                 minAdultAge.add(Calendar.YEAR, -18);
-                String currentDateString = SimpleDateFormat.getDateInstance(DateFormat.FULL).format(userAge.getTime());
-                date = year + "-" + month + "-" + day;
+                SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy");
+                fmt.setCalendar(userAge);
+                String dateFormatted = fmt.format(userAge.getTime());
+
                 if (minAdultAge.before(userAge)) {
                     Toast.makeText(context, "Please Select valid date", Toast.LENGTH_LONG).show();
                 } else {
-                    b.mbDatePicker.setText(currentDateString);
+                    b.mbDatePicker.setText(dateFormatted);
                 }
             }
         };
@@ -164,6 +209,228 @@ communityList();
         });
 
     }
+
+
+    private boolean checkForm() {
+        name = b.etAddUserName.getText().toString().trim();
+        email = b.etAddUsermail.getText().toString().trim();
+        description=b.etAddUserDescription.getText().toString().trim();
+        Dob = b.mbDatePicker.getText().toString().trim();
+        age = b.multiSelectionAge.getSelectedItem().toString().trim();
+        Marital_status=b.tvEditMaritalStatus.getSelectedItem().toString().trim();
+        Height=b.spUserHeight.getSelectedItem().toString().trim();
+        GrewUpIn=b.etAddUserGrewUpIn.getText().toString().trim();
+        bloodGroup=b.spUserBloodGroup.getSelectedItem().toString().toString();
+        Diet=b.tvEditDiet.getSelectedItem().toString().trim();
+        Location=b.etAddUserLocation.getText().toString().trim();
+        MotherTongue=b.tvMotherTongue.getText().toString().trim();
+        HealthDetail=b.spUserHealthDetail.getSelectedItem().toString().trim();
+        Religion=b.tvUserReligion.getText().toString().trim();
+        cast=b.tvUserCommunity.getText().toString().trim();
+        subCast=b.tvUserSubCommunity.getText().toString().trim();
+        Gothram=b.tvUserGotra.getText().toString().trim();
+
+        if (name.isEmpty()) {
+            b.etAddUserName.setError("Please enter your first name");
+            b.etAddUserName.setFocusableInTouchMode(true);
+            b.etAddUserName.requestFocus();
+            return false;
+        } else {
+            b.etAddUserName.setError(null);
+        }
+
+        if (email.isEmpty()) {
+            b.etAddUsermail.setError("Please  enter email id");
+            b.etAddUsermail.setFocusableInTouchMode(true);
+            b.etAddUsermail.requestFocus();
+            return false;
+        } else if (!Utils.isValidEmail(email)) {
+            b.etAddUsermail.setError("Invalid email.");
+            b.etAddUsermail.setFocusableInTouchMode(true);
+            b.etAddUsermail.requestFocus();
+            return false;
+        } else {
+            b.etAddUsermail.setError(null);
+        }
+
+
+        if (description.isEmpty()) {
+            b.etAddUserDescription.setError("Please write about you");
+            b.etAddUserDescription.setFocusableInTouchMode(true);
+            b.etAddUserDescription.requestFocus();
+            return false;
+        } else {
+            b.etAddUserDescription.setError(null);
+        }
+
+
+
+        if (Dob.isEmpty()) {
+            b.mbDatePicker.setError("Please select Date of Birth");
+            b.mbDatePicker.setFocusableInTouchMode(true);
+            b.mbDatePicker.requestFocus();
+            return false;
+        } else {
+            b.mbDatePicker.setError(null);
+        }
+
+
+        if (b.multiSelectionAge.getSelectedItem().toString().trim() == "select") {
+            b.multiSelectionAge.setFocusableInTouchMode(true);
+            b.multiSelectionAge.requestFocus();
+            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
+        }
+
+        if (b.tvEditMaritalStatus.getSelectedItem().toString().trim() == "select") {
+            b.multiSelectionAge.setFocusableInTouchMode(true);
+            b.multiSelectionAge.requestFocus();
+            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
+        }
+
+        if (b.spUserHeight.getSelectedItem().toString().trim() == "select") {
+            b.multiSelectionAge.setFocusableInTouchMode(true);
+            b.multiSelectionAge.requestFocus();
+            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
+        }
+
+
+        if (GrewUpIn.isEmpty()) {
+            b.etAddUserGrewUpIn.setError("Please enter your Grew Location");
+            b.etAddUserGrewUpIn.setFocusableInTouchMode(true);
+            b.etAddUserGrewUpIn.requestFocus();
+            return false;
+        } else {
+            b.etAddUserGrewUpIn.setError(null);
+        }
+
+
+        if (b.spUserBloodGroup.getSelectedItem().toString().trim() == "select") {
+            b.spUserBloodGroup.setFocusableInTouchMode(true);
+            b.spUserBloodGroup.requestFocus();
+            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
+        }
+
+        if (b.tvEditDiet.getSelectedItem().toString().trim() == "select") {
+            b.tvEditDiet.setFocusableInTouchMode(true);
+            b.tvEditDiet.requestFocus();
+            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+        if (Location.isEmpty()) {
+            b.etAddUserLocation.setError("Please enter your Grew Location");
+            b.etAddUserLocation.setFocusableInTouchMode(true);
+            b.etAddUserLocation.requestFocus();
+            return false;
+        } else {
+            b.etAddUserLocation.setError(null);
+        }
+
+
+        if (MotherTongue.isEmpty()) {
+            b.tvMotherTongue.setError("Please enter your Mother Tongue");
+            b.tvMotherTongue.setFocusableInTouchMode(true);
+            b.tvMotherTongue.requestFocus();
+            return false;
+        } else {
+            b.tvMotherTongue.setError(null);
+        }
+        if (b.spUserHealthDetail.getSelectedItem().toString().trim() == "select") {
+            b.spUserHealthDetail.setFocusableInTouchMode(true);
+            b.spUserHealthDetail.requestFocus();
+            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
+        }
+
+        if (Religion.isEmpty()) {
+            b.tvUserReligion.setError("Please enter your Religion");
+            b.tvUserReligion.setFocusableInTouchMode(true);
+            b.tvUserReligion.requestFocus();
+            return false;
+        } else {
+            b.tvUserReligion.setError(null);
+        }
+
+        if (cast.isEmpty()) {
+            b.tvUserCommunity.setError("Please enter your Mother Tongue");
+            b.tvUserCommunity.setFocusableInTouchMode(true);
+            b.tvUserCommunity.requestFocus();
+            return false;
+        } else {
+            b.tvUserCommunity.setError(null);
+        }
+
+
+        if (subCast.isEmpty()) {
+            b.tvUserSubCommunity.setError("Please enter your Sub cast");
+            b.tvUserSubCommunity.setFocusableInTouchMode(true);
+            b.tvUserSubCommunity.requestFocus();
+            return false;
+        } else {
+            b.tvUserSubCommunity.setError(null);
+        }
+
+
+        if (Gothram.isEmpty()) {
+            b.tvUserGotra.setError("Please enter your Gotharm");
+            b.tvUserGotra.setFocusableInTouchMode(true);
+            b.tvUserGotra.requestFocus();
+            return false;
+        } else {
+            b.tvUserGotra.setError(null);
+        }
+        return true;
+        
+    }
+
+    private void submitForm() {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("about_ourself", description);
+        params.put("date_of_birth", Dob);
+        params.put("marital_status", Marital_status);
+        params.put("height", Height);
+        params.put("blood_group", bloodGroup);
+        params.put("role", Utils.role_user);
+        params.put("mother_tounge", MotherTongue);
+        params.put("health_info", HealthDetail);
+        params.put("religion_name", Religion);
+        params.put("caste_name", cast);
+        params.put("sub_caste_name", subCast);
+        params.put("gothra", Gothram);
+
+        Log.e("params", String.valueOf(params));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("response", String.valueOf((response)));
+                        try {
+                            String code = response.getString("result");
+                            if (code.equalsIgnoreCase("1")) {
+                                //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
+
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+    }
+
 
     private void religionList() {
         b.tvUserReligion.setOnClickListener(new View.OnClickListener() {
@@ -217,7 +484,7 @@ communityList();
                         // when item selected from list
                         // set selected item on textView
                         b.tvUserReligion.setText(religionAdapter.getItem(position));
-                        Log.e("position",religionAdapter.getItem((int) id));
+                        Log.e("position", religionAdapter.getItem((int) id));
                         religionList.clear();
 
                         communityData();
@@ -270,7 +537,6 @@ communityList();
 
     }
 
-
     private void getReligionList(String url) {
         Log.e("url", url);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
@@ -306,7 +572,7 @@ communityList();
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
-       // listView.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) context);
+        // listView.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) context);
     }
 
     private void communityList() {
@@ -363,9 +629,9 @@ communityList();
                         // when item selected from list
                         // set selected item on textView
                         b.tvUserCommunity.setText(communityAdapter.getItem(position));
-                        Log.e("position",communityAdapter.getItem((int) id));
+                        Log.e("position", communityAdapter.getItem((int) id));
                         communityList.clear();
-                dialog.dismiss();
+                        dialog.dismiss();
                         // Dismiss dialog
                         dialog.dismiss();
                     }
@@ -423,8 +689,6 @@ communityList();
 //        public void onNothingSelected (AdapterView < ? > adapterView){
 //
 //        }
-
-
 
 
     private void handlePermission() {
@@ -669,6 +933,7 @@ communityList();
     }
 
     private void maritalStatus() {
+        maritalList.add("Select");
         maritalList.add("Never Married");
         maritalList.add("Divorce");
         maritalList.add("Widowed");
@@ -681,14 +946,19 @@ communityList();
     }
 
     private void ageDropDown() {
+        minList.add("selected");
         // use for loop
         for (int i = 18; i <= 70; i++) {
             // add values in price list
-            AgeList.add(" " + i + " Years");
+            AgeList.add(""+i);
             // check condition
+
+
             if (i > 1) {
                 // Not include first value  in max list
-                minList.add(i + " Years");
+
+
+                minList.add(i +"");
             }
 
         }

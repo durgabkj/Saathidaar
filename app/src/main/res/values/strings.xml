@@ -249,6 +249,7 @@
         <item>Business</item>
         <item>Not Employed</item>
         <item>Pass Away</item>
+        <item>Retired</item>
     </string-array>
 
     <string-array name="Affluence">
@@ -265,5 +266,18 @@
         <item>Joint</item>
         <item>Nuclear</item>
     </string-array>
+
+
+    <string-array name="DietGroup">
+        <item>Select</item>
+        <item>Veg</item>
+        <item>Non-Veg</item>
+        <item>Jain</item>
+        <item>Vegan</item>
+        <item>Eggetarian</item>
+        <item>Occasionally Non-Veg</item>
+    </string-array>
+
+
 
 </resources>
