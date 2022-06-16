@@ -21,12 +21,14 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,6 +42,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.snackbar.Snackbar;
 import com.ottego.saathidaar.Model.DataModelReligion;
 import com.ottego.saathidaar.databinding.ActivityProfileEditPersonalBinding;
 
@@ -60,7 +63,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     private static final int SELECT_PICTURE = 100;
     private static final String TAG = "SelectImageActivity";
     public String ReligionUrl = "http://192.168.1.40:9094/api/get/religion-name";
-    public String url=Utils.URL+"";
+    public String url=Utils.memberUrl+"update/11";
 
     ActivityProfileEditPersonalBinding b;
     Context context;
@@ -145,6 +148,22 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         dietList();
 
     }
+//    public static void hideSoftKeyboard(Activity activity) {
+//        InputMethodManager inputMethodManager =
+//                (InputMethodManager) activity.getSystemService(
+//                        Activity.INPUT_METHOD_SERVICE);
+//        if(inputMethodManager.isAcceptingText()){
+//            inputMethodManager.hideSoftInputFromWindow(
+//                    activity.getCurrentFocus().getWindowToken(),
+//                    0
+//            );
+//        }
+//    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
 
     private void dietList() {
         String[] dietGroup = getResources().getStringArray(R.array.DietGroup);
@@ -152,23 +171,17 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         //Setting the ArrayAdapter data on the Spinner
         b.tvEditDiet.setAdapter(diet);
     }
-
     private void listener() {
-
-
         b.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkForm()) {
                     submitForm();
+                    hideKeyboard(v);
                 }
 
             }
         });
-
-
-
-
         b.mbDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -209,8 +222,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         });
 
     }
-
-
     private boolean checkForm() {
         name = b.etAddUserName.getText().toString().trim();
         email = b.etAddUsermail.getText().toString().trim();
@@ -230,28 +241,28 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         subCast=b.tvUserSubCommunity.getText().toString().trim();
         Gothram=b.tvUserGotra.getText().toString().trim();
 
-        if (name.isEmpty()) {
-            b.etAddUserName.setError("Please enter your first name");
-            b.etAddUserName.setFocusableInTouchMode(true);
-            b.etAddUserName.requestFocus();
-            return false;
-        } else {
-            b.etAddUserName.setError(null);
-        }
+//        if (name.isEmpty()) {
+//            b.etAddUserName.setError("Please enter your first name");
+//            b.etAddUserName.setFocusableInTouchMode(true);
+//            b.etAddUserName.requestFocus();
+//            return false;
+//        } else {
+//            b.etAddUserName.setError(null);
+//        }
 
-        if (email.isEmpty()) {
-            b.etAddUsermail.setError("Please  enter email id");
-            b.etAddUsermail.setFocusableInTouchMode(true);
-            b.etAddUsermail.requestFocus();
-            return false;
-        } else if (!Utils.isValidEmail(email)) {
-            b.etAddUsermail.setError("Invalid email.");
-            b.etAddUsermail.setFocusableInTouchMode(true);
-            b.etAddUsermail.requestFocus();
-            return false;
-        } else {
-            b.etAddUsermail.setError(null);
-        }
+//        if (email.isEmpty()) {
+//            b.etAddUsermail.setError("Please  enter email id");
+//            b.etAddUsermail.setFocusableInTouchMode(true);
+//            b.etAddUsermail.requestFocus();
+//            return false;
+//        } else if (!Utils.isValidEmail(email)) {
+//            b.etAddUsermail.setError("Invalid email.");
+//            b.etAddUsermail.setFocusableInTouchMode(true);
+//            b.etAddUsermail.requestFocus();
+//            return false;
+//        } else {
+//            b.etAddUsermail.setError(null);
+//        }
 
 
         if (description.isEmpty()) {
@@ -275,33 +286,37 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         }
 
 
-        if (b.multiSelectionAge.getSelectedItem().toString().trim() == "select") {
-            b.multiSelectionAge.setFocusableInTouchMode(true);
-            b.multiSelectionAge.requestFocus();
-            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
-        }
-
-        if (b.tvEditMaritalStatus.getSelectedItem().toString().trim() == "select") {
-            b.multiSelectionAge.setFocusableInTouchMode(true);
-            b.multiSelectionAge.requestFocus();
-            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
-        }
-
-        if (b.spUserHeight.getSelectedItem().toString().trim() == "select") {
-            b.multiSelectionAge.setFocusableInTouchMode(true);
-            b.multiSelectionAge.requestFocus();
-            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
-        }
-
-
-        if (GrewUpIn.isEmpty()) {
-            b.etAddUserGrewUpIn.setError("Please enter your Grew Location");
-            b.etAddUserGrewUpIn.setFocusableInTouchMode(true);
-            b.etAddUserGrewUpIn.requestFocus();
+        if (age.equals("selected")) {
+            b.tvage.setError("please select age");
+            b.tvage.setFocusableInTouchMode(true);
+            b.tvage.requestFocus();
             return false;
         } else {
-            b.etAddUserGrewUpIn.setError(null);
+            b.tvage.setError(null);
         }
+
+        if (b.tvEditMaritalStatus.getSelectedItem().toString().trim().equals("select")) {
+            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
+        }
+
+        if (Height.equals("select")) {
+            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
+        }
+
+//        if (b.spUserHeight.getCount()==0){
+//            Toast.makeText(getApplicationContext(),"spinner hasn't values",
+//                    Toast.LENGTH_LONG).show();
+//        }
+
+
+//        if (GrewUpIn.isEmpty()) {
+//            b.etAddUserGrewUpIn.setError("Please enter your Grew Location");
+//            b.etAddUserGrewUpIn.setFocusableInTouchMode(true);
+//            b.etAddUserGrewUpIn.requestFocus();
+//            return false;
+//        } else {
+//            b.etAddUserGrewUpIn.setError(null);
+//        }
 
 
         if (b.spUserBloodGroup.getSelectedItem().toString().trim() == "select") {
@@ -318,14 +333,14 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
 
 
-        if (Location.isEmpty()) {
-            b.etAddUserLocation.setError("Please enter your Grew Location");
-            b.etAddUserLocation.setFocusableInTouchMode(true);
-            b.etAddUserLocation.requestFocus();
-            return false;
-        } else {
-            b.etAddUserLocation.setError(null);
-        }
+//        if (Location.isEmpty()) {
+//            b.etAddUserLocation.setError("Please enter your Grew Location");
+//            b.etAddUserLocation.setFocusableInTouchMode(true);
+//            b.etAddUserLocation.requestFocus();
+//            return false;
+//        } else {
+//            b.etAddUserLocation.setError(null);
+//        }
 
 
         if (MotherTongue.isEmpty()) {
@@ -382,7 +397,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         return true;
         
     }
-
     private void submitForm() {
         Map<String, String> params = new HashMap<String, String>();
         params.put("about_ourself", description);
@@ -390,13 +404,13 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         params.put("marital_status", Marital_status);
         params.put("height", Height);
         params.put("blood_group", bloodGroup);
-        params.put("role", Utils.role_user);
         params.put("mother_tounge", MotherTongue);
         params.put("health_info", HealthDetail);
         params.put("religion_name", Religion);
         params.put("caste_name", cast);
         params.put("sub_caste_name", subCast);
         params.put("gothra", Gothram);
+        params.put("lifestyles",Diet);
 
         Log.e("params", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
@@ -405,10 +419,11 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         Log.e("response", String.valueOf((response)));
                         try {
-                            String code = response.getString("result");
+                            String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
-                                //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                                  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+                       // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
@@ -430,8 +445,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(request);
     }
-
-
     private void religionList() {
         b.tvUserReligion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -920,9 +933,37 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
     private void bloodGroup() {
         String[] bloodGroup = getResources().getStringArray(R.array.BloodGroup);
-        ArrayAdapter blood = new ArrayAdapter(context, R.layout.dropdown_item, bloodGroup);
+        ArrayAdapter blood = new ArrayAdapter(context, R.layout.dropdown_item, bloodGroup)
+        {
+            @Override
+            public boolean isEnabled(int position) {
+                if (position == 0) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        };
         //Setting the ArrayAdapter data on the Spinner
         b.spUserBloodGroup.setAdapter(blood);
+        b.spUserBloodGroup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // First item will be gray
+                if (parent.getItemAtPosition(position).equals("Select")) {
+                    onNothingSelected(parent);
+                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.gray_dark));
+                } else {
+                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.black));
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
     }
 
     private void userHeight() {

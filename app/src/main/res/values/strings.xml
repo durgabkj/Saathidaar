@@ -202,14 +202,14 @@
 
     <string-array name="BloodGroup">
         <item>Select</item>
-        <item> A RhD positive (A+)</item>
-        <item>A RhD negative (A-)</item>
-        <item> B RhD positive (B+)</item>
-        <item>B RhD negative (B-)</item>
-        <item>O RhD positive (O+)</item>
-        <item>O RhD negative (O-)</item>
-        <item> AB RhD positive (AB+)</item>
-        <item>AB RhD negative (AB-)</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>AB+</item>
+        <item>AB-</item>
     </string-array>
 
 
@@ -253,7 +253,7 @@
     </string-array>
 
     <string-array name="Affluence">
-        <item>selected</item>
+        <item>select</item>
         <item>Affluent</item>
         <item>Upper Middle Class</item>
         <item>Middle Class</item>
@@ -277,7 +277,6 @@
         <item>Eggetarian</item>
         <item>Occasionally Non-Veg</item>
     </string-array>
-
 
 
 </resources>

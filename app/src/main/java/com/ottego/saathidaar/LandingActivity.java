@@ -20,6 +20,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
+import com.ottego.saathidaar.Model.SessionModel;
 import com.ottego.saathidaar.databinding.ActivityLandingBinding;
 
 import org.json.JSONException;
@@ -42,6 +44,7 @@ public class LandingActivity extends AppCompatActivity {
     String phone = "";
     String password = "";
     String profilecreatedby = "";
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +97,14 @@ public class LandingActivity extends AppCompatActivity {
                         case R.id.male:
                             gender = "female";
                     }
+                }
+            });
+
+            binding.btnLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent(context,LoginActivity.class);
+                    startActivity(intent);
                 }
             });
 
@@ -203,6 +214,10 @@ public class LandingActivity extends AppCompatActivity {
                             try {
                                 String code = response.getString("result");
                                 if (code.equalsIgnoreCase("1")) {
+
+                                    Gson gson = new Gson();
+                                    SessionModel sessionModel = gson.fromJson(String.valueOf((response)), SessionModel.class);
+                                   // sessionManager.createSUserDetails(sessionModel);
                                     //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                                     Intent intent = new Intent(context, OtpVerificationActivity.class);
                                     intent.putExtra("mobile", phone);

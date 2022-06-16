@@ -4,6 +4,18 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class SessionManager {
+
+    public static final String KEY_FNAME = "firstName";
+    public static final String KEY_LNAME = "lastname";
+    public static final String KEY_PHONE = "phone";
+    public static final String KEY_EMAIL = "email";
+    public static final String KEY_GENDER = "gender";
+    public static final String KEY_ROLE = "role";
+    public static final String KEY_CREATEDBY = "profilecreatedby";
+
+
+
+
     private static final String PREF_NAME = "userData";
     private static final String IS_LOGIN = "isLogin";
     private static SharedPreferences pref;

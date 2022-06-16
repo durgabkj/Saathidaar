@@ -63,7 +63,8 @@ ActivityOtpVerificationBinding binding;
                                 if (code.equalsIgnoreCase("1")) {
 
                                     Toast.makeText(context, response.getString("message"),Toast.LENGTH_SHORT).show();
-//                                startActivity(intent);
+Intent intent=new Intent(context,LoginActivity.class);
+startActivity(intent);
                                 } else {
                                     Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                                 }

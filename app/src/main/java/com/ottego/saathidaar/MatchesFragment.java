@@ -3,20 +3,19 @@ package com.ottego.saathidaar;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MatchesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class MatchesFragment extends Fragment {
+import com.ottego.saathidaar.databinding.FragmentMatchesBinding;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+public class MatchesFragment extends Fragment {
+FragmentMatchesBinding b;
+    NewMatchesFragment newMatchesFragment =new NewMatchesFragment();
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -28,14 +27,6 @@ public class MatchesFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MatchesFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static MatchesFragment newInstance(String param1, String param2) {
         MatchesFragment fragment = new MatchesFragment();
@@ -59,6 +50,29 @@ public class MatchesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_matches, container, false);
+        b=FragmentMatchesBinding.inflate(getLayoutInflater());
+
+
+        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fcvNewMatches,newMatchesFragment);
+        fragmentTransaction.commit();
+listener();
+        return b.getRoot();
     }
+
+    private void listener() {
+        b.NewMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+
+                fragmentTransaction.replace(R.id.fcvNewMatches,newMatchesFragment);
+                fragmentTransaction.commit();
+            }
+        });
+    }
+
+
 }
