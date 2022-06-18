@@ -1,6 +1,7 @@
 package com.ottego.saathidaar;
 
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,12 +19,13 @@ import android.widget.TextView;
 
 
 public class DashBoardFragment extends Fragment {
-
+SessionManager sessionManager;
     ImageView ivPremiumImage;
-    TextView tvPremiumText;
+    TextView tvPremiumText,tvLogout;
     int position = 0;
     Animation animation;
     CountDownTimer countDownTimer;
+    Context context;
     int[] images = {R.drawable.smartphone,R.drawable.documents,R.drawable.global};
             String[] text = {"phone Number to Connect Instantly", "100% Verified Biodatas", "Find Common connections"};
     private static final String ARG_PARAM1 = "param1";
@@ -64,6 +66,9 @@ public class DashBoardFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
         ivPremiumImage=view.findViewById(R.id.ivPremiumImage);
         tvPremiumText=view.findViewById(R.id.tvPremiumText);
+        tvLogout=view.findViewById(R.id.tvLogout);
+         context=getContext();
+        sessionManager = new SessionManager(context);
              set();
 
         final ValueAnimator animator = ValueAnimator.ofFloat(0.0f, 1.0f);
@@ -86,7 +91,21 @@ public class DashBoardFragment extends Fragment {
             }
         });
         animator.start();
+
+        listener();
         return view;
+
+    }
+
+
+    private void listener() {
+        tvLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sessionManager.logoutUser();
+            }
+        });
+
     }
 
     private void set() {

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#EDECEC"
+    android:orientation="vertical"
     tools:context=".ProfessionalDetailEditActivity">
 
     <ScrollView
@@ -15,15 +15,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Education &amp; carrier"
-                android:textSize="18sp"
+                android:layout_gravity="center"
                 android:padding="10dp"
-                android:layout_gravity="center"/>
+                android:text="Education &amp; carrier"
+                android:textSize="18sp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mcvTodayMatch"
@@ -40,70 +40,69 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/black"
                     android:elevation="20dp"
-                    android:padding="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
                         android:orientation="horizontal"
-                        >
+                        android:padding="10dp">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.8"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:text="Higher Education" />
 
                         <EditText
+                            android:id="@+id/etAddUserEducation"
+                            style="@style/PersonalDataTextView"
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
-                            android:id="@+id/etAddUserName"
-                            style="@style/PersonalDataTextView"
-                            android:hint="Example,Mumbai,India"/>
+                            android:hint="Higher Education" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
                         android:orientation="horizontal"
-                        >
+                        android:padding="10dp">
 
                         College(s) Attended
+
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.8"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:text=" College(s) Attended" />
 
                         <EditText
+                            android:id="@+id/etAddUserCollegeAttended"
+                            style="@style/PersonalDataTextView"
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
-                            android:id="@+id/etAddUserCollegeAttended"
-                            style="@style/PersonalDataTextView"
-                            android:hint="Example,Mumbai,India"/>
+                            android:hint="college name" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
                         android:orientation="horizontal"
-                        >
+                        android:padding="10dp">
 
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.8"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:text="Annual Income" />
 
                         <LinearLayout
@@ -111,9 +110,9 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:layout_marginTop="5dp"
+                            android:layout_weight="1"
                             android:background="@drawable/bg_edit_text"
                             android:orientation="vertical"
-                            android:layout_weight="1"
                             tools:ignore="UselessParent">
 
                             <Spinner
@@ -132,19 +131,19 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
                         android:orientation="horizontal"
-                        >
+                        android:padding="10dp">
 
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.8"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:text="Working With" />
 
                         <LinearLayout
@@ -152,9 +151,9 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:layout_marginTop="5dp"
+                            android:layout_weight="1"
                             android:background="@drawable/bg_edit_text"
                             android:orientation="vertical"
-                            android:layout_weight="1"
                             tools:ignore="UselessParent">
 
                             <Spinner
@@ -173,19 +172,19 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
                         android:orientation="horizontal"
-                        >
+                        android:padding="10dp">
 
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.8"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:text="WorkingAs" />
 
                         <LinearLayout
@@ -193,9 +192,9 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:layout_marginTop="5dp"
+                            android:layout_weight="1"
                             android:background="@drawable/bg_edit_text"
                             android:orientation="vertical"
-                            android:layout_weight="1"
                             tools:ignore="UselessParent">
 
                             <Spinner
@@ -216,214 +215,287 @@
                     </LinearLayout>
 
 
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/location"
-                        android:textSize="16dp"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="10dp"
-                        android:textStyle="bold"
+                        android:text="@string/location"
                         android:textColor="@color/colorPrimary"
-                        />
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
                         android:orientation="horizontal"
-                        >
+                        android:padding="10dp">
+
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.8"
                             android:layout_gravity="center"
-                            android:text="Current Residence" />
+                            android:layout_weight="0.8"
+                            android:text="Country live in" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_edit_text"
+                            android:orientation="vertical"
+                            tools:ignore="UselessParent">
+
+                            <Spinner
+                                android:id="@+id/etAddUserCurrentResidence"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:focusableInTouchMode="false"
+                                android:importantForAutofill="no"
+                                android:maxLines="1"
+                                app:showSearch="true"
+                                app:sort="true" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.8"
+                            android:text="State live in" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_edit_text"
+                            android:orientation="vertical"
+                            tools:ignore="UselessParent">
+
+                            <Spinner
+                                android:id="@+id/etAddUserStateOfResidence"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:focusableInTouchMode="false"
+                                android:importantForAutofill="no"
+                                android:maxLines="1"
+                                app:showSearch="true"
+                                app:sort="true" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.8"
+                            android:text="City live in(Nearest)" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_edit_text"
+                            android:orientation="vertical"
+                            tools:ignore="UselessParent">
+
+                            <Spinner
+                                android:id="@+id/etAddUserResidenceStatus"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:focusableInTouchMode="false"
+                                android:importantForAutofill="no"
+                                android:maxLines="1"
+                                app:showSearch="true"
+                                app:sort="true" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.8"
+                            android:text="Corigin " />
 
                         <EditText
+                            android:id="@+id/etAddUserCorigin"
+                            style="@style/PersonalDataTextView"
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
-                            android:id="@+id/etAddUserCurrentResidence"
-                            style="@style/PersonalDataTextView"
-                            android:hint="Current Residence"/>
+                            android:hint=" Enter your Corigin"
+                            android:inputType="number" />
 
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
                         android:orientation="horizontal"
-                        >
+                        android:padding="10dp">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.8"
                             android:layout_gravity="center"
-                            android:text="State Of Residence" />
-
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:id="@+id/etAddUserStateOfResidence"
-                            style="@style/PersonalDataTextView"
-                            android:hint="State Of Residence"/>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:orientation="horizontal"
-                        >
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
                             android:layout_weight="0.8"
-                            android:layout_gravity="center"
-                            android:text="Residence Status" />
-
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:id="@+id/etAddUserResidenceStatus"
-                            style="@style/PersonalDataTextView"
-                            android:hint="Residence Status"/>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:orientation="horizontal"
-                        >
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.8"
-                            android:layout_gravity="center"
                             android:text="Zip/PinCode" />
 
                         <EditText
+                            android:id="@+id/etAddUserZipPinCode"
+                            style="@style/PersonalDataTextView"
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
-                            android:inputType="number"
-                            android:id="@+id/etAddUserZipPinCode"
-                            style="@style/PersonalDataTextView"
-                            android:hint="Example,Mumbai,India"/>
+                            android:hint="Enter pine code"
+                            android:inputType="number" />
 
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/mycontact"
-                        android:textSize="16dp"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="10dp"
-                        android:textStyle="bold"
+                        android:text="@string/mycontact"
                         android:textColor="@color/colorPrimary"
-                        />
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
                         android:orientation="horizontal"
-                        >
+                        android:padding="10dp">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.8"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:text="Mobile" />
 
                         <EditText
+                            android:id="@+id/etAddUserMobile"
+                            style="@style/PersonalDataTextView"
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
+                            android:hint="Mobile"
                             android:inputType="number"
-                            android:maxLength="10"
-                            android:id="@+id/etAddUserMobile"
-                            style="@style/PersonalDataTextView"
-                            android:hint="Mobile"/>
+                            android:maxLength="10" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
                         android:orientation="horizontal"
-                        >
+                        android:padding="10dp">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.8"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:text="Relationship With The Member" />
 
                         <EditText
+                            android:id="@+id/etAddUserRelationship"
+                            style="@style/PersonalDataTextView"
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
-                            android:id="@+id/etAddUserRelationship"
-                            style="@style/PersonalDataTextView"
-                            android:hint="Example,Mumbai,India"/>
+                            android:hint="Example,Mumbai,India" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
                         android:orientation="horizontal"
-                        >
+                        android:padding="10dp">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.8"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:text="Convenient Time To Call" />
 
                         <EditText
+                            android:id="@+id/etAddUserConvenientCall"
+                            style="@style/PersonalDataTextView"
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
-                            android:id="@+id/etAddUserConvenientCall"
-                            style="@style/PersonalDataTextView"
-                            android:hint="Example,Mumbai,India"/>
+                            android:hint="Example,Mumbai,India" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
                         android:orientation="horizontal"
-                        >
+                        android:padding="10dp">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.8"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
                             android:text="Display Option" />
 
                         <EditText
+                            android:id="@+id/etAddUserDisplayOption"
+                            style="@style/PersonalDataTextView"
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
-                            android:id="@+id/etAddUserDisplayOption"
-                            style="@style/PersonalDataTextView"
-                            android:hint="Example,Mumbai,India"/>
+                            android:hint="Example,Mumbai,India" />
 
                     </LinearLayout>
 

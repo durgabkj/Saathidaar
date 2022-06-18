@@ -6,17 +6,44 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.ottego.saathidaar.databinding.ActivityFamilyProfileBinding;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class FamilyProfileActivity extends AppCompatActivity {
     ActivityFamilyProfileBinding b;
     Context context;
-
+    public String url=Utils.memberUrl+"update/11";
     String fatherStatus = "";
     String motherStatus = "";
+    String companyNameF= "";
+    String designationF = "";
+    String natureBusinessF = "";
+    String companyNameM = "";
+    String designationM = "";
+    String natureBusinessM = "";
+    String familyLocation = "";
+    String nativePlace = "";
+    String marriedBrother = "";
+    String unMarriedBrother = "";
+    String marriedSister = "";
+    String unMarriedSister = "";
+    String familyType = "";
+    String familyAffluence = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +54,7 @@ public class FamilyProfileActivity extends AppCompatActivity {
         fatherAndMotherStatus();
         FamilyType();
         FamilyAffluence();
-
+        listener();
     }
 
     private void FamilyType() {
@@ -51,17 +78,13 @@ public class FamilyProfileActivity extends AppCompatActivity {
         //Setting the ArrayAdapter data on the Spinner
         b.UserFatherStatus.setAdapter(fatherAndMotherStatusAdapter);
         b.UserMotherStatus.setAdapter(fatherAndMotherStatusAdapter);
-
-
-
         b.UserMotherStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 motherStatus = b.UserMotherStatus.getSelectedItem().toString();
                 Log.e("Selected-Status", motherStatus);
 
-                if (motherStatus.equalsIgnoreCase("Retired"))
-                {
+                if (motherStatus.equalsIgnoreCase("Retired")) {
                     b.llMCompany.setVisibility(View.VISIBLE);
                     b.llMDesignation.setVisibility(View.VISIBLE);
                     b.llMNatureBusiness.setVisibility(View.GONE);
@@ -79,14 +102,14 @@ public class FamilyProfileActivity extends AppCompatActivity {
                     b.llMDesignation.setVisibility(View.GONE);
                 }
 
-                if(motherStatus.equalsIgnoreCase("Not Employed")){
+                if (motherStatus.equalsIgnoreCase("Not Employed")) {
                     b.llMNatureBusiness.setVisibility(View.GONE);
                     b.llMCompany.setVisibility(View.GONE);
                     b.llMDesignation.setVisibility(View.GONE);
                 }
 
 
-                if(motherStatus.equalsIgnoreCase("Pass Away")){
+                if (motherStatus.equalsIgnoreCase("Pass Away")) {
                     b.llMNatureBusiness.setVisibility(View.GONE);
                     b.llMCompany.setVisibility(View.GONE);
                     b.llMDesignation.setVisibility(View.GONE);
@@ -98,23 +121,17 @@ public class FamilyProfileActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
         b.UserFatherStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 fatherStatus = b.UserFatherStatus.getSelectedItem().toString();
                 Log.e("Selected-Status", fatherStatus);
 
-                if (fatherStatus.equalsIgnoreCase("Retired"))
-                {
+                if (fatherStatus.equalsIgnoreCase("Retired")) {
                     b.llCompanyName.setVisibility(View.VISIBLE);
                     b.llDesignation.setVisibility(View.VISIBLE);
                     b.llBusiness.setVisibility(View.GONE);
                 }
-
 
                 if (fatherStatus.equalsIgnoreCase("Employed")) {
                     b.llCompanyName.setVisibility(View.VISIBLE);
@@ -127,14 +144,14 @@ public class FamilyProfileActivity extends AppCompatActivity {
                     b.llDesignation.setVisibility(View.GONE);
                 }
 
-                if(fatherStatus.equalsIgnoreCase("Not Employed")){
+                if (fatherStatus.equalsIgnoreCase("Not Employed")) {
                     b.llBusiness.setVisibility(View.GONE);
                     b.llCompanyName.setVisibility(View.GONE);
                     b.llDesignation.setVisibility(View.GONE);
                 }
 
 
-                if(fatherStatus.equalsIgnoreCase("Pass Away")){
+                if (fatherStatus.equalsIgnoreCase("Pass Away")) {
                     b.llBusiness.setVisibility(View.GONE);
                     b.llCompanyName.setVisibility(View.GONE);
                     b.llDesignation.setVisibility(View.GONE);
@@ -147,4 +164,192 @@ public class FamilyProfileActivity extends AppCompatActivity {
             }
         });
     }
-}
+
+
+    private void listener() {
+        b.btnFsave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    submitForm();
+
+            }
+        });
+    }
+
+//    private boolean checkForm() {
+//
+//        if (fatherStatus.equalsIgnoreCase("select")) {
+//            b.tvfs.setError("please select Status");
+//            b.tvfs.setFocusableInTouchMode(true);
+//            b.tvfs.requestFocus();
+//            return false;
+//        } else {
+//            b.tvfs.setError(null);
+//        }
+//
+//        if (motherStatus.equalsIgnoreCase("select")) {
+//            b.tvms.setError("please select Status");
+//            b.tvms.setFocusableInTouchMode(true);
+//            b.tvms.requestFocus();
+//            return false;
+//        } else {
+//            b.tvms.setError(null);
+//        }
+//
+//
+//
+//        if (familyLocation.isEmpty()) {
+//            b.etAddUserFamilyLocation.setError("Please write about you");
+//            b.etAddUserFamilyLocation.setFocusableInTouchMode(true);
+//            b.etAddUserFamilyLocation.requestFocus();
+//            return false;
+//        } else {
+//            b.etAddUserFamilyLocation.setError(null);
+//        }
+//
+//
+//
+//        if (nativePlace.isEmpty()) {
+//            b.etNativePalace.setError("Please write about you");
+//            b.etNativePalace.setFocusableInTouchMode(true);
+//            b.etNativePalace.requestFocus();
+//            return false;
+//        } else {
+//            b.etNativePalace.setError(null);
+//        }
+//
+//        if (unMarriedBrother.isEmpty() ||  marriedBrother.isEmpty()) {
+//            b.tvSibling.setError("Please write about you");
+//            b.tvSibling.setFocusableInTouchMode(true);
+//            b.tvSibling.requestFocus();
+//            return true;
+//        } else {
+//            b.tvSibling.setError(null);
+//        }
+//
+////        if (marriedBrother.isEmpty()) {
+////            b.etAddUserBrotherMarried.setError("Please write about you");
+////            b.etAddUserBrotherMarried.setFocusableInTouchMode(true);
+////            b.etAddUserBrotherMarried.requestFocus();
+////            return false;
+////        } else {
+////            b.etAddUserBrotherMarried.setError(null);
+////        }
+//
+//        if (marriedSister.isEmpty() || unMarriedSister.isEmpty()) {
+//            b.tvSibling.setError("Please enter no.of sister");
+//            b.tvSibling.setFocusableInTouchMode(true);
+//            b.tvSibling.requestFocus();
+//            return false;
+//        } else {
+//            b.tvSibling.setError(null);
+//        }
+//
+////        if (unMarriedSister.isEmpty()) {
+////            b.etAddUserSisterMarried.setError("Please write about you");
+////            b.etAddUserSisterMarried.setFocusableInTouchMode(true);
+////            b.etAddUserSisterMarried.requestFocus();
+////            return false;
+////        } else {
+////            b.etAddUserSisterMarried.setError(null);
+////        }
+//
+//
+//
+//        if (familyType.equalsIgnoreCase("select")) {
+//            b.tvft.setError("please select family type");
+//            b.tvft.setFocusableInTouchMode(true);
+//            b.tvft.requestFocus();
+//            return false;
+//        } else {
+//            b.tvft.setError(null);
+//        }
+//
+//        if (familyAffluence.equalsIgnoreCase("select")) {
+//            b.tvfa.setError("please select family Affluence");
+//            b.tvfa.setFocusableInTouchMode(true);
+//            b.tvfa.requestFocus();
+//            return false;
+//        } else {
+//            b.tvfa.setError(null);
+//        }
+//        return true;
+//
+//    }
+
+    private void submitForm() {
+        fatherStatus = b.UserFatherStatus.getSelectedItem().toString().trim();
+        motherStatus=b.UserMotherStatus.getSelectedItem().toString().trim();
+        companyNameF = b.etFatherCompanyName.getText().toString().trim();
+        designationF=b.etFatherDesignation.getText().toString().trim();
+        natureBusinessF=b.etFatherNatureBusiness.getText().toString().trim();
+        companyNameM = b.etMotherCompanyName.getText().toString().trim();
+        designationM=b.etMotherDesignation.getText().toString().trim();
+        natureBusinessM=b.etMotherNatureBusiness.getText().toString().trim();
+        familyLocation=b.etAddUserFamilyLocation.getText().toString().trim();
+        nativePlace=b.etNativePalace.getText().toString().trim();
+        marriedBrother=b.etAddUserBrotherMarried.getText().toString().trim();
+        unMarriedBrother=b.etAddUserBrotherNotMarried.getText().toString().trim();
+        marriedSister=b.etAddUserSisterMarried.getText().toString().trim();
+        unMarriedSister=b.etAddUserSisterNotMarried.getText().toString().trim();
+        familyType=b.UserFamilyType.getSelectedItem().toString().trim();
+        familyAffluence=b.UserFamilyAffluence.getSelectedItem().toString().trim();
+
+
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("father_status", fatherStatus);
+            params.put("mother_status", motherStatus);
+            params.put("father_company_name", companyNameF);
+            params.put("father_designation", designationF);
+            params.put("father_business_name", natureBusinessF);
+            params.put("mother_company_name", companyNameM);
+            params.put("mother_designation", designationM);
+            params.put("mother_business_name", natureBusinessM);
+            params.put("family_location", familyLocation);
+            params.put("native_place", nativePlace);
+            params.put("family_type", familyType);
+            params.put("family_values","");
+            params.put("family_affluence",familyAffluence);
+        params.put("married_male", marriedBrother);
+        params.put("unmarried_male", unMarriedBrother);
+        params.put("married_female",marriedSister);
+        params.put("unmarried_female",unMarriedSister);
+
+            Log.e("params", String.valueOf(params));
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.e("response", String.valueOf((response)));
+                            try {
+                                String code = response.getString("results");
+                                if (code.equalsIgnoreCase("1")) {
+
+                                    Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+                                    // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                } else {
+                                    Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            if (null != error.networkResponse) {
+                                Log.e("Error response", String.valueOf(error));
+                            }
+                        }
+                    });
+
+            request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            MySingleton.myGetMySingleton(context).myAddToRequest(request);
+        }
+
+
+    }
+
+

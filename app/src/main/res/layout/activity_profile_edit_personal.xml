@@ -86,6 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Your Name"
+                android:visibility="gone"
                 android:textColor="@color/colorPrimary"
 
                 />
@@ -94,6 +95,7 @@
                 android:id="@+id/etAddUserName"
                 style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
+                android:visibility="gone"
                 android:layout_height="40dp"
                 android:hint="Name" />
 
@@ -102,6 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Email"
+                android:visibility="gone"
                 android:textColor="@color/colorPrimary"
 
                 />
@@ -110,6 +113,7 @@
                 android:id="@+id/etAddUsermail"
                 style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
+                android:visibility="gone"
                 android:layout_height="40dp"
                 android:hint="Email" />
 
@@ -219,7 +223,8 @@
             </LinearLayout>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvmarital"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Marital Status" />
@@ -247,14 +252,37 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/llNoChild"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Number Of Child" />
+
+                <EditText
+                    android:id="@+id/etAddUserNoOfChild"
+                    style="@style/PersonalDataTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="No.of child" />
+            </LinearLayout>
+
 
             <TextView
+                android:id="@+id/tvHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Height" />
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -281,6 +309,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:visibility="gone"
                 android:text="Grew Up In" />
 
             <EditText
@@ -288,9 +317,11 @@
                 style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:visibility="gone"
                 android:hint="Grew Up In" />
 
             <TextView
+                android:id="@+id/tvBlood"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -319,7 +350,11 @@
 
             </LinearLayout>
 
+
+
+
             <TextView
+                android:id="@+id/tvDiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -356,6 +391,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Location"
+                android:visibility="gone"
                 android:textColor="@color/colorPrimary"
 
                 />
@@ -364,6 +400,7 @@
                 android:id="@+id/etAddUserLocation"
                 style="@style/PersonalDataTextView"
                 android:hint="Type your Location..."
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="40dp" />
 
@@ -389,6 +426,7 @@
             // android:background="@android:drawable/editbox_background"
 
             <TextView
+                android:id="@+id/tvHealth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -453,26 +491,40 @@
                 android:padding="10dp"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Cast"
-                android:textColor="@color/colorPrimary"
-
-                />
-
-            <TextView
-                android:id="@+id/tvUserCommunity"
-                style="@style/PersonalDataTextView"
+            <LinearLayout
+                android:id="@+id/llCast"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                android:gravity="center_vertical"
-                android:hint="Select your cast"
-                android:padding="10dp"
-                />
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Cast"
+                    android:textColor="@color/colorPrimary"
 
+                    />
+
+                <TextView
+                    android:id="@+id/tvUserCommunity"
+                    style="@style/PersonalDataTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:gravity="center_vertical"
+                    android:hint="Select your cast"
+                    android:padding="10dp"
+                    />
+            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llSubCast"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -489,7 +541,14 @@
                 android:layout_height="40dp"
                 android:hint="Sub Cast" />
 
-
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llGotra"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -505,6 +564,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="Enter your Gotra" />
+        </LinearLayout>
 
             <Button
                 android:id="@+id/btnSave"

@@ -50,6 +50,7 @@
 
 
                         <TextView
+                            android:id="@+id/tvfs"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.8"
@@ -171,6 +172,7 @@
 
 
                         <TextView
+                            android:id="@+id/tvms"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.8"
@@ -209,6 +211,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
+                        android:visibility="gone"
                         android:orientation="horizontal"
                         >
 
@@ -235,6 +238,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
+                        android:visibility="gone"
                         android:orientation="horizontal"
                         >
                         <TextView
@@ -258,6 +262,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
+                        android:visibility="gone"
                         android:orientation="horizontal"
                         >
 
@@ -297,7 +302,7 @@
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
-                            android:id="@+id/etAddUserName"
+                            android:id="@+id/etAddUserFamilyLocation"
                             style="@style/PersonalDataTextView"
                             android:hint="Example,Mumbai,India"/>
 
@@ -337,11 +342,12 @@
 
 
                         <TextView
+                            android:id="@+id/tvSibling"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.8"
                             android:layout_gravity="start"
-                            android:text="Father's Status" />
+                            android:text="No. of Sibling" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -549,6 +555,7 @@
 
 
                         <TextView
+                            android:id="@+id/tvft"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.8"
@@ -591,6 +598,7 @@
 
 
                         <TextView
+                            android:id="@+id/tvfa"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.8"
@@ -628,6 +636,7 @@
 
 
                     <Button
+                        android:id="@+id/btnFsave"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorPrimary"

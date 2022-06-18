@@ -21,7 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
-import com.ottego.saathidaar.Model.SessionModel;
+import com.ottego.saathidaar.Model.UserModel;
 import com.ottego.saathidaar.databinding.ActivityLandingBinding;
 
 import org.json.JSONException;
@@ -214,10 +214,9 @@ public class LandingActivity extends AppCompatActivity {
                             try {
                                 String code = response.getString("result");
                                 if (code.equalsIgnoreCase("1")) {
-
-                                    Gson gson = new Gson();
-                                    SessionModel sessionModel = gson.fromJson(String.valueOf((response)), SessionModel.class);
-                                   // sessionManager.createSUserDetails(sessionModel);
+//                                    Gson gson = new Gson();
+//                                    UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);
+//                                   // sessionManager.createSUserDetails(sessionModel);
                                     //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                                     Intent intent = new Intent(context, OtpVerificationActivity.class);
                                     intent.putExtra("mobile", phone);

@@ -62,7 +62,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 // Permissions for accessing the storage
     private static final int SELECT_PICTURE = 100;
     private static final String TAG = "SelectImageActivity";
-    public String ReligionUrl = "http://192.168.1.40:9094/api/get/religion-name";
+    public String ReligionUrl = "http://192.168.1.38:9094/api/get/religion-name";
     public String url=Utils.memberUrl+"update/11";
 
     ActivityProfileEditPersonalBinding b;
@@ -104,8 +104,10 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     String cast = "";
     String subCast = "";
     String Gothram = "";
+    String child = "";
+    String selectedReligion;
 
-
+String maritalStatus;
 
     public static void openAppSettings(final Activity context) {
         if (context == null) {
@@ -133,7 +135,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
 
         // b.mbDatePicker.setText(currentDate);
-
         listener();
         ageDropDown();
         maritalStatus();
@@ -148,17 +149,17 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         dietList();
 
     }
-//    public static void hideSoftKeyboard(Activity activity) {
-//        InputMethodManager inputMethodManager =
-//                (InputMethodManager) activity.getSystemService(
-//                        Activity.INPUT_METHOD_SERVICE);
-//        if(inputMethodManager.isAcceptingText()){
-//            inputMethodManager.hideSoftInputFromWindow(
-//                    activity.getCurrentFocus().getWindowToken(),
-//                    0
-//            );
-//        }
-//    }
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        if(inputMethodManager.isAcceptingText()){
+            inputMethodManager.hideSoftInputFromWindow(
+                    activity.getCurrentFocus().getWindowToken(),
+                    0
+            );
+        }
+    }
 
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -221,14 +222,111 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             }
         });
 
+
+        b.tvEditMaritalStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                maritalStatus = b.tvEditMaritalStatus.getSelectedItem().toString();
+                Log.e("Selected-Status", maritalStatus);
+
+                if (maritalStatus.equalsIgnoreCase("Never Married"))
+                {
+                    b.llNoChild.setVisibility(View.GONE);
+                }
+
+                if (maritalStatus.equalsIgnoreCase("Divorce"))
+                {
+                    b.llNoChild.setVisibility(View.VISIBLE);
+                }
+
+                if (maritalStatus.equalsIgnoreCase("Widowed"))
+                {
+                    b.llNoChild.setVisibility(View.VISIBLE);
+                }
+
+                if (maritalStatus.equalsIgnoreCase("Awaiting Divorce"))
+                {
+                    b.llNoChild.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        b.tvUserReligion.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+
+                selectedReligion=b.tvUserReligion.getText().toString().trim();
+                if(selectedReligion.equalsIgnoreCase("Hindu"))
+                {
+                    b.llCast.setVisibility(View.VISIBLE);
+                    b.llSubCast.setVisibility(View.VISIBLE);
+                    b.llGotra.setVisibility(View.VISIBLE);
+                }
+
+                if(selectedReligion.equalsIgnoreCase("Muslim"))
+                {
+                    b.llCast.setVisibility(View.VISIBLE);
+                    b.llSubCast.setVisibility(View.VISIBLE);
+                    b.llGotra.setVisibility(View.GONE);
+                }
+
+                if(selectedReligion.equalsIgnoreCase("Parsi"))
+                {
+                    b.llCast.setVisibility(View.GONE);
+                    b.llSubCast.setVisibility(View.GONE);
+                    b.llGotra.setVisibility(View.GONE);
+                }
+                if(selectedReligion.equalsIgnoreCase("Jain"))
+                {
+                    b.llCast.setVisibility(View.VISIBLE);
+                    b.llSubCast.setVisibility(View.VISIBLE);
+                    b.llGotra.setVisibility(View.VISIBLE);
+                }
+
+                if(selectedReligion.equalsIgnoreCase("Buddhist"))
+                {
+                    b.llCast.setVisibility(View.GONE);
+                    b.llSubCast.setVisibility(View.GONE);
+                    b.llGotra.setVisibility(View.GONE);
+                }
+
+                if(selectedReligion.equalsIgnoreCase("Christian"))
+                {
+                    b.llCast.setVisibility(View.GONE);
+                    b.llSubCast.setVisibility(View.GONE);
+                    b.llGotra.setVisibility(View.GONE);
+                }
+            }
+        });
     }
+
+
+
+
     private boolean checkForm() {
-        name = b.etAddUserName.getText().toString().trim();
-        email = b.etAddUsermail.getText().toString().trim();
+//        name = b.etAddUserName.getText().toString().trim();
+//        email = b.etAddUsermail.getText().toString().trim();
         description=b.etAddUserDescription.getText().toString().trim();
         Dob = b.mbDatePicker.getText().toString().trim();
         age = b.multiSelectionAge.getSelectedItem().toString().trim();
         Marital_status=b.tvEditMaritalStatus.getSelectedItem().toString().trim();
+        child = b.etAddUserNoOfChild.getText().toString().trim();
         Height=b.spUserHeight.getSelectedItem().toString().trim();
         GrewUpIn=b.etAddUserGrewUpIn.getText().toString().trim();
         bloodGroup=b.spUserBloodGroup.getSelectedItem().toString().toString();
@@ -240,29 +338,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         cast=b.tvUserCommunity.getText().toString().trim();
         subCast=b.tvUserSubCommunity.getText().toString().trim();
         Gothram=b.tvUserGotra.getText().toString().trim();
-
-//        if (name.isEmpty()) {
-//            b.etAddUserName.setError("Please enter your first name");
-//            b.etAddUserName.setFocusableInTouchMode(true);
-//            b.etAddUserName.requestFocus();
-//            return false;
-//        } else {
-//            b.etAddUserName.setError(null);
-//        }
-
-//        if (email.isEmpty()) {
-//            b.etAddUsermail.setError("Please  enter email id");
-//            b.etAddUsermail.setFocusableInTouchMode(true);
-//            b.etAddUsermail.requestFocus();
-//            return false;
-//        } else if (!Utils.isValidEmail(email)) {
-//            b.etAddUsermail.setError("Invalid email.");
-//            b.etAddUsermail.setFocusableInTouchMode(true);
-//            b.etAddUsermail.requestFocus();
-//            return false;
-//        } else {
-//            b.etAddUsermail.setError(null);
-//        }
 
 
         if (description.isEmpty()) {
@@ -295,13 +370,44 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             b.tvage.setError(null);
         }
 
-        if (b.tvEditMaritalStatus.getSelectedItem().toString().trim().equals("select")) {
-            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
+        if (maritalStatus.equals("select")) {
+            b.tvmarital.setError("please select Marital Status");
+            b.tvmarital.setFocusableInTouchMode(true);
+            b.tvmarital.requestFocus();
+            return false;
+        } else {
+            b.tvmarital.setError(null);
         }
 
         if (Height.equals("select")) {
-            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
+            b.tvHeight.setError("please select Height");
+            b.tvHeight.setFocusableInTouchMode(true);
+            b.tvHeight.requestFocus();
+            return false;
+        } else {
+            b.tvHeight.setError(null);
         }
+
+        if (bloodGroup.equals("select")) {
+            b.tvBlood.setError("please select blood group");
+            b.tvBlood.setFocusableInTouchMode(true);
+            b.tvBlood.requestFocus();
+            return false;
+        } else {
+            b.tvBlood.setError(null);
+        }
+
+
+        if (Diet.equals("select")) {
+            b.tvDiet.setError("please select Diet");
+            b.tvDiet.setFocusableInTouchMode(true);
+            b.tvDiet.requestFocus();
+            return false;
+        } else {
+            b.tvDiet.setError(null);
+        }
+
+
 
 //        if (b.spUserHeight.getCount()==0){
 //            Toast.makeText(getApplicationContext(),"spinner hasn't values",
@@ -317,19 +423,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 //        } else {
 //            b.etAddUserGrewUpIn.setError(null);
 //        }
-
-
-        if (b.spUserBloodGroup.getSelectedItem().toString().trim() == "select") {
-            b.spUserBloodGroup.setFocusableInTouchMode(true);
-            b.spUserBloodGroup.requestFocus();
-            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
-        }
-
-        if (b.tvEditDiet.getSelectedItem().toString().trim() == "select") {
-            b.tvEditDiet.setFocusableInTouchMode(true);
-            b.tvEditDiet.requestFocus();
-            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
-        }
 
 
 
@@ -351,10 +444,13 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         } else {
             b.tvMotherTongue.setError(null);
         }
-        if (b.spUserHealthDetail.getSelectedItem().toString().trim() == "select") {
-            b.spUserHealthDetail.setFocusableInTouchMode(true);
-            b.spUserHealthDetail.requestFocus();
-            Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
+        if (HealthDetail.equals("select")) {
+            b.tvHealth.setError("please select Health Detail");
+            b.tvHealth.setFocusableInTouchMode(true);
+            b.tvHealth.requestFocus();
+            return false;
+        } else {
+            b.tvHealth.setError(null);
         }
 
         if (Religion.isEmpty()) {
@@ -366,34 +462,34 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             b.tvUserReligion.setError(null);
         }
 
-        if (cast.isEmpty()) {
-            b.tvUserCommunity.setError("Please enter your Mother Tongue");
-            b.tvUserCommunity.setFocusableInTouchMode(true);
-            b.tvUserCommunity.requestFocus();
-            return false;
-        } else {
-            b.tvUserCommunity.setError(null);
-        }
-
-
-        if (subCast.isEmpty()) {
-            b.tvUserSubCommunity.setError("Please enter your Sub cast");
-            b.tvUserSubCommunity.setFocusableInTouchMode(true);
-            b.tvUserSubCommunity.requestFocus();
-            return false;
-        } else {
-            b.tvUserSubCommunity.setError(null);
-        }
-
-
-        if (Gothram.isEmpty()) {
-            b.tvUserGotra.setError("Please enter your Gotharm");
-            b.tvUserGotra.setFocusableInTouchMode(true);
-            b.tvUserGotra.requestFocus();
-            return false;
-        } else {
-            b.tvUserGotra.setError(null);
-        }
+//        if (cast.isEmpty()) {
+//            b.tvUserCommunity.setError("Please enter your Mother Tongue");
+//            b.tvUserCommunity.setFocusableInTouchMode(true);
+//            b.tvUserCommunity.requestFocus();
+//            return false;
+//        } else {
+//            b.tvUserCommunity.setError(null);
+//        }
+//
+//
+//        if (subCast.isEmpty()) {
+//            b.tvUserSubCommunity.setError("Please enter your Sub cast");
+//            b.tvUserSubCommunity.setFocusableInTouchMode(true);
+//            b.tvUserSubCommunity.requestFocus();
+//            return false;
+//        } else {
+//            b.tvUserSubCommunity.setError(null);
+//        }
+//
+//
+//        if (Gothram.isEmpty()) {
+//            b.tvUserGotra.setError("Please enter your Gotharm");
+//            b.tvUserGotra.setFocusableInTouchMode(true);
+//            b.tvUserGotra.requestFocus();
+//            return false;
+//        } else {
+//            b.tvUserGotra.setError(null);
+//        }
         return true;
         
     }
@@ -411,6 +507,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         params.put("sub_caste_name", subCast);
         params.put("gothra", Gothram);
         params.put("lifestyles",Diet);
+        params.put("no_of_children",child);
 
         Log.e("params", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
@@ -512,8 +609,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     }
 
     private void communityData() {
-        String selectedCountry = b.tvUserReligion.getText().toString().trim();
-        String url = "http://192.168.1.40:9094/api/get/cast-name/by/religion_name/" + selectedCountry;
+        String selectedCommunity = b.tvUserReligion.getText().toString().trim();
+        String url = "http://192.168.1.38:9094/api/get/cast-name/by/religion_name/" + selectedCommunity;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url, null, new Response.Listener<JSONObject>() {
@@ -634,8 +731,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
                     }
                 });
-
-
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -811,9 +906,37 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
     private void HealthDetails() {
         String[] healthList = getResources().getStringArray(R.array.Health);
-        ArrayAdapter healthAdapter = new ArrayAdapter(context, R.layout.dropdown_item, healthList);
+        ArrayAdapter healthAdapter = new ArrayAdapter(context, R.layout.dropdown_item, healthList)
+        {
+            @Override
+            public boolean isEnabled(int position) {
+            if (position == 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        };
         //Setting the ArrayAdapter data on the Spinner
+
         b.spUserHealthDetail.setAdapter(healthAdapter);
+        b.spUserHealthDetail.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // First item will be gray
+                if (parent.getItemAtPosition(position).equals("Select")) {
+                    onNothingSelected(parent);
+                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.gray_dark));
+                } else {
+                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.black));
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
     private void limitWord() {
@@ -979,7 +1102,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         maritalList.add("Divorce");
         maritalList.add("Widowed");
         maritalList.add("Awaiting Divorce");
-        maritalList.add("Annulled");
 
         // Initialize adapter
         ArrayAdapter<String> maritalAdapter = new ArrayAdapter<>(context, R.layout.dropdown_item, maritalList);

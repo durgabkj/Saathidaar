@@ -262,7 +262,7 @@
 
 
     <string-array name="FamilyType">
-        <item>selected</item>
+        <item>select</item>
         <item>Joint</item>
         <item>Nuclear</item>
     </string-array>

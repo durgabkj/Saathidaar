@@ -2,17 +2,59 @@ package com.ottego.saathidaar;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.ottego.saathidaar.databinding.ActivityProfessionalDetailEditBinding;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProfessionalDetailEditActivity extends AppCompatActivity {
     ActivityProfessionalDetailEditBinding b;
     Context context;
+
+    String higherEducation = "";
+    String collegeAttends = "";
+    String income = "";
+    String workingWith = "";
+    String workingAs = "";
+    String country = "";
+    String state = "";
+    String city = "";
+    String origin = "";
+    String pinCode = "";
+    String mobile = "";
+    String relationWith = "";
+    String callTime = "";
+    String displatOption = "";
+    public String countryUrl = Utils.cityUrl + "country";
+    public String stateUrl = Utils.cityUrl + "state-name/by/country-name/";
+    public String cityUrl = Utils.cityUrl + "city-name/by/state-name/";
+    ArrayList<String> countryList = new ArrayList<>();
+    ArrayAdapter<String> countryAdapter;
+    ArrayList<String> stateList = new ArrayList<>();
+    ArrayAdapter<String> stateAdapter;
+    String countryName;
+
+    ArrayList<String> cityList = new ArrayList<>();
+    ArrayAdapter<String> cityAdapter;
+    String stateName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +65,163 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
         userAnnualIncome();
         userWorkAs();
         UserWorkingWith();
+        listener();
+        getCountry(countryUrl);
+        getState();
+        getCity();
+
+    }
+
+    private void getCity() {
+        b.etAddUserStateOfResidence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                stateName = b.etAddUserStateOfResidence.getSelectedItem().toString().trim();
+                cityList.clear();
+                cityList(cityUrl);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void cityList(String cityUrl) {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                cityUrl + stateName, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf(response));
+                try {
+
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        JSONArray jsonArray = response.getJSONArray("cities");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String city = jsonObject1.getString("city_name");
+                            Log.e("city", city);
+                            cityList.add(city);
+                            Log.e("city-list", String.valueOf(cityList));
+                        }
+                    }
+                    cityAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, cityList);
+                    // set adapter
+                    cityAdapter.notifyDataSetChanged();
+                    countryAdapter.clear();
+                    b.etAddUserResidenceStatus.setAdapter(cityAdapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+    }
+
+    private void getState() {
+
+        b.etAddUserCurrentResidence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                countryName = b.etAddUserCurrentResidence.getSelectedItem().toString().trim();
+                stateList.clear();
+                stateList(stateUrl);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+    }
+
+    private void stateList(String stateUrl) {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                stateUrl + countryName, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf(response));
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        JSONArray jsonArray = response.getJSONArray("states");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String state = jsonObject1.getString("state_name");
+                            Log.e("state", state);
+                            stateList.add(state);
+                            Log.e("state-list", String.valueOf(stateList));
+                        }
+                    }
+                    stateAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, stateList);
+                    // set adapter
+                    stateAdapter.notifyDataSetChanged();
+
+                    b.etAddUserStateOfResidence.setAdapter(stateAdapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+
+    }
+
+    private void getCountry(String countryUrl) {
+countryList.clear();
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                countryUrl, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf(response));
+
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        JSONArray jsonArray = response.getJSONArray("country");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String country = jsonObject1.getString("country_name");
+                            Log.e("country", country);
+                            countryList.add(country);
+                            Log.e("Country-list", String.valueOf(countryList));
+                        }
+                    }
+                    countryAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, countryList);
+                    // set adapter
+                    countryAdapter.notifyDataSetChanged();
+                    b.etAddUserCurrentResidence.setAdapter(countryAdapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+
     }
 
     private void userAnnualIncome() {
@@ -158,4 +357,76 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
         //Setting the ArrayAdapter data on the Spinner
         b.UserWorkingWith.setAdapter(workingWithAdapter);
     }
+
+    private void listener() {
+        b.btnSaveData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //submitForm();
+            }
+        });
+    }
+
+    private void submitForm() {
+        higherEducation = b.etAddUserEducation.getText().toString().trim();
+        collegeAttends = b.etAddUserCollegeAttended.getText().toString().trim();
+        income = b.UserAnnualIncome.getSelectedItem().toString().trim();
+        workingWith = b.UserWorkingWith.getSelectedItem().toString().trim();
+        workingAs = b.UserWorkingAs.getSelectedItem().toString().trim();
+        country = b.etAddUserCurrentResidence.getSelectedItem().toString().trim();
+        state = b.etAddUserStateOfResidence.getSelectedItem().toString().trim();
+        city = b.etAddUserResidenceStatus.getSelectedItem().toString().trim();
+        origin = b.etAddUserCorigin.getText().toString().trim();
+        pinCode = b.etAddUserZipPinCode.getText().toString().trim();
+        mobile = b.etAddUserMobile.getText().toString().trim();
+        relationWith = b.etAddUserRelationship.getText().toString().trim();
+        callTime = b.etAddUserConvenientCall.getText().toString().trim();
+        displatOption = b.etAddUserDisplayOption.getText().toString().trim();
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("highest_qualification", higherEducation);
+        params.put("college_attended", collegeAttends);
+        params.put("working_with", workingWith);
+        params.put("working_as", workingAs);
+        params.put("annual_income", income);
+        params.put("pincode", pinCode);
+        params.put("city_name", country);
+        params.put("state_name", state);
+        params.put("ethnic_corigin", origin);
+        params.put("country_name", country);
+        Log.e("params", String.valueOf(params));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "url", new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("response", String.valueOf((response)));
+                        try {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+                                // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
+
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+    }
 }
+
+
