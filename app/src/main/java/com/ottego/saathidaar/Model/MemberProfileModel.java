@@ -1,6 +1,6 @@
 package com.ottego.saathidaar.Model;
 
-public class UserProfileModel {
+public class MemberProfileModel {
     public  String height;
     public String weight;
     public  String lifestyles;
@@ -44,15 +44,15 @@ public class UserProfileModel {
     public String working_as;
     public  String employer_name;
     public String annual_income;
-
     public  String cast_id;
     public String nakshatra;
     public  String state_id;
     public String unmarried_female;
     public String FamilyDetails;
     public  String married_female;
+    public String married_male;
+    public  String unmarried_male;
     public String city_of_birth;
-
     public  String religion_id;
     public String gender;
     public  String city;
@@ -60,7 +60,6 @@ public class UserProfileModel {
     public String membernative;
     public  String profilecreatedby;
     public String country_name;
-
     public  String time_status;
     public String first_name;
     public  String last_name;

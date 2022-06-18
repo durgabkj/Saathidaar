@@ -8,7 +8,7 @@ import com.ottego.saathidaar.Model.SessionModel;
 
 public class SessionManager {
 
-public static final String KEY_MEMBER_ID="member_id";
+    public static final String KEY_MEMBER_ID = "member_id";
     public static final String KEY_FIRSTNAME = "firstName";
     public static final String KEY_LASTNAME = "lastname";
     public static final String KEY_PHONE1 = "phone";
@@ -17,7 +17,7 @@ public static final String KEY_MEMBER_ID="member_id";
     public static final String KEY_USERID = "username";
 
 
-//USER DETAIL
+    //USER DETAIL
     public static final String KEY_FNAME = "firstName";
     public static final String KEY_LNAME = "lastname";
     public static final String KEY_PHONE = "phone";
@@ -25,8 +25,6 @@ public static final String KEY_MEMBER_ID="member_id";
     public static final String KEY_GENDER = "gender";
     public static final String KEY_ROLE = "role";
     public static final String KEY_CREATEDBY = "profilecreatedby";
-
-
 
 
     private static final String PREF_NAME = "userData";
@@ -44,7 +42,7 @@ public static final String KEY_MEMBER_ID="member_id";
 
     public void createSession(SessionModel model) {
         editor.putBoolean(IS_LOGIN, true);
-
+        editor.putString(KEY_MEMBER_ID, model.member_id);
         editor.putString(KEY_FIRSTNAME, model.firstName);
         editor.putString(KEY_LASTNAME, model.lastName);
         editor.putString(KEY_PHONE1, model.phone);
@@ -54,6 +52,28 @@ public static final String KEY_MEMBER_ID="member_id";
 
         editor.commit();
     }
+
+
+    public String getMemberId() {
+        return pref.getString(KEY_MEMBER_ID, "");
+    }
+
+    public String getName() {
+        return pref.getString(KEY_FIRSTNAME, " ");
+    }
+
+    public String getLastName() {
+        return pref.getString(KEY_LASTNAME, "");
+    }
+
+    public String getPhone1() {
+        return pref.getString(KEY_PHONE1, "");
+    }
+
+    public String getEmail() {
+        return pref.getString(KEY_EMAIL1, "");
+    }
+
 
     public boolean isLoggedIn() {
         return pref.getBoolean(IS_LOGIN, false);

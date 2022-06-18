@@ -9,6 +9,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.ottego.saathidaar.Adapter.ProfileViewPager;
@@ -18,6 +19,8 @@ import com.ottego.saathidaar.Adapter.ViewPageAdapter;
 public class MyProfileFragment extends Fragment {
     TabLayout tabLayout;
     ViewPager viewPager;
+    TextView tvUserName,tvUserEmail;
+    SessionManager sessionManager;
     Context context;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,7 +59,9 @@ public class MyProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_profile, container, false);
         context = getContext();
-
+        sessionManager=new SessionManager(context);
+tvUserEmail=view.findViewById(R.id.tvUserEmail);
+        tvUserName=view.findViewById(R.id.tvUserName);
         tabLayout=view.findViewById(R.id.tlProfile);
       viewPager=view.findViewById(R.id.vpMyProfile);
         tabLayout.addTab(tabLayout.newTab().setText("Personal Info"));
@@ -89,8 +94,14 @@ public class MyProfileFragment extends Fragment {
             }
         });
 
-
+setPreLoadData();
         return view;
+
+    }
+
+    private void setPreLoadData() {
+        tvUserName.setText(sessionManager.getName());
+        tvUserEmail.setText(sessionManager.getEmail());
 
     }
 }

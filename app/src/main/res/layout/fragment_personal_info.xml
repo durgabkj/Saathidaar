@@ -170,6 +170,7 @@
                 >
 
                 <TextView
+                    android:id="@+id/tvchild"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
@@ -179,6 +180,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/tvdas4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="-"
@@ -237,7 +239,7 @@
 
             </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:orientation="horizontal"
@@ -265,11 +267,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:text="Patna"
+                    android:text="Add Details"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
                     android:textStyle="bold"
                     />
+
 
 
             </LinearLayout>
