@@ -43,7 +43,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.DataModelReligion;
+import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.databinding.ActivityProfileEditPersonalBinding;
 
 import org.json.JSONArray;
@@ -106,8 +108,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     String Gothram = "";
     String child = "";
     String selectedReligion;
-
 String maritalStatus;
+MemberProfileModel model;
 
     public static void openAppSettings(final Activity context) {
         if (context == null) {
@@ -127,8 +129,11 @@ String maritalStatus;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         b = ActivityProfileEditPersonalBinding.inflate(getLayoutInflater());
-        context = ProfileEditPersonalActivity.this;
         setContentView(b.getRoot());
+        context = ProfileEditPersonalActivity.this;
+        Bundle bundle = getIntent().getExtras();
+        String data = bundle.getString("data");
+        model = new Gson().fromJson(data, MemberProfileModel.class);
 
         // Initialize dialog
         dialog = new Dialog(context);
@@ -147,8 +152,18 @@ String maritalStatus;
         handlePermission();
         communityList();
         dietList();
+        setData();
 
     }
+
+    private void setData() {
+        b.etAddUserDescription.setText(model.about_ourself);
+       b.mbDatePicker.setText(model.date_of_birth);
+      //  b.multiSelectionAge.setSelection(minAdapter.getPosition(model.age));
+     //   b.tvEditMaritalStatus.setSelection(Integer.parseInt(model.marital_status));
+
+    }
+
     public static void hideSoftKeyboard(Activity activity) {
         InputMethodManager inputMethodManager =
                 (InputMethodManager) activity.getSystemService(

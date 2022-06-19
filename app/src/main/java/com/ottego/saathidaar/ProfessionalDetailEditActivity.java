@@ -95,7 +95,6 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf(response));
                 try {
-
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
                         JSONArray jsonArray = response.getJSONArray("cities");
@@ -110,7 +109,6 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
                     cityAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, cityList);
                     // set adapter
                     cityAdapter.notifyDataSetChanged();
-                    countryAdapter.clear();
                     b.etAddUserResidenceStatus.setAdapter(cityAdapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -128,7 +126,6 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     }
 
     private void getState() {
-
         b.etAddUserCurrentResidence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -185,7 +182,6 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     }
 
     private void getCountry(String countryUrl) {
-countryList.clear();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 countryUrl, null, new Response.Listener<JSONObject>() {
             @Override
@@ -229,7 +225,6 @@ countryList.clear();
         ArrayAdapter incomeAdapter = new ArrayAdapter(context, R.layout.dropdown_item, income);
         //Setting the ArrayAdapter data on the Spinner
         b.UserAnnualIncome.setAdapter(incomeAdapter);
-
     }
 
     private void userWorkAs() {

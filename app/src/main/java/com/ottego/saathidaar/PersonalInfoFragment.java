@@ -75,6 +75,18 @@ public class PersonalInfoFragment extends Fragment {
         getMemberData();
         return binding.getRoot();
     }
+    private void listener() {
+        binding.ivCameraEditPersonalInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ProfileEditPersonalActivity.class);
+                intent.putExtra("data", new Gson().toJson(model));
+                context.startActivity(intent);
+                startActivity(intent);
+            }
+        });
+
+    }
 
     private void getMemberData() {
         Log.e("url", url);
@@ -131,14 +143,5 @@ public class PersonalInfoFragment extends Fragment {
 
     }
 
-    private void listener() {
-        binding.ivCameraEditPersonalInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ProfileEditPersonalActivity.class);
-                startActivity(intent);
-            }
-        });
 
-    }
 }

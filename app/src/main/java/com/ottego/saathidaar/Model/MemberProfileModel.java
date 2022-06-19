@@ -4,6 +4,7 @@ public class MemberProfileModel {
     public  String height;
     public String weight;
     public  String lifestyles;
+    public  String about_ourself;
     public String known_languages;
     public  String education;
     public String job;
