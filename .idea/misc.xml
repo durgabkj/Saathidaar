@@ -33,6 +33,7 @@
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/tab_indicater.xml" value="0.1465" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/text_color.xml" value="0.151" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/textview_selection.xml" value="0.1515" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/transparent_edittext_border.xml" value="0.2005" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/unselected.xml" value="0.135" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/white_button_bg.xml" value="0.1465" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_account_setting.xml" value="0.264" />
@@ -57,7 +58,7 @@
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_family_info.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_hide_and_delete.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_home.xml" value="0.23802083333333332" />
-        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_horoscope.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_horoscope.xml" value="0.264" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_inbox.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_matches.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_my_profile.xml" value="0.23802083333333332" />

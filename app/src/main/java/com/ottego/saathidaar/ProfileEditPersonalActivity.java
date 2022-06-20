@@ -64,7 +64,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 // Permissions for accessing the storage
     private static final int SELECT_PICTURE = 100;
     private static final String TAG = "SelectImageActivity";
-    public String ReligionUrl = "http://192.168.1.38:9094/api/get/religion-name";
+    public String ReligionUrl = "http://192.168.1.37:9094/api/get/religion-name";
     public String url=Utils.memberUrl+"update/11";
 
     ActivityProfileEditPersonalBinding b;
@@ -157,9 +157,15 @@ MemberProfileModel model;
     }
 
     private void setData() {
-        b.etAddUserDescription.setText(model.about_ourself);
-       b.mbDatePicker.setText(model.date_of_birth);
-      //  b.multiSelectionAge.setSelection(minAdapter.getPosition(model.age));
+        if (model!=null)
+        {
+            b.etAddUserDescription.setText(model.about_ourself);
+            b.mbDatePicker.setText(model.date_of_birth);
+            b.etAge.setText(model.age);
+        }
+
+
+     //   b.multiSelectionAge.setSelected(minAdapter.getPosition(model.age));
      //   b.tvEditMaritalStatus.setSelection(Integer.parseInt(model.marital_status));
 
     }
@@ -327,6 +333,28 @@ MemberProfileModel model;
                     b.llSubCast.setVisibility(View.GONE);
                     b.llGotra.setVisibility(View.GONE);
                 }
+            }
+        });
+
+
+        b.multiSelectionAge.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String myAge = b.multiSelectionAge.getSelectedItem().toString();
+
+                if(myAge.equals("select"))
+                {
+
+                }else
+                {
+                    b.etAge.setText(myAge);
+                }
+              //
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
     }
@@ -625,7 +653,7 @@ MemberProfileModel model;
 
     private void communityData() {
         String selectedCommunity = b.tvUserReligion.getText().toString().trim();
-        String url = "http://192.168.1.38:9094/api/get/cast-name/by/religion_name/" + selectedCommunity;
+        String url = "http://192.168.1.37:9094/api/get/cast-name/by/religion_name/" + selectedCommunity;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url, null, new Response.Listener<JSONObject>() {
@@ -1124,7 +1152,7 @@ MemberProfileModel model;
     }
 
     private void ageDropDown() {
-        minList.add("selected");
+        minList.add("select");
         // use for loop
         for (int i = 18; i <= 70; i++) {
             // add values in price list

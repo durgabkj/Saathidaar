@@ -204,20 +204,36 @@
                 android:layout_centerInParent="true"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bg_edit_text"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 tools:ignore="UselessParent">
+
+<!--                edit part.....-->
+
+                <EditText
+                    android:id="@+id/etAge"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="select  your Age"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/transparent_edittext_border" />
+
+
 
                 <Spinner
                     android:id="@+id/multi_SelectionAge"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:clickable="true"
                     android:focusable="true"
+                    android:layout_weight=".2"
+                    android:layout_gravity="center"
                     android:focusableInTouchMode="false"
                     android:importantForAutofill="no"
-                    android:maxLines="1"
+                    android:maxLines="0"
                     app:showSearch="true"
-                    app:sort="true" />
+                    app:sort="true"
+                    tools:ignore="Suspicious0dp" />
 
 
             </LinearLayout>
