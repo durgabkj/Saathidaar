@@ -102,7 +102,47 @@ public class Utils {
     }
 
 
+    public static void acceptRequest(Context context, String member_id) {
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        String url = Utils.memberUrl + "request-accept-reject";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("request_from_id",member_id );
+        params.put("request_to_id",new SessionManager(context).getMemberId());
+        params.put("request_status","Accepted");
+        Log.e("params request accept", String.valueOf(params));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        progressDialog.dismiss();
+                        Log.e(" request sent response", String.valueOf((response)));
+                        try {
+                            String code = response.getString("message");
+                            if (code.equalsIgnoreCase("request are Accepted..")) {
+                                Toast.makeText(context,"Request accepted ",Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
 
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+
+    }
 
     public static void sentRequest(Context context, String member_id) {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
