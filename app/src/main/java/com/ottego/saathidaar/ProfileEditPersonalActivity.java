@@ -357,6 +357,117 @@ MemberProfileModel model;
 
             }
         });
+
+
+        b.tvEditMaritalStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String myMaritalS = b.tvEditMaritalStatus.getSelectedItem().toString();
+
+                if(myMaritalS.equals("select"))
+                {
+
+                }else
+                {
+                    b.etMaritalStatus.setText(myMaritalS);
+                }
+                //
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        b.spUserHeight.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String myHeight= b.spUserHeight.getSelectedItem().toString();
+
+                if(myHeight.equals("select"))
+                {
+
+                }else
+                {
+                    b.etHeight.setText(myHeight);
+                }
+                //
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
+        b.spUserBloodGroup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String myBloodGroup= b.spUserBloodGroup.getSelectedItem().toString();
+
+                if(myBloodGroup.equals("select"))
+                {
+
+                }else
+                {
+                    b.etBloodGroup.setText(myBloodGroup);
+                }
+                //
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        b.tvEditDiet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String myDiet= b.tvEditDiet.getSelectedItem().toString();
+
+                if(myDiet.equals("select"))
+                {
+
+                }else
+                {
+                    b.etDiet.setText(myDiet);
+                }
+                //
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        b.spUserHealthDetail.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String myHealth= b.spUserHealthDetail.getSelectedItem().toString();
+
+                if(myHealth.equals("select"))
+                {
+
+                }else
+                {
+                    b.etHealth.setText(myHealth);
+                }
+                //
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
 
@@ -874,7 +985,6 @@ MemberProfileModel model;
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
-
     /* Choose an image from Gallery */
     void openImageChooser() {
         Intent intent = new Intent();
@@ -912,7 +1022,6 @@ MemberProfileModel model;
         }).start();
 
     }
-
     /* Get the real path from the URI */
     public String getPathFromURI(Uri contentUri) {
         String res = null;

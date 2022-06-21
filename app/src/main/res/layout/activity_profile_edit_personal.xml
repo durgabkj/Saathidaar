@@ -251,20 +251,34 @@
                 android:layout_centerInParent="true"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bg_edit_text"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 tools:ignore="UselessParent">
+
+
+                <EditText
+                    android:id="@+id/etMaritalStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="select  Marital Status"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/transparent_edittext_border"
+                    tools:ignore="Suspicious0dp" />
 
                 <Spinner
                     android:id="@+id/tvEditMaritalStatus"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:clickable="true"
                     android:focusable="true"
+                    android:layout_weight=".2"
+                    android:layout_gravity="center"
                     android:focusableInTouchMode="false"
                     android:importantForAutofill="no"
-                    android:maxLines="1"
+                    android:maxLines="0"
                     app:showSearch="true"
-                    app:sort="true" />
+                    app:sort="true"
+                    tools:ignore="Suspicious0dp" />
 
             </LinearLayout>
 
@@ -297,6 +311,7 @@
                 android:layout_marginTop="10dp"
                 android:text="Height" />
 
+
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -304,20 +319,35 @@
                 android:layout_centerInParent="true"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bg_edit_text"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 tools:ignore="UselessParent">
+
+
+                <EditText
+                    android:id="@+id/etHeight"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="select  your Height"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/transparent_edittext_border" />
+
+
 
                 <Spinner
                     android:id="@+id/spUserHeight"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:clickable="true"
                     android:focusable="true"
+                    android:layout_weight=".2"
+                    android:layout_gravity="center"
                     android:focusableInTouchMode="false"
                     android:importantForAutofill="no"
-                    android:maxLines="1"
+                    android:maxLines="0"
                     app:showSearch="true"
-                    app:sort="true" />
+                    app:sort="true"
+                    tools:ignore="Suspicious0dp" />
 
             </LinearLayout>
 
@@ -349,20 +379,34 @@
                 android:layout_centerInParent="true"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bg_edit_text"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 tools:ignore="UselessParent">
+
+
+                <EditText
+                    android:id="@+id/etBloodGroup"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="select  Blood Group"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/transparent_edittext_border" />
+
 
                 <Spinner
                     android:id="@+id/spUserBloodGroup"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:clickable="true"
                     android:focusable="true"
+                    android:layout_weight=".2"
+                    android:layout_gravity="center"
                     android:focusableInTouchMode="false"
                     android:importantForAutofill="no"
-                    android:maxLines="1"
+                    android:maxLines="0"
                     app:showSearch="true"
-                    app:sort="true" />
+                    app:sort="true"
+                    tools:ignore="Suspicious0dp" />
 
             </LinearLayout>
 
@@ -383,20 +427,31 @@
                 android:layout_centerInParent="true"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bg_edit_text"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 tools:ignore="UselessParent">
+                <EditText
+                    android:id="@+id/etDiet"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="select  Diet"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/transparent_edittext_border" />
 
                 <Spinner
                     android:id="@+id/tvEditDiet"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:clickable="true"
                     android:focusable="true"
+                    android:layout_weight=".2"
+                    android:layout_gravity="center"
                     android:focusableInTouchMode="false"
                     android:importantForAutofill="no"
-                    android:maxLines="1"
+                    android:maxLines="0"
                     app:showSearch="true"
-                    app:sort="true" />
+                    app:sort="true"
+                    tools:ignore="Suspicious0dp" />
 
             </LinearLayout>
 
@@ -454,20 +509,32 @@
                 android:layout_centerInParent="true"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bg_edit_text"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 tools:ignore="UselessParent">
+                <EditText
+                    android:id="@+id/etHealth"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="select  Blood Group"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/transparent_edittext_border"
+                    tools:ignore="Suspicious0dp" />
 
                 <Spinner
                     android:id="@+id/spUserHealthDetail"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:clickable="true"
                     android:focusable="true"
+                    android:layout_weight=".2"
+                    android:layout_gravity="center"
                     android:focusableInTouchMode="false"
                     android:importantForAutofill="no"
-                    android:maxLines="1"
+                    android:maxLines="0"
                     app:showSearch="true"
-                    app:sort="true" />
+                    app:sort="true"
+                    tools:ignore="Suspicious0dp" />
 
             </LinearLayout>
 

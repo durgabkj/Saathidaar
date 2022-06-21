@@ -16,6 +16,8 @@ import com.ottego.saathidaar.databinding.FragmentMatchesBinding;
 public class MatchesFragment extends Fragment {
 FragmentMatchesBinding b;
     NewMatchesFragment newMatchesFragment =new NewMatchesFragment();
+    MyMatchFragment myMatchFragment =new MyMatchFragment();
+    TodayMatchFragment todayMatchFragment =new TodayMatchFragment();
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -69,6 +71,30 @@ listener();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
 
                 fragmentTransaction.replace(R.id.fcvNewMatches,newMatchesFragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+
+        b.MyMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+
+                fragmentTransaction.replace(R.id.fcvNewMatches,myMatchFragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+
+        b.TodayMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+
+                fragmentTransaction.replace(R.id.fcvNewMatches,todayMatchFragment);
                 fragmentTransaction.commit();
             }
         });
