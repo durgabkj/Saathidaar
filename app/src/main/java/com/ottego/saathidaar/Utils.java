@@ -1,15 +1,25 @@
 package com.ottego.saathidaar;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
+import com.ottego.saathidaar.Model.SessionModel;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.Date;
@@ -27,6 +37,8 @@ public class Utils {
     public static String memberUrl ="http://192.168.1.37:9094/api/member/";
     public static  String cityUrl="http://192.168.1.37:9094/api/get/";
     public static String role_user="USER";
+
+
 
     public final static boolean isValidEmail(CharSequence target) {
         if (target == null) {
@@ -87,6 +99,51 @@ public class Utils {
             }
         }
         new SendDeviceId().execute();
+    }
+
+
+
+
+    public static void sentRequest(Context context, String member_id) {
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        String url = Utils.memberUrl + "send-request";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("request_from_id", new SessionManager(context).getMemberId());
+        params.put("request_to_id", member_id);
+        params.put("request_status","Pending");
+        Log.e("params request sent", String.valueOf(params));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        progressDialog.dismiss();
+                        Log.e(" request sent response", String.valueOf((response)));
+                        try {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+                                Toast.makeText(context,"Request Sed Successfully",Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
+
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+
     }
 
     public static String getDate(String date) {

@@ -2,30 +2,48 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".NewMatchesFragment">
+
+
+
+    <LinearLayout
+        android:id="@+id/llNoData"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
+
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/ic_no_data" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <ImageView
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srlRecycleViewNewMatch"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
-            android:src="@drawable/scroll_rod1"
-            android:scaleType="centerCrop"/>
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/rvNewMatches"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/layout_border"
-           />
+            android:layout_margin="15dp"
+android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     </LinearLayout>
 
 </LinearLayout>
