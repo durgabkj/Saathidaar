@@ -18,6 +18,9 @@ public class InboxFragment extends Fragment {
 
   FragmentInboxBinding b;
   InvitationFragment invitationFragment=new InvitationFragment();
+  AcceptedInboxFragment acceptedInboxFragment=new AcceptedInboxFragment();
+  DeleteInboxFragment deleteInboxFragment=new DeleteInboxFragment();
+  SentInboxFragment sentInboxFragment=new SentInboxFragment();
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -72,6 +75,40 @@ public class InboxFragment extends Fragment {
                 FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fcvSathidarInbox,invitationFragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+        b.tvInboxAccepted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fcvSathidarInbox,acceptedInboxFragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+        b.tvInboxSent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fcvSathidarInbox,sentInboxFragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+
+        b.tvInboxDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fcvSathidarInbox,deleteInboxFragment);
                 fragmentTransaction.commit();
             }
         });

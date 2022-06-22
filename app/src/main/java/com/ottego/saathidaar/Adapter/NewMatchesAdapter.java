@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.ottego.saathidaar.InvitationFragment;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.NewMatchesFragment;
 import com.ottego.saathidaar.R;
@@ -25,13 +26,13 @@ import com.ottego.saathidaar.Utils;
 import java.util.List;
 
 public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.ViewHolder> {
-    private AdapterView.OnItemClickListener onItemClickListener;
     Context context;
     List<NewMatchesModel> list;
 
     public NewMatchesAdapter(Context context, List<NewMatchesModel> list) {
         this.context = context;
         this.list = list;
+
     }
 
 
@@ -58,16 +59,10 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             @Override
             public void onClick(View view) {
                 Utils.sentRequest(context, item.member_id);
-                NewMatchesFragment newMatchesFragment=new NewMatchesFragment();
-                newMatchesFragment.getData("");
+
   }
         });
-
-
-
     }
-
-
     @Override
     public int getItemCount() {
         return list.size();
@@ -79,7 +74,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         ImageView imageListViewMess;
         TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
         LinearLayout llMess;
-        ImageView ivLike;
+        LinearLayout ivLike;
 
         public ViewHolder(@NonNull View itemView) {
 

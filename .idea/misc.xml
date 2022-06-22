@@ -51,15 +51,19 @@
         <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_proffessional_detail_edit.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_profile_edit_personal.xml" value="0.234375" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/dropdown_item.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_accepted_inbox.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_account.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_account_setting.xml" value="0.264" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_dash_board.xml" value="0.4" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_delete_inbox.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_delete_inboxk.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_email_and_sms_alert.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_family_info.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_hide_and_delete.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_home.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_horoscope.xml" value="0.264" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_inbox.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_invitation.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_matches.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_my_profile.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_my_prpfile.xml" value="0.2" />
@@ -71,10 +75,13 @@
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_premium.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_professional_info.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_profile.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_sent_inbox.xml" value="0.22395833333333334" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_inbox_invitation_sent.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_invitation_inbox.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_landing_page.xml" value="0.23802083333333332" />
-        <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_matches.xml" value="0.10400000000000001" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_matches.xml" value="0.264" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_religion_item.xml" value="0.14739583333333334" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_upgrade_page.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/searchable_dropdown_item.xml" value="0.234375" />
         <entry key="..\:/Saathidaar/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/menu/buttom_navigation_menu.xml" value="0.23802083333333332" />

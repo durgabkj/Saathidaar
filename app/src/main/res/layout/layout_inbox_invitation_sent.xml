@@ -16,14 +16,12 @@
         android:id="@+id/mcv_All_Played_Match"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-
         app:cardBackgroundColor="@color/white"
         app:cardElevation="2dp"
         app:cardCornerRadius="10dp"
         app:cardMaxElevation="4dp"
         app:cardPreventCornerOverlap="true"
         android:layout_margin="3dp">
-
 
 
         <ImageView
@@ -200,10 +198,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <LinearLayout
+                android:id="@+id/ivLike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_gravity="end|bottom"
+                android:layout_marginVertical="5dp"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
@@ -213,7 +213,6 @@
                     app:cardCornerRadius="100dp"
                     >
                     <ImageView
-                        android:id="@+id/ivLike"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:background="@color/white"
@@ -245,5 +244,10 @@
         android:scaleType="centerCrop"
         android:src="@drawable/scroll_rod1"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/line_gradient"/>
 
 </LinearLayout>
