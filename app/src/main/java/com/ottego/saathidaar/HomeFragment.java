@@ -29,7 +29,6 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();

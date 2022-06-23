@@ -12,6 +12,7 @@ import com.ottego.saathidaar.MatchesFragment;
 import com.ottego.saathidaar.HomeFragment;
 import com.ottego.saathidaar.AccountFragment;
 import com.ottego.saathidaar.PremiumFragment;
+import com.ottego.saathidaar.UpgradeFragment;
 
 
 public class ViewPageAdapter extends FragmentPagerAdapter {
@@ -38,7 +39,7 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
             case 3:
                 return new AccountFragment();
             case 4:
-                return new PremiumFragment();
+                return new UpgradeFragment();
             default:
                 return null;
         }

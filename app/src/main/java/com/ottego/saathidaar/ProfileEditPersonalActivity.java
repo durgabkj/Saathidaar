@@ -137,8 +137,6 @@ MemberProfileModel model;
 
         // Initialize dialog
         dialog = new Dialog(context);
-
-
         // b.mbDatePicker.setText(currentDate);
         listener();
         ageDropDown();

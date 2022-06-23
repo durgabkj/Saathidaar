@@ -3,31 +3,40 @@ package com.ottego.saathidaar;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.os.CountDownTimer;
-import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
+import com.ottego.saathidaar.Model.DataModelDashboard;
+
+import org.json.JSONObject;
+
 
 public class DashBoardFragment extends Fragment {
-SessionManager sessionManager;
+    SessionManager sessionManager;
     ImageView ivPremiumImage;
-    TextView tvPremiumText,tvLogout;
+    TextView tvPremiumText, tvLogout, RequestAccept, Visitors, RequestSent;
     int position = 0;
+    DataModelDashboard model;
     Animation animation;
     CountDownTimer countDownTimer;
     Context context;
-    int[] images = {R.drawable.smartphone,R.drawable.documents,R.drawable.global};
-            String[] text = {"phone Number to Connect Instantly", "100% Verified Biodatas", "Find Common connections"};
+    public String url = "http://192.168.1.37:9094/api/request/count/accept-request/22";
+    int[] images = {R.drawable.smartphone, R.drawable.documents, R.drawable.global};
+    String[] text = {"phone Number to Connect Instantly", "100% Verified Biodatas", "Find Common connections"};
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -64,16 +73,20 @@ SessionManager sessionManager;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
-        ivPremiumImage=view.findViewById(R.id.ivPremiumImage);
-        tvPremiumText=view.findViewById(R.id.tvPremiumText);
-        tvLogout=view.findViewById(R.id.tvLogout);
-         context=getContext();
+        ivPremiumImage = view.findViewById(R.id.ivPremiumImage);
+        tvPremiumText = view.findViewById(R.id.tvPremiumText);
+        tvLogout = view.findViewById(R.id.tvLogout);
+
+        RequestAccept = view.findViewById(R.id.RequestAccept);
+        Visitors = view.findViewById(R.id.Visitors);
+        RequestSent = view.findViewById(R.id.RequestSent);
+        context = getContext();
         sessionManager = new SessionManager(context);
-             set();
+        set();
 
         final ValueAnimator animator = ValueAnimator.ofFloat(0.0f, 1.0f);
         animator.setRepeatCount(ValueAnimator.INFINITE);
-      //  animator.setInterpolator(new LinearInterpolator());
+        //  animator.setInterpolator(new LinearInterpolator());
         animator.setDuration(3000);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -83,7 +96,6 @@ SessionManager sessionManager;
                 final float translationX = width * progress;
                 ivPremiumImage.setTranslationX(translationX);
                 ivPremiumImage.setTranslationX(translationX - width);
-
                 tvPremiumText.setTranslationX(translationX);
                 tvPremiumText.setTranslationX(translationX - width);
 
@@ -91,7 +103,8 @@ SessionManager sessionManager;
             }
         });
         animator.start();
-
+        getData();
+        //  setData();
         listener();
         return view;
 
@@ -108,15 +121,43 @@ SessionManager sessionManager;
 
     }
 
+    private void getData() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf((response)));
+                Gson gson = new Gson();
+                model = gson.fromJson(String.valueOf(response), DataModelDashboard.class);
+                setData();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+
+    }
+
+    private void setData() {
+        RequestAccept.setText(model.data.get(0).accept_request_count);
+        RequestSent.setText(model.data.get(0).sent_request_count);
+        Visitors.setText(model.data.get(0).recent_visitors_count);
+
+    }
+
     private void set() {
-        if(countDownTimer != null) {
+        if (countDownTimer != null) {
             countDownTimer.cancel();
         }
         countDownTimer = new CountDownTimer(2 * 3000, 2000) {
             public void onTick(long millisUntilFinished) {
                 // Text_t_speech();
-                if (position < text.length)
-                {
+                if (position < text.length) {
                     ivPremiumImage.setImageResource(images[position]);
                     tvPremiumText.setText(text[position]);
                     position = position + 1;
@@ -127,7 +168,7 @@ SessionManager sessionManager;
 
             @Override
             public void onFinish() {
-start();
+                start();
             }
 
         }.start();

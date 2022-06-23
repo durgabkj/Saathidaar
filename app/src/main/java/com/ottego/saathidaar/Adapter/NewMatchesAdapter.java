@@ -2,24 +2,19 @@ package com.ottego.saathidaar.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
-import com.ottego.saathidaar.InvitationFragment;
 import com.ottego.saathidaar.Model.NewMatchesModel;
-import com.ottego.saathidaar.NewMatchesFragment;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.Utils;
 
@@ -39,7 +34,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_inbox_invitation_sent, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_my_matches, parent, false);
         return new ViewHolder(view);
     }
 
@@ -62,6 +57,19 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
 
   }
         });
+
+        holder.llShortList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.shortList(context, item.member_id);
+                holder.llShortList.setVisibility(View.GONE);
+                holder.llShortListRemove.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+
+
     }
     @Override
     public int getItemCount() {
@@ -73,7 +81,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageListViewMess;
         TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
-        LinearLayout llMess;
+        LinearLayout llMess,llShortListRemove,llShortList;
         LinearLayout ivLike;
 
         public ViewHolder(@NonNull View itemView) {
@@ -85,6 +93,8 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             tvNewMatchCity = itemView.findViewById(R.id.tvNewMatchCity);
             tvNewMatchWorkAs = itemView.findViewById(R.id.tvNewMatchWorkAs);
             ivLike = itemView.findViewById(R.id.ivLike);
+            llShortListRemove = itemView.findViewById(R.id.llShortListRemove);
+            llShortList = itemView.findViewById(R.id.llShortList);
         }
     }
 }

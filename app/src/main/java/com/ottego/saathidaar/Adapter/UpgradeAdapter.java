@@ -46,11 +46,9 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
         UpgradeModel item = list.get(position);
         Log.e(" New Matches model", new Gson().toJson(item));
 
-        holder.tvCardName.setText(item.CardName);
-
-
-
-
+        holder.tvCardName.setText(item.plan_name);
+        holder.tvMonths.setText(item.plan_validity);
+        holder.tvPriceUpgrade.setText(item.plan_price);
     }
 
 
@@ -59,16 +57,17 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
         return list.size();
     }
 
-
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvCardName;
+        TextView tvCardName,tvPriceUpgrade,tvMonths;
 
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
             tvCardName = itemView.findViewById(R.id.tvCardName);
+            tvPriceUpgrade = itemView.findViewById(R.id.tvPriceUpgrade);
+            tvMonths = itemView.findViewById(R.id.tvMonths);
+
 
         }
     }

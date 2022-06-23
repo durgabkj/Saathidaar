@@ -20,20 +20,22 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.AcceptInvitationAdapter;
-import com.ottego.saathidaar.Adapter.InboxInvitationAdapter;
+import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
+import com.ottego.saathidaar.Adapter.RemoveShortListAdapter;
 import com.ottego.saathidaar.Model.DataModelInbox;
-import com.ottego.saathidaar.databinding.FragmentAcceptedInboxBinding;
+import com.ottego.saathidaar.Model.DataModelNewMatches;
+import com.ottego.saathidaar.databinding.FragmentShortListBinding;
 
 import org.json.JSONObject;
 
 
-public class AcceptedInboxFragment extends Fragment {
+public class ShortListFragment extends Fragment {
     Context context;
     SessionManager sessionManager;
-    DataModelInbox data;
+    DataModelNewMatches data;
     String member_id;
-    public String InvitationAcceptUrl ="http://192.168.1.37:9094/api/request/accepted/get/all/22";
-   FragmentAcceptedInboxBinding b;
+    public String ShortListUrl ="http://192.168.1.37:9094/api/shortlist/get/all/22";
+    FragmentShortListBinding b;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -41,13 +43,12 @@ public class AcceptedInboxFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AcceptedInboxFragment() {
+    public ShortListFragment() {
         // Required empty public constructor
     }
 
-
-    public static AcceptedInboxFragment newInstance(String param1, String param2) {
-        AcceptedInboxFragment fragment = new AcceptedInboxFragment();
+    public static ShortListFragment newInstance(String param1, String param2) {
+        ShortListFragment fragment = new ShortListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,26 +69,23 @@ public class AcceptedInboxFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       b=FragmentAcceptedInboxBinding.inflate(getLayoutInflater());
+       b=FragmentShortListBinding.inflate(getLayoutInflater());
        context=getContext();
-       sessionManager=new SessionManager(context);
-       member_id=sessionManager.getMemberId();
-       getData();
+        getData();
        return  b.getRoot();
-
     }
 
     private void getData() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                InvitationAcceptUrl, null, new Response.Listener<JSONObject>() {
+                ShortListUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                b.srlRecycleViewAcceptInvitation.setRefreshing(false);
+                b.srlRecycleViewShortList.setRefreshing(false);
                 progressDialog.dismiss();
-                Log.e("Invitation response", String.valueOf(response));
+                Log.e("ShortList response", String.valueOf(response));
                 Gson gson = new Gson();
-                data = gson.fromJson(String.valueOf(response), DataModelInbox.class);
+                data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
                 if (data.results == 1) {
                     setRecyclerView();
                 }
@@ -95,7 +93,7 @@ public class AcceptedInboxFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                b.srlRecycleViewAcceptInvitation.setRefreshing(false);
+                b.srlRecycleViewShortList.setRefreshing(false);
                 progressDialog.dismiss();
                 error.printStackTrace();
             }
@@ -107,18 +105,18 @@ public class AcceptedInboxFragment extends Fragment {
     @SuppressLint("NotifyDataSetChanged")
     private void setRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-        b.rvAcceptInvitation.setLayoutManager(layoutManager);
-        b.rvAcceptInvitation.setHasFixedSize(true);
-        b.rvAcceptInvitation.setNestedScrollingEnabled(true);
-        AcceptInvitationAdapter adapter = new AcceptInvitationAdapter(context,data.data);
-        b.rvAcceptInvitation.setAdapter(adapter);
+        b.rvShortList.setLayoutManager(layoutManager);
+        b.rvShortList.setHasFixedSize(true);
+        b.rvShortList.setNestedScrollingEnabled(true);
+        RemoveShortListAdapter adapter = new RemoveShortListAdapter(context,data.data);
+        b.rvShortList.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         if (adapter.getItemCount() != 0) {
-            b.llNoDataInvitation.setVisibility(View.GONE);
-            b.rvAcceptInvitation.setVisibility(View.VISIBLE);
+            b.llNoDataShortList.setVisibility(View.GONE);
+            b.rvShortList.setVisibility(View.VISIBLE);
 
         } else {
-            b.llNoDataInvitation.setVisibility(View.VISIBLE);
+            b.llNoDataShortList.setVisibility(View.VISIBLE);
         }
     }
 }

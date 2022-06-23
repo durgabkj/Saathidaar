@@ -100,8 +100,74 @@ public class Utils {
         }
         new SendDeviceId().execute();
     }
+    public static void removeShortList(Context context, String member_id) {
+           String url = Utils.memberUrl + "remove-to-shortlist";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("shortlist_from_id",new SessionManager(context).getMemberId());
+        params.put("shortlist_to_id",member_id);
+        params.put("shortlist_status","remove");
+        Log.e("params  remove shortlist", String.valueOf(params));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e(" Shortlist remove response", String.valueOf((response)));
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
 
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
 
+    }
+    public static void shortList(Context context, String member_id) {
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        String url = Utils.memberUrl + "add-to-shortlist";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("shortlist_from_id",new SessionManager(context).getMemberId());
+        params.put("shortlist_to_id",member_id );
+        params.put("shortlist_status","add");
+        Log.e("params shortlist", String.valueOf(params));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        progressDialog.dismiss();
+                        Log.e(" Shortlist response", String.valueOf((response)));
+                        try {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+                                Toast.makeText(context,"Short Listed",Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
+
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+
+    }
     public static void acceptRequest(Context context, String member_id) {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         String url = Utils.memberUrl + "request-accept-reject";

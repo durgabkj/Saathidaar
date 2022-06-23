@@ -24,15 +24,12 @@ import java.util.List;
 
 
 public class PartnerPreferenceFragment extends Fragment {
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     MultipleSelection multi_SelectionReligion, multi_SelectionProfessionArea, multi_SelectionMotherTongue ,multi_SelectionQualification,multi_SelectionWorkingWith;
 
     TextView textView,tvMultipleMaritalStatus;
     boolean[] selectedLanguage;
-    ArrayList<Integer> religionList = new ArrayList<>();
-    String[] ReligionArray = {"Java", "C++", "Kotlin", "C", "Python", "Javascript"};
 
     //For MaritalStatus....
     boolean[] selectedMaritalStatus;

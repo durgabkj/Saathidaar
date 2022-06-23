@@ -138,13 +138,14 @@
                         android:layout_marginStart="55dp"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/white_button_bg"
-                        android:drawableStart="@drawable/ic_diamond"
+                        android:drawablePadding="1dp"
                         android:fontFamily="serif"
-                        android:padding="8dp"
+                        android:padding="10dp"
                         android:text="Upgrade Now"
                         android:textAlignment="center"
                         android:textColor="@color/colorPrimary"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:drawableStartCompat="@drawable/ic_diamond" />
                 </LinearLayout>
 
 
@@ -165,18 +166,20 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:elevation="20dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
                             <TextView
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Interests Sent"
+                                android:text="Request Sent"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tvProfileMember"
+                                android:id="@+id/RequestSent"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
@@ -195,14 +198,15 @@
                             android:orientation="vertical">
 
                             <TextView
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="My Matches"
+                                android:text="Visitors"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tvDashboardMatches"
+                                android:id="@+id/Visitors"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
@@ -221,14 +225,15 @@
                             android:orientation="vertical">
 
                             <TextView
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Premium Matches"
+                                android:text="Request Accept"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tvDashBoardViewMatch"
+                                android:id="@+id/RequestAccept"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"

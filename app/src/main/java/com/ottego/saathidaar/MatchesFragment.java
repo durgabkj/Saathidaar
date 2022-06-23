@@ -18,6 +18,7 @@ FragmentMatchesBinding b;
     NewMatchesFragment newMatchesFragment =new NewMatchesFragment();
     MyMatchFragment myMatchFragment =new MyMatchFragment();
     TodayMatchFragment todayMatchFragment =new TodayMatchFragment();
+    ShortListFragment shortListFragment=new ShortListFragment();
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -95,6 +96,16 @@ listener();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
 
                 fragmentTransaction.replace(R.id.fcvNewMatches,todayMatchFragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+        b.MatchSortlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fcvNewMatches,shortListFragment);
                 fragmentTransaction.commit();
             }
         });
