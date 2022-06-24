@@ -75,7 +75,7 @@ public class NavigationActivity extends AppCompatActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+              //  viewPager.setCurrentItem(tab.getPosition());
             }
         });
 

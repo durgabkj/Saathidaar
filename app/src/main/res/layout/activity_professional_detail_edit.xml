@@ -112,14 +112,27 @@
                             android:layout_marginTop="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/bg_edit_text"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             tools:ignore="UselessParent">
+
+
+                            <EditText
+                                android:id="@+id/etIncome"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:enabled="true"
+                                android:textSize="14dp"
+                                android:hint="select  Income"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/transparent_edittext_border" />
 
                             <Spinner
                                 android:id="@+id/UserAnnualIncome"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="30dp"
                                 android:clickable="true"
+                                android:layout_weight=".2"
                                 android:focusable="true"
                                 android:focusableInTouchMode="false"
                                 android:importantForAutofill="no"
@@ -153,12 +166,26 @@
                             android:layout_marginTop="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/bg_edit_text"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             tools:ignore="UselessParent">
+
+                            <EditText
+                                android:id="@+id/etWorkingWith"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:enabled="true"
+                                android:textSize="14dp"
+                                android:hint="select  Income"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/transparent_edittext_border" />
+
+
 
                             <Spinner
                                 android:id="@+id/UserWorkingWith"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
+                                android:layout_weight=".2"
                                 android:layout_height="30dp"
                                 android:clickable="true"
                                 android:focusable="true"
@@ -166,7 +193,8 @@
                                 android:importantForAutofill="no"
                                 android:maxLines="1"
                                 app:showSearch="true"
-                                app:sort="true" />
+                                app:sort="true"
+                                tools:ignore="NestedWeights" />
 
 
                         </LinearLayout>
@@ -194,12 +222,24 @@
                             android:layout_marginTop="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/bg_edit_text"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             tools:ignore="UselessParent">
+
+                            <EditText
+                                android:id="@+id/etWorkingAs"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:enabled="true"
+                                android:textSize="14dp"
+                                android:hint="Working As"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/transparent_edittext_border" />
 
                             <Spinner
                                 android:id="@+id/UserWorkingAs"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
+                                android:layout_weight=".2"
                                 android:layout_height="30dp"
                                 android:clickable="true"
                                 android:focusable="true"
@@ -246,12 +286,25 @@
                             android:layout_marginTop="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/bg_edit_text"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             tools:ignore="UselessParent">
+
+                            <EditText
+                                android:id="@+id/etCountry"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:enabled="true"
+                                android:textSize="14dp"
+                                android:hint="Country"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/transparent_edittext_border" />
+
 
                             <Spinner
                                 android:id="@+id/etAddUserCurrentResidence"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
+                                android:layout_weight=".2"
                                 android:layout_height="30dp"
                                 android:clickable="true"
                                 android:focusable="true"
@@ -287,13 +340,24 @@
                             android:layout_marginTop="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/bg_edit_text"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             tools:ignore="UselessParent">
+                            <EditText
+                                android:id="@+id/etState"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:enabled="true"
+                                android:textSize="14dp"
+                                android:hint="State"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/transparent_edittext_border" />
 
                             <Spinner
                                 android:id="@+id/etAddUserStateOfResidence"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="30dp"
+                                android:layout_weight=".2"
                                 android:clickable="true"
                                 android:focusable="true"
                                 android:focusableInTouchMode="false"
@@ -328,14 +392,25 @@
                             android:layout_marginTop="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/bg_edit_text"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             tools:ignore="UselessParent">
+                            <EditText
+                                android:id="@+id/etCity"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:enabled="true"
+                                android:textSize="14dp"
+                                android:hint="City"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/transparent_edittext_border" />
 
                             <Spinner
                                 android:id="@+id/etAddUserResidenceStatus"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="30dp"
                                 android:clickable="true"
+                                android:layout_weight=".2"
                                 android:focusable="true"
                                 android:focusableInTouchMode="false"
                                 android:importantForAutofill="no"

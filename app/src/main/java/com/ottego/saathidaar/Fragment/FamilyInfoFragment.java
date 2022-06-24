@@ -1,4 +1,4 @@
-package com.ottego.saathidaar;
+package com.ottego.saathidaar.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,20 +18,23 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.FamilyProfileActivity;
 import com.ottego.saathidaar.Model.MemberProfileModel;
-import com.ottego.saathidaar.databinding.FragmentPersonalInfoBinding;
-import com.ottego.saathidaar.databinding.FragmentProfessionalInfoBinding;
+import com.ottego.saathidaar.MySingleton;
+import com.ottego.saathidaar.Utils;
+import com.ottego.saathidaar.databinding.FragmentFamilyInfoBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class ProfessionalInfoFragment extends Fragment {
-    public static String url = Utils.memberUrl + "get-details/11";
-   FragmentProfessionalInfoBinding b;
-    Context context;
-    SessionManager sessionManager;
+public class FamilyInfoFragment extends Fragment {
+FragmentFamilyInfoBinding b;
     MemberProfileModel model;
+    Context context;
+    public static String url = Utils.memberUrl + "get-details/11";
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -39,13 +42,14 @@ public class ProfessionalInfoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ProfessionalInfoFragment() {
+    public FamilyInfoFragment() {
         // Required empty public constructor
     }
 
+
     // TODO: Rename and change types and number of parameters
-    public static ProfessionalInfoFragment newInstance(String param1, String param2) {
-        ProfessionalInfoFragment fragment = new ProfessionalInfoFragment();
+    public static FamilyInfoFragment newInstance(String param1, String param2) {
+        FamilyInfoFragment fragment = new FamilyInfoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,12 +69,21 @@ public class ProfessionalInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        b= FragmentProfessionalInfoBinding.inflate(getLayoutInflater());
+        b = FragmentFamilyInfoBinding.inflate(inflater, container, false);
         context=getContext();
-        sessionManager=new SessionManager(context);
         listener();
         getMemberData();
         return b.getRoot();
+    }
+
+    private void listener() {
+        b.ivCameraEditFamilyInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(), FamilyProfileActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getMemberData() {
@@ -109,25 +122,15 @@ public class ProfessionalInfoFragment extends Fragment {
     }
 
     private void setData() {
-        b.tvUserHigherEdu.setText(model.highest_qualification);
-        b.tvUserCollegeName.setText(model.college_attended);
-        b.tvUserIncome.setText(model.annual_income);
-        b.tvUserWorkingWitht.setText(model.working_with);
-        b.tvWorkingAs.setText(model.working_as);
-        b.tvUserCurrentResi.setText(model.country_name);
-        b.tvUserStateOfResidence.setText(model.state_name);
-        b.tvUserResidenceStatus.setText(model.city_name);
-        b.tvUserPinCode.setText(model.pincode);
-    }
-
-    private void listener() {
-        b.ivCameraEducationInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getContext(),ProfessionalDetailEditActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        b.tvUserFatherStatus.setText(model.father_status);
+        b.tvUserMotherStatus.setText(model.marital_status);
+        b.tvUserFamilyLocation.setText(model.family_location);
+        b.tvUserNativePlace.setText(model.native_place);
+        int brother=(Integer.parseInt(model.married_male) + Integer.parseInt(model.unmarried_male));
+        int sister=(Integer.parseInt(model.married_female) + Integer.parseInt(model.unmarried_female));
+        b.tvUserBrothers.setText(brother+","+model.married_male+" : Married"+","+model.unmarried_male+" : Unmarried");
+        b.tvUserSisters.setText(sister+","+model.married_female+" : Married"+","+model.unmarried_female+" : Unmarried");
+        b.tvUserFamilyType.setText(model.family_type);
+        b.tvUserFamilyAffluence.setText(model.family_affluence);
     }
 }

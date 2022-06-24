@@ -2,24 +2,26 @@ package com.ottego.saathidaar;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.tabs.TabLayout;
 import com.ottego.saathidaar.Adapter.ProfileViewPager;
-import com.ottego.saathidaar.Adapter.ViewPageAdapter;
+import com.ottego.saathidaar.Fragment.FamilyInfoFragment;
+import com.ottego.saathidaar.Fragment.PersonalInfoFragment;
+import com.ottego.saathidaar.Fragment.ProfessionalInfoFragment;
 
 
 public class MyProfileFragment extends Fragment {
     TabLayout tabLayout;
     ViewPager viewPager;
-    TextView tvUserName,tvUserEmail;
+    TextView tvUserName, tvUserEmail;
     SessionManager sessionManager;
     Context context;
     // TODO: Rename parameter arguments, choose names that match
@@ -59,21 +61,36 @@ public class MyProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_profile, container, false);
         context = getContext();
-        sessionManager=new SessionManager(context);
-tvUserEmail=view.findViewById(R.id.tvUserEmail);
-        tvUserName=view.findViewById(R.id.tvUserName);
-        tabLayout=view.findViewById(R.id.tlProfile);
-      viewPager=view.findViewById(R.id.vpMyProfile);
+        sessionManager = new SessionManager(context);
+        tvUserEmail = view.findViewById(R.id.tvUserEmail);
+        tvUserName = view.findViewById(R.id.tvUserName);
+        tabLayout = view.findViewById(R.id.tlProfile);
+        viewPager = view.findViewById(R.id.vpMyProfile);
+
         tabLayout.addTab(tabLayout.newTab().setText("Personal Info"));
         tabLayout.addTab(tabLayout.newTab().setText("Family Info"));
         tabLayout.addTab(tabLayout.newTab().setText("Professional Info"));
 
-       tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        ProfileViewPager adapter = new ProfileViewPager(getContext(), requireActivity().getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(adapter);
+//        ProfileViewPager adapter = new ProfileViewPager(getContext(), requireActivity().getSupportFragmentManager(), tabLayout.getTabCount());
+//        viewPager.setAdapter(adapter);
 
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        // viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+
+        setPreLoadData();
+        return view;
+
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        setUpViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
+
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
@@ -93,10 +110,15 @@ tvUserEmail=view.findViewById(R.id.tvUserEmail);
 
             }
         });
+    }
 
-setPreLoadData();
-        return view;
+    private void setUpViewPager(ViewPager viewPager) {
 
+        ProfileViewPager adapter = new ProfileViewPager(getChildFragmentManager());
+        adapter.addFragment(new PersonalInfoFragment(), "Personal Info");
+        adapter.addFragment(new FamilyInfoFragment(), "family Info");
+        adapter.addFragment(new ProfessionalInfoFragment(), "Professional Info");
+        viewPager.setAdapter(adapter);
     }
 
     private void setPreLoadData() {

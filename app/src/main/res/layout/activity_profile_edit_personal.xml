@@ -214,6 +214,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:enabled="true"
                     android:hint="select  your Age"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/transparent_edittext_border" />
@@ -262,6 +263,7 @@
                     android:layout_weight="1"
                     android:hint="select  Marital Status"
                     android:layout_marginStart="8dp"
+                    android:enabled="false"
                     android:background="@drawable/transparent_edittext_border"
                     tools:ignore="Suspicious0dp" />
 
@@ -328,6 +330,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:enabled="true"
                     android:hint="select  your Height"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/transparent_edittext_border" />
@@ -388,6 +391,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:enabled="true"
                     android:hint="select  Blood Group"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/transparent_edittext_border" />
@@ -434,6 +438,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:enabled="true"
                     android:hint="select  Diet"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/transparent_edittext_border" />
@@ -511,14 +516,16 @@
                 android:background="@drawable/bg_edit_text"
                 android:orientation="horizontal"
                 tools:ignore="UselessParent">
+
                 <EditText
                     android:id="@+id/etHealth"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:hint="select  Blood Group"
                     android:layout_marginStart="8dp"
+                    android:enabled="true"
+                    android:layout_weight="1"
                     android:background="@drawable/transparent_edittext_border"
+                    android:hint="Health Details"
                     tools:ignore="Suspicious0dp" />
 
                 <Spinner

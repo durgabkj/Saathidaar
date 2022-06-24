@@ -1,16 +1,16 @@
-package com.ottego.saathidaar;
+package com.ottego.saathidaar.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
-
-import androidx.fragment.app.Fragment;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -19,22 +19,22 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.MemberProfileModel;
-import com.ottego.saathidaar.databinding.FragmentPersonalInfoBinding;
+import com.ottego.saathidaar.MySingleton;
+import com.ottego.saathidaar.ProfessionalDetailEditActivity;
+import com.ottego.saathidaar.SessionManager;
+import com.ottego.saathidaar.Utils;
+import com.ottego.saathidaar.databinding.FragmentProfessionalInfoBinding;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class PersonalInfoFragment extends Fragment {
-    FragmentPersonalInfoBinding binding;
+public class ProfessionalInfoFragment extends Fragment {
     public static String url = Utils.memberUrl + "get-details/11";
+   FragmentProfessionalInfoBinding b;
     Context context;
     SessionManager sessionManager;
     MemberProfileModel model;
-    String id = "";
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -42,13 +42,13 @@ public class PersonalInfoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public PersonalInfoFragment() {
+    public ProfessionalInfoFragment() {
         // Required empty public constructor
     }
 
     // TODO: Rename and change types and number of parameters
-    public static PersonalInfoFragment newInstance(String param1, String param2) {
-        PersonalInfoFragment fragment = new PersonalInfoFragment();
+    public static ProfessionalInfoFragment newInstance(String param1, String param2) {
+        ProfessionalInfoFragment fragment = new ProfessionalInfoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,24 +68,12 @@ public class PersonalInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentPersonalInfoBinding.inflate(getLayoutInflater());
-        context = getContext();
-        sessionManager = new SessionManager(getContext());
+        b= FragmentProfessionalInfoBinding.inflate(getLayoutInflater());
+        context=getContext();
+        sessionManager=new SessionManager(context);
         listener();
         getMemberData();
-        return binding.getRoot();
-    }
-    private void listener() {
-        binding.ivCameraEditPersonalInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ProfileEditPersonalActivity.class);
-                intent.putExtra("data", new Gson().toJson(model));
-                context.startActivity(intent);
-                startActivity(intent);
-            }
-        });
-
+        return b.getRoot();
     }
 
     private void getMemberData() {
@@ -101,7 +89,7 @@ public class PersonalInfoFragment extends Fragment {
                         Gson gson = new Gson();
                         model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
                         setData();
-                        }else {
+                    }else {
                         Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }
 
@@ -124,24 +112,25 @@ public class PersonalInfoFragment extends Fragment {
     }
 
     private void setData() {
-        binding.tvUserAge.setText(model.age);
-        binding.tvDob.setText(model.date_of_birth);
-        binding.tvUserMaritalStatus.setText(model.marital_status);
-        binding.tvUseNoOfChild.setText(model.no_of_children);
-
-        binding.tvUserHeight.setText(model.height);
-        binding.tvBloodGroup.setText(model.blood_group);
-        binding.tvUserDiet.setText(model.lifestyles);
-
-        binding.tvUserMotherTongue.setText(model.mother_tounge);
-        binding.tvHealthDetail.setText(model.health_info);
-        binding.tvUserReligion.setText(model.religion_name);
-
-        binding.tvUserCommunity.setText(model.caste_name);
-        binding.tvUserSubCommunity.setText(model.subcaste);
-        binding.tvUserGotra.setText(model.gothra);
-
+        b.tvUserHigherEdu.setText(model.highest_qualification);
+        b.tvUserCollegeName.setText(model.college_attended);
+        b.tvUserIncome.setText(model.annual_income);
+        b.tvUserWorkingWitht.setText(model.working_with);
+        b.tvWorkingAs.setText(model.working_as);
+        b.tvUserCurrentResi.setText(model.country_name);
+        b.tvUserStateOfResidence.setText(model.state_name);
+        b.tvUserResidenceStatus.setText(model.city_name);
+        b.tvUserPinCode.setText(model.pincode);
     }
 
+    private void listener() {
+        b.ivCameraEducationInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(), ProfessionalDetailEditActivity.class);
+                startActivity(intent);
+            }
+        });
 
+    }
 }

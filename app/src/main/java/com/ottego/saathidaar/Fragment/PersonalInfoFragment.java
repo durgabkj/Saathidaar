@@ -1,16 +1,15 @@
-package com.ottego.saathidaar;
+package com.ottego.saathidaar.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -19,18 +18,23 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.MemberProfileModel;
-import com.ottego.saathidaar.databinding.FragmentFamilyInfoBinding;
+import com.ottego.saathidaar.MySingleton;
+import com.ottego.saathidaar.ProfileEditPersonalActivity;
+import com.ottego.saathidaar.SessionManager;
+import com.ottego.saathidaar.Utils;
 import com.ottego.saathidaar.databinding.FragmentPersonalInfoBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class FamilyInfoFragment extends Fragment {
-FragmentFamilyInfoBinding b;
-    MemberProfileModel model;
-    Context context;
+public class PersonalInfoFragment extends Fragment {
+    FragmentPersonalInfoBinding binding;
     public static String url = Utils.memberUrl + "get-details/11";
+    Context context;
+    SessionManager sessionManager;
+    MemberProfileModel model;
+    String id = "";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -40,14 +44,13 @@ FragmentFamilyInfoBinding b;
     private String mParam1;
     private String mParam2;
 
-    public FamilyInfoFragment() {
+    public PersonalInfoFragment() {
         // Required empty public constructor
     }
 
-
     // TODO: Rename and change types and number of parameters
-    public static FamilyInfoFragment newInstance(String param1, String param2) {
-        FamilyInfoFragment fragment = new FamilyInfoFragment();
+    public static PersonalInfoFragment newInstance(String param1, String param2) {
+        PersonalInfoFragment fragment = new PersonalInfoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,21 +70,24 @@ FragmentFamilyInfoBinding b;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        b = FragmentFamilyInfoBinding.inflate(inflater, container, false);
-        context=getContext();
+        binding = FragmentPersonalInfoBinding.inflate(getLayoutInflater());
+        context = getContext();
+        sessionManager = new SessionManager(getContext());
         listener();
         getMemberData();
-        return b.getRoot();
+        return binding.getRoot();
     }
-
     private void listener() {
-        b.ivCameraEditFamilyInfo.setOnClickListener(new View.OnClickListener() {
+        binding.ivCameraEditPersonalInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getContext(),FamilyProfileActivity.class);
+                Intent intent = new Intent(getContext(), ProfileEditPersonalActivity.class);
+                intent.putExtra("data", new Gson().toJson(model));
+                context.startActivity(intent);
                 startActivity(intent);
             }
         });
+
     }
 
     private void getMemberData() {
@@ -97,7 +103,7 @@ FragmentFamilyInfoBinding b;
                         Gson gson = new Gson();
                         model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
                         setData();
-                    }else {
+                        }else {
                         Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }
 
@@ -120,15 +126,24 @@ FragmentFamilyInfoBinding b;
     }
 
     private void setData() {
-        b.tvUserFatherStatus.setText(model.father_status);
-        b.tvUserMotherStatus.setText(model.marital_status);
-        b.tvUserFamilyLocation.setText(model.family_location);
-        b.tvUserNativePlace.setText(model.native_place);
-        int brother=(Integer.parseInt(model.married_male) + Integer.parseInt(model.unmarried_male));
-        int sister=(Integer.parseInt(model.married_female) + Integer.parseInt(model.unmarried_female));
-        b.tvUserBrothers.setText(brother+","+model.married_male+" : Married"+","+model.unmarried_male+" : Unmarried");
-        b.tvUserSisters.setText(sister+","+model.married_female+" : Married"+","+model.unmarried_female+" : Unmarried");
-        b.tvUserFamilyType.setText(model.family_type);
-        b.tvUserFamilyAffluence.setText(model.family_affluence);
+        binding.tvUserAge.setText(model.age);
+        binding.tvDob.setText(model.date_of_birth);
+        binding.tvUserMaritalStatus.setText(model.marital_status);
+        binding.tvUseNoOfChild.setText(model.no_of_children);
+
+        binding.tvUserHeight.setText(model.height);
+        binding.tvBloodGroup.setText(model.blood_group);
+        binding.tvUserDiet.setText(model.lifestyles);
+
+        binding.tvUserMotherTongue.setText(model.mother_tounge);
+        binding.tvHealthDetail.setText(model.health_info);
+        binding.tvUserReligion.setText(model.religion_name);
+
+        binding.tvUserCommunity.setText(model.caste_name);
+        binding.tvUserSubCommunity.setText(model.subcaste);
+        binding.tvUserGotra.setText(model.gothra);
+
     }
+
+
 }

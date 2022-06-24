@@ -100,7 +100,7 @@ public class PartnerPreferenceFragment extends Fragment {
          multipleSelectionMotherTongue();
         multipleSelectionQualification();
         multipleMaritalStatusSelectionCheckBox();
-       // multipleReligionSelectionCheckBox();
+      //  multipleReligionSelectionCheckBox();
         multi_SelectionmultiProfessionArea();
         incomeSelection();
         Height();
@@ -108,29 +108,28 @@ public class PartnerPreferenceFragment extends Fragment {
         return view;
     }
 
-    private void multipleReligionSelectionCheckBox() {
-        multi_SelectionReligion.setItems(getItems());
-        multi_SelectionReligion.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(View view, boolean isSelected, int position) {
-//                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onSelectionCleared() {
-                Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+//    private void multipleReligionSelectionCheckBox() {
+//        multi_SelectionReligion.setItems(getItems());
+//        multi_SelectionReligion.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(View view, boolean isSelected, int position) {
+////                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
+//
+//            }
+//
+//            @Override
+//            public void onSelectionCleared() {
+//                Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
     // dropDown With Search
-    private List getItems() {
-        ArrayList<String> countryList = new ArrayList<>();
-//        for (char i = 'A'; i <= 'Z'; i++)
-        countryList.add("dxcfvgbhnj");
-//            alphabetsList.add(Character.toString(i));
-        return countryList;
-    }
+//    private List getItems() {
+//        ArrayList<String> countryList = new ArrayList<>();
+////        for (char i = 'A'; i <= 'Z'; i++)
+////            alphabetsList.add(Character.toString(i));
+//        return countryList;
+//    }
 
     private void incomeSelection() {
             String[] income = getResources().getStringArray(R.array.Income);

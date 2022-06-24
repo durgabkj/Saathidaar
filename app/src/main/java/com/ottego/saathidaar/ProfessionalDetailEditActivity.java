@@ -43,6 +43,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     String relationWith = "";
     String callTime = "";
     String displatOption = "";
+    public  String url=Utils.memberUrl+"app/basic-lifestyles/update/";
     public String countryUrl = Utils.cityUrl + "country";
     public String stateUrl = Utils.cityUrl + "state-name/by/country-name/";
     public String cityUrl = Utils.cityUrl + "city-name/by/state-name/";
@@ -51,6 +52,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     ArrayList<String> stateList = new ArrayList<>();
     ArrayAdapter<String> stateAdapter;
     String countryName;
+SessionManager sessionManager;
 
     ArrayList<String> cityList = new ArrayList<>();
     ArrayAdapter<String> cityAdapter;
@@ -62,6 +64,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
         b = ActivityProfessionalDetailEditBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
         context = ProfessionalDetailEditActivity.this;
+        sessionManager=new SessionManager(context);
         userAnnualIncome();
         userWorkAs();
         UserWorkingWith();
@@ -357,7 +360,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
         b.btnSaveData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //submitForm();
+                submitForm();
             }
         });
     }
@@ -390,7 +393,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
         params.put("ethnic_corigin", origin);
         params.put("country_name", country);
         Log.e("params", String.valueOf(params));
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "url", new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url+sessionManager.getMemberId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

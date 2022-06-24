@@ -802,7 +802,7 @@ MemberProfileModel model;
     private void getReligionList(String url) {
         Log.e("url", url);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                url, null, new Response.Listener<JSONObject>() {
+                ReligionUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf(response));
@@ -1056,37 +1056,37 @@ MemberProfileModel model;
 
     private void HealthDetails() {
         String[] healthList = getResources().getStringArray(R.array.Health);
-        ArrayAdapter healthAdapter = new ArrayAdapter(context, R.layout.dropdown_item, healthList)
-        {
-            @Override
-            public boolean isEnabled(int position) {
-            if (position == 0) {
-                return false;
-            } else {
-                return true;
-            }
-        }
-        };
+        ArrayAdapter healthAdapter = new ArrayAdapter(context, R.layout.dropdown_item, healthList);
+//        {
+//            @Override
+//            public boolean isEnabled(int position) {
+//            if (position == 0) {
+//                return false;
+//            } else {
+//                return true;
+//            }
+//        }
+//        };
         //Setting the ArrayAdapter data on the Spinner
 
         b.spUserHealthDetail.setAdapter(healthAdapter);
-        b.spUserHealthDetail.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // First item will be gray
-                if (parent.getItemAtPosition(position).equals("Select")) {
-                    onNothingSelected(parent);
-                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.gray_dark));
-                } else {
-                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.black));
-
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+//        b.spUserHealthDetail.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                // First item will be gray
+//                if (parent.getItemAtPosition(position).equals("Select")) {
+//                    onNothingSelected(parent);
+//                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.gray_dark));
+//                } else {
+//                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.black));
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//            }
+//        });
     }
 
     private void limitWord() {
@@ -1206,36 +1206,36 @@ MemberProfileModel model;
 
     private void bloodGroup() {
         String[] bloodGroup = getResources().getStringArray(R.array.BloodGroup);
-        ArrayAdapter blood = new ArrayAdapter(context, R.layout.dropdown_item, bloodGroup)
-        {
-            @Override
-            public boolean isEnabled(int position) {
-                if (position == 0) {
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-        };
+        ArrayAdapter blood = new ArrayAdapter(context, R.layout.dropdown_item, bloodGroup);
+//        {
+//            @Override
+//            public boolean isEnabled(int position) {
+//                if (position == 0) {
+//                    return false;
+//                } else {
+//                    return true;
+//                }
+//            }
+//        };
         //Setting the ArrayAdapter data on the Spinner
         b.spUserBloodGroup.setAdapter(blood);
-        b.spUserBloodGroup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // First item will be gray
-                if (parent.getItemAtPosition(position).equals("Select")) {
-                    onNothingSelected(parent);
-                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.gray_dark));
-                } else {
-                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.black));
-
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+//        b.spUserBloodGroup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                // First item will be gray
+//                if (parent.getItemAtPosition(position).equals("Select")) {
+//                    onNothingSelected(parent);
+//                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.gray_dark));
+//                } else {
+//                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.black));
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//            }
+//        });
 
     }
 

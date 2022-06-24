@@ -63,16 +63,30 @@
                             android:layout_centerInParent="true"
                             android:layout_marginTop="5dp"
                             android:background="@drawable/bg_edit_text"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:layout_weight="1"
                             tools:ignore="UselessParent">
 
+                            <EditText
+                                android:id="@+id/etFStatus"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:enabled="true"
+                                android:textSize="12sp"
+                                android:hint="select Father Status"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/transparent_edittext_border" />
+
+
+
                             <Spinner
                                 android:id="@+id/UserFatherStatus"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="30dp"
                                 android:clickable="true"
                                 android:focusable="true"
+                                android:layout_weight=".2"
                                 android:focusableInTouchMode="false"
                                 android:importantForAutofill="no"
                                 android:maxLines="1"
@@ -185,16 +199,30 @@
                             android:layout_centerInParent="true"
                             android:layout_marginTop="5dp"
                             android:background="@drawable/bg_edit_text"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:layout_weight="1"
                             tools:ignore="UselessParent">
 
+
+                            <EditText
+                                android:id="@+id/etMStatus"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:enabled="true"
+                                android:textSize="12sp"
+                                android:hint="select Mother Status"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/transparent_edittext_border" />
+
+
                             <Spinner
                                 android:id="@+id/UserMotherStatus"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="30dp"
                                 android:clickable="true"
                                 android:focusable="true"
+                                android:layout_weight=".2"
                                 android:focusableInTouchMode="false"
                                 android:importantForAutofill="no"
                                 android:maxLines="1"
@@ -568,15 +596,28 @@
                             android:layout_centerInParent="true"
                             android:layout_marginTop="5dp"
                             android:background="@drawable/bg_edit_text"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:layout_weight="1"
                             tools:ignore="UselessParent">
 
+                            <EditText
+                                android:id="@+id/etF_Type"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:enabled="true"
+                                android:textSize="12sp"
+                                android:hint="select Family Type"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/transparent_edittext_border" />
+
+
                             <Spinner
                                 android:id="@+id/UserFamilyType"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="30dp"
                                 android:clickable="true"
+                                android:layout_weight=".2"
                                 android:focusable="true"
                                 android:focusableInTouchMode="false"
                                 android:importantForAutofill="no"
@@ -611,15 +652,28 @@
                             android:layout_centerInParent="true"
                             android:layout_marginTop="5dp"
                             android:background="@drawable/bg_edit_text"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:layout_weight="1"
                             tools:ignore="UselessParent">
 
+
+                            <EditText
+                                android:id="@+id/etF_Affluence"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:enabled="true"
+                                android:textSize="12sp"
+                                android:hint="select Family Affluence"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/transparent_edittext_border" />
+
                             <Spinner
                                 android:id="@+id/UserFamilyAffluence"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="30dp"
                                 android:clickable="true"
+                                android:layout_weight=".2"
                                 android:focusable="true"
                                 android:focusableInTouchMode="false"
                                 android:importantForAutofill="no"
