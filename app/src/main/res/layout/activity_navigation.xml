@@ -39,7 +39,7 @@
         app:tabTextAppearance="@style/TextAppearance.AppCompat.Caption"
         app:tabTextColor="#F8000000" />
 
-    <androidx.viewpager.widget.ViewPager
+    <com.ottego.saathidaar.SwipeDisabledPager
         android:id="@+id/vpMatch"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

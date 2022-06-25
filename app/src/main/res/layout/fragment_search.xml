@@ -64,6 +64,7 @@
                         android:editable="false"
                         android:enabled="true"
                         android:hint="From"
+                        android:textSize="12dp"
                         android:layout_marginStart="8dp"
                         android:background="@drawable/transparent_edittext_border"
                         tools:ignore="Deprecated" />
@@ -115,6 +116,7 @@
                         android:layout_weight="1"
                         android:editable="false"
                         android:hint="To"
+                        android:textSize="12dp"
                         android:layout_marginStart="8dp"
                         android:background="@drawable/transparent_edittext_border"
                         tools:ignore="Deprecated" />
@@ -169,6 +171,7 @@
                         android:layout_weight="1"
                         android:editable="false"
                         android:hint="From"
+                        android:textSize="12dp"
                         android:layout_marginStart="8dp"
                         android:background="@drawable/transparent_edittext_border"
                         tools:ignore="Deprecated" />
@@ -215,6 +218,7 @@
                         android:layout_height="30dp"
                         android:layout_weight="1"
                         android:editable="false"
+                        android:textSize="12dp"
                         android:hint="To"
                         android:layout_marginStart="8dp"
                         android:background="@drawable/transparent_edittext_border"

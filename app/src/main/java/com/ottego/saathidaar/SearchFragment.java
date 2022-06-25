@@ -5,10 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.core.widget.ContentLoadingProgressBar;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,13 +16,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.ottego.multipleselectionspinner.MultipleSelection;
-import com.ottego.saathidaar.databinding.FragmentSearchBinding;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,31 +37,32 @@ import java.util.Map;
 
 
 public class SearchFragment extends Fragment {
-    MultipleSelection multi_SelectionMotherTongueSearch,multi_SelectionCountrySearch,tvMultipleReligionSearch,tvMultipleCastSearch,tvMultipleStateSearch,tvMultipleCitySearch;
+    MultipleSelection multi_SelectionMotherTongueSearch, multi_SelectionCountrySearch, tvMultipleReligionSearch, tvMultipleCastSearch, tvMultipleStateSearch, tvMultipleCitySearch;
     Context context;
-    EditText etFromAgeSearch,etToAgeSearch,etfromHeightSearch,etToHeightSearch;
+    SessionManager sessionManager;
+    String member_id;
+    EditText etFromAgeSearch, etToAgeSearch, etfromHeightSearch, etToHeightSearch;
     // Initialize variables
-    Spinner spMinSearch,spMaxSearch,spFromHeightSearch,spToHeightSearch;
+    Spinner spMinSearch, spMaxSearch, spFromHeightSearch, spToHeightSearch;
     TextView tvMultipleMaritalStatusSearch;
-
+public String SearchUrl=Utils.memberUrl+"search/update/";
     public String ReligionUrl = "http://192.168.1.37:9094/api/get/religion-name";
-    public String countryUrl="http://192.168.1.37:9094/api/get/country";
-    public String castUrl="http://192.168.1.37:9094/api/get/all/cast";
-    public String stateUrl="http://192.168.1.37:9094/api/get/state";
-    public String cityUrl="http://192.168.1.37:9094/api/get/all/city";
+    public String countryUrl = "http://192.168.1.37:9094/api/get/country";
+    public String castUrl = "http://192.168.1.37:9094/api/get/all/cast";
+    public String stateUrl = "http://192.168.1.37:9094/api/get/state";
+    public String cityUrl = "http://192.168.1.37:9094/api/get/all/city";
 
 
-    ArrayList<String> AgeListSearch =new ArrayList<>();
-    ArrayList<String> minListSearch=new ArrayList<>();
-    ArrayList<String> maxListSearch=new ArrayList<>();
-    ArrayAdapter<String> minAdapterSearch,maxAdapterSearch;
-
+    ArrayList<String> AgeListSearch = new ArrayList<>();
+    ArrayList<String> minListSearch = new ArrayList<>();
+    ArrayList<String> maxListSearch = new ArrayList<>();
+    ArrayAdapter<String> minAdapterSearch, maxAdapterSearch;
 
 
     //For MaritalStatus....
     boolean[] selectedMaritalStatus;
     ArrayList<Integer> MaritalStatusList = new ArrayList<>();
-    String[] MaritalStatusArray = {"Never Married","Divorce", "Widowed", "Awaiting Divorce", "Annulled"};
+    String[] MaritalStatusArray = {"Never Married", "Divorce", "Widowed", "Awaiting Divorce", "Annulled"};
 
 
     String fromAge = "";
@@ -112,24 +110,28 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-         View view= inflater.inflate(R.layout.fragment_search, container, false);
-         context =getContext();
-        spMinSearch=view.findViewById(R.id.sp_minSearch);
-        spMaxSearch=view.findViewById(R.id.sp_maxSearch);
-        spFromHeightSearch=view.findViewById(R.id.spFromHeightSearch);
-        spToHeightSearch=view.findViewById(R.id.spToHeightSearch);
-        multi_SelectionMotherTongueSearch=view.findViewById(R.id.multi_SelectionMotherTongueSearch);
-        multi_SelectionCountrySearch=view.findViewById(R.id.multi_SelectionCountrySearch);
-        tvMultipleMaritalStatusSearch=view.findViewById(R.id.tvMultipleMaritalStatusSearch);
-        tvMultipleReligionSearch=view.findViewById(R.id.tvMultipleReligionSearch);
-        tvMultipleCastSearch=view.findViewById(R.id.tvMultipleCastSearch);
-        tvMultipleCitySearch=view.findViewById(R.id.tvMultipleCitySearch);
-        tvMultipleStateSearch=view.findViewById(R.id.tvMultipleStateSearch);
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
 
-        etFromAgeSearch=view.findViewById(R.id.etFromAgeSearch);
-        etToAgeSearch=view.findViewById(R.id.etToAgeSearch);
-        etfromHeightSearch=view.findViewById(R.id.etfromHeightSearch);
-        etToHeightSearch=view.findViewById(R.id.etToHeightSearch);
+       context = getContext();
+       sessionManager=new SessionManager(context);
+        member_id=sessionManager.getMemberId();
+
+        spMinSearch = view.findViewById(R.id.sp_minSearch);
+        spMaxSearch = view.findViewById(R.id.sp_maxSearch);
+        spFromHeightSearch = view.findViewById(R.id.spFromHeightSearch);
+        spToHeightSearch = view.findViewById(R.id.spToHeightSearch);
+        multi_SelectionMotherTongueSearch = view.findViewById(R.id.multi_SelectionMotherTongueSearch);
+        multi_SelectionCountrySearch = view.findViewById(R.id.multi_SelectionCountrySearch);
+        tvMultipleMaritalStatusSearch = view.findViewById(R.id.tvMultipleMaritalStatusSearch);
+        tvMultipleReligionSearch = view.findViewById(R.id.tvMultipleReligionSearch);
+        tvMultipleCastSearch = view.findViewById(R.id.tvMultipleCastSearch);
+        tvMultipleCitySearch = view.findViewById(R.id.tvMultipleCitySearch);
+        tvMultipleStateSearch = view.findViewById(R.id.tvMultipleStateSearch);
+
+        etFromAgeSearch = view.findViewById(R.id.etFromAgeSearch);
+        etToAgeSearch = view.findViewById(R.id.etToAgeSearch);
+        etfromHeightSearch = view.findViewById(R.id.etfromHeightSearch);
+        etToHeightSearch = view.findViewById(R.id.etToHeightSearch);
 
 
         Height();
@@ -142,7 +144,7 @@ public class SearchFragment extends Fragment {
         multipleStateSelectionCheckBox();
         multipleCityCheckBox();
         listener();
-//submitForm();
+        submitForm();
         return view;
     }
 
@@ -151,22 +153,62 @@ public class SearchFragment extends Fragment {
         spToHeightSearch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String myHeight = spFromHeightSearch.getSelectedItem().toString();
+                String myToHeight = spToHeightSearch.getSelectedItem().toString();
 
-                if(myHeight.equals("select"))
-                {
+                if (myToHeight.equals("select")) {
 
-                }else
-                {
-                    etFromAgeSearch.setText(myHeight);
+                } else {
+                    etToHeightSearch.setText(myToHeight);
                 }
                 //
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
+
+        spFromHeightSearch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String myFromHeight = spFromHeightSearch.getSelectedItem().toString();
+
+                if (myFromHeight.equals("select")) {
+
+                } else {
+                    etfromHeightSearch.setText(myFromHeight);
+                }
+                //
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        spMaxSearch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String temp1 = spMaxSearch.getSelectedItem().toString().trim();
+
+                if (temp1.equalsIgnoreCase("19 Years")) {
+                    etToAgeSearch.setText("");
+                } else {
+                    etToAgeSearch.setText(spMaxSearch.getSelectedItem().toString().trim());
+
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 
 
@@ -177,30 +219,28 @@ public class SearchFragment extends Fragment {
         spFromHeightSearch.setAdapter(aa);
         spToHeightSearch.setAdapter(aa);
     }
-    private void SpinnerAge() {
 
+    private void SpinnerAge() {
         // use for loop
-        for(int i=18;i<=70;i++)
-        {
+        for (int i = 18; i <= 70; i++) {
             // add values in price list
-            AgeListSearch.add(" "+i+" Years");
+
+            AgeListSearch.add(" " + i + " Years");
             // check condition
-            if(i>1)
-            {
+            if (i > 1) {
                 // Not include first value  in max list
-                maxListSearch.add(i+" Years");
+                maxListSearch.add(i + " Years");
             }
 
-            if(i!=70)
-            {
+            if (i != 70) {
                 // Not include  last value in min list
-                minListSearch.add(i+" Years");
+                minListSearch.add(i + " Years");
             }
         }
 
         // Initialize adapter
-        minAdapterSearch=new ArrayAdapter<>(getContext(),R.layout.dropdown_item,minListSearch);
-        maxAdapterSearch=new ArrayAdapter<>(getContext(),R.layout.dropdown_item,maxListSearch);
+        minAdapterSearch = new ArrayAdapter<>(getContext(), R.layout.dropdown_item, minListSearch);
+        maxAdapterSearch = new ArrayAdapter<>(getContext(), R.layout.dropdown_item, maxListSearch);
 
         // set adapter
         spMinSearch.setAdapter(minAdapterSearch);
@@ -213,14 +253,25 @@ public class SearchFragment extends Fragment {
                 // clear max list
                 maxListSearch.clear();
                 // use for loop
-                for(int i = position+1; i< AgeListSearch.size(); i++)
-                {
+                for (int i = position + 1; i < AgeListSearch.size(); i++) {
                     // add values in max list
                     maxListSearch.add(AgeListSearch.get(i));
                 }
+                String temp = spMinSearch.getSelectedItem().toString().trim();
+                if (temp.equalsIgnoreCase("18 Years")) {
+                    etFromAgeSearch.setText("");
+                    etToAgeSearch.setText("");
+                } else {
+                    etFromAgeSearch.setText(spMinSearch.getSelectedItem().toString().trim());
+                    etToAgeSearch.setText(spMaxSearch.getSelectedItem().toString().trim());
+                }
+
+
                 // notify adapter
                 maxAdapterSearch.notifyDataSetChanged();
+
             }
+
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -280,7 +331,7 @@ public class SearchFragment extends Fragment {
         motherTongueList.add("Sindhi");
         motherTongueList.add("Other");
 
-Log.e("mother Tongue", String.valueOf(motherTongueList));
+        Log.e("mother Tongue", String.valueOf(motherTongueList));
         return motherTongueList;
     }
 
@@ -383,6 +434,7 @@ Log.e("mother Tongue", String.valueOf(motherTongueList));
             }
         });
     }
+
     // dropDown With Search
     private List getReligionItems() {
         ArrayList<String> religionList = new ArrayList<>();
@@ -437,6 +489,7 @@ Log.e("mother Tongue", String.valueOf(motherTongueList));
             }
         });
     }
+
     // dropDown With Search
     private List getCastItems() {
         ArrayList<String> castList = new ArrayList<>();
@@ -476,56 +529,57 @@ Log.e("mother Tongue", String.valueOf(motherTongueList));
 
 
     private void multipleCountrySelectionCheckBox() {
-            multi_SelectionCountrySearch.setItems(getCountryItems());
+        multi_SelectionCountrySearch.setItems(getCountryItems());
         multi_SelectionCountrySearch.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(View view, boolean isSelected, int position) {
+            @Override
+            public void onItemSelected(View view, boolean isSelected, int position) {
 //                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
 
-                }
+            }
 
-                @Override
-                public void onSelectionCleared() {
-                    Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-        // dropDown With Search
-        private List getCountryItems() {
-            ArrayList<String> countryList = new ArrayList<>();
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                    countryUrl, null, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    Log.e("response", String.valueOf(response));
-                    try {
-                        String code = response.getString("results");
-                        if (code.equalsIgnoreCase("1")) {
-                            JSONArray jsonArray = response.getJSONArray("country");
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                                String country = jsonObject1.getString("country_name");
-                                countryList.add(country);
-                                Log.e("country-list", String.valueOf(countryList));
-                            }
+            @Override
+            public void onSelectionCleared() {
+                Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    // dropDown With Search
+    private List getCountryItems() {
+        ArrayList<String> countryList = new ArrayList<>();
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                countryUrl, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf(response));
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        JSONArray jsonArray = response.getJSONArray("country");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String country = jsonObject1.getString("country_name");
+                            countryList.add(country);
+                            Log.e("country-list", String.valueOf(countryList));
                         }
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
                     }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
-                }
-            });
-            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
 //            alphabetsList.add(Character.toString(i));
-            return countryList;
-        }
+        return countryList;
+    }
 
     private void multipleStateSelectionCheckBox() {
         tvMultipleStateSearch.setItems(getStateItems());
@@ -542,6 +596,7 @@ Log.e("mother Tongue", String.valueOf(motherTongueList));
             }
         });
     }
+
     // dropDown With Search
     private List getStateItems() {
         ArrayList<String> stateList = new ArrayList<>();
@@ -633,58 +688,52 @@ Log.e("mother Tongue", String.valueOf(motherTongueList));
         return cityList;
     }
 
-//    private void submitForm() {
-//
-//
-//
-//
-//
-//        Map<String, String> params = new HashMap<String, String>();
-//        params.put("firstName", firstName);
-//        params.put("lastName", lastName);
-//        params.put("email", email);
-//        params.put("gender", gender);
-//        params.put("phone", phone);
-//        params.put("role", Utils.role_user);
-//        params.put("password", password);
-//        params.put("profilecreatedby", profilecreatedby);
-//        Log.e("params", String.valueOf(params));
-//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, registerurl, new JSONObject(params),
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        Log.e("response", String.valueOf((response)));
-//                        try {
-//                            String code = response.getString("result");
-//                            if (code.equalsIgnoreCase("1")) {
-////                                    Gson gson = new Gson();
-////                                    UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);
-////                                   // sessionManager.createSUserDetails(sessionModel);
-//                                //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
-//                                Intent intent = new Intent(context, OtpVerificationActivity.class);
-//                                intent.putExtra("mobile", phone);
-////                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                startActivity(intent);
-//                            } else {
-//                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-//                            }
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        if (null != error.networkResponse) {
-//                            Log.e("Error response", String.valueOf(error));
-//                        }
-//                    }
-//                });
-//
-//        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//        MySingleton.myGetMySingleton(context).myAddToRequest(request);
-//    }
+    private void submitForm() {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("search_from_age", fromAge);
+        params.put("search_to_age", toAge);
+        params.put("search_from_height", fromHeight);
+        params.put("search_to_height", toHeight);
+        params.put("search_marital_status", maritalStatus);
+        params.put("search_mother_tongue",motherTongue);
+        params.put("search_cast", cast);
+        params.put("member_id", sessionManager.getMemberId());
+        Log.e("params", String.valueOf(params));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, SearchUrl+member_id, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("response", String.valueOf((response)));
+                        try {
+                            String code = response.getString("result");
+                            if (code.equalsIgnoreCase("1")) {
+//                                    Gson gson = new Gson();
+//                                    UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);
+//                                   // sessionManager.createSUserDetails(sessionModel);
+                                //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+                                Intent intent = new Intent(context, OtpVerificationActivity.class);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
+
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+    }
 
 }

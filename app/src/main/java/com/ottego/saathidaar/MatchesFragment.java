@@ -1,25 +1,26 @@
 package com.ottego.saathidaar;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ScrollView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.ottego.saathidaar.databinding.FragmentMatchesBinding;
 
 
 public class MatchesFragment extends Fragment {
-FragmentMatchesBinding b;
-    NewMatchesFragment newMatchesFragment =new NewMatchesFragment();
-    MyMatchFragment myMatchFragment =new MyMatchFragment();
-    TodayMatchFragment todayMatchFragment =new TodayMatchFragment();
-    ShortListFragment shortListFragment=new ShortListFragment();
-    SearchFragment searchFragment= new SearchFragment();
+    FragmentMatchesBinding b;
+    NewMatchesFragment newMatchesFragment = new NewMatchesFragment();
+    MyMatchFragment myMatchFragment = new MyMatchFragment();
+    TodayMatchFragment todayMatchFragment = new TodayMatchFragment();
+    ShortListFragment shortListFragment = new ShortListFragment();
+    SearchFragment searchFragment = new SearchFragment();
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -54,14 +55,26 @@ FragmentMatchesBinding b;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        b=FragmentMatchesBinding.inflate(getLayoutInflater());
+        b = FragmentMatchesBinding.inflate(getLayoutInflater());
+
+//scroll auto
+       // b.hsvMatch.fullScroll(ScrollView.FOCUS_LEFT);
 
 
-        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fcvNewMatches,newMatchesFragment);
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                b.TodayMatch.performClick();
+            }
+        }, 1000);
+
+
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fcvNewMatches, newMatchesFragment);
         fragmentTransaction.commit();
-listener();
+        listener();
         return b.getRoot();
     }
 
@@ -69,10 +82,11 @@ listener();
         b.NewMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                b.hsvMatch.scrollTo((int)b.hsvMatch.getScrollX() + 300, (int)b.hsvMatch.getScrollY());
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                fragmentTransaction.replace(R.id.fcvNewMatches,newMatchesFragment);
+                fragmentTransaction.replace(R.id.fcvNewMatches, newMatchesFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -81,10 +95,12 @@ listener();
         b.MyMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
 
-                fragmentTransaction.replace(R.id.fcvNewMatches,myMatchFragment);
+                b.hsvMatch.scrollTo((int)b.hsvMatch.getScrollX() + 400, (int)b.hsvMatch.getScrollY());
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                fragmentTransaction.replace(R.id.fcvNewMatches, myMatchFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -93,10 +109,11 @@ listener();
         b.TodayMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                b.hsvMatch.scrollTo((int)b.hsvMatch.getScrollX() + 500, (int)b.hsvMatch.getScrollY());
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                fragmentTransaction.replace(R.id.fcvNewMatches,todayMatchFragment);
+                fragmentTransaction.replace(R.id.fcvNewMatches, todayMatchFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -104,9 +121,9 @@ listener();
         b.MatchSortlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fcvNewMatches,shortListFragment);
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fcvNewMatches, shortListFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -115,9 +132,9 @@ listener();
         b.MatchSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fcvNewMatches,searchFragment);
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fcvNewMatches, searchFragment);
                 fragmentTransaction.commit();
             }
         });

@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.ottego.saathidaar.Adapter.ViewPageAdapter;
@@ -15,10 +14,9 @@ public class NavigationActivity extends AppCompatActivity {
     ActivityNavigationBinding b;
 
     TabLayout tabLayout;
-    ViewPager viewPager;
+    SwipeDisabledPager viewPager;
     Context context;
-
-
+    private boolean swipeEnabled;
     int[] tabIcons = {
             R.drawable.logo1,
             R.drawable.ic_couple,
@@ -42,7 +40,7 @@ public class NavigationActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.vpMatch);
 
 
-        FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
         tabLayout.addTab(tabLayout.newTab().setText("Home"));
         tabLayout.addTab(tabLayout.newTab().setText("Matches"));
@@ -51,11 +49,14 @@ public class NavigationActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Premium"));
         setupTabIcons();
 
+//      tabLayout.setSmoothScrollingEnabled(false);
 
+        viewPager.setPagingEnable(false);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         ViewPageAdapter adapter = new ViewPageAdapter(this, getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
+
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
@@ -75,11 +76,11 @@ public class NavigationActivity extends AppCompatActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-              //  viewPager.setCurrentItem(tab.getPosition());
+                //  viewPager.setCurrentItem(tab.getPosition());
             }
         });
 
-
+        tabLayout.getTabAt(1).select();
 //       getSupportFragmentManager().beginTransaction().replace(R.id.fcvSathidaar,sathidarFragment).commit();
 //
 //       b.bnvSaathidar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -112,6 +113,7 @@ public class NavigationActivity extends AppCompatActivity {
 //           }
 //       });
     }
+
 
     private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);

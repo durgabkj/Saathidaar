@@ -84,7 +84,7 @@ public class PersonalInfoFragment extends Fragment {
                 Intent intent = new Intent(getContext(), ProfileEditPersonalActivity.class);
                 intent.putExtra("data", new Gson().toJson(model));
                 context.startActivity(intent);
-                startActivity(intent);
+//                startActivity(intent);
             }
         });
 
