@@ -66,10 +66,10 @@ public class MyProfileFragment extends Fragment {
         tvUserName = view.findViewById(R.id.tvUserName);
         tabLayout = view.findViewById(R.id.tlProfile);
         viewPager = view.findViewById(R.id.vpMyProfile);
-
-        tabLayout.addTab(tabLayout.newTab().setText("Personal Info"));
-        tabLayout.addTab(tabLayout.newTab().setText("Family Info"));
-        tabLayout.addTab(tabLayout.newTab().setText("Professional Info"));
+//
+//        tabLayout.addTab(tabLayout.newTab().setText("Personal Info"));
+//        tabLayout.addTab(tabLayout.newTab().setText("Family Info"));
+//        tabLayout.addTab(tabLayout.newTab().setText("Professional Info"));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 

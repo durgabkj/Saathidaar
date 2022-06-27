@@ -29,6 +29,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="10dp"
                     android:text="@string/Family_details"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16dp"
                     android:textStyle="bold" />
@@ -60,6 +61,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:text="Father Status"
+                        android:fontFamily="@font/italic"
                         android:textSize="14dp"
                         android:textStyle="bold" />
 
@@ -68,6 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="50dp"
                         android:text="-"
+                        android:fontFamily="@font/italic"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -78,6 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:text="----"
+                        android:fontFamily="@font/italic"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -98,6 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="Mather Status"
+                    android:fontFamily="@font/italic"
                     android:textSize="14dp"
                     android:textStyle="bold" />
 
@@ -116,6 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:text="-------"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -135,6 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="Family Location"
+                    android:fontFamily="@font/italic"
                     android:textSize="14dp"
                     android:textStyle="bold" />
 
@@ -153,6 +160,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:text="Nashik"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -171,6 +179,7 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
+                    android:fontFamily="@font/italic"
                     android:text="Native Place"
                     android:textSize="14dp"
                     android:textStyle="bold" />
@@ -190,6 +199,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:text="-------"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -215,6 +225,7 @@
                         android:layout_marginStart="5dp"
                         android:text="No. Of Brother"
                         android:textSize="14dp"
+                        android:fontFamily="@font/italic"
                         android:textStyle="bold" />
 
                     <TextView
@@ -232,6 +243,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:text="----"
+                        android:fontFamily="@font/italic"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -252,6 +264,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="No. Of Sister"
+                    android:fontFamily="@font/italic"
                     android:textSize="14dp"
                     android:textStyle="bold" />
 
@@ -270,6 +283,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:text="-------"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -289,6 +303,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="Family Type"
+                    android:fontFamily="@font/italic"
                     android:textSize="14dp"
                     android:textStyle="bold" />
 
@@ -307,6 +322,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:text="------"
+
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -327,6 +344,7 @@
                     android:layout_marginStart="5dp"
                     android:text="Family Affluence"
                     android:textSize="14dp"
+                    android:fontFamily="@font/italic"
                     android:textStyle="bold" />
 
                 <TextView
@@ -344,8 +362,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:text="-------"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
                     android:textStyle="bold" />
 
 

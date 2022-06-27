@@ -59,7 +59,7 @@ public class LandingActivity extends AppCompatActivity {
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
             binding.spinner1.setAdapter(adapter);
 
-            int imgarray[] = {R.drawable.firstimg, R.drawable.femalelogo, R.id.male};
+            int imgarray[] = {R.drawable.landing1, R.drawable.landing2, R.drawable.landing3};
             flipper = (ViewFlipper) findViewById(R.id.flipper);
 
             for (int i = 0; i < imgarray.length; i++)
@@ -71,9 +71,9 @@ public class LandingActivity extends AppCompatActivity {
             imageView.setImageResource(img);
             flipper.addView(imageView);
             flipper.setAutoStart(true);
-            flipper.setFlipInterval(2000);
+            flipper.setFlipInterval(5000);
 
-            flipper.setInAnimation(this, android.R.anim.slide_out_right);
+           // flipper.setInAnimation(this, android.R.anim.slide_out_right);
             flipper.setInAnimation(this, android.R.anim.slide_in_left);
         }
 

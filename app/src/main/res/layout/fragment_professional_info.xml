@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:text="@string/Education_background"
         android:textSize="16dp"
+        android:fontFamily="@font/italic"
         android:layout_marginStart="5dp"
         android:textStyle="bold"
         android:textColor="@color/colorPrimary"
@@ -51,6 +52,7 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
+                    android:fontFamily="@font/italic"
                     android:text="Higher Education"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
@@ -73,6 +75,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="BCA"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:layout_marginStart="25dp"
                     android:textStyle="bold"
@@ -92,6 +95,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
+                    android:fontFamily="@font/italic"
                     android:text="College(s) Attended"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
@@ -111,6 +115,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Abc"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:layout_marginStart="25dp"
                     android:textStyle="bold"
@@ -130,6 +135,7 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
+                    android:fontFamily="@font/italic"
                     android:text="Annual Income"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
@@ -148,6 +154,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
+                    android:fontFamily="@font/italic"
                     android:text="3000000 Lakh/P.A"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
@@ -167,6 +174,7 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
+                    android:fontFamily="@font/italic"
                     android:text="Working With"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
@@ -185,6 +193,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
+                    android:fontFamily="@font/italic"
                     android:text="-------------"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
@@ -205,6 +214,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:text="Working As"
+                    android:fontFamily="@font/italic"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
                     />
@@ -222,6 +232,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
+                    android:fontFamily="@font/italic"
                     android:text="---------"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
@@ -238,6 +249,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/location"
                 android:textSize="16dp"
+                android:fontFamily="@font/italic"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
@@ -260,7 +272,8 @@
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
-                        android:text="Current Residence"
+                        android:fontFamily="@font/italic"
+                        android:text="Current City"
                         android:layout_marginStart="5dp"
                         android:textStyle="bold"
                         />
@@ -279,6 +292,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
                         android:text="-------"
+                        android:fontFamily="@font/italic"
                         android:textColor="@color/black"
                         android:layout_marginStart="15dp"
                         android:textStyle="bold"
@@ -301,7 +315,8 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
-                    android:text="State Of Residence"
+                    android:fontFamily="@font/italic"
+                    android:text="State"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
                     />
@@ -320,9 +335,10 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="------------"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
-                    android:textStyle="bold"
+
                     />
 
 
@@ -344,7 +360,8 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
-                    android:text="Residence Status"
+                    android:text="City"
+                    android:fontFamily="@font/italic"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
                     />
@@ -363,6 +380,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="-------"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
                     android:textStyle="bold"
@@ -386,6 +404,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:text="Zip/PinCode"
+                    android:fontFamily="@font/italic"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
                     />
@@ -403,6 +422,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
+                    android:fontFamily="@font/italic"
                     android:text="-------"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
@@ -415,186 +435,18 @@
             </LinearLayout>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mycontact"
-                android:textSize="16dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
-                />
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="horizontal"
-                    >
-
-                    <TextView
-                        android:layout_width="130dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:text="Mobile"
-                        android:layout_marginStart="5dp"
-                        android:textStyle="bold"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="-"
-                        android:layout_marginStart="50dp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="16sp"/>
-                    <TextView
-                        android:id="@+id/tvUserMobile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:text="-------"
-                        android:textColor="@color/black"
-                        android:layout_marginStart="15dp"
-                        android:textStyle="bold"
-                        />
-
-                </LinearLayout>
-
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:text="Relationship With The Member"
-                    android:layout_marginStart="5dp"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"
-                    android:layout_marginStart="50dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
-
-                <TextView
-                    android:id="@+id/tvUserRelationshipWithTheMember"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:text="------------"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="15dp"
-                    android:textStyle="bold"
-                    />
 
 
 
 
-            </LinearLayout>
 
 
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:text="Convenient Time To Call"
-                    android:layout_marginStart="5dp"
-                    android:textStyle="bold"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"
-                    android:layout_marginStart="30dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
-                <TextView
-                    android:id="@+id/tvUserConvenientTimeToCall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:text="-------"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="15dp"
-                    android:textStyle="bold"
-                    />
 
 
 
 
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:text="Display Option"
-                    android:layout_marginStart="5dp"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"
-                    android:layout_marginStart="50dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
-
-                <TextView
-                    android:id="@+id/tvUserDisplay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:text="-------"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="15dp"
-                    android:textStyle="bold"
-                    />
-
-
-
-
-            </LinearLayout>
 
 
         </LinearLayout>

@@ -36,8 +36,7 @@
             <FrameLayout
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp">
+                android:layout_gravity="center">
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="wrap_content"
@@ -51,36 +50,43 @@
                         android:background="@color/white"
                         android:scaleType="centerCrop"
                         android:src="@drawable/local" />
+
+
+
                 </com.google.android.material.card.MaterialCardView>
 
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|end"
-                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                    app:strokeColor="@color/gray_dark"
-                    app:strokeWidth="1dp">
+<!--                <com.google.android.material.card.MaterialCardView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="bottom|end"-->
+<!--                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"-->
+<!--                    app:strokeColor="@color/gray_dark"-->
+<!--                    app:strokeWidth="1dp">-->
 
-                    <ImageView
-                        android:id="@+id/iv_camera"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:padding="5dp"
-                        app:srcCompat="@drawable/ic_baseline_create_24" />
-                </com.google.android.material.card.MaterialCardView>
+<!--                    <ImageView-->
+<!--                        android:id="@+id/iv_camera"-->
+<!--                        android:layout_width="30dp"-->
+<!--                        android:layout_height="30dp"-->
+<!--                        android:padding="5dp"-->
+<!--                        app:srcCompat="@drawable/ic_baseline_create_24" />-->
+<!--                </com.google.android.material.card.MaterialCardView>-->
             </FrameLayout>
 
 
-            <!--                <com.google.android.material.imageview.ShapeableImageView-->
-            <!--                    android:id="@+id/ivEditPhoto"-->
-            <!--                    android:layout_width="100dp"-->
-            <!--                    android:layout_height="100dp"-->
-            <!--                    android:layout_gravity="center"-->
-            <!--                    android:backgroundTint="#F0E0E0F3"-->
-            <!--                    android:layout_marginBottom="40dp"-->
-            <!--                    android:background="@drawable/white_border_rounded_corner"-->
-            <!--                    android:src="@drawable/eventlogo" />-->
+            <TextView
+                android:id="@+id/tvuploadMorePic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:fontFamily="@font/italic"
+                android:textColor="#048C3D"
+                android:padding="5dp"
+                android:drawableEnd="@drawable/ic_baseline_create_24"
+                android:text="Upload More photo"
+                android:textAlignment="center"
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -120,7 +126,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/italic"
                 android:text="Description About You"
                 android:textColor="@color/colorPrimary"
 
@@ -172,22 +179,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date Of Birth"
+                android:fontFamily="@font/italic"
                 android:textColor="@color/colorPrimary"
 
                 />
 
-            <Button
+            <TextView
                 android:id="@+id/mbDatePicker"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/colorPrimary"
-                android:hint="Select D.O.B"
-
+                android:fontFamily="@font/italic"
+                android:background="@drawable/gradient_button"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:padding="14dp"
+                android:text="Select D.O.B"
                 android:textColor="@color/white"
                 app:cornerRadius="5dp"
-                app:icon="@drawable/ic_outline_date_range_24"
+               android:drawableEnd="@drawable/ic_outline_date_range_24"
                 app:iconGravity="end" />
 
             <TextView
@@ -196,6 +208,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Age"
+                android:fontFamily="@font/italic"
                 android:textColor="@color/colorPrimary" />
 
             <LinearLayout
@@ -215,6 +228,7 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:enabled="true"
+                    android:fontFamily="@font/italic"
                     android:hint="select  your Age"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/transparent_edittext_border" />
@@ -244,6 +258,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/italic"
+                android:textColor="@color/colorPrimary"
                 android:text="Marital Status" />
 
             <LinearLayout
@@ -264,6 +280,7 @@
                     android:hint="select  Marital Status"
                     android:layout_marginStart="8dp"
                     android:enabled="false"
+                    android:fontFamily="@font/italic"
                     android:background="@drawable/transparent_edittext_border"
                     tools:ignore="Suspicious0dp" />
 
@@ -310,6 +327,8 @@
                 android:id="@+id/tvHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/italic"
+                android:textColor="@color/colorPrimary"
                 android:layout_marginTop="10dp"
                 android:text="Height" />
 
@@ -330,6 +349,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/italic"
                     android:enabled="true"
                     android:hint="select  your Height"
                     android:layout_marginStart="8dp"
@@ -373,6 +393,8 @@
                 android:id="@+id/tvBlood"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/italic"
+                android:textColor="@color/colorPrimary"
                 android:layout_marginTop="10dp"
                 android:text="Blood Group" />
 
@@ -391,6 +413,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/italic"
                     android:enabled="true"
                     android:hint="select  Blood Group"
                     android:layout_marginStart="8dp"
@@ -420,6 +443,8 @@
             <TextView
                 android:id="@+id/tvDiet"
                 android:layout_width="match_parent"
+                android:fontFamily="@font/italic"
+                android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Diet" />
@@ -438,6 +463,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/italic"
                     android:enabled="true"
                     android:hint="select  Diet"
                     android:layout_marginStart="8dp"
@@ -485,6 +511,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Mother Tongue"
+                android:fontFamily="@font/italic"
                 android:textColor="@color/colorPrimary"
 
                 />
@@ -494,6 +521,8 @@
                 style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/italic"
+                android:textSize="14sp"
                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                 android:gravity="center_vertical"
                 android:hint="Select Mother Tongue"
@@ -505,6 +534,8 @@
                 android:id="@+id/tvHealth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/italic"
+                android:textColor="@color/colorPrimary"
                 android:layout_marginTop="10dp"
                 android:text="Health Issue" />
 
@@ -524,6 +555,7 @@
                     android:layout_marginStart="8dp"
                     android:enabled="true"
                     android:layout_weight="1"
+                    android:fontFamily="@font/italic"
                     android:background="@drawable/transparent_edittext_border"
                     android:hint="Health Details"
                     tools:ignore="Suspicious0dp" />
@@ -549,13 +581,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:fontFamily="@font/italic"
                 android:layout_marginTop="20dp"
-                android:background="#E1DCDE">
+                android:background="@color/colorPrimary">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:padding="3dp"
-                    android:textColor="@color/black"
+                    android:fontFamily="@font/italic"
+                    android:textColor="@color/white"
                     android:layout_marginStart="8dp"
                     android:textSize="16sp"
                     android:text="Religion Details"/>
@@ -566,6 +600,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Religion"
+                android:fontFamily="@font/italic"
                 android:textColor="@color/colorPrimary"
 
                 />
@@ -577,6 +612,7 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                 android:gravity="center_vertical"
+                android:fontFamily="@font/italic"
                 android:hint="Select Mother Tongue"
                 android:padding="10dp"
                 />
@@ -656,14 +692,18 @@
                 android:hint="Enter your Gotra" />
         </LinearLayout>
 
-            <Button
+            <TextView
                 android:id="@+id/btnSave"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="12sp"
-                android:backgroundTint="@color/colorPrimary"
+                android:background="@drawable/gradient_button"
                 android:text="save"
+                android:fontFamily="@font/italic"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:padding="10dp"
                 android:textColor="@color/white" />
 
 

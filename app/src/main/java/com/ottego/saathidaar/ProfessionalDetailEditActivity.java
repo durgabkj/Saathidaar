@@ -376,10 +376,10 @@ SessionManager sessionManager;
         city = b.etAddUserResidenceStatus.getSelectedItem().toString().trim();
         origin = b.etAddUserCorigin.getText().toString().trim();
         pinCode = b.etAddUserZipPinCode.getText().toString().trim();
-        mobile = b.etAddUserMobile.getText().toString().trim();
-        relationWith = b.etAddUserRelationship.getText().toString().trim();
-        callTime = b.etAddUserConvenientCall.getText().toString().trim();
-        displatOption = b.etAddUserDisplayOption.getText().toString().trim();
+//        mobile = b.etAddUserMobile.getText().toString().trim();
+//        relationWith = b.etAddUserRelationship.getText().toString().trim();
+//        callTime = b.etAddUserConvenientCall.getText().toString().trim();
+//        displatOption = b.etAddUserDisplayOption.getText().toString().trim();
 
         Map<String, String> params = new HashMap<String, String>();
         params.put("highest_qualification", higherEducation);

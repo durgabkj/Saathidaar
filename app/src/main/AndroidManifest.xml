@@ -18,6 +18,12 @@
         android:theme="@style/Theme.Saathidaar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".UpgradePlanDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgetActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity

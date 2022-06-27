@@ -2,6 +2,7 @@ package com.ottego.saathidaar.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.Model.UpgradeModel;
 import com.ottego.saathidaar.NewMatchesFragment;
 import com.ottego.saathidaar.R;
+import com.ottego.saathidaar.UpgradePlanDetailsActivity;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
@@ -49,6 +51,15 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
         holder.tvCardName.setText(item.plan_name);
         holder.tvMonths.setText(item.plan_validity);
         holder.tvPriceUpgrade.setText(item.plan_price);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UpgradePlanDetailsActivity.class);
+                intent.putExtra("data", new Gson().toJson(item));
+                context.startActivity(intent);
+            }
+        });
     }
 
 

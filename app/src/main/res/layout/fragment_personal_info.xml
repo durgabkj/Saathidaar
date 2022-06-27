@@ -25,6 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/basic_lifestyle"
+        android:fontFamily="@font/italic"
         android:textSize="16dp"
         android:layout_marginStart="5dp"
         android:textStyle="bold"
@@ -56,6 +57,7 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
+                    android:fontFamily="@font/italic"
                     android:text="Age"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
@@ -77,6 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
+                    android:fontFamily="@font/italic"
                     android:text="20"
                     android:textColor="@color/black"
                     android:layout_marginStart="25dp"
@@ -98,6 +101,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Date of Birth"
+                    android:fontFamily="@font/italic"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
                     />
@@ -116,6 +120,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="27-Sept-1999"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:layout_marginStart="25dp"
                     android:textStyle="bold"
@@ -135,6 +140,7 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
+                    android:fontFamily="@font/italic"
                     android:text="Marital Status "
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
@@ -154,6 +160,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Single"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
                     android:textStyle="bold"
@@ -174,6 +181,7 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
+                    android:fontFamily="@font/italic"
                     android:text="No of Child "
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
@@ -194,6 +202,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="2"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
                     android:textStyle="bold"
@@ -213,6 +222,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:text="Height"
+                    android:fontFamily="@font/italic"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
                     />
@@ -231,6 +241,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="5'2 Feet"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
                     android:textStyle="bold"
@@ -238,44 +249,46 @@
 
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal"
-                >
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="10dp"-->
+<!--                android:orientation="horizontal"-->
+<!--                >-->
 
-                <TextView
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:text="Grew Up In"
-                    android:layout_marginStart="5dp"
-                    android:textStyle="bold"
-                    />
+<!--                <TextView-->
+<!--                    android:layout_width="130dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textSize="14dp"-->
+<!--                    android:fontFamily="@font/italic"-->
+<!--                    android:text="Grew Up In"-->
+<!--                    android:layout_marginStart="5dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"
-                    android:layout_marginStart="50dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
-                <TextView
-                    android:id="@+id/tvGrewUp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:text="Add Details"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="15dp"
-                    android:textStyle="bold"
-                    />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="-"-->
+<!--                    android:layout_marginStart="50dp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="16sp"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tvGrewUp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:text="Add Details"-->
+<!--                    android:fontFamily="@font/italic"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:layout_marginStart="15dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    />-->
 
 
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -288,6 +301,7 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
+                    android:fontFamily="@font/italic"
                     android:text="BloodGroup"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
@@ -307,6 +321,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="B+"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
                     android:textStyle="bold"
@@ -327,6 +342,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:text="Diet"
+                    android:fontFamily="@font/italic"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
                     />
@@ -344,6 +360,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
+                    android:fontFamily="@font/italic"
                     android:text="vegetarian"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
@@ -368,6 +385,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:text="Location"
+                    android:fontFamily="@font/italic"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
                     />
@@ -386,6 +404,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Patna"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
                     android:textStyle="bold"
@@ -407,6 +426,7 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
+                    android:fontFamily="@font/italic"
                     android:text="Mother Tongue"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
@@ -426,6 +446,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Hindi"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
                     android:textStyle="bold"
@@ -450,6 +471,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:text="HealthDetail"
+                    android:fontFamily="@font/italic"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
                     />
@@ -467,6 +489,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
+                    android:fontFamily="@font/italic"
                     android:text=" Everything Normal"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
@@ -483,6 +506,7 @@
                 android:text="@string/religious_background"
                 android:textSize="16dp"
                 android:layout_marginStart="5dp"
+                android:fontFamily="@font/italic"
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
@@ -505,6 +529,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
                         android:text="Religion"
+                        android:fontFamily="@font/italic"
                         android:layout_marginStart="5dp"
                         android:textStyle="bold"
                         />
@@ -523,6 +548,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
                         android:text="Hindu"
+                        android:fontFamily="@font/italic"
                         android:textColor="@color/black"
                         android:layout_marginStart="15dp"
                         android:textStyle="bold"
@@ -545,7 +571,8 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
-                    android:text="Community"
+                    android:text="Caste"
+                    android:fontFamily="@font/italic"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
                     />
@@ -564,6 +591,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Brahmin"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
                     android:textStyle="bold"
@@ -588,7 +616,8 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
-                    android:text="Sub-Community"
+                    android:text="Sub-Cast"
+                    android:fontFamily="@font/italic"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
                     />
@@ -607,6 +636,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Brahmin1"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
                     android:textStyle="bold"
@@ -630,6 +660,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:text="Gotra/Gotram"
+                    android:fontFamily="@font/italic"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
                     />
@@ -648,6 +679,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Pandit"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
                     android:textStyle="bold"

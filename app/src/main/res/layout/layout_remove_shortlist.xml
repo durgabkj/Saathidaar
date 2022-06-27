@@ -33,7 +33,7 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:layout_gravity="start"
             >
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -46,7 +46,6 @@
                     android:id="@+id/llShortListRemove1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:background="@drawable/gray_transparent_bg"
                     >
 
@@ -139,6 +138,8 @@
                         android:shadowColor="#000000"
                         android:shadowDx="2"
                         android:shadowDy="2"
+                        android:maxLength="15"
+                        android:fontFamily="@font/italic"
                         android:shadowRadius="1.6"
                         android:text="Durga singh"
                         android:textColor="@color/white"
@@ -152,6 +153,7 @@
                         android:layout_marginStart="8dp"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
+                        android:fontFamily="@font/italic"
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
                         android:text="22 years"
@@ -169,6 +171,8 @@
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
                         android:text="5'1"
+                        android:maxLength="10"
+                        android:fontFamily="@font/italic"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -190,8 +194,10 @@
                         android:shadowDx="1.5"
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
+                        android:maxLength="10"
                         android:text="Mumbai"
                         android:textColor="@color/white"
+                        android:fontFamily="@font/italic"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -202,7 +208,9 @@
                         android:layout_marginStart="8dp"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
+                        android:fontFamily="@font/italic"
                         android:shadowDy="1.3"
+                        android:maxLength="25"
                         android:shadowRadius="1.6"
                         android:text="Junior software Developer"
                         android:textColor="@color/white"
@@ -248,6 +256,7 @@
                     android:shadowRadius="1.6"
                     android:textColor="@color/white"
                     android:textSize="14sp"
+                    android:fontFamily="@font/italic"
                     android:textStyle="bold"
                     android:text="Connect Now"/>
 

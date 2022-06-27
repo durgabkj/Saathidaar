@@ -28,13 +28,15 @@
             >
             <TextView
                 android:id="@+id/tvCardName"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Silver"
+                android:fontFamily="@font/italic"
                 android:translationZ="20dp"
                 android:transformPivotX="10dp"
                 android:textSize="18dp"
                 android:padding="10dp"
+                android:textAlignment="center"
                 android:background="@drawable/gradient_button"
                 android:transformPivotY="10dp"
                 android:textAllCaps="true"
@@ -48,6 +50,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1 Month"
+                android:fontFamily="@font/italic"
+                android:textStyle="bold"
                 android:textAllCaps="true"/>
         </LinearLayout>
 
@@ -71,6 +75,7 @@
                 android:layout_height="wrap_content"
                 android:text="15% off"
                 android:textStyle="bold"
+                android:fontFamily="@font/italic"
                 android:textAllCaps="true"
                 android:textColor="#00C853"/>
 
@@ -81,6 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="₹5,120"
+                android:fontFamily="@font/italic"
                 android:textAllCaps="true"/>
         </LinearLayout>
 
@@ -89,6 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="₹4332"
+            android:fontFamily="@font/italic"
             android:layout_gravity="center"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -102,6 +109,7 @@
             android:text="₹1,451 per month"
             android:layout_gravity="center"
             android:textStyle="bold"
+            android:fontFamily="@font/italic"
             android:textSize="14dp"
             android:layout_marginTop="10dp"
             android:textAllCaps="true"/>
@@ -113,6 +121,7 @@
             android:padding="5dp"
             android:textAlignment="center"
             android:text="Continue"
+            android:fontFamily="@font/italic"
             android:layout_margin="15dp"
             android:layout_gravity="center"
             android:shadowColor="#000000"
@@ -141,6 +150,7 @@
                 android:drawableStart="@drawable/ic_check_black_24dp"
                 android:textSize="14dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/italic"
                 android:textAllCaps="true"/>
 
             <View
@@ -155,6 +165,7 @@
                 android:text="View upto 600 contact numbers"
                 android:textSize="14dp"
                 android:drawablePadding="10dp"
+                android:fontFamily="@font/italic"
                 android:padding="10dp"
                 android:drawableStart="@drawable/ic_check_black_24dp"
                 android:layout_marginTop="5dp"
@@ -162,6 +173,7 @@
             <View
                 android:layout_width="250dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/italic"
                 android:layout_gravity="center"
                 android:background="@drawable/line_gradient"
                 android:layout_height="1dp"/>
@@ -172,12 +184,14 @@
                 android:textSize="14dp"
                 android:drawablePadding="10dp"
                 android:padding="10dp"
+                android:fontFamily="@font/italic"
                 android:drawableStart="@drawable/ic_check_black_24dp"
                 android:layout_marginTop="5dp"
                 android:textAllCaps="true"/>
             <View
                 android:layout_width="250dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/italic"
                 android:layout_gravity="center"
                 android:background="@drawable/line_gradient"
                 android:layout_height="1dp"/>
@@ -191,6 +205,7 @@
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/ic_check_black_24dp"
                 android:layout_marginTop="5dp"
+                android:fontFamily="@font/italic"
                 android:textAllCaps="true"/>
         </LinearLayout>
 

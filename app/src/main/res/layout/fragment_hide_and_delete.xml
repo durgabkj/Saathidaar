@@ -12,6 +12,8 @@
             android:layout_height="wrap_content"
             android:text="Hide / Delete Profile"
             android:textAlignment="center"
+            android:textStyle="bold"
+            android:fontFamily="@font/italic"
             android:padding="8dp"/>
         <ScrollView
             android:layout_width="match_parent"
@@ -43,7 +45,8 @@
                             android:layout_height="30dp"
                             android:padding="5dp"
                             android:textStyle="bold"
-                            android:background="@color/colorPrimary"
+                            android:fontFamily="@font/italic"
+                            android:background="@drawable/gradient_button"
                             android:textColor="@color/white"
                             android:text="Hide profile"/>
 
@@ -56,12 +59,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="One week"
+                                android:fontFamily="@font/italic"
                                 android:checked="false" />
 
                             <RadioButton
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Two week"
+                                android:fontFamily="@font/italic"
                                 android:checked="false"
                                 />
 
@@ -70,10 +75,12 @@
                                 android:layout_height="wrap_content"
                                 android:text="One Monthly"
                                 android:id="@+id/radioButton"
+                                android:fontFamily="@font/italic"
                                 android:checked="false" />
 
                             <RadioButton
                                 android:layout_width="match_parent"
+                                android:fontFamily="@font/italic"
                                 android:layout_height="wrap_content"
                                 android:text="Two Monthly"
                                 android:checked="false"
@@ -103,7 +110,8 @@
                             android:layout_height="30dp"
                             android:padding="5dp"
                             android:textStyle="bold"
-                            android:background="@color/colorPrimary"
+                            android:fontFamily="@font/italic"
+                            android:background="@drawable/gradient_button"
                             android:textColor="@color/white"
                             android:text="Un-Hide Profile"/>
 
@@ -116,12 +124,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Activate"
+                                android:fontFamily="@font/italic"
                                 android:checked="false" />
 
                             <RadioButton
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="De-Activate"
+                                android:fontFamily="@font/italic"
                                 android:checked="false"
                                 />
                         </RadioGroup>

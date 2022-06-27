@@ -88,7 +88,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:fontFamily="serif"
+                            android:fontFamily="@font/italic"
                             android:text="Durga Singh"
                             android:textColor="@color/white" />
 
@@ -97,7 +97,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="2dp"
-                            android:fontFamily="serif"
+                            android:fontFamily="@font/italic"
                             android:text="(FS345888565)"
                             android:textColor="#F3BF44" />
 
@@ -115,7 +115,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:fontFamily="serif"
+
+                            android:fontFamily="@font/italic"
                             android:text="Account type :"
                             android:textColor="@color/white" />
 
@@ -124,7 +125,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="3dp"
-                            android:fontFamily="serif"
+                            android:fontFamily="@font/italic"
                             android:text="Basic"
                             android:textColor="@color/white" />
                     </LinearLayout>
@@ -176,6 +177,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Request Sent"
                                 android:textSize="15sp"
+                                android:fontFamily="@font/italic"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -184,6 +186,7 @@
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
                                 android:text="5"
+                                android:fontFamily="@font/italic"
                                 android:textColor="@color/black"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
@@ -201,8 +204,9 @@
 
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Visitors"
+                                android:text=" Profile Visitors"
                                 android:textSize="15sp"
+                                android:fontFamily="@font/italic"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -211,6 +215,7 @@
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
                                 android:text="22"
+                                android:fontFamily="@font/italic"
                                 android:textColor="@color/black"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -230,6 +235,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Request Accept"
                                 android:textSize="14sp"
+                                android:fontFamily="@font/italic"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -238,6 +244,7 @@
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
                                 android:text="12"
+                                android:fontFamily="@font/italic"
                                 android:textColor="@color/black"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -275,6 +282,7 @@
                             android:padding="5dp"
                             android:text="Became a premium Member"
                             android:textAlignment="center"
+                            android:fontFamily="@font/italic"
                             android:textColor="@color/colorPrimary"
                             android:textSize="14dp"
                             android:textStyle="bold" />
@@ -302,6 +310,7 @@
                                 android:text="Become a Premium membership"
                                 android:textAlignment="center"
                                 android:textColor="@color/black"
+                                android:fontFamily="@font/italic"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
 
@@ -319,6 +328,7 @@
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
                                 android:text="Text"
+                                android:fontFamily="@font/italic"
                                 android:textAlignment="center"
                                 android:textSize="12sp" />
 
@@ -359,7 +369,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="serif"
+                                android:fontFamily="@font/italic"
                                 android:text="Premium Matches"
 
                                 android:textColor="@color/colorPrimary" />
@@ -367,7 +377,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
+                                android:fontFamily="@font/italic"
                                 android:text="You have 345 New Premium Matches"
 
                                 />
@@ -377,6 +387,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:text="View then now"
+                                android:fontFamily="@font/italic"
                                 android:textColor="@color/black" />
 
 
@@ -414,7 +425,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="serif"
+                                android:fontFamily="@font/italic"
                                 android:text="My Matches"
 
                                 android:textColor="@color/colorPrimary" />
@@ -422,7 +433,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
+                                android:fontFamily="@font/italic"
                                 android:text="You have 345 New  Matches"
 
                                 />
@@ -433,6 +444,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:text="View then now"
+                                android:fontFamily="@font/italic"
                                 android:textColor="@color/black" />
 
 
@@ -491,7 +503,7 @@
                                 android:layout_height="wrap_content"
                                 android:drawableStart="@drawable/ic_diamond"
                                 android:drawablePadding="8dp"
-                                android:fontFamily="serif"
+                                android:fontFamily="@font/italic"
                                 android:text="Customer Support"
 
                                 />
@@ -502,6 +514,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:text="Logout"
+                                android:fontFamily="@font/italic"
                                 android:textColor="@color/colorPrimary"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -532,6 +545,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#4267B2"
+                        android:fontFamily="@font/italic"
                         android:textSize="9sp"
                         android:text=" HELLO  | "/>
 
@@ -540,6 +554,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#4267B2"
                         android:textSize="9sp"
+                        android:fontFamily="@font/italic"
                         android:text=" Home  | "/>
 
                     <TextView
@@ -547,6 +562,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#4267B2"
                         android:textSize="9sp"
+                        android:fontFamily="@font/italic"
                         android:text=" About US  | "/>
 
                     <TextView
@@ -554,6 +570,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#4267B2"
                         android:textSize="9sp"
+                        android:fontFamily="@font/italic"
                         android:text=" term &amp; Condition"/>
 
 
@@ -571,6 +588,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#4267B2"
                         android:textSize="9sp"
+                        android:fontFamily="@font/italic"
                         android:text=" Link  | "/>
 
                     <TextView
@@ -578,6 +596,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#4267B2"
                         android:textSize="9sp"
+                        android:fontFamily="@font/italic"
                         android:text=" Member Login  | "/>
 
                     <TextView
@@ -585,6 +604,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#4267B2"
                         android:textSize="9sp"
+                        android:fontFamily="@font/italic"
                         android:text=" Member SinUp  | "/>
 
                 </LinearLayout>
@@ -593,6 +613,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/italic"
                     android:layout_gravity="center"
                     android:text="NEWSLETTER"/>
 
@@ -602,6 +623,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:textSize="10sp"
+                    android:fontFamily="@font/italic"
                     android:layout_gravity="center"
                     android:text="Be the first to know about new arrivals,look books,sell and promos!"/>
 

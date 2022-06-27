@@ -61,6 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Durga Singh"
+                android:fontFamily="@font/italic"
                 android:textStyle="bold"
                 android:textSize="14dp"
                 android:textAlignment="center"
@@ -69,6 +70,7 @@
             <TextView
                 android:id="@+id/tvUserEmail"
                 android:layout_width="wrap_content"
+                android:fontFamily="@font/italic"
                 android:layout_height="wrap_content"
                 android:text="Durga.Singhbkj@gmail.com"
                 android:textStyle="bold"
@@ -81,7 +83,8 @@
     android:layout_height="wrap_content"
     android:text="Personal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them.."
 android:padding="10dp"
-    android:fontFamily="serif"
+    android:fontFamily="@font/italic"
+
     android:textColor="@color/white"
     android:maxLines="4"
     android:textAlignment="center"/>

@@ -33,7 +33,7 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:layout_gravity="start"
             >
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -64,7 +64,6 @@
                     android:id="@+id/llShortList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:background="@drawable/gray_transparent_bg"
                     >
 
@@ -139,6 +138,8 @@
                         android:shadowColor="#000000"
                         android:shadowDx="2"
                         android:shadowDy="2"
+                        android:fontFamily="@font/italic"
+                        android:maxLength="15"
                         android:shadowRadius="1.6"
                         android:text="Durga singh"
                         android:textColor="@color/white"
@@ -153,6 +154,7 @@
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
                         android:shadowDy="1.3"
+                        android:fontFamily="@font/italic"
                         android:shadowRadius="1.6"
                         android:text="22 years"
                         android:textColor="@color/white"
@@ -166,9 +168,11 @@
                         android:layout_marginStart="8dp"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
+                        android:maxLength="10"
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
                         android:text="5'1"
+                        android:fontFamily="@font/italic"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -191,6 +195,8 @@
                             android:shadowDy="1.3"
                             android:shadowRadius="1.6"
                             android:text="Mumbai"
+                            android:fontFamily="@font/italic"
+                            android:maxLength="8"
                             android:textColor="@color/white"
                             android:textSize="15sp"
                             android:textStyle="bold" />
@@ -204,6 +210,8 @@
                             android:shadowDx="1.5"
                             android:shadowDy="1.3"
                             android:shadowRadius="1.6"
+                            android:maxLength="25"
+                            android:fontFamily="@font/italic"
                             android:text="Junior software Developer"
                             android:textColor="@color/white"
                             android:textSize="15sp"
@@ -230,6 +238,8 @@
                     android:layout_gravity="center"
                     app:cardCornerRadius="100dp"
                     >
+
+
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
@@ -249,6 +259,7 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/italic"
                     android:text="Connect Now"/>
 
             </LinearLayout>

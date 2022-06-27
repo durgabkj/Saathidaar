@@ -21,6 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:fontFamily="@font/italic"
                 android:padding="10dp"
                 android:text="Education &amp; carrier"
                 android:textSize="18sp" />
@@ -54,6 +55,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
+                            android:fontFamily="@font/italic"
                             android:text="Higher Education" />
 
                         <EditText
@@ -78,6 +80,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:fontFamily="@font/italic"
                             android:layout_weight="0.8"
                             android:text=" College(s) Attended" />
 
@@ -102,6 +105,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:fontFamily="@font/italic"
                             android:layout_weight="0.8"
                             android:text="Annual Income" />
 
@@ -123,6 +127,7 @@
                                 android:layout_weight="1"
                                 android:enabled="true"
                                 android:textSize="14dp"
+                                android:fontFamily="@font/italic"
                                 android:hint="select  Income"
                                 android:layout_marginStart="8dp"
                                 android:background="@drawable/transparent_edittext_border" />
@@ -157,6 +162,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
+                            android:fontFamily="@font/italic"
                             android:text="Working With" />
 
                         <LinearLayout
@@ -175,6 +181,7 @@
                                 android:layout_height="30dp"
                                 android:layout_weight="1"
                                 android:enabled="true"
+                                android:fontFamily="@font/italic"
                                 android:textSize="14dp"
                                 android:hint="select  Income"
                                 android:layout_marginStart="8dp"
@@ -213,6 +220,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
+                            android:fontFamily="@font/italic"
                             android:text="WorkingAs" />
 
                         <LinearLayout
@@ -231,6 +239,7 @@
                                 android:layout_height="30dp"
                                 android:layout_weight="1"
                                 android:enabled="true"
+                                android:fontFamily="@font/italic"
                                 android:textSize="14dp"
                                 android:hint="Working As"
                                 android:layout_marginStart="8dp"
@@ -258,6 +267,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/italic"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="10dp"
                         android:text="@string/location"
@@ -276,6 +286,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:fontFamily="@font/italic"
                             android:layout_weight="0.8"
                             android:text="Country live in" />
 
@@ -295,6 +306,7 @@
                                 android:layout_height="30dp"
                                 android:layout_weight="1"
                                 android:enabled="true"
+                                android:fontFamily="@font/italic"
                                 android:textSize="14dp"
                                 android:hint="Country"
                                 android:layout_marginStart="8dp"
@@ -331,6 +343,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
+                            android:fontFamily="@font/italic"
                             android:text="State live in" />
 
                         <LinearLayout
@@ -348,6 +361,7 @@
                                 android:layout_height="30dp"
                                 android:layout_weight="1"
                                 android:enabled="true"
+                                android:fontFamily="@font/italic"
                                 android:textSize="14dp"
                                 android:hint="State"
                                 android:layout_marginStart="8dp"
@@ -383,6 +397,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
+                            android:fontFamily="@font/italic"
                             android:text="City live in(Nearest)" />
 
                         <LinearLayout
@@ -391,6 +406,7 @@
                             android:layout_centerInParent="true"
                             android:layout_marginTop="5dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/italic"
                             android:background="@drawable/bg_edit_text"
                             android:orientation="horizontal"
                             tools:ignore="UselessParent">
@@ -402,6 +418,7 @@
                                 android:enabled="true"
                                 android:textSize="14dp"
                                 android:hint="City"
+                                android:fontFamily="@font/italic"
                                 android:layout_marginStart="8dp"
                                 android:background="@drawable/transparent_edittext_border" />
 
@@ -431,6 +448,7 @@
 
                         <TextView
                             android:layout_width="0dp"
+                            android:fontFamily="@font/italic"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
@@ -440,6 +458,8 @@
                             android:id="@+id/etAddUserCorigin"
                             style="@style/PersonalDataTextView"
                             android:layout_width="0dp"
+
+                            android:fontFamily="@font/italic"
                             android:layout_height="30dp"
                             android:layout_weight="1"
                             android:hint=" Enter your Corigin"
@@ -456,6 +476,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:fontFamily="@font/italic"
                             android:layout_weight="0.8"
                             android:text="Zip/PinCode" />
 
@@ -470,118 +491,20 @@
 
                     </LinearLayout>
 
+
+
+
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/mycontact"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="16dp"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.8"
-                            android:text="Mobile" />
-
-                        <EditText
-                            android:id="@+id/etAddUserMobile"
-                            style="@style/PersonalDataTextView"
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:hint="Mobile"
-                            android:inputType="number"
-                            android:maxLength="10" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.8"
-                            android:text="Relationship With The Member" />
-
-                        <EditText
-                            android:id="@+id/etAddUserRelationship"
-                            style="@style/PersonalDataTextView"
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:hint="Example,Mumbai,India" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.8"
-                            android:text="Convenient Time To Call" />
-
-                        <EditText
-                            android:id="@+id/etAddUserConvenientCall"
-                            style="@style/PersonalDataTextView"
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:hint="Example,Mumbai,India" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.8"
-                            android:text="Display Option" />
-
-                        <EditText
-                            android:id="@+id/etAddUserDisplayOption"
-                            style="@style/PersonalDataTextView"
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:hint="Example,Mumbai,India" />
-
-                    </LinearLayout>
-
-
-                    <Button
                         android:id="@+id/btnSaveData"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        android:textSize="17sp"
+                        android:background="@drawable/gradient_button"
                         android:layout_marginTop="12sp"
-                        android:backgroundTint="@color/colorPrimary"
                         android:text="save"
                         android:textColor="@color/white" />
 

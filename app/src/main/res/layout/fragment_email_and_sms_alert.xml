@@ -42,14 +42,16 @@
                    android:layout_width="match_parent"
                    android:layout_height="30dp"
                    android:padding="5dp"
+                   android:fontFamily="@font/italic"
                    android:textStyle="bold"
-                   android:background="@color/colorPrimary"
+                   android:background="@drawable/gradient_button"
                    android:textColor="@color/white"
                    android:text="Premium Match Mail"/>
 
                <TextView
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
+                   android:fontFamily="@font/italic"
                    android:text="Alert you receive every time someone contacts you receive a response to a contact initiated by you Get"
                    android:layout_margin="8dp"/>
 
@@ -57,6 +59,7 @@
                    android:layout_width="match_parent"
                    android:layout_height="30dp"
                    android:padding="5dp"
+                   android:fontFamily="@font/italic"
                    android:background="@color/gray_dark"
                    android:textStyle="bold"
                    android:text="Alert"/>
@@ -70,12 +73,14 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Daily"
+                      android:fontFamily="@font/italic"
                       android:checked="false" />
 
                   <RadioButton
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Weekly"
+                      android:fontFamily="@font/italic"
                       android:checked="false"
                       />
 
@@ -83,6 +88,7 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Monthly"
+                      android:fontFamily="@font/italic"
                       android:id="@+id/radioButton"
                       android:checked="false" />
 
@@ -90,6 +96,7 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Unsubscribe"
+                      android:fontFamily="@font/italic"
                       android:id="@+id/radioButton2"
                       android:checked="false"
                       />
@@ -118,13 +125,15 @@
                    android:layout_height="30dp"
                    android:padding="5dp"
                    android:textStyle="bold"
-                   android:background="@color/colorPrimary"
+                   android:fontFamily="@font/italic"
+                   android:background="@drawable/gradient_button"
                    android:textColor="@color/white"
                    android:text="Recent Visitors Email"/>
 
                <TextView
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
+                   android:fontFamily="@font/italic"
                    android:text="All SMS alert will be sent to you on this mobile phone number 987654321"
                    android:layout_margin="8dp"/>
 
@@ -132,6 +141,7 @@
                    android:layout_width="match_parent"
                    android:layout_height="30dp"
                    android:padding="5dp"
+                   android:fontFamily="@font/italic"
                    android:background="@color/gray_dark"
                    android:textStyle="bold"
                    android:text="Alert"/>
@@ -144,12 +154,14 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Daily"
+                      android:fontFamily="@font/italic"
                       android:checked="false" />
 
                   <RadioButton
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Weekly"
+                      android:fontFamily="@font/italic"
                       android:checked="false"
                       />
 
@@ -157,12 +169,14 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Monthly"
+                      android:fontFamily="@font/italic"
                       android:checked="false" />
 
                   <RadioButton
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Unsubscribe"
+                      android:fontFamily="@font/italic"
                       android:checked="false"
                       />
                </RadioGroup>
@@ -190,13 +204,15 @@
                    android:layout_height="30dp"
                    android:padding="5dp"
                    android:textStyle="bold"
-                   android:background="@color/colorPrimary"
+                   android:fontFamily="@font/italic"
+                   android:background="@drawable/gradient_button"
                    android:textColor="@color/white"
                    android:text="Contact Alert"/>
 
                <TextView
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
+                   android:fontFamily="@font/italic"
                    android:text="All SMS alert will be sent to you on this mobile phone number 987654321"
                    android:layout_margin="8dp"/>
 
@@ -223,6 +239,7 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Weekly"
+                      android:fontFamily="@font/italic"
                       android:checked="false"
                       />
 
@@ -230,12 +247,14 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Monthly"
+                      android:fontFamily="@font/italic"
                       android:checked="false" />
 
                   <RadioButton
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Unsubscribe"
+                      android:fontFamily="@font/italic"
                       android:checked="false"
                       />
                </RadioGroup>
@@ -263,13 +282,14 @@
                    android:layout_height="30dp"
                    android:padding="5dp"
                    android:textStyle="bold"
-                   android:background="@color/colorPrimary"
+                   android:background="@drawable/gradient_button"
                    android:textColor="@color/white"
                    android:text="SMS Alert"/>
 
                <TextView
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
+                   android:fontFamily="@font/italic"
                    android:text="All SMS alert will be sent to you on this mobile phone number 987654321"
                    android:layout_margin="8dp"/>
 
@@ -277,6 +297,7 @@
                    android:layout_width="match_parent"
                    android:layout_height="30dp"
                    android:padding="5dp"
+                   android:fontFamily="@font/italic"
                    android:background="@color/gray_dark"
                    android:textStyle="bold"
                    android:text="Alert"/>
@@ -290,11 +311,13 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Daily"
+                      android:fontFamily="@font/italic"
                       android:checked="false" />
 
                   <RadioButton
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
+                      android:fontFamily="@font/italic"
                       android:text="Weekly"
                       android:checked="false"
                       />
@@ -303,12 +326,14 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Monthly"
+                      android:fontFamily="@font/italic"
                       android:checked="false" />
 
                   <RadioButton
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Unsubscribe"
+                      android:fontFamily="@font/italic"
                       android:checked="false"
                       />
                </RadioGroup>
@@ -336,13 +361,15 @@
                    android:layout_height="30dp"
                    android:padding="5dp"
                    android:textStyle="bold"
-                   android:background="@color/colorPrimary"
+                   android:background="@drawable/gradient_button"
+                   android:fontFamily="@font/italic"
                    android:textColor="@color/white"
                    android:text="Message Receiver Alert"/>
 
                <TextView
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
+                   android:fontFamily="@font/italic"
                    android:text="All SMS alert will be sent to you on this mobile phone number 987654321"
                    android:layout_margin="8dp"/>
 
@@ -350,6 +377,7 @@
                    android:layout_width="match_parent"
                    android:layout_height="30dp"
                    android:padding="5dp"
+                   android:fontFamily="@font/italic"
                    android:background="@color/gray_dark"
                    android:textStyle="bold"
                    android:text="Alert"/>
@@ -363,12 +391,14 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Daily"
+                      android:fontFamily="@font/italic"
                       android:checked="false" />
 
                   <RadioButton
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Weekly"
+                      android:fontFamily="@font/italic"
                       android:checked="false"
                       />
 
@@ -376,12 +406,14 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Monthly"
+                      android:fontFamily="@font/italic"
                       android:checked="false" />
 
                   <RadioButton
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="Unsubscribe"
+                      android:fontFamily="@font/italic"
                       android:checked="false"
                       />
                </RadioGroup>

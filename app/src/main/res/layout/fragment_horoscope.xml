@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Birth and Horoscope Details"
         android:layout_gravity="center"
+        android:fontFamily="@font/italic"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold" />
 
@@ -40,6 +41,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/italic"
             android:text="Country of Birth"/>
 
         <TextView
@@ -47,6 +49,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/italic"
             android:text=":Country of Birth"
             tools:ignore="DuplicateIds" />
 
@@ -62,11 +65,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/italic"
             android:text="City of Birth"/>
 
         <TextView
             android:id="@+id/tvCityofBirth"
             android:layout_width="0dp"
+            android:fontFamily="@font/italic"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text=":City of Birth"/>
@@ -83,6 +88,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/italic"
             android:text="Time of Birth"/>
 
         <TextView
@@ -90,6 +96,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/italic"
             android:text=":Time of Birth"/>
 
 
@@ -104,11 +111,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/italic"
             android:text="Manglik"/>
 
         <TextView
             android:id="@+id/tvManglik"
             android:layout_width="0dp"
+            android:fontFamily="@font/italic"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text=":Manglik"/>
@@ -117,14 +126,16 @@
     </LinearLayout>
 
 
-            <Button
+            <TextView
                 android:id="@+id/btnEditDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Edit Details"
+                android:padding="10dp"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/colorPrimary"
+                android:textStyle="bold"
+                android:background="@drawable/gradient_button"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
@@ -134,7 +145,7 @@
         android:id="@+id/cvEditDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+android:visibility="gone"
         android:layout_marginTop="20dp"
         android:translationZ="10dp"
         android:elevation="3dp"
@@ -149,6 +160,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/italic"
                 android:text="Country Name"
 
                 />
@@ -171,6 +183,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
+                        android:fontFamily="@font/italic"
                         android:background="@drawable/transparent_edittext_border"
                         android:layout_weight="1"
                         android:hint=" Select Country" />
@@ -184,18 +197,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:inputType="none"
+                android:fontFamily="@font/italic"
                 android:text="City of Birth" />
 
             <EditText
                 android:id="@+id/etHoroscopeBirthCity"
                 style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
+                android:fontFamily="@font/italic"
                 android:hint="Enter city of birth"
                 android:layout_height="40dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/italic"
                 android:layout_marginTop="20dp"
                 android:text="Time of Birth"
 
@@ -230,6 +246,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="8dp"
                                 android:hint="Hour"
+                                android:fontFamily="@font/italic"
                                 android:background="@drawable/transparent_edittext_border" />
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -255,6 +272,7 @@
                                 android:background="@drawable/transparent_edittext_border"
                                 android:layout_height="40dp"
                                 android:padding="8dp"
+                                android:fontFamily="@font/italic"
                                 android:hint="Minutes"
                                 android:layout_weight="1" />
 
@@ -282,6 +300,7 @@
                                 android:layout_height="40dp"
                                 android:padding="8dp"
                                 android:hint="A.m/P.m"
+                                android:fontFamily="@font/italic"
                                 android:layout_weight="1" />
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -295,6 +314,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/italic"
                 android:text="Timing Status"
 
                 />
@@ -317,6 +337,7 @@
                         android:layout_width="match_parent"
                         android:background="@drawable/transparent_edittext_border"
                         android:layout_height="40dp"
+                        android:fontFamily="@font/italic"
                         android:hint="Timing Status"
                         android:layout_weight="1"
                         android:padding="8dp"
@@ -330,6 +351,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/italic"
                 android:text="Manglik/Chevvai dosham
 "
 
@@ -351,12 +373,14 @@
                         android:id="@+id/radio_button_1"
                         android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/italic"
                         android:layout_height="match_parent"
                         android:text="Yes"/>
                     <RadioButton
                         android:id="@+id/radio_button_2"
                         android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/italic"
                         android:layout_marginStart="10dp"
                         android:layout_height="match_parent"
                         android:text="No"/>
@@ -364,6 +388,7 @@
                     <RadioButton
                         android:id="@+id/radio_button_3"
                         android:layout_width="0dp"
+                        android:fontFamily="@font/italic"
                         android:layout_weight="1"
                         android:layout_marginStart="10dp"
                         android:layout_height="match_parent"
@@ -379,19 +404,22 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <Button
+                <TextView
                     android:id="@+id/btnSaveDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Save Details"
+                    android:padding="10dp"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:backgroundTint="@color/colorPrimary"
+                    android:background="@drawable/gradient_button"
                     android:layout_gravity="center"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+android:fontFamily="@font/italic"
                     android:layout_margin="5dp"
                     android:text="or"/>
 
@@ -400,6 +428,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/teal_700"
                     android:layout_margin="5dp"
                     android:text="Cancel"/>
