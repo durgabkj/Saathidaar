@@ -34,7 +34,7 @@ public class ShortListFragment extends Fragment {
     SessionManager sessionManager;
     DataModelNewMatches data;
     String member_id;
-    public String ShortListUrl ="http://192.168.1.37:9094/api/shortlist/get/all/22";
+    public String ShortListUrl ="http://192.168.1.35:9094/api/shortlist/get/all/22";
     FragmentShortListBinding b;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";

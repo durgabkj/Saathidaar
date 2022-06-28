@@ -11,7 +11,6 @@ import com.ottego.saathidaar.InboxFragment;
 import com.ottego.saathidaar.MatchesFragment;
 import com.ottego.saathidaar.HomeFragment;
 import com.ottego.saathidaar.AccountFragment;
-import com.ottego.saathidaar.PremiumFragment;
 import com.ottego.saathidaar.UpgradeFragment;
 
 

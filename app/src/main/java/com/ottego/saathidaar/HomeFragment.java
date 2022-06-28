@@ -106,6 +106,16 @@ public class HomeFragment extends Fragment {
 //                fragmentTransaction.commit();
 //            }
 //        });
+
+        int betweenSpace = 100;
+
+        ViewGroup slidingTabStrip = (ViewGroup) b.tlHome.getChildAt(0);
+
+        for (int i=0; i<slidingTabStrip.getChildCount()-1; i++) {
+            View v = slidingTabStrip.getChildAt(i);
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            params.rightMargin = betweenSpace;
+        }
         return b.getRoot();
 
     }

@@ -35,7 +35,11 @@
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/radio_selector.xml" value="0.151" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/seleted.xml" value="0.135" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/spineer_bg.xml" value="0.1535" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/tab_background_selected.xml" value="0.154" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/tab_background_unselected.xml" value="0.154" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/tab_indicater.xml" value="0.1465" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/tab_selector.xml" value="0.154" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/tabindicater.xml" value="0.154" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/tablayout_bg.xml" value="0.1955" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/tablayout_selector.xml" value="0.1315" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/text_color.xml" value="0.151" />
@@ -53,7 +57,7 @@
         <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_login_activity.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_main.xml" value="0.176" />
-        <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_matches_details.xml" value="0.264" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_matches_details.xml" value="0.19698275862068965" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_navigation.xml" value="0.144" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_otp_verification.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/activity_professional_detail_edit.xml" value="0.23435897435897435" />

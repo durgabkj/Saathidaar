@@ -22,6 +22,7 @@
 
 
         <LinearLayout
+            android:id="@+id/llDetailCad"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -47,8 +48,10 @@
 
 
                     <ImageView
+                        android:id="@+id/ivDetailUserImage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:transitionName="tnMemberImage"
                         android:scaleType="centerCrop"
                         android:src="@drawable/local" />
 

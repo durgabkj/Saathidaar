@@ -1,8 +1,12 @@
 package com.ottego.saathidaar.Adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +18,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.ottego.saathidaar.MatchesDetailsActivity;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
+import com.ottego.saathidaar.UpgradePlanDetailsActivity;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
@@ -68,6 +74,18 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             }
         });
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) view.getContext(),
+                        Pair.create(holder.ivUserMatch, "tnMemberImage"));
+                Intent intent = new Intent(view.getContext(), MatchesDetailsActivity.class);
+                view.getContext().startActivity(intent, options.toBundle());
+
+            }
+        });
+
 
 
     }
@@ -79,7 +97,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageListViewMess;
+        ImageView ivUserMatch;
         TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
         LinearLayout llMess,llShortListRemove,llShortList;
         LinearLayout ivLike;
@@ -93,6 +111,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             tvNewMatchCity = itemView.findViewById(R.id.tvNewMatchCity);
             tvNewMatchWorkAs = itemView.findViewById(R.id.tvNewMatchWorkAs);
             ivLike = itemView.findViewById(R.id.ivLike);
+            ivUserMatch = itemView.findViewById(R.id.ivUserMatch);
             llShortListRemove = itemView.findViewById(R.id.llShortListRemove);
             llShortList = itemView.findViewById(R.id.llShortList);
         }

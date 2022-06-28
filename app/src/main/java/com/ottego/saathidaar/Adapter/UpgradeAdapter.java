@@ -1,9 +1,12 @@
 package com.ottego.saathidaar.Adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,7 +50,6 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
     @Override
     public void onBindViewHolder(@NonNull UpgradeAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         UpgradeModel item = list.get(position);
-        Log.e(" New Matches model", new Gson().toJson(item));
 
         holder.tvCardName.setText(item.plan_name);
         holder.tvMonths.setText(item.plan_validity);
@@ -54,12 +57,15 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, UpgradePlanDetailsActivity.class);
+            public void onClick(View v) {
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) v.getContext(),
+                        Pair.create(holder.tvPriceUpgrade, "tnMembershipPlan"));
+                Intent intent = new Intent(v.getContext(), UpgradePlanDetailsActivity.class);
                 intent.putExtra("data", new Gson().toJson(item));
-                context.startActivity(intent);
+               v.getContext().startActivity(intent, options.toBundle());
             }
         });
+
     }
 
 
