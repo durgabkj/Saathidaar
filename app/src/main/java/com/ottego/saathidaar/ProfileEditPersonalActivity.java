@@ -28,7 +28,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,7 +41,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.DataModelReligion;
 import com.ottego.saathidaar.Model.MemberProfileModel;
@@ -65,7 +63,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     private static final int SELECT_PICTURE = 100;
     private static final String TAG = "SelectImageActivity";
     public String ReligionUrl = "http://192.168.1.40:9094/api/get/religion-name";
-    public String url=Utils.memberUrl+"update/11";
+    public String url = Utils.memberUrl + "update/11";
 
     ActivityProfileEditPersonalBinding b;
     Context context;
@@ -91,7 +89,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
     String name = "";
     String email = "";
-   String description="";
+    String description = "";
     String age = "";
     String Dob = "";
     String Marital_status = "";
@@ -108,8 +106,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     String Gothram = "";
     String child = "";
     String selectedReligion;
-String maritalStatus;
-MemberProfileModel model;
+    String myMaritalS;
+    MemberProfileModel model;
 
     public static void openAppSettings(final Activity context) {
         if (context == null) {
@@ -135,6 +133,9 @@ MemberProfileModel model;
         String data = bundle.getString("data");
         model = new Gson().fromJson(data, MemberProfileModel.class);
 
+        Log.e("personal data",data);
+
+
         // Initialize dialog
         dialog = new Dialog(context);
         // b.mbDatePicker.setText(currentDate);
@@ -155,16 +156,25 @@ MemberProfileModel model;
     }
 
     private void setData() {
-        if (model!=null)
-        {
+        if (model != null) {
             b.etAddUserDescription.setText(model.about_ourself);
             b.mbDatePicker.setText(model.date_of_birth);
             b.etAge.setText(model.age);
+            b.etMaritalStatus.setText(model.marital_status);
+            b.etHeight.setText(model.height);
+            b.etBloodGroup.setText(model.blood_group);
+            b.etDiet.setText(model.lifestyles);
+            b.tvMotherTongue.setText(model.mother_tounge);
+            b.tvUserSubCommunity.setText(model.subcaste);
+            b.tvUserCommunity.setText(model.caste_name);
+            b.etAddUserNoOfChild.setText(model.no_of_children);
+            b.tvUserReligion.setText(model.religion_name);
+            b.etHealth.setText(model.health_info);
         }
 
 
-     //   b.multiSelectionAge.setSelected(minAdapter.getPosition(model.age));
-     //   b.tvEditMaritalStatus.setSelection(Integer.parseInt(model.marital_status));
+        //   b.multiSelectionAge.setSelected(minAdapter.getPosition(model.age));
+        //   b.tvEditMaritalStatus.setSelection(Integer.parseInt(model.marital_status));
 
     }
 
@@ -172,7 +182,7 @@ MemberProfileModel model;
         InputMethodManager inputMethodManager =
                 (InputMethodManager) activity.getSystemService(
                         Activity.INPUT_METHOD_SERVICE);
-        if(inputMethodManager.isAcceptingText()){
+        if (inputMethodManager.isAcceptingText()) {
             inputMethodManager.hideSoftInputFromWindow(
                     activity.getCurrentFocus().getWindowToken(),
                     0
@@ -181,7 +191,7 @@ MemberProfileModel model;
     }
 
     public void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
@@ -191,6 +201,7 @@ MemberProfileModel model;
         //Setting the ArrayAdapter data on the Spinner
         b.tvEditDiet.setAdapter(diet);
     }
+
     private void listener() {
         b.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -241,45 +252,11 @@ MemberProfileModel model;
 //            }
 //        });
 
-
-        b.tvEditMaritalStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                maritalStatus = b.tvEditMaritalStatus.getSelectedItem().toString();
-                Log.e("Selected-Status", maritalStatus);
-
-                if (maritalStatus.equalsIgnoreCase("Never Married"))
-                {
-                    b.llNoChild.setVisibility(View.GONE);
-                }
-
-                if (maritalStatus.equalsIgnoreCase("Divorce"))
-                {
-                    b.llNoChild.setVisibility(View.VISIBLE);
-                }
-
-                if (maritalStatus.equalsIgnoreCase("Widowed"))
-                {
-                    b.llNoChild.setVisibility(View.VISIBLE);
-                }
-
-                if (maritalStatus.equalsIgnoreCase("Awaiting Divorce"))
-                {
-                    b.llNoChild.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-
         b.tvUserReligion.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start,
@@ -290,43 +267,37 @@ MemberProfileModel model;
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
 
-                selectedReligion=b.tvUserReligion.getText().toString().trim();
-                if(selectedReligion.equalsIgnoreCase("Hindu"))
-                {
+                selectedReligion = b.tvUserReligion.getText().toString().trim();
+                if (selectedReligion.equalsIgnoreCase("Hindu")) {
                     b.llCast.setVisibility(View.VISIBLE);
                     b.llSubCast.setVisibility(View.VISIBLE);
                     b.llGotra.setVisibility(View.VISIBLE);
                 }
 
-                if(selectedReligion.equalsIgnoreCase("Muslim"))
-                {
+                if (selectedReligion.equalsIgnoreCase("Muslim")) {
                     b.llCast.setVisibility(View.VISIBLE);
                     b.llSubCast.setVisibility(View.VISIBLE);
                     b.llGotra.setVisibility(View.GONE);
                 }
 
-                if(selectedReligion.equalsIgnoreCase("Parsi"))
-                {
+                if (selectedReligion.equalsIgnoreCase("Parsi")) {
                     b.llCast.setVisibility(View.GONE);
                     b.llSubCast.setVisibility(View.GONE);
                     b.llGotra.setVisibility(View.GONE);
                 }
-                if(selectedReligion.equalsIgnoreCase("Jain"))
-                {
+                if (selectedReligion.equalsIgnoreCase("Jain")) {
                     b.llCast.setVisibility(View.VISIBLE);
                     b.llSubCast.setVisibility(View.VISIBLE);
                     b.llGotra.setVisibility(View.VISIBLE);
                 }
 
-                if(selectedReligion.equalsIgnoreCase("Buddhist"))
-                {
+                if (selectedReligion.equalsIgnoreCase("Buddhist")) {
                     b.llCast.setVisibility(View.GONE);
                     b.llSubCast.setVisibility(View.GONE);
                     b.llGotra.setVisibility(View.GONE);
                 }
 
-                if(selectedReligion.equalsIgnoreCase("Christian"))
-                {
+                if (selectedReligion.equalsIgnoreCase("Christian")) {
                     b.llCast.setVisibility(View.GONE);
                     b.llSubCast.setVisibility(View.GONE);
                     b.llGotra.setVisibility(View.GONE);
@@ -338,16 +309,14 @@ MemberProfileModel model;
         b.multiSelectionAge.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String myAge = b.multiSelectionAge.getSelectedItem().toString();
+                String myAge = b.multiSelectionAge.getSelectedItem().toString().trim();
 
-                if(myAge.equals("select"))
-                {
+                if (myAge.equalsIgnoreCase("select")) {
 
-                }else
-                {
+                } else {
                     b.etAge.setText(myAge);
                 }
-              //
+                //
             }
 
             @Override
@@ -360,15 +329,30 @@ MemberProfileModel model;
         b.tvEditMaritalStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String myMaritalS = b.tvEditMaritalStatus.getSelectedItem().toString();
+                String myMaritalS = b.tvEditMaritalStatus.getSelectedItem().toString().trim();
+                if (myMaritalS.equalsIgnoreCase("select")) {
 
-                if(myMaritalS.equals("select"))
-                {
-
-                }else
-                {
+                } else {
                     b.etMaritalStatus.setText(myMaritalS);
                 }
+
+                if (myMaritalS.equalsIgnoreCase("Never Married")) {
+                    b.llNoChild.setVisibility(View.GONE);
+                }
+
+                if (myMaritalS.equalsIgnoreCase("Divorce")) {
+                    b.llNoChild.setVisibility(View.VISIBLE);
+                }
+
+                if (myMaritalS.equalsIgnoreCase("Widowed")) {
+                    b.llNoChild.setVisibility(View.VISIBLE);
+                }
+
+                if (myMaritalS.equalsIgnoreCase("Awaiting Divorce")) {
+                    b.llNoChild.setVisibility(View.VISIBLE);
+                }
+
+
                 //
             }
 
@@ -382,13 +366,11 @@ MemberProfileModel model;
         b.spUserHeight.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String myHeight= b.spUserHeight.getSelectedItem().toString();
+                String myHeight = b.spUserHeight.getSelectedItem().toString().trim();
 
-                if(myHeight.equals("select"))
-                {
+                if (myHeight.equalsIgnoreCase("select")) {
 
-                }else
-                {
+                } else {
                     b.etHeight.setText(myHeight);
                 }
                 //
@@ -401,17 +383,14 @@ MemberProfileModel model;
         });
 
 
-
         b.spUserBloodGroup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String myBloodGroup= b.spUserBloodGroup.getSelectedItem().toString();
+                String myBloodGroup = b.spUserBloodGroup.getSelectedItem().toString().trim();
 
-                if(myBloodGroup.equals("select"))
-                {
+                if (myBloodGroup.equalsIgnoreCase("select")) {
 
-                }else
-                {
+                } else {
                     b.etBloodGroup.setText(myBloodGroup);
                 }
                 //
@@ -427,13 +406,11 @@ MemberProfileModel model;
         b.tvEditDiet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String myDiet= b.tvEditDiet.getSelectedItem().toString();
+                String myDiet = b.tvEditDiet.getSelectedItem().toString();
 
-                if(myDiet.equals("select"))
-                {
+                if (myDiet.equalsIgnoreCase("select")) {
 
-                }else
-                {
+                } else {
                     b.etDiet.setText(myDiet);
                 }
                 //
@@ -449,13 +426,11 @@ MemberProfileModel model;
         b.spUserHealthDetail.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String myHealth= b.spUserHealthDetail.getSelectedItem().toString();
+                String myHealth = b.spUserHealthDetail.getSelectedItem().toString();
 
-                if(myHealth.equals("select"))
-                {
+                if (myHealth.equalsIgnoreCase("select")) {
 
-                }else
-                {
+                } else {
                     b.etHealth.setText(myHealth);
                 }
                 //
@@ -469,27 +444,25 @@ MemberProfileModel model;
     }
 
 
-
-
     private boolean checkForm() {
 //        name = b.etAddUserName.getText().toString().trim();
 //        email = b.etAddUsermail.getText().toString().trim();
-        description=b.etAddUserDescription.getText().toString().trim();
+        description = b.etAddUserDescription.getText().toString().trim();
         Dob = b.mbDatePicker.getText().toString().trim();
         age = b.multiSelectionAge.getSelectedItem().toString().trim();
-        Marital_status=b.tvEditMaritalStatus.getSelectedItem().toString().trim();
+        Marital_status = b.tvEditMaritalStatus.getSelectedItem().toString().trim();
         child = b.etAddUserNoOfChild.getText().toString().trim();
-        Height=b.spUserHeight.getSelectedItem().toString().trim();
-        GrewUpIn=b.etAddUserGrewUpIn.getText().toString().trim();
-        bloodGroup=b.spUserBloodGroup.getSelectedItem().toString().toString();
-        Diet=b.tvEditDiet.getSelectedItem().toString().trim();
-        Location=b.etAddUserLocation.getText().toString().trim();
-        MotherTongue=b.tvMotherTongue.getText().toString().trim();
-        HealthDetail=b.spUserHealthDetail.getSelectedItem().toString().trim();
-        Religion=b.tvUserReligion.getText().toString().trim();
-        cast=b.tvUserCommunity.getText().toString().trim();
-        subCast=b.tvUserSubCommunity.getText().toString().trim();
-        Gothram=b.tvUserGotra.getText().toString().trim();
+        Height = b.spUserHeight.getSelectedItem().toString().trim();
+        GrewUpIn = b.etAddUserGrewUpIn.getText().toString().trim();
+        bloodGroup = b.spUserBloodGroup.getSelectedItem().toString().toString();
+        Diet = b.tvEditDiet.getSelectedItem().toString().trim();
+        Location = b.etAddUserLocation.getText().toString().trim();
+        MotherTongue = b.tvMotherTongue.getText().toString().trim();
+        HealthDetail = b.spUserHealthDetail.getSelectedItem().toString().trim();
+        Religion = b.tvUserReligion.getText().toString().trim();
+        cast = b.tvUserCommunity.getText().toString().trim();
+        subCast = b.tvUserSubCommunity.getText().toString().trim();
+        Gothram = b.tvUserGotra.getText().toString().trim();
 
 
         if (description.isEmpty()) {
@@ -500,7 +473,6 @@ MemberProfileModel model;
         } else {
             b.etAddUserDescription.setError(null);
         }
-
 
 
         if (Dob.isEmpty()) {
@@ -522,7 +494,7 @@ MemberProfileModel model;
             b.tvage.setError(null);
         }
 
-        if (maritalStatus.equals("select")) {
+        if (myMaritalS.equals("select")) {
             b.tvmarital.setError("please select Marital Status");
             b.tvmarital.setFocusableInTouchMode(true);
             b.tvmarital.requestFocus();
@@ -560,7 +532,6 @@ MemberProfileModel model;
         }
 
 
-
 //        if (b.spUserHeight.getCount()==0){
 //            Toast.makeText(getApplicationContext(),"spinner hasn't values",
 //                    Toast.LENGTH_LONG).show();
@@ -575,7 +546,6 @@ MemberProfileModel model;
 //        } else {
 //            b.etAddUserGrewUpIn.setError(null);
 //        }
-
 
 
 //        if (Location.isEmpty()) {
@@ -643,8 +613,9 @@ MemberProfileModel model;
 //            b.tvUserGotra.setError(null);
 //        }
         return true;
-        
+
     }
+
     private void submitForm() {
         Map<String, String> params = new HashMap<String, String>();
         params.put("about_ourself", description);
@@ -658,8 +629,8 @@ MemberProfileModel model;
         params.put("caste_name", cast);
         params.put("sub_caste_name", subCast);
         params.put("gothra", Gothram);
-        params.put("lifestyles",Diet);
-        params.put("no_of_children",child);
+        params.put("lifestyles", Diet);
+        params.put("no_of_children", child);
 
         Log.e("params", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
@@ -671,8 +642,8 @@ MemberProfileModel model;
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
 
-                                  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
-                       // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+                                // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
@@ -694,6 +665,7 @@ MemberProfileModel model;
         request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(request);
     }
+
     private void religionList() {
         b.tvUserReligion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -902,54 +874,6 @@ MemberProfileModel model;
 
     }
 
-//
-//    @Override
-//    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//        if (adapterView.getId() == R.id.list_view) {
-//            communityList.clear();
-//            String selectedCountry = adapterView.getSelectedItem().toString();
-//            String url = "http://192.168.1.40:9094/api/get/cast-name/" + selectedCountry;
-//
-//            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-//                    url, null, new Response.Listener<JSONObject>() {
-//                @Override
-//                public void onResponse(JSONObject response) {
-//                    Log.e("response", String.valueOf(response));
-//                    try {
-//                        String code = response.getString("results");
-//                        if (code.equalsIgnoreCase("1")) {
-//                            JSONArray jsonArray = response.getJSONArray("cast");
-//                            for (int i = 0; i < jsonArray.length(); i++) {
-//                                JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-//                                String cast = jsonObject1.getString("cast_name");
-//                                Log.e("cast", cast);
-//                                communityList.add(cast);
-//                                Log.e("cast-list", String.valueOf(communityList));
-//                            }
-//                        }
-//                        communityAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, communityList);
-//                        // set adapter
-//                        listView.setAdapter(communityAdapter);
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }, new Response.ErrorListener() {
-//                @Override
-//                public void onErrorResponse(VolleyError error) {
-//
-//                }
-//            });
-//            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//            MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-//        }
-//    }
-//
-//        @Override
-//        public void onNothingSelected (AdapterView < ? > adapterView){
-//
-//        }
-
 
     private void handlePermission() {
 
@@ -983,6 +907,7 @@ MemberProfileModel model;
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
+
     /* Choose an image from Gallery */
     void openImageChooser() {
         Intent intent = new Intent();
@@ -1020,6 +945,7 @@ MemberProfileModel model;
         }).start();
 
     }
+
     /* Get the real path from the URI */
     public String getPathFromURI(Uri contentUri) {
         String res = null;
@@ -1252,6 +1178,7 @@ MemberProfileModel model;
         maritalList.add("Divorce");
         maritalList.add("Widowed");
         maritalList.add("Awaiting Divorce");
+        maritalList.add("Married");
 
         // Initialize adapter
         ArrayAdapter<String> maritalAdapter = new ArrayAdapter<>(context, R.layout.dropdown_item, maritalList);
@@ -1263,7 +1190,7 @@ MemberProfileModel model;
         // use for loop
         for (int i = 18; i <= 70; i++) {
             // add values in price list
-            AgeList.add(""+i);
+            AgeList.add("" + i);
             // check condition
 
 

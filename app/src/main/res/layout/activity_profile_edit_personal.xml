@@ -187,15 +187,16 @@
             <TextView
                 android:id="@+id/mbDatePicker"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/italic"
                 android:background="@drawable/gradient_button"
                 android:textSize="16sp"
                 android:textStyle="bold"
+
                 android:textAlignment="center"
-                android:padding="14dp"
+                android:padding="8dp"
                 android:text="Select D.O.B"
                 android:textColor="@color/white"
                 app:cornerRadius="5dp"
@@ -228,10 +229,12 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:enabled="true"
+                    android:editable="false"
                     android:fontFamily="@font/italic"
                     android:hint="select  your Age"
                     android:layout_marginStart="8dp"
-                    android:background="@drawable/transparent_edittext_border" />
+                    android:background="@drawable/transparent_edittext_border"
+                    tools:ignore="Deprecated" />
 
 
 
@@ -279,10 +282,11 @@
                     android:layout_weight="1"
                     android:hint="select  Marital Status"
                     android:layout_marginStart="8dp"
-                    android:enabled="false"
+                    android:editable="true"
+                    android:enabled="true"
                     android:fontFamily="@font/italic"
                     android:background="@drawable/transparent_edittext_border"
-                    tools:ignore="Suspicious0dp" />
+                    tools:ignore="Deprecated,Suspicious0dp" />
 
                 <Spinner
                     android:id="@+id/tvEditMaritalStatus"
@@ -305,19 +309,22 @@
                 android:id="@+id/llNoChild"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+               android:visibility="gone"
                 android:orientation="vertical"
                 >
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/italic"
+                    android:textColor="@color/colorPrimary"
                     android:text="Number Of Child" />
 
                 <EditText
                     android:id="@+id/etAddUserNoOfChild"
                     style="@style/PersonalDataTextView"
                     android:layout_width="match_parent"
+                   android:fontFamily="@font/italic"
                     android:layout_height="40dp"
                     android:hint="No.of child" />
             </LinearLayout>
@@ -350,10 +357,11 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/italic"
-                    android:enabled="true"
+                    android:editable="true"
                     android:hint="select  your Height"
                     android:layout_marginStart="8dp"
-                    android:background="@drawable/transparent_edittext_border" />
+                    android:background="@drawable/transparent_edittext_border"
+                    tools:ignore="Deprecated" />
 
 
 
@@ -414,10 +422,11 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/italic"
-                    android:enabled="true"
+                    android:editable="false"
                     android:hint="select  Blood Group"
                     android:layout_marginStart="8dp"
-                    android:background="@drawable/transparent_edittext_border" />
+                    android:background="@drawable/transparent_edittext_border"
+                    tools:ignore="Deprecated" />
 
 
                 <Spinner
@@ -466,8 +475,10 @@
                     android:fontFamily="@font/italic"
                     android:enabled="true"
                     android:hint="select  Diet"
+                    android:editable="false"
                     android:layout_marginStart="8dp"
-                    android:background="@drawable/transparent_edittext_border" />
+                    android:background="@drawable/transparent_edittext_border"
+                    tools:ignore="Deprecated" />
 
                 <Spinner
                     android:id="@+id/tvEditDiet"
@@ -521,13 +532,11 @@
                 style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/italic"
-                android:textSize="14sp"
                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                android:fontFamily="@font/italic"
                 android:gravity="center_vertical"
                 android:hint="Select Mother Tongue"
-                android:padding="10dp"
-                />
+                android:padding="10dp" />
             // android:background="@android:drawable/editbox_background"
 
             <TextView
@@ -555,10 +564,11 @@
                     android:layout_marginStart="8dp"
                     android:enabled="true"
                     android:layout_weight="1"
+                    android:editable="false"
                     android:fontFamily="@font/italic"
                     android:background="@drawable/transparent_edittext_border"
                     android:hint="Health Details"
-                    tools:ignore="Suspicious0dp" />
+                    tools:ignore="Deprecated,Suspicious0dp" />
 
                 <Spinner
                     android:id="@+id/spUserHealthDetail"

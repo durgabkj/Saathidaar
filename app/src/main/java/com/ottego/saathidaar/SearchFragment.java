@@ -160,10 +160,15 @@ public class SearchFragment extends Fragment {
                 getSearchDetailUrl + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf((response)));
+                Log.e("response searched data ", String.valueOf((response)));
                 Gson gson = new Gson();
                 model = gson.fromJson(String.valueOf(response), SearchModel.class);
-                setData();
+                if(model!=null)
+                {
+                    setData();
+                }
+
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -178,12 +183,12 @@ public class SearchFragment extends Fragment {
     }
 
     private void setData() {
-
         tvMultipleMaritalStatusSearch.setText(model.search_marital_status);
         etFromAgeSearch.setText(model.search_from_age);
         etToAgeSearch.setText(model.search_to_age);
         tvMultipleCitySearch.setText(model.search_city);
         tvMultipleStateSearch.setText(model.search_state);
+        tvMultipleCastSearch.setText(model.search_cast);
         etfromHeightSearch.setText(model.search_from_height);
         tvMultipleCitySearch.setText(model.search_city);
         etToHeightSearch.setText(model.search_to_height);

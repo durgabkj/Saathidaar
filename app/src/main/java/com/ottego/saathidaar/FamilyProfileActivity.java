@@ -15,6 +15,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.databinding.ActivityFamilyProfileBinding;
 
 import org.json.JSONException;
@@ -43,7 +44,7 @@ public class FamilyProfileActivity extends AppCompatActivity {
     String unMarriedSister = "";
     String familyType = "";
     String familyAffluence = "";
-
+    MemberProfileModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,10 @@ public class FamilyProfileActivity extends AppCompatActivity {
         FamilyType();
         FamilyAffluence();
         listener();
+        setData();
+    }
+
+    private void setData() {
     }
 
     private void FamilyType() {

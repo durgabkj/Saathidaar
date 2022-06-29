@@ -272,6 +272,28 @@ PartnerPreferenceModel model;
         });
 
 
+
+
+        UserAnnualIncome.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String myIncome = spToHeight.getSelectedItem().toString();
+
+                if (myIncome.equals("select")) {
+
+                } else {
+                    etIncomePartnerPreference.setText(myIncome);
+                }
+                //
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
         tvPartnerPreferencesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

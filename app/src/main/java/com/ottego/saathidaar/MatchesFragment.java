@@ -20,11 +20,7 @@ import com.ottego.saathidaar.databinding.FragmentMatchesBinding;
 
 public class MatchesFragment extends Fragment {
     FragmentMatchesBinding b;
-    NewMatchesFragment newMatchesFragment = new NewMatchesFragment();
-    MyMatchFragment myMatchFragment = new MyMatchFragment();
-    TodayMatchFragment todayMatchFragment = new TodayMatchFragment();
-    ShortListFragment shortListFragment = new ShortListFragment();
-    SearchFragment searchFragment = new SearchFragment();
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -74,82 +70,11 @@ public class MatchesFragment extends Fragment {
 //        }, 1000);
 
 
-//        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.fcvNewMatches, newMatchesFragment);
-//        fragmentTransaction.commit();
-       // listener();
+
         return b.getRoot();
     }
 
-//    private void listener() {
-//        b.NewMatch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                b.hsvMatch.scrollTo((int)b.hsvMatch.getScrollX() + 300, (int)b.hsvMatch.getScrollY());
-//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//                fragmentTransaction.replace(R.id.fcvNewMatches, newMatchesFragment);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-//
-//        b.MyMatch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                b.hsvMatch.scrollTo((int)b.hsvMatch.getScrollX() + 400, (int)b.hsvMatch.getScrollY());
-//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//                fragmentTransaction.replace(R.id.fcvNewMatches, myMatchFragment);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-//
-//        b.TodayMatch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                b.hsvMatch.scrollTo((int)b.hsvMatch.getScrollX() + 500, (int)b.hsvMatch.getScrollY());
-//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//                fragmentTransaction.replace(R.id.fcvNewMatches, todayMatchFragment);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-//        b.MatchSortlist.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.fcvNewMatches, shortListFragment);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-//
-//        b.MatchSearch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.fcvNewMatches, searchFragment);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//    }
-//private void setUpViewPager(ViewPager viewPager) {
-//    HomeTablayoutAdapter adapter = new HomeTablayoutAdapter(getChildFragmentManager());
-//    adapter.addFragment(new DashBoardFragment(), "DashBoard");
-//    adapter.addFragment(new MyProfileFragment(), "Profile");
-//    adapter.addFragment(new PartnerPreferenceFragment(), "Partner Preference");
-//    adapter.addFragment(new HoroscopeFragment(), "Horoscope");
-//    viewPager.setAdapter(adapter);
+
 
 
 
