@@ -2,14 +2,18 @@ package com.ottego.saathidaar;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.tabs.TabLayout;
+import com.ottego.saathidaar.Adapter.HomeTablayoutAdapter;
 import com.ottego.saathidaar.databinding.FragmentAccountBinding;
 
 
@@ -58,25 +62,62 @@ public class AccountFragment extends Fragment {
 
 
 
-        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fcvSathidarAccount,accountSettingFragment);
-        fragmentTransaction.commit();
-listener();
+//        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.fcvSathidarAccount,accountSettingFragment);
+//        fragmentTransaction.commit();
+//listener();
         return b.getRoot();
     }
 
-    private void listener() {
-        b.tvAccountSetting.setOnClickListener(new View.OnClickListener() {
+//    private void listener() {
+//        b.tvAccountSetting.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+//
+//                fragmentTransaction.replace(R.id.fcvSathidarAccount,accountSettingFragment);
+//                fragmentTransaction.commit();
+//            }
+//        });
+//    }
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        setUpViewPager(b.vpAccount);
+        b.tlAccount.setupWithViewPager(b.vpAccount);
+
+
+        b.tlAccount.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
             @Override
-            public void onClick(View view) {
+            public void onTabSelected(TabLayout.Tab tab) {
 
-                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                b.vpAccount.setCurrentItem(tab.getPosition());
+            }
 
-                fragmentTransaction.replace(R.id.fcvSathidarAccount,accountSettingFragment);
-                fragmentTransaction.commit();
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
+    }
+
+    private void setUpViewPager(ViewPager viewPager) {
+        HomeTablayoutAdapter adapter = new HomeTablayoutAdapter(getChildFragmentManager());
+        adapter.addFragment(new AccountSettingFragment(), "Account Settings");
+        adapter.addFragment(new EmailAndSmsAlertFragment(), "Email Setting");
+        adapter.addFragment(new PrivacyOptionFragment(),"Privacy Option");
+        viewPager.setAdapter(adapter);
     }
 }

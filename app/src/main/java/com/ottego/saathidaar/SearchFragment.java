@@ -3,7 +3,6 @@ package com.ottego.saathidaar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,7 +24,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.multipleselectionspinner.MultipleSelection;
-import com.ottego.saathidaar.Model.DataModelDashboard;
 import com.ottego.saathidaar.Model.SearchModel;
 
 import org.json.JSONArray;
@@ -50,13 +48,13 @@ public class SearchFragment extends Fragment {
     // Initialize variables
     Spinner spMinSearch, spMaxSearch, spFromHeightSearch, spToHeightSearch;
     TextView tvMultipleMaritalStatusSearch;
-public String SearchUrl=Utils.memberUrl+"search/update/";
-    public String getSearchDetailUrl=Utils.memberUrl+"search/get/";
-    public String ReligionUrl = "http://192.168.1.35:9094/api/get/religion-name";
-    public String countryUrl = "http://192.168.1.35:9094/api/get/country";
-    public String castUrl = "http://192.168.1.35:9094/api/get/all/cast";
-    public String stateUrl = "http://192.168.1.35:9094/api/get/state";
-    public String cityUrl = "http://192.168.1.35:9094/api/get/all/city";
+    public String SearchUrl = Utils.memberUrl + "search/update/";
+    public String getSearchDetailUrl = Utils.memberUrl + "search/get/";
+    public String ReligionUrl = "http://192.168.1.40:9094/api/get/religion-name";
+    public String countryUrl = "http://192.168.1.40:9094/api/get/country";
+    public String castUrl = "http://192.168.1.40:9094/api/get/all/cast";
+    public String stateUrl = "http://192.168.1.40:9094/api/get/state";
+    public String cityUrl = "http://192.168.1.40:9094/api/get/all/city";
 
 
     ArrayList<String> AgeListSearch = new ArrayList<>();
@@ -118,9 +116,9 @@ public String SearchUrl=Utils.memberUrl+"search/update/";
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
-       context = getContext();
-       sessionManager=new SessionManager(context);
-        member_id=sessionManager.getMemberId();
+        context = getContext();
+        sessionManager = new SessionManager(context);
+        member_id = sessionManager.getMemberId();
 
         spMinSearch = view.findViewById(R.id.sp_minSearch);
         spMaxSearch = view.findViewById(R.id.sp_maxSearch);
@@ -133,7 +131,7 @@ public String SearchUrl=Utils.memberUrl+"search/update/";
         tvMultipleCastSearch = view.findViewById(R.id.tvMultipleCastSearch);
         tvMultipleCitySearch = view.findViewById(R.id.tvMultipleCitySearch);
         tvMultipleStateSearch = view.findViewById(R.id.tvMultipleStateSearch);
-        tvSearchMatchBtn=view.findViewById(R.id.tvSearchMatchBtn);
+        tvSearchMatchBtn = view.findViewById(R.id.tvSearchMatchBtn);
         etFromAgeSearch = view.findViewById(R.id.etFromAgeSearch);
         etToAgeSearch = view.findViewById(R.id.etToAgeSearch);
         etfromHeightSearch = view.findViewById(R.id.etfromHeightSearch);
@@ -159,7 +157,7 @@ public String SearchUrl=Utils.memberUrl+"search/update/";
 
     private void getData() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                getSearchDetailUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                getSearchDetailUrl + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf((response)));
@@ -182,11 +180,9 @@ public String SearchUrl=Utils.memberUrl+"search/update/";
     private void setData() {
 
         tvMultipleMaritalStatusSearch.setText(model.search_marital_status);
-etFromAgeSearch.setText(model.search_from_age);
+        etFromAgeSearch.setText(model.search_from_age);
         etToAgeSearch.setText(model.search_to_age);
-
         tvMultipleCitySearch.setText(model.search_city);
-
         tvMultipleStateSearch.setText(model.search_state);
         etfromHeightSearch.setText(model.search_from_height);
         tvMultipleCitySearch.setText(model.search_city);
@@ -745,17 +741,17 @@ etFromAgeSearch.setText(model.search_from_age);
     }
 
     private void submitForm() {
-        fromAge=etFromAgeSearch.getText().toString().trim();
-        toAge=etToAgeSearch.getText().toString().trim();
-        fromHeight=etfromHeightSearch.getText().toString().trim();
-        toHeight=etToHeightSearch.getText().toString().trim();
-        maritalStatus=tvMultipleMaritalStatusSearch.getText().toString().trim();
-        motherTongue=multi_SelectionMotherTongueSearch.getText().toString().trim();
-        religion=tvMultipleReligionSearch.getText().toString().trim();
-        cast=tvMultipleCastSearch.getText().toString().trim();
-        country=multi_SelectionCountrySearch.getText().toString().trim();
-        state=tvMultipleStateSearch.getText().toString().trim();
-        city=tvMultipleCitySearch.getText().toString().trim();
+        fromAge = etFromAgeSearch.getText().toString().trim();
+        toAge = etToAgeSearch.getText().toString().trim();
+        fromHeight = etfromHeightSearch.getText().toString().trim();
+        toHeight = etToHeightSearch.getText().toString().trim();
+        maritalStatus = tvMultipleMaritalStatusSearch.getText().toString().trim();
+        motherTongue = multi_SelectionMotherTongueSearch.getText().toString().trim();
+        religion = tvMultipleReligionSearch.getText().toString().trim();
+        cast = tvMultipleCastSearch.getText().toString().trim();
+        country = multi_SelectionCountrySearch.getText().toString().trim();
+        state = tvMultipleStateSearch.getText().toString().trim();
+        city = tvMultipleCitySearch.getText().toString().trim();
 
         Map<String, String> params = new HashMap<String, String>();
         params.put("search_from_age", fromAge);
@@ -763,7 +759,7 @@ etFromAgeSearch.setText(model.search_from_age);
         params.put("search_from_height", fromHeight);
         params.put("search_to_height", toHeight);
         params.put("search_marital_status", maritalStatus);
-        params.put("search_mother_tongue",motherTongue);
+        params.put("search_mother_tongue", motherTongue);
         params.put("search_cast", cast);
 
 //        params.put("search_marital_status", country);
@@ -772,21 +768,21 @@ etFromAgeSearch.setText(model.search_from_age);
 
         params.put("member_id", sessionManager.getMemberId());
         Log.e("params", String.valueOf(params));
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, SearchUrl+member_id, new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, SearchUrl + member_id, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.e("response", String.valueOf((response)));
                         try {
                             String code = response.getString("message");
-                            if (!code.equalsIgnoreCase("") && code!=null) {
+                            if (!code.equalsIgnoreCase("") && code != null) {
 //                                    Gson gson = new Gson();
 //                                    UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);
 //                                   // sessionManager.createSUserDetails(sessionModel);
-                                 Toast.makeText(context, code, Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+                                Toast.makeText(context, code, Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                                 //Intent intent = new Intent(context, OtpVerificationActivity.class);
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                               // startActivity(intent);
+                                // startActivity(intent);
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }

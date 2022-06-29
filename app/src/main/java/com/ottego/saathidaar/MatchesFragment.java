@@ -7,10 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.tabs.TabLayout;
+import com.ottego.saathidaar.Adapter.HomeTablayoutAdapter;
 import com.ottego.saathidaar.databinding.FragmentMatchesBinding;
 
 
@@ -61,84 +65,130 @@ public class MatchesFragment extends Fragment {
        // b.hsvMatch.fullScroll(ScrollView.FOCUS_LEFT);
 
 
-        new Handler().postDelayed(new Runnable() {
+//        new Handler().postDelayed(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                b.TodayMatch.performClick();
+//            }
+//        }, 1000);
 
-            @Override
-            public void run() {
-                b.TodayMatch.performClick();
-            }
-        }, 1000);
 
-
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fcvNewMatches, newMatchesFragment);
-        fragmentTransaction.commit();
-        listener();
+//        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.fcvNewMatches, newMatchesFragment);
+//        fragmentTransaction.commit();
+       // listener();
         return b.getRoot();
     }
 
-    private void listener() {
-        b.NewMatch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                b.hsvMatch.scrollTo((int)b.hsvMatch.getScrollX() + 300, (int)b.hsvMatch.getScrollY());
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//    private void listener() {
+//        b.NewMatch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                b.hsvMatch.scrollTo((int)b.hsvMatch.getScrollX() + 300, (int)b.hsvMatch.getScrollY());
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//                fragmentTransaction.replace(R.id.fcvNewMatches, newMatchesFragment);
+//                fragmentTransaction.commit();
+//            }
+//        });
+//
+//
+//        b.MyMatch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                b.hsvMatch.scrollTo((int)b.hsvMatch.getScrollX() + 400, (int)b.hsvMatch.getScrollY());
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//                fragmentTransaction.replace(R.id.fcvNewMatches, myMatchFragment);
+//                fragmentTransaction.commit();
+//            }
+//        });
+//
+//
+//        b.TodayMatch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                b.hsvMatch.scrollTo((int)b.hsvMatch.getScrollX() + 500, (int)b.hsvMatch.getScrollY());
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//                fragmentTransaction.replace(R.id.fcvNewMatches, todayMatchFragment);
+//                fragmentTransaction.commit();
+//            }
+//        });
+//
+//        b.MatchSortlist.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.fcvNewMatches, shortListFragment);
+//                fragmentTransaction.commit();
+//            }
+//        });
+//
+//
+//        b.MatchSearch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.fcvNewMatches, searchFragment);
+//                fragmentTransaction.commit();
+//            }
+//        });
+//    }
+//private void setUpViewPager(ViewPager viewPager) {
+//    HomeTablayoutAdapter adapter = new HomeTablayoutAdapter(getChildFragmentManager());
+//    adapter.addFragment(new DashBoardFragment(), "DashBoard");
+//    adapter.addFragment(new MyProfileFragment(), "Profile");
+//    adapter.addFragment(new PartnerPreferenceFragment(), "Partner Preference");
+//    adapter.addFragment(new HoroscopeFragment(), "Horoscope");
+//    viewPager.setAdapter(adapter);
 
-                fragmentTransaction.replace(R.id.fcvNewMatches, newMatchesFragment);
-                fragmentTransaction.commit();
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        setUpViewPager(b.vpMatch);
+        b.tlMatch.setupWithViewPager(b.vpMatch);
+
+
+        b.tlMatch.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                b.vpMatch.setCurrentItem(tab.getPosition());
             }
-        });
 
-
-        b.MyMatch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onTabUnselected(TabLayout.Tab tab) {
 
-                b.hsvMatch.scrollTo((int)b.hsvMatch.getScrollX() + 400, (int)b.hsvMatch.getScrollY());
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                fragmentTransaction.replace(R.id.fcvNewMatches, myMatchFragment);
-                fragmentTransaction.commit();
             }
-        });
 
-
-        b.TodayMatch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                b.hsvMatch.scrollTo((int)b.hsvMatch.getScrollX() + 500, (int)b.hsvMatch.getScrollY());
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            public void onTabReselected(TabLayout.Tab tab) {
 
-                fragmentTransaction.replace(R.id.fcvNewMatches, todayMatchFragment);
-                fragmentTransaction.commit();
-            }
-        });
-
-        b.MatchSortlist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fcvNewMatches, shortListFragment);
-                fragmentTransaction.commit();
-            }
-        });
-
-
-        b.MatchSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fcvNewMatches, searchFragment);
-                fragmentTransaction.commit();
             }
         });
     }
 
-
+    private void setUpViewPager(ViewPager viewPager) {
+        HomeTablayoutAdapter adapter = new HomeTablayoutAdapter(getChildFragmentManager());
+        adapter.addFragment(new NewMatchesFragment(), "New Matches");
+        adapter.addFragment(new MyMatchFragment(), "My Matches");
+        adapter.addFragment(new TodayMatchFragment(), "Today's Matches ");
+        adapter.addFragment(new ShortListFragment(), "Shortlist");
+        adapter.addFragment(new SearchFragment(), "Search");
+        viewPager.setAdapter(adapter);
+    }
 }
+

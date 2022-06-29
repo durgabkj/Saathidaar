@@ -33,7 +33,7 @@ public class SentInboxFragment extends Fragment {
     SessionManager sessionManager;
     DataModelInbox data;
     String member_id;
-    public String InvitationSentUrl ="http://192.168.1.37:9094/api/request/sent/get/all/";
+    public String InvitationSentUrl ="http://192.168.1.40:9094/api/request/sent/get/all/";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 

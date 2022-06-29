@@ -113,12 +113,12 @@ public class MyMatchFragment extends Fragment {
         b.rvMyMatches.setNestedScrollingEnabled(true);
         NewMatchesAdapter adapter = new NewMatchesAdapter(context, data.data);
         b.rvMyMatches.setAdapter(adapter);
-//        if (adapter.getItemCount() != 0) {
-//            b.llNoData.setVisibility(View.GONE);
-//            b.rvNewMatches.setVisibility(View.VISIBLE);
-//
-//        } else {
-//            b.llNoData.setVisibility(View.VISIBLE);
-//        }
+        if (adapter.getItemCount() != 0) {
+            b.llNoDataMatch.setVisibility(View.GONE);
+            b.rvMyMatches.setVisibility(View.VISIBLE);
+
+        } else {
+            b.llNoDataMatch.setVisibility(View.VISIBLE);
+        }
     }
 }

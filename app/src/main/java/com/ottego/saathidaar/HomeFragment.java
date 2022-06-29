@@ -107,15 +107,6 @@ public class HomeFragment extends Fragment {
 //            }
 //        });
 
-        int betweenSpace = 100;
-
-        ViewGroup slidingTabStrip = (ViewGroup) b.tlHome.getChildAt(0);
-
-        for (int i=0; i<slidingTabStrip.getChildCount()-1; i++) {
-            View v = slidingTabStrip.getChildAt(i);
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
-            params.rightMargin = betweenSpace;
-        }
         return b.getRoot();
 
     }
@@ -132,7 +123,6 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
                 b.vpHome.setCurrentItem(tab.getPosition());
             }
 
@@ -149,7 +139,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void setUpViewPager(ViewPager viewPager) {
-
         HomeTablayoutAdapter adapter = new HomeTablayoutAdapter(getChildFragmentManager());
         adapter.addFragment(new DashBoardFragment(), "DashBoard");
         adapter.addFragment(new MyProfileFragment(), "Profile");

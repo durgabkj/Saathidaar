@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".SearchFragment">
@@ -24,12 +25,14 @@
 
     <ScrollView
         android:layout_width="match_parent"
+        android:background="@color/white"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:background="@color/white"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="30dp"
             android:orientation="vertical">
@@ -356,7 +359,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/italic"
-                android:text="Cast" />
+                android:text="Caste" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -364,7 +367,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
-                android:hint="Select cast">
+                android:hint="Select caste">
 
                 <com.ottego.multipleselectionspinner.MultipleSelection
                     android:id="@+id/tvMultipleCastSearch"

@@ -270,6 +270,7 @@
 
     <string-array name="DietGroup">
         <item>Select</item>
+        <item>Open to all</item>
         <item>Veg</item>
         <item>Non-Veg</item>
         <item>Jain</item>
@@ -278,5 +279,14 @@
         <item>Occasionally Non-Veg</item>
     </string-array>
 
+
+
+    <string-array name="ProfileCreated">
+        <item>Select</item>
+        <item>Open to all</item>
+        <item>Self</item>
+        <item>Parent / Guardian</item>
+        <item>Sibling / Friend / Others</item>
+    </string-array>
 
 </resources>

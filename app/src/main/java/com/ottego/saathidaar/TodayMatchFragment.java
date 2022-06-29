@@ -109,12 +109,12 @@ public class TodayMatchFragment extends Fragment {
         b.rvTodayMatches.setNestedScrollingEnabled(true);
         NewMatchesAdapter adapter = new NewMatchesAdapter(context, data.data);
         b.rvTodayMatches.setAdapter(adapter);
-//        if (adapter.getItemCount() != 0) {
-//            b.llNoData.setVisibility(View.GONE);
-//            b.rvNewMatches.setVisibility(View.VISIBLE);
-//
-//        } else {
-//            b.llNoData.setVisibility(View.VISIBLE);
-//        }
+        if (adapter.getItemCount() != 0) {
+            b.llNoDataToday.setVisibility(View.GONE);
+            b.rvTodayMatches.setVisibility(View.VISIBLE);
+
+        } else {
+            b.llNoDataToday.setVisibility(View.VISIBLE);
+        }
     }
 }

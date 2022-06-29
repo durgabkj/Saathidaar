@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:background="@color/white"
+    tools:context=".PrivacyOptionFragment">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Privacy Options"
+        android:textStyle="bold"
+        android:textSize="16dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1.2"
+                    android:layout_height="wrap_content"
+                    android:text="Display Name as "
+
+                    />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sunil G"
+                    android:layout_weight="1"
+                    android:textColor="#494747"
+                    android:textSize="16sp"/>
+
+
+
+                <TextView
+                    android:id="@+id/PrivacyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Edit"
+                    android:padding="3dp"
+                    android:layout_weight="1.6"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal_700"
+
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_dark"
+                android:layout_marginTop="10dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1.2"
+                    android:layout_height="wrap_content"
+                    android:text="Phone"
+
+                    />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Only Premium Members"
+                    android:layout_weight="1"
+                    android:textColor="#494747"
+                    android:textSize="16sp"/>
+
+
+
+                <TextView
+                    android:id="@+id/PrivacyPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Edit"
+                    android:padding="3dp"
+                    android:layout_weight="1.6"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal_700"
+
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_dark"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1.2"
+                    android:layout_height="wrap_content"
+                    android:text="Photo"
+
+                    />
+
+                <TextView
+                    android:id="@+id/PrivacyPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Visible to all Members"
+                    android:layout_weight="1"
+                    android:textColor="#494747"
+                    android:textSize="16sp"/>
+
+
+
+                <TextView
+                    android:id="@+id/tvPrivacyPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Edit"
+                    android:padding="3dp"
+                    android:layout_weight="1.6"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal_700"
+
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_dark"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1.2"
+                    android:layout_height="wrap_content"
+                    android:text="Date of Birth"
+
+                    />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Show only the Month &amp; Year (mm/yyyy)"
+                    android:layout_weight="1"
+                    android:textColor="#494747"
+                    android:textSize="16sp"/>
+
+
+
+                <TextView
+                    android:id="@+id/PrivacyDob"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Edit"
+                    android:padding="3dp"
+                    android:layout_weight="1.6"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal_700"
+
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_dark"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1.2"
+                    android:layout_height="wrap_content"
+                    android:text="Annual Income"
+
+                    />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Visible to all Members"
+                    android:layout_weight="1"
+                    android:textColor="#494747"
+                    android:textSize="16sp"/>
+
+
+
+                <TextView
+                    android:id="@+id/PrivacyIncome"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Edit"
+                    android:padding="3dp"
+                    android:layout_weight="1.6"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal_700"
+
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_dark"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1.2"
+                    android:layout_height="wrap_content"
+                    android:text="Horoscope"
+
+                    />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Visible to all Members"
+                    android:layout_weight="1"
+                    android:textColor="#494747"
+                    android:textSize="16sp"/>
+
+
+
+                <TextView
+                    android:id="@+id/PrivacyHoroscope"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Edit"
+                    android:padding="3dp"
+                    android:layout_weight="1.6"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal_700"
+
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_dark"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1.2"
+                    android:layout_height="wrap_content"
+                    android:text="Visitors Setting"
+
+                    />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Let other Members know that I have visited their Profile"
+                    android:layout_weight="1"
+                    android:textColor="#494747"
+                    android:textSize="16sp"/>
+
+
+
+                <TextView
+                    android:id="@+id/PrivacyVisitors"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Edit"
+                    android:padding="3dp"
+                    android:layout_weight="1.6"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal_700"
+
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_dark"
+                android:layout_marginTop="10dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1.2"
+                    android:layout_height="wrap_content"
+                    android:text="Shortlist Setting"
+
+                    />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Let other Members know that I have shortlisted their Profile"
+                    android:layout_weight="1"
+                    android:textColor="#494747"
+                    android:textSize="16sp"/>
+
+
+
+                <TextView
+                    android:id="@+id/PrivacyShortlist"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Edit"
+                    android:layout_weight="1.6"
+                    android:textStyle="bold"
+                    android:padding="3dp"
+                    android:textColor="@color/teal_700"
+
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_dark"
+                android:layout_marginTop="10dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1.2"
+                    android:layout_height="wrap_content"
+                    android:text="Do Not Disturb"
+
+                    />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Shaadi.com can call me on behalf of Premium Members who wish to Connect with me"
+                    android:layout_weight="1"
+                    android:textColor="#494747"
+                    android:textSize="16sp"/>
+
+
+
+                <TextView
+                    android:id="@+id/PrivacyNotDisturb"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Edit"
+                    android:layout_weight="1.6"
+                    android:textStyle="bold"
+                    android:padding="3dp"
+                    android:textColor="@color/teal_700"
+
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_dark"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1.2"
+                    android:layout_height="wrap_content"
+                    android:text="Profile Privacy"
+
+                    />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Only visible to registered Members"
+                    android:layout_weight="1"
+                    android:textColor="#494747"
+                    android:textSize="16sp"/>
+
+
+
+                <TextView
+                    android:id="@+id/PrivacyProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Edit"
+                    android:layout_weight="1.6"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal_700"
+                    android:padding="3dp"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_dark"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1.2"
+                    android:layout_height="wrap_content"
+                    android:text="Web Notifications"
+
+                    />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Unsubscribed"
+                    android:layout_weight="1"
+                    android:textColor="#494747"
+                    android:textSize="16sp"/>
+
+
+
+                <TextView
+                    android:id="@+id/PrivacyWebNotifications"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Edit"
+                    android:padding="3dp"
+                    android:layout_weight="1.6"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal_700"
+
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_dark"
+                android:layout_marginTop="10dp"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+
+</LinearLayout>

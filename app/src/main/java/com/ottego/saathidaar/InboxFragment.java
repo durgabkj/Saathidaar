@@ -2,14 +2,18 @@ package com.ottego.saathidaar;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.tabs.TabLayout;
+import com.ottego.saathidaar.Adapter.HomeTablayoutAdapter;
 import com.ottego.saathidaar.databinding.FragmentHomeBinding;
 import com.ottego.saathidaar.databinding.FragmentInboxBinding;
 
@@ -57,60 +61,98 @@ public class InboxFragment extends Fragment {
         // Inflate the layout for this fragment
         b = FragmentInboxBinding.inflate(inflater, container, false);
 
-        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fcvSathidarInbox,invitationFragment);
-        fragmentTransaction.commit();
-        listener();
+//        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.fcvSathidarInbox,invitationFragment);
+//        fragmentTransaction.commit();
+//        listener();
         return b.getRoot();
     }
 
 
-    public void listener()
-    {
-        b.tvInboxInvitation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//    public void listener()
+//    {
+//        b.tvInboxInvitation.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.fcvSathidarInbox,invitationFragment);
+//                fragmentTransaction.commit();
+//            }
+//        });
+//
+//        b.tvInboxAccepted.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.fcvSathidarInbox,acceptedInboxFragment);
+//                fragmentTransaction.commit();
+//            }
+//        });
+//
+//        b.tvInboxSent.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.fcvSathidarInbox,sentInboxFragment);
+//                fragmentTransaction.commit();
+//            }
+//        });
+//
+//
+//        b.tvInboxDelete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.fcvSathidarInbox,deleteInboxFragment);
+//                fragmentTransaction.commit();
+//            }
+//        });
+//    }
 
-                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fcvSathidarInbox,invitationFragment);
-                fragmentTransaction.commit();
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        setUpViewPager(b.vpInbox);
+        b.tlInbox.setupWithViewPager(b.vpInbox);
+
+
+        b.tlInbox.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                b.vpInbox.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
+    }
 
-        b.tvInboxAccepted.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fcvSathidarInbox,acceptedInboxFragment);
-                fragmentTransaction.commit();
-            }
-        });
-
-        b.tvInboxSent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fcvSathidarInbox,sentInboxFragment);
-                fragmentTransaction.commit();
-            }
-        });
-
-
-        b.tvInboxDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fcvSathidarInbox,deleteInboxFragment);
-                fragmentTransaction.commit();
-            }
-        });
+    private void setUpViewPager(ViewPager viewPager) {
+        HomeTablayoutAdapter adapter = new HomeTablayoutAdapter(getChildFragmentManager());
+        adapter.addFragment(new InvitationFragment(), "Invitation");
+        adapter.addFragment(new AcceptedInboxFragment(), "Accept");
+        adapter.addFragment(new SentInboxFragment(), "Sent");
+        adapter.addFragment(new DeleteInboxFragment(), "Delete");
+        viewPager.setAdapter(adapter);
     }
 }

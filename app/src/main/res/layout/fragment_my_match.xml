@@ -2,33 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".NewMatchesFragment">
+    tools:context=".MyMatchFragment">
 
 
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/llNoData"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:gravity="center"-->
-<!--        android:orientation="vertical"-->
-<!--        tools:ignore="UseCompoundDrawables">-->
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:gravity="center"-->
-<!--            android:textStyle="bold"-->
-<!--            android:fontFamily="@font/italic"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:text="No Bookmarks Available !" />-->
+    <LinearLayout
+        android:id="@+id/llNoDataMatch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
 
-<!--        <ImageView-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:backgroundTint="@color/go_btn_color"-->
-<!--            android:background="@drawable/ic_bookmark" />-->
-<!--    </LinearLayout>-->
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/ic_no_data" />
+    </LinearLayout>
+
+
+
 
     <LinearLayout
         android:id="@+id/llCard"
@@ -41,6 +38,8 @@
             android:id="@+id/rvMyMatches"
             android:layout_width="match_parent"
             android:layout_margin="15dp"
+            android:background="@color/white"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:orientation="vertical"/>
 

@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Saathidaar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".MoreActivity"
+            android:exported="false" />
+        <activity
             android:name=".MatchesDetailsActivity"
             android:exported="false" />
         <activity
