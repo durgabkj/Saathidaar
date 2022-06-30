@@ -128,6 +128,7 @@ public class ProfessionalInfoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getContext(), ProfessionalDetailEditActivity.class);
+                intent.putExtra("data", new Gson().toJson(model));
                 startActivity(intent);
             }
         });

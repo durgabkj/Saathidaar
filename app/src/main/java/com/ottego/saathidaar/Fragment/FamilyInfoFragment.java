@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import com.ottego.saathidaar.FamilyProfileActivity;
 import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.MySingleton;
+import com.ottego.saathidaar.ProfileEditPersonalActivity;
 import com.ottego.saathidaar.Utils;
 import com.ottego.saathidaar.databinding.FragmentFamilyInfoBinding;
 
@@ -80,8 +81,9 @@ FragmentFamilyInfoBinding b;
         b.ivCameraEditFamilyInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getContext(), FamilyProfileActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(getContext(), FamilyProfileActivity.class);
+                intent.putExtra("data", new Gson().toJson(model));
+                context.startActivity(intent);
             }
         });
     }
@@ -98,7 +100,7 @@ FragmentFamilyInfoBinding b;
                     if (code.equalsIgnoreCase("1")) {
                         Gson gson = new Gson();
                         model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
-                        setData();
+                       // setData();
                     }else {
                         Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }

@@ -75,11 +75,12 @@
                                 android:layout_height="30dp"
                                 android:fontFamily="@font/italic"
                                 android:layout_weight="1"
-                                android:enabled="true"
+                                android:editable="false"
                                 android:textSize="12sp"
                                 android:hint="select Father Status"
                                 android:layout_marginStart="8dp"
-                                android:background="@drawable/transparent_edittext_border" />
+                                android:background="@drawable/transparent_edittext_border"
+                                tools:ignore="Deprecated" />
 
 
 
@@ -89,7 +90,7 @@
                                 android:layout_height="30dp"
                                 android:clickable="true"
                                 android:focusable="true"
-                                android:layout_weight=".2"
+                                android:layout_weight=".5"
                                 android:focusableInTouchMode="false"
                                 android:importantForAutofill="no"
                                 android:maxLines="1"
@@ -213,12 +214,13 @@
                                 android:layout_width="0dp"
                                 android:layout_height="30dp"
                                 android:layout_weight="1"
-                                android:enabled="true"
+                                android:editable="false"
                                 android:fontFamily="@font/italic"
                                 android:textSize="12sp"
                                 android:hint="select Mother Status"
                                 android:layout_marginStart="8dp"
-                                android:background="@drawable/transparent_edittext_border" />
+                                android:background="@drawable/transparent_edittext_border"
+                                tools:ignore="Deprecated" />
 
 
                             <Spinner
@@ -227,7 +229,7 @@
                                 android:layout_height="30dp"
                                 android:clickable="true"
                                 android:focusable="true"
-                                android:layout_weight=".2"
+                                android:layout_weight=".5"
                                 android:focusableInTouchMode="false"
                                 android:importantForAutofill="no"
                                 android:maxLines="1"
@@ -621,7 +623,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="30dp"
                                 android:layout_weight="1"
-                                android:enabled="true"
+                                android:editable="false"
                                 android:textSize="12sp"
                                 android:fontFamily="@font/italic"
                                 android:hint="select Family Type"
@@ -634,7 +636,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="30dp"
                                 android:clickable="true"
-                                android:layout_weight=".2"
+                                android:layout_weight=".5"
                                 android:focusable="true"
                                 android:focusableInTouchMode="false"
                                 android:importantForAutofill="no"
@@ -681,7 +683,7 @@
                                 android:layout_height="30dp"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/italic"
-                                android:enabled="true"
+                                android:editable="false"
                                 android:textSize="12sp"
                                 android:hint="select Family Affluence"
                                 android:layout_marginStart="8dp"
@@ -692,7 +694,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="30dp"
                                 android:clickable="true"
-                                android:layout_weight=".2"
+                                android:layout_weight=".5"
                                 android:focusable="true"
                                 android:focusableInTouchMode="false"
                                 android:importantForAutofill="no"

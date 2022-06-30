@@ -36,6 +36,7 @@ public class Utils {
     public static String userUrl ="http://192.168.1.40:9094/api/users/";
     public static String memberUrl ="http://192.168.1.40:9094/api/member/";
     public static  String cityUrl="http://192.168.1.40:9094/api/get/";
+    public static String privacy="http://192.168.1.40:9094/api/privacy/update/";
     public static String role_user="USER";
 
 

@@ -183,7 +183,7 @@
                                 android:enabled="true"
                                 android:fontFamily="@font/italic"
                                 android:textSize="14dp"
-                                android:hint="select  Income"
+                                android:hint="Work with"
                                 android:layout_marginStart="8dp"
                                 android:background="@drawable/transparent_edittext_border" />
 

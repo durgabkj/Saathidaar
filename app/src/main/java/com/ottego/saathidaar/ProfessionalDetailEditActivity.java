@@ -15,6 +15,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
+import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.databinding.ActivityProfessionalDetailEditBinding;
 
 import org.json.JSONArray;
@@ -28,7 +30,7 @@ import java.util.Map;
 public class ProfessionalDetailEditActivity extends AppCompatActivity {
     ActivityProfessionalDetailEditBinding b;
     Context context;
-
+    MemberProfileModel model;
     String higherEducation = "";
     String collegeAttends = "";
     String income = "";
@@ -43,7 +45,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     String relationWith = "";
     String callTime = "";
     String displatOption = "";
-    public  String url=Utils.memberUrl+"app/basic-lifestyles/update/";
+    public String url = Utils.memberUrl + "app/basic-lifestyles/update/";
     public String countryUrl = Utils.cityUrl + "country";
     public String stateUrl = Utils.cityUrl + "state-name/by/country-name/";
     public String cityUrl = Utils.cityUrl + "city-name/by/state-name/";
@@ -52,7 +54,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     ArrayList<String> stateList = new ArrayList<>();
     ArrayAdapter<String> stateAdapter;
     String countryName;
-SessionManager sessionManager;
+    SessionManager sessionManager;
 
     ArrayList<String> cityList = new ArrayList<>();
     ArrayAdapter<String> cityAdapter;
@@ -64,7 +66,11 @@ SessionManager sessionManager;
         b = ActivityProfessionalDetailEditBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
         context = ProfessionalDetailEditActivity.this;
-        sessionManager=new SessionManager(context);
+        sessionManager = new SessionManager(context);
+
+        Bundle bundle = getIntent().getExtras();
+        String data = bundle.getString("data");
+        model = new Gson().fromJson(data, MemberProfileModel.class);
         userAnnualIncome();
         userWorkAs();
         UserWorkingWith();
@@ -72,8 +78,28 @@ SessionManager sessionManager;
         getCountry(countryUrl);
         getState();
         getCity();
+        setData();
+
 
     }
+
+    private void setData() {
+        b.etAddUserEducation.setText(model.education);
+        b.etAddUserCollegeAttended.setText(model.college_attended);
+        b.etIncome.setText(model.income);
+        b.etAddUserCollegeAttended.setText(model.college_attended);
+        b.etWorkingWith.setText(model.working_with);
+        b.etWorkingAs.setText(model.working_as);
+
+        b.etCountry.setText(model.country_name);
+        b.etState.setText(model.state_name);
+        b.etCity.setText(model.city);
+        b.etAddUserCorigin.setText(model.ethnic_corigin);
+        b.etAddUserZipPinCode.setText(model.pincode);
+    }
+
+
+
 
     private void getCity() {
         b.etAddUserStateOfResidence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -199,6 +225,7 @@ SessionManager sessionManager;
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String country = jsonObject1.getString("country_name");
                             Log.e("country", country);
+                            countryList.add("select");
                             countryList.add(country);
                             Log.e("Country-list", String.valueOf(countryList));
                         }
@@ -207,6 +234,7 @@ SessionManager sessionManager;
                     // set adapter
                     countryAdapter.notifyDataSetChanged();
                     b.etAddUserCurrentResidence.setAdapter(countryAdapter);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -361,6 +389,27 @@ SessionManager sessionManager;
             @Override
             public void onClick(View view) {
                 submitForm();
+            }
+        });
+
+
+
+        b.etAddUserCurrentResidence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                String country=b.etAddUserCurrentResidence.getSelectedItem().toString().trim();
+                if(country.equalsIgnoreCase("select")){
+
+                }else
+                {
+                    b.etCountry.setText(country);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
     }
