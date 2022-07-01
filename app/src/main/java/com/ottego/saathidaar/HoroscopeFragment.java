@@ -19,6 +19,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.Model.DataModelDashboard;
+import com.ottego.saathidaar.Model.DataModelHoroscope;
 import com.ottego.saathidaar.Model.HoroscopeModel;
 import com.ottego.saathidaar.databinding.FragmentHoroscopeBinding;
 
@@ -87,49 +89,49 @@ public class HoroscopeFragment extends Fragment {
         // Inflate the layout for this fragment
         b = FragmentHoroscopeBinding.inflate(getLayoutInflater());
         context = getContext();
-        setData();
+
         setDropDownData();
         listener();
         getCountry(countryUrl);
-        getData(urlGetHoroscope);
-
+        setData();
+       // getData(urlGetHoroscope);
         return b.getRoot();
     }
 
-    private void getData(String urlGetHoroscope) {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                urlGetHoroscope, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                progressDialog.dismiss();
-                Log.e("response", String.valueOf(response));
-                try {
-                    String code = response.getString("results");
-                    if (code.equalsIgnoreCase("1")) {
-                        Gson gson = new Gson();
-                        model = gson.fromJson(String.valueOf(response.getJSONObject("data")), HoroscopeModel.class);
-                        setData();
-
-                    } else {
-                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                error.printStackTrace();
-            }
-        });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-    }
+//    private void getData(String urlGetHoroscope) {
+//        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+//                urlGetHoroscope, null, new Response.Listener<JSONObject>() {
+//            @Override
+//            public void onResponse(JSONObject response) {
+//                progressDialog.dismiss();
+//                Log.e("response", String.valueOf(response));
+//                try {
+//                    String code = response.getString("results");
+//                    if (code.equalsIgnoreCase("1")) {
+//                        Gson gson = new Gson();
+//                        model = gson.fromJson(String.valueOf(response), HoroscopeModel.class);
+//                        setData();
+//
+//                    } else {
+//                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                progressDialog.dismiss();
+//                error.printStackTrace();
+//            }
+//        });
+//        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+//        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+//    }
 
     private void setData() {
         if (model != null) {
@@ -138,9 +140,7 @@ public class HoroscopeFragment extends Fragment {
             b.tvTimeofBirth.setText(model.hours + ":" + model.minutes + ":" + model.time + "," + model.time_status);
             b.tvManglik.setText(model.manglik);
         }
-
     }
-
 
     private void getCountry(String countryUrl) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
@@ -180,8 +180,6 @@ public class HoroscopeFragment extends Fragment {
 
 
     }
-
-
     private void listener() {
         b.btnEditDetails.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -287,14 +285,16 @@ public class HoroscopeFragment extends Fragment {
                         progressDialog.dismiss();
                         Log.e("response", String.valueOf((response)));
                         try {
-                            String code = response.getString("results");
-                            if (code.equalsIgnoreCase("1")) {
+
+                            if (response!=null) {
+                                Gson gson = new Gson();
+                                model = gson.fromJson(String.valueOf(response), HoroscopeModel.class);
                                 b.cvShowDetails.setVisibility(View.VISIBLE);
                                 b.cvEditDetails.setVisibility(View.GONE);
-                                getData(urlGetHoroscope);
+                               // getData(urlGetHoroscope);
+                                setData();
                                 //    Gson gson = new Gson();
-//                                model = gson.fromJson(String.valueOf(response), HoroscopeModel.class);
-                              //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+//                                     //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                                 // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
                             } else {

@@ -74,9 +74,10 @@
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_dash_board.xml" value="0.4" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_delete_inbox.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_delete_inboxk.xml" value="0.23802083333333332" />
-        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_email_and_sms_alert.xml" value="0.4" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_email_and_sms_alert.xml" value="0.264" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_family_info.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_hide_and_delete.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_hide_delete_profile.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_home.xml" value="0.20745920745920746" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_horoscope.xml" value="0.264" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/fragment_inbox.xml" value="0.23802083333333332" />

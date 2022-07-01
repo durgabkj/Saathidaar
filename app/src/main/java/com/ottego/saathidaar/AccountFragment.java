@@ -118,6 +118,7 @@ public class AccountFragment extends Fragment {
         adapter.addFragment(new AccountSettingFragment(), "Account Settings");
         adapter.addFragment(new EmailAndSmsAlertFragment(), "Email Setting");
         adapter.addFragment(new PrivacyOptionFragment(),"Privacy Option");
+        adapter.addFragment(new HideDeleteProfileFragment(),"Hide Un-Hide Profile");
         viewPager.setAdapter(adapter);
     }
 }

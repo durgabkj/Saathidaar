@@ -1,7 +1,6 @@
 package com.ottego.saathidaar.Model;
 
 public class PartnerPreferenceModel {
-
     public  String partner_from_height;
     public String partner_country;
     public  String partner_to_height;

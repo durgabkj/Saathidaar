@@ -4,427 +4,443 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".EmailAndSmsAlertFragment">
 
-   <TextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-      android:text="My Alerts Manager"
-      android:textAlignment="center"
-      android:padding="8dp"/>
-   <ScrollView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-      >
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical"
-          >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="My Alerts Manager"
+        android:textAlignment="center" />
 
-         <androidx.cardview.widget.CardView
-             android:layout_width="match_parent"
-             android:layout_marginTop="10dp"
-             android:layout_margin="20dp"
-             android:layout_height="wrap_content"
-             android:translationZ="20dp"
-             android:elevation="20dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="30dp"
-                   android:padding="5dp"
-                   android:fontFamily="@font/italic"
-                   android:textStyle="bold"
-                   android:background="@drawable/gradient_button"
-                   android:textColor="@color/white"
-                   android:text="Premium Match Mail"/>
-
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:fontFamily="@font/italic"
-                   android:text="Alert you receive every time someone contacts you receive a response to a contact initiated by you Get"
-                   android:layout_margin="8dp"/>
-
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="30dp"
-                   android:padding="5dp"
-                   android:fontFamily="@font/italic"
-                   android:background="@color/gray_dark"
-                   android:textStyle="bold"
-                   android:text="Alert"/>
-
-               <RadioGroup
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:id="@+id/radioGroup">
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Daily"
-                      android:fontFamily="@font/italic"
-                      android:checked="false" />
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Weekly"
-                      android:fontFamily="@font/italic"
-                      android:checked="false"
-                      />
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Monthly"
-                      android:fontFamily="@font/italic"
-                      android:id="@+id/radioButton"
-                      android:checked="false" />
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Unsubscribe"
-                      android:fontFamily="@font/italic"
-                      android:id="@+id/radioButton2"
-                      android:checked="false"
-                      />
-               </RadioGroup>
-
-            </LinearLayout>
-
-         </androidx.cardview.widget.CardView>
-
-         <androidx.cardview.widget.CardView
-             android:layout_width="match_parent"
-             android:layout_margin="20dp"
-             android:layout_height="wrap_content"
-             android:translationZ="20dp"
-             android:elevation="20dp">
+                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
+                android:elevation="20dp"
+                android:translationZ="20dp">
 
 
-            <LinearLayout
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@drawable/gradient_button"
+                        android:fontFamily="@font/italic"
+                        android:padding="5dp"
+                        android:text="Premium Matches Email"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/italic"
+                        android:text="Alert you receive every time someone contacts you receive a response to a contact initiated by you Get" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@color/gray_dark"
+                        android:fontFamily="@font/italic"
+                        android:padding="5dp"
+                        android:text="Alert"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/rbPremiumDaily"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:fontFamily="@font/italic"
+                            android:text="Daily" />
+
+                        <RadioButton
+                            android:id="@+id/rbPremiumWeekly"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:fontFamily="@font/italic"
+                            android:text="Weekly" />
+
+                        <RadioButton
+                            android:id="@+id/rbPremiumMonthly"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:fontFamily="@font/italic"
+
+                            android:text="Monthly" />
+
+                        <RadioButton
+                            android:id="@+id/rbPremiumUnsubscribe"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/italic"
+                            android:text="Unsubscribe" />
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="30dp"
-                   android:padding="5dp"
-                   android:textStyle="bold"
-                   android:fontFamily="@font/italic"
-                   android:background="@drawable/gradient_button"
-                   android:textColor="@color/white"
-                   android:text="Recent Visitors Email"/>
-
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:fontFamily="@font/italic"
-                   android:text="All SMS alert will be sent to you on this mobile phone number 987654321"
-                   android:layout_margin="8dp"/>
-
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="30dp"
-                   android:padding="5dp"
-                   android:fontFamily="@font/italic"
-                   android:background="@color/gray_dark"
-                   android:textStyle="bold"
-                   android:text="Alert"/>
-
-               <RadioGroup
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content">
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Daily"
-                      android:fontFamily="@font/italic"
-                      android:checked="false" />
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Weekly"
-                      android:fontFamily="@font/italic"
-                      android:checked="false"
-                      />
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Monthly"
-                      android:fontFamily="@font/italic"
-                      android:checked="false" />
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Unsubscribe"
-                      android:fontFamily="@font/italic"
-                      android:checked="false"
-                      />
-               </RadioGroup>
-
-            </LinearLayout>
-
-         </androidx.cardview.widget.CardView>
-
-         <androidx.cardview.widget.CardView
-             android:layout_width="match_parent"
-             android:layout_margin="20dp"
-             android:layout_height="wrap_content"
-             android:translationZ="20dp"
-             android:elevation="20dp">
+                android:layout_margin="20dp"
+                android:elevation="20dp"
+                android:translationZ="20dp">
 
 
-            <LinearLayout
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@drawable/gradient_button"
+                        android:fontFamily="@font/italic"
+                        android:padding="5dp"
+                        android:text="Recent Visitors Email"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/italic"
+                        android:text="All SMS alert will be sent to you on this mobile phone number 987654321" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@color/gray_dark"
+                        android:fontFamily="@font/italic"
+                        android:padding="5dp"
+                        android:text="Alert"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/rbVisitorsDaily"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:fontFamily="@font/italic"
+                            android:text="Daily" />
+
+                        <RadioButton
+                            android:id="@+id/rbVisitorsWeekly"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:fontFamily="@font/italic"
+                            android:text="Weekly" />
+
+                        <RadioButton
+                            android:id="@+id/rbVisitorsMonthly"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:fontFamily="@font/italic"
+                            android:text="Monthly" />
+
+                        <RadioButton
+                            android:id="@+id/rbVisitorsUnsubscribe"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:fontFamily="@font/italic"
+                            android:text="Unsubscribe" />
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="30dp"
-                   android:padding="5dp"
-                   android:textStyle="bold"
-                   android:fontFamily="@font/italic"
-                   android:background="@drawable/gradient_button"
-                   android:textColor="@color/white"
-                   android:text="Contact Alert"/>
-
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:fontFamily="@font/italic"
-                   android:text="All SMS alert will be sent to you on this mobile phone number 987654321"
-                   android:layout_margin="8dp"/>
-
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="30dp"
-                   android:padding="5dp"
-                   android:background="@color/gray_dark"
-                   android:textStyle="bold"
-                   android:text="Alert"/>
-
-               <RadioGroup
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-               >
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Daily"
-                      android:checked="false" />
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Weekly"
-                      android:fontFamily="@font/italic"
-                      android:checked="false"
-                      />
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Monthly"
-                      android:fontFamily="@font/italic"
-                      android:checked="false" />
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Unsubscribe"
-                      android:fontFamily="@font/italic"
-                      android:checked="false"
-                      />
-               </RadioGroup>
-
-            </LinearLayout>
-
-         </androidx.cardview.widget.CardView>
-
-         <androidx.cardview.widget.CardView
-             android:layout_width="match_parent"
-             android:layout_margin="20dp"
-             android:layout_height="wrap_content"
-             android:translationZ="20dp"
-             android:elevation="20dp">
+                android:layout_margin="20dp"
+                android:elevation="20dp"
+                android:translationZ="20dp">
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="30dp"
-                   android:padding="5dp"
-                   android:textStyle="bold"
-                   android:background="@drawable/gradient_button"
-                   android:textColor="@color/white"
-                   android:text="SMS Alert"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@drawable/gradient_button"
+                        android:fontFamily="@font/italic"
+                        android:padding="5dp"
+                        android:text="Today's Matches Email"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
 
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:fontFamily="@font/italic"
-                   android:text="All SMS alert will be sent to you on this mobile phone number 987654321"
-                   android:layout_margin="8dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/italic"
+                        android:text="All SMS alert will be sent to you on this mobile phone number 987654321" />
 
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="30dp"
-                   android:padding="5dp"
-                   android:fontFamily="@font/italic"
-                   android:background="@color/gray_dark"
-                   android:textStyle="bold"
-                   android:text="Alert"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@color/gray_dark"
+                        android:padding="5dp"
+                        android:text="Alert"
+                        android:textStyle="bold" />
 
-               <RadioGroup
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   >
+                    <RadioGroup
+                        android:id="@+id/radioGroup3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Daily"
-                      android:fontFamily="@font/italic"
-                      android:checked="false" />
+                        <RadioButton
+                            android:id="@+id/rbTodayMatchDaily"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:text="Daily" />
 
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:fontFamily="@font/italic"
-                      android:text="Weekly"
-                      android:checked="false"
-                      />
+                        <RadioButton
+                            android:id="@+id/rbTodayMatchWeekly"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:fontFamily="@font/italic"
+                            android:text="Weekly" />
 
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Monthly"
-                      android:fontFamily="@font/italic"
-                      android:checked="false" />
+                        <RadioButton
+                            android:id="@+id/rbTodayMatchMonthly"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:fontFamily="@font/italic"
+                            android:text="Monthly" />
 
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Unsubscribe"
-                      android:fontFamily="@font/italic"
-                      android:checked="false"
-                      />
-               </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/rbTodayMatchUnsubscribe"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:fontFamily="@font/italic"
+                            android:text="Unsubscribe" />
+                    </RadioGroup>
 
-            </LinearLayout>
+                </LinearLayout>
 
-         </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-         <androidx.cardview.widget.CardView
-             android:layout_width="match_parent"
-             android:layout_margin="20dp"
-             android:layout_height="wrap_content"
-             android:translationZ="20dp"
-             android:elevation="20dp">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="30dp"
-                   android:padding="5dp"
-                   android:textStyle="bold"
-                   android:background="@drawable/gradient_button"
-                   android:fontFamily="@font/italic"
-                   android:textColor="@color/white"
-                   android:text="Message Receiver Alert"/>
-
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:fontFamily="@font/italic"
-                   android:text="All SMS alert will be sent to you on this mobile phone number 987654321"
-                   android:layout_margin="8dp"/>
-
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="30dp"
-                   android:padding="5dp"
-                   android:fontFamily="@font/italic"
-                   android:background="@color/gray_dark"
-                   android:textStyle="bold"
-                   android:text="Alert"/>
-
-               <RadioGroup
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-               >
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Daily"
-                      android:fontFamily="@font/italic"
-                      android:checked="false" />
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Weekly"
-                      android:fontFamily="@font/italic"
-                      android:checked="false"
-                      />
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Monthly"
-                      android:fontFamily="@font/italic"
-                      android:checked="false" />
-
-                  <RadioButton
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Unsubscribe"
-                      android:fontFamily="@font/italic"
-                      android:checked="false"
-                      />
-               </RadioGroup>
-
-            </LinearLayout>
-
-         </androidx.cardview.widget.CardView>
-      </LinearLayout>
-   </ScrollView>
+            <!--         <androidx.cardview.widget.CardView-->
+            <!--             android:layout_width="match_parent"-->
+            <!--             android:layout_margin="20dp"-->
+            <!--             android:layout_height="wrap_content"-->
+            <!--             android:translationZ="20dp"-->
+            <!--             android:elevation="20dp">-->
 
 
+            <!--&lt;!&ndash;            <LinearLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;                android:orientation="vertical"&ndash;&gt;-->
+            <!--&lt;!&ndash;                >&ndash;&gt;-->
+
+            <!--&lt;!&ndash;               <TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:layout_height="30dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:padding="5dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:textStyle="bold"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:background="@drawable/gradient_button"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:textColor="@color/white"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:text="SMS Alert"/>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;               <TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:fontFamily="@font/italic"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:text="All SMS alert will be sent to you on this mobile phone number 987654321"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:layout_margin="8dp"/>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;               <TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:layout_height="30dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:padding="5dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:fontFamily="@font/italic"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:background="@color/gray_dark"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:textStyle="bold"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:text="Alert"/>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;               <RadioGroup&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;                   >&ndash;&gt;-->
+
+            <!--&lt;!&ndash;                  <RadioButton&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:text="Daily"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:fontFamily="@font/italic"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:checked="false" />&ndash;&gt;-->
+
+            <!--&lt;!&ndash;                  <RadioButton&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:fontFamily="@font/italic"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:text="Weekly"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:checked="false"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      />&ndash;&gt;-->
+
+            <!--&lt;!&ndash;                  <RadioButton&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:text="Monthly"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:fontFamily="@font/italic"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:checked="false" />&ndash;&gt;-->
+
+            <!--&lt;!&ndash;                  <RadioButton&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:text="Unsubscribe"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:fontFamily="@font/italic"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      android:checked="false"&ndash;&gt;-->
+            <!--&lt;!&ndash;                      />&ndash;&gt;-->
+            <!--&lt;!&ndash;               </RadioGroup>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;            </LinearLayout>&ndash;&gt;-->
+
+            <!--         </androidx.cardview.widget.CardView>-->
+
+            <!--         <androidx.cardview.widget.CardView-->
+            <!--             android:layout_width="match_parent"-->
+            <!--             android:layout_margin="20dp"-->
+            <!--             android:layout_height="wrap_content"-->
+            <!--             android:translationZ="20dp"-->
+            <!--             android:elevation="20dp">-->
+
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="vertical"-->
+            <!--                >-->
+
+            <!--               <TextView-->
+            <!--                   android:layout_width="match_parent"-->
+            <!--                   android:layout_height="30dp"-->
+            <!--                   android:padding="5dp"-->
+            <!--                   android:textStyle="bold"-->
+            <!--                   android:background="@drawable/gradient_button"-->
+            <!--                   android:fontFamily="@font/italic"-->
+            <!--                   android:textColor="@color/white"-->
+            <!--                   android:text="Message Receiver Alert"/>-->
+
+            <!--               <TextView-->
+            <!--                   android:layout_width="match_parent"-->
+            <!--                   android:layout_height="wrap_content"-->
+            <!--                   android:fontFamily="@font/italic"-->
+            <!--                   android:text="All SMS alert will be sent to you on this mobile phone number 987654321"-->
+            <!--                   android:layout_margin="8dp"/>-->
+
+            <!--               <TextView-->
+            <!--                   android:layout_width="match_parent"-->
+            <!--                   android:layout_height="30dp"-->
+            <!--                   android:padding="5dp"-->
+            <!--                   android:fontFamily="@font/italic"-->
+            <!--                   android:background="@color/gray_dark"-->
+            <!--                   android:textStyle="bold"-->
+            <!--                   android:text="Alert"/>-->
+
+            <!--               <RadioGroup-->
+            <!--                   android:layout_width="match_parent"-->
+            <!--                   android:layout_height="wrap_content"-->
+            <!--               >-->
+
+            <!--                  <RadioButton-->
+            <!--                      android:layout_width="match_parent"-->
+            <!--                      android:layout_height="wrap_content"-->
+            <!--                      android:text="Daily"-->
+            <!--                      android:fontFamily="@font/italic"-->
+            <!--                      android:checked="false" />-->
+
+            <!--                  <RadioButton-->
+            <!--                      android:layout_width="match_parent"-->
+            <!--                      android:layout_height="wrap_content"-->
+            <!--                      android:text="Weekly"-->
+            <!--                      android:fontFamily="@font/italic"-->
+            <!--                      android:checked="false"-->
+            <!--                      />-->
+
+            <!--                  <RadioButton-->
+            <!--                      android:layout_width="match_parent"-->
+            <!--                      android:layout_height="wrap_content"-->
+            <!--                      android:text="Monthly"-->
+            <!--                      android:fontFamily="@font/italic"-->
+            <!--                      android:checked="false" />-->
+
+            <!--                  <RadioButton-->
+            <!--                      android:layout_width="match_parent"-->
+            <!--                      android:layout_height="wrap_content"-->
+            <!--                      android:text="Unsubscribe"-->
+            <!--                      android:fontFamily="@font/italic"-->
+            <!--                      android:checked="false"-->
+            <!--                      />-->
+            <!--               </RadioGroup>-->
+
+            <!--            </LinearLayout>-->
+
+            <!--         </androidx.cardview.widget.CardView>-->
+
+
+            <TextView
+                android:id="@+id/tvSaveAlert"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/gradient_button"
+                android:fontFamily="@font/italic"
+                android:gravity="center"
+                android:text="save"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>
