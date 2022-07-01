@@ -1,24 +1,44 @@
 package com.ottego.saathidaar;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
+import com.ottego.saathidaar.Model.SessionModel;
 import com.ottego.saathidaar.databinding.FragmentAccountSettingBinding;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class AccountSettingFragment extends Fragment {
 
     FragmentAccountSettingBinding b;
+    Context context;
     String email;
+    SessionManager sessionManager;
     String password;
     String oldPass;
     String newPass;
+    public  String changePass=Utils.userUrl+"changepwd";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -57,9 +77,10 @@ public class AccountSettingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         b = FragmentAccountSettingBinding.inflate(getLayoutInflater());
-
+        context=getContext();
+        sessionManager=new SessionManager(context);
         listener();
-        changeEmail();
+        //changeEmail();
         changePassword();
         return b.getRoot();
     }
@@ -96,19 +117,21 @@ public class AccountSettingFragment extends Fragment {
                 b.llSavePassword.setVisibility(View.GONE);
                 b.etOldPassword.setVisibility(View.GONE);
                 b.etNewPassword.setVisibility(View.GONE);
+                b.etOldPassword.setText("");
+                b.etNewPassword.setText("");
             }
         });
 
 
-        b.tvCancelPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                b.tvEditEmail.setVisibility(View.VISIBLE);
-                b.tvEmailShow.setVisibility(View.VISIBLE);
-                b.llSave.setVisibility(View.GONE);
-                b.etEmailChange.setVisibility(View.GONE);
-            }
-        });
+//        b.tvCancelPass.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                b.tvEditEmail.setVisibility(View.VISIBLE);
+////                b.tvEmailShow.setVisibility(View.VISIBLE);
+//                b.llSave.setVisibility(View.GONE);
+//                b.etEmailChange.setVisibility(View.GONE);
+//            }
+//        });
 
 
 
@@ -140,6 +163,41 @@ public class AccountSettingFragment extends Fragment {
     }
 
     private void submitFormPass() {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("username",sessionManager.getEmail());
+        params.put("oldPassword", oldPass);
+        params.put("newPassword", newPass);
+        Log.e("params", String.valueOf(params));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, changePass, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("response", String.valueOf((response)));
+                        try {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
+
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
     }
 
     private boolean checkPassword() {
@@ -179,62 +237,62 @@ public class AccountSettingFragment extends Fragment {
         return true;
     }
 
-    private void changeEmail() {
-        b.tvSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (checkEmail()) {
-                    submitForm();
-                }
-
-            }
-        });
-
-
-    }
-
-
-
-    private boolean checkEmail() {
-        email = b.etEmailChange.getText().toString().trim();
-        password = b.etEnterPassword.getText().toString().trim();
-
-        if (email.isEmpty()) {
-            b.etEmailChange.setError("Email mandatory");
-            b.etEmailChange.setFocusableInTouchMode(true);
-            b.etEmailChange.requestFocus();
-            return false;
-        } else if (!Utils.isValidEmail(email)) {
-            b.etEmailChange.setError("Invalid email.");
-            b.etEmailChange.setFocusableInTouchMode(true);
-            b.etEmailChange.requestFocus();
-            return false;
-        } else {
-            b.etEmailChange.setError(null);
-        }
-
-
-        if (password.isEmpty()) {
-            b.etEnterPassword.setError("password mandatory");
-            b.etEnterPassword.setFocusableInTouchMode(true);
-            b.etEnterPassword.requestFocus();
-            return false;
-        } else if (password.length() < 6) {
-            b.etEnterPassword.setError("password must be at least 6 character");
-            b.etEnterPassword.setFocusableInTouchMode(true);
-            b.etEnterPassword.requestFocus();
-            return false;
-        } else {
-            b.etEnterPassword.setError(null);
-        }
-
-        return true;
-    }
-
-
-    private void submitForm() {
-
-    }
+//    private void changeEmail() {
+//        b.tvSave.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (checkEmail()) {
+//                    submitForm();
+//                }
+//
+//            }
+//        });
+//
+//
+//    }
+//
+//
+//
+//    private boolean checkEmail() {
+//        email = b.etEmailChange.getText().toString().trim();
+//        password = b.etEnterPassword.getText().toString().trim();
+//
+//        if (email.isEmpty()) {
+//            b.etEmailChange.setError("Email mandatory");
+//            b.etEmailChange.setFocusableInTouchMode(true);
+//            b.etEmailChange.requestFocus();
+//            return false;
+//        } else if (!Utils.isValidEmail(email)) {
+//            b.etEmailChange.setError("Invalid email.");
+//            b.etEmailChange.setFocusableInTouchMode(true);
+//            b.etEmailChange.requestFocus();
+//            return false;
+//        } else {
+//            b.etEmailChange.setError(null);
+//        }
+//
+//
+//        if (password.isEmpty()) {
+//            b.etEnterPassword.setError("password mandatory");
+//            b.etEnterPassword.setFocusableInTouchMode(true);
+//            b.etEnterPassword.requestFocus();
+//            return false;
+//        } else if (password.length() < 6) {
+//            b.etEnterPassword.setError("password must be at least 6 character");
+//            b.etEnterPassword.setFocusableInTouchMode(true);
+//            b.etEnterPassword.requestFocus();
+//            return false;
+//        } else {
+//            b.etEnterPassword.setError(null);
+//        }
+//
+//        return true;
+//    }
+//
+//
+//    private void submitForm() {
+//
+//    }
 
 
 }

@@ -81,6 +81,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) view.getContext(),
                         Pair.create(holder.ivUserMatch, "tnMemberImage"));
                 Intent intent = new Intent(view.getContext(), MatchesDetailsActivity.class);
+                intent.putExtra("data", new Gson().toJson(item));
                 view.getContext().startActivity(intent, options.toBundle());
 
             }
