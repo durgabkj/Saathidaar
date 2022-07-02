@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/scroll_rod1"/>
+        android:src="@drawable/scroll_rod1" />
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/mcv_All_Played_Match"
         android:layout_width="match_parent"
         android:layout_height="550dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardElevation="20dp"
-        app:cardCornerRadius="10dp"
+        android:layout_margin="3dp"
         android:translationZ="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="20dp"
         app:cardMaxElevation="4dp"
-        app:cardPreventCornerOverlap="true"
-        android:layout_margin="3dp">
+        app:cardPreventCornerOverlap="true">
 
 
         <ImageView
@@ -35,23 +35,21 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            >
+            android:layout_gravity="start">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
                 android:orientation="horizontal"
-                >
+                android:padding="20dp">
 
                 <LinearLayout
                     android:id="@+id/llShortListRemove"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/gray_transparent_bg"
-                    >
+                    android:visibility="gone">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="40dp"
@@ -66,15 +64,14 @@
                     android:id="@+id/llShortList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/gray_transparent_bg"
-                    >
+                    android:background="@drawable/gray_transparent_bg">
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:padding="3dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_baseline_star_border_24" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="3dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_baseline_star_border_24" />
 
                 </LinearLayout>
 
@@ -83,29 +80,28 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:orientation="horizontal"
                     android:background="@drawable/oval_bg"
-                    >
+                    android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                  android:padding="10dp"
                         android:layout_marginStart="8dp"
+                        android:padding="10dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_camera" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2"
+                        android:layout_gravity="center"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
-                        android:textSize="17sp"
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"/>
+                        android:text="2"
+                        android:textColor="@color/white"
+                        android:textSize="17sp" />
 
                 </LinearLayout>
 
@@ -116,15 +112,15 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center|start"
-            >
+            android:layout_gravity="center|start">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:padding="20dp"
                 android:background="@drawable/bg_gradient"
                 android:orientation="vertical"
+                android:padding="20dp"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="10dp">
 
@@ -137,11 +133,11 @@
                         android:id="@+id/tvNewMatchName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/italic"
+                        android:maxLength="15"
                         android:shadowColor="#000000"
                         android:shadowDx="2"
                         android:shadowDy="2"
-                        android:fontFamily="@font/italic"
-                        android:maxLength="15"
                         android:shadowRadius="1.6"
                         android:text="Durga singh"
                         android:textColor="@color/white"
@@ -153,10 +149,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:fontFamily="@font/italic"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
                         android:shadowDy="1.3"
-                        android:fontFamily="@font/italic"
                         android:shadowRadius="1.6"
                         android:text="22 years"
                         android:textColor="@color/white"
@@ -168,13 +164,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:fontFamily="@font/italic"
+                        android:maxLength="10"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
-                        android:maxLength="10"
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
                         android:text="5'1"
-                        android:fontFamily="@font/italic"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -187,50 +183,50 @@
                     android:orientation="horizontal">
 
 
+                    <TextView
+                        android:id="@+id/tvNewMatchCity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/italic"
+                        android:maxLength="8"
+                        android:shadowColor="#000000"
+                        android:shadowDx="1.5"
+                        android:shadowDy="1.3"
+                        android:shadowRadius="1.6"
+                        android:text="Mumbai"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/tvNewMatchCity"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:shadowColor="#000000"
-                            android:shadowDx="1.5"
-                            android:shadowDy="1.3"
-                            android:shadowRadius="1.6"
-                            android:text="Mumbai"
-                            android:fontFamily="@font/italic"
-                            android:maxLength="8"
-                            android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvNewMatchWorkAs"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:shadowColor="#000000"
-                            android:shadowDx="1.5"
-                            android:shadowDy="1.3"
-                            android:shadowRadius="1.6"
-                            android:maxLength="25"
-                            android:fontFamily="@font/italic"
-                            android:text="Junior software Developer"
-                            android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvNewMatchWorkAs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/italic"
+                        android:maxLength="25"
+                        android:shadowColor="#000000"
+                        android:shadowDx="1.5"
+                        android:shadowDy="1.3"
+                        android:shadowRadius="1.6"
+                        android:text="Junior software Developer"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
             </LinearLayout>
 
             <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
+
             <LinearLayout
                 android:id="@+id/ivLike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 android:layout_gravity="end|bottom"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="20dp"
                 android:orientation="vertical">
 
@@ -238,8 +234,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    app:cardCornerRadius="100dp"
-                    >
+                    app:cardCornerRadius="100dp">
+
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
@@ -252,31 +248,32 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/italic"
                     android:shadowColor="#000000"
                     android:shadowDx="2"
                     android:shadowDy="2"
                     android:shadowRadius="1.6"
+                    android:text="Connect Now"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/italic"
-                    android:text="Connect Now"/>
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </FrameLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/scroll_rod1"/>
+        android:src="@drawable/scroll_rod1" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/line_gradient"/>
+        android:background="@drawable/line_gradient" />
 
 </LinearLayout>
