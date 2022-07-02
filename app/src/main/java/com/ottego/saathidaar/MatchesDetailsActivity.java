@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
@@ -43,8 +44,17 @@ public  String memberDetail=Utils.memberUrl+"get-details/";
         animation = AnimationUtils.loadAnimation(context, R.anim.move);
       //  b.llDetailCad.startAnimation(animation);
 
-
+listener();
         getData();
+    }
+
+    private void listener() {
+        b.llBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     private void getData() {

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,15 +39,25 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         b = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
-        context = this;
+        context = LoginActivity.this;
         sessionManager = new SessionManager(context);
         listener();
+    }
+
+    public void hideKeyboard() {
+        // Check if no view has focus:
+        View view = LoginActivity.this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager inputManager = (InputMethodManager) getApplication().getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
     }
 
     private void listener() {
         b.mtbLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hideKeyboard();
                 if (checkForm()) {
                     submitForm();
                 }
@@ -101,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void submitForm() {
-       // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
         Map<String, String> params = new HashMap<String, String>();
         params.put("username", email);
         params.put("password", password);
@@ -110,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        progressDialog.dismiss();
                         Log.e("response", String.valueOf((response)));
                         try {
                             String code = response.getString("results");
@@ -132,7 +144,9 @@ public class LoginActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
                         if (null != error.networkResponse) {
+                            Toast.makeText(context,"Try again......",Toast.LENGTH_LONG).show();
                             Log.e("Error response", String.valueOf(error));
                         }
                     }

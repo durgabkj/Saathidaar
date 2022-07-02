@@ -1,8 +1,11 @@
 package com.ottego.saathidaar;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,6 +40,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -47,8 +51,8 @@ public class PartnerPreferenceFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     MultipleSelection tvMultipleCast, tvMultipleReligion, multi_SelectionProfessionArea, multi_SelectionCountry, multi_SelectionState, multi_SelectionMotherTongue, tvMultipleCity,multi_SelectionQualification, multi_SelectionWorkingWith;
-    TextView tvMultipleMaritalStatus,tvPartnerPreferencesBtn;
-    EditText etFromAgePartnerPreference, etToAgePartnerPreference, etfromHeightPartnerPreference, etToHeightPartnerPreference, etDietPreference, etProfilePreference,etIncomePartnerPreference;
+    TextView  etFromAgePartnerPreference, etToAgePartnerPreference,tvMultipleMaritalStatus,tvPartnerPreferencesBtn,etIncomePartnerPreference,etProfilePreference,etDietPreference;
+    EditText etfromHeightPartnerPreference, etToHeightPartnerPreference;
     boolean[] selectedLanguage;
     SessionManager sessionManager;
     ChipGroup cpChild;
@@ -152,24 +156,20 @@ PartnerPreferenceModel model;
         spToHeight = view.findViewById(R.id.spToHeight);
         spFromHeight = view.findViewById(R.id.spFromHeight);
         spToHeight = view.findViewById(R.id.spToHeight);
-        // assign variables
-        spMin = view.findViewById(R.id.sp_min);
-        spMax = view.findViewById(R.id.sp_max);
         UserAnnualIncome = view.findViewById(R.id.UserAnnualIncome);
 
         rgManglikType = view.findViewById(R.id.rgManglikType);
         tvMultipleCity=view.findViewById(R.id.tvMultipleCity);
-        tvEditDietPreference = view.findViewById(R.id.tvEditDietPreference);
+//        tvEditDietPreference = view.findViewById(R.id.etDietPreference);
         etProfilePreference = view.findViewById(R.id.etProfilePreference);
         etDietPreference = view.findViewById(R.id.etDietPreference);
-        tvEditProfile = view.findViewById(R.id.tvEditProfile);
         etIncomePartnerPreference=view.findViewById(R.id.etIncomePartnerPreference);
-
         mrbOpenToAll = view.findViewById(R.id.mrbOpenToAll);
         mrbOnlyManglik = view.findViewById(R.id.mrbOnlyManglik);
         mrbNoManglik =view.findViewById(R.id.mrbNoManglik);
         mrbDontNoManglik=view.findViewById(R.id.mrbDontNoManglik);
 
+  //tvSelectedItemPreview=view.findViewById(R.id.selectedItemPreview);
 
         multi_SelectionWorkingWith();
         multipleSelectionMotherTongue();
@@ -183,33 +183,411 @@ PartnerPreferenceModel model;
         multipleStateSelectionCheckBox();
         multipleCityCheckBox();
         Height();
-        SpinnerAge();
+        //SpinnerAge();
         dietList();
         profileCreatedBy();
         listener();
-
         getData();
-
 
         return view;
     }
 
+
+
+    private void Height() {
+
+        final int[] checkedItem = {-1};
+        final int[] checkedItem1 = {-1};
+        etFromAgePartnerPreference.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.height);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] fromHeight = getResources().getStringArray(R.array.Height);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(fromHeight, checkedItem1[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        etFromAgePartnerPreference.setText(fromHeight[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+            }
+            });
+        etToAgePartnerPreference.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.height);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] fromHeight = getResources().getStringArray(R.array.Height);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(fromHeight, checkedItem[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        etToAgePartnerPreference.setText(fromHeight[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+            }
+        });
+            }
+
+
+    private void incomeSelection() {
+        final int[] checkedItem = {-1};
+        etIncomePartnerPreference.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.money);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+               // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] income = getResources().getStringArray(R.array.Income);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(income, checkedItem[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        etIncomePartnerPreference.setText(income[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+
+            }
+        });
+
+    }
     private void profileCreatedBy() {
-        String[] ProfileCreatedGroup = getResources().getStringArray(R.array.ProfileCreated);
-        ArrayAdapter ProfileCreatedAdapter = new ArrayAdapter(context, R.layout.dropdown_item, ProfileCreatedGroup);
-        //Setting the ArrayAdapter data on the Spinner
-        tvEditProfile.setAdapter(ProfileCreatedAdapter);
+//        String[] ProfileCreatedGroup = getResources().getStringArray(R.array.ProfileCreated);
+//        ArrayAdapter ProfileCreatedAdapter = new ArrayAdapter(context, R.layout.dropdown_item, ProfileCreatedGroup);
+//        //Setting the ArrayAdapter data on the Spinner
+//        tvEditProfile.setAdapter(ProfileCreatedAdapter);
+
+        final int[] checkedItem = {-1};
+        etProfilePreference.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] ProfileCreatedGroup = getResources().getStringArray(R.array.ProfileCreated);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(ProfileCreatedGroup, checkedItem[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        etProfilePreference.setText(ProfileCreatedGroup[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+
+            }
+        });
     }
 
     private void dietList() {
+        final int[] checkedItem = {-1};
         String[] dietGroup = getResources().getStringArray(R.array.DietGroup);
-        ArrayAdapter diet = new ArrayAdapter(context, R.layout.dropdown_item, dietGroup);
-        //Setting the ArrayAdapter data on the Spinner
-        tvEditDietPreference.setAdapter(diet);
+        final boolean[] checkedItems = new boolean[dietGroup.length];
+        final List<String> selectedItems = Arrays.asList(dietGroup);
+        etDietPreference.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onClick(View v) {
+//
+//                // AlertDialog builder instance to build the alert dialog
+//                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+//
+//                // set the custom icon to the alert dialog
+//                alertDialog.setIcon(R.drawable.bibimbap);
+//
+//                // title of the alert dialog
+//                alertDialog.setTitle("Choose an Item");
+//
+//                // list of the items to be displayed to
+//                // the user in the form of list
+//                // so that user can select the item from
+//                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+//                String[] dietGroup = getResources().getStringArray(R.array.DietGroup);
+//                // the function setSingleChoiceItems is the function which builds
+//                // the alert dialog with the single item selection
+//                alertDialog.setSingleChoiceItems(dietGroup, checkedItem[0], new DialogInterface.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                        // update the selected item which is selected by the user
+//                        // so that it should be selected when user opens the dialog next time
+//                        // and pass the instance to setSingleChoiceItems method
+//                        checkedItem[0] = which;
+//
+//                        // now also update the TextView which previews the selected item
+//                        etDietPreference.setText(dietGroup[which]);
+//
+//                        // when selected an item the dialog should be closed with the dismiss method
+//                        dialog.dismiss();
+//                    }
+//                });
+//
+//                // set the negative button if the user
+//                // is not interested to select or change
+//                // already selected item
+//                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.cancel();
+//                    }
+//                });
+//
+//                // create and build the AlertDialog instance
+//                // with the AlertDialog builder instance
+//                AlertDialog customAlertDialog = alertDialog.create();
+//
+//                // show the alert dialog when the button is clicked
+//                customAlertDialog.show();
+//                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+//                buttonbackground.setBackgroundColor(Color.BLACK);
+//
+
+                etDietPreference.setText(null);
+                // initialise the alert dialog builder
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+                // set the title for the alert dialog
+                builder.setTitle("Choose Items");
+
+                // set the icon for the alert dialog
+                builder.setIcon(R.drawable.bibimbap);
+
+
+
+                // now this is the function which sets the alert dialog for multiple item selection ready
+                builder.setMultiChoiceItems(dietGroup, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                        checkedItems[which] = isChecked;
+                        String currentItem = selectedItems.get(which);
+//
+                    }
+                });
+
+                // alert dialog shouldn't be cancellable
+                builder.setCancelable(false);
+
+                // handle the positive button of the dialog
+                builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        for (int i = 0; i < checkedItems.length; i++) {
+                            if (checkedItems[i]) {
+                                etDietPreference.setText(etDietPreference.getText() + selectedItems.get(i) + ", ");
+
+                            }
+                        }
+                    }
+                });
+
+//                // handle the negative button of the alert dialog
+//                builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {dialog.cancel();
+//                    }
+//                });
+
+                // handle the neutral button of the dialog to clear
+                // the selected items boolean checkedItem
+                builder.setNeutralButton("CLEAR ALL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        for (int i = 0; i < checkedItems.length; i++) {
+                            checkedItems[i] = false;
+                        }
+                    }
+                });
+
+                // create the builder
+                builder.create();
+
+                // create the alert dialog with the
+                // alert dialog builder instance
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+                Button buttonbackground1 = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+                buttonbackground1.setTextColor(R.color.colorPrimary);
+                Button buttonbackground3 = alertDialog.getButton(DialogInterface.BUTTON_NEUTRAL);
+                buttonbackground3.setTextColor(R.color.colorPrimary);
+
+
+            }
+
+        });
     }
 
     private void listener() {
-
 
         rgManglikType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -231,67 +609,6 @@ PartnerPreferenceModel model;
             }
         });
 
-
-        tvEditDietPreference.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String myDiet = tvEditDietPreference.getSelectedItem().toString();
-
-                if (myDiet.equals("select")) {
-
-                } else {
-                    etDietPreference.setText(myDiet);
-                }
-                //
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-
-        tvEditProfile.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String myProfile = tvEditProfile.getSelectedItem().toString();
-
-                if (myProfile.equals("select")) {
-
-                } else {
-                    etProfilePreference.setText(myProfile);
-                }
-                //
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-
-
-
-        UserAnnualIncome.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String myIncome = spToHeight.getSelectedItem().toString();
-
-                if (myIncome.equals("select")) {
-
-                } else {
-                    etIncomePartnerPreference.setText(myIncome);
-                }
-                //
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
 
         tvPartnerPreferencesBtn.setOnClickListener(new View.OnClickListener() {
@@ -321,45 +638,26 @@ PartnerPreferenceModel model;
             }
         });
 
-        spFromHeight.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String myFromHeight = spFromHeight.getSelectedItem().toString();
 
-                if (myFromHeight.equals("select")) {
-
-                } else {
-                    etfromHeightPartnerPreference.setText(myFromHeight);
-                }
-                //
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-
-        spMax.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String temp1 = spMax.getSelectedItem().toString().trim();
-
-                if (temp1.equalsIgnoreCase("19 Years")) {
-                    etToAgePartnerPreference.setText("");
-                } else {
-                    etToAgePartnerPreference.setText(spMax.getSelectedItem().toString().trim());
-
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+//        spMax.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                String temp1 = spMax.getSelectedItem().toString().trim();
+//
+//                if (temp1.equalsIgnoreCase("19 Years")) {
+//                    etToAgePartnerPreference.setText("");
+//                } else {
+//                    etToAgePartnerPreference.setText(spMax.getSelectedItem().toString().trim());
+//
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
     }
 
@@ -378,10 +676,10 @@ PartnerPreferenceModel model;
         workingWith = multi_SelectionWorkingWith.getText().toString().trim();
         professionalArea = multi_SelectionProfessionArea.getText().toString().trim();
         createdBy = etProfilePreference.getText().toString().trim();
-        diet = etDietPreference.getText().toString().trim();
+        String diet1 = etDietPreference.getText().toString().trim();
+      diet= diet1.replace(",", "");
 city=tvMultipleCity.getText().toString().toString();
         income=etIncomePartnerPreference.getText().toString().toString();
-
         Map<String, String> params = new HashMap<String, String>();
         params.put("partner_from_age", fromAge);
         params.put("partner_to_age", toAge);
@@ -770,20 +1068,8 @@ tvMultipleReligion.setText(model.partner_religions);
         return religionList;
     }
 
-    private void incomeSelection() {
-        String[] income = getResources().getStringArray(R.array.Income);
-        ArrayAdapter incomeAdapter = new ArrayAdapter(getContext(), R.layout.dropdown_item, income);
-        //Setting the ArrayAdapter data on the Spinner
-        UserAnnualIncome.setAdapter(incomeAdapter);
-    }
 
-    private void Height() {
-        String[] fromHeight = getResources().getStringArray(R.array.Height);
-        ArrayAdapter aa = new ArrayAdapter(requireActivity(), R.layout.dropdown_item, fromHeight);
-        //Setting the ArrayAdapter data on the Spinner
-        spFromHeight.setAdapter(aa);
-        spToHeight.setAdapter(aa);
-    }
+
 
     private void multi_SelectionmultiProfessionArea() {
         multi_SelectionProfessionArea.setItems(getProfessionAreaItems());
@@ -1096,8 +1382,6 @@ tvMultipleReligion.setText(model.partner_religions);
     }
 
     private void multipleMaritalStatusSelectionCheckBox() {
-
-
         // initialize selected language array
         selectedMaritalStatus = new boolean[MaritalStatusArray.length];
 

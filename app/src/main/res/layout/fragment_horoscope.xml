@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-   android:layout_margin="10dp"
+    android:layout_margin="10dp"
     tools:context=".HoroscopeFragment">
 
     <TextView
@@ -47,10 +48,11 @@
         <TextView
             android:id="@+id/tvCountryOfBirth"
             android:layout_width="0dp"
+            android:hint="Add Details"
+            android:textColorHint="@color/colorPrimary"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/italic"
-            android:text=":Country of Birth"
             tools:ignore="DuplicateIds" />
 
 
@@ -71,10 +73,11 @@
         <TextView
             android:id="@+id/tvCityofBirth"
             android:layout_width="0dp"
+            android:hint="Add Details"
+            android:textColorHint="@color/colorPrimary"
             android:fontFamily="@font/italic"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=":City of Birth"/>
+            android:layout_weight="1"/>
 
 
     </LinearLayout>
@@ -97,7 +100,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/italic"
-            android:text=":Time of Birth"/>
+            android:hint="Add Details"
+            android:textColorHint="@color/colorPrimary"/>
 
 
     </LinearLayout>
@@ -120,7 +124,8 @@
             android:fontFamily="@font/italic"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text=":Manglik"/>
+            android:hint="Add Details"
+            android:textColorHint="@color/colorPrimary"/>
 
 
     </LinearLayout>
@@ -158,7 +163,8 @@ android:visibility="gone"
             >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvc"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/italic"
                 android:text="Country Name"
@@ -176,6 +182,7 @@ android:visibility="gone"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_weight=".1"
+                    app:hintEnabled="false"
                     android:layout_height="wrap_content">
 
                     <AutoCompleteTextView
@@ -193,7 +200,8 @@ android:visibility="gone"
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvc1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:inputType="none"

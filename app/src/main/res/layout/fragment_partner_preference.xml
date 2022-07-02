@@ -40,7 +40,7 @@
                     android:background="@drawable/bg_edit_text"
                     tools:ignore="UselessParent">
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etFromAgePartnerPreference"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
@@ -49,21 +49,11 @@
                         android:fontFamily="@font/italic"
                         android:enabled="true"
                         android:hint="From"
+                        android:gravity="center_vertical"
                         android:textSize="12dp"
                         android:layout_marginStart="8dp"
                         android:background="@drawable/transparent_edittext_border"
                         tools:ignore="Deprecated" />
-
-
-
-                    <Spinner
-                        android:id="@+id/sp_min"
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_weight=".4"
-                        style="@style/textInputLayoutStyle"
-                        tools:listitem="@layout/dropdown_item" />
 
                 </LinearLayout>
 
@@ -90,7 +80,7 @@
                     tools:ignore="UselessParent">
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etToAgePartnerPreference"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
@@ -98,18 +88,12 @@
                         android:editable="false"
                         android:fontFamily="@font/italic"
                         android:hint="To"
+                        android:gravity="center_vertical"
                         android:textSize="12dp"
                         android:layout_marginStart="8dp"
                         android:background="@drawable/transparent_edittext_border"
                         tools:ignore="Deprecated" />
 
-                    <Spinner
-                        android:id="@+id/sp_max"
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="4dp"
-                        android:layout_weight=".4"
-                        tools:listitem="@layout/dropdown_item" />
 
                 </LinearLayout>
 
@@ -449,36 +433,52 @@
                 android:orientation="horizontal"
                 tools:ignore="UselessParent">
 
-
-                <EditText
+                <TextView
                     android:id="@+id/etIncomePartnerPreference"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:editable="false"
                     android:hint="Annual Income"
+                    android:gravity="center_vertical"
                     android:fontFamily="@font/italic"
-                    android:textSize="12dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:drawableRight="@android:drawable/arrow_down_float"
                     android:layout_marginStart="8dp"
+                    android:layout_marginEnd="14dp"
                     android:background="@drawable/transparent_edittext_border"
                     tools:ignore="Deprecated" />
 
-                <Spinner
-                    android:id="@+id/UserAnnualIncome"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:layout_weight=".3"
-                    android:focusableInTouchMode="false"
-                    android:importantForAutofill="no"
-                    android:maxLines="1"
-                    app:showSearch="true"
-                    app:sort="true"
-                    tools:ignore="Suspicious0dp" />
+<!--                <Spinner-->
+<!--                    android:id="@+id/UserAnnualIncome"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    android:layout_weight=".3"-->
+<!--                    android:focusableInTouchMode="false"-->
+<!--                    android:importantForAutofill="no"-->
+<!--                    android:maxLines="1"-->
+<!--                    app:showSearch="true"-->
+<!--                    app:sort="true"-->
+<!--                    tools:ignore="Suspicious0dp" />-->
 
 
             </LinearLayout>
+
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/selectedItemPreview"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:background="@drawable/bg_edit_text"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:drawableRight="@android:drawable/arrow_down_float"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text=""-->
+<!--                android:textSize="18sp" />-->
 
 
 
@@ -775,31 +775,22 @@
                 android:background="@drawable/bg_edit_text"
                 android:orientation="horizontal"
                 tools:ignore="UselessParent">
-                <EditText
+                <TextView
                     android:id="@+id/etDietPreference"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:editable="false"
+                    android:hint="Select Diet"
+                    android:gravity="center_vertical"
                     android:fontFamily="@font/italic"
-                    android:enabled="true"
-                    android:hint="select  Diet"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:drawableRight="@android:drawable/arrow_down_float"
                     android:layout_marginStart="8dp"
-                    android:background="@drawable/transparent_edittext_border" />
-
-                <Spinner
-                    android:id="@+id/tvEditDietPreference"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:layout_weight=".2"
-                    android:layout_gravity="center"
-                    android:focusableInTouchMode="false"
-                    android:importantForAutofill="no"
-                    android:maxLines="0"
-                    app:showSearch="true"
-                    app:sort="true"
-                    tools:ignore="Suspicious0dp" />
+                    android:layout_marginEnd="14dp"
+                    android:background="@drawable/transparent_edittext_border"
+                    tools:ignore="Deprecated"/>
 
             </LinearLayout>
 
@@ -822,31 +813,22 @@
                 android:background="@drawable/bg_edit_text"
                 android:orientation="horizontal"
                 tools:ignore="UselessParent">
-                <EditText
+                <TextView
                     android:id="@+id/etProfilePreference"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:editable="false"
+                    android:hint="Profile created By"
+                    android:gravity="center_vertical"
                     android:fontFamily="@font/italic"
-                    android:enabled="true"
-                    android:hint="Profile Created By"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:drawableRight="@android:drawable/arrow_down_float"
                     android:layout_marginStart="8dp"
-                    android:background="@drawable/transparent_edittext_border" />
-
-                <Spinner
-                    android:id="@+id/tvEditProfile"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:layout_weight=".2"
-                    android:layout_gravity="center"
-                    android:focusableInTouchMode="false"
-                    android:importantForAutofill="no"
-                    android:maxLines="0"
-                    app:showSearch="true"
-                    app:sort="true"
-                    tools:ignore="Suspicious0dp" />
+                    android:layout_marginEnd="14dp"
+                    android:background="@drawable/transparent_edittext_border"
+                    tools:ignore="Deprecated"/>
 
             </LinearLayout>
 

@@ -15,10 +15,11 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mcv_All_Played_Match"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="550dp"
         app:cardBackgroundColor="@color/white"
-        app:cardElevation="2dp"
+        app:cardElevation="20dp"
         app:cardCornerRadius="10dp"
+        android:translationZ="20dp"
         app:cardMaxElevation="4dp"
         app:cardPreventCornerOverlap="true"
         android:layout_margin="3dp">
@@ -239,8 +240,6 @@
                     android:layout_gravity="center"
                     app:cardCornerRadius="100dp"
                     >
-
-
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"

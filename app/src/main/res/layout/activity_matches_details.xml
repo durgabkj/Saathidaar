@@ -80,6 +80,52 @@
                     <FrameLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical">
+
+                        <LinearLayout
+                            android:id="@+id/llPrevious"
+                            android:layout_width="40dp"
+                            android:layout_height="80dp"
+                            android:background="@drawable/previous_button_bg"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_arrow_left_2827" />
+
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|end">
+
+                        <LinearLayout
+                            android:id="@+id/llNext"
+                            android:layout_width="40dp"
+                            android:layout_height="80dp"
+                            android:orientation="horizontal"
+                            android:background="@drawable/next_previous_bg"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_arrow_next_2825" />
+
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="end">
 
                         <LinearLayout
@@ -1314,6 +1360,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
 
                             <com.google.android.material.card.MaterialCardView
                                 android:layout_width="wrap_content"
+                                app:cardCornerRadius="100dp"
                                 android:layout_height="wrap_content"
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle">
 
@@ -1330,8 +1377,8 @@ I am modern thinker but also believe in good values given by our ancestors I als
 
 
                             <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:background="@color/white"
                                 android:scaleType="centerCrop"
@@ -2115,10 +2162,10 @@ I am modern thinker but also believe in good values given by our ancestors I als
                     app:cardCornerRadius="100dp">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
                         android:background="@color/white"
-                        android:padding="4dp"
+                        android:padding="6dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_checkmark" />
                 </androidx.cardview.widget.CardView>

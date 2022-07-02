@@ -1,13 +1,17 @@
 package com.ottego.saathidaar;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -19,8 +23,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
-import com.ottego.saathidaar.Model.DataModelDashboard;
-import com.ottego.saathidaar.Model.DataModelHoroscope;
 import com.ottego.saathidaar.Model.HoroscopeModel;
 import com.ottego.saathidaar.databinding.FragmentHoroscopeBinding;
 
@@ -93,92 +95,44 @@ public class HoroscopeFragment extends Fragment {
         setDropDownData();
         listener();
         getCountry(countryUrl);
-        setData();
-       // getData(urlGetHoroscope);
+        getData();
+
+
         return b.getRoot();
     }
-
-//    private void getData(String urlGetHoroscope) {
-//        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-//                urlGetHoroscope, null, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                progressDialog.dismiss();
-//                Log.e("response", String.valueOf(response));
-//                try {
-//                    String code = response.getString("results");
-//                    if (code.equalsIgnoreCase("1")) {
-//                        Gson gson = new Gson();
-//                        model = gson.fromJson(String.valueOf(response), HoroscopeModel.class);
-//                        setData();
-//
-//                    } else {
-//                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                progressDialog.dismiss();
-//                error.printStackTrace();
-//            }
-//        });
-//        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-//    }
-
-    private void setData() {
-        if (model != null) {
-            b.tvCountryOfBirth.setText(model.country_of_birth);
-            b.tvCityofBirth.setText(model.city_of_birth);
-            b.tvTimeofBirth.setText(model.hours + ":" + model.minutes + ":" + model.time + "," + model.time_status);
-            b.tvManglik.setText(model.manglik);
-        }
-    }
-
-    private void getCountry(String countryUrl) {
+    private void getData() {
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                countryUrl, null, new Response.Listener<JSONObject>() {
+                urlGetHoroscope, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                progressDialog.dismiss();
                 Log.e("response", String.valueOf(response));
-
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
-                        JSONArray jsonArray = response.getJSONArray("country");
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            String country = jsonObject1.getString("country_name");
-                            Log.e("country", country);
-                            countryList.add(country);
-                            Log.e("Country-list", String.valueOf(countryList));
-                        }
+                        Gson gson = new Gson();
+                        model = gson.fromJson(String.valueOf(response), HoroscopeModel.class);
+                        setData();
+
+                    } else {
+                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }
-                    countryAdapter = new ArrayAdapter<>(context, R.layout.dropdown_item, countryList);
-                    // set adapter
-                    countryAdapter.notifyDataSetChanged();
-                    b.acvCountry.setAdapter(countryAdapter);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
                 error.printStackTrace();
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
-
     }
     private void listener() {
         b.btnEditDetails.setOnClickListener(new View.OnClickListener() {
@@ -233,10 +187,9 @@ public class HoroscopeFragment extends Fragment {
 
 
     }
-
     private boolean checkForm() {
-        countryName = b.tvCountryOfBirth.getText().toString().trim();
-        cityName = b.tvCityofBirth.getText().toString().trim();
+        countryName = b.acvCountry.getText().toString().trim();
+        cityName = b.etHoroscopeBirthCity.getText().toString().trim();
         hour = b.acvHour.getText().toString().trim();
         minutes = b.acvMinutes.getText().toString().trim();
         time = b.actvampm.getText().toString().trim();
@@ -246,27 +199,30 @@ public class HoroscopeFragment extends Fragment {
 
 
         if (countryName.isEmpty()) {
-            b.tvCountryOfBirth.setError("country of birth mandatory");
-            b.tvCountryOfBirth.setFocusableInTouchMode(true);
-            b.tvCountryOfBirth.requestFocus();
+            b.tvc.setError("country of birth mandatory");
+            b.tvc.setFocusableInTouchMode(true);
+            b.tvc.requestFocus();
             return false;
         } else {
-            b.tvCountryOfBirth.setError(null);
+            b.tvc.setError(null);
         }
 
         if (cityName.isEmpty()) {
-            b.tvCityofBirth.setError("city of birth mandatory");
-            b.tvCityofBirth.setFocusableInTouchMode(true);
-            b.tvCityofBirth.requestFocus();
+            b.tvc1.setError("city of birth mandatory");
+            b.tvc1.setFocusableInTouchMode(true);
+            b.tvc1.requestFocus();
             return false;
         } else {
-            b.tvCityofBirth.setError(null);
+            b.tvc1.setError(null);
         }
         return true;
     }
-
     private void submitForm() {
         Map<String, String> params = new HashMap<String, String>();
+
+
+
+
         params.put("country_of_birth", countryName);
         params.put("city_of_birth", cityName);
 
@@ -291,8 +247,8 @@ public class HoroscopeFragment extends Fragment {
                                 model = gson.fromJson(String.valueOf(response), HoroscopeModel.class);
                                 b.cvShowDetails.setVisibility(View.VISIBLE);
                                 b.cvEditDetails.setVisibility(View.GONE);
-                               // getData(urlGetHoroscope);
-                                setData();
+                                // getData(urlGetHoroscope);
+                                getData();
                                 //    Gson gson = new Gson();
 //                                     //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                                 // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -319,7 +275,44 @@ public class HoroscopeFragment extends Fragment {
         request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(request);
     }
+    private void getCountry(String countryUrl) {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                countryUrl, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf(response));
 
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        JSONArray jsonArray = response.getJSONArray("country");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String country = jsonObject1.getString("country_name");
+                            Log.e("country", country);
+                            countryList.add(country);
+                            Log.e("Country-list", String.valueOf(countryList));
+                        }
+                    }
+                    countryAdapter = new ArrayAdapter<>(context, R.layout.searchable_dropdown_item, countryList);
+                    // set adapter
+                    countryAdapter.notifyDataSetChanged();
+                    b.acvCountry.setAdapter(countryAdapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+
+    }
     private void setDropDownData() {
         String[] hour = getResources().getStringArray(R.array.Hour);
         ArrayAdapter aa = new ArrayAdapter(requireActivity(), R.layout.dropdown_item, hour);
@@ -341,5 +334,13 @@ public class HoroscopeFragment extends Fragment {
         ArrayAdapter apr = new ArrayAdapter(requireActivity(), R.layout.dropdown_item, aprox);
         //Setting the ArrayAdapter data on the Spinner
         b.actvapprox.setAdapter(apr);
+    }
+    private void setData() {
+        if (model != null) {
+            b.tvCountryOfBirth.setText(model.country_of_birth);
+            b.tvCityofBirth.setText(model.city_of_birth);
+            b.tvTimeofBirth.setText(model.hours + ":" + model.minutes + ":" + model.time + "," + model.time_status);
+            b.tvManglik.setText(model.manglik);
+        }
     }
 }
