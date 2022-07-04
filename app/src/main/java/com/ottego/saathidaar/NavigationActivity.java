@@ -1,14 +1,18 @@
 package com.ottego.saathidaar;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.ottego.saathidaar.Adapter.ViewPageAdapter;
 import com.ottego.saathidaar.databinding.ActivityNavigationBinding;
+
+import java.util.Locale;
 
 public class NavigationActivity extends AppCompatActivity {
     ActivityNavigationBinding b;
@@ -16,7 +20,6 @@ public class NavigationActivity extends AppCompatActivity {
     TabLayout tabLayout;
     SwipeDisabledPager viewPager;
     Context context;
-    private boolean swipeEnabled;
     int[] tabIcons = {
             R.drawable.logo1,
             R.drawable.ic_couple,
@@ -25,11 +28,7 @@ public class NavigationActivity extends AppCompatActivity {
             R.drawable.ic_diamond,
     };
 
-    //MySathidarFragment sathidarFragment=new MySathidarFragment();
-//    MatchesFragment matchesFragment=new MatchesFragment();
-//   SearchFragment searchFragment=new SearchFragment();
-//   InboxFragment inboxFragment=new InboxFragment();
-//   ProfileFragment profileFragment=new ProfileFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +52,7 @@ public class NavigationActivity extends AppCompatActivity {
 
         viewPager.setPagingEnable(false);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
+        tabLayout.getTabAt(2).getOrCreateBadge().setNumber(10);
         ViewPageAdapter adapter = new ViewPageAdapter(this, getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
@@ -67,6 +66,7 @@ public class NavigationActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
 
                 viewPager.setCurrentItem(tab.getPosition());
+
             }
 
             @Override
@@ -81,37 +81,7 @@ public class NavigationActivity extends AppCompatActivity {
         });
 
         tabLayout.getTabAt(1).select();
-//       getSupportFragmentManager().beginTransaction().replace(R.id.fcvSathidaar,sathidarFragment).commit();
-//
-//       b.bnvSaathidar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-//           @Override
-//           public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//               switch (item.getItemId())
-//               {
-//                   case R.id.mnuSathi:
-//                       getSupportFragmentManager().beginTransaction().replace(R.id.fcvSathidaar,sathidarFragment).commit();
-//                       return true;
-//
-//                   case R.id.mnuMatch:
-//                       getSupportFragmentManager().beginTransaction().replace(R.id.fcvSathidaar,matchesFragment).commit();
-//                       return true;
-//
-//                   case R.id.mnuSearch:
-//                       getSupportFragmentManager().beginTransaction().replace(R.id.fcvSathidaar,searchFragment).commit();
-//                       return true;
-//
-//                   case R.id.mnuInbox:
-//                       getSupportFragmentManager().beginTransaction().replace(R.id.fcvSathidaar,inboxFragment).commit();
-//                       return true;
-//
-//                   case R.id.mnuProfile:
-//                       getSupportFragmentManager().beginTransaction().replace(R.id.fcvSathidaar,profileFragment).commit();
-//                       return true;
-//               }
-//
-//               return false;
-//           }
-//       });
+
     }
 
 

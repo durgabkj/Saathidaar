@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".MatchesDetailsActivity">
+    android:layout_height="match_parent"
+    tools:context=".MatchDetailsFragment">
 
 
     <ImageView
@@ -453,7 +453,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Birth Date"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -469,7 +469,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:text="Born on **/**/****"
                                     android:textAlignment="center"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -509,7 +509,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Marital Status"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -521,7 +521,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Never Married"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -561,7 +561,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Live In"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -573,7 +573,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Live in patna. Bihar,India"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -613,7 +613,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Religion &amp; MotherTongue"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -625,7 +625,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Hindu, Hindi"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -665,7 +665,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Community"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -677,7 +677,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Gujarati,Vankar"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -717,7 +717,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Diet Preferences"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -729,7 +729,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Vegetarian"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -836,7 +836,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Contact No."
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -849,7 +849,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="987***********"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -889,7 +889,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Email ID"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -902,7 +902,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="**********@gmail.com"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -1010,7 +1010,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Profession"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1022,7 +1022,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Investment Professional"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -1062,7 +1062,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Company Name"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1077,7 +1077,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:text="*************"
                                     android:textAlignment="center"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -1117,7 +1117,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Annual Income"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1130,7 +1130,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Earn INR 4 Lakh To &amp; Lakh annually"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -1170,7 +1170,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Annual Income"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1182,7 +1182,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Masters degree in Finance"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -1222,7 +1222,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Education Field"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1234,7 +1234,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Finance / Commerce"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -1274,7 +1274,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="College Name"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1287,7 +1287,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="*****************"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -1430,7 +1430,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Age"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1442,7 +1442,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="26 To 29"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
@@ -1483,7 +1483,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Height"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1495,7 +1495,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="5'5 to 5'10"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
@@ -1537,7 +1537,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Marital Status"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1549,7 +1549,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Never Married"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
@@ -1591,7 +1591,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Country Live in"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1603,7 +1603,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="India"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
@@ -1645,7 +1645,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="State Live in"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1657,7 +1657,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Maharastra"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
@@ -1698,7 +1698,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Education"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1710,7 +1710,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Masters"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
@@ -1751,7 +1751,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Working With"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1763,7 +1763,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Government job"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
@@ -1805,7 +1805,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Diet"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1817,7 +1817,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Non-Vg"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
@@ -1859,7 +1859,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Annual Income"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1871,7 +1871,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="4 Lakh To 7 Lakh Annualy"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
@@ -1913,7 +1913,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Religion / Community"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1925,7 +1925,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Hindu"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
@@ -1967,7 +1967,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="MotherTongue"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -1979,7 +1979,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Hindi"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
@@ -2021,7 +2021,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
                                     android:text="Manglik"
-                                    android:textSize="10sp"
+                                    android:textSize="14sp"
 
                                     />
 
@@ -2033,7 +2033,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:fontFamily="@font/italic"
                                     android:text="Don't Know"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:textSize="14sp" />
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView

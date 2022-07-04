@@ -84,7 +84,10 @@ public class MatchesFragment extends Fragment {
 
         setUpViewPager(b.vpMatch);
         b.tlMatch.setupWithViewPager(b.vpMatch);
+        b.tlMatch.getTabAt(1).select();
 
+
+        b.vpMatch.setPagingEnable(false);
 
         b.tlMatch.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 

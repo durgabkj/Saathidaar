@@ -1,12 +1,8 @@
 package com.ottego.saathidaar.Adapter;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
-import com.ottego.saathidaar.MatchesDetailsActivity;
+import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
-import com.ottego.saathidaar.UpgradePlanDetailsActivity;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
@@ -61,7 +57,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             public void onClick(View view) {
                 Utils.sentRequest(context, item.member_id);
 
-  }
+            }
         });
 
         holder.llShortList.setOnClickListener(new View.OnClickListener() {
@@ -78,29 +74,30 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             @Override
             public void onClick(View view) {
 
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) view.getContext(),
+                /*ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) view.getContext(),
                         Pair.create(holder.ivUserMatch, "tnMemberImage"));
                 Intent intent = new Intent(view.getContext(), MatchesDetailsActivity.class);
                 intent.putExtra("data", new Gson().toJson(item));
-                view.getContext().startActivity(intent, options.toBundle());
+                view.getContext().startActivity(intent, options.toBundle());*/
+
+                new MatchPagerFragment().show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
 
             }
         });
 
 
-
     }
+
     @Override
     public int getItemCount() {
         return list.size();
     }
 
 
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivUserMatch;
         TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
-        LinearLayout llMess,llShortListRemove,llShortList;
+        LinearLayout llMess, llShortListRemove, llShortList;
         LinearLayout ivLike;
 
         public ViewHolder(@NonNull View itemView) {

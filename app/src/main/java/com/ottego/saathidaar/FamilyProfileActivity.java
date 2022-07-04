@@ -1,11 +1,17 @@
 package com.ottego.saathidaar;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -65,47 +71,280 @@ public class FamilyProfileActivity extends AppCompatActivity {
     }
 
     private void setData() {
+        if (model != null) {
+            b.etFStatus.setText(model.father_status);
+            b.etFatherCompanyName.setText(model.father_company_name);
+            b.etFatherDesignation.setText(model.father_designation);
+            b.etFatherNatureBusiness.setText(model.father_business_name);
 
-        b.etFStatus.setText(model.father_status);
-        b.etFatherCompanyName.setText(model.father_company_name);
-        b.etFatherDesignation.setText(model.father_designation);
-        b.etFatherNatureBusiness.setText(model.father_business_name);
+            b.etMStatus.setText(model.father_status);
+            b.etMotherCompanyName.setText(model.mother_company_name);
+            b.etMotherDesignation.setText(model.mother_designation);
+            b.etMotherNatureBusiness.setText(model.mother_business_name);
+            b.etFAffluence.setText(model.family_affluence);
+            b.etAddUserFamilyLocation.setText(model.family_location);
+            b.etFType.setText(model.family_type);
+            b.etAddUserBrotherMarried.setText(model.married_male);
+            b.etAddUserBrotherNotMarried.setText(model.unmarried_male);
 
-        b.etMStatus.setText(model.father_status);
-        b.etMotherCompanyName.setText(model.mother_company_name);
-        b.etMotherDesignation.setText(model.mother_designation);
-        b.etMotherNatureBusiness.setText(model.mother_business_name);
-        b.etFAffluence.setText(model.family_affluence);
-        b.etAddUserFamilyLocation.setText(model.family_location);
-        b.etFType.setText(model.family_type);
-        b.etAddUserBrotherMarried.setText(model.married_male);
-        b.etAddUserBrotherNotMarried.setText(model.unmarried_male);
-
-        b.etAddUserSisterMarried.setText(model.married_female);
-        b.etAddUserSisterNotMarried.setText(model.unmarried_female);
+            b.etAddUserSisterMarried.setText(model.married_female);
+            b.etAddUserSisterNotMarried.setText(model.unmarried_female);
+        }
     }
 
     private void FamilyType() {
-        String[] FamilyTypeList = getResources().getStringArray(R.array.FamilyType);
-        ArrayAdapter FamilyTypeAdapter = new ArrayAdapter(context, R.layout.dropdown_item, FamilyTypeList);
-        //Setting the ArrayAdapter data on the Spinner
-        b.UserFamilyType.setAdapter(FamilyTypeAdapter);
+
+        final int[] checkedItem = {-1};
+        b.etFType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] FamilyTypeList = getResources().getStringArray(R.array.FamilyType);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(FamilyTypeList, checkedItem[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        b.etFType.setText(FamilyTypeList[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+
+            }
+        });
+
+
     }
 
     private void FamilyAffluence() {
-        String[] FamilyAffluenceList = getResources().getStringArray(R.array.Affluence);
-        ArrayAdapter FamilyAffluenceAdapter = new ArrayAdapter(context, R.layout.dropdown_item, FamilyAffluenceList);
-        //Setting the ArrayAdapter data on the Spinner
-        b.UserFamilyAffluence.setAdapter(FamilyAffluenceAdapter);
 
+        final int[] checkedItem = {-1};
+        b.etFAffluence.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] FamilyAffluenceList = getResources().getStringArray(R.array.Affluence);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(FamilyAffluenceList, checkedItem[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        b.etFAffluence.setText(FamilyAffluenceList[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+
+            }
+        });
     }
 
     private void fatherAndMotherStatus() {
-        String[] fatherAndMotherStatusList = getResources().getStringArray(R.array.FatherAndStatus);
-        ArrayAdapter fatherAndMotherStatusAdapter = new ArrayAdapter(context, R.layout.dropdown_item, fatherAndMotherStatusList);
-        //Setting the ArrayAdapter data on the Spinner
-        b.UserFatherStatus.setAdapter(fatherAndMotherStatusAdapter);
-        b.UserMotherStatus.setAdapter(fatherAndMotherStatusAdapter);
+        final int[] checkedItem = {-1};
+
+        final int[] checkedItem1 = {-1};
+
+        b.etFStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] fatherAndMotherStatusList = getResources().getStringArray(R.array.FatherAndStatus);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(fatherAndMotherStatusList  , checkedItem[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        b.etFStatus.setText(fatherAndMotherStatusList[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+
+            }
+        });
+        b.etMStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] fatherAndMotherStatusList = getResources().getStringArray(R.array.FatherAndStatus);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(fatherAndMotherStatusList  , checkedItem1[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        b.etMStatus.setText(fatherAndMotherStatusList[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+
+            }
+        });
     }
 
 
@@ -118,25 +357,21 @@ public class FamilyProfileActivity extends AppCompatActivity {
             }
         });
 
-        b.UserMotherStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        b.etMStatus.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                motherStatus = b.UserMotherStatus.getSelectedItem().toString();
-                Log.e("Selected-Status", motherStatus);
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                if (motherStatus.equalsIgnoreCase("select")) {
+            }
 
-                } else {
-                    b.etFStatus.setText(motherStatus);
-                }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+                motherStatus = b.etMStatus.getText().toString();
                 if (motherStatus.equalsIgnoreCase("Retired")) {
                     b.llMCompany.setVisibility(View.VISIBLE);
                     b.llMDesignation.setVisibility(View.VISIBLE);
                     b.llMNatureBusiness.setVisibility(View.GONE);
                 }
-
-
                 if (motherStatus.equalsIgnoreCase("Employed")) {
                     b.llMCompany.setVisibility(View.VISIBLE);
                     b.llMDesignation.setVisibility(View.VISIBLE);
@@ -147,14 +382,11 @@ public class FamilyProfileActivity extends AppCompatActivity {
                     b.llMCompany.setVisibility(View.GONE);
                     b.llMDesignation.setVisibility(View.GONE);
                 }
-
                 if (motherStatus.equalsIgnoreCase("Not Employed")) {
                     b.llMNatureBusiness.setVisibility(View.GONE);
                     b.llMCompany.setVisibility(View.GONE);
                     b.llMDesignation.setVisibility(View.GONE);
                 }
-
-
                 if (motherStatus.equalsIgnoreCase("Pass Away")) {
                     b.llMNatureBusiness.setVisibility(View.GONE);
                     b.llMCompany.setVisibility(View.GONE);
@@ -163,100 +395,63 @@ public class FamilyProfileActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            public void afterTextChanged(Editable editable) {
 
             }
         });
 
-        b.UserFatherStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                fatherStatus = b.UserFatherStatus.getSelectedItem().toString();
-                Log.e("Selected-Status", fatherStatus);
 
-
-                if (fatherStatus.equalsIgnoreCase("select")) {
-
-                } else {
-                    b.etFStatus.setText(fatherStatus);
-                }
-
-
-                if (fatherStatus.equalsIgnoreCase("Retired")) {
-                    b.llCompanyName.setVisibility(View.VISIBLE);
-                    b.llDesignation.setVisibility(View.VISIBLE);
-                    b.llBusiness.setVisibility(View.GONE);
-                }
-
-                if (fatherStatus.equalsIgnoreCase("Employed")) {
-                    b.llCompanyName.setVisibility(View.VISIBLE);
-                    b.llDesignation.setVisibility(View.VISIBLE);
-                    b.llBusiness.setVisibility(View.GONE);
-                }
-                if (fatherStatus.equalsIgnoreCase("Business")) {
-                    b.llBusiness.setVisibility(View.VISIBLE);
-                    b.llCompanyName.setVisibility(View.GONE);
-                    b.llDesignation.setVisibility(View.GONE);
-                }
-
-                if (fatherStatus.equalsIgnoreCase("Not Employed")) {
-                    b.llBusiness.setVisibility(View.GONE);
-                    b.llCompanyName.setVisibility(View.GONE);
-                    b.llDesignation.setVisibility(View.GONE);
-                }
-
-
-                if (fatherStatus.equalsIgnoreCase("Pass Away")) {
-                    b.llBusiness.setVisibility(View.GONE);
-                    b.llCompanyName.setVisibility(View.GONE);
-                    b.llDesignation.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        b.UserFamilyType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String Family_Type = b.UserFamilyType.getSelectedItem().toString().trim();
-
-                if (Family_Type.equalsIgnoreCase("select")) {
-
-                } else {
-                    b.etFType.setText(Family_Type);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        b.UserFamilyAffluence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String Family_Affluence = b.UserFamilyAffluence.getSelectedItem().toString().trim();
-
-                if (Family_Affluence.equalsIgnoreCase("select")) {
-
-                } else {
-                    b.etFAffluence.setText(Family_Affluence);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
+b.etFStatus.addTextChangedListener(new TextWatcher() {
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
     }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        fatherStatus = b.etFStatus.getText().toString();
+
+        if (fatherStatus.equalsIgnoreCase("Retired")) {
+            b.llCompanyName.setVisibility(View.VISIBLE);
+            b.llDesignation.setVisibility(View.VISIBLE);
+            b.llBusiness.setVisibility(View.GONE);
+        }
+
+        if (fatherStatus.equalsIgnoreCase("Employed")) {
+            b.llCompanyName.setVisibility(View.VISIBLE);
+            b.llDesignation.setVisibility(View.VISIBLE);
+            b.llBusiness.setVisibility(View.GONE);
+        }
+        if (fatherStatus.equalsIgnoreCase("Business")) {
+            b.llBusiness.setVisibility(View.VISIBLE);
+            b.llCompanyName.setVisibility(View.GONE);
+            b.llDesignation.setVisibility(View.GONE);
+        }
+
+        if (fatherStatus.equalsIgnoreCase("Not Employed")) {
+            b.llBusiness.setVisibility(View.GONE);
+            b.llCompanyName.setVisibility(View.GONE);
+            b.llDesignation.setVisibility(View.GONE);
+        }
+
+
+        if (fatherStatus.equalsIgnoreCase("Pass Away")) {
+            b.llBusiness.setVisibility(View.GONE);
+            b.llCompanyName.setVisibility(View.GONE);
+            b.llDesignation.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+
+    }
+});
+
+
+
+
+}
 
 //    private boolean checkForm() {
 //
@@ -360,8 +555,8 @@ public class FamilyProfileActivity extends AppCompatActivity {
 //    }
 
     private void submitForm() {
-        fatherStatus = b.UserFatherStatus.getSelectedItem().toString().trim();
-        motherStatus = b.UserMotherStatus.getSelectedItem().toString().trim();
+        fatherStatus = b.etFStatus.getText().toString().trim();
+        motherStatus = b.etMStatus.getText().toString().trim();
         companyNameF = b.etFatherCompanyName.getText().toString().trim();
         designationF = b.etFatherDesignation.getText().toString().trim();
         natureBusinessF = b.etFatherNatureBusiness.getText().toString().trim();
@@ -374,8 +569,8 @@ public class FamilyProfileActivity extends AppCompatActivity {
         unMarriedBrother = b.etAddUserBrotherNotMarried.getText().toString().trim();
         marriedSister = b.etAddUserSisterMarried.getText().toString().trim();
         unMarriedSister = b.etAddUserSisterNotMarried.getText().toString().trim();
-        familyType = b.UserFamilyType.getSelectedItem().toString().trim();
-        familyAffluence = b.UserFamilyAffluence.getSelectedItem().toString().trim();
+        familyType = b.etFType.getText().toString().trim();
+        familyAffluence = b.etFAffluence.getText().toString().trim();
 
 
         Map<String, String> params = new HashMap<String, String>();

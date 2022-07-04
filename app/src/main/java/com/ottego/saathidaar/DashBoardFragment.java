@@ -2,6 +2,7 @@ package com.ottego.saathidaar;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -27,7 +28,7 @@ import org.json.JSONObject;
 
 public class DashBoardFragment extends Fragment {
     SessionManager sessionManager;
-    ImageView ivPremiumImage;
+    ImageView ivPremiumImage,profilePic;
     TextView tvPremiumText, tvLogout, RequestAccept, Visitors, RequestSent;
     int position = 0;
     DataModelDashboard model;
@@ -76,7 +77,7 @@ public class DashBoardFragment extends Fragment {
         ivPremiumImage = view.findViewById(R.id.ivPremiumImage);
         tvPremiumText = view.findViewById(R.id.tvPremiumText);
         tvLogout = view.findViewById(R.id.tvLogout);
-
+        profilePic=view.findViewById(R.id.profilePic);
         RequestAccept = view.findViewById(R.id.RequestAccept);
         Visitors = view.findViewById(R.id.Visitors);
         RequestSent = view.findViewById(R.id.RequestSent);
@@ -118,7 +119,13 @@ public class DashBoardFragment extends Fragment {
                 sessionManager.logoutUser();
             }
         });
-
+        profilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(context,ImageGalleryActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getData() {
@@ -173,5 +180,10 @@ public class DashBoardFragment extends Fragment {
 
         }.start();
     }
+
+
+
+
+
 
 }

@@ -70,19 +70,7 @@ public class AccountFragment extends Fragment {
         return b.getRoot();
     }
 
-//    private void listener() {
-//        b.tvAccountSetting.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
 //
-//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//
-//                fragmentTransaction.replace(R.id.fcvSathidarAccount,accountSettingFragment);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//    }
 
 
     @Override
@@ -91,7 +79,7 @@ public class AccountFragment extends Fragment {
 
         setUpViewPager(b.vpAccount);
         b.tlAccount.setupWithViewPager(b.vpAccount);
-
+b.vpAccount.setPagingEnable(false);
 
         b.tlAccount.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 

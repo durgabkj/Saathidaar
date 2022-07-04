@@ -13,18 +13,6 @@
         android:layout_below="@+id/tlMatch" />
 
 
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/bnvSaathidar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_alignParentTop="true"-->
-<!--        app:itemBackground="@drawable/gradient_for_app"-->
-<!--        app:itemIconTint="@color/white"-->
-<!--        app:itemTextColor="@color/white"-->
-<!--        android:textAlignment="center"-->
-<!--        app:labelVisibilityMode="selected"-->
-<!--        app:menu="@menu/bottom_navigation_menu" />-->
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tlMatch"

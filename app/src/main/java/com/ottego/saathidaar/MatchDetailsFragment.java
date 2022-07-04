@@ -1,7 +1,6 @@
-package com.ottego.saathidaar.Fragment;
+package com.ottego.saathidaar;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -19,22 +20,22 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.MemberProfileModel;
-import com.ottego.saathidaar.MySingleton;
-import com.ottego.saathidaar.ProfessionalDetailEditActivity;
-import com.ottego.saathidaar.SessionManager;
-import com.ottego.saathidaar.Utils;
-import com.ottego.saathidaar.databinding.FragmentProfessionalInfoBinding;
+import com.ottego.saathidaar.Model.NewMatchesModel;
+import com.ottego.saathidaar.databinding.ActivityMatchesDetailsBinding;
+import com.ottego.saathidaar.databinding.FragmentMatchDetailsBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class ProfessionalInfoFragment extends Fragment {
-    public static String url = Utils.memberUrl + "get-details/11";
-   FragmentProfessionalInfoBinding b;
+public class MatchDetailsFragment extends Fragment {
+FragmentMatchDetailsBinding b;
+    Animation animation;
+    NewMatchesModel model;
+    MemberProfileModel model1;
+    public  String memberDetail=Utils.memberUrl+"get-details/";
     Context context;
-    SessionManager sessionManager;
-    MemberProfileModel model;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -42,13 +43,13 @@ public class ProfessionalInfoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ProfessionalInfoFragment() {
+    public MatchDetailsFragment() {
         // Required empty public constructor
     }
 
     // TODO: Rename and change types and number of parameters
-    public static ProfessionalInfoFragment newInstance(String param1, String param2) {
-        ProfessionalInfoFragment fragment = new ProfessionalInfoFragment();
+    public static MatchDetailsFragment newInstance(String param1, String param2) {
+        MatchDetailsFragment fragment = new MatchDetailsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,18 +69,35 @@ public class ProfessionalInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        b= FragmentProfessionalInfoBinding.inflate(getLayoutInflater());
+        // Inflate the layout for this fragment
+      b=FragmentMatchDetailsBinding.inflate(getLayoutInflater());
+
+
         context=getContext();
-        sessionManager=new SessionManager(context);
+        Bundle bundle = getActivity().getIntent().getExtras();
+        String data = bundle.getString("data");
+        model = new Gson().fromJson(data, NewMatchesModel.class);
+        animation = AnimationUtils.loadAnimation(context, R.anim.move);
+        //  b.llDetailCad.startAnimation(animation);
+
         listener();
-        getMemberData();
-        return b.getRoot();
+        getData();
+      return b.getRoot();
     }
 
-    private void getMemberData() {
-        Log.e("url", url);
+
+    private void listener() {
+        b.llBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
+    }
+
+    private void getData() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                url, null, new Response.Listener<JSONObject>() {
+                memberDetail+model.member_id, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf(response));
@@ -87,7 +105,7 @@ public class ProfessionalInfoFragment extends Fragment {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
                         Gson gson = new Gson();
-                        model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
+                        model1 = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
                         setData();
                     }else {
                         Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -107,29 +125,17 @@ public class ProfessionalInfoFragment extends Fragment {
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
+
+
+
     }
 
     private void setData() {
-        b.tvUserHigherEdu.setText(model.highest_qualification);
-        b.tvUserCollegeName.setText(model.college_attended);
-        b.tvUserIncome.setText(model.annual_income);
-        b.tvUserWorkingWitht.setText(model.working_with);
-        b.tvWorkingAs.setText(model.working_as);
-        b.tvUserCurrentResi.setText(model.country_name);
-        b.tvUserStateOfResidence.setText(model.state_name);
-        b.tvUserResidenceStatus.setText(model.city_name);
-        b.tvUserPinCode.setText(model.pincode);
-    }
-
-    private void listener() {
-        b.ivCameraEducationInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getContext(), ProfessionalDetailEditActivity.class);
-                intent.putExtra("data", new Gson().toJson(model));
-                startActivity(intent);
-            }
-        });
-
+        b.tvNewMatchName.setText(model1.first_name+" "+model.last_name);
+        b.tvNewMatchAge.setText(model1.age +" yrs");
+        b.tvDetailHeight.setText(model1.height +" feet");
+        b.tvMatchCityDetail.setText(model1.city);
+        b.tvNewMatchWorkAsDetail.setText(model1.working_as);
+        b.tvAboutUserDetails.setText(model1.about_ourself);
     }
 }

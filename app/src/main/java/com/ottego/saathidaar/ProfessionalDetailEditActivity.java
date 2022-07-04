@@ -1,11 +1,17 @@
 package com.ottego.saathidaar;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,6 +56,8 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     public String stateUrl = Utils.cityUrl + "state-name/by/country-name/";
     public String cityUrl = Utils.cityUrl + "city-name/by/state-name/";
     ArrayList<String> countryList = new ArrayList<>();
+
+    String[] stringArray =new String[0];
     ArrayAdapter<String> countryAdapter;
     ArrayList<String> stateList = new ArrayList<>();
     ArrayAdapter<String> stateAdapter;
@@ -71,6 +79,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String data = bundle.getString("data");
         model = new Gson().fromJson(data, MemberProfileModel.class);
+
         userAnnualIncome();
         userWorkAs();
         UserWorkingWith();
@@ -80,38 +89,41 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
         getCity();
         setData();
 
-
     }
 
     private void setData() {
-        b.etAddUserEducation.setText(model.education);
-        b.etAddUserCollegeAttended.setText(model.college_attended);
-        b.etIncome.setText(model.income);
-        b.etAddUserCollegeAttended.setText(model.college_attended);
-        b.etWorkingWith.setText(model.working_with);
-        b.etWorkingAs.setText(model.working_as);
+        if (model != null) {
+            b.etAddUserEducation.setText(model.education);
+            b.etAddUserCollegeAttended.setText(model.college_attended);
+            b.etIncome.setText(model.income);
+            b.etAddUserCollegeAttended.setText(model.college_attended);
+            b.etWorkingWith.setText(model.working_with);
+            b.etWorkingAs.setText(model.working_as);
+            b.etCountry.setText(model.country_name);
+            b.etState.setText(model.state_name);
+            b.etCity.setText(model.city);
+            b.etAddUserCorigin.setText(model.ethnic_corigin);
+            b.etAddUserZipPinCode.setText(model.pincode);
 
-        b.etCountry.setText(model.country_name);
-        b.etState.setText(model.state_name);
-        b.etCity.setText(model.city);
-        b.etAddUserCorigin.setText(model.ethnic_corigin);
-        b.etAddUserZipPinCode.setText(model.pincode);
+        }
     }
 
-
-
-
     private void getCity() {
-        b.etAddUserStateOfResidence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        b.etState.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                stateName = b.etAddUserStateOfResidence.getSelectedItem().toString().trim();
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                stateName = b.etState.getText().toString().trim();
                 cityList.clear();
                 cityList(cityUrl);
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            public void afterTextChanged(Editable editable) {
 
             }
         });
@@ -135,10 +147,10 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
                             Log.e("city-list", String.valueOf(cityList));
                         }
                     }
-                    cityAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, cityList);
-                    // set adapter
-                    cityAdapter.notifyDataSetChanged();
-                    b.etAddUserResidenceStatus.setAdapter(cityAdapter);
+//                    cityAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, cityList);
+//                    // set adapter
+//                    cityAdapter.notifyDataSetChanged();
+//                    b.etAddUserResidenceStatus.setAdapter(cityAdapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -155,20 +167,24 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     }
 
     private void getState() {
-        b.etAddUserCurrentResidence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        b.etCountry.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                countryName = b.etAddUserCurrentResidence.getSelectedItem().toString().trim();
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                countryName = b.etCountry.getText().toString().trim();
                 stateList.clear();
                 stateList(stateUrl);
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            public void afterTextChanged(Editable editable) {
 
             }
         });
-
     }
 
     private void stateList(String stateUrl) {
@@ -189,11 +205,11 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
                             Log.e("state-list", String.valueOf(stateList));
                         }
                     }
-                    stateAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, stateList);
-                    // set adapter
-                    stateAdapter.notifyDataSetChanged();
-
-                    b.etAddUserStateOfResidence.setAdapter(stateAdapter);
+//                    stateAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, stateList);
+//                    // set adapter
+//                    stateAdapter.notifyDataSetChanged();
+//
+//                    b.etAddUserStateOfResidence.setAdapter(stateAdapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -224,16 +240,11 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String country = jsonObject1.getString("country_name");
-                            Log.e("country", country);
-                            countryList.add("select");
-                            countryList.add(country);
                             Log.e("Country-list", String.valueOf(countryList));
+                             stringArray = new String[]{country};
+
                         }
                     }
-                    countryAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, countryList);
-                    // set adapter
-                    countryAdapter.notifyDataSetChanged();
-                    b.etAddUserCurrentResidence.setAdapter(countryAdapter);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -252,137 +263,199 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     }
 
     private void userAnnualIncome() {
-        String[] income = getResources().getStringArray(R.array.Income);
-        ArrayAdapter incomeAdapter = new ArrayAdapter(context, R.layout.dropdown_item, income);
-        //Setting the ArrayAdapter data on the Spinner
-        b.UserAnnualIncome.setAdapter(incomeAdapter);
+
+        final int[] checkedItem = {-1};
+        b.etIncome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] income = getResources().getStringArray(R.array.Income);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(income, checkedItem[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        b.etIncome.setText(income[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+
+            }
+        });
+
     }
 
     private void userWorkAs() {
-        ArrayList<String> ProfessionAreaList = new ArrayList<>();
-        ProfessionAreaList.add("Select");
-        ProfessionAreaList.add("Banking Professional");
-        ProfessionAreaList.add("Chartered Accountant");
-        ProfessionAreaList.add("Company Secretary");
-        ProfessionAreaList.add("Finance Professional");
-        ProfessionAreaList.add("M.Eng (Hons)");
-        ProfessionAreaList.add("Engineering Diploma");
-        ProfessionAreaList.add("Investment Professional");
-        ProfessionAreaList.add("Accounting Professional");
-        ProfessionAreaList.add("Admin Professional");
-        ProfessionAreaList.add("Actor");
-        ProfessionAreaList.add("Advertising Professional");
-        ProfessionAreaList.add("Entertainment Professional");
-        ProfessionAreaList.add("Event Manager");
-        ProfessionAreaList.add("Journalist");
-        ProfessionAreaList.add("Media Professional");
-        ProfessionAreaList.add("Public Relations Professional");
-        ProfessionAreaList.add("Farming");
-        ProfessionAreaList.add("Horticulturist");
-        ProfessionAreaList.add("Agricultural Professional (Others)");
-        ProfessionAreaList.add("Air Hostess / Flight Attendant");
-        ProfessionAreaList.add("Pilot / Co-Pilot");
-        ProfessionAreaList.add("Other Airline Professional");
-        ProfessionAreaList.add("Architect");
-        ProfessionAreaList.add("Interior Designer");
-        ProfessionAreaList.add("Landscape Architect");
-        ProfessionAreaList.add("Animator");
-        ProfessionAreaList.add("Commercial Artist");
-        ProfessionAreaList.add("Web / UX Designers");
-        ProfessionAreaList.add("Artist (Others)");
-        ProfessionAreaList.add("Beautician");
-        ProfessionAreaList.add("Fashion Designer");
-        ProfessionAreaList.add("Hairstylist");
-        ProfessionAreaList.add("Jewellery Designer");
-        ProfessionAreaList.add("Designer (Others)");
-        ProfessionAreaList.add("Customer Support / BPO / KPO Professional");
-        ProfessionAreaList.add("IAS / IRS / IES / IFS");
-        ProfessionAreaList.add("Indian Police Services (IPS)");
-        ProfessionAreaList.add("BCom (Hons)");
-        ProfessionAreaList.add("PGD Finance");
-        ProfessionAreaList.add("BCA");
-        ProfessionAreaList.add("B.IT");
-        ProfessionAreaList.add("BCS");
-        ProfessionAreaList.add("BA Computer Science");
-        ProfessionAreaList.add("Law Enforcement Employee (Others)");
-        ProfessionAreaList.add("Airforce");
-        ProfessionAreaList.add("Army");
-        ProfessionAreaList.add("Navy");
-        ProfessionAreaList.add("Defense Services (Others)");
-        ProfessionAreaList.add("Lecturer");
-        ProfessionAreaList.add("Professor");
-        ProfessionAreaList.add("Research Assistant");
-        ProfessionAreaList.add("Research Scholar");
-        ProfessionAreaList.add("Teacher");
-        ProfessionAreaList.add("Training Professional (Others)");
-        ProfessionAreaList.add("Civil Engineer");
-        ProfessionAreaList.add("Electronics / Telecom Engineer");
-        ProfessionAreaList.add("Mechanical / Production Engineer");
-        ProfessionAreaList.add("Non IT Engineer (Others)");
-        ProfessionAreaList.add("Chef / Sommelier / Food Critic");
-        ProfessionAreaList.add("Catering Professional");
-        ProfessionAreaList.add("Hotel");
-        ProfessionAreaList.add("Software Developer / Programmer");
-        ProfessionAreaList.add("Software Consultant");
-        ProfessionAreaList.add("Hardware");
-        ProfessionAreaList.add("Software Professional (Others)");
-        ProfessionAreaList.add("Lawyer");
-        ProfessionAreaList.add("Legal Professional (Others)");
-        ProfessionAreaList.add("Legal Assistant");
-        ProfessionAreaList.add("Dentist");
-        ProfessionAreaList.add("Doctor");
-        ProfessionAreaList.add("Medical Transcriptionist");
-        ProfessionAreaList.add("Nurse");
-        ProfessionAreaList.add("Pharmacist");
-        ProfessionAreaList.add("Physician Assistant");
-        ProfessionAreaList.add("Physiotherapist / Occupational Therapist");
-        ProfessionAreaList.add("Psychologist");
-        ProfessionAreaList.add("Surgeon");
-        ProfessionAreaList.add("Veterinary Doctor");
-        ProfessionAreaList.add("Therapist (Others)");
-        ProfessionAreaList.add("Medical / Healthcare Professional (Others)T");
-        ProfessionAreaList.add("Merchant Naval Officer");
-        ProfessionAreaList.add("Mariner");
-        ProfessionAreaList.add("Marketing Professional");
-        ProfessionAreaList.add("Sales Professional");
-        ProfessionAreaList.add("Biologist / Botanist");
-        ProfessionAreaList.add("Physicist");
-        ProfessionAreaList.add("Science Professional (Others)");
-        ProfessionAreaList.add("CxO / Chairman / Director / President");
-        ProfessionAreaList.add("VP / AVP / GM / DGM");
-        ProfessionAreaList.add("Sr. Manager / Manager");
-        ProfessionAreaList.add("Consultant / Supervisor / Team Leads");
-        ProfessionAreaList.add("Team Member / Staff");
-        ProfessionAreaList.add("Agent / Broker / Trader / Contractor");
-        ProfessionAreaList.add("Business Owner / Entrepreneur");
-        ProfessionAreaList.add("Politician");
-        ProfessionAreaList.add("Social Worker / Volunteer / NGO");
-        ProfessionAreaList.add("Sportsman");
-        ProfessionAreaList.add("Travel");
-        ProfessionAreaList.add("Writer");
-        ProfessionAreaList.add("Student");
-        ProfessionAreaList.add("Retired");
-        ProfessionAreaList.add("Not working");
+        final int[] checkedItem = {-1};
+        b.etWorkingAs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        ArrayAdapter workingAsAdapter = new ArrayAdapter(context, R.layout.dropdown_item, ProfessionAreaList);
-        //Setting the ArrayAdapter data on the Spinner
-        b.UserWorkingAs.setAdapter(workingAsAdapter);
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] workingAs = getResources().getStringArray(R.array.workingAs);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(workingAs, checkedItem[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        b.etWorkingAs.setText(workingAs[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+
+            }
+        });
+
+
+
     }
 
     private void UserWorkingWith() {
-        ArrayList<String> workingWithItemsList = new ArrayList<>();
-        workingWithItemsList.add("Select");
-        workingWithItemsList.add("Private Company");
-        workingWithItemsList.add("Government / Public Sector");
-        workingWithItemsList.add("Defense / Civil Services");
-        workingWithItemsList.add("Business / Self Employed");
-        workingWithItemsList.add("Not Working");
-        workingWithItemsList.add("Engineering Diploma");
+            final int[] checkedItem = {-1};
+            b.etWorkingWith.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-        ArrayAdapter workingWithAdapter = new ArrayAdapter(context, R.layout.dropdown_item, workingWithItemsList);
-        //Setting the ArrayAdapter data on the Spinner
-        b.UserWorkingWith.setAdapter(workingWithAdapter);
-    }
+                    // AlertDialog builder instance to build the alert dialog
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                    // set the custom icon to the alert dialog
+                    alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+
+                    // title of the alert dialog
+                    alertDialog.setTitle("Choose an Item");
+
+                    // list of the items to be displayed to
+                    // the user in the form of list
+                    // so that user can select the item from
+                    // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                    String[] workingWith = getResources().getStringArray(R.array.workingWith);
+                    // the function setSingleChoiceItems is the function which builds
+                    // the alert dialog with the single item selection
+                    alertDialog.setSingleChoiceItems(workingWith, checkedItem[0], new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            // update the selected item which is selected by the user
+                            // so that it should be selected when user opens the dialog next time
+                            // and pass the instance to setSingleChoiceItems method
+                            checkedItem[0] = which;
+
+                            // now also update the TextView which previews the selected item
+                            b.etWorkingWith.setText(workingWith[which]);
+
+                            // when selected an item the dialog should be closed with the dismiss method
+                            dialog.dismiss();
+                        }
+                    });
+
+                    // set the negative button if the user
+                    // is not interested to select or change
+                    // already selected item
+                    alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    // create and build the AlertDialog instance
+                    // with the AlertDialog builder instance
+                    AlertDialog customAlertDialog = alertDialog.create();
+
+                    // show the alert dialog when the button is clicked
+                    customAlertDialog.show();
+                    Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                    buttonbackground.setBackgroundColor(Color.BLACK);
+
+                }
+            });
+
+        }
 
     private void listener() {
         b.btnSaveData.setOnClickListener(new View.OnClickListener() {
@@ -391,38 +464,76 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
                 submitForm();
             }
         });
-
-
-
-        b.etAddUserCurrentResidence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        final int[] checkedItem = {-1};
+        b.etCountry.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onClick(View v) {
 
-                String country=b.etAddUserCurrentResidence.getSelectedItem().toString().trim();
-                if(country.equalsIgnoreCase("select")){
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
-                }else
-                {
-                    b.etCountry.setText(country);
-                }
-            }
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(stringArray, checkedItem[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        b.etCountry.setText(stringArray[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
 
             }
         });
-    }
 
+    }
     private void submitForm() {
         higherEducation = b.etAddUserEducation.getText().toString().trim();
         collegeAttends = b.etAddUserCollegeAttended.getText().toString().trim();
-        income = b.UserAnnualIncome.getSelectedItem().toString().trim();
-        workingWith = b.UserWorkingWith.getSelectedItem().toString().trim();
-        workingAs = b.UserWorkingAs.getSelectedItem().toString().trim();
-        country = b.etAddUserCurrentResidence.getSelectedItem().toString().trim();
-        state = b.etAddUserStateOfResidence.getSelectedItem().toString().trim();
-        city = b.etAddUserResidenceStatus.getSelectedItem().toString().trim();
+        income = b.etIncome.getText().toString().trim();
+        workingWith = b.etWorkingWith.getText().toString().trim();
+        workingAs = b.etWorkingAs.getText().toString().trim();
+        country = b.etCountry.getText().toString().trim();
+        state = b.etState.getText().toString().trim();
+        city = b.etCountry.getText().toString().trim();
         origin = b.etAddUserCorigin.getText().toString().trim();
         pinCode = b.etAddUserZipPinCode.getText().toString().trim();
 //        mobile = b.etAddUserMobile.getText().toString().trim();
@@ -475,5 +586,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
         MySingleton.myGetMySingleton(context).myAddToRequest(request);
     }
 }
+
+
 
 

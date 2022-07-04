@@ -55,57 +55,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         b = FragmentHomeBinding.inflate(inflater, container, false);
 
-//        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.fcvSathidarDashboard,dashBoardFragment);
-//        fragmentTransaction.commit();
-
-
-//        b.btnDashboard.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//
-//                       fragmentTransaction.replace(R.id.fcvSathidarDashboard,dashBoardFragment);
-//                        fragmentTransaction.commit();
-//            }
-//        });
-//
-//
-//        b.tvMyProfile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//
-//                fragmentTransaction.replace(R.id.fcvSathidarDashboard,myProfileFragment);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-//
-//        b.tvHomePartnerPreference.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.fcvSathidarDashboard,partnerPreferenceFragment);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-//        b.tvHoroscope.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.fcvSathidarDashboard,horoscopeFragment);
-//                fragmentTransaction.commit();
-//            }
-//        });
 
         return b.getRoot();
 
@@ -118,6 +67,9 @@ public class HomeFragment extends Fragment {
         setUpViewPager(b.vpHome);
         b.tlHome.setupWithViewPager(b.vpHome);
 
+        b.tlHome.getTabAt(1).select();
+
+ b.vpHome.setPagingEnable(false);
 
         b.tlHome.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
@@ -138,6 +90,8 @@ public class HomeFragment extends Fragment {
         });
     }
 
+
+
     private void setUpViewPager(ViewPager viewPager) {
         HomeTablayoutAdapter adapter = new HomeTablayoutAdapter(getChildFragmentManager());
         adapter.addFragment(new DashBoardFragment(), "DashBoard");
@@ -145,6 +99,8 @@ public class HomeFragment extends Fragment {
         adapter.addFragment(new PartnerPreferenceFragment(), "Partner Preference");
         adapter.addFragment(new HoroscopeFragment(), "Horoscope");
         viewPager.setAdapter(adapter);
+
+
     }
 
 

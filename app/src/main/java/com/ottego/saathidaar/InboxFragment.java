@@ -70,54 +70,6 @@ public class InboxFragment extends Fragment {
     }
 
 
-//    public void listener()
-//    {
-//        b.tvInboxInvitation.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.fcvSathidarInbox,invitationFragment);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-//        b.tvInboxAccepted.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.fcvSathidarInbox,acceptedInboxFragment);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-//        b.tvInboxSent.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.fcvSathidarInbox,sentInboxFragment);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-//
-//        b.tvInboxDelete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.fcvSathidarInbox,deleteInboxFragment);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//    }
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -125,7 +77,7 @@ public class InboxFragment extends Fragment {
 
         setUpViewPager(b.vpInbox);
         b.tlInbox.setupWithViewPager(b.vpInbox);
-
+        b.vpInbox.setPagingEnable(false);
 
         b.tlInbox.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
