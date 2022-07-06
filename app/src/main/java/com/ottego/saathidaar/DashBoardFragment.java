@@ -29,13 +29,13 @@ import org.json.JSONObject;
 public class DashBoardFragment extends Fragment {
     SessionManager sessionManager;
     ImageView ivPremiumImage,profilePic;
-    TextView tvPremiumText, tvLogout, RequestAccept, Visitors, RequestSent;
+    TextView tvPremiumText, tvLogout, RequestAccept, Visitors, RequestSent,tvDashboardUpgrade;
     int position = 0;
     DataModelDashboard model;
     Animation animation;
     CountDownTimer countDownTimer;
     Context context;
-    public String url = "http://192.168.1.40:9094/api/request/count/accept-request/22";
+    public String url = "http://192.168.1.37:9094/api/request/count/accept-request/22";
     int[] images = {R.drawable.smartphone, R.drawable.documents, R.drawable.global};
     String[] text = {"phone Number to Connect Instantly", "100% Verified Biodatas", "Find Common connections"};
     private static final String ARG_PARAM1 = "param1";
@@ -78,6 +78,7 @@ public class DashBoardFragment extends Fragment {
         tvPremiumText = view.findViewById(R.id.tvPremiumText);
         tvLogout = view.findViewById(R.id.tvLogout);
         profilePic=view.findViewById(R.id.profilePic);
+        tvDashboardUpgrade=view.findViewById(R.id.tvDashboardpgrade);
         RequestAccept = view.findViewById(R.id.RequestAccept);
         Visitors = view.findViewById(R.id.Visitors);
         RequestSent = view.findViewById(R.id.RequestSent);
@@ -122,10 +123,19 @@ public class DashBoardFragment extends Fragment {
         profilePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context,ImageGalleryActivity.class);
+                Intent intent=new Intent(context,GalleryActivity.class);
                 startActivity(intent);
             }
         });
+
+        tvDashboardUpgrade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent=new Intent(context,UpgradeFragment.class);
+//                startActivity(intent);
+            }
+        });
+
     }
 
     private void getData() {

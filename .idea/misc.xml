@@ -24,6 +24,7 @@
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/ic_baseline_navigate_before_24.xml" value="0.1955" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/ic_baseline_star_border_24.xml" value="0.157" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/ic_camera.xml" value="0.163" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/ic_couple.xml" value="0.16" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/ic_dots.xml" value="0.163" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/ic_next.xml" value="0.1095" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/ic_outline_mail_24.xml" value="0.1375" />
@@ -35,6 +36,7 @@
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/next_previous_bg.xml" value="0.157" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/oval_bg.xml" value="0.163" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/previous_button_bg.xml" value="0.157" />
+        <entry key="..\:/Saathidaar/app/src/main/res/drawable/progress_bar_states.xml" value="0.16" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/radio_normal.xml" value="0.151" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/radio_selected.xml" value="0.151" />
         <entry key="..\:/Saathidaar/app/src/main/res/drawable/radio_selector.xml" value="0.151" />
@@ -114,10 +116,10 @@
         <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_accepted.xml" value="0.264" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_gallery.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_inbox_invitation_sent.xml" value="0.23802083333333332" />
-        <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_invitation_inbox.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_invitation_inbox.xml" value="0.2" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_landing_page.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_matches.xml" value="0.264" />
-        <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_my_matches.xml" value="0.264" />
+        <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_my_matches.xml" value="0.2" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_religion_item.xml" value="0.14739583333333334" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_remove_shortlist.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/app/src/main/res/layout/layout_upgrade_page.xml" value="0.23802083333333332" />

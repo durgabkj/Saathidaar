@@ -2,16 +2,15 @@ package com.ottego.saathidaar;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -21,19 +20,21 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.Model.NewMatchesModel;
-import com.ottego.saathidaar.databinding.ActivityMatchesDetailsBinding;
 import com.ottego.saathidaar.databinding.FragmentMatchDetailsBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class MatchDetailsFragment extends Fragment {
-FragmentMatchDetailsBinding b;
+    FragmentMatchDetailsBinding b;
     Animation animation;
     NewMatchesModel model;
     MemberProfileModel model1;
-    public  String memberDetail=Utils.memberUrl+"get-details/";
+    public String memberDetail = Utils.memberUrl + "get-details/";
     Context context;
 
     private static final String ARG_PARAM1 = "param1";
@@ -57,6 +58,7 @@ FragmentMatchDetailsBinding b;
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,22 +69,15 @@ FragmentMatchDetailsBinding b;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-      b=FragmentMatchDetailsBinding.inflate(getLayoutInflater());
-
-
-        context=getContext();
-        Bundle bundle = getActivity().getIntent().getExtras();
-        String data = bundle.getString("data");
-        model = new Gson().fromJson(data, NewMatchesModel.class);
-        animation = AnimationUtils.loadAnimation(context, R.anim.move);
-        //  b.llDetailCad.startAnimation(animation);
+        b = FragmentMatchDetailsBinding.inflate(inflater, container, false);
+        context = getContext();
 
         listener();
-        getData();
-      return b.getRoot();
+         getData();
+        setData();
+        return b.getRoot();
     }
 
 
@@ -96,8 +91,10 @@ FragmentMatchDetailsBinding b;
     }
 
     private void getData() {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                memberDetail+model.member_id, null, new Response.Listener<JSONObject>() {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("member_ID",mParam1);
+        Log.e("params", String.valueOf(params));
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, memberDetail, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf(response));
@@ -125,15 +122,12 @@ FragmentMatchDetailsBinding b;
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
-
-
-
     }
 
     private void setData() {
-        b.tvNewMatchName.setText(model1.first_name+" "+model.last_name);
-        b.tvNewMatchAge.setText(model1.age +" yrs");
-        b.tvDetailHeight.setText(model1.height +" feet");
+        b.tvNewMatchName.setText(model1.first_name + " " + model.last_name);
+        b.tvNewMatchAge.setText(model1.age + " yrs");
+        b.tvDetailHeight.setText(model1.height + " feet");
         b.tvMatchCityDetail.setText(model1.city);
         b.tvNewMatchWorkAsDetail.setText(model1.working_as);
         b.tvAboutUserDetails.setText(model1.about_ourself);

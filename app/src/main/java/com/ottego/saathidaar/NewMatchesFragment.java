@@ -1,6 +1,5 @@
 package com.ottego.saathidaar;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -10,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -24,12 +23,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
-import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.databinding.FragmentNewMatchesBinding;
+import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 import org.json.JSONObject;
-
-import java.util.List;
 
 
 public class NewMatchesFragment extends Fragment {
@@ -46,6 +43,7 @@ public class NewMatchesFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    NewMatchViewModel viewModel;
 
     public NewMatchesFragment() {
         // Required empty public constructor
@@ -75,11 +73,13 @@ public class NewMatchesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         b = FragmentNewMatchesBinding.inflate(getLayoutInflater());
+        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
         context = getContext();
         animation = AnimationUtils.loadAnimation(context, R.anim.move);
         b.llCard.startAnimation(animation);
         getData("");
         listener();
+
 
         //   adapter.notifyDataSetChanged();
         return b.getRoot();
@@ -100,12 +100,13 @@ public class NewMatchesFragment extends Fragment {
                 MyMatchUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                  b.srlRecycleViewNewMatch.setRefreshing(false);
+                b.srlRecycleViewNewMatch.setRefreshing(false);
                 progressDialog.dismiss();
                 Log.e("New Matches response", String.valueOf(response));
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
                 if (data.results == 1) {
+                    viewModel._list.postValue(data.data);
                     setRecyclerView();
                 }
             }
@@ -123,7 +124,6 @@ public class NewMatchesFragment extends Fragment {
     }
 
 
-    @SuppressLint("NotifyDataSetChanged")
     private void setRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         b.rvNewMatches.setLayoutManager(layoutManager);
@@ -131,7 +131,7 @@ public class NewMatchesFragment extends Fragment {
         b.rvNewMatches.setNestedScrollingEnabled(true);
         NewMatchesAdapter adapter = new NewMatchesAdapter(context, data.data);
         b.rvNewMatches.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+
         if (adapter.getItemCount() != 0) {
             b.llNoData.setVisibility(View.GONE);
             b.rvNewMatches.setVisibility(View.VISIBLE);

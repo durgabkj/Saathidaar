@@ -6,29 +6,27 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.ottego.saathidaar.MatchDetailsFragment;
-import com.ottego.saathidaar.MatchPagerFragment;
+import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 public class ViewPagerMatchDetailAdapter extends FragmentStateAdapter {
+    NewMatchViewModel viewModel;
 
+    public ViewPagerMatchDetailAdapter(@NonNull FragmentActivity fragmentActivity, NewMatchViewModel viewModel) {
+        super(fragmentActivity);
+        this.viewModel = viewModel;
+    }
 
-        public ViewPagerMatchDetailAdapter(@NonNull FragmentActivity fragmentActivity)
-        {
-            super(fragmentActivity);
-        }
-
-        @NonNull
-        @Override
-        public Fragment createFragment(int position) {
-
-            switch (position) {
-                case 0:
-                    return  new MatchDetailsFragment();
-                default:
-                    return null;
-            }
-        }
-        @Override
-        public int getItemCount() {return 21; }
-
+    @NonNull
+    @Override
+    public Fragment createFragment(int position) {
+        return MatchDetailsFragment.newInstance(viewModel.list.getValue().get(position).member_id, "");
 
     }
+
+    @Override
+    public int getItemCount() {
+        return viewModel.list.getValue().size();
+    }
+
+
+}

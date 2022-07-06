@@ -31,7 +31,7 @@ SessionManager sessionManager;
                     startActivity(new Intent(context, LandingActivity.class));
                 }
 
-                finish();
+              finish();
 
 //                Intent intent=new Intent(MainActivity.this,NavigationActivity.class);
 //                startActivity(intent);

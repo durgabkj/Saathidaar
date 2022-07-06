@@ -1,17 +1,24 @@
 package com.ottego.saathidaar;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -51,6 +58,7 @@ public class HoroscopeFragment extends Fragment {
     String manglik;
     public String url = Utils.memberUrl + "horoscope/update/22";
     public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/22";
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -100,6 +108,26 @@ public class HoroscopeFragment extends Fragment {
 
         return b.getRoot();
     }
+
+
+    private void setData1() {
+        b.acvCountry.setText(model.country_of_birth);
+        b.etHoroscopeBirthCity.setText(model.city_of_birth);
+        b.acvHour.setText(model.hours);
+        b.acvMinutes.setText(model.minutes);
+        b.actvampm.setText(model.time);
+        b.actvapprox.setText(model.time_status);
+
+        if (model.manglik != null && model.manglik.equalsIgnoreCase("Yes")) {
+            b.radioButton1.setChecked(true);
+        } else if (model.manglik != null && model.manglik.equalsIgnoreCase("No")) {
+            b.radioButton2.setChecked(true);
+        } else if (model.manglik != null && model.manglik.equalsIgnoreCase("Don't Know")) {
+            b.radioButton3.setChecked(true);
+        }
+
+    }
+
     private void getData() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
@@ -114,6 +142,7 @@ public class HoroscopeFragment extends Fragment {
                         Gson gson = new Gson();
                         model = gson.fromJson(String.valueOf(response), HoroscopeModel.class);
                         setData();
+                        setData1();
 
                     } else {
                         Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -134,8 +163,9 @@ public class HoroscopeFragment extends Fragment {
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
     }
+
     private void listener() {
-        b.btnEditDetails.setOnClickListener(new View.OnClickListener() {
+        b.btnSaveDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 b.cvShowDetails.setVisibility(View.GONE);
@@ -162,19 +192,15 @@ public class HoroscopeFragment extends Fragment {
 
         b.btnSaveDetails.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                b.btnSaveDetails.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (checkForm()) {
-                            submitForm();
-
-                        }
-
-                    }
-                });
+            public void onClick(View v) {
+                if (checkForm()) {
+                    submitForm();
+                }
             }
+
+
         });
+
 
 
         b.tvCancel.setOnClickListener(new View.OnClickListener() {

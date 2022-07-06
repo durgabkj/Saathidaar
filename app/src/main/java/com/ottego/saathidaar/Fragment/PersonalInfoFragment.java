@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.MemberProfileModel;
+import com.ottego.saathidaar.Model.SessionProfileDetailModel;
 import com.ottego.saathidaar.MySingleton;
 import com.ottego.saathidaar.ProfileEditPersonalActivity;
 import com.ottego.saathidaar.SessionManager;
@@ -30,10 +31,10 @@ import org.json.JSONObject;
 
 public class PersonalInfoFragment extends Fragment {
     FragmentPersonalInfoBinding binding;
-    public static String url = Utils.memberUrl + "get-details/11";
+    public static String url = Utils.memberUrl + "my-profile/";
     Context context;
+    MemberProfileModel  model;
     SessionManager sessionManager;
-    MemberProfileModel model;
     String id = "";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -72,7 +73,7 @@ public class PersonalInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentPersonalInfoBinding.inflate(getLayoutInflater());
         context = getContext();
-        sessionManager = new SessionManager(getContext());
+        sessionManager = new SessionManager(context);
         listener();
         getMemberData();
         return binding.getRoot();
@@ -82,7 +83,7 @@ public class PersonalInfoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), ProfileEditPersonalActivity.class);
-                intent.putExtra("data", new Gson().toJson(model));
+               intent.putExtra("data", new Gson().toJson(model));
                 context.startActivity(intent);
 //                startActivity(intent);
             }
@@ -91,9 +92,8 @@ public class PersonalInfoFragment extends Fragment {
     }
 
     private void getMemberData() {
-        Log.e("url", url);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                url, null, new Response.Listener<JSONObject>() {
+                url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf(response));
@@ -101,8 +101,10 @@ public class PersonalInfoFragment extends Fragment {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
                         Gson gson = new Gson();
-                        model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
-                        setData();
+                       model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
+                           setData();
+
+
                         }else {
                         Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }
@@ -121,12 +123,9 @@ public class PersonalInfoFragment extends Fragment {
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
-
-
     }
 
     private void setData() {
-        binding.tvUserAge.setText(model.age);
         binding.tvDob.setText(model.date_of_birth);
         binding.tvUserMaritalStatus.setText(model.marital_status);
         binding.tvUseNoOfChild.setText(model.no_of_children);
@@ -136,6 +135,7 @@ public class PersonalInfoFragment extends Fragment {
         binding.tvUserMotherTongue.setText(model.mother_tounge);
         binding.tvHealthDetail.setText(model.health_info);
         binding.tvUserReligion.setText(model.religion_name);
+        binding.tvUserCommunity.setText(model.caste_name);
         binding.tvUserCommunity.setText(model.caste_name);
         binding.tvUserSubCommunity.setText(model.subcaste);
         binding.tvUserGotra.setText(model.gothra);

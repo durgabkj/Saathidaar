@@ -11,9 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tlMatch" />
-
-
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tlMatch"
         android:layout_width="match_parent"
@@ -23,9 +20,10 @@
         app:tabIndicatorColor="@color/white"
         app:tabIndicatorHeight="1.5dp"
         app:tabMode="fixed"
+
         app:tabSelectedTextColor="@color/white"
         app:tabTextAppearance="@style/TextAppearance.AppCompat.Caption"
-        app:tabTextColor="#F8000000" />
+        app:tabTextColor="#9CDAEEF1" />
 
     <com.ottego.saathidaar.SwipeDisabledPager
         android:id="@+id/vpMatch"

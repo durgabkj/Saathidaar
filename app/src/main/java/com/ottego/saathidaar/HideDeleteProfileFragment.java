@@ -1,7 +1,10 @@
 package com.ottego.saathidaar;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -31,6 +35,7 @@ import java.util.Map;
 
 public class HideDeleteProfileFragment extends Fragment {
 public  String hideUrl=Utils.memberUrl+"hide/";
+    public  String activateDeacUrl=Utils.memberUrl+"activate/";
    FragmentHideDeleteProfileBinding b;
    Context context;
    SessionManager sessionManager;
@@ -193,9 +198,48 @@ String Activate_deactivate;
 
 
         b.tvSaveAcDe.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                submitFormActivate();
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                builder1.setTitle("Are you sure to Activate or Deactivate Profile ...?");
+                builder1.setMessage("No. of attempts: " +"\n" +
+                        "No. of wins: " +  "\n" +
+                        "No. of losses: ");
+
+                builder1.setCancelable(true);
+
+                builder1.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                submitFormActivate();
+                              //  dialog.cancel();
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Toast.makeText(getContext(),"Nothing Happened",Toast.LENGTH_LONG).show();
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alertDialog = builder1.create();
+                alertDialog.show();
+
+                // create the alert dialog with the
+                // alert dialog builder instance
+
+                Button buttonbackground1 = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+                buttonbackground1.setTextColor(R.color.colorPrimary);
+                Button buttonbackground3 = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground3.setTextColor(R.color.colorPrimary);
+
+
             }
         });
 
@@ -204,25 +248,24 @@ String Activate_deactivate;
     private void submitFormActivate() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         Map<String, String> params = new HashMap<String, String>();
-        params.put("activate_deactivate_status",Activate_deactivate);
+        params.put("activate_id",Activate_deactivate);
         params.put("member_ID",sessionManager.getMemberId());
         Log.e("params ", String.valueOf(params));
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, hideUrl+sessionManager.getMemberId(), new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, activateDeacUrl, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         progressDialog.dismiss();
                         Log.e("response", String.valueOf((response)));
-                        try {String code = response.getString("result");
+                        try {String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-
+                                Toast.makeText(context, "Activated", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Your account id Deactivate", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Something went wrong...Try Again", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },

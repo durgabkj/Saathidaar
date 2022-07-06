@@ -1,27 +1,28 @@
 package com.ottego.saathidaar;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager2.widget.ViewPager2;
+
 import com.ottego.saathidaar.Adapter.ViewPagerMatchDetailAdapter;
 import com.ottego.saathidaar.databinding.FragmentMatchPagerBinding;
+import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 
 public class MatchPagerFragment extends DialogFragment {
-FragmentMatchPagerBinding b;
+    FragmentMatchPagerBinding b;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    //    model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+    NewMatchViewModel viewModel;
 
     public MatchPagerFragment() {
         // Required empty public constructor
@@ -39,7 +40,7 @@ FragmentMatchPagerBinding b;
 
     @Override
     public int getTheme() {
-        return com.google.android.material.R.style.ThemeOverlay_Material3_MaterialCalendar_Fullscreen;
+        return R.style.FullScreenDialogTheme;
     }
 
     @Override
@@ -52,19 +53,18 @@ FragmentMatchPagerBinding b;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-      b=FragmentMatchPagerBinding.inflate(getLayoutInflater());
-
-
+        b = FragmentMatchPagerBinding.inflate(inflater, container, false);
+        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
 
         // of ViewPager2Adapter
-        ViewPagerMatchDetailAdapter viewPager2Adapter = new ViewPagerMatchDetailAdapter(getActivity());
+        ViewPagerMatchDetailAdapter viewPager2Adapter = new ViewPagerMatchDetailAdapter(requireActivity(), viewModel);
 
         // adding the adapter to viewPager2
         // to show the views in recyclerview
-       b.vp2Details.setAdapter(viewPager2Adapter);
+        b.vp2Details.setAdapter(viewPager2Adapter);
 
         // To get swipe event of viewpager2
         b.vp2Details.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
@@ -89,8 +89,6 @@ FragmentMatchPagerBinding b;
         });
 
 
-
-
-      return b.getRoot();
+        return b.getRoot();
     }
 }

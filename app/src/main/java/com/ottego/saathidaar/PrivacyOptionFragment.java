@@ -1,6 +1,11 @@
 package com.ottego.saathidaar;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +22,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
+import com.ottego.saathidaar.Model.DataModelPrivacyOption;
+import com.ottego.saathidaar.Model.DataModelSmsAlert;
+import com.ottego.saathidaar.Model.HoroscopeModel;
 import com.ottego.saathidaar.databinding.FragmentPrivacyOptionBinding;
 
 import org.json.JSONException;
@@ -33,6 +42,7 @@ public class PrivacyOptionFragment extends Fragment {
     String radioText;
     String radioText1;
     String radioText2;
+    DataModelPrivacyOption model;
     String radioText3;
     String radioText4;
     private static final String ARG_PARAM1 = "param1";
@@ -42,6 +52,8 @@ public class PrivacyOptionFragment extends Fragment {
     public String photoPrivacy = Utils.privacy + "photo";
     public String dobPrivacy = Utils.privacy + "dob";
     public String incomePrivacy = Utils.privacy + "annual-income";
+
+    public String getPrivacy = "http://192.168.1.37:9094/api/privacy/get/all/22";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -77,7 +89,63 @@ public class PrivacyOptionFragment extends Fragment {
         context = getContext();
         sessionManager = new SessionManager(context);
         listener();
+        getData();
         return b.getRoot();
+    }
+
+    private void getData() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                getPrivacy + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf((response)));
+                Gson gson = new Gson();
+                model = gson.fromJson(String.valueOf(response), DataModelPrivacyOption.class);
+                setData();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+    }
+    private void setData() {
+        if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Daily")){
+            b.rbPremiumDaily.setChecked(true);
+        }else if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Weekly")){
+            b.rbPremiumWeekly.setChecked(true);
+        }else if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Monthly")) {
+            b.rbPremiumMonthly.setChecked(true);
+        }else if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Unsubscribe")) {
+            b.rbPremiumUnsubscribe.setChecked(true);
+        }
+
+        if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Daily")){
+            b.rbVisitorsDaily.setChecked(true);
+        }else if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Weekly")){
+            b.rbVisitorsWeekly.setChecked(true);
+        }else if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Monthly")) {
+            b.rbVisitorsMonthly.setChecked(true);
+        }else if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Unsubscribe")) {
+            b.rbVisitorsUnsubscribe.setChecked(true);
+        }
+
+
+
+        if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Daily")){
+            b.rbTodayMatchDaily.setChecked(true);
+        }else if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Weekly")){
+            b.rbTodayMatchWeekly.setChecked(true);
+        }else if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Monthly")) {
+            b.rbTodayMatchMonthly.setChecked(true);
+        }else if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Unsubscribe")) {
+            b.rbTodayMatchUnsubscribe.setChecked(true);
+        }
+
     }
 
 

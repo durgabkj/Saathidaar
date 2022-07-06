@@ -74,13 +74,13 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             @Override
             public void onClick(View view) {
 
-                /*ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) view.getContext(),
-                        Pair.create(holder.ivUserMatch, "tnMemberImage"));
-                Intent intent = new Intent(view.getContext(), MatchesDetailsActivity.class);
-                intent.putExtra("data", new Gson().toJson(item));
-                view.getContext().startActivity(intent, options.toBundle());*/
+//                /*ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) view.getContext(),
+//                        Pair.create(holder.ivUserMatch, "tnMemberImage"));
+//                Intent intent = new Intent(view.getContext(), MatchesDetailsActivity.class);
+//                intent.putExtra("data", new Gson().toJson(item));
+//                view.getContext().startActivity(intent, options.toBundle());*/
 
-                new MatchPagerFragment().show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
+                MatchPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
 
             }
         });
@@ -93,7 +93,6 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         return list.size();
     }
 
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivUserMatch;
         TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
@@ -101,7 +100,6 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         LinearLayout ivLike;
 
         public ViewHolder(@NonNull View itemView) {
-
             super(itemView);
             tvNewMatchAge = itemView.findViewById(R.id.tvNewMatchAge);
             tvNewMatchName = itemView.findViewById(R.id.tvNewMatchName);

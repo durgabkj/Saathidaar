@@ -2,6 +2,8 @@ package com.ottego.saathidaar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +11,9 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -23,116 +27,215 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.GalleryAdapter;
+import com.ottego.saathidaar.Model.SessionModel;
+import com.ottego.saathidaar.databinding.ActivityGalleryBinding;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GalleryActivity extends AppCompatActivity {
-        private Button btn;
-        int PICK_IMAGE_MULTIPLE = 1;
-        String imageEncoded;
-        List<String> imagesEncodedList;
-        private GridView gvGallery;
-        private GalleryAdapter galleryAdapter;
-
+    ActivityGalleryBinding b;
+SessionManager sessionManager;
+    int PICK_IMAGE_REQUEST = 111;
+    String URL = Utils.memberUrl+"upload/photo";
+    Bitmap bitmap;
+    ProgressDialog progressDialog;
+    Context context;
+     String imageString;
+    String[] arr=new String[1];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gallery);
+        b=ActivityGalleryBinding.inflate(getLayoutInflater());
+        setContentView(b.getRoot());
 
-            btn = findViewById(R.id.btn);
-            gvGallery = (GridView)findViewById(R.id.gv);
-
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent,"Select Picture"), PICK_IMAGE_MULTIPLE);
-                }
-            });
+          context=GalleryActivity.this;
+          sessionManager=new SessionManager(context);
+          listener();
 
         }
 
-        @Override
-        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            try {
-                // When an Image is picked
-                if (requestCode == PICK_IMAGE_MULTIPLE && resultCode == RESULT_OK
-                        && null != data) {
-                    // Get the Image from data
+    private void listener() {
+        //opening image chooser option
+        b.choose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_PICK);
+                startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST);
+            }
+        });
 
-                    String[] filePathColumn = { MediaStore.Images.Media.DATA };
-                    imagesEncodedList = new ArrayList<String>();
-                    if(data.getData()!=null){
+        b.upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //converting image to base64 string
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] imageBytes = baos.toByteArray();
+                 imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
 
-                        Uri mImageUri=data.getData();
+                 arr =new String[1];
+                for(int i=0;i<1;i++)
+                {
+                    arr[0]="data:image/jpeg;base64,"+imageString;
 
-                        // Get the cursor
-                        Cursor cursor = getContentResolver().query(mImageUri,
-                                filePathColumn, null, null, null);
-                        // Move to first row
-                        cursor.moveToFirst();
+                }
 
-                        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                        imageEncoded  = cursor.getString(columnIndex);
-                        cursor.close();
 
-                        ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
-                        mArrayUri.add(mImageUri);
-                        galleryAdapter = new GalleryAdapter(getApplicationContext(),mArrayUri);
-                        gvGallery.setAdapter(galleryAdapter);
-                        gvGallery.setVerticalSpacing(gvGallery.getHorizontalSpacing());
-                        ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gvGallery
-                                .getLayoutParams();
-                        mlp.setMargins(0, gvGallery.getHorizontalSpacing(), 0, 0);
+                submit();
 
-                    } else {
-                        if (data.getClipData() != null) {
-                            ClipData mClipData = data.getClipData();
-                            ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
-                            for (int i = 0; i < mClipData.getItemCount(); i++) {
+//                progressDialog = new ProgressDialog(context);
+//                progressDialog.setMessage("Uploading, please wait...");
+//                progressDialog.show();
+//
+//                //converting image to base64 string
+//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//                byte[] imageBytes = baos.toByteArray();
+//
+//
+//                final String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+//
+//                //sending image to server
+//                StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>(){
+//                    @Override
+//                    public void onResponse(String s) {
+//                        progressDialog.dismiss();
+//                        if(s.equals("true")){
+//                            Toast.makeText(context, "Uploaded Successful", Toast.LENGTH_LONG).show();
+//                        }
+//                        else{
+//                            Toast.makeText(context, "Some error occurred!", Toast.LENGTH_LONG).show();
+//                        }
+//                    }
+//                },new Response.ErrorListener(){
+//                    @Override
+//                    public void onErrorResponse(VolleyError volleyError) {
+//                        Toast.makeText(context, "Some error occurred -> "+volleyError, Toast.LENGTH_LONG).show();;
+//                    }
+//                }) {
+//                    //adding parameters to send
+//                    @Override
+//                    protected Map<String, String> getParams() throws AuthFailureError {
+//                        Map<String, String> parameters = new HashMap<String, String>();
+//                        parameters.put("image", imageString);
+//                        return parameters;
+//                    }
+//                };
+//
+//                RequestQueue rQueue = Volley.newRequestQueue(context);
+//                rQueue.add(request);
+            }
+        });
+    }
 
-                                ClipData.Item item = mClipData.getItemAt(i);
-                                Uri uri = item.getUri();
-                                mArrayUri.add(uri);
+    private void submit() {
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("member_id", sessionManager.getMemberId());
+        params.put("image_name", ".jpg");
+        params.put("image_base_urls", String.valueOf(arr));
 
-                                // Get the cursor
-                                Cursor cursor = getContentResolver().query(uri, filePathColumn, null, null, null);
-                                // Move to first row
-                                cursor.moveToFirst();
+        Log.e("params", String.valueOf(params));
 
-                                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                                imageEncoded  = cursor.getString(columnIndex);
-                                imagesEncodedList.add(imageEncoded);
-                                cursor.close();
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        progressDialog.dismiss();
+                        Log.e("response", String.valueOf((response)));
+                        try {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
 
-                                galleryAdapter = new GalleryAdapter(getApplicationContext(),mArrayUri);
-                                gvGallery.setAdapter(galleryAdapter);
-                                gvGallery.setVerticalSpacing(gvGallery.getHorizontalSpacing());
-                                ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gvGallery
-                                        .getLayoutParams();
-                                mlp.setMargins(0, gvGallery.getHorizontalSpacing(), 0, 0);
-                                Log.e("gallery", String.valueOf(mArrayUri));
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
-                            Log.e("LOG_TAG", "Selected Images" + mArrayUri.size());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
                         }
                     }
-                } else {
-                    Toast.makeText(this, "You haven't picked Image",
-                            Toast.LENGTH_LONG).show();
-                }
-            } catch (Exception e) {
-                Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
-                        .show();
-            }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        if (null != error.networkResponse) {
+                            Toast.makeText(context,"Try again......",Toast.LENGTH_LONG).show();
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
 
-            super.onActivityResult(requestCode, resultCode, data);
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+    }
+
+
+    public static String getExtension(String uri) {
+        if (uri == null) {
+            return null;
         }
+
+        int dot = uri.lastIndexOf(".");
+        if (dot >= 0) {
+            return uri.substring(dot);
+        } else {
+            // No extension.
+            return "";
+        }
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri filePath = data.getData();
+
+            try {
+                //getting image from gallery
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+
+
+               Log.e("image", String.valueOf(data));
+
+                //Setting image to ImageView
+                b.image.setImageBitmap(bitmap);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

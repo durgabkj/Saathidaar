@@ -1,7 +1,5 @@
 package com.ottego.saathidaar;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -9,14 +7,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -28,15 +23,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -44,8 +35,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.Fragment.PersonalInfoFragment;
 import com.ottego.saathidaar.Model.DataModelReligion;
 import com.ottego.saathidaar.Model.MemberProfileModel;
+import com.ottego.saathidaar.Model.SessionProfileDetailModel;
 import com.ottego.saathidaar.databinding.ActivityProfileEditPersonalBinding;
 
 import org.json.JSONArray;
@@ -54,11 +47,9 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ProfileEditPersonalActivity extends AppCompatActivity {
@@ -66,9 +57,9 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 // Permissions for accessing the storage
     private static final int SELECT_PICTURE = 100;
     private static final String TAG = "SelectImageActivity";
-    public String ReligionUrl = "http://192.168.1.40:9094/api/get/religion-name";
-    public String url = Utils.memberUrl + "update/11";
-
+    public String ReligionUrl = "http://192.168.1.37:9094/api/get/religion-name";
+    public String Updateurl = Utils.memberUrl + "app/basic-lifestyles/update/22";
+    SessionManager sessionManager;
     ActivityProfileEditPersonalBinding b;
     Context context;
     ArrayList<String> AgeList = new ArrayList<String>();
@@ -132,11 +123,12 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         b = ActivityProfileEditPersonalBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
         context = ProfileEditPersonalActivity.this;
+        sessionManager = new SessionManager(context);
         Bundle bundle = getIntent().getExtras();
         String data = bundle.getString("data");
         model = new Gson().fromJson(data, MemberProfileModel.class);
 
-        Log.e("personal data",data);
+        Log.e("personal data", data);
 
 
         // Initialize dialog
@@ -247,8 +239,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 buttonbackground.setBackgroundColor(Color.BLACK);
             }
         });
-
-
 
 
     }
@@ -435,51 +425,51 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         }
 
 
-        if (age.equals("selected")) {
-            b.tvage.setError("please select age");
-            b.tvage.setFocusableInTouchMode(true);
-            b.tvage.requestFocus();
-            return false;
-        } else {
-            b.tvage.setError(null);
-        }
+//        if (age.equals("selected")) {
+//            b.tvage.setError("please select age");
+//            b.tvage.setFocusableInTouchMode(true);
+//            b.tvage.requestFocus();
+//            return false;
+//        } else {
+//            b.tvage.setError(null);
+//        }
+//
+//        if (myMaritalS.equals("select")) {
+//            b.tvmarital.setError("please select Marital Status");
+//            b.tvmarital.setFocusableInTouchMode(true);
+//            b.tvmarital.requestFocus();
+//            return false;
+//        } else {
+//            b.tvmarital.setError(null);
+//        }
+//
+//        if (Height.equals("select")) {
+//            b.tvHeight.setError("please select Height");
+//            b.tvHeight.setFocusableInTouchMode(true);
+//            b.tvHeight.requestFocus();
+//            return false;
+//        } else {
+//            b.tvHeight.setError(null);
+//        }
+//
+//        if (bloodGroup.equals("select")) {
+//            b.tvBlood.setError("please select blood group");
+//            b.tvBlood.setFocusableInTouchMode(true);
+//            b.tvBlood.requestFocus();
+//            return false;
+//        } else {
+//            b.tvBlood.setError(null);
+//        }
 
-        if (myMaritalS.equals("select")) {
-            b.tvmarital.setError("please select Marital Status");
-            b.tvmarital.setFocusableInTouchMode(true);
-            b.tvmarital.requestFocus();
-            return false;
-        } else {
-            b.tvmarital.setError(null);
-        }
 
-        if (Height.equals("select")) {
-            b.tvHeight.setError("please select Height");
-            b.tvHeight.setFocusableInTouchMode(true);
-            b.tvHeight.requestFocus();
-            return false;
-        } else {
-            b.tvHeight.setError(null);
-        }
-
-        if (bloodGroup.equals("select")) {
-            b.tvBlood.setError("please select blood group");
-            b.tvBlood.setFocusableInTouchMode(true);
-            b.tvBlood.requestFocus();
-            return false;
-        } else {
-            b.tvBlood.setError(null);
-        }
-
-
-        if (Diet.equals("select")) {
-            b.tvDiet.setError("please select Diet");
-            b.tvDiet.setFocusableInTouchMode(true);
-            b.tvDiet.requestFocus();
-            return false;
-        } else {
-            b.tvDiet.setError(null);
-        }
+//        if (Diet.equals("select")) {
+//            b.tvDiet.setError("please select Diet");
+//            b.tvDiet.setFocusableInTouchMode(true);
+//            b.tvDiet.requestFocus();
+//            return false;
+//        } else {
+//            b.tvDiet.setError(null);
+//        }
 
 
 //        if (b.spUserHeight.getCount()==0){
@@ -508,31 +498,31 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 //        }
 
 
-        if (MotherTongue.isEmpty()) {
-            b.tvMotherTongue.setError("Please enter your Mother Tongue");
-            b.tvMotherTongue.setFocusableInTouchMode(true);
-            b.tvMotherTongue.requestFocus();
-            return false;
-        } else {
-            b.tvMotherTongue.setError(null);
-        }
-        if (HealthDetail.equals("select")) {
-            b.tvHealth.setError("please select Health Detail");
-            b.tvHealth.setFocusableInTouchMode(true);
-            b.tvHealth.requestFocus();
-            return false;
-        } else {
-            b.tvHealth.setError(null);
-        }
-
-        if (Religion.isEmpty()) {
-            b.tvUserReligion.setError("Please enter your Religion");
-            b.tvUserReligion.setFocusableInTouchMode(true);
-            b.tvUserReligion.requestFocus();
-            return false;
-        } else {
-            b.tvUserReligion.setError(null);
-        }
+//        if (MotherTongue.isEmpty()) {
+//            b.tvMotherTongue.setError("Please enter your Mother Tongue");
+//            b.tvMotherTongue.setFocusableInTouchMode(true);
+//            b.tvMotherTongue.requestFocus();
+//            return false;
+//        } else {
+//            b.tvMotherTongue.setError(null);
+//        }
+//        if (HealthDetail.equals("select")) {
+//            b.tvHealth.setError("please select Health Detail");
+//            b.tvHealth.setFocusableInTouchMode(true);
+//            b.tvHealth.requestFocus();
+//            return false;
+//        } else {
+//            b.tvHealth.setError(null);
+//        }
+//
+//        if (Religion.isEmpty()) {
+//            b.tvUserReligion.setError("Please enter your Religion");
+//            b.tvUserReligion.setFocusableInTouchMode(true);
+//            b.tvUserReligion.requestFocus();
+//            return false;
+//        } else {
+//            b.tvUserReligion.setError(null);
+//        }
 
 //        if (cast.isEmpty()) {
 //            b.tvUserCommunity.setError("Please enter your Mother Tongue");
@@ -568,6 +558,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
     private void submitForm() {
         Map<String, String> params = new HashMap<String, String>();
+        params.put("age", age);
         params.put("about_ourself", description);
         params.put("date_of_birth", Dob);
         params.put("marital_status", Marital_status);
@@ -583,7 +574,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         params.put("no_of_children", child);
 
         Log.e("params", String.valueOf(params));
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Updateurl, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -591,9 +582,13 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
-
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+                                Gson gson = new Gson();
+//                                SessionProfileDetailModel model = gson.fromJson(String.valueOf(response.getJSONObject("data")), SessionProfileDetailModel.class);
+//                                sessionManager.CreateProfileSession(model);
                                 // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                Intent intent=new Intent(context,HomeFragment.class);
+                                startActivity(intent);
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
@@ -917,10 +912,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
     }
 
     private void limitWord() {
@@ -1102,11 +1093,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
-
 //        {
 //            @Override
 //            public boolean isEnabled(int position) {
@@ -1140,65 +1126,65 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     }
 
     private void userHeight() {
-            final int[] checkedItem = {-1};
-            b.etHeight.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        final int[] checkedItem = {-1};
+        b.etHeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    // AlertDialog builder instance to build the alert dialog
-                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
-                    // set the custom icon to the alert dialog
-                    alertDialog.setIcon(R.drawable.height);
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.height);
 
-                    // title of the alert dialog
-                    alertDialog.setTitle("Choose an Item");
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
 
-                    // list of the items to be displayed to
-                    // the user in the form of list
-                    // so that user can select the item from
-                    // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
-                    String[] fromHeight = getResources().getStringArray(R.array.Height);
-                    // the function setSingleChoiceItems is the function which builds
-                    // the alert dialog with the single item selection
-                    alertDialog.setSingleChoiceItems(fromHeight, checkedItem[0], new DialogInterface.OnClickListener() {
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] fromHeight = getResources().getStringArray(R.array.Height);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(fromHeight, checkedItem[0], new DialogInterface.OnClickListener() {
 
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                            // update the selected item which is selected by the user
-                            // so that it should be selected when user opens the dialog next time
-                            // and pass the instance to setSingleChoiceItems method
-                            checkedItem[0] = which;
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
 
-                            // now also update the TextView which previews the selected item
-                            b.etHeight.setText(fromHeight[which]);
+                        // now also update the TextView which previews the selected item
+                        b.etHeight.setText(fromHeight[which]);
 
-                            // when selected an item the dialog should be closed with the dismiss method
-                            dialog.dismiss();
-                        }
-                    });
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
 
-                    // set the negative button if the user
-                    // is not interested to select or change
-                    // already selected item
-                    alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
 
-                    // create and build the AlertDialog instance
-                    // with the AlertDialog builder instance
-                    AlertDialog customAlertDialog = alertDialog.create();
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
 
-                    // show the alert dialog when the button is clicked
-                    customAlertDialog.show();
-                    Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
-                    buttonbackground.setBackgroundColor(Color.BLACK);
-                }
-            });
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+            }
+        });
     }
 
     private void maritalStatus() {

@@ -68,6 +68,4 @@ public class MemberProfileModel {
     public String contact_number;
     public  String subcaste;
 
-
-
 }
