@@ -730,7 +730,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String religion = jsonObject1.getString("religion_name");
-                            Log.e("Religion", religion);
                             religionList.add(religion);
                             Log.e("Religion-list", String.valueOf(religionList));
                         }

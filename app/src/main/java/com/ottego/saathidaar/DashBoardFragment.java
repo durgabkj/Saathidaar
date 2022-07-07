@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -131,8 +133,15 @@ public class DashBoardFragment extends Fragment {
         tvDashboardUpgrade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent=new Intent(context,UpgradeFragment.class);
-//                startActivity(intent);
+//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.vpMatch, new UpgradeFragment());
+//        fragmentTransaction.commit();
+
+               // replaceFragment(new UpgradeFragment());
+
+                Intent intent=new Intent(context,UpgradeOnButtonActivity.class);
+                startActivity(intent);
             }
         });
 

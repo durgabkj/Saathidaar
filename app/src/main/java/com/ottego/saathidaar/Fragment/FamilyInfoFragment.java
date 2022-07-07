@@ -100,7 +100,7 @@ FragmentFamilyInfoBinding b;
                     if (code.equalsIgnoreCase("1")) {
                         Gson gson = new Gson();
                         model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
-                       // setData();
+                       setData();
                     }else {
                         Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }

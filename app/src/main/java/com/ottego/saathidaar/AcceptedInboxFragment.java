@@ -21,6 +21,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.AcceptInvitationAdapter;
 import com.ottego.saathidaar.Adapter.InboxInvitationAdapter;
+import com.ottego.saathidaar.Model.DataModelDashboard;
 import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.databinding.FragmentAcceptedInboxBinding;
 
@@ -29,11 +30,13 @@ import org.json.JSONObject;
 
 public class AcceptedInboxFragment extends Fragment {
     Context context;
+
     SessionManager sessionManager;
     DataModelInbox data;
     String member_id;
-    public String InvitationAcceptUrl ="http://192.168.1.40:9094/api/request/accepted/get/all/22";
-   FragmentAcceptedInboxBinding b;
+
+    public String InvitationAcceptUrl = "http://192.168.1.37:9094/api/request/accepted/get/all/22";
+    FragmentAcceptedInboxBinding b;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -68,12 +71,13 @@ public class AcceptedInboxFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       b=FragmentAcceptedInboxBinding.inflate(getLayoutInflater());
-       context=getContext();
-       sessionManager=new SessionManager(context);
-       member_id=sessionManager.getMemberId();
-       getData();
-       return  b.getRoot();
+        b = FragmentAcceptedInboxBinding.inflate(getLayoutInflater());
+        context = getContext();
+        sessionManager = new SessionManager(context);
+        member_id = sessionManager.getMemberId();
+        getData();
+
+        return b.getRoot();
 
     }
 
@@ -100,17 +104,18 @@ public class AcceptedInboxFragment extends Fragment {
                 error.printStackTrace();
             }
         });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
     }
+
     @SuppressLint("NotifyDataSetChanged")
     private void setRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         b.rvAcceptInvitation.setLayoutManager(layoutManager);
         b.rvAcceptInvitation.setHasFixedSize(true);
         b.rvAcceptInvitation.setNestedScrollingEnabled(true);
-        AcceptInvitationAdapter adapter = new AcceptInvitationAdapter(context,data.data);
+        AcceptInvitationAdapter adapter = new AcceptInvitationAdapter(context, data.data);
         b.rvAcceptInvitation.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         if (adapter.getItemCount() != 0) {
@@ -122,3 +127,5 @@ public class AcceptedInboxFragment extends Fragment {
         }
     }
 }
+
+

@@ -51,7 +51,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     String relationWith = "";
     String callTime = "";
     String displatOption = "";
-    public String url = Utils.memberUrl + "app/basic-lifestyles/update/";
+    public String url = Utils.memberUrl + "app/professional-details/update/";
     public String countryUrl = Utils.cityUrl + "country";
     public String stateUrl = Utils.cityUrl + "state-name/by/country-name/";
     public String cityUrl = Utils.cityUrl + "city-name/by/state-name/";

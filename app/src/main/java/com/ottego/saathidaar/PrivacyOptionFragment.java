@@ -1,11 +1,6 @@
 package com.ottego.saathidaar;
 
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,8 +19,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.DataModelPrivacyOption;
-import com.ottego.saathidaar.Model.DataModelSmsAlert;
-import com.ottego.saathidaar.Model.HoroscopeModel;
 import com.ottego.saathidaar.databinding.FragmentPrivacyOptionBinding;
 
 import org.json.JSONException;
@@ -53,7 +46,7 @@ public class PrivacyOptionFragment extends Fragment {
     public String dobPrivacy = Utils.privacy + "dob";
     public String incomePrivacy = Utils.privacy + "annual-income";
 
-    public String getPrivacy = "http://192.168.1.37:9094/api/privacy/get/all/22";
+    public String getPrivacy = "http://192.168.1.37:9094/api/privacy/get/all/";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -85,7 +78,7 @@ public class PrivacyOptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        b = FragmentPrivacyOptionBinding.inflate(getLayoutInflater());
+        b = FragmentPrivacyOptionBinding.inflate(inflater,container,false);
         context = getContext();
         sessionManager = new SessionManager(context);
         listener();
@@ -113,41 +106,53 @@ public class PrivacyOptionFragment extends Fragment {
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
     }
+
     private void setData() {
-        if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Daily")){
-            b.rbPremiumDaily.setChecked(true);
-        }else if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Weekly")){
-            b.rbPremiumWeekly.setChecked(true);
-        }else if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Monthly")) {
-            b.rbPremiumMonthly.setChecked(true);
-        }else if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Unsubscribe")) {
-            b.rbPremiumUnsubscribe.setChecked(true);
+        if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Visible to all Member")) {
+            b.radioButtonPhoneShowOnlyPMember.setChecked(true);
+        } else if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Visible to all Premium Members")) {
+            b.radioButtonPhoneShowOnlyPMemberLike.setChecked(true);
+        } else if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Keep this private")) {
+            b.radioButtonPhoneShowNoOne.setChecked(true);
         }
 
-        if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Daily")){
-            b.rbVisitorsDaily.setChecked(true);
-        }else if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Weekly")){
-            b.rbVisitorsWeekly.setChecked(true);
-        }else if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Monthly")) {
-            b.rbVisitorsMonthly.setChecked(true);
-        }else if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Unsubscribe")) {
-            b.rbVisitorsUnsubscribe.setChecked(true);
+        if (model.data.get(0).email != null && model.data.get(0).email.equalsIgnoreCase("Visible to all Member")) {
+            b.radioButtonPhoneShowAllPremiumMembers.setChecked(true);
+        } else if (model.data.get(0).email != null && model.data.get(0).email.equalsIgnoreCase("Visible to all Premium Members")) {
+            b.radioButtonPhoneShowPremiumMembersYouWishToConnect.setChecked(true);
+        } else if (model.data.get(0).email != null && model.data.get(0).email.equalsIgnoreCase("Keep this private")) {
+            b.radioButtonHideEmailAddress.setChecked(true);
         }
 
 
+        if (model.data.get(0).photo != null && model.data.get(0).photo.equalsIgnoreCase("Visible to all Member")) {
+            b.radioButtonPhotoShowAllMembers.setChecked(true);
+        } else if (model.data.get(0).photo != null && model.data.get(0).photo.equalsIgnoreCase("Visible to all Premium Members")) {
+            b.radioButtonPhotoShowPremiumMembersAndMemberILike.setChecked(true);
+        } else if (model.data.get(0).photo != null && model.data.get(0).photo.equalsIgnoreCase("Keep this private")) {
+            b.radioButtonVisiblePhotoOnlyMember.setChecked(true);
+        }
 
-        if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Daily")){
-            b.rbTodayMatchDaily.setChecked(true);
-        }else if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Weekly")){
-            b.rbTodayMatchWeekly.setChecked(true);
-        }else if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Monthly")) {
-            b.rbTodayMatchMonthly.setChecked(true);
-        }else if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Unsubscribe")) {
-            b.rbTodayMatchUnsubscribe.setChecked(true);
+
+
+        if (model.data.get(0).dob != null && model.data.get(0).dob.equalsIgnoreCase("Visible to all Member")) {
+            b.radioButtonDOBFullDOB.setChecked(true);
+        } else if (model.data.get(0).dob != null && model.data.get(0).dob.equalsIgnoreCase("Visible to all Premium Members")) {
+            b.radioButtonDOBPremium.setChecked(true);
+        } else if (model.data.get(0).dob != null && model.data.get(0).dob.equalsIgnoreCase("Keep this private")) {
+            b.radioButtonDOBMonthAndYear.setChecked(true);
+        }
+
+
+        if (model.data.get(0).annual_income != null && model.data.get(0).annual_income.equalsIgnoreCase("Visible to all Member")) {
+            b.radioButtonDOBFullIncome.setChecked(true);
+        } else if (model.data.get(0).annual_income != null && model.data.get(0).annual_income.equalsIgnoreCase("Visible to all Premium Members")) {
+            b.radioButtonIncomePremium.setChecked(true);
+        } else if (model.data.get(0).annual_income != null && model.data.get(0).annual_income.equalsIgnoreCase("Keep this private")) {
+            b.radioButtonIncomePrivate.setChecked(true);
         }
 
     }
-
 
     private void listener() {
         b.tvEditPhone.setOnClickListener(new View.OnClickListener() {
@@ -200,7 +205,6 @@ public class PrivacyOptionFragment extends Fragment {
                 b.tvEditPhoto.setVisibility(View.VISIBLE);
             }
         });
-
 
 
         b.tvEditPhoto.setOnClickListener(new View.OnClickListener() {
@@ -258,7 +262,6 @@ public class PrivacyOptionFragment extends Fragment {
         });
 
 
-
         b.tvEditIncome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -310,7 +313,7 @@ public class PrivacyOptionFragment extends Fragment {
 //                OR
 //                RadioButton rb=(RadioButton) findViewById(checkedId);
 
-                 radioText1 = rb.getText().toString();
+                radioText1 = rb.getText().toString();
                 b.tvEmailShowText.setText(radioText1);
             }
         });
@@ -329,8 +332,6 @@ public class PrivacyOptionFragment extends Fragment {
                 b.tvPhotoShowText.setText(radioText2);
             }
         });
-
-
 
 
         b.radioGroupDOB.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -357,7 +358,7 @@ public class PrivacyOptionFragment extends Fragment {
 //                OR
 //                RadioButton rb=(RadioButton) findViewById(checkedId);
 
-                 radioText4 = rb.getText().toString();
+                radioText4 = rb.getText().toString();
                 b.tvIncomeShowText.setText(radioText4);
             }
         });
@@ -405,8 +406,8 @@ public class PrivacyOptionFragment extends Fragment {
 
     private void submitIncomeForm() {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("valAnnual_income",radioText4);
-        params.put("member_id",new SessionManager(context).getMemberId());
+        params.put("valAnnual_income", radioText4);
+        params.put("member_id", new SessionManager(context).getMemberId());
         Log.e("params  Income privacy ", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, incomePrivacy, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
@@ -437,8 +438,8 @@ public class PrivacyOptionFragment extends Fragment {
 
     private void submitDobForm() {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("valDob",radioText3);
-        params.put("member_id",new SessionManager(context).getMemberId());
+        params.put("valDob", radioText3);
+        params.put("member_id", new SessionManager(context).getMemberId());
         Log.e("params  dob privacy ", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, dobPrivacy, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
@@ -469,8 +470,8 @@ public class PrivacyOptionFragment extends Fragment {
 
     private void submitPhotoForm() {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("valPhoto",radioText2);
-        params.put("member_id",new SessionManager(context).getMemberId());
+        params.put("valPhoto", radioText2);
+        params.put("member_id", new SessionManager(context).getMemberId());
         Log.e("params  Photo privacy ", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, photoPrivacy, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
@@ -501,8 +502,8 @@ public class PrivacyOptionFragment extends Fragment {
 
     private void submitEmailForm() {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("valEmail",radioText1);
-        params.put("member_id",new SessionManager(context).getMemberId());
+        params.put("valEmail", radioText1);
+        params.put("member_id", new SessionManager(context).getMemberId());
         Log.e("params  Email privacy ", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, emailPrivacy, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
@@ -533,8 +534,8 @@ public class PrivacyOptionFragment extends Fragment {
 
     private void submitPhoneForm() {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("valPhone",radioText);
-        params.put("member_id",new SessionManager(context).getMemberId());
+        params.put("valPhone", radioText);
+        params.put("member_id", new SessionManager(context).getMemberId());
         Log.e("params  Phone privacy ", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, phonePrivacy, new JSONObject(params),
                 new Response.Listener<JSONObject>() {

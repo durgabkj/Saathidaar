@@ -34,7 +34,7 @@ import java.util.Map;
 public class FamilyProfileActivity extends AppCompatActivity {
     ActivityFamilyProfileBinding b;
     Context context;
-    public String url = Utils.memberUrl + "update/11";
+    public String url = Utils.memberUrl + "app/family-details/update/22";
     String fatherStatus = "";
     String motherStatus = "";
     String companyNameF = "";
@@ -52,7 +52,6 @@ public class FamilyProfileActivity extends AppCompatActivity {
     String familyType = "";
     String familyAffluence = "";
     MemberProfileModel model;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +75,6 @@ public class FamilyProfileActivity extends AppCompatActivity {
             b.etFatherCompanyName.setText(model.father_company_name);
             b.etFatherDesignation.setText(model.father_designation);
             b.etFatherNatureBusiness.setText(model.father_business_name);
-
             b.etMStatus.setText(model.father_status);
             b.etMotherCompanyName.setText(model.mother_company_name);
             b.etMotherDesignation.setText(model.mother_designation);
@@ -86,7 +84,6 @@ public class FamilyProfileActivity extends AppCompatActivity {
             b.etFType.setText(model.family_type);
             b.etAddUserBrotherMarried.setText(model.married_male);
             b.etAddUserBrotherNotMarried.setText(model.unmarried_male);
-
             b.etAddUserSisterMarried.setText(model.married_female);
             b.etAddUserSisterNotMarried.setText(model.unmarried_female);
         }

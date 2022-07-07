@@ -3,6 +3,9 @@ package com.ottego.saathidaar;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -16,7 +19,8 @@ import java.util.Locale;
 
 public class NavigationActivity extends AppCompatActivity {
     ActivityNavigationBinding b;
-
+    private boolean doubleBackToExitPressedOnce;
+    private Handler mHandler = new Handler();
     TabLayout tabLayout;
     SwipeDisabledPager viewPager;
     Context context;
@@ -84,6 +88,34 @@ public class NavigationActivity extends AppCompatActivity {
 
     }
 
+
+    private final Runnable mRunnable = new Runnable() {
+        @Override
+        public void run() {
+            doubleBackToExitPressedOnce = false;
+        }
+    };
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+
+        if (mHandler != null) { mHandler.removeCallbacks(mRunnable); }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        mHandler.postDelayed(mRunnable, 2000);
+    }
 
     private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);

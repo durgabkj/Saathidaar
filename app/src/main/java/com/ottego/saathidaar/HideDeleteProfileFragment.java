@@ -153,12 +153,12 @@ String Activate_deactivate;
                         break;
 
                     case R.id.rbHideUnhideThreeMonth:
-                        hide = "2";
+                        hide = "3";
                         b.chkbUnHide.setChecked(true);
                         b.rbHide.setVisibility(View.GONE);
                         break;
                     case R.id.rbHideUnhideSixMonth:
-                        hide = "3";
+                        hide = "6";
                         b.chkbUnHide.setChecked(true);
                         b.rbHide.setVisibility(View.GONE);
                         break;
