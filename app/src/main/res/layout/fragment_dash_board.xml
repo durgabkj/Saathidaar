@@ -369,17 +369,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/italic"
-                                android:text="Premium Matches"
-
+                                android:text="Privacy Policy"
+android:textSize="17dp"
+                                android:textStyle="bold"
                                 android:textColor="@color/colorPrimary" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/italic"
-                                android:text="You have 345 New Premium Matches"
 
-                                />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -425,17 +420,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/italic"
-                                android:text="My Matches"
-
+                                android:text="Help Page"
+                                android:textSize="17dp"
+                                android:textStyle="bold"
                                 android:textColor="@color/colorPrimary" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/italic"
-                                android:text="You have 345 New  Matches"
 
-                                />
 
                             <TextView
                                 android:id="@+id/tvMyMatchesView"
@@ -454,6 +444,55 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_All_PremiumTermAndCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardElevation="2dp"
+                    app:cardMaxElevation="4dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/llPremium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="15dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/italic"
+                                android:text="Term &amp; Condition"
+                                android:textSize="17dp"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorPrimary" />
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="View then now"
+                                android:fontFamily="@font/italic"
+                                android:textColor="@color/black" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"

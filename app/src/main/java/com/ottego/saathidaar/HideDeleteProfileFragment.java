@@ -24,6 +24,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
+import com.ottego.saathidaar.Model.ActivateModel;
+import com.ottego.saathidaar.Model.DataModelSmsAlert;
+import com.ottego.saathidaar.Model.HideUnHideModel;
 import com.ottego.saathidaar.databinding.FragmentHideDeleteProfileBinding;
 
 import org.json.JSONException;
@@ -36,8 +40,12 @@ import java.util.Map;
 public class HideDeleteProfileFragment extends Fragment {
 public  String hideUrl=Utils.memberUrl+"hide/";
     public  String activateDeacUrl=Utils.memberUrl+"activate/";
+    public  String getHideUnhide=Utils.memberUrl+"get/hide/";
+    public  String getActivate=Utils.memberUrl+"get/activate/";
    FragmentHideDeleteProfileBinding b;
    Context context;
+   ActivateModel model1;
+   HideUnHideModel model;
    SessionManager sessionManager;
 String Activate_deactivate;
     String hide;
@@ -81,10 +89,77 @@ String Activate_deactivate;
        context=getContext();
        sessionManager=new SessionManager(context);
        listener();
-
+getData();
+getDataActivate();
        return b.getRoot();
     }
 
+    private void getDataActivate() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                getActivate+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf((response)));
+                Gson gson = new Gson();
+                model1 = gson.fromJson(String.valueOf(response), ActivateModel.class);
+                setData1();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+
+    }
+
+    private void setData1() {
+        if (model1.results!=null && model1.results.equals("1")){
+            b.rbActivate.setChecked(true);
+        }else if (model1.results!=null && model1.results.equals("0")){
+            b.rbDeactivate.setChecked(true);
+        }
+    }
+
+    private void getData() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                getHideUnhide+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf((response)));
+                Gson gson = new Gson();
+                model = gson.fromJson(String.valueOf(response), HideUnHideModel.class);
+                setData();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+
+    }
+
+    private void setData() {
+        if (model.months!=null && model.months.equals("1")){
+            b.rbHideUnhideOneMonth.setChecked(true);
+        }else if (model.months!=null && model.months.equals("3")){
+            b.rbHideUnhideThreeMonth.setChecked(true);
+        }else if (model.months!=null && model.months.equals("6")) {
+            b.rbHideUnhideSixMonth.setChecked(true);
+        }else if (model.months!=null && model.months.equalsIgnoreCase("unhide")) {
+            b.rbHide.setChecked(true);
+        }
+
+
+
+    }
 
 
     private void listener() {
@@ -287,7 +362,7 @@ String Activate_deactivate;
     private void submitForm() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         Map<String, String> params = new HashMap<String, String>();
-        params.put("hide_period_time",hide);
+        params.put("hide_period_time_month",hide);
         Log.e("params ", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, hideUrl+sessionManager.getMemberId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {

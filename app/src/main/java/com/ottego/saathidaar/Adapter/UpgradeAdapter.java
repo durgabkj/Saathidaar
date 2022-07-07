@@ -11,8 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +27,7 @@ import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.Model.UpgradeModel;
 import com.ottego.saathidaar.NewMatchesFragment;
 import com.ottego.saathidaar.R;
+import com.ottego.saathidaar.UpgradePayDetailFragment;
 import com.ottego.saathidaar.UpgradePlanDetailsActivity;
 import com.ottego.saathidaar.Utils;
 
@@ -66,6 +70,14 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
             }
         });
 
+        holder.btnDashboard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Intent intent = new Intent(compoundButton.getContext(), UpgradePayDetailFragment.class);
+                intent.putExtra("data", new Gson().toJson(item));
+            }
+        });
+
     }
 
 
@@ -76,7 +88,7 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvCardName,tvPriceUpgrade,tvMonths;
-
+RadioButton btnDashboard;
 
         public ViewHolder(@NonNull View itemView) {
 
@@ -84,7 +96,7 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
             tvCardName = itemView.findViewById(R.id.tvCardName);
             tvPriceUpgrade = itemView.findViewById(R.id.tvPriceUpgrade);
             tvMonths = itemView.findViewById(R.id.tvMonths);
-
+            btnDashboard=itemView.findViewById(R.id.btnDashboard);
 
         }
     }

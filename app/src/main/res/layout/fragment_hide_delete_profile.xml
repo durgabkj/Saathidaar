@@ -66,6 +66,7 @@
                 <RadioGroup
                     android:id="@+id/radioGroupHide"
                     android:layout_width="match_parent"
+                    android:checkedButton="@id/rbHide"
                     android:layout_height="wrap_content">
 
 
@@ -214,6 +215,7 @@
                 <RadioGroup
                     android:id="@+id/radioGroupActivate_dea"
                     android:layout_width="match_parent"
+                    android:checkedButton="@id/rbActivate"
                     android:layout_height="wrap_content">
 
                     <RadioButton
