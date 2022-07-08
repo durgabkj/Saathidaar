@@ -33,8 +33,9 @@ public class MatchDetailsFragment extends Fragment {
     FragmentMatchDetailsBinding b;
     Animation animation;
     NewMatchesModel model;
+    SessionManager sessionManager;
     MemberProfileModel model1;
-    public String memberDetail = Utils.memberUrl + "get-details/";
+    public String memberDetail = Utils.memberUrl +"get-details/";
     Context context;
 
     private static final String ARG_PARAM1 = "param1";
@@ -63,6 +64,7 @@ public class MatchDetailsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
@@ -73,10 +75,10 @@ public class MatchDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         b = FragmentMatchDetailsBinding.inflate(inflater, container, false);
         context = getContext();
-
+sessionManager=new SessionManager(context);
         listener();
-         getData();
-        setData();
+        getData();
+       setData();
         return b.getRoot();
     }
 
@@ -92,9 +94,9 @@ public class MatchDetailsFragment extends Fragment {
 
     private void getData() {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("member_ID",mParam1);
-        Log.e("params", String.valueOf(params));
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, memberDetail, null, new Response.Listener<JSONObject>() {
+//        params.put("member_ID",mParam1);
+//        Log.e("params", String.valueOf(params));
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, memberDetail+sessionManager.getMemberId()+mParam1, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf(response));
@@ -125,11 +127,16 @@ public class MatchDetailsFragment extends Fragment {
     }
 
     private void setData() {
-        b.tvNewMatchName.setText(model1.first_name + " " + model.last_name);
-        b.tvNewMatchAge.setText(model1.age + " yrs");
-        b.tvDetailHeight.setText(model1.height + " feet");
-        b.tvMatchCityDetail.setText(model1.city);
-        b.tvNewMatchWorkAsDetail.setText(model1.working_as);
-        b.tvAboutUserDetails.setText(model1.about_ourself);
+        if(model1!=null)
+        {
+            b.tvNewMatchName.setText(model1.first_name + " " + model1.last_name);
+            b.tvNewMatchAge.setText(model1.age + " yrs");
+            b.tvDetailHeight.setText(model1.height + " feet");
+            b.tvMatchCityDetail.setText(model1.city);
+            b.tvNewMatchWorkAsDetail.setText(model1.working_as);
+            b.tvAboutUserDetails.setText(model1.about_ourself);
+        }
+
+
     }
 }

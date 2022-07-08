@@ -114,12 +114,12 @@
             android:layout_marginTop="10dp"
             android:textAllCaps="true"/>
 
-        <RadioButton
+        <TextView
             android:id="@+id/btnDashboard"
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:padding="5dp"
-            android:textAlignment="center"
+            android:gravity="center"
             android:text="Continue"
             android:fontFamily="@font/italic"
             android:layout_margin="15dp"

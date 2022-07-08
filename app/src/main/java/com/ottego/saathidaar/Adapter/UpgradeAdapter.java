@@ -70,10 +70,10 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
             }
         });
 
-        holder.btnDashboard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        holder.btnDashboard.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Intent intent = new Intent(compoundButton.getContext(), UpgradePayDetailFragment.class);
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), UpgradePayDetailFragment.class);
                 intent.putExtra("data", new Gson().toJson(item));
             }
         });
@@ -88,7 +88,7 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvCardName,tvPriceUpgrade,tvMonths;
-RadioButton btnDashboard;
+TextView btnDashboard;
 
         public ViewHolder(@NonNull View itemView) {
 

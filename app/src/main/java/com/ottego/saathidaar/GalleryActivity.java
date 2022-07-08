@@ -2,6 +2,7 @@ package com.ottego.saathidaar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
@@ -58,7 +59,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GalleryActivity extends AppCompatActivity {
+public class GalleryActivity extends AppCompatActivity  {
     ActivityGalleryBinding b;
 SessionManager sessionManager;
     int PICK_IMAGE_REQUEST = 111;
@@ -67,6 +68,8 @@ SessionManager sessionManager;
     ProgressDialog progressDialog;
     Context context;
      String imageString;
+    String imageEncoded;
+    List<String> imagesEncodedList;
     String[] arr=new String[1];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,29 +90,35 @@ SessionManager sessionManager;
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setType("image/*");
-                intent.setAction(Intent.ACTION_PICK);
-                startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST);
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Select Picture"), PICK_IMAGE_REQUEST);
             }
+
         });
 
         b.upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //converting image to base64 string
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] imageBytes = baos.toByteArray();
-                 imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+                for(int i = 0;  i <= imagesEncodedList.size(); i++) {
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(imagesEncodedList.get(i)));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    //converting image to base64 string
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    byte[] imageBytes = baos.toByteArray();
+                    String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
 
-                 arr =new String[1];
-                for(int i=0;i<1;i++)
-                {
-                    arr[0]="data:image/jpeg;base64,"+imageString;
 
+
+
+                    submit();
                 }
 
-
-                submit();
 
 //                progressDialog = new ProgressDialog(context);
 //                progressDialog.setMessage("Uploading, please wait...");
@@ -201,41 +210,81 @@ SessionManager sessionManager;
     }
 
 
-    public static String getExtension(String uri) {
-        if (uri == null) {
-            return null;
-        }
-
-        int dot = uri.lastIndexOf(".");
-        if (dot >= 0) {
-            return uri.substring(dot);
-        } else {
-            // No extension.
-            return "";
-        }
-    }
-
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        try {
+            // When an Image is picked
+            if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                    && null != data) {
+                // Get the Image from data
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri filePath = data.getData();
+                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+                imagesEncodedList = new ArrayList<String>();
+                if(data.getData()!=null){
 
-            try {
-                //getting image from gallery
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                    Uri mImageUri=data.getData();
 
 
-               Log.e("image", String.valueOf(data));
+                    // Get the cursor
+                    Cursor cursor = getContentResolver().query(mImageUri,
+                            filePathColumn, null, null, null);
+                    // Move to first row
+                    cursor.moveToFirst();
 
-                //Setting image to ImageView
-                b.image.setImageBitmap(bitmap);
-            } catch (Exception e) {
-                e.printStackTrace();
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    imageEncoded  = cursor.getString(columnIndex);
+                    cursor.close();
+
+                } else {
+                    if (data.getClipData() != null) {
+                        ClipData mClipData = data.getClipData();
+                        ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
+                        for (int i = 0; i < mClipData.getItemCount(); i++) {
+
+                            ClipData.Item item = mClipData.getItemAt(i);
+                            Uri uri = item.getUri();
+                            mArrayUri.add(uri);
+                            // Get the cursor
+                            Cursor cursor = getContentResolver().query(uri, filePathColumn, null, null, null);
+                            // Move to first row
+                            cursor.moveToFirst();
+
+                            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                            imageEncoded  = cursor.getString(columnIndex);
+                            imagesEncodedList.add(imageEncoded);
+                            cursor.close();
+
+                        }
+                        Log.e("LOG_TAG", "Selected Images" + mArrayUri.size());
+                        Log.e("LOG_TAG", "Selected Images" + mArrayUri);
+                    }
+                }
+            } else {
+                Toast.makeText(this, "You haven't picked Image",
+                        Toast.LENGTH_LONG).show();
             }
+        } catch (Exception e) {
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
+                    .show();
         }
+
+
+//        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+//            Uri filePath = data.getData();
+//
+//            try {
+//                //getting image from gallery
+//                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+//
+//
+//               Log.e("image", String.valueOf(data));
+//
+//                //Setting image to ImageView
+//                b.image.setImageBitmap(bitmap);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 }

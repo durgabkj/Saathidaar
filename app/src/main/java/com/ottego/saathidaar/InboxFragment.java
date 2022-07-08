@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -22,6 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.AcceptInvitationAdapter;
@@ -35,7 +37,7 @@ import org.json.JSONObject;
 
 
 public class InboxFragment extends Fragment {
-    public String url = "http://192.168.1.37:9094/api/request/count/accept-request/22";
+    public String url = "http://192.168.1.39:9094/api/request/count/accept-request/22";
   FragmentInboxBinding b;
     DataModelDashboard model;
     Context context;
@@ -146,8 +148,11 @@ context=getContext();
 //        RequestAccept.setText(model.data.get(0).accept_request_count);
 //        RequestSent.setText(model.data.get(0).sent_request_count);
 //        Visitors.setText(model.data.get(0).recent_visitors_count);
-        b.tlInbox.getTabAt(1).getOrCreateBadge().setNumber(Integer.parseInt(model.data.get(0).accept_request_count));
+        BadgeDrawable badgeDrawable= b.tlInbox.getTabAt(1).getOrCreateBadge();
+        badgeDrawable.setNumber(Integer.parseInt(model.data.get(0).accept_request_count));
         b.tlInbox.getTabAt(2).getOrCreateBadge().setNumber(Integer.parseInt(model.data.get(0).sent_request_count));
+       badgeDrawable.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+       badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getActivity(),R.color.white));
     }
 
 

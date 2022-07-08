@@ -95,13 +95,11 @@ public class NewMatchesFragment extends Fragment {
     }
 
     public void getData(String id) {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 MyMatchUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 b.srlRecycleViewNewMatch.setRefreshing(false);
-                progressDialog.dismiss();
                 Log.e("New Matches response", String.valueOf(response));
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
@@ -114,7 +112,6 @@ public class NewMatchesFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 b.srlRecycleViewNewMatch.setRefreshing(false);
-                progressDialog.dismiss();
                 error.printStackTrace();
             }
         });

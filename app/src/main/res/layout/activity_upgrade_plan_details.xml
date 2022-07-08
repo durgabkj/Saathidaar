@@ -202,7 +202,7 @@
             android:background="@color/black"/>
         <TextView
             android:layout_width="100dp"
-
+android:id="@+id/tvPayAmountUpgrade"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textStyle="bold"

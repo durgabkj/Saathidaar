@@ -38,6 +38,10 @@ FragmentUpgradePayDetailBinding b;
         fragment.setArguments(args);
         return fragment;
     }
+    @Override
+    public int getTheme() {
+        return com.google.android.material.R.style.Theme_Design_BottomSheetDialog;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,8 +59,12 @@ FragmentUpgradePayDetailBinding b;
         b=FragmentUpgradePayDetailBinding.inflate(inflater, container, false);
 context=getContext();
 
+
         String data = getArguments().getString("data");
         model = new Gson().fromJson(data, UpgradeModel.class);
         return  b.getRoot();
     }
+
+
+
 }

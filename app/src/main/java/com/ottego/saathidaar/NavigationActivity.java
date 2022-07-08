@@ -27,7 +27,7 @@ public class NavigationActivity extends AppCompatActivity {
     int[] tabIcons = {
             R.drawable.logo1,
             R.drawable.ic_couple,
-            R.drawable.ic_inbox,
+            R.drawable.ic_email,
             R.drawable.ic_user,
             R.drawable.ic_diamond,
     };
@@ -56,7 +56,6 @@ public class NavigationActivity extends AppCompatActivity {
 
         viewPager.setPagingEnable(false);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        tabLayout.getTabAt(2).getOrCreateBadge().setNumber(10);
         ViewPageAdapter adapter = new ViewPageAdapter(this, getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 

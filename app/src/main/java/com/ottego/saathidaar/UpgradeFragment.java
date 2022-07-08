@@ -77,7 +77,6 @@ public class UpgradeFragment extends Fragment {
         listener();
         return b.getRoot();
     }
-
     void listener() {
 
     }

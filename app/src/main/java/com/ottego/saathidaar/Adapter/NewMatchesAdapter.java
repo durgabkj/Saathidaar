@@ -15,10 +15,13 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.ottego.saathidaar.MatchDetailsFragment;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.Model.NewMatchesModel;
+import com.ottego.saathidaar.NewMatchesFragment;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.Utils;
+import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 import java.util.List;
 
@@ -29,6 +32,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
     public NewMatchesAdapter(Context context, List<NewMatchesModel> list) {
         this.context = context;
         this.list = list;
+
 
     }
 
@@ -73,7 +77,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+Log.e("position", String.valueOf(position));
 //                /*ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) view.getContext(),
 //                        Pair.create(holder.ivUserMatch, "tnMemberImage"));
 //                Intent intent = new Intent(view.getContext(), MatchesDetailsActivity.class);

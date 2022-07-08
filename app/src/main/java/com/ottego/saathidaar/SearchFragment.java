@@ -3,6 +3,7 @@ package com.ottego.saathidaar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,11 +51,11 @@ public class SearchFragment extends Fragment {
     TextView tvMultipleMaritalStatusSearch;
     public String SearchUrl = Utils.memberUrl + "search/update/";
     public String getSearchDetailUrl = Utils.memberUrl + "search/get/";
-    public String ReligionUrl = "http://192.168.1.37:9094/api/get/religion-name";
-    public String countryUrl = "http://192.168.1.37:9094/api/get/country";
-    public String castUrl = "http://192.168.1.37:9094/api/get/all/cast";
-    public String stateUrl = "http://192.168.1.37:9094/api/get/state";
-    public String cityUrl = "http://192.168.1.37:9094/api/get/all/city";
+    public String ReligionUrl = "http://192.168.1.39:9094/api/get/religion-name";
+    public String countryUrl = "http://192.168.1.39:9094/api/get/country";
+    public String castUrl = "http://192.168.1.39:9094/api/get/all/cast";
+    public String stateUrl = "http://192.168.1.39:9094/api/get/state";
+    public String cityUrl = "http://192.168.1.39:9094/api/get/all/city";
 
 
     ArrayList<String> AgeListSearch = new ArrayList<>();
@@ -785,9 +786,9 @@ public class SearchFragment extends Fragment {
 //                                    UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);
 //                                   // sessionManager.createSUserDetails(sessionModel);
                                 Toast.makeText(context, code, Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
-                                //Intent intent = new Intent(context, OtpVerificationActivity.class);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                // startActivity(intent);
+                                Intent intent = new Intent(context, MoreActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                 startActivity(intent);
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }

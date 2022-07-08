@@ -3,6 +3,7 @@ package com.ottego.saathidaar;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -34,10 +36,11 @@ public class DashBoardFragment extends Fragment {
     TextView tvPremiumText, tvLogout, RequestAccept, Visitors, RequestSent,tvDashboardUpgrade;
     int position = 0;
     DataModelDashboard model;
+    LinearLayout llPremiumMatch,llMyMatch,llPremium;
     Animation animation;
     CountDownTimer countDownTimer;
     Context context;
-    public String url = "http://192.168.1.37:9094/api/request/count/accept-request/22";
+    public String url = "http://192.168.1.39:9094/api/request/count/accept-request/22";
     int[] images = {R.drawable.smartphone, R.drawable.documents, R.drawable.global};
     String[] text = {"phone Number to Connect Instantly", "100% Verified Biodatas", "Find Common connections"};
     private static final String ARG_PARAM1 = "param1";
@@ -83,6 +86,9 @@ public class DashBoardFragment extends Fragment {
         tvDashboardUpgrade=view.findViewById(R.id.tvDashboardpgrade);
         RequestAccept = view.findViewById(R.id.RequestAccept);
         Visitors = view.findViewById(R.id.Visitors);
+        llMyMatch = view.findViewById(R.id.llMyMatch);
+        llPremium = view.findViewById(R.id.llPremium);
+        llPremiumMatch = view.findViewById(R.id.llPremiumMatch);
         RequestSent = view.findViewById(R.id.RequestSent);
         context = getContext();
         sessionManager = new SessionManager(context);
@@ -144,6 +150,62 @@ public class DashBoardFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        llPremiumMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://192.168.1.39:9094/account/help"));
+                try {
+                    startActivity(intent);
+                } catch (Exception e) {
+                    intent.setData(Uri.parse("http://192.168.1.39:9094/account/help"));
+                }
+            }
+        });
+
+
+        llMyMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://192.168.1.39:9094/account/help"));
+                try {
+                    startActivity(intent);
+                } catch (Exception e) {
+                    intent.setData(Uri.parse("http://192.168.1.39:9094/account/help"));
+                }
+            }
+        });
+
+
+        llPremiumMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("hhttp://192.168.1.39:9094/account/privacy-policy"));
+                try {
+                    startActivity(intent);
+                } catch (Exception e) {
+                    intent.setData(Uri.parse("http://192.168.1.39:9094/account/privacy-policy"));
+                }
+            }
+        });
+
+
+        llPremium.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://192.168.1.39:9094/account/term-condition"));
+                try {
+                    startActivity(intent);
+                } catch (Exception e) {
+                    intent.setData(Uri.parse("http://192.168.1.39:9094/account/term-condition"));
+                }
+            }
+        });
+
 
     }
 

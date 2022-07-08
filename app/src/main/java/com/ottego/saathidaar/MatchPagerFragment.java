@@ -35,6 +35,7 @@ public class MatchPagerFragment extends DialogFragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -59,18 +60,20 @@ public class MatchPagerFragment extends DialogFragment {
         b = FragmentMatchPagerBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
 
+
         // of ViewPager2Adapter
         ViewPagerMatchDetailAdapter viewPager2Adapter = new ViewPagerMatchDetailAdapter(requireActivity(), viewModel);
 
         // adding the adapter to viewPager2
         // to show the views in recyclerview
         b.vp2Details.setAdapter(viewPager2Adapter);
-
+        b.vp2Details.setCurrentItem(Integer.parseInt(mParam1));
         // To get swipe event of viewpager2
         b.vp2Details.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             // This method is triggered when there is any scrolling activity for the current page
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels);
             }
 
@@ -78,6 +81,7 @@ public class MatchPagerFragment extends DialogFragment {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+
             }
 
             // triggered when there is
@@ -88,7 +92,7 @@ public class MatchPagerFragment extends DialogFragment {
             }
         });
 
-
         return b.getRoot();
     }
 }
+

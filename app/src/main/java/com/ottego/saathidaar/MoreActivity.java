@@ -24,14 +24,16 @@ import org.json.JSONObject;
 public class MoreActivity extends AppCompatActivity {
 ActivityMoreBinding b;
 Context context;
+SessionManager sessionManager;
 DataModelNewMatches data;
-private String searchedUrl="";
+private String searchedUrl=Utils.memberUrl+"search/more/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         b=ActivityMoreBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
 context=MoreActivity.this;
+sessionManager=new SessionManager(context);
         getData();
 
     }
@@ -39,7 +41,7 @@ context=MoreActivity.this;
     public void getData() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                searchedUrl, null, new Response.Listener<JSONObject>() {
+                searchedUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 //  b.srlRecycleBookmark.setRefreshing(false);

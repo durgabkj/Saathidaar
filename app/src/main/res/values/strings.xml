@@ -13,6 +13,10 @@
     <string name="Select">Select</string>
 
 
+    <string name="razorpay_key_id">rzp_test_QHOsVAlUo7NNwl</string>
+    <string name="razorpay_secret_key">kilJp0Ez5I45gXHraysPxKUW</string>
+
+
     <string-array name="minutes">
         <item>00</item>
         <item>01</item>

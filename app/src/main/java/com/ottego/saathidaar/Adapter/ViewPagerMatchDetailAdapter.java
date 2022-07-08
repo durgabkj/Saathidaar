@@ -1,5 +1,7 @@
 package com.ottego.saathidaar.Adapter;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -19,6 +21,8 @@ public class ViewPagerMatchDetailAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
+        Log.e("member_id", viewModel.list.getValue().get(position).member_id);
+
         return MatchDetailsFragment.newInstance(viewModel.list.getValue().get(position).member_id, "");
 
     }

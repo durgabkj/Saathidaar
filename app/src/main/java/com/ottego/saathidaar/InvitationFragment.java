@@ -32,7 +32,7 @@ public class InvitationFragment extends Fragment {
     Context context;
     String member_Id;
     SessionManager sessionManager;
-    public String InvitationUrl = "http://192.168.1.35:9094/api/request/invitations/get/all/22";
+    public String InvitationUrl = "http://192.168.1.39:9094/api/request/invitations/get/all/22";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
