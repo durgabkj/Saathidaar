@@ -208,7 +208,7 @@ sessionManager=new SessionManager(context);
              * Amount is always passed in currency subunits
              * Eg: "500" = INR 5.00
              */
-            options.put("amount", "500");
+           // options.put("amount", "500");
 
             checkout.open(UpgradePlanDetailsActivity.this, options);
         } catch(Exception e) {
