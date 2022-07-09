@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment"
+    android:orientation="vertical">
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tlAccount"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:tabMode="scrollable"
+        app:tabGravity="fill"
+        android:elevation="20dp"
+        android:translationZ="20dp"
+        android:textAlignment="center"
+        app:tabIndicatorHeight="0dp"
+        app:tabIndicatorColor="@android:color/transparent"
+        app:tabIndicatorGravity="stretch"
+        app:tabBackground="@drawable/tab_selector"
+        app:tabIndicator="@null"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@color/black"
+        />
+
+
+    <com.ottego.saathidaar.SwipeDisabledPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="NotSibling"
+        android:id="@+id/vpAccount"
+        />
+
+
+</LinearLayout>

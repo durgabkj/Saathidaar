@@ -1,0 +1,413 @@
+<resources>
+    <string name="app_name">Saathidaar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="basic_lifestyle"><u>Basic &amp; Lifestyles</u></string>
+
+    <string name="Education_background"><u>Education &amp; Career</u></string>
+    <string name="religious_background"><u>Religious_background</u></string>
+    <string name="location"><u>Location Of Groom</u></string>
+    <string name="mycontact"><u>My Contact Details</u></string>
+    <string name="Family_details"><u>Family_details</u></string>
+    <string name="Select">Select</string>
+
+
+    <string name="razorpay_key_id">rzp_test_QHOsVAlUo7NNwl</string>
+    <string name="razorpay_secret_key">kilJp0Ez5I45gXHraysPxKUW</string>
+
+
+    <string-array name="minutes">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+    </string-array>
+
+    <string-array name="Hour">
+
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="ampm">
+        <item>A.M</item>
+        <item>P.M</item>
+    </string-array>
+
+
+    <string-array name="aprox">
+        <item>Approximate</item>
+        <item>Exact</item>
+    </string-array>
+
+    <array name="initial_slider_values">
+        <item>21</item>
+        <item>26</item>
+    </array>
+    <string-array name="AgeFrom">
+        <item>    18   </item>
+        <item>    19    </item>
+        <item>    20    </item>
+        <item>    21    </item>
+        <item>    22    </item>
+        <item>    23    </item>
+        <item>    24    </item>
+        <item>    25    </item>
+        <item>    26    </item>
+        <item>    27    </item>
+        <item>    28    </item>
+        <item>    29    </item>
+        <item>    30    </item>
+        <item>    31    </item>
+        <item>    32    </item>
+        <item>    33    </item>
+        <item>    34    </item>
+        <item>    35    </item>
+        <item>    36    </item>
+        <item>    37    </item>
+        <item>    38    </item>
+        <item>    39    </item>
+        <item>    40    </item>
+        <item>    41    </item>
+        <item>    42    </item>
+        <item>    43    </item>
+        <item>    44    </item>
+        <item>    45    </item>
+        <item>    46    </item>
+        <item>    47    </item>
+        <item>    48    </item>
+        <item>    49    </item>
+        <item>    50    </item>
+        <item>    51    </item>
+        <item>    52    </item>
+        <item>    53    </item>
+        <item>    54    </item>
+        <item>    55    </item>
+        <item>    56    </item>
+        <item>    57    </item>
+        <item>    58    </item>
+        <item>    59    </item>
+        <item>    60    </item>
+        <item>    61    </item>
+        <item>    62    </item>
+        <item>    63    </item>
+        <item>    64    </item>
+        <item>    65    </item>
+        <item>    66    </item>
+        <item>    67    </item>
+        <item>    68    </item>
+        <item>    69    </item>
+        <item>    70    </item>
+    </string-array>
+
+    <string-array name="Height">
+        <item>4ft 5in - 134cm</item>
+        <item>4ft 6in - 137cm</item>
+        <item>4ft 7in - 139cm</item>
+        <item>4ft 8in - 142cm</item>
+        <item>4ft 9in - 144cm</item>
+        <item>4ft 10in - 147cm</item>
+        <item>4ft 11in - 149cm</item>
+        <item>5ft - 152cm</item>
+        <item>5ft 1in - 154cm</item>
+        <item>5ft 2in - 157cm</item>
+        <item>5ft 3in - 160cm</item>
+        <item>5ft 4in - 162cm</item>
+        <item>5ft 5in - 165cm</item>
+        <item>5ft 6in - 167cm</item>
+        <item>5ft 7in - 170cm</item>
+        <item>5ft 8in - 172cm</item>
+        <item>5ft 9in - 175cm</item>
+        <item>5ft 10in - 177cm</item>
+        <item>5ft 11in - 180cm</item>
+        <item>6ft - 182cm</item>
+        <item>6ft 1in - 185cm</item>
+        <item>6ft 2in - 187cm</item>
+        <item>6ft 3in - 190cm</item>
+        <item>6ft 4in - 193cm</item>
+        <item>6ft 5in - 195cm</item>
+        <item>6ft 6in - 198cm</item>
+        <item>6ft 7in - 200cm</item>
+        <item>6ft 8in - 203cm</item>
+        <item>6ft 9in - 205cm</item>
+        <item>6ft 10in - 208cm</item>
+        <item>6ft 11in - 210cm</item>
+        <item>7ft - 213cm</item>
+
+    </string-array>
+
+    <string-array name="BloodGroup">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+    </string-array>
+
+
+    <string-array name="Health">
+        <item>No Health Problems</item>
+        <item>HIV Positive</item>
+        <item>Diabetes</item>
+        <item>Low BP</item>
+        <item>High BP</item>
+        <item>Heart Aliments</item>
+        <item>Other</item>
+    </string-array>
+
+
+    <string-array name="Income">
+        <item>Upto INR 1 Lakh</item>
+        <item>INR 1 Lakh to 2 Lakh</item>
+        <item>INR 2 Lakh to 4 Lakh</item>
+        <item>INR 4 Lakh to 7 Lakh</item>
+        <item>INR 7 Lakh to 10 Lakh</item>
+        <item>INR 10 Lakh to 15 Lakh</item>
+        <item>INR 15 Lakh to 20 Lakh</item>
+        <item>INR 20 Lakh to 30 Lakh</item>
+        <item>INR 30 Lakh to 50 Lakh</item>
+        <item>INR 50 Lakh to 75 Lakh</item>
+        <item>INR 75 Lakh to 1 Crore</item>
+        <item>INR 1 Crore above</item>
+        <item>Not applicable</item>
+    </string-array>
+
+
+    <string-array name="FatherAndStatus">
+        <item>Employed</item>
+        <item>Business</item>
+        <item>Not Employed</item>
+        <item>Pass Away</item>
+        <item>Retired</item>
+    </string-array>
+
+    <string-array name="Affluence">
+        <item>Affluent</item>
+        <item>Upper Middle Class</item>
+        <item>Middle Class</item>
+        <item>Lower Middle Class</item>
+    </string-array>
+
+
+    <string-array name="FamilyType">
+        <item>Joint</item>
+        <item>Nuclear</item>
+    </string-array>
+
+
+    <string-array name="DietGroup">
+        <item>Open to all</item>
+        <item>Veg</item>
+        <item>Non-Veg</item>
+        <item>Jain</item>
+        <item>Vegan</item>
+        <item>Eggetarian</item>
+        <item>Occasionally Non-Veg</item>
+    </string-array>
+
+
+    <string-array name="ProfileCreated">
+        <item>Open to all</item>
+        <item>Self</item>
+        <item>Parent / Guardian</item>
+        <item>Sibling / Friend / Others</item>
+    </string-array>
+
+    <string-array name="MaritalStatus">
+        <item>Open to all</item>
+        <item>Never Married</item>
+        <item>Divorce</item>
+        <item>Widowed</item>
+        <item>Awaiting Divorce</item>
+        <item>Married</item>
+    </string-array>
+
+
+    <string-array name="workingAs">
+
+        <item>Banking Professional</item>
+        <item>Chartered Accountant</item>
+        <item>Company Secretary</item>
+        <item>Finance Professional</item>
+        <item>M.Eng (Hons)</item>
+        <item>Engineering Diploma</item>
+        <item>Investment Professional</item>
+        <item>Accounting Professional</item>
+        <item>Admin Professional</item>
+        <item>Actor</item>
+        <item>Advertising Professional</item>
+        <item>Entertainment Professional</item>
+        <item>Event Manager</item>
+        <item>Journalist</item>
+        <item>Media Professional</item>
+        <item>Public Relations Professional</item>
+        <item>Farming</item>
+        <item>Horticulturist</item>
+        <item>Agricultural Professional (Others)</item>
+        <item>Air Hostess / Flight Attendant</item>
+        <item>Pilot / Co-Pilot</item>
+        <item>Other Airline Professional</item>
+        <item>Architect</item>
+        <item>Interior Designer</item>
+        <item>Landscape Architect</item>
+        <item>Animator</item>
+        <item>Commercial Artist</item>
+        <item>Web / UX Designers</item>
+        <item>Artist (Others)</item>
+        <item>Beautician</item>
+        <item>Fashion Designer</item>
+        <item>Hairstylist</item>
+        <item>Jewellery Designer</item>
+        <item>Designer (Others)</item>
+        <item>Customer Support / BPO / KPO Professional</item>
+        <item>IAS / IRS / IES / IFS</item>
+        <item>Indian Police Services (IPS)</item>
+        <item>BCom (Hons)</item>
+        <item>PGD Finance</item>
+        <item>BCA</item>
+        <item>B.IT</item>
+        <item>BCS"</item>
+        <item>BA Computer Science</item>
+        <item>Law Enforcement Employee (Others)</item>
+        <item>Airforce</item>
+        <item>Army</item>
+        <item>Navy</item>
+        <item>Defense Services (Others)</item>
+        <item>Lecturer</item>
+        <item>Professor</item>
+        <item>Research Assistant</item>
+        <item>Research Scholar</item>
+        <item>Teacher</item>
+        <item>Training Professional (Others)</item>
+        <item>Civil Engineer</item>
+        <item>Electronics / Telecom Engineer</item>
+        <item>Mechanical / Production Engineer</item>
+        <item>Non IT Engineer (Others)</item>
+        <item>Chef / Sommelier / Food Critic</item>
+        <item>Catering Professional</item>
+        <item>Hotel</item>
+        <item>Software Developer / Programmer</item>
+        <item>Software Consultant</item>
+        <item>Hardware</item>
+        <item>Software Professional (Others)</item>
+        <item>Lawyer</item>
+        <item>Legal Professional (Others)</item>
+        <item>Legal Assistant</item>
+        <item>Dentist</item>
+        <item>Doctor</item>
+        <item>Medical Transcriptionist</item>
+        <item>Nurse</item>
+        <item>Pharmacist</item>
+        <item>Physician Assistant</item>
+        <item>Physiotherapist / Occupational Therapist</item>
+        <item>Psychologist</item>
+        <item>Surgeon</item>
+        <item>Veterinary Doctor</item>
+        <item>Therapist (Others)</item>
+        <item>Medical / Healthcare Professional (Others)</item>
+        <item>Merchant Naval Officer</item>
+        <item>Mariner</item>
+        <item>Marketing Professional</item>
+        <item>Sales Professional</item>
+        <item>Biologist / Botanist</item>
+        <item>Physicist</item>
+        <item>Science Professional (Others)</item>
+        <item>CxO / Chairman / Director / President</item>
+        <item>VP / AVP / GM / DGM</item>
+        <item>Sr. Manager / Manager</item>
+        <item>Consultant / Supervisor / Team Leads</item>
+        <item>Team Member / Staff</item>
+        <item>Agent / Broker / Trader / Contractor</item>
+        <item>Business Owner / Entrepreneur</item>
+        <item>Politician</item>
+        <item>Social Worker / Volunteer / NGO</item>
+        <item>Sportsman</item>
+        <item>Travel</item>
+        <item>Writer</item>
+        <item>Student</item>
+        <item>Retired</item>
+        <item>Not working</item>
+
+
+    </string-array>
+
+
+    <string-array name="workingWith">
+        <item>Private Company</item>
+        <item>Government / Public Sector</item>
+        <item>Defense / Civil Services</item>
+        <item>Business / Self Employed</item>
+        <item>Not Working</item>
+        <item>Engineering Diploma");</item>
+    </string-array>
+
+</resources>

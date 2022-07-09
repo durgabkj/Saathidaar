@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SearchFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/gradient_button">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:padding="5dp"
+            android:fontFamily="@font/italic"
+            android:text="Basic Search"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@color/white"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:fontFamily="@font/italic"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:text="Age" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edit_text"
+                    tools:ignore="UselessParent">
+
+
+
+                    <TextView
+                        android:id="@+id/etFromAgeSearch"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:editable="false"
+                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:fontFamily="@font/italic"
+                        android:enabled="true"
+                        android:hint="From"
+                        android:gravity="center_vertical"
+                        android:textSize="12dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/transparent_edittext_border"
+                        tools:ignore="Deprecated" />
+
+                </LinearLayout>
+
+
+                <Space
+                    android:layout_width="15dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="8dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <!-- Drop down number 2-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edit_text"
+                    tools:ignore="UselessParent">
+
+
+                    <TextView
+                        android:id="@+id/etToAgeSearch"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:editable="false"
+                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:fontFamily="@font/italic"
+                        android:enabled="true"
+                        android:hint="To"
+                        android:gravity="center_vertical"
+                        android:textSize="12dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/transparent_edittext_border"
+                        tools:ignore="Deprecated" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/italic"
+                android:text="Height" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edit_text"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:id="@+id/etfromHeightSearch"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:editable="false"
+                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:fontFamily="@font/italic"
+                        android:enabled="true"
+                        android:hint="From"
+                        android:gravity="center_vertical"
+                        android:textSize="12dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/transparent_edittext_border"
+                        tools:ignore="Deprecated" />
+
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="15dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <!-- Drop down number 2-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edit_text"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:id="@+id/etToHeightSearch"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:editable="false"
+                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:fontFamily="@font/italic"
+                        android:enabled="true"
+                        android:hint="To"
+                        android:gravity="center_vertical"
+                        android:textSize="12dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/transparent_edittext_border"
+                        tools:ignore="Deprecated" />
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/italic"
+                android:text="Marital Status" />
+
+            <TextView
+                android:id="@+id/tvMultipleMaritalStatusSearch"
+                style="@style/textInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/italic"
+                android:background="@android:drawable/editbox_background"
+                android:clickable="true"
+                android:drawableRight="@android:drawable/arrow_down_float"
+                android:drawablePadding="16dp"
+                android:focusable="true"
+                android:focusableInTouchMode="false"
+                android:hint="Marital Status"
+                android:importantForAutofill="no"
+                android:maxLines="1"
+                android:padding="12dp"
+                app:showSearch="true"
+                app:sort="true" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/italic"
+                android:text="Mother Tongue" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                tools:context=".MainActivity">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:hint="Select  Mother Tongue">
+
+
+                    <com.ottego.multipleselectionspinner.MultipleSelection
+                        android:id="@+id/multi_SelectionMotherTongueSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:fontFamily="@font/italic"
+                        android:drawableRight="@android:drawable/arrow_down_float"
+                        android:focusable="true"
+                        android:focusableInTouchMode="false"
+                        android:importantForAutofill="no"
+                        android:maxLines="1"
+                        app:showSearch="true"
+                        app:sort="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/italic"
+                android:text="Religion" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:hint="Select religion">
+
+                <com.ottego.multipleselectionspinner.MultipleSelection
+                    android:id="@+id/tvMultipleReligionSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
+                    android:importantForAutofill="no"
+                    android:maxLines="1"
+                    app:showSearch="true"
+                    android:fontFamily="@font/italic"
+                    app:sort="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/italic"
+                android:text="Caste" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:hint="Select caste">
+
+                <com.ottego.multipleselectionspinner.MultipleSelection
+                    android:id="@+id/tvMultipleCastSearch"
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/italic"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
+                    android:importantForAutofill="no"
+                    android:maxLines="1"
+                    app:showSearch="true"
+                    app:sort="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/gradient_button">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:padding="3dp"
+                    android:fontFamily="@font/italic"
+                    android:text="Location Details"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/italic"
+                android:layout_marginTop="10dp"
+                android:text="Country" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:context=".MainActivity">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:hint="Select Country">
+
+
+                    <com.ottego.multipleselectionspinner.MultipleSelection
+                        android:id="@+id/multi_SelectionCountrySearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:drawableRight="@android:drawable/arrow_down_float"
+                        android:focusable="true"
+                        android:fontFamily="@font/italic"
+                        android:focusableInTouchMode="false"
+                        android:importantForAutofill="no"
+                        android:maxLines="1"
+                        app:showSearch="true"
+                        app:sort="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/italic"
+                android:text="State" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:fontFamily="@font/italic"
+                android:layout_centerInParent="true"
+                android:hint="Select state">
+
+                <com.ottego.multipleselectionspinner.MultipleSelection
+                    android:id="@+id/tvMultipleStateSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/italic"
+                    android:importantForAutofill="no"
+                    android:maxLines="1"
+                    app:showSearch="true"
+                    app:sort="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/italic"
+                android:text="City" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:fontFamily="@font/italic"
+                android:layout_centerInParent="true"
+                android:hint="Select city">
+
+                <com.ottego.multipleselectionspinner.MultipleSelection
+                    android:id="@+id/tvMultipleCitySearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
+                    android:importantForAutofill="no"
+                    android:maxLines="1"
+                    app:showSearch="true"
+                    android:fontFamily="@font/italic"
+                    app:sort="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvSearchMatchBtn"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Search"
+                android:padding="10dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:background="@drawable/gradient_button"
+                android:textColor="@color/white"/>
+
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NavigationActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fcvSathidaar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tlMatch" />
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tlMatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/white"
+        app:tabIndicatorHeight="1.5dp"
+        app:tabMode="fixed"
+
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Caption"
+        app:tabTextColor="#9CDAEEF1" />
+
+    <com.ottego.saathidaar.SwipeDisabledPager
+        android:id="@+id/vpMatch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tlMatch"
+        tools:ignore="NotSibling" />
+
+</RelativeLayout>

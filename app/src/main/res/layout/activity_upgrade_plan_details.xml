@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UpgradePlanDetailsActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:title="Membership Plan Details"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+            app:navigationIconTint="@color/black"
+            app:titleTextColor="@color/black" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcvTodayMatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:layout_margin="20dp"
+        android:elevation="20dp"
+        android:translationZ="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/italic"
+            android:background="@drawable/gradient_button"
+            android:textColor="@color/white"
+            android:text="Saathidaar Membership"/>
+
+     <View
+         android:layout_width="match_parent"
+         android:layout_height="1dp"
+         android:layout_marginTop="10dp"
+         android:background="@color/black"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:layout_weight="4"
+                android:textStyle="bold"
+                android:fontFamily="@font/italic"
+                android:textColor="@color/white"
+                android:text="Membership"/>
+
+
+            <TextView
+                android:id="@+id/tvMembershipPlan"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:transitionName="tnMembershipPlan"
+                android:textStyle="bold"
+                android:fontFamily="@font/italic"
+                android:textColor="@color/white"
+                android:text="₹ 1700"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="9dp"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_play"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/italic"
+            android:textColor="@color/black"
+            android:text="Dedicated Relationship Manager"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_play"
+            android:fontFamily="@font/italic"
+            android:textColor="@color/black"
+            android:text="Discreet and Confidential service"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_play"
+            android:textStyle="bold"
+            android:fontFamily="@font/italic"
+            android:textColor="@color/black"
+            android:text="You are the part of Elite Matrimony till you get married"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_play"
+            android:fontFamily="@font/italic"
+            android:textColor="@color/black"
+            android:text="Relationship Manager confirms the prospect's interest to save your valuable"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/italic"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_play"
+            android:textColor="@color/black"
+            android:text="Our Relationship Managers go the extra me to source profiles from different avenues"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_play"
+            android:textStyle="bold"
+            android:fontFamily="@font/italic"
+            android:textColor="@color/black"
+            android:text="A Senior Relationship Manager with extensive experience will look for the perfect much for you"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/black"
+           />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:layout_weight="4"
+                android:textStyle="bold"
+                android:fontFamily="@font/italic"
+                android:textColor="@color/white"
+                android:text="total Amount Payable"/>
+
+
+            <TextView
+                android:id="@+id/tvMembershipPlan1"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:fontFamily="@font/italic"
+                android:textColor="@color/white"
+                android:text="₹ 1700"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/black"/>
+        <TextView
+            android:layout_width="100dp"
+android:id="@+id/tvPayAmountUpgrade"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:text="Pay"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/gradient_button"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+android:layout_gravity="end"
+            android:text="Not started yet..."/>
+
+    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

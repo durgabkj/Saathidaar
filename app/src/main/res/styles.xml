@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ShapeAppearanceOverlay.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ToolbarTitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/nunito_bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ListItemTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:padding">10dp</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="fontFamily">@font/nunito_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:drawableTint">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/white_border_rounded_corner</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="PersonalDataTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="fontFamily">@font/nunito_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:drawableTint">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="android:background">@drawable/bg_edit_text</item>
+    </style>
+
+    <style name="CustomMaterialToolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextAppearance">@style/ToolbarTitleText</item>
+    </style>
+
+    
+    <style name="FloatingButtonLabelStyle">
+        <item name="android:background">@drawable/label_bg</item>
+        <item name="android:textColor">@color/black</item>
+        
+    </style>
+
+    <style name="PersonalDataTextView1" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="fontFamily">@font/nunito_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+        <style name="ShapeAppearanceEditTextView" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+            <!--this makes the 10 dp of cut corners of the MDC EditText-->
+            <item name="cornerFamily">cut</item>
+            <item name="cornerSize">10dp</item>
+            <item name="android:layout_marginTop">15dp</item>
+            <item name="android:drawablePadding">10dp</item>
+            <item name="fontFamily">@font/nunito_regular</item>
+            <item name="android:textColor">@color/black</item>
+            <item name="android:textSize">14sp</item>
+            <item name="android:maxLines">1</item>
+        </style>
+
+
+    <resources>
+        <!-- Base application theme. -->
+        <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+            <!-- Customize your theme here. -->
+            <item name="colorPrimary">@color/colorPrimary</item>
+            <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+            <item name="colorAccent">@color/colorAccent</item>
+        </style>
+
+    </resources>
+
+        
+</resources>
