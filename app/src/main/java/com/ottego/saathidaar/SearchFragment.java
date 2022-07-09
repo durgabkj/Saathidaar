@@ -47,7 +47,7 @@ public class SearchFragment extends Fragment {
     TextView tvSearchMatchBtn;
     SessionManager sessionManager;
     String member_id;
-    EditText etFromAgeSearch, etToAgeSearch, etfromHeightSearch, etToHeightSearch;
+    TextView etFromAgeSearch, etToAgeSearch, etfromHeightSearch, etToHeightSearch;
     // Initialize variables
     Spinner spMinSearch, spMaxSearch, spFromHeightSearch, spToHeightSearch;
     TextView tvMultipleMaritalStatusSearch;
@@ -206,64 +206,64 @@ public class SearchFragment extends Fragment {
         });
 
 
-        spToHeightSearch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String myToHeight = spToHeightSearch.getSelectedItem().toString();
-
-                if (myToHeight.equals("select")) {
-
-                } else {
-                    etToHeightSearch.setText(myToHeight);
-                }
-                //
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        spFromHeightSearch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String myFromHeight = spFromHeightSearch.getSelectedItem().toString();
-
-                if (myFromHeight.equals("select")) {
-
-                } else {
-                    etfromHeightSearch.setText(myFromHeight);
-                }
-                //
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-
-        spMaxSearch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String temp1 = spMaxSearch.getSelectedItem().toString().trim();
-
-                if (temp1.equalsIgnoreCase("19 Years")) {
-                    etToAgeSearch.setText("");
-                } else {
-                    etToAgeSearch.setText(spMaxSearch.getSelectedItem().toString().trim());
-
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+//        spToHeightSearch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                String myToHeight = spToHeightSearch.getSelectedItem().toString();
+//
+//                if (myToHeight.equals("select")) {
+//
+//                } else {
+//                    etToHeightSearch.setText(myToHeight);
+//                }
+//                //
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
+//
+//        spFromHeightSearch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                String myFromHeight = spFromHeightSearch.getSelectedItem().toString();
+//
+//                if (myFromHeight.equals("select")) {
+//
+//                } else {
+//                    etfromHeightSearch.setText(myFromHeight);
+//                }
+//                //
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
+//
+//
+//        spMaxSearch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                String temp1 = spMaxSearch.getSelectedItem().toString().trim();
+//
+//                if (temp1.equalsIgnoreCase("19 Years")) {
+//                    etToAgeSearch.setText("");
+//                } else {
+//                    etToAgeSearch.setText(spMaxSearch.getSelectedItem().toString().trim());
+//
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
     }
 

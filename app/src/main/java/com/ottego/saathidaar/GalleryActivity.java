@@ -1,21 +1,18 @@
 package com.ottego.saathidaar;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Base64;
+import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -27,36 +24,41 @@ import com.ottego.saathidaar.databinding.ActivityGalleryBinding;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GalleryActivity extends AppCompatActivity  {
+public class GalleryActivity extends AppCompatActivity {
     ActivityGalleryBinding b;
-SessionManager sessionManager;
-    int PICK_IMAGE_REQUEST = 111;
-    String URL = Utils.memberUrl+"upload/photo";
-    Bitmap bitmap;
+    SessionManager sessionManager;
+
+    String URL = Utils.memberUrl + "upload/photo";
     ProgressDialog progressDialog;
     Context context;
-     String imageString;
-    String imageEncoded;
-    List<String> imagesEncodedList;
-    String[] arr=new String[1];
-    ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
+    List<String> imageNameList = new ArrayList<>();
+    List<String> imagePathList = new ArrayList<>();
+
+    private static final int PICK_FILE_REQUEST = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        b=ActivityGalleryBinding.inflate(getLayoutInflater());
-          setContentView(b.getRoot());
-          context=GalleryActivity.this;
-          sessionManager=new SessionManager(context);
-          listener();
-        }
+        b = ActivityGalleryBinding.inflate(getLayoutInflater());
+        setContentView(b.getRoot());
+        context = GalleryActivity.this;
+        sessionManager = new SessionManager(context);
+        listener();
+    }
 
     private void listener() {
         //opening image chooser option
@@ -67,22 +69,15 @@ SessionManager sessionManager;
                 intent.setType("image/*");
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent,"Select Picture"), PICK_IMAGE_REQUEST);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_FILE_REQUEST);
             }
 
         });
 
         b.upload.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)   {
-                for(int i = 0;  i <= mArrayUri.size(); i++) {
-                    try {
-                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(imagesEncodedList.get(i)));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                  //  submit();
-                }
+            public void onClick(View v) {
+                  submit();
 
             }
         });
@@ -90,11 +85,13 @@ SessionManager sessionManager;
 
     private void submit() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
+
+
+
         Map<String, String> params = new HashMap<String, String>();
         params.put("member_id", sessionManager.getMemberId());
-        params.put("image_name", ".jpg");
-        params.put("image_base_urls", imageString);
-
+//        params.put("image_name", fileName);
+//        params.put("image_base_urls",selectedFileUri.toString());
         Log.e("params", String.valueOf(params));
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL, new JSONObject(params),
@@ -104,12 +101,16 @@ SessionManager sessionManager;
                         progressDialog.dismiss();
                         Log.e("response", String.valueOf((response)));
                         try {
+                            for(int i = 0; i < imagePathList.size(); i++) {
+                               uploadInThread(i);
+                            }
+
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
 
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                              //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            //    Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -137,114 +138,188 @@ SessionManager sessionManager;
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-//        Log.e("data", String.valueOf(data));
-//        Uri imageUri = data.getData();
-//        Log.e("imageUri", String.valueOf(imageUri));
-        //getting image from gallery
-//        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-
-
-        try {
-            // When an Image is picked
-            if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
-                    && null != data) {
-                // Get the Image from data
-
-                String[] filePathColumn = { MediaStore.Images.Media.DATA };
-                imagesEncodedList = new ArrayList<String>();
-                if(data.getData()!=null){
-
-                    Uri mImageUri=data.getData();
-
-                    // Get the cursor
-                    Cursor cursor = getContentResolver().query(mImageUri,
-                            filePathColumn, null, null, null);
-                    // Move to first row
-                    cursor.moveToFirst();
-
-                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                    imageEncoded  = cursor.getString(columnIndex);
-                    cursor.close();
-
-                } else {
-                    if (data.getClipData() != null) {
-                        ClipData mClipData = data.getClipData();
-                        ArrayList<String> mArrayUri = new ArrayList<>();
-                        for (int i = 0; i < mClipData.getItemCount(); i++) {
-//                            Log.e("clip data ", String.valueOf(mClipData.getItemAt(i)));
-//                            Log.e("array list ", String.valueOf(mArrayUri.get(i)));
-
-//                            FileInputStream fis = null;
-//                            try {
-//                                fis = new FileInputStream(String.valueOf(mClipData.getItemAt(i)));
-//                            } catch (FileNotFoundException e) {
-//                                Log.e("error- ",Log.getStackTraceString(e));
-//                                e.printStackTrace();
-//                            }
-//
-//                            Bitmap bm = BitmapFactory.decodeStream(fis);
-//                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//                            bm.compress(Bitmap.CompressFormat.PNG, 10 , baos);
-//                            byte[] img = baos.toByteArray();
-//                            String s= Base64.encodeToString(img , Base64.DEFAULT);
-//                            Log.e("base 64 - ",s+"");
-
-                            ClipData.Item item = mClipData.getItemAt(i);
-                            Uri uri = item.getUri();
-                            // convert uri to bitmap
-                            final InputStream imageStream = getContentResolver().openInputStream(uri);
-                            final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-
-                            // convert bitmap to base64
-                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                            selectedImage.compress(Bitmap.CompressFormat.JPEG,100,baos);
-                            byte[] b = baos.toByteArray();
-                            String encImage ="data:image/jpeg;base64," +Base64.encodeToString(b, Base64.DEFAULT);
-                            Log.e("base64",encImage+"");
-                            mArrayUri.add(encImage);
-
-
-                            // Get the cursor
-                            Cursor cursor = getContentResolver().query(uri, filePathColumn, null, null, null);
-                            // Move to first row
-                            cursor.moveToFirst();
-
-                            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                            Log.e("column index",columnIndex+"");
-                            imageEncoded  = cursor.getString(columnIndex);
-                            Log.e("column index",imageEncoded+"");
-                            imagesEncodedList.add(imageEncoded);
-                            cursor.close();
-                        }
-                        Log.e("LOG_TAG", "Selected Images" + mArrayUri.size());
-                        Log.e("LOG_TAG", "Selected Images" + mArrayUri);
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == PICK_FILE_REQUEST) {
+                imageNameList.clear();
+                imagePathList.clear();
+                if (data.getClipData() != null) {
+                    int count = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
+                    for (int i = 0; i < count; i++) {
+                        Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                        Log.e("imageUri1", String.valueOf(imageUri));
+                        pathFile(imageUri);
+                        //do something with the image (save it to some directory or whatever you need to do with it here)
                     }
+                } else if (data.getData() != null) {
+                    Uri imagePath = data.getData();
+                    Log.e("imageUri1", "data path:  " + String.valueOf(imagePath));
+                    pathFile(imagePath);
+                    //do something with the image (save it to some directory or whatever you need to do with it here)
                 }
-            } else {
-                Toast.makeText(this, "You haven't picked Image",
-                        Toast.LENGTH_LONG).show();
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
-                    .show();
-        }
 
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri filePath = data.getData();
-
-            try {
-                //getting image from gallery
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-
-
-               Log.e("image", String.valueOf(data));
-
-                //Setting image to ImageView
-                b.image.setImageBitmap(bitmap);
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
     }
+
+
+    public void pathFile(Uri selectedFileUri) {
+        String filePath = FilePath.getPath(this, selectedFileUri);
+        imagePathList.add(filePath);
+        Log.e("imageUri1", "parse Path:" + filePath);
+
+        if (filePath != null && !filePath.equals("")) {
+            try {
+                String fileName = getFileName(context, selectedFileUri);
+                imageNameList.add(fileName);
+                b.textViewFileName.setText(fileName);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Toast.makeText(this, "Cannot upload attachment", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public static String getFileName(Context context, Uri uri) throws URISyntaxException {
+        String temp = "";
+        String[] projection = {OpenableColumns.DISPLAY_NAME};
+        Cursor cursor = null;
+        if ("content".equalsIgnoreCase(uri.getScheme())) {
+            try {
+                cursor = context.getContentResolver().query(uri, projection, null, null, null);
+                int column_index = cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME);
+                if (cursor.moveToFirst()) {
+                    temp = cursor.getString(column_index);
+                    return temp;
+                }
+            } catch (Exception e) {
+
+            }
+        } else if (uri.getScheme().equalsIgnoreCase("file")) {
+            temp = uri.getLastPathSegment();
+        }
+        return temp;
+    }
+
+    void uploadInThread(final int i) {
+        new Thread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                uploadFile(imagePathList.get(i));
+            }
+        }).start();
+    }
+
+    public int uploadFile(final String selectedFilePath) {
+        int serverResponseCode = 0;
+        HttpURLConnection connection;
+        DataOutputStream dataOutputStream;
+        String lineEnd = "\r\n";
+        String twoHyphens = "--";
+        String boundary = "*****";
+
+        int bytesRead, bytesAvailable, bufferSize;
+        byte[] buffer;
+        int maxBufferSize = 1 * 1024 * 1024;
+        File selectedFile = new File(selectedFilePath);
+
+        String[] parts = selectedFilePath.split("/");
+        final String fileName = parts[parts.length - 1];
+
+        if (!selectedFile.isFile()) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    b.textViewFileName.setText("Source file doesn't exist: " + selectedFilePath);
+                }
+            });
+            return 0;
+        } else {
+            try {
+                FileInputStream fileInputStream = new FileInputStream(selectedFile);
+                java.net.URL url = new URL(URL);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.setDoInput(true);//Allow Inputs
+                connection.setDoOutput(true);//Allow Outputs
+                connection.setUseCaches(false);//Don't use a cached Copy
+                connection.setRequestMethod("POST");
+                connection.setRequestProperty("Connection", "Keep-Alive");
+                connection.setRequestProperty("ENCTYPE", "multipart/form-data");
+                connection.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+                connection.setRequestProperty("uploaded_file", selectedFilePath);
+
+                //creating new dataoutputstream
+                dataOutputStream = new DataOutputStream(connection.getOutputStream());
+
+                //writing bytes to data outputstream
+                dataOutputStream.writeBytes(twoHyphens + boundary + lineEnd);
+                dataOutputStream.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\"" + selectedFilePath + "\"" + lineEnd);
+
+                dataOutputStream.writeBytes(lineEnd);
+
+                //returns no. of bytes present in fileInputStream
+                bytesAvailable = fileInputStream.available();
+                //selecting the buffer size as minimum of available bytes or 1 MB
+                bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                //setting the buffer as byte array of size of bufferSize
+                buffer = new byte[bufferSize];
+
+                //reads bytes from FileInputStream(from 0th index of buffer to buffersize)
+                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+                //loop repeats till bytesRead = -1, i.e., no bytes are left to read
+                while (bytesRead > 0) {
+                    //write the bytes read from inputstream
+                    dataOutputStream.write(buffer, 0, bufferSize);
+                    bytesAvailable = fileInputStream.available();
+                    bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                    bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+                }
+
+                dataOutputStream.writeBytes(lineEnd);
+                dataOutputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+                serverResponseCode = connection.getResponseCode();
+                String serverResponseMessage = connection.getResponseMessage();
+                Log.i("Osan", "Server Response is: " + serverResponseMessage + ": " + serverResponseCode);
+                if (serverResponseCode == 200) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            finish();
+                            Toast.makeText(context, "Event added successfully", Toast.LENGTH_SHORT).show();
+
+                            //  textViewFileName.setText("File Upload completed.\n\n You can see the uploaded file here: \n\n" + MyUrl.URL + "uploads/"+ fileName);
+                        }
+                    });
+                }
+
+                //closing the input and output streams
+                fileInputStream.close();
+                dataOutputStream.flush();
+                dataOutputStream.close();
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(context, "Please give permission for storage", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                Toast.makeText(context, "URL error!", Toast.LENGTH_SHORT).show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(context, "Cannot Read/Write File!", Toast.LENGTH_SHORT).show();
+            }
+            return serverResponseCode;
+        }
+    }
+
 }

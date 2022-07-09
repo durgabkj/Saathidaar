@@ -165,11 +165,23 @@ public class HoroscopeFragment extends Fragment {
     }
 
     private void listener() {
-        b.btnSaveDetails.setOnClickListener(new View.OnClickListener() {
+
+
+
+        b.btnEditDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 b.cvShowDetails.setVisibility(View.GONE);
                 b.cvEditDetails.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        b.btnSaveDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.cvShowDetails.setVisibility(View.VISIBLE);
+                b.cvEditDetails.setVisibility(View.GONE);
             }
         });
 
