@@ -88,6 +88,15 @@ public class PersonalInfoFragment extends Fragment {
 //                startActivity(intent);
             }
         });
+        binding.ivAddDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ProfileEditPersonalActivity.class);
+                intent.putExtra("data", new Gson().toJson(model));
+                context.startActivity(intent);
+//                startActivity(intent);
+            }
+        });
 
     }
 
@@ -101,11 +110,12 @@ public class PersonalInfoFragment extends Fragment {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
                         Gson gson = new Gson();
+//                        binding.llNoDataPersonal.setVisibility(View.VISIBLE);
+//                        binding.scrvPersonalData.setVisibility(View.GONE);
                        model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
                            setData();
-
-
                         }else {
+
                         Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }
 
@@ -126,21 +136,21 @@ public class PersonalInfoFragment extends Fragment {
     }
 
     private void setData() {
-        binding.tvDob.setText(model.date_of_birth);
-        binding.tvUserMaritalStatus.setText(model.marital_status);
-        binding.tvUseNoOfChild.setText(model.no_of_children);
-        binding.tvUserHeight.setText(model.height);
-        binding.tvBloodGroup.setText(model.blood_group);
-        binding.tvUserDiet.setText(model.lifestyles);
-        binding.tvUserMotherTongue.setText(model.mother_tounge);
-        binding.tvHealthDetail.setText(model.health_info);
-        binding.tvUserReligion.setText(model.religion_name);
-        binding.tvUserCommunity.setText(model.caste_name);
-        binding.tvUserCommunity.setText(model.caste_name);
-        binding.tvUserSubCommunity.setText(model.subcaste);
-        binding.tvUserGotra.setText(model.gothra);
+
+            binding.tvDob.setText(model.date_of_birth);
+            binding.tvUserMaritalStatus.setText(model.marital_status);
+            binding.tvUseNoOfChild.setText(model.no_of_children);
+            binding.tvUserHeight.setText(model.height);
+            binding.tvBloodGroup.setText(model.blood_group);
+            binding.tvUserDiet.setText(model.lifestyles);
+            binding.tvUserMotherTongue.setText(model.mother_tounge);
+            binding.tvHealthDetail.setText(model.health_info);
+            binding.tvUserReligion.setText(model.religion_name);
+            binding.tvUserCommunity.setText(model.caste_name);
+            binding.tvUserCommunity.setText(model.caste_name);
+            binding.tvUserSubCommunity.setText(model.subcaste);
+            binding.tvUserGotra.setText(model.gothra);
+        }
+
 
     }
-
-
-}

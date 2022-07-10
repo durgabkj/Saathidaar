@@ -46,7 +46,7 @@ public class PrivacyOptionFragment extends Fragment {
     public String dobPrivacy = Utils.privacy + "dob";
     public String incomePrivacy = Utils.privacy + "annual-income";
 
-    public String getPrivacy = "http://192.168.1.39:9094/api/privacy/get/all/";
+    public String getPrivacy = "http://192.168.14.120:9094/api/privacy/get/all/";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -108,49 +108,55 @@ public class PrivacyOptionFragment extends Fragment {
     }
 
     private void setData() {
-        if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Visible to all Member")) {
-            b.radioButtonPhoneShowOnlyPMember.setChecked(true);
-        } else if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Visible to all Premium Members")) {
-            b.radioButtonPhoneShowOnlyPMemberLike.setChecked(true);
-        } else if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Keep this private")) {
-            b.radioButtonPhoneShowNoOne.setChecked(true);
+
+        if (model!=null)
+        {
+            if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Visible to all Member")) {
+                b.radioButtonPhoneShowOnlyPMember.setChecked(true);
+            } else if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Visible to all Premium Members")) {
+                b.radioButtonPhoneShowOnlyPMemberLike.setChecked(true);
+            } else if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Keep this private")) {
+                b.radioButtonPhoneShowNoOne.setChecked(true);
+            }
+
+            if (model.data.get(0).email != null && model.data.get(0).email.equalsIgnoreCase("Visible to all Member")) {
+                b.radioButtonPhoneShowAllPremiumMembers.setChecked(true);
+            } else if (model.data.get(0).email != null && model.data.get(0).email.equalsIgnoreCase("Visible to all Premium Members")) {
+                b.radioButtonPhoneShowPremiumMembersYouWishToConnect.setChecked(true);
+            } else if (model.data.get(0).email != null && model.data.get(0).email.equalsIgnoreCase("Keep this private")) {
+                b.radioButtonHideEmailAddress.setChecked(true);
+            }
+
+
+            if (model.data.get(0).photo != null && model.data.get(0).photo.equalsIgnoreCase("Visible to all Member")) {
+                b.radioButtonPhotoShowAllMembers.setChecked(true);
+            } else if (model.data.get(0).photo != null && model.data.get(0).photo.equalsIgnoreCase("Visible to all Premium Members")) {
+                b.radioButtonPhotoShowPremiumMembersAndMemberILike.setChecked(true);
+            } else if (model.data.get(0).photo != null && model.data.get(0).photo.equalsIgnoreCase("Keep this private")) {
+                b.radioButtonVisiblePhotoOnlyMember.setChecked(true);
+            }
+
+
+
+            if (model.data.get(0).dob != null && model.data.get(0).dob.equalsIgnoreCase("Visible to all Member")) {
+                b.radioButtonDOBFullDOB.setChecked(true);
+            } else if (model.data.get(0).dob != null && model.data.get(0).dob.equalsIgnoreCase("Visible to all Premium Members")) {
+                b.radioButtonDOBPremium.setChecked(true);
+            } else if (model.data.get(0).dob != null && model.data.get(0).dob.equalsIgnoreCase("Keep this private")) {
+                b.radioButtonDOBMonthAndYear.setChecked(true);
+            }
+
+
+            if (model.data.get(0).annual_income != null && model.data.get(0).annual_income.equalsIgnoreCase("Visible to all Member")) {
+                b.radioButtonDOBFullIncome.setChecked(true);
+            } else if (model.data.get(0).annual_income != null && model.data.get(0).annual_income.equalsIgnoreCase("Visible to all Premium Members")) {
+                b.radioButtonIncomePremium.setChecked(true);
+            } else if (model.data.get(0).annual_income != null && model.data.get(0).annual_income.equalsIgnoreCase("Keep this private")) {
+                b.radioButtonIncomePrivate.setChecked(true);
+            }
         }
 
-        if (model.data.get(0).email != null && model.data.get(0).email.equalsIgnoreCase("Visible to all Member")) {
-            b.radioButtonPhoneShowAllPremiumMembers.setChecked(true);
-        } else if (model.data.get(0).email != null && model.data.get(0).email.equalsIgnoreCase("Visible to all Premium Members")) {
-            b.radioButtonPhoneShowPremiumMembersYouWishToConnect.setChecked(true);
-        } else if (model.data.get(0).email != null && model.data.get(0).email.equalsIgnoreCase("Keep this private")) {
-            b.radioButtonHideEmailAddress.setChecked(true);
-        }
 
-
-        if (model.data.get(0).photo != null && model.data.get(0).photo.equalsIgnoreCase("Visible to all Member")) {
-            b.radioButtonPhotoShowAllMembers.setChecked(true);
-        } else if (model.data.get(0).photo != null && model.data.get(0).photo.equalsIgnoreCase("Visible to all Premium Members")) {
-            b.radioButtonPhotoShowPremiumMembersAndMemberILike.setChecked(true);
-        } else if (model.data.get(0).photo != null && model.data.get(0).photo.equalsIgnoreCase("Keep this private")) {
-            b.radioButtonVisiblePhotoOnlyMember.setChecked(true);
-        }
-
-
-
-        if (model.data.get(0).dob != null && model.data.get(0).dob.equalsIgnoreCase("Visible to all Member")) {
-            b.radioButtonDOBFullDOB.setChecked(true);
-        } else if (model.data.get(0).dob != null && model.data.get(0).dob.equalsIgnoreCase("Visible to all Premium Members")) {
-            b.radioButtonDOBPremium.setChecked(true);
-        } else if (model.data.get(0).dob != null && model.data.get(0).dob.equalsIgnoreCase("Keep this private")) {
-            b.radioButtonDOBMonthAndYear.setChecked(true);
-        }
-
-
-        if (model.data.get(0).annual_income != null && model.data.get(0).annual_income.equalsIgnoreCase("Visible to all Member")) {
-            b.radioButtonDOBFullIncome.setChecked(true);
-        } else if (model.data.get(0).annual_income != null && model.data.get(0).annual_income.equalsIgnoreCase("Visible to all Premium Members")) {
-            b.radioButtonIncomePremium.setChecked(true);
-        } else if (model.data.get(0).annual_income != null && model.data.get(0).annual_income.equalsIgnoreCase("Keep this private")) {
-            b.radioButtonIncomePrivate.setChecked(true);
-        }
 
     }
 

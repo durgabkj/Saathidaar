@@ -31,8 +31,9 @@ import org.json.JSONObject;
 public class MyMatchFragment extends Fragment {
     Context context;
     FragmentMyMatchBinding b;
+    SessionManager sessionManager;
     DataModelNewMatches data;
-    public String MyMatchUrl = Utils.memberUrl + "my/matches/22";
+    public String MyMatchUrl = Utils.memberUrl + "my/matches/";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -73,7 +74,7 @@ public class MyMatchFragment extends Fragment {
 
         b = FragmentMyMatchBinding.inflate(getLayoutInflater());
         context = getContext();
-
+sessionManager =new SessionManager(context);
 
         getData();
         return b.getRoot();
@@ -82,7 +83,7 @@ public class MyMatchFragment extends Fragment {
     public void getData() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                MyMatchUrl, null, new Response.Listener<JSONObject>() {
+                MyMatchUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 //  b.srlRecycleBookmark.setRefreshing(false);

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -83,6 +84,7 @@ public class LandingActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (checkForm()) {
                         submitForm();
+                        hideKeyboard();
                     }
                 }
             });
@@ -109,6 +111,15 @@ public class LandingActivity extends AppCompatActivity {
             });
 
         }
+
+    public void hideKeyboard() {
+        // Check if no view has focus:
+        View view = LandingActivity.this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager inputManager = (InputMethodManager) getApplication().getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
 
         private boolean checkForm() {
             firstName = binding.txtfirstname.getText().toString().trim();
@@ -217,7 +228,7 @@ public class LandingActivity extends AppCompatActivity {
 //                                    Gson gson = new Gson();
 //                                    UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);
 //                                   // sessionManager.createSUserDetails(sessionModel);
-                                    //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+                                      Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                                     Intent intent = new Intent(context, OtpVerificationActivity.class);
                                     intent.putExtra("mobile", phone);
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

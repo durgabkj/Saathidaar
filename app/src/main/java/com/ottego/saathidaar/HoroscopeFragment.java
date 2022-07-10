@@ -49,6 +49,7 @@ public class HoroscopeFragment extends Fragment {
     FragmentHoroscopeBinding b;
     Context context;
     HoroscopeModel model;
+    SessionManager sessionManager;
     String countryName;
     String cityName;
     String hour;
@@ -56,8 +57,8 @@ public class HoroscopeFragment extends Fragment {
     String time;
     String timeStatus;
     String manglik;
-    public String url = Utils.memberUrl + "horoscope/update/22";
-    public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/22";
+    public String url = Utils.memberUrl + "horoscope/update/8";
+    public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/8";
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -99,10 +100,10 @@ public class HoroscopeFragment extends Fragment {
         // Inflate the layout for this fragment
         b = FragmentHoroscopeBinding.inflate(getLayoutInflater());
         context = getContext();
-
+sessionManager=new SessionManager(context);
         setDropDownData();
         listener();
-        getCountry(countryUrl);
+        getCountry();
         getData();
 
 
@@ -258,13 +259,8 @@ public class HoroscopeFragment extends Fragment {
     private void submitForm() {
         Map<String, String> params = new HashMap<String, String>();
 
-
-
-
         params.put("country_of_birth", countryName);
         params.put("city_of_birth", cityName);
-
-        Log.e("city",cityName);
         params.put("time", time);
         params.put("time_status", timeStatus);
         params.put("hours", hour);
@@ -313,7 +309,7 @@ public class HoroscopeFragment extends Fragment {
         request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(request);
     }
-    private void getCountry(String countryUrl) {
+    private void getCountry() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 countryUrl, null, new Response.Listener<JSONObject>() {
             @Override
@@ -327,14 +323,12 @@ public class HoroscopeFragment extends Fragment {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String country = jsonObject1.getString("country_name");
-                            Log.e("country", country);
                             countryList.add(country);
                             Log.e("Country-list", String.valueOf(countryList));
                         }
                     }
                     countryAdapter = new ArrayAdapter<>(context, R.layout.searchable_dropdown_item, countryList);
                     // set adapter
-                    countryAdapter.notifyDataSetChanged();
                     b.acvCountry.setAdapter(countryAdapter);
                 } catch (JSONException e) {
                     e.printStackTrace();

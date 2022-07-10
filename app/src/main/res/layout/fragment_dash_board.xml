@@ -369,8 +369,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/italic"
+                                android:drawablePadding="8dp"
+                                android:drawableStart="@drawable/ic_baseline_privacy_tip_24"
                                 android:text="Privacy Policy"
-android:textSize="17dp"
+android:textSize="14dp"
                                 android:textStyle="bold"
                                 android:textColor="@color/colorPrimary" />
 
@@ -421,7 +423,9 @@ android:textSize="17dp"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/italic"
                                 android:text="Help Page"
-                                android:textSize="17dp"
+                                android:textSize="14dp"
+                                android:drawablePadding="8dp"
+                                android:drawableStart="@drawable/ic_baseline_live_help_24"
                                 android:textStyle="bold"
                                 android:textColor="@color/colorPrimary" />
 
@@ -473,7 +477,9 @@ android:textSize="17dp"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/italic"
                                 android:text="Term &amp; Condition"
-                                android:textSize="17dp"
+                                android:textSize="14dp"
+                                android:drawablePadding="8dp"
+                                android:drawableStart="@drawable/ic_baseline_library_books_24"
                                 android:textStyle="bold"
                                 android:textColor="@color/colorPrimary" />
 
@@ -539,7 +545,7 @@ android:textSize="17dp"
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:drawableStart="@drawable/ic_diamond"
+                                android:drawableStart="@drawable/ic_baseline_power_settings_new_24"
                                 android:drawablePadding="8dp"
                                 android:fontFamily="@font/italic"
                                 android:text="Customer Support"
@@ -552,6 +558,56 @@ android:textSize="17dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:text="Logout"
+                                android:fontFamily="@font/italic"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcvRateus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardElevation="2dp"
+                    app:cardMaxElevation="4dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/llshare"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="15dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_baseline_star_24"
+                                android:drawablePadding="8dp"
+                                android:fontFamily="@font/italic"
+                                android:text="Rate Us"
+
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Tap to go playStore"
                                 android:fontFamily="@font/italic"
                                 android:textColor="@color/colorPrimary"
                                 android:textStyle="bold" />

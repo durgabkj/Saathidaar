@@ -92,7 +92,9 @@ DataModelSmsAlert model;
                 Log.e("response", String.valueOf((response)));
                 Gson gson = new Gson();
                 model = gson.fromJson(String.valueOf(response), DataModelSmsAlert.class);
-                setData();
+
+                    setData();
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -107,37 +109,44 @@ DataModelSmsAlert model;
     }
 
     private void setData() {
-        if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Daily")){
-            b.rbPremiumDaily.setChecked(true);
-        }else if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Weekly")){
-            b.rbPremiumWeekly.setChecked(true);
-        }else if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Monthly")) {
-            b.rbPremiumMonthly.setChecked(true);
-        }else if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Unsubscribe")) {
-            b.rbPremiumUnsubscribe.setChecked(true);
+
+        if(model!=null)
+        {
+            if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Daily")){
+                b.rbPremiumDaily.setChecked(true);
+            }else if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Weekly")){
+                b.rbPremiumWeekly.setChecked(true);
+            }else if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Monthly")) {
+                b.rbPremiumMonthly.setChecked(true);
+            }else if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Unsubscribe")) {
+                b.rbPremiumUnsubscribe.setChecked(true);
+            }
+
+            if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Daily")){
+                b.rbVisitorsDaily.setChecked(true);
+            }else if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Weekly")){
+                b.rbVisitorsWeekly.setChecked(true);
+            }else if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Monthly")) {
+                b.rbVisitorsMonthly.setChecked(true);
+            }else if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Unsubscribe")) {
+                b.rbVisitorsUnsubscribe.setChecked(true);
+            }
+
+
+
+            if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Daily")){
+                b.rbTodayMatchDaily.setChecked(true);
+            }else if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Weekly")){
+                b.rbTodayMatchWeekly.setChecked(true);
+            }else if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Monthly")) {
+                b.rbTodayMatchMonthly.setChecked(true);
+            }else if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Unsubscribe")) {
+                b.rbTodayMatchUnsubscribe.setChecked(true);
+            }
+
         }
 
-        if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Daily")){
-            b.rbVisitorsDaily.setChecked(true);
-        }else if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Weekly")){
-            b.rbVisitorsWeekly.setChecked(true);
-        }else if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Monthly")) {
-            b.rbVisitorsMonthly.setChecked(true);
-        }else if (model.data.get(0).recent_visitors_email!=null && model.data.get(0).recent_visitors_email.equalsIgnoreCase("Unsubscribe")) {
-            b.rbVisitorsUnsubscribe.setChecked(true);
-        }
 
-
-
-        if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Daily")){
-            b.rbTodayMatchDaily.setChecked(true);
-        }else if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Weekly")){
-            b.rbTodayMatchWeekly.setChecked(true);
-        }else if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Monthly")) {
-            b.rbTodayMatchMonthly.setChecked(true);
-        }else if (model.data.get(0).today_match_email!=null && model.data.get(0).today_match_email.equalsIgnoreCase("Unsubscribe")) {
-            b.rbTodayMatchUnsubscribe.setChecked(true);
-        }
 
     }
 

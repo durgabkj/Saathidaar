@@ -37,10 +37,11 @@ import org.json.JSONObject;
 
 
 public class InboxFragment extends Fragment {
-    public String url = "http://192.168.1.39:9094/api/request/count/accept-request/22";
+    public String url = "http://192.168.14.120:9094/api/request/count/accept-request/";
   FragmentInboxBinding b;
     DataModelDashboard model;
     Context context;
+    SessionManager sessionManager;
   InvitationFragment invitationFragment=new InvitationFragment();
   AcceptedInboxFragment acceptedInboxFragment=new AcceptedInboxFragment();
   DeleteInboxFragment deleteInboxFragment=new DeleteInboxFragment();
@@ -81,6 +82,7 @@ public class InboxFragment extends Fragment {
         // Inflate the layout for this fragment
         b = FragmentInboxBinding.inflate(inflater, container, false);
 context=getContext();
+sessionManager=new SessionManager(context);
 //        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
 //        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
 //        fragmentTransaction.replace(R.id.fcvSathidarInbox,invitationFragment);
@@ -124,7 +126,7 @@ context=getContext();
 
     private void getDataCount() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                url, null, new Response.Listener<JSONObject>() {
+                url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf((response)));

@@ -1,7 +1,9 @@
 package com.ottego.saathidaar;
 
 import android.content.Context;
+import android.content.IntentFilter;
 import android.graphics.PorterDuff;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -20,6 +22,8 @@ import java.util.Locale;
 public class NavigationActivity extends AppCompatActivity {
     ActivityNavigationBinding b;
     private boolean doubleBackToExitPressedOnce;
+    MyReceiver myReceiver=new MyReceiver();
+
     private Handler mHandler = new Handler();
     TabLayout tabLayout;
     SwipeDisabledPager viewPager;
@@ -122,5 +126,24 @@ public class NavigationActivity extends AppCompatActivity {
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
         tabLayout.getTabAt(3).setIcon(tabIcons[3]);
         tabLayout.getTabAt(4).setIcon(tabIcons[4]);
+    }
+
+
+    @Override
+    protected void onStart() {
+
+        IntentFilter filter=new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+
+registerReceiver(myReceiver ,filter);
+
+        super.onStart();
+    }
+
+
+    @Override
+    protected void onStop() {
+    unregisterReceiver(myReceiver);
+
+        super.onStop();
     }
 }

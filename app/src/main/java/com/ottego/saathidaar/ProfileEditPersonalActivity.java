@@ -57,8 +57,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 // Permissions for accessing the storage
     private static final int SELECT_PICTURE = 100;
     private static final String TAG = "SelectImageActivity";
-    public String ReligionUrl = "http://192.168.1.39:9094/api/get/religion-name";
-    public String Updateurl = Utils.memberUrl + "app/basic-lifestyles/update/22";
+    public String ReligionUrl = "http://192.168.14.120:9094/api/get/religion-name";
+    public String Updateurl = Utils.memberUrl + "app/basic-lifestyles/update/";
     SessionManager sessionManager;
     ActivityProfileEditPersonalBinding b;
     Context context;
@@ -573,7 +573,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         params.put("no_of_children", child);
 
         Log.e("params", String.valueOf(params));
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Updateurl, new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Updateurl+sessionManager.getMemberId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -585,8 +585,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 //                                SessionProfileDetailModel model = gson.fromJson(String.valueOf(response.getJSONObject("data")), SessionProfileDetailModel.class);
 //                                sessionManager.CreateProfileSession(model);
                                 // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                Intent intent=new Intent(context,HomeFragment.class);
-                                startActivity(intent);
+//                                Intent intent=new Intent(context,HomeFragment.class);
+//                                startActivity(intent);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -678,7 +678,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
     private void communityData() {
         String selectedCommunity = b.tvUserReligion.getText().toString().trim();
-        String url = "http://192.168.1.37:9094/api/get/cast-name/by/religion_name/" + selectedCommunity;
+        String url = "http://192.168.14.120:9094/api/get/cast-name/by/religion_name/" + selectedCommunity;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url, null, new Response.Listener<JSONObject>() {

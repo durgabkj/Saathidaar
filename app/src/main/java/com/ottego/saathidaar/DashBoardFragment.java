@@ -36,11 +36,11 @@ public class DashBoardFragment extends Fragment {
     TextView tvPremiumText, tvLogout, RequestAccept, Visitors, RequestSent,tvDashboardUpgrade;
     int position = 0;
     DataModelDashboard model;
-    LinearLayout llPremiumMatch,llMyMatch,llPremium;
+    LinearLayout llPremiumMatch,llMyMatch,llPremium,llshare;
     Animation animation;
     CountDownTimer countDownTimer;
     Context context;
-    public String url = "http://192.168.1.39:9094/api/request/count/accept-request/22";
+    public String url = "http://192.168.14.120:9094/api/request/count/accept-request/";
     int[] images = {R.drawable.smartphone, R.drawable.documents, R.drawable.global};
     String[] text = {"phone Number to Connect Instantly", "100% Verified Biodatas", "Find Common connections"};
     private static final String ARG_PARAM1 = "param1";
@@ -83,6 +83,7 @@ public class DashBoardFragment extends Fragment {
         tvPremiumText = view.findViewById(R.id.tvPremiumText);
         tvLogout = view.findViewById(R.id.tvLogout);
         profilePic=view.findViewById(R.id.profilePic);
+        llshare=view.findViewById(R.id.llshare);
         tvDashboardUpgrade=view.findViewById(R.id.tvDashboardpgrade);
         RequestAccept = view.findViewById(R.id.RequestAccept);
         Visitors = view.findViewById(R.id.Visitors);
@@ -93,6 +94,7 @@ public class DashBoardFragment extends Fragment {
         context = getContext();
         sessionManager = new SessionManager(context);
         set();
+        Log.e("hey_member",sessionManager.getMemberId());
 
         final ValueAnimator animator = ValueAnimator.ofFloat(0.0f, 1.0f);
         animator.setRepeatCount(ValueAnimator.INFINITE);
@@ -155,11 +157,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://192.168.1.39:9094/account/help"));
+                intent.setData(Uri.parse("http://192.168.1.38:9094/account/help"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://192.168.1.39:9094/account/help"));
+                    intent.setData(Uri.parse("http://192.168.1.38:9094/account/help"));
                 }
             }
         });
@@ -169,11 +171,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://192.168.1.39:9094/account/help"));
+                intent.setData(Uri.parse("http://192.168.1.38:9094/account/help"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://192.168.1.39:9094/account/help"));
+                    intent.setData(Uri.parse("http://192.168.1.38:9094/account/help"));
                 }
             }
         });
@@ -183,11 +185,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("hhttp://192.168.1.39:9094/account/privacy-policy"));
+                intent.setData(Uri.parse("hhttp://192.168.1.38:9094/account/privacy-policy"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://192.168.1.39:9094/account/privacy-policy"));
+                    intent.setData(Uri.parse("http://192.168.1.38:9094/account/privacy-policy"));
                 }
             }
         });
@@ -197,11 +199,25 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://192.168.1.39:9094/account/term-condition"));
+                intent.setData(Uri.parse("http://192.168.1.38:9094/account/term-condition"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://192.168.1.39:9094/account/term-condition"));
+                    intent.setData(Uri.parse("http://192.168.1.38:9094/account/term-condition"));
+                }
+            }
+        });
+
+
+        llshare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=app.com.mymealdabba"));
+                try {
+                    startActivity(intent);
+                } catch (Exception e) {
+                    intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=app.com.mymealdabba"));
                 }
             }
         });
@@ -211,7 +227,7 @@ public class DashBoardFragment extends Fragment {
 
     private void getData() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                url, null, new Response.Listener<JSONObject>() {
+                url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf((response)));

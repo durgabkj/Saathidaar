@@ -34,8 +34,9 @@ public class NewMatchesFragment extends Fragment {
     FragmentNewMatchesBinding b;
     Animation animation;
     DataModelNewMatches data;
+    SessionManager sessionManager;
     NewMatchesAdapter adapter;
-    public String MyMatchUrl = Utils.memberUrl + "new/matches/22";
+    public String MyMatchUrl = Utils.memberUrl + "new/matches/";
     NewMatchesAdapter newMatchesAdapter;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -75,6 +76,7 @@ public class NewMatchesFragment extends Fragment {
         b = FragmentNewMatchesBinding.inflate(getLayoutInflater());
         viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
         context = getContext();
+        sessionManager=new SessionManager(context);
         animation = AnimationUtils.loadAnimation(context, R.anim.move);
         b.llCard.startAnimation(animation);
         getData("");
@@ -96,7 +98,7 @@ public class NewMatchesFragment extends Fragment {
 
     public void getData(String id) {
          JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                MyMatchUrl, null, new Response.Listener<JSONObject>() {
+                MyMatchUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 b.srlRecycleViewNewMatch.setRefreshing(false);

@@ -23,12 +23,37 @@
         app:cardPreventCornerOverlap="true"
         android:layout_margin="3dp">
 
-
+        <!--            android:alpha="0.2"-->
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
+
             android:src="@drawable/local" />
+
+<!--        <FrameLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_vertical|center"-->
+<!--            >-->
+<!--            -->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/llLockImage"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/gray_transparent_bg"-->
+<!--                    >-->
+
+<!--                    <androidx.appcompat.widget.AppCompatImageView-->
+<!--                        android:layout_width="100dp"-->
+<!--                        android:layout_height="100dp"-->
+<!--                        android:padding="3dp"-->
+<!--                        android:scaleType="centerCrop"-->
+<!--                        android:src="@drawable/ic_baseline_lock_person_24" />-->
+
+<!--                </LinearLayout>-->
+<!--        </FrameLayout>-->
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -194,7 +219,7 @@
                         android:shadowDx="1.5"
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
-                        android:maxLength="10"
+                        android:maxLength="22"
                         android:text="Mumbai"
                         android:textColor="@color/white"
                         android:fontFamily="@font/italic"
@@ -210,7 +235,7 @@
                         android:shadowDx="1.5"
                         android:fontFamily="@font/italic"
                         android:shadowDy="1.3"
-                        android:maxLength="25"
+                        android:maxLength="10"
                         android:shadowRadius="1.6"
                         android:text="Junior software Developer"
                         android:textColor="@color/white"

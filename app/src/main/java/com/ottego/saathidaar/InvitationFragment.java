@@ -32,7 +32,7 @@ public class InvitationFragment extends Fragment {
     Context context;
     String member_Id;
     SessionManager sessionManager;
-    public String InvitationUrl = "http://192.168.1.39:9094/api/request/invitations/get/all/22";
+    public String InvitationUrl = "http://192.168.14.120:9094/api/request/invitations/get/all/";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -89,7 +89,7 @@ public class InvitationFragment extends Fragment {
     public void getData(String id) {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                InvitationUrl, null, new Response.Listener<JSONObject>() {
+                InvitationUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 b.srlRecycleViewInvitation.setRefreshing(false);

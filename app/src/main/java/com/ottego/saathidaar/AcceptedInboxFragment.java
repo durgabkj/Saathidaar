@@ -35,7 +35,7 @@ public class AcceptedInboxFragment extends Fragment {
     DataModelInbox data;
     String member_id;
 
-    public String InvitationAcceptUrl = "http://192.168.1.39:9094/api/request/accepted/get/all/22";
+    public String InvitationAcceptUrl = "http://192.168.14.120:9094/api/request/accepted/get/all/";
     FragmentAcceptedInboxBinding b;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -84,7 +84,7 @@ public class AcceptedInboxFragment extends Fragment {
     private void getData() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                InvitationAcceptUrl, null, new Response.Listener<JSONObject>() {
+                InvitationAcceptUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 b.srlRecycleViewAcceptInvitation.setRefreshing(false);

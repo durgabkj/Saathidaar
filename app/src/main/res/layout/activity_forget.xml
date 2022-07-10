@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/forgetpass"
-        android:layout_margin="30dp"
+        android:layout_margin="20dp"
         android:layout_gravity="center"/>
 
     <TextView
@@ -64,9 +64,8 @@
         android:layout_gravity="center"
         android:textSize="15sp"
         android:fontFamily="@font/italic"/>
-
     <EditText
-        android:id="@+id/etForgetEmailID"
+        android:id="@+id/etForgetPhone"
         style="@style/PersonalDataTextView"
         android:layout_width="300dp"
         android:layout_height="50dp"
@@ -74,9 +73,41 @@
         android:layout_marginTop="30dp"
         android:textColorHint="@color/colorPrimary"
         android:background="@drawable/edt_text_border"
-        android:drawableStart="@drawable/ic_baseline_email_24"
+        android:drawableStart="@drawable/ic_baseline_stay_primary_portrait_24"
         android:fontFamily="@font/italic"
-        android:hint="Email ID"
+        android:hint="Phone"
+        android:inputType="text" />
+
+
+    <TextView
+        android:id="@+id/btnForgetPassResend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:fontFamily="@font/italic"
+        android:text="Resend OTP"
+        android:padding="8dp"
+        android:layout_marginRight="55dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16dp"
+        android:textStyle="normal" />
+
+
+    <EditText
+        android:id="@+id/etOTP"
+        style="@style/PersonalDataTextView"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_marginTop="30dp"
+        android:textColorHint="@color/colorPrimary"
+        android:background="@drawable/edt_text_border"
+ android:maxLength="4"
+
+        android:drawableStart="@drawable/ic_baseline_key_24"
+        android:fontFamily="@font/italic"
+        android:hint="Enter OTP"
         android:inputType="text" />
 
     <TextView
@@ -90,6 +121,24 @@
         android:background="@drawable/gradient_button"
         android:textAlignment="center"
         android:text="Submit"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="normal" />
+
+
+    <TextView
+        android:id="@+id/btnForgetPassVerify"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:padding="14dp"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/italic"
+        android:background="@drawable/gradient_button"
+
+        android:text="Verify"
         android:textColor="@color/white"
         android:textSize="16dp"
         android:textStyle="normal" />

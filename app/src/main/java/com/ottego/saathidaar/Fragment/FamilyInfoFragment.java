@@ -22,6 +22,7 @@ import com.ottego.saathidaar.FamilyProfileActivity;
 import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.MySingleton;
 import com.ottego.saathidaar.ProfileEditPersonalActivity;
+import com.ottego.saathidaar.SessionManager;
 import com.ottego.saathidaar.Utils;
 import com.ottego.saathidaar.databinding.FragmentFamilyInfoBinding;
 
@@ -33,7 +34,8 @@ public class FamilyInfoFragment extends Fragment {
 FragmentFamilyInfoBinding b;
     MemberProfileModel model;
     Context context;
-    public static String url = Utils.memberUrl + "get-details/11";
+    SessionManager sessionManager;
+    public static String url = Utils.memberUrl + "my-profile/";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -73,6 +75,7 @@ FragmentFamilyInfoBinding b;
         b = FragmentFamilyInfoBinding.inflate(inflater, container, false);
         context=getContext();
         listener();
+        sessionManager=new SessionManager(context);
         getMemberData();
         return b.getRoot();
     }
@@ -89,9 +92,8 @@ FragmentFamilyInfoBinding b;
     }
 
     private void getMemberData() {
-        Log.e("url", url);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                url, null, new Response.Listener<JSONObject>() {
+                url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf(response));
@@ -124,15 +126,21 @@ FragmentFamilyInfoBinding b;
     }
 
     private void setData() {
-        b.tvUserFatherStatus.setText(model.father_status);
-        b.tvUserMotherStatus.setText(model.marital_status);
-        b.tvUserFamilyLocation.setText(model.family_location);
-        b.tvUserNativePlace.setText(model.native_place);
-        int brother=(Integer.parseInt(model.married_male) + Integer.parseInt(model.unmarried_male));
-        int sister=(Integer.parseInt(model.married_female) + Integer.parseInt(model.unmarried_female));
-        b.tvUserBrothers.setText(brother+","+model.married_male+" : Married"+","+model.unmarried_male+" : Unmarried");
-        b.tvUserSisters.setText(sister+","+model.married_female+" : Married"+","+model.unmarried_female+" : Unmarried");
-        b.tvUserFamilyType.setText(model.family_type);
-        b.tvUserFamilyAffluence.setText(model.family_affluence);
+        if(model!=null)
+        {
+            b.tvUserFatherStatus.setText(model.father_status);
+            b.tvUserMotherStatus.setText(model.marital_status);
+            b.tvUserFamilyLocation.setText(model.family_location);
+            b.tvUserNativePlace.setText(model.native_place);
+//            int brother=(Integer.parseInt(model.married_male) + Integer.parseInt(model.unmarried_male));
+//            int sister=(Integer.parseInt(model.married_female) + Integer.parseInt(model.unmarried_female));
+//            b.tvUserBrothers.setText(brother+","+model.married_male+" : Married"+","+model.unmarried_male+" : Unmarried");
+//            b.tvUserSisters.setText(sister+","+model.married_female+" : Married"+","+model.unmarried_female+" : Unmarried");
+            b.tvUserFamilyType.setText(model.family_type);
+            b.tvUserFamilyAffluence.setText(model.family_affluence);
+
+        }
+
+
     }
 }

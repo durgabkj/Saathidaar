@@ -34,12 +34,13 @@ import java.util.Map;
 public class FamilyProfileActivity extends AppCompatActivity {
     ActivityFamilyProfileBinding b;
     Context context;
-    public String url = Utils.memberUrl + "app/family-details/update/22";
+    public String url = Utils.memberUrl + "app/family-details/update/";
     String fatherStatus = "";
     String motherStatus = "";
     String companyNameF = "";
     String designationF = "";
     String natureBusinessF = "";
+    SessionManager sessionManager;
     String companyNameM = "";
     String designationM = "";
     String natureBusinessM = "";
@@ -58,7 +59,7 @@ public class FamilyProfileActivity extends AppCompatActivity {
         b = ActivityFamilyProfileBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
         context = FamilyProfileActivity.this;
-
+sessionManager=new SessionManager(context);
         Bundle bundle = getIntent().getExtras();
         String data = bundle.getString("data");
         model = new Gson().fromJson(data, MemberProfileModel.class);
@@ -590,7 +591,7 @@ b.etFStatus.addTextChangedListener(new TextWatcher() {
         params.put("unmarried_female", unMarriedSister);
 
         Log.e("params", String.valueOf(params));
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url+sessionManager.getMemberId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
