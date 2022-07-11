@@ -9,7 +9,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
@@ -52,12 +51,14 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     String callTime = "";
     String displatOption = "";
     public String url = Utils.memberUrl + "app/professional-details/update/";
-    public String countryUrl = Utils.cityUrl + "country";
-    public String stateUrl = Utils.cityUrl + "state-name/by/country-name/";
-    public String cityUrl = Utils.cityUrl + "city-name/by/state-name/";
+    public String countryUrl = Utils.location + "country";
+    public String stateUrl = Utils.location + "state-name/by/country-name/";
+    public String cityUrl = Utils.location + "city-name/by/state-name/";
     ArrayList<String> countryList = new ArrayList<>();
 
     String[] stringArray =new String[0];
+    String[] stringArray1 =new String[0];
+    String[] stringArray2 =new String[0];
     ArrayAdapter<String> countryAdapter;
     ArrayList<String> stateList = new ArrayList<>();
     ArrayAdapter<String> stateAdapter;
@@ -141,8 +142,10 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
                         JSONArray jsonArray = response.getJSONArray("cities");
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String city = jsonObject1.getString("city_name");
                             cityList.add(city);
                             Log.e("city-list", String.valueOf(cityList));
+                            stringArray2 = cityList.toArray(new String[cityList.size()]);
                         }
                     }
 //                    cityAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, cityList);
@@ -175,7 +178,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 countryName = b.etCountry.getText().toString().trim();
                 stateList.clear();
-                stateList(stateUrl);
+                stateList();
             }
 
             @Override
@@ -185,7 +188,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
         });
     }
 
-    private void stateList(String stateUrl) {
+    private void stateList() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 stateUrl + countryName, null, new Response.Listener<JSONObject>() {
             @Override
@@ -198,8 +201,10 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String state = jsonObject1.getString("state_name");
-                            stateList.add(state);
-                            Log.e("state-list", String.valueOf(stateList));
+                           stateList.add(state);
+                            Log.e("state-list Professional", String.valueOf(state));
+                         //   stringArray1 = new String[]{state};
+                             stringArray1 = stateList.toArray(new String[stateList.size()]);
                         }
                     }
 //                    stateAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, stateList);
@@ -387,7 +392,6 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
         });
 
 
-
     }
 
     private void UserWorkingWith() {
@@ -520,6 +524,128 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
 
             }
         });
+
+        final int[] checkedItem1 = {-1};
+        b.etState.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(stringArray1, checkedItem1[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        b.etState.setText(stringArray1[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+
+            }
+        });
+
+
+        final int[] checkedItem2 = {-1};
+        b.etCity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(stringArray2, checkedItem2[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        b.etCity.setText(stringArray2[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+
+            }
+        });
+
 
     }
     private void submitForm() {

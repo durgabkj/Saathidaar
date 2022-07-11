@@ -47,6 +47,15 @@ public class ForgetActivity extends AppCompatActivity {
     }
 
     private void listener() {
+
+        b.forgetPass.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
         b.btnForgetPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,8 +85,8 @@ public class ForgetActivity extends AppCompatActivity {
                         Log.e("response", String.valueOf(response));
 
                         try {
-                            String code = response.getString("results");
-                            if (code.equalsIgnoreCase("1")) {
+                            String code = response.getString("message");
+                            if (code.equalsIgnoreCase("OTP verified success")) {
                                 update();
                                 Toast.makeText(context, "your password has been Updated on registered Email", Toast.LENGTH_SHORT).show();
 //                                startActivity(intent);
@@ -110,11 +119,11 @@ public class ForgetActivity extends AppCompatActivity {
         Map<String, String> params = new HashMap<String, String>();
         params.put("phone", phone);
         Log.e("params", String.valueOf(params));
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, OtpVerifyUrl, new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,updatepass, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.e("response", String.valueOf(response));
+                        Log.e(" update password response", String.valueOf(response));
                     }
                 },
                 new Response.ErrorListener() {
@@ -167,7 +176,7 @@ public class ForgetActivity extends AppCompatActivity {
     }
 
     private void submit() {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "please wait....", false, false);
         Map<String, String> params = new HashMap<String, String>();
         params.put("phone", phone);
         Log.e("params", String.valueOf(params));
@@ -178,16 +187,17 @@ public class ForgetActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         Log.e("response", String.valueOf((response)));
                         try {
-                            String code = response.getString("results");
+                            String code = response.getString("result");
                             if (code.equalsIgnoreCase("1")) {
                                 b.etForgetPhone.setVisibility(View.GONE);
                                 b.btnForgetPassResend.setVisibility(View.GONE);
                                 b.btnForgetPass.setVisibility(View.GONE);
 
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "OTP sent successfully", Toast.LENGTH_SHORT).show();
 
                                 b.etOTP.setVisibility(View.VISIBLE);
                                 b.btnForgetPassVerify.setVisibility(View.VISIBLE);
+                                b.btnForgetPassResend.setVisibility(View.VISIBLE);
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }

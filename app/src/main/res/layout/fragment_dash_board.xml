@@ -232,7 +232,7 @@
 
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Request Accept"
+                                android:text="Request Accepted"
                                 android:textSize="14sp"
                                 android:fontFamily="@font/italic"
                                 android:textStyle="bold" />
@@ -339,6 +339,25 @@
 
 
                 </LinearLayout>
+
+
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="20dp"
+                    android:elevation="8dp"
+                    >
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:background="@drawable/white_button_bg"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/wedding" />
+                </androidx.cardview.widget.CardView>
 
 
                 <com.google.android.material.card.MaterialCardView
@@ -476,7 +495,7 @@ android:textSize="14dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/italic"
-                                android:text="Term &amp; Condition"
+                                android:text="Terms &amp; Conditions"
                                 android:textSize="14dp"
                                 android:drawablePadding="8dp"
                                 android:drawableStart="@drawable/ic_baseline_library_books_24"
@@ -500,72 +519,12 @@ android:textSize="14dp"
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:cardCornerRadius="20dp"
-                    android:elevation="8dp"
-                    >
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:background="@drawable/white_button_bg"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/wedding" />
-                </androidx.cardview.widget.CardView>
 
 
 
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/mcvQuickLinks"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginEnd="3dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardElevation="2dp"
-                    app:cardMaxElevation="4dp"
-                    app:cardPreventCornerOverlap="true">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
 
-                        <LinearLayout
-                            android:id="@+id/llCustomerSupport"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="15dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:drawableStart="@drawable/ic_baseline_power_settings_new_24"
-                                android:drawablePadding="8dp"
-                                android:fontFamily="@font/italic"
-                                android:text="Customer Support"
-
-                                />
-
-                            <TextView
-                                android:id="@+id/tvLogout"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="Logout"
-                                android:fontFamily="@font/italic"
-                                android:textColor="@color/colorPrimary"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
 
 
 
@@ -596,9 +555,11 @@ android:textSize="14dp"
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:drawableStart="@drawable/ic_baseline_star_24"
+                                android:drawableStart="@drawable/ic_baseline_star_rate_24"
                                 android:drawablePadding="8dp"
                                 android:fontFamily="@font/italic"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="bold"
                                 android:text="Rate Us"
 
                                 />
@@ -607,101 +568,139 @@ android:textSize="14dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:text="Tap to go playStore"
+                                android:text="Tap to Rate App"
                                 android:fontFamily="@font/italic"
-                                android:textColor="@color/colorPrimary"
-                                android:textStyle="bold" />
+                              />
                         </LinearLayout>
 
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcvQuickLinks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardElevation="2dp"
+                    app:cardMaxElevation="4dp"
+                    app:cardPreventCornerOverlap="true">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/tvLogout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="15dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_baseline_power_settings_new_24"
+                                android:drawablePadding="8dp"
+                                android:text="Logout"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/italic"
+                                android:textColor="@color/colorPrimary"
+
+                                />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
                 <View
                     android:layout_width="match_parent"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:padding="10dp"
                     android:background="#853C3C3C"
-                    android:layout_height="0dp" />
+                    android:layout_height="1dp" />
 
 
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#4267B2"
-                        android:fontFamily="@font/italic"
-                        android:textSize="9sp"
-                        android:text=" HELLO  | "/>
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    >-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textColor="#4267B2"-->
+<!--                        android:fontFamily="@font/italic"-->
+<!--                        android:textSize="9sp"-->
+<!--                        android:text=" HELLO  | "/>-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#4267B2"
-                        android:textSize="9sp"
-                        android:fontFamily="@font/italic"
-                        android:text=" Home  | "/>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textColor="#4267B2"-->
+<!--                        android:textSize="9sp"-->
+<!--                        android:fontFamily="@font/italic"-->
+<!--                        android:text=" Home  | "/>-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#4267B2"
-                        android:textSize="9sp"
-                        android:fontFamily="@font/italic"
-                        android:text=" About US  | "/>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textColor="#4267B2"-->
+<!--                        android:textSize="9sp"-->
+<!--                        android:fontFamily="@font/italic"-->
+<!--                        android:text=" About US  | "/>-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#4267B2"
-                        android:textSize="9sp"
-                        android:fontFamily="@font/italic"
-                        android:text=" term &amp; Condition"/>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textColor="#4267B2"-->
+<!--                        android:textSize="9sp"-->
+<!--                        android:fontFamily="@font/italic"-->
+<!--                        android:text=" term &amp; Condition"/>-->
 
 
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#4267B2"
-                        android:textSize="9sp"
-                        android:fontFamily="@font/italic"
-                        android:text=" Link  | "/>
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    >-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textColor="#4267B2"-->
+<!--                        android:textSize="9sp"-->
+<!--                        android:fontFamily="@font/italic"-->
+<!--                        android:text=" Link  | "/>-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#4267B2"
-                        android:textSize="9sp"
-                        android:fontFamily="@font/italic"
-                        android:text=" Member Login  | "/>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textColor="#4267B2"-->
+<!--                        android:textSize="9sp"-->
+<!--                        android:fontFamily="@font/italic"-->
+<!--                        android:text=" Member Login  | "/>-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#4267B2"
-                        android:textSize="9sp"
-                        android:fontFamily="@font/italic"
-                        android:text=" Member SinUp  | "/>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textColor="#4267B2"-->
+<!--                        android:textSize="9sp"-->
+<!--                        android:fontFamily="@font/italic"-->
+<!--                        android:text=" Member SinUp  | "/>-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
                 <TextView
                     android:layout_width="wrap_content"

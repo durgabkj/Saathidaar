@@ -301,7 +301,7 @@ sessionManager=new SessionManager(context);
                 // the user in the form of list
                 // so that user can select the item from
                 // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
-                String[] fatherAndMotherStatusList = getResources().getStringArray(R.array.FatherAndStatus);
+                String[] fatherAndMotherStatusList = getResources().getStringArray(R.array.MotherAndStatus);
                 // the function setSingleChoiceItems is the function which builds
                 // the alert dialog with the single item selection
                 alertDialog.setSingleChoiceItems(fatherAndMotherStatusList  , checkedItem1[0], new DialogInterface.OnClickListener() {
@@ -397,8 +397,6 @@ sessionManager=new SessionManager(context);
 
             }
         });
-
-
 b.etFStatus.addTextChangedListener(new TextWatcher() {
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -445,9 +443,6 @@ b.etFStatus.addTextChangedListener(new TextWatcher() {
 
     }
 });
-
-
-
 
 }
 

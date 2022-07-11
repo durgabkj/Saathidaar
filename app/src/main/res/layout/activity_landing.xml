@@ -138,11 +138,11 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <EditText
                         android:id="@+id/txtfirstname"
-                        android:layout_width="140dp"
+                        android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/edt_text_border"
@@ -160,9 +160,10 @@
 
                     <EditText
                         android:id="@+id/txtlastname"
-                        android:layout_width="140dp"
+                        android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_weight="1"
+
                         android:background="@drawable/edt_text_border"
                         android:drawableStart="@drawable/ic_baseline_user_24"
                         android:drawablePadding="8dp"
@@ -201,26 +202,26 @@
                     android:padding="8dp"
                     android:textColor="@color/black" />
 
-                <EditText
-                    android:id="@+id/txtpassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edt_text_border"
-                    android:drawableStart="@drawable/ic_baseline_lock_24"
-                    android:drawablePadding="8dp"
-                    android:drawableTint="@color/black"
-                    android:fontFamily="@font/italic"
-                    android:hint="Password"
-                    android:padding="8dp"
-                    android:textColor="@color/black" />
+<!--                <EditText-->
+<!--                    android:id="@+id/txtpassword"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:background="@drawable/edt_text_border"-->
+<!--                    android:drawableStart="@drawable/ic_baseline_lock_24"-->
+<!--                    android:drawablePadding="8dp"-->
+<!--                    android:drawableTint="@color/black"-->
+<!--                    android:fontFamily="@font/italic"-->
+<!--                    android:hint="Password"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:textColor="@color/black" />-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_edit_text"
+                    android:background="@drawable/spinner_border"
                     android:orientation="vertical"
                     tools:ignore="UselessParent">
 
@@ -230,6 +231,7 @@
                         android:layout_height="40dp"
                         android:clickable="true"
                         android:focusable="true"
+
                         android:focusableInTouchMode="false"
                         android:fontFamily="@font/italic"
                         android:importantForAutofill="no"
@@ -411,17 +413,43 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal">
+                    android:layout_width="fill_parent"
+                   android:gravity="center"
+                    android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/tvCompany"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="30dp"
-                        android:text="HELLO | Home | About Us | Terms and Conditions|"
+                        android:text="Company |"
+                        android:textColor="@color/black"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:id="@+id/tvHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_toRightOf="@id/tvCompany"
+                        android:text=" Home |"
+                        android:textColor="@color/black"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:id="@+id/tvCondition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_toRightOf="@id/tvHome"
+                        android:text=" Terms and Conditions"
                         android:textColor="@color/black"
                         android:textSize="10dp" />
                 </RelativeLayout>

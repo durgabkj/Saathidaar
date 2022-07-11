@@ -137,21 +137,30 @@
         <entry key="..\:/Saathidaar/multipleselectionspinner/src/main/res/drawable/ic_check_black_24dp.xml" value="0.1" />
         <entry key="..\:/Saathidaar/multipleselectionspinner/src/main/res/layout/multi_popup_menu_item.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/multipleselectionspinner/src/main/res/layout/popup_menu.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/bg_edit_text.xml" value="0.17" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/ic_baseline_library_books_24.xml" value="0.166" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/ic_baseline_live_help_24.xml" value="0.166" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/ic_baseline_lock_person_24.xml" value="0.152" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/ic_baseline_power_settings_new_24.xml" value="0.166" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/ic_baseline_privacy_tip_24.xml" value="0.166" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/ic_baseline_star_24.xml" value="0.166" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/ic_baseline_star_rate_24.xml" value="0.1565" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/spinner_border.xml" value="0.17" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_family_profile.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_forget.xml" value="0.264" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_gallery.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_internet_connection.xml" value="0.23802083333333332" />
-        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_landing.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_landing.xml" value="0.264" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_otp_verification.xml" value="0.23802083333333332" />
-        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_dash_board.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_professional_detail_edit.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_profile_edit_personal.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_dash_board.xml" value="0.264" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_family_info.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_horoscope.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_matches.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_my_match.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_my_profile.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_partner_preference.xml" value="0.264" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_personal_info.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_professional_info.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_upgrade.xml" value="0.23802083333333332" />

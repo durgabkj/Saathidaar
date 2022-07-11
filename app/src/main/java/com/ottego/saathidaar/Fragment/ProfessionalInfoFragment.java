@@ -30,11 +30,12 @@ import org.json.JSONObject;
 
 
 public class ProfessionalInfoFragment extends Fragment {
-    public static String url = Utils.memberUrl + "my-profile/";
+    public  String url = Utils.memberUrl + "my-profile/";
    FragmentProfessionalInfoBinding b;
     Context context;
     SessionManager sessionManager;
     MemberProfileModel model;
+    String memberId;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -71,6 +72,7 @@ public class ProfessionalInfoFragment extends Fragment {
         b= FragmentProfessionalInfoBinding.inflate(getLayoutInflater());
         context=getContext();
         sessionManager=new SessionManager(context);
+        memberId=sessionManager.getMemberId();
         listener();
         getMemberData();
         return b.getRoot();
@@ -79,7 +81,7 @@ public class ProfessionalInfoFragment extends Fragment {
     private void getMemberData() {
         Log.e("url", url);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                url+memberId, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf(response));

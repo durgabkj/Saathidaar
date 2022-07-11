@@ -67,11 +67,11 @@ public class PartnerPreferenceFragment extends Fragment {
     ArrayList<Integer> MaritalStatusList = new ArrayList<>();
     String[] MaritalStatusArray = {"Never Married", "Divorce", "Widowed", "Awaiting Divorce", "Married"};
     public String getPreference=Utils.memberUrl+"preference/get/";
-    public String ReligionUrl = "http://192.168.14.120:9094/api/get/religion-name";
-    public String countryUrl = "http://192.168.14.120:9094/api/get/country";
-    public String castUrl = "http://192.168.14.120:9094/api/get/all/cast";
-    public String stateUrl = "http://192.168.14.120:9094/api/get/state";
-    public String cityUrl = "http://192.168.14.120:9094/api/get/all/city";
+    public String ReligionUrl = "http://192.168.1.36:9094/api/get/religion-name";
+    public String countryUrl = "http://192.168.1.36:9094/api/get/country";
+    public String castUrl = "http://192.168.1.36:9094/api/get/all/cast";
+    public String stateUrl = "http://192.168.1.36:9094/api/get/state";
+    public String cityUrl = "http://192.168.1.36:9094/api/get/all/city";
 public String updatePreference=Utils.memberUrl+"preference/update/";
     // Initialize variables
     Spinner spMin, spMax, spFromHeight, spToHeight, UserAnnualIncome, tvEditDietPreference, tvEditProfile;

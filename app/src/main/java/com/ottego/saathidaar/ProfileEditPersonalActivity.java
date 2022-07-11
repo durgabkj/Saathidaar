@@ -57,7 +57,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 // Permissions for accessing the storage
     private static final int SELECT_PICTURE = 100;
     private static final String TAG = "SelectImageActivity";
-    public String ReligionUrl = "http://192.168.14.120:9094/api/get/religion-name";
+    public String ReligionUrl = "http://192.168.1.36:9094/api/get/religion-name";
     public String Updateurl = Utils.memberUrl + "app/basic-lifestyles/update/";
     SessionManager sessionManager;
     ActivityProfileEditPersonalBinding b;
@@ -81,7 +81,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     private String format = "";
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
-    String name = "";
+    String gender = "";
     String email = "";
     String description = "";
     String age = "";
@@ -102,7 +102,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     String selectedReligion;
     String myMaritalS;
     MemberProfileModel model;
-
+    String memberId;
     public static void openAppSettings(final Activity context) {
         if (context == null) {
             return;
@@ -128,6 +128,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         String data = bundle.getString("data");
         model = new Gson().fromJson(data, MemberProfileModel.class);
 
+         memberId=sessionManager.getMemberId();
+
         Log.e("personal data", data);
 
 
@@ -145,6 +147,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         religionList();
         communityList();
         dietList();
+        gender();
         setData();
 
     }
@@ -188,7 +191,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
                 // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.height);
+                alertDialog.setIcon(R.drawable.food);
 
                 // title of the alert dialog
                 alertDialog.setTitle("Choose an Item");
@@ -212,6 +215,71 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
                         // now also update the TextView which previews the selected item
                         b.etDiet.setText(dietGroup[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+            }
+        });
+
+
+    }
+
+    private void gender() {
+
+        final int[] checkedItem = {-1};
+        b.etGender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.height);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose an Item");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] dietGroup = getResources().getStringArray(R.array.gender);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(dietGroup, checkedItem[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        b.etGender.setText(dietGroup[which]);
 
                         // when selected an item the dialog should be closed with the dismiss method
                         dialog.dismiss();
@@ -385,7 +453,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
     private boolean checkForm() {
 //        name = b.etAddUserName.getText().toString().trim();
-//        email = b.etAddUsermail.getText().toString().trim();
+       gender = b.etGender.getText().toString().trim();
         description = b.etAddUserDescription.getText().toString().trim();
         Dob = b.mbDatePicker.getText().toString().trim();
         Marital_status = b.etMaritalStatus.getText().toString().trim();
@@ -569,15 +637,16 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         params.put("caste_name", cast);
         params.put("sub_caste_name", subCast);
         params.put("gothra", Gothram);
+        params.put("gender", gender);
         params.put("lifestyles", Diet);
         params.put("no_of_children", child);
 
         Log.e("params", String.valueOf(params));
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Updateurl+sessionManager.getMemberId(), new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Updateurl+memberId, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.e("response", String.valueOf((response)));
+                        Log.e(" update personal detail response", String.valueOf((response)));
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
@@ -678,7 +747,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
     private void communityData() {
         String selectedCommunity = b.tvUserReligion.getText().toString().trim();
-        String url = "http://192.168.14.120:9094/api/get/cast-name/by/religion_name/" + selectedCommunity;
+        String url = "http://192.168.1.36:9094/api/get/cast-name/by/religion_name/" + selectedCommunity;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url, null, new Response.Listener<JSONObject>() {
@@ -1039,7 +1108,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
                 // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.height);
+                alertDialog.setIcon(R.drawable.blood);
 
                 // title of the alert dialog
                 alertDialog.setTitle("Choose an Item");
@@ -1259,7 +1328,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
                 // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+                alertDialog.setIcon(R.drawable.ic_age);
 
                 // title of the alert dialog
                 alertDialog.setTitle("Choose an Item");

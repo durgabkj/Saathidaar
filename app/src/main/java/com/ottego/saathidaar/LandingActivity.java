@@ -56,7 +56,7 @@ public class LandingActivity extends AppCompatActivity {
 
             listener();
 
-            String[] items = new String[]{"Select","Self", "Sibling", "Parents", "Relatives", "Friends", "Saathidar.com", "Franchies"};
+            String[] items = new String[]{"Profile created By","Self", "Sibling", "Parents", "Relatives", "Friends", "Saathidaar.com", "Franchies"};
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
             binding.spinner1.setAdapter(adapter);
 
@@ -126,7 +126,7 @@ public class LandingActivity extends AppCompatActivity {
             lastName = binding.txtlastname.getText().toString().trim();
             phone = binding.txtmobile.getText().toString().trim();
             email = binding.txtemail.getText().toString().trim();
-            password = binding.txtpassword.getText().toString().trim();
+       //     password = binding.txtpassword.getText().toString().trim();
             profilecreatedby = binding.spinner1.getSelectedItem().toString();
 
 
@@ -184,19 +184,19 @@ public class LandingActivity extends AppCompatActivity {
                 binding.txtemail.setError(null);
             }
 
-            if (password.isEmpty()) {
-                binding.txtpassword.setError("Please enter your password");
-                binding.txtpassword.setFocusableInTouchMode(true);
-                binding.txtpassword.requestFocus();
-                return false;
-            } else if (password.length() < 6) {
-                binding.txtpassword.setError("password must be at least 6 character long");
-                binding.txtpassword.setFocusableInTouchMode(true);
-                binding.txtpassword.requestFocus();
-                return false;
-            } else {
-                binding.txtpassword.setError(null);
-            }
+//            if (password.isEmpty()) {
+//                binding.txtpassword.setError("Please enter your password");
+//                binding.txtpassword.setFocusableInTouchMode(true);
+//                binding.txtpassword.requestFocus();
+//                return false;
+//            } else if (password.length() < 6) {
+//                binding.txtpassword.setError("password must be at least 6 character long");
+//                binding.txtpassword.setFocusableInTouchMode(true);
+//                binding.txtpassword.requestFocus();
+//                return false;
+//            } else {
+//                binding.txtpassword.setError(null);
+//            }
 
             if (binding.spinner1.getSelectedItem().toString().trim() == "select One") {
                 Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
@@ -214,7 +214,7 @@ public class LandingActivity extends AppCompatActivity {
             params.put("gender", gender);
             params.put("phone", phone);
             params.put("role", Utils.role_user);
-            params.put("password", password);
+           // params.put("password", password);
             params.put("profilecreatedby", profilecreatedby);
             Log.e("params", String.valueOf(params));
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, registerurl, new JSONObject(params),

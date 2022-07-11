@@ -34,7 +34,7 @@ public class ShortListFragment extends Fragment {
     SessionManager sessionManager;
     DataModelNewMatches data;
     String member_id;
-    public String ShortListUrl ="http://192.168.14.120:9094/api/shortlist/get/all/22";
+    public String ShortListUrl ="http://192.168.1.36:9094/api/shortlist/get/all/";
     FragmentShortListBinding b;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -71,6 +71,7 @@ public class ShortListFragment extends Fragment {
         // Inflate the layout for this fragment
        b=FragmentShortListBinding.inflate(getLayoutInflater());
        context=getContext();
+       sessionManager=new SessionManager(context);
         getData();
         listener();
 
@@ -89,7 +90,7 @@ public class ShortListFragment extends Fragment {
     private void getData() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                ShortListUrl, null, new Response.Listener<JSONObject>() {
+                ShortListUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 b.srlRecycleViewShortList.setRefreshing(false);

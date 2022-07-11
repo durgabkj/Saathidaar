@@ -37,7 +37,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
     UpgradeModel model;
     SessionManager sessionManager;
     Context context;
-    public String payment = "http://192.168.14.120:9094/upgrade/payment-pay/";
+    public String payment = "http://192.168.1.36:9094/upgrade/payment-pay/";
     private static final String TAG = "Razorpay";
     Checkout checkout;
     RazorpayClient razorpayClient;
@@ -197,12 +197,12 @@ sessionManager=new SessionManager(context);
              *     Invoice Payment
              *     etc.
              */
-            options.put("description", order_reference_no);
-            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
-            options.put("order_id", order.get("id"));
-            options.put("currency", "INR");
-            options.put("prefill.contact", sessionManager.getPhone1());
-            options.put("prefill.email",sessionManager.getEmail() );
+//            options.put("description", order_reference_no);
+//            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
+//            options.put("order_id", order.get("id"));
+//            options.put("currency", "INR");
+//            options.put("prefill.contact", sessionManager.getPhone1());
+//            options.put("prefill.email",sessionManager.getEmail());
 
             /**
              * Amount is always passed in currency subunits

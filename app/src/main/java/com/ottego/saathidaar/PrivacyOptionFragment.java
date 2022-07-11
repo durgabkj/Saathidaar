@@ -46,7 +46,7 @@ public class PrivacyOptionFragment extends Fragment {
     public String dobPrivacy = Utils.privacy + "dob";
     public String incomePrivacy = Utils.privacy + "annual-income";
 
-    public String getPrivacy = "http://192.168.14.120:9094/api/privacy/get/all/";
+    public String getPrivacy = "http://192.168.1.36:9094/api/privacy/get/all/";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -109,8 +109,9 @@ public class PrivacyOptionFragment extends Fragment {
 
     private void setData() {
 
-        if (model!=null)
+        if (model.data.size() > 0)
         {
+
             if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Visible to all Member")) {
                 b.radioButtonPhoneShowOnlyPMember.setChecked(true);
             } else if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Visible to all Premium Members")) {

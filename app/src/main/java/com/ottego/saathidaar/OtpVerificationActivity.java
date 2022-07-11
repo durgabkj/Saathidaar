@@ -57,7 +57,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.e("response", String.valueOf(response));
+                        Log.e(" otp receive response", String.valueOf(response));
 
                         try {
                             String code = response.getString("result");
@@ -132,7 +132,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.e("response", String.valueOf(response));
+                        Log.e(" otp verify response", String.valueOf(response));
 
                         try {
                             String code = response.getString("message");

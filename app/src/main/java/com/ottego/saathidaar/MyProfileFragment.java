@@ -116,7 +116,7 @@ public class MyProfileFragment extends Fragment {
 
         ProfileViewPager adapter = new ProfileViewPager(getChildFragmentManager());
         adapter.addFragment(new PersonalInfoFragment(), "Personal Info");
-        adapter.addFragment(new FamilyInfoFragment(), "family Info");
+        adapter.addFragment(new FamilyInfoFragment(), "Family Info");
         adapter.addFragment(new ProfessionalInfoFragment(), "Professional Info");
         viewPager.setAdapter(adapter);
     }

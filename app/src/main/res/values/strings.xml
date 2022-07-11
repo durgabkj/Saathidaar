@@ -106,9 +106,9 @@
         <item>Exact</item>
     </string-array>
 
-    <array name="initial_slider_values">
-        <item>21</item>
-        <item>26</item>
+    <array name="gender">
+        <item>male</item>
+        <item>female</item>
     </array>
     <string-array name="AgeFrom">
         <item>    18   </item>
@@ -246,7 +246,16 @@
         <item>Employed</item>
         <item>Business</item>
         <item>Not Employed</item>
-        <item>Pass Away</item>
+        <item>Passed Away</item>
+        <item>Retired</item>
+    </string-array>
+
+    <string-array name="MotherAndStatus">
+        <item>Employed</item>
+        <item>Business</item>
+        <item>Not Employed</item>
+        <item>House Wife</item>
+        <item>Passed Away</item>
         <item>Retired</item>
     </string-array>
 
@@ -285,7 +294,7 @@
     <string-array name="MaritalStatus">
         <item>Open to all</item>
         <item>Never Married</item>
-        <item>Divorce</item>
+        <item>Divorced</item>
         <item>Widowed</item>
         <item>Awaiting Divorce</item>
         <item>Married</item>
@@ -407,7 +416,7 @@
         <item>Defense / Civil Services</item>
         <item>Business / Self Employed</item>
         <item>Not Working</item>
-        <item>Engineering Diploma");</item>
+        <item>Engineering Diploma"</item>
     </string-array>
 
 </resources>

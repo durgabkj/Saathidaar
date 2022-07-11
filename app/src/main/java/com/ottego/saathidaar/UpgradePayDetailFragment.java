@@ -2,9 +2,6 @@ package com.ottego.saathidaar;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +12,7 @@ import com.ottego.saathidaar.Model.UpgradeModel;
 import com.ottego.saathidaar.databinding.FragmentUpgradePayDetailBinding;
 
 public class UpgradePayDetailFragment extends BottomSheetDialogFragment {
-FragmentUpgradePayDetailBinding b;
+    FragmentUpgradePayDetailBinding b;
     UpgradeModel model;
     Context context;
     private static final String ARG_PARAM1 = "param1";
@@ -38,6 +35,7 @@ FragmentUpgradePayDetailBinding b;
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     public int getTheme() {
         return com.google.android.material.R.style.Theme_Design_BottomSheetDialog;
@@ -56,15 +54,14 @@ FragmentUpgradePayDetailBinding b;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        b=FragmentUpgradePayDetailBinding.inflate(inflater, container, false);
-context=getContext();
+        b = FragmentUpgradePayDetailBinding.inflate(inflater, container, false);
+        context = getContext();
 
 
         String data = getArguments().getString("data");
         model = new Gson().fromJson(data, UpgradeModel.class);
-        return  b.getRoot();
+        return b.getRoot();
     }
-
 
 
 }

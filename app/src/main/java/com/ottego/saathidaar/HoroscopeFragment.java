@@ -1,24 +1,13 @@
 package com.ottego.saathidaar;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -30,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
+import com.ottego.multipleselectionspinner.MultipleSelection;
 import com.ottego.saathidaar.Model.HoroscopeModel;
 import com.ottego.saathidaar.databinding.FragmentHoroscopeBinding;
 
@@ -39,11 +29,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
 public class HoroscopeFragment extends Fragment {
-    public String countryUrl = Utils.cityUrl + "country";
+    public String countryUrl = Utils.location + "country";
     ArrayList<String> countryList = new ArrayList<>();
     ArrayAdapter<String> countryAdapter;
     FragmentHoroscopeBinding b;
@@ -309,13 +300,31 @@ sessionManager=new SessionManager(context);
         request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(request);
     }
+
     private void getCountry() {
+        b.acvCountry.setItems(getCountryItems());
+        b.acvCountry.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(View view, boolean isSelected, int position) {
+//                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onSelectionCleared() {
+                Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    // dropDown With Search
+    private List getCountryItems() {
+        ArrayList<String> countryList = new ArrayList<>();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 countryUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf(response));
-
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -324,12 +333,10 @@ sessionManager=new SessionManager(context);
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String country = jsonObject1.getString("country_name");
                             countryList.add(country);
-                            Log.e("Country-list", String.valueOf(countryList));
+                            Log.e("country-list", String.valueOf(countryList));
                         }
                     }
-                    countryAdapter = new ArrayAdapter<>(context, R.layout.searchable_dropdown_item, countryList);
-                    // set adapter
-                    b.acvCountry.setAdapter(countryAdapter);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -343,8 +350,11 @@ sessionManager=new SessionManager(context);
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
-
+//            alphabetsList.add(Character.toString(i));
+        return countryList;
     }
+
+
     private void setDropDownData() {
         String[] hour = getResources().getStringArray(R.array.Hour);
         ArrayAdapter aa = new ArrayAdapter(requireActivity(), R.layout.dropdown_item, hour);

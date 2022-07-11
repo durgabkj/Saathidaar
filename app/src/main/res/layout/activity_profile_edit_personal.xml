@@ -442,7 +442,43 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tvGender"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/italic"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Gender" />
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_edit_text"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+                <TextView
+                    android:id="@+id/etGender"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/italic"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:enabled="true"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:hint="select  Diet"
+                    android:editable="false"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/transparent_edittext_border"
+                    tools:ignore="Deprecated" />
+
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -480,7 +516,6 @@
                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                 android:fontFamily="@font/italic"
                 android:gravity="center_vertical"
-
                 android:textColor="@color/black"
                 android:hint="Select Mother Tongue"
                 android:padding="10dp" />
