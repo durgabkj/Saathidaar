@@ -17,6 +17,7 @@
         android:elevation="20dp"
         android:translationZ="20dp"
         android:textAlignment="center"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Caption"
         app:tabIndicatorHeight="0dp"
         app:tabIndicatorColor="@android:color/transparent"
         app:tabIndicatorGravity="stretch"

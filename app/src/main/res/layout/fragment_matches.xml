@@ -17,6 +17,7 @@
         android:translationZ="20dp"
         app:tabBackground="@drawable/tab_selector"
         app:tabGravity="fill"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Caption"
         app:tabIndicator="@null"
         app:tabIndicatorColor="@android:color/transparent"
         app:tabIndicatorGravity="stretch"

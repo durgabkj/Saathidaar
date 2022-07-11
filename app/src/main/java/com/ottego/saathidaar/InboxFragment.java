@@ -83,11 +83,6 @@ public class InboxFragment extends Fragment {
         b = FragmentInboxBinding.inflate(inflater, container, false);
 context=getContext();
 sessionManager=new SessionManager(context);
-//        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.fcvSathidarInbox,invitationFragment);
-//        fragmentTransaction.commit();
-//        listener();
 
         getDataCount();
         return b.getRoot();
@@ -155,6 +150,7 @@ sessionManager=new SessionManager(context);
         b.tlInbox.getTabAt(2).getOrCreateBadge().setNumber(Integer.parseInt(model.data.get(0).sent_request_count));
        badgeDrawable.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
        badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getActivity(),R.color.white));
+        badgeDrawable.setBadgeGravity(BadgeDrawable.TOP_END);
     }
 
 

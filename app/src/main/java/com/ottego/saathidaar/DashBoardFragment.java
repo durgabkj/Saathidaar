@@ -36,7 +36,7 @@ public class DashBoardFragment extends Fragment {
     TextView tvPremiumText, RequestAccept, Visitors, RequestSent,tvDashboardUpgrade;
     int position = 0;
     DataModelDashboard model;
-    LinearLayout llPremiumMatch,llMyMatch,llPremium,llshare,tvLogout;
+    LinearLayout llPremiumMatch,llMyMatch,llPremium,llshare,tvLogout,llRequestSent;
     Animation animation;
     CountDownTimer countDownTimer;
     Context context;
@@ -91,6 +91,7 @@ public class DashBoardFragment extends Fragment {
         llPremium = view.findViewById(R.id.llPremium);
         llPremiumMatch = view.findViewById(R.id.llPremiumMatch);
         RequestSent = view.findViewById(R.id.RequestSent);
+        llRequestSent=view.findViewById(R.id.llRequestSent);
         context = getContext();
         sessionManager = new SessionManager(context);
         set();
@@ -134,6 +135,14 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(context,GalleryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        llRequestSent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(context,TestActivity.class);
                 startActivity(intent);
             }
         });

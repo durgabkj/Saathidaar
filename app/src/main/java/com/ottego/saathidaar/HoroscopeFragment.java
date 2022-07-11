@@ -21,6 +21,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.multipleselectionspinner.MultipleSelection;
 import com.ottego.saathidaar.Model.HoroscopeModel;
+import com.ottego.saathidaar.Model.SessionModel;
 import com.ottego.saathidaar.databinding.FragmentHoroscopeBinding;
 
 import org.json.JSONArray;
@@ -249,7 +250,6 @@ sessionManager=new SessionManager(context);
     }
     private void submitForm() {
         Map<String, String> params = new HashMap<String, String>();
-
         params.put("country_of_birth", countryName);
         params.put("city_of_birth", cityName);
         params.put("time", time);
@@ -266,18 +266,14 @@ sessionManager=new SessionManager(context);
                         progressDialog.dismiss();
                         Log.e("response", String.valueOf((response)));
                         try {
-
                             if (response!=null) {
                                 Gson gson = new Gson();
                                 model = gson.fromJson(String.valueOf(response), HoroscopeModel.class);
+                                sessionManager.createHoroscope(model);
                                 b.cvShowDetails.setVisibility(View.VISIBLE);
                                 b.cvEditDetails.setVisibility(View.GONE);
                                 // getData(urlGetHoroscope);
                                 getData();
-                                //    Gson gson = new Gson();
-//                                     //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
-                                // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }

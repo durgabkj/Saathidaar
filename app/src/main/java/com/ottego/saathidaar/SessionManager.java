@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.ottego.saathidaar.Model.HoroscopeModel;
 import com.ottego.saathidaar.Model.SessionModel;
 import com.ottego.saathidaar.Model.SessionProfileDetailModel;
 
@@ -96,6 +97,15 @@ public class SessionManager {
     public static final String KEY_PRO_MOB = "contact_number";
     public static final String KEY_PRO_SUNCASTE = "subcaste";
 
+    //Horoscope
+
+    public static final String KEY_HOUR = "hours";
+    public static final String KEY_MINUTES = "minutes";
+    public static final String KEY_COUNTRY_B = "country_of_birth";
+    public static final String KEY_MANGLIK1 = "manglik";
+    public static final String KEY_TIME = "time";
+    public static final String KEY_TIME_STATUS = "time_status";
+    public static final String KEY_CITY_B = "city_of_birth";
 
     private static final String PREF_NAME = "userData";
     private static final String IS_LOGIN = "isLogin";
@@ -436,6 +446,20 @@ public class SessionManager {
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         _context.startActivity(i);
 
+    }
+
+
+
+
+    public void createHoroscope(HoroscopeModel model) {
+        editor.putBoolean(IS_LOGIN, true);
+        editor.putString(KEY_MEMBER_ID, model.hours);
+        editor.putString(KEY_FIRSTNAME, model.minutes);
+        editor.putString(KEY_LASTNAME, model.time_status);
+        editor.putString(KEY_PHONE1, model.manglik);
+        editor.putString(KEY_EMAIL1, model.city_of_birth);
+        editor.putString(KEY_ENABLE, model.country_of_birth);
+        editor.commit();
     }
 
 

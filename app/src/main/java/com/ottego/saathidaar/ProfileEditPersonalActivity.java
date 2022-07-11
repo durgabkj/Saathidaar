@@ -161,6 +161,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             b.etHeight.setText(model.height);
             b.etBloodGroup.setText(model.blood_group);
             b.etDiet.setText(model.lifestyles);
+            b.tvGender.setText(model.gender);
             b.tvMotherTongue.setText(model.mother_tounge);
             b.tvUserSubCommunity.setText(model.subcaste);
             b.tvUserCommunity.setText(model.caste_name);
@@ -194,7 +195,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 alertDialog.setIcon(R.drawable.food);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose LifeStyle");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -259,7 +260,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 alertDialog.setIcon(R.drawable.height);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Gender");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -930,7 +931,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 alertDialog.setIcon(R.drawable.height);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Health");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -1111,7 +1112,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 alertDialog.setIcon(R.drawable.blood);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose BloodGroup");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -1205,7 +1206,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 alertDialog.setIcon(R.drawable.height);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Height");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -1268,7 +1269,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose MaritalStatus");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -1331,7 +1332,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 alertDialog.setIcon(R.drawable.ic_age);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose age");
 
                 // list of the items to be displayed to
                 // the user in the form of list

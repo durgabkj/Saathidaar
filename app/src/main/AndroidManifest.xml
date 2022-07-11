@@ -22,6 +22,9 @@
         android:theme="@style/Theme.Saathidaar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".TestActivity"
+            android:exported="false" />
+        <activity
             android:name=".UpgradeOnButtonActivity"
             android:exported="false" />
         <activity
@@ -73,7 +76,6 @@
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_test_QHOsVAlUo7NNwl" />
-
     </application>
 
 </manifest>

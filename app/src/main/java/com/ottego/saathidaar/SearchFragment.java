@@ -1,5 +1,6 @@
 package com.ottego.saathidaar;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -571,6 +572,7 @@ public class SearchFragment extends Fragment {
         selectedMaritalStatus = new boolean[MaritalStatusArray.length];
 
         tvMultipleMaritalStatusSearch.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
 
@@ -645,7 +647,14 @@ public class SearchFragment extends Fragment {
                     }
                 });
                 // show dialog
-                builder.show();
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+                Button buttonbackground1 = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+                buttonbackground1.setTextColor(R.color.colorPrimary);
+                Button buttonbackground = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setTextColor(R.color.colorPrimary);
+
             }
         });
     }

@@ -6,7 +6,6 @@
     android:padding="30dp"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/colorPrimary"
     android:layout_height="match_parent">
 
 
@@ -41,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:padding="10dp"
+        android:backgroundTint="@color/gray_dark"
         android:textColor="@color/black"
         android:gravity="center"
         android:text="Try Again"
