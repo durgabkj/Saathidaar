@@ -1,22 +1,38 @@
 package com.ottego.saathidaar;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link RecentlyViewedFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class RecentlyViewedFragment extends Fragment {
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
+import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
+import com.ottego.saathidaar.Adapter.RecentVisitorAdapter;
+import com.ottego.saathidaar.Model.DataModelNewMatches;
+import com.ottego.saathidaar.databinding.FragmentRecentlyViewedBinding;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+import org.json.JSONObject;
+
+public class RecentlyViewedFragment extends Fragment {
+FragmentRecentlyViewedBinding b;
+    SessionManager sessionManager;
+    Context context;
+    DataModelNewMatches data;
+
+    public String recentlyViewed = Utils.memberUrl + "view-to/";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -28,15 +44,6 @@ public class RecentlyViewedFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RecentlyViewedFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static RecentlyViewedFragment newInstance(String param1, String param2) {
         RecentlyViewedFragment fragment = new RecentlyViewedFragment();
         Bundle args = new Bundle();
@@ -59,6 +66,54 @@ public class RecentlyViewedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recently_viewed, container, false);
+        b=FragmentRecentlyViewedBinding.inflate(inflater,container,false);
+        context = getContext();
+        sessionManager = new SessionManager(context);
+        getData();
+        return b.getRoot();
+    }
+
+
+    public void getData() {
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                recentlyViewed + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                //  b.srlRecycleBookmark.setRefreshing(false);
+                progressDialog.dismiss();
+                Log.e("recent visitors response", String.valueOf(response));
+                Gson gson = new Gson();
+                data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
+                if (data.results == 1) {
+                    setRecyclerView();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+    }
+
+
+    private void setRecyclerView() {
+        GridLayoutManager layoutManager = new GridLayoutManager(context,2);
+        b.rvRecentlyView.setLayoutManager(layoutManager);
+        b.rvRecentlyView.setHasFixedSize(true);
+        b.rvRecentlyView.setNestedScrollingEnabled(true);
+        RecentVisitorAdapter adapter = new RecentVisitorAdapter(context, data.data);
+        b.rvRecentlyView.setAdapter(adapter);
+        if (adapter.getItemCount() != 0) {
+            b.llNoDataRecentlyView.setVisibility(View.GONE);
+            b.rvRecentlyView.setVisibility(View.VISIBLE);
+
+        } else {
+            b.llNoDataRecentlyView.setVisibility(View.VISIBLE);
+        }
     }
 }

@@ -21,7 +21,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.multipleselectionspinner.MultipleSelection;
 import com.ottego.saathidaar.Model.HoroscopeModel;
-import com.ottego.saathidaar.Model.SessionModel;
 import com.ottego.saathidaar.databinding.FragmentHoroscopeBinding;
 
 import org.json.JSONArray;
@@ -92,7 +91,7 @@ public class HoroscopeFragment extends Fragment {
         // Inflate the layout for this fragment
         b = FragmentHoroscopeBinding.inflate(getLayoutInflater());
         context = getContext();
-sessionManager=new SessionManager(context);
+        sessionManager = new SessionManager(context);
         setDropDownData();
         listener();
         getCountry();
@@ -124,7 +123,7 @@ sessionManager=new SessionManager(context);
     private void getData() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                urlGetHoroscope+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                urlGetHoroscope + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 progressDialog.dismiss();
@@ -158,7 +157,6 @@ sessionManager=new SessionManager(context);
     }
 
     private void listener() {
-
 
 
         b.btnEditDetails.setOnClickListener(new View.OnClickListener() {
@@ -207,7 +205,6 @@ sessionManager=new SessionManager(context);
         });
 
 
-
         b.tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -218,6 +215,7 @@ sessionManager=new SessionManager(context);
 
 
     }
+
     private boolean checkForm() {
         countryName = b.acvCountry.getText().toString().trim();
         cityName = b.etHoroscopeBirthCity.getText().toString().trim();
@@ -226,7 +224,7 @@ sessionManager=new SessionManager(context);
         time = b.actvampm.getText().toString().trim();
         timeStatus = b.actvapprox.getText().toString().trim();
 
-        Log.e("city name",cityName);
+        Log.e("city name", cityName);
 
 
         if (countryName.isEmpty()) {
@@ -248,6 +246,7 @@ sessionManager=new SessionManager(context);
         }
         return true;
     }
+
     private void submitForm() {
         Map<String, String> params = new HashMap<String, String>();
         params.put("country_of_birth", countryName);
@@ -259,21 +258,23 @@ sessionManager=new SessionManager(context);
         params.put("manglik", manglik);
         Log.e("params", String.valueOf(params));
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url+sessionManager.getMemberId(), new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url + sessionManager.getMemberId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         progressDialog.dismiss();
                         Log.e("response", String.valueOf((response)));
                         try {
-                            if (response!=null) {
+                            if (response != null) {
                                 Gson gson = new Gson();
                                 model = gson.fromJson(String.valueOf(response), HoroscopeModel.class);
                                 sessionManager.createHoroscope(model);
                                 b.cvShowDetails.setVisibility(View.VISIBLE);
                                 b.cvEditDetails.setVisibility(View.GONE);
                                 // getData(urlGetHoroscope);
-                                getData();
+//                                getData();
+                                setData();
+                                setData1();
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
@@ -373,6 +374,7 @@ sessionManager=new SessionManager(context);
         //Setting the ArrayAdapter data on the Spinner
         b.actvapprox.setAdapter(apr);
     }
+
     private void setData() {
         if (model != null) {
             b.tvCountryOfBirth.setText(model.country_of_birth);

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/scroll_rod1"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_All_Played_Match"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="10dp"
+        app:cardMaxElevation="4dp"
+        app:cardPreventCornerOverlap="true"
+        android:layout_margin="3dp">
+
+        <!--            android:alpha="0.2"-->
+        <ImageView
+            android:id="@+id/ivRecentViewImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/local" />
+
+        <!--        <FrameLayout-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center_vertical|center"-->
+        <!--            >-->
+        <!--            -->
+
+        <!--                <LinearLayout-->
+        <!--                    android:id="@+id/llLockImage"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:background="@drawable/gray_transparent_bg"-->
+        <!--                    >-->
+
+        <!--                    <androidx.appcompat.widget.AppCompatImageView-->
+        <!--                        android:layout_width="100dp"-->
+        <!--                        android:layout_height="100dp"-->
+        <!--                        android:padding="3dp"-->
+        <!--                        android:scaleType="centerCrop"-->
+        <!--                        android:src="@drawable/ic_baseline_lock_person_24" />-->
+
+        <!--                </LinearLayout>-->
+        <!--        </FrameLayout>-->
+
+<!--        <FrameLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="start"-->
+<!--            >-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="20dp"-->
+<!--                android:orientation="horizontal"-->
+<!--                >-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/llShortListRemove1"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/gray_transparent_bg"-->
+<!--                    >-->
+
+<!--                    <androidx.appcompat.widget.AppCompatImageView-->
+<!--                        android:layout_width="40dp"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:padding="3dp"-->
+<!--                        android:scaleType="centerCrop"-->
+<!--                        android:src="@drawable/ic_baseline_star_24" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/llShortList1"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:visibility="gone"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:background="@drawable/gray_transparent_bg"-->
+<!--                    >-->
+
+<!--                    <androidx.appcompat.widget.AppCompatImageView-->
+<!--                        android:layout_width="40dp"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:padding="3dp"-->
+<!--                        android:scaleType="centerCrop"-->
+<!--                        android:src="@drawable/ic_baseline_star_border_24" />-->
+
+<!--                </LinearLayout>-->
+
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="70dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:background="@drawable/oval_bg"-->
+<!--                    >-->
+
+<!--                    <androidx.appcompat.widget.AppCompatImageView-->
+<!--                        android:layout_width="40dp"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:padding="10dp"-->
+<!--                        android:layout_marginStart="8dp"-->
+<!--                        android:scaleType="centerCrop"-->
+<!--                        android:src="@drawable/ic_camera" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="2"-->
+<!--                        android:shadowColor="#000000"-->
+<!--                        android:shadowDx="1.5"-->
+<!--                        android:shadowDy="1.3"-->
+<!--                        android:shadowRadius="1.6"-->
+<!--                        android:textSize="17sp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:textColor="@color/white"/>-->
+
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
+
+<!--        </FrameLayout>-->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|start"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:padding="20dp"
+                android:background="@drawable/bg_gradient"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/ivRecentViewNameRs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:shadowColor="#000000"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:maxLength="15"
+                        android:fontFamily="@font/italic"
+                        android:shadowRadius="1.6"
+                        android:text="Durga singh"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRecentViewAgeRs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:shadowColor="#000000"
+                        android:shadowDx="1.5"
+                        android:fontFamily="@font/italic"
+                        android:shadowDy="1.3"
+                        android:shadowRadius="1.6"
+                        android:text="22 years"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRecentViewHeightRs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:shadowColor="#000000"
+                        android:shadowDx="1.5"
+                        android:shadowDy="1.3"
+                        android:shadowRadius="1.6"
+                        android:text="5'1"
+                        android:maxLength="10"
+                        android:fontFamily="@font/italic"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+
+                    <TextView
+                        android:id="@+id/tvRecentViewCityRs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:shadowColor="#000000"
+                        android:shadowDx="1.5"
+                        android:shadowDy="1.3"
+                        android:shadowRadius="1.6"
+                        android:maxLength="22"
+                        android:text="Mumbai"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/italic"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRecentViewWorkAsRs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:shadowColor="#000000"
+                        android:shadowDx="1.5"
+                        android:fontFamily="@font/italic"
+                        android:shadowDy="1.3"
+                        android:maxLength="20"
+                        android:shadowRadius="1.6"
+                        android:text="Junior software Developer"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+<!--            <FrameLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"/>-->
+<!--            <LinearLayout-->
+<!--                android:id="@+id/ivLike"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_gravity="end|bottom"-->
+<!--                android:layout_marginVertical="20dp"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    app:cardCornerRadius="100dp"-->
+<!--                    >-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="30dp"-->
+<!--                        android:layout_height="30dp"-->
+<!--                        android:background="@color/white"-->
+<!--                        android:padding="3dp"-->
+<!--                        android:scaleType="centerCrop"-->
+<!--                        android:src="@drawable/ic_checkmark" />-->
+<!--                </androidx.cardview.widget.CardView>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:shadowColor="#000000"-->
+<!--                    android:shadowDx="2"-->
+<!--                    android:shadowDy="2"-->
+<!--                    android:shadowRadius="1.6"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:fontFamily="@font/italic"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:text="Connect Now"/>-->
+
+<!--            </LinearLayout>-->
+        </FrameLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/scroll_rod1"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/line_gradient"/>
+
+</LinearLayout>

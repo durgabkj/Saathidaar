@@ -87,10 +87,10 @@ public class MatchDetailsFragment extends Fragment {
 
     private void getMemberPreferenceData() {
 
-     //   Map<String, String> params = new HashMap<String, String>();
+        //   Map<String, String> params = new HashMap<String, String>();
 //        params.put("member_ID",mParam1);
-      Log.e("params", String.valueOf(mParam1));
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, PreferenceDetailUrl +mParam1 + "/" + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+        Log.e("params", String.valueOf(mParam1));
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, PreferenceDetailUrl + mParam1 + "/" + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf(response));
@@ -121,7 +121,7 @@ public class MatchDetailsFragment extends Fragment {
 
     private void setMemberPrefData() {
 
-        b.matchPreferenceCount.setText("You Match " + memberPreferenceModel.match_count + "/" + memberPreferenceModel.total_preference +" of "+ " "+memberPreferenceModel.gender_preference);
+        b.matchPreferenceCount.setText("You Match " + memberPreferenceModel.match_count + "/" + memberPreferenceModel.total_preference + " of " + " " + memberPreferenceModel.gender_preference);
         b.tvDetailAgeMatch.setText(memberPreferenceModel.partner_age);
         b.tvDetailHeightMatch.setText(memberPreferenceModel.partner_height);
         b.tvDetailMaritalStatusMatch.setText(memberPreferenceModel.partner_marital_status);
@@ -139,95 +139,67 @@ public class MatchDetailsFragment extends Fragment {
         b.tvDetailAnnualIncome.setText(memberPreferenceModel.partner_annual_income);
 
 
-
-        if(memberPreferenceModel.my_age.equalsIgnoreCase("Yes")){
+        if (memberPreferenceModel.my_age.equalsIgnoreCase("Yes")) {
             b.cvcheck1.setVisibility(View.VISIBLE);
-        }else if(memberPreferenceModel.my_age.equalsIgnoreCase("NO"))
-        {
+        } else if (memberPreferenceModel.my_age.equalsIgnoreCase("NO")) {
             b.cvClear1.setVisibility(View.VISIBLE);
-        }else
-        {
+        } else {
             b.cvDot1.setVisibility(View.VISIBLE);
         }
 
 
-
-        if(memberPreferenceModel.my_height.equalsIgnoreCase("Yes")){
+        if (memberPreferenceModel.my_height.equalsIgnoreCase("Yes")) {
             b.cvcheck2.setVisibility(View.VISIBLE);
-        }else if(memberPreferenceModel.my_height.equalsIgnoreCase("NO"))
-        {
+        } else if (memberPreferenceModel.my_height.equalsIgnoreCase("NO")) {
             b.cvClear2.setVisibility(View.VISIBLE);
-        }else
-        {
+        } else {
             b.cvDot2.setVisibility(View.VISIBLE);
         }
 
 
-
-        if(memberPreferenceModel.my_marital_status.equalsIgnoreCase("Yes")){
+        if (memberPreferenceModel.my_marital_status.equalsIgnoreCase("Yes")) {
             b.cvcheck3.setVisibility(View.VISIBLE);
-        }else if(memberPreferenceModel.my_marital_status.equalsIgnoreCase("NO"))
-        {
+        } else if (memberPreferenceModel.my_marital_status.equalsIgnoreCase("NO")) {
             b.cvClear3.setVisibility(View.VISIBLE);
-        }else
-        {
+        } else {
             b.cvDot3.setVisibility(View.VISIBLE);
         }
 
 
-
-        if(memberPreferenceModel.my_country.equalsIgnoreCase("Yes")){
+        if (memberPreferenceModel.my_country.equalsIgnoreCase("Yes")) {
             b.cvcheck4.setVisibility(View.VISIBLE);
-        }else if(memberPreferenceModel.my_country.equalsIgnoreCase("NO"))
-        {
+        } else if (memberPreferenceModel.my_country.equalsIgnoreCase("NO")) {
             b.cvClear4.setVisibility(View.VISIBLE);
-        }else
-        {
+        } else {
             b.cvDot4.setVisibility(View.VISIBLE);
         }
 
 
-
-
-        if(memberPreferenceModel.my_state.equalsIgnoreCase("Yes")){
+        if (memberPreferenceModel.my_state.equalsIgnoreCase("Yes")) {
             b.cvcheck5.setVisibility(View.VISIBLE);
-        }else if(memberPreferenceModel.my_state.equalsIgnoreCase("NO"))
-        {
+        } else if (memberPreferenceModel.my_state.equalsIgnoreCase("NO")) {
             b.cvClear5.setVisibility(View.VISIBLE);
-        }else
-        {
+        } else {
             b.cvDot5.setVisibility(View.VISIBLE);
         }
 
 
-
-
-
-        if(memberPreferenceModel.my_qualification.equalsIgnoreCase("Yes")){
+        if (memberPreferenceModel.my_qualification.equalsIgnoreCase("Yes")) {
             b.cvcheck6.setVisibility(View.VISIBLE);
-        }else if(memberPreferenceModel.my_qualification.equalsIgnoreCase("NO"))
-        {
+        } else if (memberPreferenceModel.my_qualification.equalsIgnoreCase("NO")) {
             b.cvClear6.setVisibility(View.VISIBLE);
-        }else
-        {
+        } else {
             b.cvDot6.setVisibility(View.VISIBLE);
         }
 
 
-
-
-
-        if(memberPreferenceModel.my_working_with.equalsIgnoreCase("Yes")){
+        if (memberPreferenceModel.my_working_with.equalsIgnoreCase("Yes")) {
             b.cvcheck7.setVisibility(View.VISIBLE);
-        }else if(memberPreferenceModel.my_working_with.equalsIgnoreCase("NO"))
-        {
+        } else if (memberPreferenceModel.my_working_with.equalsIgnoreCase("NO")) {
             b.cvClear7.setVisibility(View.VISIBLE);
-        }else
-        {
+        } else {
             b.cvDot7.setVisibility(View.VISIBLE);
         }
-
-
 
 
 //        if(memberPreferenceModel.my_working_with.equalsIgnoreCase("Yes")){
@@ -241,38 +213,28 @@ public class MatchDetailsFragment extends Fragment {
 //        }
 
 
-
-
-        if(memberPreferenceModel.my_annual_income.equalsIgnoreCase("Yes")){
+        if (memberPreferenceModel.my_annual_income.equalsIgnoreCase("Yes")) {
             b.cvcheck9.setVisibility(View.VISIBLE);
-        }else if(memberPreferenceModel.my_annual_income.equalsIgnoreCase("NO"))
-        {
+        } else if (memberPreferenceModel.my_annual_income.equalsIgnoreCase("NO")) {
             b.cvClear9.setVisibility(View.VISIBLE);
-        }else
-        {
+        } else {
             b.cvDot9.setVisibility(View.VISIBLE);
         }
 
 
-
-
-        if(memberPreferenceModel.my_religions.equalsIgnoreCase("Yes")){
+        if (memberPreferenceModel.my_religions.equalsIgnoreCase("Yes")) {
             b.cvcheck10.setVisibility(View.VISIBLE);
-        }else if(memberPreferenceModel.my_religions.equalsIgnoreCase("NO"))
-        {
+        } else if (memberPreferenceModel.my_religions.equalsIgnoreCase("NO")) {
             b.cvClear10.setVisibility(View.VISIBLE);
-        }else
-        {
+        } else {
             b.cvDot10.setVisibility(View.VISIBLE);
         }
 
-        if(memberPreferenceModel.my_mother_tongue.equalsIgnoreCase("Yes")){
+        if (memberPreferenceModel.my_mother_tongue.equalsIgnoreCase("Yes")) {
             b.cvcheck11.setVisibility(View.VISIBLE);
-        }else if(memberPreferenceModel.my_mother_tongue.equalsIgnoreCase("NO"))
-        {
+        } else if (memberPreferenceModel.my_mother_tongue.equalsIgnoreCase("NO")) {
             b.cvClear11.setVisibility(View.VISIBLE);
-        }else
-        {
+        } else {
             b.cvDot11.setVisibility(View.VISIBLE);
         }
 
@@ -286,13 +248,11 @@ public class MatchDetailsFragment extends Fragment {
 //            b.cvDot11.setVisibility(View.VISIBLE);
 //        }
 
-        if(memberPreferenceModel.my_city.equalsIgnoreCase("Yes")){
+        if (memberPreferenceModel.my_city.equalsIgnoreCase("Yes")) {
             b.cvcheck13.setVisibility(View.VISIBLE);
-        }else if(memberPreferenceModel.my_city.equalsIgnoreCase("NO"))
-        {
+        } else if (memberPreferenceModel.my_city.equalsIgnoreCase("NO")) {
             b.cvClear13.setVisibility(View.VISIBLE);
-        }else
-        {
+        } else {
             b.cvDot13.setVisibility(View.VISIBLE);
         }
 
@@ -304,6 +264,29 @@ public class MatchDetailsFragment extends Fragment {
             public void onClick(View view) {
             }
         });
+        b.tvViewMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.tvAboutUserDetails.setMaxLines(20);
+                b.tvViewLess.setVisibility(View.VISIBLE);
+                b.tvViewMore.setVisibility(View.GONE);
+
+            }
+        });
+
+        b.tvViewLess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.tvAboutUserDetails.setMaxLines(4);
+                b.tvViewLess.setVisibility(View.GONE);
+                b.tvViewMore.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+//
+
+
     }
 
     private void getData() {
@@ -340,6 +323,7 @@ public class MatchDetailsFragment extends Fragment {
 
     }
 
+
     private void setData() {
         if (model != null) {
             b.tvNewMatchName.setText(model.first_name + " " + model.last_name);
@@ -348,7 +332,8 @@ public class MatchDetailsFragment extends Fragment {
             b.tvMatchCityDetail.setText(model.city);
             b.tvNewMatchWorkAsDetail.setText(model.working_as);
             b.tvNameUserDetails.setText("About" + "  " + model.first_name);
-            b.tvAboutUserDetails.setText(model.about_ourself);
+         //   b.tvAboutUserDetails.setText(model.about_ourself);
+
             b.tvCreatedBy.setText("Profile CreateBy" + " " + model.profilecreatedby);
             //b.tvProfileID.setText("Profile ID"+" "+model.);
             b.tvDetailAge.setText(model.age + " yrs old");

@@ -46,16 +46,13 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     String city = "";
     String origin = "";
     String pinCode = "";
-    String mobile = "";
-    String relationWith = "";
-    String callTime = "";
-    String displatOption = "";
+
     public String url = Utils.memberUrl + "app/professional-details/update/";
     public String countryUrl = Utils.location + "country";
     public String stateUrl = Utils.location + "state-name/by/country-name/";
     public String cityUrl = Utils.location + "city-name/by/state-name/";
     ArrayList<String> countryList = new ArrayList<>();
-
+String memberId;
     String[] stringArray =new String[0];
     String[] stringArray1 =new String[0];
     String[] stringArray2 =new String[0];
@@ -76,6 +73,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
         setContentView(b.getRoot());
         context = ProfessionalDetailEditActivity.this;
         sessionManager = new SessionManager(context);
+        memberId=sessionManager.getMemberId();
 
         Bundle bundle = getIntent().getExtras();
         String data = bundle.getString("data");
@@ -671,19 +669,19 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
         params.put("working_as", workingAs);
         params.put("annual_income", income);
         params.put("pincode", pinCode);
-        params.put("city_name", country);
+        params.put("city_name", city);
         params.put("state_name", state);
         params.put("ethnic_corigin", origin);
         params.put("country_name", country);
         Log.e("params", String.valueOf(params));
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url+sessionManager.getMemberId(), new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url+memberId, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.e("response", String.valueOf((response)));
                         try {
                             String code = response.getString("results");
-                            if (code.equalsIgnoreCase("1")) {
+                            if (code.equals("1")) {
 
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                                 // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

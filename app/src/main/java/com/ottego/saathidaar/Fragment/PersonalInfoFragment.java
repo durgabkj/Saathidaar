@@ -150,6 +150,8 @@ public class PersonalInfoFragment extends Fragment {
             binding.tvUserCommunity.setText(model.caste_name);
             binding.tvUserSubCommunity.setText(model.subcaste);
             binding.tvUserGotra.setText(model.gothra);
+            binding.tvUserHPlaceofBirth.setText(sessionManager.getKeyofCountryofbirth()+","+sessionManager.getcityofbirth());
+            binding.tvUserTimeofBirth.setText(sessionManager.getKeyHour()+":"+sessionManager.getKeyMinutes()+" "+sessionManager.getKeyTimeh()+","+sessionManager.getKeyTimeStatus());
         }
 
 

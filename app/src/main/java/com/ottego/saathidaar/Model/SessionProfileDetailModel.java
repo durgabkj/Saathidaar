@@ -8,6 +8,7 @@ public class SessionProfileDetailModel {
     public String known_languages;
     public  String education;
     public String job;
+    public String profile_id;
     public  String income;
     public String hobbies;
     public  String expectations;

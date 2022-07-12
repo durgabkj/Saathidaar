@@ -129,7 +129,7 @@ FragmentFamilyInfoBinding b;
         if(model!=null)
         {
             b.tvUserFatherStatus.setText(model.father_status);
-            b.tvUserMotherStatus.setText(model.marital_status);
+            b.tvUserMotherStatus.setText(model.mother_status);
             b.tvUserFamilyLocation.setText(model.family_location);
             b.tvUserNativePlace.setText(model.native_place);
 //            int brother=(Integer.parseInt(model.married_male) + Integer.parseInt(model.unmarried_male));

@@ -99,12 +99,12 @@ public class SessionManager {
 
     //Horoscope
 
-    public static final String KEY_HOUR = "hours";
+    public static final String KEY_HOUR_B = "hours";
     public static final String KEY_MINUTES = "minutes";
     public static final String KEY_COUNTRY_B = "country_of_birth";
-    public static final String KEY_MANGLIK1 = "manglik";
-    public static final String KEY_TIME = "time";
-    public static final String KEY_TIME_STATUS = "time_status";
+    public static final String KEY_MANGLIKH = "manglik";
+    public static final String KEY_TIMEH = "time";
+    public static final String KEY_TIME_STATUSH = "time_status";
     public static final String KEY_CITY_B = "city_of_birth";
 
     private static final String PREF_NAME = "userData";
@@ -448,19 +448,43 @@ public class SessionManager {
 
     }
 
-
-
-
     public void createHoroscope(HoroscopeModel model) {
-        editor.putBoolean(IS_LOGIN, true);
-        editor.putString(KEY_MEMBER_ID, model.hours);
-        editor.putString(KEY_FIRSTNAME, model.minutes);
-        editor.putString(KEY_LASTNAME, model.time_status);
-        editor.putString(KEY_PHONE1, model.manglik);
-        editor.putString(KEY_EMAIL1, model.city_of_birth);
-        editor.putString(KEY_ENABLE, model.country_of_birth);
+        editor.putString(KEY_HOUR_B, model.hours);
+        editor.putString(KEY_MINUTES, model.minutes);
+        editor.putString(KEY_TIMEH, model.time);
+        editor.putString(KEY_TIME_STATUSH, model.time_status);
+        editor.putString(KEY_MANGLIKH, model.manglik);
+        editor.putString(KEY_CITY_B, model.city_of_birth);
+        editor.putString(KEY_COUNTRY_B, model.country_of_birth);
         editor.commit();
     }
 
+    public String getcityofbirth() {
+        return pref.getString(KEY_CITY_B, "");
+    }
 
+    public String getKeyofCountryofbirth() {
+        return pref.getString(KEY_COUNTRY_B, "");
+    }
+
+    public String getKeyHour() {
+        return pref.getString(KEY_HOUR_B, "");
+    }
+
+
+    public String getKeyMinutes() {
+        return pref.getString(KEY_MINUTES, "");
+    }
+
+    public String getKeyTimeStatus() {
+        return pref.getString(KEY_TIME_STATUSH, "");
+    }
+
+    public String getKeyManglik1() {
+        return pref.getString(KEY_MANGLIKH, "");
+    }
+
+    public String getKeyTimeh() {
+        return pref.getString(KEY_TIMEH, "");
+    }
 }

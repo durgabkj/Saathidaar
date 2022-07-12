@@ -9,8 +9,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -53,13 +51,15 @@ public class FamilyProfileActivity extends AppCompatActivity {
     String familyType = "";
     String familyAffluence = "";
     MemberProfileModel model;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         b = ActivityFamilyProfileBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
         context = FamilyProfileActivity.this;
-sessionManager=new SessionManager(context);
+        sessionManager = new SessionManager(context);
         Bundle bundle = getIntent().getExtras();
         String data = bundle.getString("data");
         model = new Gson().fromJson(data, MemberProfileModel.class);
@@ -83,6 +83,7 @@ sessionManager=new SessionManager(context);
             b.etFAffluence.setText(model.family_affluence);
             b.etAddUserFamilyLocation.setText(model.family_location);
             b.etFType.setText(model.family_type);
+            b.etNativePalace.setText(model.native_place);
             b.etAddUserBrotherMarried.setText(model.married_male);
             b.etAddUserBrotherNotMarried.setText(model.unmarried_male);
             b.etAddUserSisterMarried.setText(model.married_female);
@@ -245,7 +246,7 @@ sessionManager=new SessionManager(context);
                 String[] fatherAndMotherStatusList = getResources().getStringArray(R.array.FatherAndStatus);
                 // the function setSingleChoiceItems is the function which builds
                 // the alert dialog with the single item selection
-                alertDialog.setSingleChoiceItems(fatherAndMotherStatusList  , checkedItem[0], new DialogInterface.OnClickListener() {
+                alertDialog.setSingleChoiceItems(fatherAndMotherStatusList, checkedItem[0], new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -304,7 +305,7 @@ sessionManager=new SessionManager(context);
                 String[] fatherAndMotherStatusList = getResources().getStringArray(R.array.MotherAndStatus);
                 // the function setSingleChoiceItems is the function which builds
                 // the alert dialog with the single item selection
-                alertDialog.setSingleChoiceItems(fatherAndMotherStatusList  , checkedItem1[0], new DialogInterface.OnClickListener() {
+                alertDialog.setSingleChoiceItems(fatherAndMotherStatusList, checkedItem1[0], new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -344,7 +345,6 @@ sessionManager=new SessionManager(context);
             }
         });
     }
-
 
     private void listener() {
         b.btnFsave.setOnClickListener(new View.OnClickListener() {
@@ -397,56 +397,56 @@ sessionManager=new SessionManager(context);
 
             }
         });
-b.etFStatus.addTextChangedListener(new TextWatcher() {
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        b.etFStatus.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                fatherStatus = b.etFStatus.getText().toString();
+
+                if (fatherStatus.equalsIgnoreCase("Retired")) {
+                    b.llCompanyName.setVisibility(View.VISIBLE);
+                    b.llDesignation.setVisibility(View.VISIBLE);
+                    b.llBusiness.setVisibility(View.GONE);
+                }
+
+                if (fatherStatus.equalsIgnoreCase("Employed")) {
+                    b.llCompanyName.setVisibility(View.VISIBLE);
+                    b.llDesignation.setVisibility(View.VISIBLE);
+                    b.llBusiness.setVisibility(View.GONE);
+                }
+                if (fatherStatus.equalsIgnoreCase("Business")) {
+                    b.llBusiness.setVisibility(View.VISIBLE);
+                    b.llCompanyName.setVisibility(View.GONE);
+                    b.llDesignation.setVisibility(View.GONE);
+                }
+
+                if (fatherStatus.equalsIgnoreCase("Not Employed")) {
+                    b.llBusiness.setVisibility(View.GONE);
+                    b.llCompanyName.setVisibility(View.GONE);
+                    b.llDesignation.setVisibility(View.GONE);
+                }
+
+
+                if (fatherStatus.equalsIgnoreCase("Pass Away")) {
+                    b.llBusiness.setVisibility(View.GONE);
+                    b.llCompanyName.setVisibility(View.GONE);
+                    b.llDesignation.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
     }
 
-    @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        fatherStatus = b.etFStatus.getText().toString();
-
-        if (fatherStatus.equalsIgnoreCase("Retired")) {
-            b.llCompanyName.setVisibility(View.VISIBLE);
-            b.llDesignation.setVisibility(View.VISIBLE);
-            b.llBusiness.setVisibility(View.GONE);
-        }
-
-        if (fatherStatus.equalsIgnoreCase("Employed")) {
-            b.llCompanyName.setVisibility(View.VISIBLE);
-            b.llDesignation.setVisibility(View.VISIBLE);
-            b.llBusiness.setVisibility(View.GONE);
-        }
-        if (fatherStatus.equalsIgnoreCase("Business")) {
-            b.llBusiness.setVisibility(View.VISIBLE);
-            b.llCompanyName.setVisibility(View.GONE);
-            b.llDesignation.setVisibility(View.GONE);
-        }
-
-        if (fatherStatus.equalsIgnoreCase("Not Employed")) {
-            b.llBusiness.setVisibility(View.GONE);
-            b.llCompanyName.setVisibility(View.GONE);
-            b.llDesignation.setVisibility(View.GONE);
-        }
-
-
-        if (fatherStatus.equalsIgnoreCase("Pass Away")) {
-            b.llBusiness.setVisibility(View.GONE);
-            b.llCompanyName.setVisibility(View.GONE);
-            b.llDesignation.setVisibility(View.GONE);
-        }
-    }
-
-    @Override
-    public void afterTextChanged(Editable editable) {
-
-    }
-});
-
-}
-
-//    private boolean checkForm() {
+    //    private boolean checkForm() {
 //
 //        if (fatherStatus.equalsIgnoreCase("select")) {
 //            b.tvfs.setError("please select Status");
@@ -546,7 +546,6 @@ b.etFStatus.addTextChangedListener(new TextWatcher() {
 //        return true;
 //
 //    }
-
     private void submitForm() {
         fatherStatus = b.etFStatus.getText().toString().trim();
         motherStatus = b.etMStatus.getText().toString().trim();
@@ -586,7 +585,7 @@ b.etFStatus.addTextChangedListener(new TextWatcher() {
         params.put("unmarried_female", unMarriedSister);
 
         Log.e("params", String.valueOf(params));
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url+sessionManager.getMemberId(), new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url + sessionManager.getMemberId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

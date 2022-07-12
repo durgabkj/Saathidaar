@@ -286,6 +286,7 @@
 
 
                     <LinearLayout
+                        android:id="@+id/lltextDetails"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
@@ -306,6 +307,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
+                            android:maxLines="4"
                             android:fontFamily="@font/italic"
                             android:text="I am a soft spoken, honest &amp; talented person. I have a good job, decent salary &amp; a nice house to live in. I think family as the first priority of my life. I think 5 years down the life I should be happily settled with my kids, a lovely soulmate with all the blessings of our parents &amp; relatives.
 I am modern thinker but also believe in good values given by our ancestors I also enjoy travelling, watching movies, going out for dinner, and having great intellectual conversations!"
