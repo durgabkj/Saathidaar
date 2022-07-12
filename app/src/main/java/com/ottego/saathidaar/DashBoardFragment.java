@@ -40,7 +40,7 @@ public class DashBoardFragment extends Fragment {
     Animation animation;
     CountDownTimer countDownTimer;
     Context context;
-    public String url = "http://192.168.1.36:9094/api/request/count/accept-request/";
+    public String url = "http://192.168.1.38:9094/api/request/count/accept-request/";
     int[] images = {R.drawable.smartphone, R.drawable.documents, R.drawable.global};
     String[] text = {"phone Number to Connect Instantly", "100% Verified Biodatas", "Find Common connections"};
     private static final String ARG_PARAM1 = "param1";

@@ -30,7 +30,7 @@ public class DeleteInboxFragment extends Fragment {
     SessionManager sessionManager;
     DataModelInbox data;
     String member_id;
-    public String InvitationDeleteUrl ="http://192.168.1.36:9094/api/request/rejected/get/all/";
+    public String InvitationDeleteUrl ="http://192.168.1.38:9094/api/request/rejected/get/all/";
 FragmentDeleteInboxBinding b;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";

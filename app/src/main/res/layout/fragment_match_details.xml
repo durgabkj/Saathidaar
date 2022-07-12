@@ -77,51 +77,51 @@
 
                     </FrameLayout>
 
-                    <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical">
+<!--                    <FrameLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_vertical">-->
 
-                        <LinearLayout
-                            android:id="@+id/llPrevious"
-                            android:layout_width="40dp"
-                            android:layout_height="80dp"
-                            android:background="@drawable/previous_button_bg"
-                            android:orientation="horizontal"
-                            android:padding="10dp">
+<!--                        <LinearLayout-->
+<!--                            android:id="@+id/llPrevious"-->
+<!--                            android:layout_width="40dp"-->
+<!--                            android:layout_height="80dp"-->
+<!--                            android:background="@drawable/previous_button_bg"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:padding="10dp">-->
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_arrow_left_2827" />
-
-
-                        </LinearLayout>
-
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|end">
-
-                        <LinearLayout
-                            android:id="@+id/llNext"
-                            android:layout_width="40dp"
-                            android:layout_height="80dp"
-                            android:background="@drawable/next_previous_bg"
-                            android:orientation="horizontal"
-                            android:padding="10dp">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_arrow_next_2825" />
+<!--                            <ImageView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:src="@drawable/ic_arrow_left_2827" />-->
 
 
-                        </LinearLayout>
+<!--                        </LinearLayout>-->
 
-                    </FrameLayout>
+<!--                    </FrameLayout>-->
+
+<!--                    <FrameLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_vertical|end">-->
+
+<!--                        <LinearLayout-->
+<!--                            android:id="@+id/llNext"-->
+<!--                            android:layout_width="40dp"-->
+<!--                            android:layout_height="80dp"-->
+<!--                            android:background="@drawable/next_previous_bg"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:padding="10dp">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:src="@drawable/ic_arrow_next_2825" />-->
+
+
+<!--                        </LinearLayout>-->
+
+<!--                    </FrameLayout>-->
 
                     <FrameLayout
                         android:layout_width="wrap_content"
@@ -241,9 +241,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/italic"
-                                android:maxLength="8"
+                                android:maxLength="10"
                                 android:shadowColor="#000000"
                                 android:shadowDx="1.5"
+                                android:layout_marginEnd="8dp"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
                                 android:text="Mumbai"
@@ -463,7 +464,6 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:drawableEnd="@drawable/lock"
                                     android:drawablePadding="4dp"
                                     android:fontFamily="@font/italic"
                                     android:text="Born on **/**/****"
@@ -1072,7 +1072,6 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:drawableEnd="@drawable/lock"
                                     android:fontFamily="@font/italic"
                                     android:text="*************"
                                     android:textAlignment="center"
@@ -1126,7 +1125,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:id="@+id/tvDetailAnnualIncome"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:drawableEnd="@drawable/lock"
+
                                     android:fontFamily="@font/italic"
                                     android:text="Earn INR 4 Lakh To &amp; Lakh annually"
                                     android:textColor="@color/black"
@@ -1283,7 +1282,6 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:id="@+id/tvDetailCollege"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:drawableEnd="@drawable/lock"
                                     android:fontFamily="@font/italic"
                                     android:text="*****************"
                                     android:textColor="@color/black"
@@ -1403,6 +1401,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
 
 
                         <TextView
+                            android:id="@+id/matchPreferenceCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -1444,10 +1443,11 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
-
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:visibility="gone"
                                 android:layout_gravity="center"
                                 app:cardBackgroundColor="@color/white"
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
@@ -1460,6 +1460,46 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_gravity="center"
                                     android:padding="5dp"
                                     app:srcCompat="@drawable/ic_check" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
                             </com.google.android.material.card.MaterialCardView>
 
                         </LinearLayout>
@@ -1499,9 +1539,11 @@ I am modern thinker but also believe in good values given by our ancestors I als
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:visibility="gone"
                                 app:cardBackgroundColor="@color/white"
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
                                 app:strokeColor="@color/gray_dark"
@@ -1513,6 +1555,46 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_gravity="center"
                                     android:padding="5dp"
                                     app:srcCompat="@drawable/ic_check" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
                             </com.google.android.material.card.MaterialCardView>
 
                         </LinearLayout>
@@ -1553,8 +1635,10 @@ I am modern thinker but also believe in good values given by our ancestors I als
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:visibility="gone"
                                 android:layout_gravity="center"
                                 app:cardBackgroundColor="@color/white"
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
@@ -1567,6 +1651,46 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_gravity="center"
                                     android:padding="5dp"
                                     app:srcCompat="@drawable/ic_check" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
                             </com.google.android.material.card.MaterialCardView>
 
                         </LinearLayout>
@@ -1607,9 +1731,11 @@ I am modern thinker but also believe in good values given by our ancestors I als
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:visibility="gone"
                                 app:cardBackgroundColor="@color/white"
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
                                 app:strokeColor="@color/gray_dark"
@@ -1621,6 +1747,46 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_gravity="center"
                                     android:padding="5dp"
                                     app:srcCompat="@drawable/ic_check" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
                             </com.google.android.material.card.MaterialCardView>
 
                         </LinearLayout>
@@ -1659,10 +1825,11 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
-
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:visibility="gone"
                                 android:layout_gravity="center"
                                 app:cardBackgroundColor="@color/white"
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
@@ -1675,6 +1842,46 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_gravity="center"
                                     android:padding="5dp"
                                     app:srcCompat="@drawable/ic_check" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
                             </com.google.android.material.card.MaterialCardView>
 
                         </LinearLayout>
@@ -1714,9 +1921,11 @@ I am modern thinker but also believe in good values given by our ancestors I als
                             </LinearLayout>
 
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:visibility="gone"
                                 app:cardBackgroundColor="@color/white"
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
                                 app:strokeColor="@color/gray_dark"
@@ -1728,6 +1937,46 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_gravity="center"
                                     android:padding="5dp"
                                     app:srcCompat="@drawable/ic_check" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
                             </com.google.android.material.card.MaterialCardView>
 
                         </LinearLayout>
@@ -1765,9 +2014,10 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
-
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck7"
                                 android:layout_width="wrap_content"
+                                android:visibility="gone"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 app:cardBackgroundColor="@color/white"
@@ -1781,6 +2031,46 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_gravity="center"
                                     android:padding="5dp"
                                     app:srcCompat="@drawable/ic_check" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
                             </com.google.android.material.card.MaterialCardView>
 
                         </LinearLayout>
@@ -1819,11 +2109,12 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
-
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:visibility="gone"
                                 app:cardBackgroundColor="@color/white"
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
                                 app:strokeColor="@color/gray_dark"
@@ -1835,6 +2126,46 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_gravity="center"
                                     android:padding="5dp"
                                     app:srcCompat="@drawable/ic_check" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
                             </com.google.android.material.card.MaterialCardView>
 
                         </LinearLayout>
@@ -1873,11 +2204,12 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
-
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:visibility="gone"
                                 app:cardBackgroundColor="@color/white"
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
                                 app:strokeColor="@color/gray_dark"
@@ -1889,6 +2221,46 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_gravity="center"
                                     android:padding="5dp"
                                     app:srcCompat="@drawable/ic_check" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
                             </com.google.android.material.card.MaterialCardView>
 
                         </LinearLayout>
@@ -1927,11 +2299,12 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
-
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:visibility="gone"
                                 app:cardBackgroundColor="@color/white"
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
                                 app:strokeColor="@color/gray_dark"
@@ -1943,6 +2316,46 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_gravity="center"
                                     android:padding="5dp"
                                     app:srcCompat="@drawable/ic_check" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
                             </com.google.android.material.card.MaterialCardView>
 
                         </LinearLayout>
@@ -1981,11 +2394,12 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
-
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck11"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:visibility="gone"
                                 app:cardBackgroundColor="@color/white"
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
                                 app:strokeColor="@color/gray_dark"
@@ -1997,6 +2411,46 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_gravity="center"
                                     android:padding="5dp"
                                     app:srcCompat="@drawable/ic_check" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                android:layout_gravity="center"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
                             </com.google.android.material.card.MaterialCardView>
 
                         </LinearLayout>
@@ -2035,11 +2489,12 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
-
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck12"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:visibility="gone"
                                 app:cardBackgroundColor="@color/white"
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
                                 app:strokeColor="@color/gray_dark"
@@ -2053,7 +2508,145 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     app:srcCompat="@drawable/ic_check" />
                             </com.google.android.material.card.MaterialCardView>
 
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
+                            </com.google.android.material.card.MaterialCardView>
+
                         </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/italic"
+                                    android:text="City"
+                                    android:textSize="14sp"
+
+                                    />
+
+
+                                <TextView
+                                    android:id="@+id/tvDetailcityMatch"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/italic"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_check" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
 
                     </LinearLayout>
 

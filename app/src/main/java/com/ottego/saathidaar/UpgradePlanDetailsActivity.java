@@ -37,7 +37,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
     UpgradeModel model;
     SessionManager sessionManager;
     Context context;
-    public String payment = "http://192.168.1.36:9094/upgrade/payment-pay/";
+    public String payment = "http://192.168.1.38:9094/upgrade/payment-pay/";
     private static final String TAG = "Razorpay";
     Checkout checkout;
     RazorpayClient razorpayClient;

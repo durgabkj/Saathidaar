@@ -49,8 +49,8 @@ public class HoroscopeFragment extends Fragment {
     String time;
     String timeStatus;
     String manglik;
-    public String url = Utils.memberUrl + "horoscope/update/8";
-    public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/8";
+    public String url = Utils.memberUrl + "horoscope/update/";
+    public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -124,7 +124,7 @@ sessionManager=new SessionManager(context);
     private void getData() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                urlGetHoroscope, null, new Response.Listener<JSONObject>() {
+                urlGetHoroscope+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 progressDialog.dismiss();
@@ -259,7 +259,7 @@ sessionManager=new SessionManager(context);
         params.put("manglik", manglik);
         Log.e("params", String.valueOf(params));
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url+sessionManager.getMemberId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

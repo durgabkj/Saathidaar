@@ -132,10 +132,10 @@ FragmentFamilyInfoBinding b;
             b.tvUserMotherStatus.setText(model.marital_status);
             b.tvUserFamilyLocation.setText(model.family_location);
             b.tvUserNativePlace.setText(model.native_place);
-            int brother=(Integer.parseInt(model.married_male) + Integer.parseInt(model.unmarried_male));
-            int sister=(Integer.parseInt(model.married_female) + Integer.parseInt(model.unmarried_female));
-            b.tvUserBrothers.setText(brother+","+model.married_male+" : Married"+","+model.unmarried_male+" : Unmarried");
-            b.tvUserSisters.setText(sister+","+model.married_female+" : Married"+","+model.unmarried_female+" : Unmarried");
+//            int brother=(Integer.parseInt(model.married_male) + Integer.parseInt(model.unmarried_male));
+//            int sister=(Integer.parseInt(model.married_female) + Integer.parseInt(model.unmarried_female));
+//            b.tvUserBrothers.setText(brother+","+model.married_male+" : Married"+","+model.unmarried_male+" : Unmarried");
+//            b.tvUserSisters.setText(sister+","+model.married_female+" : Married"+","+model.unmarried_female+" : Unmarried");
             b.tvUserFamilyType.setText(model.family_type);
             b.tvUserFamilyAffluence.setText(model.family_affluence);
 

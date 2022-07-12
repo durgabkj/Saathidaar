@@ -37,7 +37,7 @@ import org.json.JSONObject;
 
 
 public class InboxFragment extends Fragment {
-    public String url = "http://192.168.1.36:9094/api/request/count/accept-request/";
+    public String url = "http://192.168.1.38:9094/api/request/count/accept-request/";
   FragmentInboxBinding b;
     DataModelDashboard model;
     Context context;

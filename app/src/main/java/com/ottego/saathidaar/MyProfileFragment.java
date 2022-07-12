@@ -9,6 +9,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Scroller;
 import android.widget.TextView;
 
@@ -122,14 +124,31 @@ public class MyProfileFragment extends Fragment {
                        "                       \"\\n\" +\n" +
                        "                       \"\\n\" +\n" +
                        "                       \"Bear in mind that AndroidX library should not be kept together support library to prevent any unexpected results.\\n\" +\n" +
-                       "                       \"\\n\" +");
+                       "                       \"\\n\" +iewPager2 is a ViewGroup backed by a RecyclerView and thus the handling method is similar to that for RecyclerView. ViewPager2 requires an adapter to show its contents and the adapter can be either RecyclerView adapter or FragmentStateAdapter.\\n\" +\n" +
+                       "                       \"\\n\" +\n" +
+                       "                       \"This article will cover the basic handling of ViewPager2 and the linking with a TabLayout. If you have been familiar with the setup of ViewPager2, you could jump to “Trick” session directly.\\n\" +\n" +
+                       "                       \"\\n\" +\n" +
+                       "                       \"Setup\\n\" +\n" +
+                       "                       \"ViewPager2 is packed inside the latest AndroidX library of JetPack instead of Material Component library. Thus, we have to import it separately with the following gradle code:\\n\" +\n" +
+                       "                       \"\\n\" +\n" +
+                       "                       \"\\n\" +\n" +
+                       "                       \"Bear in mind that AndroidX library should not be kept together support library to prevent any unexpected results.\\n\" +\n" +
+                       "                       \"\\n\" +\n" +
+                       "                       \"XML layout\\n\" +\n" +
+                       "                       \"Simply add ViewPager2 widget to you  \\\"ViewPager2 is packed inside the latest AndroidX library of JetPack instead of Material Component library. Thus, we have to import it separately with the following gradle code:\\\\n\\\" +\\n\" +\n" +
+                       "                       \"                       \\\"\\\\n\\\" +\\n\" +\n" +
+                       "                       \"                       \\\"\\\\n\\\" +\\n\" +\n" +
+                       "                       \"                       \\\"Bear in mind that AndroidX library should not be kept together support library to prevent any unexpected results.\\\\n\\\" +\\n\" +\n" +
+                       "                       \"                       \\\"\\\\n\\");
                 // show dialog
 
                 tvDetailName.setText("About  "+sessionManager.getName());
                 AlertDialog dialog=builder.create();
+                dialog.getWindow().setLayout(400,200);
                 dialog.show();
-                dialog.setCancelable(false);
 
+                Window window = dialog.getWindow();
+                WindowManager.LayoutParams lp = window.getAttributes();
                 dialog.getWindow().setGravity(Gravity.CENTER);
 
 

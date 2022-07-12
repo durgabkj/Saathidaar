@@ -57,7 +57,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 // Permissions for accessing the storage
     private static final int SELECT_PICTURE = 100;
     private static final String TAG = "SelectImageActivity";
-    public String ReligionUrl = "http://192.168.1.36:9094/api/get/religion-name";
+    public String ReligionUrl = "http://192.168.1.38:9094/api/get/religion-name";
     public String Updateurl = Utils.memberUrl + "app/basic-lifestyles/update/";
     SessionManager sessionManager;
     ActivityProfileEditPersonalBinding b;
