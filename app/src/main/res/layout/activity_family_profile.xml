@@ -674,7 +674,7 @@
                         android:id="@+id/btnFsave"
                         android:layout_width="100dp"
                         android:layout_height="40dp"
-                    android:background="@drawable/gradient_button"
+                    android:background="@drawable/button_hover"
                    android:layout_marginTop="20dp"
                         android:text="Update"
                         android:padding="10dp"

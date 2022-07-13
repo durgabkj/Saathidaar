@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,7 +34,7 @@ import org.json.JSONObject;
 public class DashBoardFragment extends Fragment {
     SessionManager sessionManager;
     ImageView ivPremiumImage,profilePic;
-    TextView tvPremiumText, RequestAccept, Visitors, RequestSent,tvDashboardUpgrade;
+    TextView tvPremiumText, RequestAccept, Visitors, RequestSent,tvDashboardUpgrade,tvDashBoardUserName;
     int position = 0;
     DataModelDashboard model;
     LinearLayout llPremiumMatch,llMyMatch,llPremium,llshare,tvLogout,llRequestSent;
@@ -92,6 +93,7 @@ public class DashBoardFragment extends Fragment {
         llPremiumMatch = view.findViewById(R.id.llPremiumMatch);
         RequestSent = view.findViewById(R.id.RequestSent);
         llRequestSent=view.findViewById(R.id.llRequestSent);
+        tvDashBoardUserName=view.findViewById(R.id.tvDashBoardUserName);
         context = getContext();
         sessionManager = new SessionManager(context);
         set();
@@ -119,6 +121,8 @@ public class DashBoardFragment extends Fragment {
         getData();
         //  setData();
         listener();
+
+        tvDashBoardUserName.setText(sessionManager.getName());
         return view;
 
     }
@@ -156,7 +160,8 @@ public class DashBoardFragment extends Fragment {
 //        fragmentTransaction.commit();
 
                // replaceFragment(new UpgradeFragment());
-
+                Animation bounce = AnimationUtils.loadAnimation(context, R.anim.bounce);
+                tvDashboardUpgrade.startAnimation(bounce);
                 Intent intent=new Intent(context,UpgradeOnButtonActivity.class);
                 startActivity(intent);
             }

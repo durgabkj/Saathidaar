@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:orientation="vertical">
@@ -18,6 +18,7 @@
         <FrameLayout
             android:layout_width="90dp"
             android:layout_height="90dp"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp">
 
@@ -76,25 +77,41 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvAboutUs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/italic"
-            android:maxLength="150"
+            android:maxLines="4"
             android:padding="8dp"
-            android:text="Personal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them.."
+            android:text="Personal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them.notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them..notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them..notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them..notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them..."
             android:textAlignment="center"
             android:textColor="@color/white" />
 
         <TextView
+            android:id="@+id/tvUserDetailsReadMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-android:id="@+id/tvUserDetails"
             android:drawableStart="@drawable/ic_baseline_arrow_drop_down_24"
             android:fontFamily="@font/italic"
             android:maxLength="150"
             android:maxLines="4"
             android:padding="3dp"
-            android:text="Read More....."
+            android:text="View More..."
+            android:textAlignment="center"
+            android:textColor="@color/teal_700"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvUserDetailsReadLess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_keyboard_arrow_up_24"
+            android:fontFamily="@font/italic"
+            android:maxLength="150"
+            android:maxLines="4"
+            android:visibility="gone"
+            android:padding="3dp"
+            android:text="View Less..."
             android:textAlignment="center"
             android:textColor="@color/teal_700"
             android:textStyle="bold" />

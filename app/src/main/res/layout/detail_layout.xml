@@ -5,45 +5,114 @@
     android:layout_height="fill_parent">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+        android:id="@+id/instructions_view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        android:layout_margin="10dp"
+        android:orientation="vertical"
         android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:id="@+id/instructions_view" >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+        android:scrollbars="vertical">
 
-    <TextView
-        android:id="@+id/tvDetailName"
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
-        android:fontFamily="@font/italic"
-        android:layout_height="wrap_content"
-        />
-    <ImageView
-        android:id="@+id/ivClear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_clear_opaque_24dp"
-       />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#85D3CFCF"
+            android:orientation="horizontal">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/tvDetailName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
 
+                android:fontFamily="@font/italic"
+                android:padding="20dp"
+                android:text="Order Summary"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/ivClearPlan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="20dp"
+                android:src="@drawable/ic_clear_opaque_24dp" />
+
+        </LinearLayout>
 
 
         <TextView
-            android:id="@+id/tvDetail"
+            android:id="@+id/tvName"
             android:layout_width="wrap_content"
-            android:fontFamily="@font/italic"
             android:layout_height="wrap_content"
-            />
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/italic" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tvPeriod"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/italic" />
+
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/italic" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_dark"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tvTotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Total Amount"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:fontFamily="@font/italic" />
+
+
+            <TextView
+                android:id="@+id/tvPriceTotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/italic" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proceed"
+            android:id="@+id/btnProceed"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/colorPrimary"/>
 
     </LinearLayout>
 </ScrollView>

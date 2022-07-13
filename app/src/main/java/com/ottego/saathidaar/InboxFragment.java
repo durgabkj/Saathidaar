@@ -1,22 +1,16 @@
 package com.ottego.saathidaar;
 
-import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.viewpager.widget.ViewPager;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -26,11 +20,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
-import com.ottego.saathidaar.Adapter.AcceptInvitationAdapter;
 import com.ottego.saathidaar.Adapter.HomeTablayoutAdapter;
 import com.ottego.saathidaar.Model.DataModelDashboard;
-import com.ottego.saathidaar.Model.DataModelInbox;
-import com.ottego.saathidaar.databinding.FragmentHomeBinding;
 import com.ottego.saathidaar.databinding.FragmentInboxBinding;
 
 import org.json.JSONObject;
@@ -38,14 +29,14 @@ import org.json.JSONObject;
 
 public class InboxFragment extends Fragment {
     public String url = "http://192.168.1.38:9094/api/request/count/accept-request/";
-  FragmentInboxBinding b;
+    FragmentInboxBinding b;
     DataModelDashboard model;
     Context context;
     SessionManager sessionManager;
-  InvitationFragment invitationFragment=new InvitationFragment();
-  AcceptedInboxFragment acceptedInboxFragment=new AcceptedInboxFragment();
-  DeleteInboxFragment deleteInboxFragment=new DeleteInboxFragment();
-  SentInboxFragment sentInboxFragment=new SentInboxFragment();
+    InvitationFragment invitationFragment = new InvitationFragment();
+    AcceptedInboxFragment acceptedInboxFragment = new AcceptedInboxFragment();
+    DeleteInboxFragment deleteInboxFragment = new DeleteInboxFragment();
+    SentInboxFragment sentInboxFragment = new SentInboxFragment();
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -81,13 +72,12 @@ public class InboxFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         b = FragmentInboxBinding.inflate(inflater, container, false);
-context=getContext();
-sessionManager=new SessionManager(context);
+        context = getContext();
+        sessionManager = new SessionManager(context);
 
         getDataCount();
         return b.getRoot();
     }
-
 
 
     @Override
@@ -121,7 +111,7 @@ sessionManager=new SessionManager(context);
 
     private void getDataCount() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf((response)));
@@ -145,16 +135,13 @@ sessionManager=new SessionManager(context);
 //        RequestAccept.setText(model.data.get(0).accept_request_count);
 //        RequestSent.setText(model.data.get(0).sent_request_count);
 //        Visitors.setText(model.data.get(0).recent_visitors_count);
-        BadgeDrawable badgeDrawable= b.tlInbox.getTabAt(1).getOrCreateBadge();
+        BadgeDrawable badgeDrawable = b.tlInbox.getTabAt(1).getOrCreateBadge();
         badgeDrawable.setNumber(Integer.parseInt(model.data.get(0).accept_request_count));
         b.tlInbox.getTabAt(2).getOrCreateBadge().setNumber(Integer.parseInt(model.data.get(0).sent_request_count));
-       badgeDrawable.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
-       badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getActivity(),R.color.white));
+        badgeDrawable.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+        badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
         badgeDrawable.setBadgeGravity(BadgeDrawable.TOP_END);
     }
-
-
-
 
 
     private void setUpViewPager(ViewPager viewPager) {
@@ -162,6 +149,7 @@ sessionManager=new SessionManager(context);
         adapter.addFragment(new InvitationFragment(), "Invitation");
         adapter.addFragment(new AcceptedInboxFragment(), "Accept");
         adapter.addFragment(new SentInboxFragment(), "Sent");
+        adapter.addFragment(new DeleteInboxFragment(), "Delete");
         adapter.addFragment(new DeleteInboxFragment(), "Delete");
         viewPager.setAdapter(adapter);
     }

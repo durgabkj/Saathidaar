@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -20,7 +19,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.MemberPreferenceModel;
 import com.ottego.saathidaar.Model.MemberProfileModel;
-import com.ottego.saathidaar.databinding.FragmentMatchDetailsBinding;
+import com.ottego.saathidaar.databinding.FragmentInboxDetailBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,9 +27,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+public class InboxDetailFragment extends Fragment {
 
-public class MatchDetailsFragment extends Fragment {
-    FragmentMatchDetailsBinding b;
+    FragmentInboxDetailBinding b;
     Animation animation;
     // NewMatchesModel model;
     MemberPreferenceModel memberPreferenceModel;
@@ -42,18 +41,15 @@ public class MatchDetailsFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public MatchDetailsFragment() {
+    public InboxDetailFragment() {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
-    public static MatchDetailsFragment newInstance(String param1, String param2) {
-        MatchDetailsFragment fragment = new MatchDetailsFragment();
+    public static InboxDetailFragment newInstance(String param1, String param2) {
+        InboxDetailFragment fragment = new InboxDetailFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,29 +57,29 @@ public class MatchDetailsFragment extends Fragment {
         return fragment;
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        b = FragmentMatchDetailsBinding.inflate(inflater, container, false);
+        b = FragmentInboxDetailBinding.inflate(inflater, container, false);
         context = getContext();
         sessionManager = new SessionManager(context);
+        Log.e("params", mParam1);
         listener();
         getData();
-        setData();
-        getMemberPreferenceData();
+         setData();
+         getMemberPreferenceData();
         return b.getRoot();
     }
+
 
     private void getMemberPreferenceData() {
 
@@ -322,6 +318,7 @@ public class MatchDetailsFragment extends Fragment {
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
     }
+
     private void setData() {
         if (model != null) {
             b.tvNewMatchName.setText(model.first_name + " " + model.last_name);
@@ -330,7 +327,7 @@ public class MatchDetailsFragment extends Fragment {
             b.tvMatchCityDetail.setText(model.city);
             b.tvNewMatchWorkAsDetail.setText(model.working_as);
             b.tvNameUserDetails.setText("About" + "  " + model.first_name);
-         //   b.tvAboutUserDetails.setText(model.about_ourself);
+            //   b.tvAboutUserDetails.setText(model.about_ourself);
 
             b.tvCreatedBy.setText("Profile CreateBy" + " " + model.profilecreatedby);
             //b.tvProfileID.setText("Profile ID"+" "+model.);

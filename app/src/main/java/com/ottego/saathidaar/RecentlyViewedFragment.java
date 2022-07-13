@@ -102,7 +102,7 @@ FragmentRecentlyViewedBinding b;
 
 
     private void setRecyclerView() {
-        GridLayoutManager layoutManager = new GridLayoutManager(context,2);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         b.rvRecentlyView.setLayoutManager(layoutManager);
         b.rvRecentlyView.setHasFixedSize(true);
         b.rvRecentlyView.setNestedScrollingEnabled(true);

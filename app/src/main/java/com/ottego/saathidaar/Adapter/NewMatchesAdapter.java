@@ -6,8 +6,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,17 +18,16 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
-import com.ottego.saathidaar.MatchDetailsFragment;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.Model.NewMatchesModel;
-import com.ottego.saathidaar.NewMatchesFragment;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.Utils;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.ViewHolder> {
+
     Context context;
     List<NewMatchesModel> list;
 
@@ -60,6 +62,8 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             @Override
             public void onClick(View view) {
                 Utils.sentRequest(context, item.member_id);
+                holder.ivLike.setVisibility(View.GONE);
+holder.llConnect.setVisibility(View.VISIBLE);
 
             }
         });
@@ -77,7 +81,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-Log.e("position", String.valueOf(position));
+                Log.e("position", String.valueOf(position));
 //                /*ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) view.getContext(),
 //                        Pair.create(holder.ivUserMatch, "tnMemberImage"));
 //                Intent intent = new Intent(view.getContext(), MatchesDetailsActivity.class);
@@ -88,6 +92,9 @@ Log.e("position", String.valueOf(position));
 
             }
         });
+
+
+
 
 
     }
@@ -101,8 +108,8 @@ Log.e("position", String.valueOf(position));
         ImageView ivUserMatch;
         TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
         LinearLayout llMess, llShortListRemove, llShortList;
-        LinearLayout ivLike;
-
+        LinearLayout ivLike,llConnect;
+Spinner SpMenu;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNewMatchAge = itemView.findViewById(R.id.tvNewMatchAge);
@@ -114,6 +121,8 @@ Log.e("position", String.valueOf(position));
             ivUserMatch = itemView.findViewById(R.id.ivUserMatch);
             llShortListRemove = itemView.findViewById(R.id.llShortListRemove);
             llShortList = itemView.findViewById(R.id.llShortList);
+            llConnect=itemView.findViewById(R.id.llConnect);
+            SpMenu=itemView.findViewById(R.id.SpMenu);
         }
     }
 }

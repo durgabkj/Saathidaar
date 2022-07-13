@@ -112,13 +112,16 @@
                 <!--                    android:inputType="phone" />-->
 
 
-                <com.google.android.material.button.MaterialButton
+                <TextView
                     android:id="@+id/mtbLogin"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
-                    android:backgroundTint="@color/colorPrimary"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:background="@drawable/button_hover"
                     android:text="Log In" />
 
                 <TextView
@@ -131,13 +134,16 @@
                     android:textColor="@color/teal_700" />
 
 
-                <com.google.android.material.button.MaterialButton
+                <TextView
                     android:id="@+id/mbLoginRegister"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
-                    android:backgroundTint="@color/colorPrimary"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:background="@drawable/button_hover"
                     android:text="Register" />
 
             </LinearLayout>

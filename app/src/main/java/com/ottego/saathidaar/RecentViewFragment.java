@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -22,6 +23,7 @@ import com.ottego.saathidaar.Adapter.RecentVisitorAdapter;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.databinding.FragmentRecentViewBinding;
+import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 import org.json.JSONObject;
 
@@ -30,6 +32,7 @@ public class RecentViewFragment extends Fragment {
     FragmentRecentViewBinding b;
     SessionManager sessionManager;
     Context context;
+    NewMatchViewModel viewModel;
     DataModelNewMatches data;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -67,6 +70,8 @@ public class RecentViewFragment extends Fragment {
         b = FragmentRecentViewBinding.inflate(inflater, container, false);
         context = getContext();
         sessionManager = new SessionManager(context);
+
+        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
         getData();
         return b.getRoot();
     }
@@ -83,6 +88,7 @@ public class RecentViewFragment extends Fragment {
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
                 if (data.results == 1) {
+                    viewModel._list.postValue(data.data);
                     setRecyclerView();
                 }
             }

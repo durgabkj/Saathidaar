@@ -15,7 +15,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mcv_All_Played_Match"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="270dp"
         app:cardBackgroundColor="@color/white"
         app:cardElevation="2dp"
         app:cardCornerRadius="10dp"
@@ -25,129 +25,23 @@
 
         <!--            android:alpha="0.2"-->
         <ImageView
+            android:id="@+id/ivRecentViewImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-
             android:src="@drawable/local" />
-
-<!--        <FrameLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_vertical|center"-->
-<!--            >-->
-<!--            -->
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/llLockImage"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="@drawable/gray_transparent_bg"-->
-<!--                    >-->
-
-<!--                    <androidx.appcompat.widget.AppCompatImageView-->
-<!--                        android:layout_width="100dp"-->
-<!--                        android:layout_height="100dp"-->
-<!--                        android:padding="3dp"-->
-<!--                        android:scaleType="centerCrop"-->
-<!--                        android:src="@drawable/ic_baseline_lock_person_24" />-->
-
-<!--                </LinearLayout>-->
-<!--        </FrameLayout>-->
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            >
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:orientation="vertical"
-                >
-
-                <LinearLayout
-                    android:id="@+id/llShortListRemove1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/gray_transparent_bg"
-                    >
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="3dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_baseline_star_24" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llShortList1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/gray_transparent_bg"
-                    >
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="3dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_baseline_star_border_24" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/oval_bg"
-                    >
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="10dp"
-                        android:layout_marginStart="8dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_camera" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2"
-                        android:shadowColor="#000000"
-                        android:shadowDx="1.5"
-                        android:shadowDy="1.3"
-                        android:shadowRadius="1.6"
-                        android:textSize="17sp"
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </FrameLayout>
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center|start"
-            >
+            android:layout_gravity="center|start">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:padding="20dp"
                 android:background="@drawable/bg_gradient"
                 android:orientation="vertical"
+                android:padding="20dp"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="10dp">
 
@@ -157,14 +51,14 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tvNewMatchNameRs"
+                        android:id="@+id/tvNewMatchName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/italic"
+                        android:maxLength="15"
                         android:shadowColor="#000000"
                         android:shadowDx="2"
                         android:shadowDy="2"
-                        android:maxLength="15"
-                        android:fontFamily="@font/italic"
                         android:shadowRadius="1.6"
                         android:text="Durga singh"
                         android:textColor="@color/white"
@@ -172,13 +66,13 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvNewMatchAgeRs"
+                        android:id="@+id/tvNewMatchAge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:fontFamily="@font/italic"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
-                        android:fontFamily="@font/italic"
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
                         android:text="22 years"
@@ -187,17 +81,17 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvNewMatchHeightRs"
+                        android:id="@+id/tvNewMatchHeight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:fontFamily="@font/italic"
+                        android:maxLength="10"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
                         android:text="5'1"
-                        android:maxLength="10"
-                        android:fontFamily="@font/italic"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -210,32 +104,31 @@
                     android:orientation="horizontal">
 
 
-
                     <TextView
-                        android:id="@+id/tvNewMatchCityRs"
+                        android:id="@+id/tvNewMatchCity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/italic"
+                        android:maxLength="8"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
-                        android:maxLength="22"
                         android:text="Mumbai"
                         android:textColor="@color/white"
-                        android:fontFamily="@font/italic"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvNewMatchWorkAsRs"
+                        android:id="@+id/tvNewMatchWorkAs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:fontFamily="@font/italic"
+                        android:maxLength="25"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
-                        android:fontFamily="@font/italic"
                         android:shadowDy="1.3"
-                        android:maxLength="10"
                         android:shadowRadius="1.6"
                         android:text="Junior software Developer"
                         android:textColor="@color/white"
@@ -247,14 +140,17 @@
 
             <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
+
+
             <LinearLayout
-                android:id="@+id/ivLike"
+                android:id="@+id/llConnect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 android:layout_gravity="end|bottom"
-                android:layout_marginVertical="20dp"
+                android:visibility="gone"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="10dp"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
@@ -264,31 +160,67 @@
                     app:cardCornerRadius="100dp"
                     >
                     <ImageView
+                        android:id="@+id/ivAccept"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/white"
+                        android:padding="8dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_check_black_24dp" />
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:fontFamily="@font/italic"
+                    android:shadowRadius="1.6"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:text="Connected"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ivLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="20dp"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="100dp">
+
+                    <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:background="@color/white"
                         android:padding="3dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_checkmark" />
+                        android:src="@drawable/unlocked" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/italic"
                     android:shadowColor="#000000"
                     android:shadowDx="2"
                     android:shadowDy="2"
                     android:shadowRadius="1.6"
+                    android:text="Un-Block"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    android:fontFamily="@font/italic"
-                    android:textStyle="bold"
-                    android:text="Connect Now"/>
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </FrameLayout>
-
-
     </com.google.android.material.card.MaterialCardView>
     <ImageView
         android:layout_width="match_parent"

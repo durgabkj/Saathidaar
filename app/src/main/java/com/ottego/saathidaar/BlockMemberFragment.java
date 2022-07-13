@@ -1,6 +1,6 @@
+
 package com.ottego.saathidaar;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -20,39 +20,34 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
-import com.ottego.saathidaar.Adapter.AcceptInvitationAdapter;
-import com.ottego.saathidaar.Adapter.InboxInvitationAdapter;
-import com.ottego.saathidaar.Model.DataModelDashboard;
-import com.ottego.saathidaar.Model.DataModelInbox;
-import com.ottego.saathidaar.databinding.FragmentAcceptedInboxBinding;
-import com.ottego.saathidaar.viewmodel.InboxViewModel;
+import com.ottego.saathidaar.Adapter.RecentVisitorAdapter;
+import com.ottego.saathidaar.Model.DataModelNewMatches;
+import com.ottego.saathidaar.databinding.FragmentBlockMemberBinding;
+import com.ottego.saathidaar.databinding.FragmentRecentViewBinding;
+import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 import org.json.JSONObject;
 
 
-public class AcceptedInboxFragment extends Fragment {
-    Context context;
-    InboxViewModel viewModel;
+public class BlockMemberFragment extends Fragment {
+FragmentBlockMemberBinding b;
     SessionManager sessionManager;
-    DataModelInbox data;
-    String member_id;
-
-    public String InvitationAcceptUrl = "http://192.168.1.38:9094/api/request/accepted/get/all/";
-    FragmentAcceptedInboxBinding b;
+    Context context;
+    NewMatchViewModel viewModel;
+    DataModelNewMatches data;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    public String blockMember = Utils.memberUrl + "recent-visitors/";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public AcceptedInboxFragment() {
+    public BlockMemberFragment() {
         // Required empty public constructor
     }
 
-
-    public static AcceptedInboxFragment newInstance(String param1, String param2) {
-        AcceptedInboxFragment fragment = new AcceptedInboxFragment();
+    public static BlockMemberFragment newInstance(String param1, String param2) {
+        BlockMemberFragment fragment = new BlockMemberFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -72,29 +67,27 @@ public class AcceptedInboxFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        b = FragmentAcceptedInboxBinding.inflate(getLayoutInflater());
+        b = FragmentBlockMemberBinding.inflate(inflater, container, false);
         context = getContext();
         sessionManager = new SessionManager(context);
-        viewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
-        member_id = sessionManager.getMemberId();
+
+        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
         getData();
-
         return b.getRoot();
-
     }
 
-    private void getData() {
+
+    public void getData() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                InvitationAcceptUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                blockMember + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                b.srlRecycleViewAcceptInvitation.setRefreshing(false);
+                //  b.srlRecycleBookmark.setRefreshing(false);
                 progressDialog.dismiss();
-                Log.e("Invitation response", String.valueOf(response));
+                Log.e("recent visitors response", String.valueOf(response));
                 Gson gson = new Gson();
-                data = gson.fromJson(String.valueOf(response), DataModelInbox.class);
+                data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
                 if (data.results == 1) {
                     viewModel._list.postValue(data.data);
                     setRecyclerView();
@@ -103,31 +96,28 @@ public class AcceptedInboxFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                b.srlRecycleViewAcceptInvitation.setRefreshing(false);
                 progressDialog.dismiss();
                 error.printStackTrace();
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
     }
+
 
     private void setRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-        b.rvAcceptInvitation.setLayoutManager(layoutManager);
-        b.rvAcceptInvitation.setHasFixedSize(true);
-        b.rvAcceptInvitation.setNestedScrollingEnabled(true);
-        AcceptInvitationAdapter adapter = new AcceptInvitationAdapter(context, data.data);
-        b.rvAcceptInvitation.setAdapter(adapter);
+        b.rvBlock.setLayoutManager(layoutManager);
+        b.rvBlock.setHasFixedSize(true);
+        b.rvBlock.setNestedScrollingEnabled(true);
+        RecentVisitorAdapter adapter = new RecentVisitorAdapter(context, data.data);
+        b.rvBlock.setAdapter(adapter);
         if (adapter.getItemCount() != 0) {
-            b.llNoDataInvitation.setVisibility(View.GONE);
-            b.rvAcceptInvitation.setVisibility(View.VISIBLE);
+            b.llNoDataBlock.setVisibility(View.GONE);
+            b.rvBlock.setVisibility(View.VISIBLE);
 
         } else {
-            b.llNoDataInvitation.setVisibility(View.VISIBLE);
+            b.llNoDataBlock.setVisibility(View.VISIBLE);
         }
     }
 }
-
-

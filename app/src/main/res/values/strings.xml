@@ -419,4 +419,8 @@
         <item>Engineering Diploma"</item>
     </string-array>
 
+    <string-array name="menu">
+        <item>Block Member</item>
+    </string-array>
+
 </resources>

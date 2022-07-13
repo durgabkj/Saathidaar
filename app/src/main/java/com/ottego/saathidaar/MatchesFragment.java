@@ -116,7 +116,7 @@ public class MatchesFragment extends Fragment {
         adapter.addFragment(new TodayMatchFragment(), "Today's Matches ");
         adapter.addFragment(new ShortListFragment(), "Shortlisted");
         adapter.addFragment(new SearchFragment(), "Search");
-        adapter.addFragment(new RecentViewFragment(), "Recent View");
+        adapter.addFragment(new RecentViewFragment(), "Recent Visitors");
         adapter.addFragment(new RecentlyViewedFragment(), "Recently Viewed");
         viewPager.setAdapter(adapter);
     }

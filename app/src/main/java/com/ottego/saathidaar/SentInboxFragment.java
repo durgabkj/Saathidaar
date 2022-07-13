@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
@@ -20,8 +21,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.InboxInvitationAdapter;
+import com.ottego.saathidaar.Adapter.SentInvitationAdapter;
 import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.databinding.FragmentSentInboxBinding;
+import com.ottego.saathidaar.viewmodel.InboxViewModel;
 
 import org.json.JSONObject;
 
@@ -33,6 +36,7 @@ public class SentInboxFragment extends Fragment {
     SessionManager sessionManager;
     DataModelInbox data;
     String member_id;
+    InboxViewModel viewModel;
     public String InvitationSentUrl ="http://192.168.1.38:9094/api/request/sent/get/all/";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -71,6 +75,7 @@ public class SentInboxFragment extends Fragment {
         context=getContext();
         sessionManager=new SessionManager(context);
         member_id=sessionManager.getMemberId();
+        viewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
         getData();
         listener();
        return b.getRoot();
@@ -97,6 +102,7 @@ public class SentInboxFragment extends Fragment {
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelInbox.class);
                 if (data.results == 1) {
+                    viewModel._list.postValue(data.data);
                     setRecyclerView();
                 }
             }
@@ -118,7 +124,7 @@ public class SentInboxFragment extends Fragment {
         b.rvSentInvitation.setLayoutManager(layoutManager);
         b.rvSentInvitation.setHasFixedSize(true);
         b.rvSentInvitation.setNestedScrollingEnabled(true);
-        InboxInvitationAdapter adapter = new InboxInvitationAdapter(context,data.data);
+        SentInvitationAdapter adapter = new SentInvitationAdapter(context,data.data);
         b.rvSentInvitation.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         if (adapter.getItemCount() != 0) {

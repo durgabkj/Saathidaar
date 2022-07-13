@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -21,6 +22,7 @@ import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.InboxInvitationAdapter;
 import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.databinding.FragmentDeleteInboxBinding;
+import com.ottego.saathidaar.viewmodel.InboxViewModel;
 
 import org.json.JSONObject;
 
@@ -30,6 +32,7 @@ public class DeleteInboxFragment extends Fragment {
     SessionManager sessionManager;
     DataModelInbox data;
     String member_id;
+    InboxViewModel viewModel;
     public String InvitationDeleteUrl ="http://192.168.1.38:9094/api/request/rejected/get/all/";
 FragmentDeleteInboxBinding b;
     private static final String ARG_PARAM1 = "param1";
@@ -69,6 +72,7 @@ FragmentDeleteInboxBinding b;
         context=getContext();
         sessionManager=new SessionManager(context);
         member_id=sessionManager.getMemberId();
+        viewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
         getData();
         listener();
      return b.getRoot();
@@ -95,6 +99,7 @@ FragmentDeleteInboxBinding b;
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelInbox.class);
                 if (data.results == 1) {
+                    viewModel._list.postValue(data.data);
                     setRecyclerView();
                 }
             }

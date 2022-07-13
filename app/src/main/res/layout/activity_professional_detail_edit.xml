@@ -480,7 +480,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="12sp"
-                        android:background="@drawable/gradient_button"
+                        android:background="@drawable/button_hover"
                         android:padding="10dp"
                         android:text="save"
                         android:textAlignment="center"

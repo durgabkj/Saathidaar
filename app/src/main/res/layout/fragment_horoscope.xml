@@ -156,11 +156,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/gradient_button"
+                    android:background="@drawable/button_hover"
                     android:elevation="20dp"
                     android:padding="10dp"
                     android:text="Edit Details"
-                     android:textColor="@color/white"
+                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:translationZ="20dp" />
             </androidx.cardview.widget.CardView>
@@ -444,7 +444,7 @@ android:visibility="gone"
                     android:padding="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:background="@drawable/gradient_button"
+                    android:background="@drawable/button_hover"
                     android:layout_gravity="center"/>
 
 

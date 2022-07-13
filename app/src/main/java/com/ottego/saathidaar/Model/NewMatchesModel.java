@@ -1,7 +1,6 @@
 package com.ottego.saathidaar.Model;
 
 public class NewMatchesModel {
-
     public String income;
     public String member_id;
     public String request_status;

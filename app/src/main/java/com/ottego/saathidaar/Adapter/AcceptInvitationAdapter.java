@@ -11,9 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.ottego.saathidaar.InboxPagerFragment;
 import com.ottego.saathidaar.Model.InboxModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.Utils;
@@ -49,7 +51,14 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         holder.tvInvNewMatchHeight.setText(item.religion);
         holder.tvInvNewMatchCity.setText(item.maritalStatus);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("position Inbox", String.valueOf(position));
+                InboxPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "Inbox_pager_fragment");
 
+            }
+        });
     }
 
 

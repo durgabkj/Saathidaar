@@ -51,14 +51,6 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
 
         context = UpgradePlanDetailsActivity.this;
         sessionManager = new SessionManager(context);
-        StrictMode.ThreadPolicy policy = new
-                StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-
-
-
-        Log.e("data", data);
         setData();
         listener();
         setContentView(b.getRoot());
@@ -69,7 +61,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
         b.tvPayAmountUpgrade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startPayment();
             }
         });
     }

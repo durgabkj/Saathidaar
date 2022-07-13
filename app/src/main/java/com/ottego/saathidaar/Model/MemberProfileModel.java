@@ -44,9 +44,9 @@ public class MemberProfileModel {
     public  String college_attended;
     public String working_with;
     public String working_as;
-    public  String employer_name;
     public String annual_income;
     public  String cast_id;
+    public  String profile_email_id;
     public String nakshatra;
     public  String state_id;
     public String unmarried_female;

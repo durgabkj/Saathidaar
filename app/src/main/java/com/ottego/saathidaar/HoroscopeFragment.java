@@ -272,7 +272,7 @@ public class HoroscopeFragment extends Fragment {
                                 b.cvShowDetails.setVisibility(View.VISIBLE);
                                 b.cvEditDetails.setVisibility(View.GONE);
                                 // getData(urlGetHoroscope);
-//                                getData();
+                                 getData();
                                 setData();
                                 setData1();
                             } else {

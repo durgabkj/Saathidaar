@@ -3,16 +3,14 @@ package com.ottego.saathidaar;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -23,7 +21,7 @@ import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentMyMatchBinding;
-import com.ottego.saathidaar.databinding.FragmentNewMatchesBinding;
+import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 import org.json.JSONObject;
 
@@ -33,6 +31,7 @@ public class MyMatchFragment extends Fragment {
     FragmentMyMatchBinding b;
     SessionManager sessionManager;
     DataModelNewMatches data;
+    NewMatchViewModel viewModel;
     public String MyMatchUrl = Utils.memberUrl + "my/matches/";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,8 +73,8 @@ public class MyMatchFragment extends Fragment {
 
         b = FragmentMyMatchBinding.inflate(getLayoutInflater());
         context = getContext();
-sessionManager =new SessionManager(context);
-
+        sessionManager = new SessionManager(context);
+        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
         getData();
         return b.getRoot();
     }
@@ -83,7 +82,7 @@ sessionManager =new SessionManager(context);
     public void getData() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                MyMatchUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                MyMatchUrl + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 //  b.srlRecycleBookmark.setRefreshing(false);
@@ -92,6 +91,7 @@ sessionManager =new SessionManager(context);
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
                 if (data.results == 1) {
+                    viewModel._list.postValue(data.data);
                     setRecyclerView();
                 }
             }

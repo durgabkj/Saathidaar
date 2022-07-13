@@ -56,7 +56,27 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
 
 
 
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.e("position", String.valueOf(position));
+//                /*ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) view.getContext(),
+//                        Pair.create(holder.ivUserMatch, "tnMemberImage"));
+//                Intent intent = new Intent(view.getContext(), MatchesDetailsActivity.class);
+//                intent.putExtra("data", new Gson().toJson(item));
+//                view.getContext().startActivity(intent, options.toBundle());*/
+
+                    MatchPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
+
+                }
+            });
+
         }
+
+
+
+
 
         @Override
         public int getItemCount() {

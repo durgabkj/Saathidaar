@@ -3,33 +3,28 @@ package com.ottego.saathidaar.Adapter;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityOptions;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.util.Pair;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
-import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.Model.UpgradeModel;
-import com.ottego.saathidaar.NewMatchesFragment;
 import com.ottego.saathidaar.R;
-import com.ottego.saathidaar.UpgradePayDetailFragment;
 import com.ottego.saathidaar.UpgradePlanDetailsActivity;
-import com.ottego.saathidaar.Utils;
 
 import java.util.List;
 
@@ -73,8 +68,51 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
         holder.btnDashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), UpgradePayDetailFragment.class);
-                intent.putExtra("data", new Gson().toJson(item));
+                AlertDialog.Builder builder=new AlertDialog.Builder(view.getContext());
+                View layout_dialog= LayoutInflater.from(view.getContext()).inflate(R.layout.detail_layout,null);
+                builder.setView(layout_dialog);
+                AppCompatTextView tvName =layout_dialog.findViewById(R.id.tvName);
+                AppCompatTextView tvPeriod =layout_dialog.findViewById(R.id.tvPeriod);
+                AppCompatTextView tvPrice =layout_dialog.findViewById(R.id.tvPrice);
+                AppCompatTextView tvPriceTotal =layout_dialog.findViewById(R.id.tvPriceTotal);
+                AppCompatImageView ivClear =layout_dialog.findViewById(R.id.ivClearPlan);
+
+                AppCompatButton btnProceed =layout_dialog.findViewById(R.id.btnProceed);
+
+
+                tvName.setText(item.plan_name);
+                tvPeriod.setText(item.plan_validity);
+                tvPrice.setText(item.plan_price);
+                tvPriceTotal.setText(item.plan_price);
+
+
+
+                AlertDialog dialog=builder.create();
+                dialog.getWindow().setLayout(400,200);
+                dialog.show();
+
+                Window window = dialog.getWindow();
+                WindowManager.LayoutParams lp = window.getAttributes();
+                dialog.getWindow().setGravity(Gravity.CENTER);
+
+
+                ivClear.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+
+
+                btnProceed.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), UpgradePlanDetailsActivity.class);
+                        v.getContext().startActivity(intent);
+                    }
+                });
+
             }
         });
 
@@ -87,7 +125,7 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvCardName,tvPriceUpgrade,tvMonths;
+        TextView tvCardName,tvPriceUpgrade,tvMonths,tvName,tvPeriod,tvPrice,tvTotal,tvPriceTotal;
 TextView btnDashboard;
 
         public ViewHolder(@NonNull View itemView) {
@@ -97,6 +135,7 @@ TextView btnDashboard;
             tvPriceUpgrade = itemView.findViewById(R.id.tvPriceUpgrade);
             tvMonths = itemView.findViewById(R.id.tvMonths);
             btnDashboard=itemView.findViewById(R.id.btnDashboard);
+
 
         }
     }

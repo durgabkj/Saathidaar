@@ -31,7 +31,7 @@ import com.ottego.saathidaar.Fragment.ProfessionalInfoFragment;
 public class MyProfileFragment extends Fragment {
     TabLayout tabLayout;
     ViewPager viewPager;
-    TextView tvUserName, tvUserEmail,tvUserDetails;
+    TextView tvUserName, tvUserEmail,tvUserDetailsReadLess,tvUserDetailsReadMore,tvAboutUs;
     SessionManager sessionManager;
     AppCompatImageView ivClear;
     Context context;
@@ -78,90 +78,36 @@ public class MyProfileFragment extends Fragment {
         tvUserName = view.findViewById(R.id.tvUserName);
         tabLayout = view.findViewById(R.id.tlProfile);
         viewPager = view.findViewById(R.id.vpMyProfile);
-        tvUserDetails=view.findViewById(R.id.tvUserDetails);
-
-//
-//        tabLayout.addTab(tabLayout.newTab().setText("Personal Info"));
-//        tabLayout.addTab(tabLayout.newTab().setText("Family Info"));
-//        tabLayout.addTab(tabLayout.newTab().setText("Professional Info"));
+        tvUserDetailsReadMore=view.findViewById(R.id.tvUserDetailsReadMore);
+        tvUserDetailsReadLess=view.findViewById(R.id.tvUserDetailsReadLess);
+        tvAboutUs=view.findViewById(R.id.tvAboutUs);
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-//        ProfileViewPager adapter = new ProfileViewPager(getContext(), requireActivity().getSupportFragmentManager(), tabLayout.getTabCount());
-//        viewPager.setAdapter(adapter);
-
-        // viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-
-        setPreLoadData();
         listener();
+        setPreLoadData();
         return view;
 
     }
 
     private void listener() {
-        tvUserDetails.setOnClickListener(new View.OnClickListener() {
+        tvUserDetailsReadMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(context);
-                View layout_dialog= LayoutInflater.from(context).inflate(R.layout.detail_layout,null);
-                builder.setView(layout_dialog);
-                AppCompatTextView tvDetail =layout_dialog.findViewById(R.id.tvDetail);
-                 AppCompatTextView tvDetailName =layout_dialog.findViewById(R.id.tvDetailName);
-                AppCompatImageView ivClear =layout_dialog.findViewById(R.id.ivClear);
-               tvDetail.setText("ViewPager2 is a ViewGroup backed by a RecyclerView and thus the handling method is similar to that for RecyclerView. ViewPager2 requires an adapter to show its contents and the adapter can be either RecyclerView adapter or FragmentStateAdapter.\n" +
-                       "\n" +
-                       "This article will cover the basic handling of ViewPager2 and the linking with a TabLayout. If you have been familiar with the setup of ViewPager2, you could jump to “Trick” session directly.\n" +
-                       "\n" +
-                       "Setup\n" +
-                       "ViewPager2 is packed inside the latest AndroidX library of JetPack instead of Material Component library. Thus, we have to import it separately with the following gradle code:\n" +
-                       "\n" +
-                       "\n" +
-                       "Bear in mind that AndroidX library should not be kept together support library to prevent any unexpected results.\n" +
-                       "\n" +
-                       "XML layout\n" +
-                       "Simply add ViewPager2 widget to you  \"ViewPager2 is packed inside the latest AndroidX library of JetPack instead of Material Component library. Thus, we have to import it separately with the following gradle code:\\n\" +\n" +
-                       "                       \"\\n\" +\n" +
-                       "                       \"\\n\" +\n" +
-                       "                       \"Bear in mind that AndroidX library should not be kept together support library to prevent any unexpected results.\\n\" +\n" +
-                       "                       \"\\n\" +iewPager2 is a ViewGroup backed by a RecyclerView and thus the handling method is similar to that for RecyclerView. ViewPager2 requires an adapter to show its contents and the adapter can be either RecyclerView adapter or FragmentStateAdapter.\\n\" +\n" +
-                       "                       \"\\n\" +\n" +
-                       "                       \"This article will cover the basic handling of ViewPager2 and the linking with a TabLayout. If you have been familiar with the setup of ViewPager2, you could jump to “Trick” session directly.\\n\" +\n" +
-                       "                       \"\\n\" +\n" +
-                       "                       \"Setup\\n\" +\n" +
-                       "                       \"ViewPager2 is packed inside the latest AndroidX library of JetPack instead of Material Component library. Thus, we have to import it separately with the following gradle code:\\n\" +\n" +
-                       "                       \"\\n\" +\n" +
-                       "                       \"\\n\" +\n" +
-                       "                       \"Bear in mind that AndroidX library should not be kept together support library to prevent any unexpected results.\\n\" +\n" +
-                       "                       \"\\n\" +\n" +
-                       "                       \"XML layout\\n\" +\n" +
-                       "                       \"Simply add ViewPager2 widget to you  \\\"ViewPager2 is packed inside the latest AndroidX library of JetPack instead of Material Component library. Thus, we have to import it separately with the following gradle code:\\\\n\\\" +\\n\" +\n" +
-                       "                       \"                       \\\"\\\\n\\\" +\\n\" +\n" +
-                       "                       \"                       \\\"\\\\n\\\" +\\n\" +\n" +
-                       "                       \"                       \\\"Bear in mind that AndroidX library should not be kept together support library to prevent any unexpected results.\\\\n\\\" +\\n\" +\n" +
-                       "                       \"                       \\\"\\\\n\\");
-                // show dialog
-
-                tvDetailName.setText("About  "+sessionManager.getName());
-                AlertDialog dialog=builder.create();
-                dialog.getWindow().setLayout(400,200);
-                dialog.show();
-
-                Window window = dialog.getWindow();
-                WindowManager.LayoutParams lp = window.getAttributes();
-                dialog.getWindow().setGravity(Gravity.CENTER);
-
-
-                ivClear.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-dialog.dismiss();
-                    }
-                });
-
+                tvAboutUs.setMaxLines(30);
+                tvUserDetailsReadMore.setVisibility(View.GONE);
+                tvUserDetailsReadLess.setVisibility(View.VISIBLE);
             }
         });
 
+
+        tvUserDetailsReadLess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tvAboutUs.setMaxLines(4);
+                tvUserDetailsReadMore.setVisibility(View.VISIBLE);
+                tvUserDetailsReadLess.setVisibility(View.GONE);
+            }
+        });
 
 
     }

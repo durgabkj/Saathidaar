@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
@@ -21,6 +22,7 @@ import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentTodayMatchBinding;
+import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 import org.json.JSONObject;
 
@@ -31,6 +33,7 @@ public class TodayMatchFragment extends Fragment {
     SessionManager sessionManager;
     DataModelNewMatches data;
     FragmentTodayMatchBinding b;
+    NewMatchViewModel viewModel;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -71,7 +74,7 @@ public class TodayMatchFragment extends Fragment {
        b=FragmentTodayMatchBinding.inflate(getLayoutInflater());
         context = getContext();
 sessionManager=new SessionManager(context);
-
+        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
         getData();
         return b.getRoot();
     }
@@ -88,6 +91,7 @@ sessionManager=new SessionManager(context);
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
                 if (data.results == 1) {
+                    viewModel._list.postValue(data.data);
                     setRecyclerView();
                 }
             }

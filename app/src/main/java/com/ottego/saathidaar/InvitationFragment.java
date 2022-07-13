@@ -1,6 +1,5 @@
 package com.ottego.saathidaar;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -10,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.InboxInvitationAdapter;
 import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.databinding.FragmentInvitationBinding;
+import com.ottego.saathidaar.viewmodel.InboxViewModel;
 
 import org.json.JSONObject;
 
@@ -30,6 +31,7 @@ public class InvitationFragment extends Fragment {
     DataModelInbox data;
     FragmentInvitationBinding b;
     Context context;
+    InboxViewModel viewModel;
     String member_Id;
     SessionManager sessionManager;
     public String InvitationUrl = "http://192.168.1.38:9094/api/request/invitations/get/all/";
@@ -71,7 +73,7 @@ public class InvitationFragment extends Fragment {
         sessionManager = new SessionManager(context);
         member_Id = sessionManager.getMemberId().trim();
         Log.e("member", member_Id);
-
+        viewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
         getData("");
         listener();
         return b.getRoot();
@@ -89,7 +91,7 @@ public class InvitationFragment extends Fragment {
     public void getData(String id) {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                InvitationUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                InvitationUrl + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 b.srlRecycleViewInvitation.setRefreshing(false);
@@ -98,6 +100,7 @@ public class InvitationFragment extends Fragment {
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelInbox.class);
                 if (data.results == 1) {
+                    viewModel._list.postValue(data.data);
                     setRecyclerView();
                 }
             }
@@ -115,7 +118,6 @@ public class InvitationFragment extends Fragment {
     }
 
 
-    @SuppressLint("NotifyDataSetChanged")
     private void setRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         b.rvInvitation.setLayoutManager(layoutManager);
@@ -123,7 +125,6 @@ public class InvitationFragment extends Fragment {
         b.rvInvitation.setNestedScrollingEnabled(true);
         InboxInvitationAdapter adapter = new InboxInvitationAdapter(context, data.data);
         b.rvInvitation.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
         if (adapter.getItemCount() != 0) {
             b.llNoDataInvitation.setVisibility(View.GONE);
             b.rvInvitation.setVisibility(View.VISIBLE);

@@ -107,52 +107,6 @@ public class Utils {
     }
 
 
-//    private void sendSms() {
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                Log.e(" Enquiry response", response);
-//                try {
-//                    JSONObject jsonObject = new JSONObject(response);
-//                    String code = jsonObject.getString("result");
-//                    if (code.equalsIgnoreCase("1")) {
-//
-////                       Intent intent = new Intent(context, OtpVerificationActivity.class);
-//                        // intent.putExtra("id", jsonObject.getString("UserID"));
-////                        intent.putExtra("mobile", mobile);
-////                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        // startActivity(intent);
-//                        Toast.makeText(context, "Mess Enquiry", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        error.printStackTrace();
-//                        Toast.makeText(context, "Sorry, something went wrong. Please try again.", Toast.LENGTH_SHORT).show();
-//                    }
-//                }) {
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put("apikey", Utils.API_KEY);
-//                params.put("MessID", model.MemberID);
-//                params.put("UserID", sessionManager.getId());
-//                params.put("SendSMS", "1");
-//                Log.e("Enquiry perms", String.valueOf(params));
-//                return params;
-//            }
-//        };
-//        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//        MySingleton.myGetMySingleton(context).myAddToRequest(stringRequest);
-//    }
 
 
 

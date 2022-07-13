@@ -11,9 +11,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.ottego.saathidaar.InboxPagerFragment;
+import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.Model.InboxModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.Utils;
@@ -42,13 +45,13 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
     @Override
     public void onBindViewHolder(@NonNull InboxInvitationAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         InboxModel item = list.get(position);
-        Log.e(" New Matches model", new Gson().toJson(item));
+        Log.e(" Inbox model", new Gson().toJson(item));
 
         holder.tvInvNewMatchName.setText(item.first_name + " " + item.last_name);
         holder.tvInvNewMatchAge.setText(item.mage);
         holder.tvInvNewMatchHeight.setText(item.religion);
         holder.tvInvNewMatchCity.setText(item.maritalStatus);
-
+holder.tvInvNewMatchWorkAs.setText(item.country);
 
         holder.llAccept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +76,16 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         });
 
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("position Inbox", String.valueOf(position));
+                InboxPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "Inbox_pager_fragment");
+
+            }
+        });
+
+
     }
 
 
@@ -86,7 +99,6 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs;
         LinearLayout llAccept,llDelete,llAccepted,llDeleted;
-
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
