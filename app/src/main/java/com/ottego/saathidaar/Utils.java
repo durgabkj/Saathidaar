@@ -33,11 +33,11 @@ import java.util.Objects;
 
 public class Utils {
     public static int SERVER_TIMEOUT = 30000;
-    public static String userUrl ="http://192.168.1.35:9094/api/users/";
-    public static String memberUrl ="http://192.168.1.35:9094/api/member/";
-    public static  String location ="http://192.168.1.35:9094/api/get/";
-    public static String privacy="http://192.168.1.35:9094/api/privacy/update/";
-    public static String alert= "http://192.168.1.35/api/alert/";
+    public static String userUrl ="http://103.150.186.33:8080/saathidaar_backend/api/users/";
+    public static String memberUrl ="http://103.150.186.33:8080/saathidaar_backend/api/member/";
+    public static  String location ="http://103.150.186.33:8080/saathidaar_backend/api/get/";
+    public static String privacy="http://103.150.186.33:8080/saathidaar_backend/api/privacy/update/";
+    public static String alert= "http://103.150.186.33:8080/saathidaar_backend/api/alert/";
     public static String role_user="USER";
 
 

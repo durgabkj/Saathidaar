@@ -2,8 +2,10 @@ package com.ottego.saathidaar;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -12,7 +14,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.Model.SessionModel;
 import com.ottego.saathidaar.Model.UpgradeModel;
 import com.ottego.saathidaar.databinding.ActivityUpgradePlanDetailsBinding;
 import com.razorpay.Checkout;
@@ -32,7 +40,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
     UpgradeModel model;
     SessionManager sessionManager;
     Context context;
-    public String payment = "http://192.168.1.38:9094/upgrade/payment-pay/";
+    public String payment = Utils.memberUrl+"upgrade/plan";
     private static final String TAG = "Razorpay";
     Checkout checkout;
 
@@ -49,10 +57,55 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
         context = UpgradePlanDetailsActivity.this;
         sessionManager = new SessionManager(context);
         setData();
+
         listener();
         Checkout.clearUserData(context);
         setContentView(b.getRoot());
     }
+
+    private void updatePayment(){
+            final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("member_id", sessionManager.getMemberId());
+            params.put("plan_name", model.plan_name);
+        params.put("plan_amount", "model.plan_price");
+        params.put("paymentId", "dtfyghjghg");
+            Log.e("params", String.valueOf(params));
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, payment, new JSONObject(params),
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            progressDialog.dismiss();
+                            Log.e("response", String.valueOf((response)));
+                            try {
+                                String code = response.getString("results");
+                                if (code.equalsIgnoreCase("1")) {
+                                    Gson gson = new Gson();
+                                    Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            progressDialog.dismiss();
+                            if (null != error.networkResponse) {
+                                Toast.makeText(context,"Try again......",Toast.LENGTH_LONG).show();
+                                Log.e("Error response", String.valueOf(error));
+                            }
+                        }
+                    });
+
+            request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            MySingleton.myGetMySingleton(context).myAddToRequest(request);
+        }
+
 
 
     private void listener() {
@@ -83,7 +136,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
             object.put("name", "Saathidaar.com");
             object.put("description", model.plan_name+" Plan Payment");
             object.put("theme.color", "");
-            object.put("amount", amount);
+            object.put("amount", 1*100);
             object.put("prefill.contact", sessionManager.getPhone1());
             object.put("prefill.email", sessionManager.getEmail());
             checkout.open(UpgradePlanDetailsActivity.this, object);
@@ -96,7 +149,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
     @Override
     public void onPaymentSuccess(String s) {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
-
+        updatePayment();
 
         AlertDialog.Builder builder
                 = new AlertDialog

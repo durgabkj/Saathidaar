@@ -34,7 +34,7 @@ public class InvitationFragment extends Fragment {
     InboxViewModel viewModel;
     String member_Id;
     SessionManager sessionManager;
-    public String InvitationUrl = "http://192.168.1.35:9094/api/request/invitations/get/all/";
+    public String InvitationUrl = "http://103.150.186.33:8080/saathidaar_backend/api/request/invitations/get/all/";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 

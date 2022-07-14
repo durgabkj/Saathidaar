@@ -60,7 +60,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 // Permissions for accessing the storage
     private static final int SELECT_PICTURE = 100;
     private static final String TAG = "SelectImageActivity";
-    public String ReligionUrl = "http://192.168.1.35:9094/api/get/religion-name";
+    public String ReligionUrl = "http://103.150.186.33:8080/saathidaar_backend/api/get/religion-name";
     public String Updateurl = Utils.memberUrl + "app/basic-lifestyles/update/";
     SessionManager sessionManager;
     ActivityProfileEditPersonalBinding b;
@@ -164,7 +164,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             b.etHeight.setText(model.height);
             b.etBloodGroup.setText(model.blood_group);
             b.etDiet.setText(model.lifestyles);
-            b.tvGender.setText(model.gender);
+            b.etGender.setText(model.gender);
             b.tvMotherTongue.setText(model.mother_tounge);
             b.tvUserSubCommunity.setText(model.subcaste);
             b.tvUserCommunity.setText(model.caste_name);
@@ -260,6 +260,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
         AppCompatButton btnokSuccess =layout_dialog.findViewById(R.id.btnokSuccess);
         // show dialog
+
+
 
         AlertDialog dialog=builder.create();
         dialog.show();

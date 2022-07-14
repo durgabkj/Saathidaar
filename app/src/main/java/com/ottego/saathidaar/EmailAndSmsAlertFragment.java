@@ -110,7 +110,7 @@ DataModelSmsAlert model;
 
     private void setData() {
 
-        if(model!=null)
+        if(model.data!=null && model.data.size() > 0)
         {
             if (model.data.get(0).premium_match_mail!=null && model.data.get(0).premium_match_mail.equalsIgnoreCase("Daily")){
                 b.rbPremiumDaily.setChecked(true);

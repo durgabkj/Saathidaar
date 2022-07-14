@@ -46,7 +46,7 @@ public class PrivacyOptionFragment extends Fragment {
     public String dobPrivacy = Utils.privacy + "dob";
     public String incomePrivacy = Utils.privacy + "annual-income";
 
-    public String getPrivacy = "http://192.168.1.35:9094/api/privacy/get/all/";
+    public String getPrivacy = "http://103.150.186.33:8080/saathidaar_backend/api/privacy/get/all/";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -455,6 +455,13 @@ public class PrivacyOptionFragment extends Fragment {
                         Log.e(" dobPrivacy response", String.valueOf((response)));
 
                         try {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+                                Gson gson = new Gson();
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
                             Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();

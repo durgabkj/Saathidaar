@@ -1,16 +1,21 @@
 package com.ottego.saathidaar;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,7 +51,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     String city = "";
     String origin = "";
     String pinCode = "";
-
+    Dialog dialog;
     public String url = Utils.memberUrl + "app/professional-details/update/";
     public String countryUrl = Utils.location + "country";
     public String stateUrl = Utils.location + "state-name/by/country-name/";
@@ -79,6 +84,8 @@ String memberId;
         String data = bundle.getString("data");
         model = new Gson().fromJson(data, MemberProfileModel.class);
 
+
+        dialog = new Dialog(context);
         userAnnualIncome();
         userWorkAs();
         UserWorkingWith();
@@ -241,6 +248,7 @@ String memberId;
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String country = jsonObject1.getString("country_name");
                             Log.e("Country-list", String.valueOf(countryList));
+                            countryList.add(country);
                              stringArray = new String[]{country};
 
                         }
@@ -463,183 +471,239 @@ String memberId;
                 submitForm();
             }
         });
-        final int[] checkedItem = {-1};
+
         b.etCountry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // AlertDialog builder instance to build the alert dialog
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
-                // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+                // set custom dialog
+                dialog.setContentView(R.layout.searchable_dropdown_item);
 
-                // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                // set custom height and width
+                dialog.getWindow().setLayout(800, 900);
 
-                // list of the items to be displayed to
-                // the user in the form of list
-                // so that user can select the item from
-                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
-                // the function setSingleChoiceItems is the function which builds
-                // the alert dialog with the single item selection
-                alertDialog.setSingleChoiceItems(stringArray, checkedItem[0], new DialogInterface.OnClickListener() {
+                // set transparent background
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                // show dialog
+                dialog.show();
+
+                // Initialize and assign variable
+                EditText editText = dialog.findViewById(R.id.edit_text);
+                ListView listView = dialog.findViewById(R.id.list_view);
+
+                // Initialize array adapter
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, countryList);
+                // set adapter
+                listView.setAdapter(adapter);
+                editText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
 
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        adapter.getFilter().filter(s);
+                    }
 
-                        // update the selected item which is selected by the user
-                        // so that it should be selected when user opens the dialog next time
-                        // and pass the instance to setSingleChoiceItems method
-                        checkedItem[0] = which;
+                    @Override
+                    public void afterTextChanged(Editable s) {
 
-                        // now also update the TextView which previews the selected item
-                        b.etCountry.setText(stringArray[which]);
+                    }
+                });
 
-                        // when selected an item the dialog should be closed with the dismiss method
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // when item selected from list
+                        // set selected item on textView
+                        b.etCountry.setText(adapter.getItem(position));
+                        // Dismiss dialog
                         dialog.dismiss();
+
+
                     }
                 });
-
-                // set the negative button if the user
-                // is not interested to select or change
-                // already selected item
-                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                // create and build the AlertDialog instance
-                // with the AlertDialog builder instance
-                AlertDialog customAlertDialog = alertDialog.create();
-
-                // show the alert dialog when the button is clicked
-                customAlertDialog.show();
-                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
-                buttonbackground.setBackgroundColor(Color.BLACK);
 
             }
         });
 
-        final int[] checkedItem1 = {-1};
+
+//        final int[] checkedItem = {-1};
+//        b.etCountry.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                // AlertDialog builder instance to build the alert dialog
+//                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+//
+//                // set the custom icon to the alert dialog
+//                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+//
+//                // title of the alert dialog
+//                alertDialog.setTitle("Choose an Item");
+//
+//                // list of the items to be displayed to
+//                // the user in the form of list
+//                // so that user can select the item from
+//                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+//                // the function setSingleChoiceItems is the function which builds
+//                // the alert dialog with the single item selection
+//                alertDialog.setSingleChoiceItems(stringArray, checkedItem[0], new DialogInterface.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                        // update the selected item which is selected by the user
+//                        // so that it should be selected when user opens the dialog next time
+//                        // and pass the instance to setSingleChoiceItems method
+//                        checkedItem[0] = which;
+//
+//                        // now also update the TextView which previews the selected item
+//                        b.etCountry.setText(stringArray[which]);
+//
+//                        // when selected an item the dialog should be closed with the dismiss method
+//                        dialog.dismiss();
+//                    }
+//                });
+//
+//                // set the negative button if the user
+//                // is not interested to select or change
+//                // already selected item
+//                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.cancel();
+//                    }
+//                });
+//
+//                // create and build the AlertDialog instance
+//                // with the AlertDialog builder instance
+//                AlertDialog customAlertDialog = alertDialog.create();
+//
+//                // show the alert dialog when the button is clicked
+//                customAlertDialog.show();
+//                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+//                buttonbackground.setBackgroundColor(Color.BLACK);
+//
+//            }
+//        });
+
         b.etState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // AlertDialog builder instance to build the alert dialog
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
-                // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+                // set custom dialog
+                dialog.setContentView(R.layout.searchable_dropdown_item);
 
-                // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                // set custom height and width
+                dialog.getWindow().setLayout(800, 900);
 
-                // list of the items to be displayed to
-                // the user in the form of list
-                // so that user can select the item from
-                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
-                // the function setSingleChoiceItems is the function which builds
-                // the alert dialog with the single item selection
-                alertDialog.setSingleChoiceItems(stringArray1, checkedItem1[0], new DialogInterface.OnClickListener() {
+                // set transparent background
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                // show dialog
+                dialog.show();
+
+                // Initialize and assign variable
+                EditText editText = dialog.findViewById(R.id.edit_text);
+                ListView listView = dialog.findViewById(R.id.list_view);
+
+                // Initialize array adapter
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, stateList);
+                // set adapter
+                listView.setAdapter(adapter);
+                editText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
 
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        adapter.getFilter().filter(s);
+                    }
 
-                        // update the selected item which is selected by the user
-                        // so that it should be selected when user opens the dialog next time
-                        // and pass the instance to setSingleChoiceItems method
-                        checkedItem[0] = which;
+                    @Override
+                    public void afterTextChanged(Editable s) {
 
-                        // now also update the TextView which previews the selected item
-                        b.etState.setText(stringArray1[which]);
+                    }
+                });
 
-                        // when selected an item the dialog should be closed with the dismiss method
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // when item selected from list
+                        // set selected item on textView
+                        b.etState.setText(adapter.getItem(position));
+                        // Dismiss dialog
                         dialog.dismiss();
+
+
                     }
                 });
-
-                // set the negative button if the user
-                // is not interested to select or change
-                // already selected item
-                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                // create and build the AlertDialog instance
-                // with the AlertDialog builder instance
-                AlertDialog customAlertDialog = alertDialog.create();
-
-                // show the alert dialog when the button is clicked
-                customAlertDialog.show();
-                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
-                buttonbackground.setBackgroundColor(Color.BLACK);
 
             }
         });
 
 
-        final int[] checkedItem2 = {-1};
         b.etCity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // AlertDialog builder instance to build the alert dialog
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
-                // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+                // set custom dialog
+                dialog.setContentView(R.layout.searchable_dropdown_item);
 
-                // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                // set custom height and width
+                dialog.getWindow().setLayout(800, 900);
 
-                // list of the items to be displayed to
-                // the user in the form of list
-                // so that user can select the item from
-                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
-                // the function setSingleChoiceItems is the function which builds
-                // the alert dialog with the single item selection
-                alertDialog.setSingleChoiceItems(stringArray2, checkedItem2[0], new DialogInterface.OnClickListener() {
+                // set transparent background
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                // show dialog
+                dialog.show();
+
+                // Initialize and assign variable
+                EditText editText = dialog.findViewById(R.id.edit_text);
+                ListView listView = dialog.findViewById(R.id.list_view);
+
+                // Initialize array adapter
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, cityList);
+                // set adapter
+                listView.setAdapter(adapter);
+                editText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
 
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        adapter.getFilter().filter(s);
+                    }
 
-                        // update the selected item which is selected by the user
-                        // so that it should be selected when user opens the dialog next time
-                        // and pass the instance to setSingleChoiceItems method
-                        checkedItem[0] = which;
+                    @Override
+                    public void afterTextChanged(Editable s) {
 
-                        // now also update the TextView which previews the selected item
-                        b.etCity.setText(stringArray2[which]);
+                    }
+                });
 
-                        // when selected an item the dialog should be closed with the dismiss method
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // when item selected from list
+                        // set selected item on textView
+                        b.etCity.setText(adapter.getItem(position));
+                        // Dismiss dialog
                         dialog.dismiss();
+
+
                     }
                 });
-
-                // set the negative button if the user
-                // is not interested to select or change
-                // already selected item
-                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                // create and build the AlertDialog instance
-                // with the AlertDialog builder instance
-                AlertDialog customAlertDialog = alertDialog.create();
-
-                // show the alert dialog when the button is clicked
-                customAlertDialog.show();
-                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
-                buttonbackground.setBackgroundColor(Color.BLACK);
 
             }
         });

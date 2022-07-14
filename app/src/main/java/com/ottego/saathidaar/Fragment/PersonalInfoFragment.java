@@ -3,6 +3,8 @@ package com.ottego.saathidaar.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,6 +99,33 @@ public class PersonalInfoFragment extends Fragment {
 //                startActivity(intent);
             }
         });
+
+
+        binding.tvUserMaritalStatus.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+
+              String status=binding.tvUserMaritalStatus.getText().toString().trim();
+              if(status.equalsIgnoreCase("Never Married"))
+              {
+                  binding.llChild.setVisibility(View.GONE);
+              }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
 
     }
 
