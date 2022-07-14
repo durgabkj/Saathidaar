@@ -100,7 +100,7 @@ String memberId;
             b.etWorkingAs.setText(model.working_as);
             b.etCountry.setText(model.country_name);
             b.etState.setText(model.state_name);
-            b.etCity.setText(model.city);
+            b.etCity.setText(model.city_name);
             b.etAddUserCorigin.setText(model.ethnic_corigin);
             b.etAddUserZipPinCode.setText(model.pincode);
 
@@ -674,6 +674,7 @@ String memberId;
         params.put("ethnic_corigin", origin);
         params.put("country_name", country);
         Log.e("params", String.valueOf(params));
+
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url+memberId, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override

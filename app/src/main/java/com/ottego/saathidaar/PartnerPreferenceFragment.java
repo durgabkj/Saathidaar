@@ -67,11 +67,11 @@ public class PartnerPreferenceFragment extends Fragment {
     ArrayList<Integer> MaritalStatusList = new ArrayList<>();
     String[] MaritalStatusArray = {"Never Married", "Divorce", "Widowed", "Awaiting Divorce", "Married"};
     public String getPreference=Utils.memberUrl+"preference/get/";
-    public String ReligionUrl = "http://192.168.1.38:9094/api/get/religion-name";
-    public String countryUrl = "http://192.168.1.38:9094/api/get/country";
-    public String castUrl = "http://192.168.1.38:9094/api/get/all/cast";
-    public String stateUrl = "http://192.168.1.38:9094/api/get/state";
-    public String cityUrl = "http://192.168.1.38:9094/api/get/all/city";
+    public String ReligionUrl = "http://192.168.1.35:9094/api/get/religion-name";
+    public String countryUrl = "http://192.168.1.35:9094/api/get/country";
+    public String castUrl = "http://192.168.1.35:9094/api/get/all/cast";
+    public String stateUrl = "http://192.168.1.35:9094/api/get/state";
+    public String cityUrl = "http://192.168.1.35:9094/api/get/all/city";
 public String updatePreference=Utils.memberUrl+"preference/update/";
     // Initialize variables
     Spinner spMin, spMax, spFromHeight, spToHeight, UserAnnualIncome, tvEditDietPreference, tvEditProfile;
@@ -206,7 +206,7 @@ PartnerPreferenceModel model;
                 alertDialog.setIcon(R.drawable.height);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose your Height");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -264,7 +264,7 @@ PartnerPreferenceModel model;
                 alertDialog.setIcon(R.drawable.height);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose your Height");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -327,7 +327,7 @@ PartnerPreferenceModel model;
                 alertDialog.setIcon(R.drawable.money);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Income");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -395,7 +395,7 @@ PartnerPreferenceModel model;
                 alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose profile Created By");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -459,7 +459,7 @@ PartnerPreferenceModel model;
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
                 // set the title for the alert dialog
-                builder.setTitle("Choose Items");
+                builder.setTitle("Choose Life Style");
 
                 // set the icon for the alert dialog
                 builder.setIcon(R.drawable.bibimbap);
@@ -1389,10 +1389,10 @@ tvMultipleReligion.setText(model.partner_religions);
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
                 // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.height);
+                alertDialog.setIcon(R.drawable.ic_age);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Age");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -1447,10 +1447,10 @@ tvMultipleReligion.setText(model.partner_religions);
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
                 // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.height);
+                alertDialog.setIcon(R.drawable.ic_age);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Age");
 
                 // list of the items to be displayed to
                 // the user in the form of list

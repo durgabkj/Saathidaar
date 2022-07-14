@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import com.ottego.saathidaar.Model.HoroscopeModel;
+import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.Model.SessionModel;
 import com.ottego.saathidaar.Model.SessionProfileDetailModel;
 
@@ -34,6 +35,7 @@ public class SessionManager {
 
     public static final String KEY_HEIGHT = "height";
     public static final String KEY_WEIGHT = "weight";
+    public static final String KEY_PROFILE_ID="profile_id";
     public static final String KEY_PRO_LIFESTYLE = "lifestyles";
     public static final String KEY_PRO_ABOUTUS = "about_ourself";
     public static final String KEY_PRO_KNOWN_LANG = "known_languages";
@@ -154,8 +156,9 @@ public class SessionManager {
         return pref.getString(KEY_EMAIL1, "");
     }
 
-    public void CreateProfileSession(SessionProfileDetailModel model) {
+    public void CreateProfileSession(MemberProfileModel model) {
         editor.putString(KEY_PRO_LIFESTYLE, model.lifestyles);
+        editor.putString(KEY_PROFILE_ID, model.profile_id);
         editor.putString(KEY_PRO_ABOUTUS, model.about_ourself);
         editor.putString(KEY_PRO_KNOWN_LANG, model.known_languages);
         editor.putString(KEY_PRO_EDUC, model.education);
@@ -192,7 +195,6 @@ public class SessionManager {
         editor.putString(KEY_PRO_COLLEGE, model.college_attended);
         editor.putString(KEY_PRO_WORKINGWITH, model.working_with);
         editor.putString(KEY_PRO_WORKINGAS, model.working_as);
-        editor.putString(KEY_PRO_EMPNAME, model.employer_name);
         editor.putString(KEY_PRO_ANNUAL_INCOME, model.annual_income);
         editor.putString(KEY_PRO_NAKSHTRA, model.nakshatra);
         editor.putString(KEY_PRO_UNMARRIED_FEMALE, model.unmarried_female);
@@ -211,7 +213,6 @@ public class SessionManager {
         editor.putString(KEY_PRO_LAST_N, model.last_name);
         editor.putString(KEY_MANGLIK, model.manglik);
         editor.putString(KEY_PRO_MOB, model.contact_number);
-
         editor.commit();
     }
 
@@ -228,6 +229,11 @@ public class SessionManager {
     public String getKeyProKnownLang() {
         return pref.getString(KEY_PRO_KNOWN_LANG, "");
     }
+
+    public String getKeyProfileId() {
+        return pref.getString(KEY_PROFILE_ID, "");
+    }
+
 
     public String getKeyProEduc() {
         return pref.getString(KEY_PRO_EDUC, "");

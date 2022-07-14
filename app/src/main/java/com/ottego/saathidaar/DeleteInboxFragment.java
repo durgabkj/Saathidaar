@@ -34,7 +34,7 @@ public class DeleteInboxFragment extends Fragment {
     DataModelInbox data;
     String member_id;
     InboxViewModel viewModel;
-    public String InvitationDeleteUrl ="http://192.168.1.38:9094/api/request/rejected/get/all/";
+    public String InvitationDeleteUrl ="http://192.168.1.35:9094/api/request/rejected/get/all/";
     FragmentDeleteInboxBinding b;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";

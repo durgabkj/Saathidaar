@@ -471,7 +471,7 @@
                     android:enabled="true"
                     android:textColor="@color/black"
                     android:gravity="center_vertical"
-                    android:hint="select  Diet"
+                    android:hint="gender"
                     android:editable="false"
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="8dp"

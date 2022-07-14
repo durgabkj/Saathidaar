@@ -16,6 +16,8 @@ import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -28,6 +30,7 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -57,7 +60,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 // Permissions for accessing the storage
     private static final int SELECT_PICTURE = 100;
     private static final String TAG = "SelectImageActivity";
-    public String ReligionUrl = "http://192.168.1.38:9094/api/get/religion-name";
+    public String ReligionUrl = "http://192.168.1.35:9094/api/get/religion-name";
     public String Updateurl = Utils.memberUrl + "app/basic-lifestyles/update/";
     SessionManager sessionManager;
     ActivityProfileEditPersonalBinding b;
@@ -168,6 +171,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             b.etAddUserNoOfChild.setText(model.no_of_children);
             b.tvUserReligion.setText(model.religion_name);
             b.etHealth.setText(model.health_info);
+            b.tvUserGotra.setText(model.gothra);
         }
 
 
@@ -246,8 +250,34 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
     }
 
-    private void gender() {
 
+
+    public void successDialog()
+    {
+        AlertDialog.Builder builder=new AlertDialog.Builder(context);
+        View layout_dialog= LayoutInflater.from(context).inflate(R.layout.alert_sucess_dialog,null);
+        builder.setView(layout_dialog);
+
+        AppCompatButton btnokSuccess =layout_dialog.findViewById(R.id.btnokSuccess);
+        // show dialog
+
+        AlertDialog dialog=builder.create();
+        dialog.show();
+        dialog.setCancelable(false);
+
+        dialog.getWindow().setGravity(Gravity.CENTER);
+
+        btnokSuccess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+
+            }
+        });
+    }
+
+
+    private void gender() {
         final int[] checkedItem = {-1};
         b.etGender.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -650,13 +680,9 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                         Log.e(" update personal detail response", String.valueOf((response)));
                         try {
                             String code = response.getString("results");
-                            if (code.equalsIgnoreCase("1")) {
+                            if (code.equals("1")) {
                                 Gson gson = new Gson();
-//                                SessionProfileDetailModel model = gson.fromJson(String.valueOf(response.getJSONObject("data")), SessionProfileDetailModel.class);
-//                                sessionManager.CreateProfileSession(model);
-                                // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                Intent intent=new Intent(context,HomeFragment.class);
-//                                startActivity(intent);
+                                successDialog();
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -748,7 +774,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
     private void communityData() {
         String selectedCommunity = b.tvUserReligion.getText().toString().trim();
-        String url = "http://192.168.1.36:9094/api/get/cast-name/by/religion_name/" + selectedCommunity;
+        String url = "http://192.168.1.35:9094/api/get/cast-name/by/religion_name/" + selectedCommunity;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url, null, new Response.Listener<JSONObject>() {

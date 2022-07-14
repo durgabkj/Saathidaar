@@ -1,13 +1,16 @@
 package com.ottego.saathidaar;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,6 +36,8 @@ public class MyMatchFragment extends Fragment {
     DataModelNewMatches data;
     NewMatchViewModel viewModel;
     public String MyMatchUrl = Utils.memberUrl + "my/matches/";
+
+    AlertDialog dialog;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -79,14 +84,43 @@ public class MyMatchFragment extends Fragment {
         return b.getRoot();
     }
 
+
+
+    public void successDialog()
+    {
+        AlertDialog.Builder builder=new AlertDialog.Builder(context);
+        View layout_dialog= LayoutInflater.from(context).inflate(R.layout.alert_sucess_dialog,null);
+        builder.setView(layout_dialog);
+
+        AppCompatButton btnokSuccess =layout_dialog.findViewById(R.id.btnokSuccess);
+        // show dialog
+
+         dialog=builder.create();
+        dialog.show();
+        dialog.setCancelable(false);
+
+        dialog.getWindow().setGravity(Gravity.CENTER);
+
+        btnokSuccess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+
+            }
+        });
+    }
+
+
     public void getData() {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Data Loading...", false, false);
+        progressDialog.setIcon(R.drawable.ic_progress_bar);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 MyMatchUrl + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 //  b.srlRecycleBookmark.setRefreshing(false);
                 progressDialog.dismiss();
+
                 Log.e("My Matches response", String.valueOf(response));
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);

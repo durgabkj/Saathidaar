@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 
@@ -18,137 +19,36 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:elevation="20dp"
+        app:cardCornerRadius="8dp"
+        android:layout_marginTop="10dp"
         android:translationZ="20dp">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="20dp">
-            <LinearLayout
-                android:layout_width="match_parent"
+
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:orientation="vertical">
+                android:fontFamily="@font/italic"
+                android:text="Email"
+                android:textSize="18dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
-                    android:text="Email"
-                    android:textSize="18dp" />
+            <TextView
+                android:id="@+id/tvEmailShow"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:fontFamily="@font/italic"
+                style="@style/PersonalDataTextView"
+                android:text="durga.singh@gmail.com"/>
 
-<TextView
-    android:id="@+id/tvEmailShow"
-    android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:padding="8dp"
-    android:fontFamily="@font/italic"
- style="@style/PersonalDataTextView"
-    android:text="durga.singh@gmail.com"/>
-
-
-                <EditText
-                    android:id="@+id/etEmailChange"
-                    style="@style/PersonalDataTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                   android:fontFamily="@font/italic"
-                    android:hint="Email"
-                    android:visibility="gone"
-                    android:text="durga.singh@gmail.com" />
-
-                <TextView
-                    android:id="@+id/tvEditEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="5dp"
-                    android:text="Edit"
-                    android:fontFamily="@font/italic"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:id="@+id/llPasswordEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:orientation="vertical"
-                    android:layout_marginTop="10dp"
-                    android:visibility="gone"
-                    android:background="#E8BABA"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:fontFamily="@font/italic"
-                        android:text="To save these settings, please enter your Saathidaar.com password."/>
-
-                    <EditText
-                        android:id="@+id/etEnterPassword"
-                        style="@style/PersonalDataTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:fontFamily="@font/italic"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginEnd="30dp"
-                        android:enabled="false"
-                        android:hint="Enter password" />
-                </LinearLayout>
-
-
-
-
-                <LinearLayout
-                    android:id="@+id/llSave"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                  android:visibility="gone"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tvSave"
-                        android:layout_width="90dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/gradient_button"
-                        android:padding="5dp"
-                        android:text="Save"
-                        android:fontFamily="@font/italic"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        android:translationZ="20dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:text="or"
-                        android:fontFamily="@font/italic"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:text="cancel"
-                        android:fontFamily="@font/italic"
-                        android:textAlignment="center"
-                        android:textColor="#00BFA5"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

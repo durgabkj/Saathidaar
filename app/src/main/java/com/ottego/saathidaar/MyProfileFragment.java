@@ -82,6 +82,7 @@ public class MyProfileFragment extends Fragment {
         tvUserDetailsReadLess=view.findViewById(R.id.tvUserDetailsReadLess);
         tvAboutUs=view.findViewById(R.id.tvAboutUs);
 
+        tvAboutUs.setText(sessionManager.getKeyProAboutus());
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         listener();
         setPreLoadData();

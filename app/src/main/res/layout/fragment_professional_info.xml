@@ -268,7 +268,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
                         android:fontFamily="@font/italic"
-                        android:text="Current City"
+                        android:text="Country"
                         android:layout_marginStart="5dp"
                         android:textStyle="bold"
                         />

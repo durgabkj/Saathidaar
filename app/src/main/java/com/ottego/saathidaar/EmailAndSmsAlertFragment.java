@@ -89,7 +89,7 @@ DataModelSmsAlert model;
                 getSmsAlertUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf((response)));
+                Log.e("response1", String.valueOf((response)));
                 Gson gson = new Gson();
                 model = gson.fromJson(String.valueOf(response), DataModelSmsAlert.class);
 

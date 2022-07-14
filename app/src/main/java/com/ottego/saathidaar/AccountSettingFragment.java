@@ -82,21 +82,11 @@ public class AccountSettingFragment extends Fragment {
         listener();
         //changeEmail();
         changePassword();
+        b.tvEmailShow.setText(sessionManager.getEmail());
         return b.getRoot();
     }
 
     private void listener() {
-        b.tvEditEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                b.tvEditEmail.setVisibility(View.GONE);
-                b.tvEmailShow.setVisibility(View.GONE);
-                b.llSave.setVisibility(View.VISIBLE);
-                b.etEmailChange.setVisibility(View.VISIBLE);
-
-            }
-        });
-
         b.tvEditPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,33 +109,6 @@ public class AccountSettingFragment extends Fragment {
                 b.etNewPassword.setVisibility(View.GONE);
                 b.etOldPassword.setText("");
                 b.etNewPassword.setText("");
-            }
-        });
-
-
-//        b.tvCancelPass.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                b.tvEditEmail.setVisibility(View.VISIBLE);
-////                b.tvEmailShow.setVisibility(View.VISIBLE);
-//                b.llSave.setVisibility(View.GONE);
-//                b.etEmailChange.setVisibility(View.GONE);
-//            }
-//        });
-
-
-
-        b.etEmailChange.addTextChangedListener(new TextWatcher() {
-
-            public void afterTextChanged(Editable s) {}
-
-            public void beforeTextChanged(CharSequence s, int start,
-                                          int count, int after) {
-            }
-
-            public void onTextChanged(CharSequence s, int start,
-                                      int before, int count) {
-                b.llPasswordEmail.setVisibility(View.VISIBLE);
             }
         });
 

@@ -97,7 +97,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="2dp"
                             android:fontFamily="@font/italic"
-                            android:text="(FS345888565)"
+                            android:text="(FS345)"
                             android:textColor="#F3BF44" />
 
                     </LinearLayout>
@@ -106,17 +106,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:layout_marginTop="5dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-
                             android:fontFamily="@font/italic"
-                            android:text="Account type :"
+                            android:text="Profile Created By :"
                             android:textColor="@color/white" />
 
                         <TextView
@@ -125,7 +123,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="3dp"
                             android:fontFamily="@font/italic"
-                            android:text="Basic"
+
                             android:textColor="@color/white" />
                     </LinearLayout>
 

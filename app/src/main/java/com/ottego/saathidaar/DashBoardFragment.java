@@ -34,14 +34,14 @@ import org.json.JSONObject;
 public class DashBoardFragment extends Fragment {
     SessionManager sessionManager;
     ImageView ivPremiumImage,profilePic;
-    TextView tvPremiumText, RequestAccept, Visitors, RequestSent,tvDashboardUpgrade,tvDashBoardUserName;
+    TextView tvPremiumText, RequestAccept,tvDashBoardUserId,tvDashBoardUserAccountType, Visitors, RequestSent,tvDashboardUpgrade,tvDashBoardUserName;
     int position = 0;
     DataModelDashboard model;
     LinearLayout llPremiumMatch,llMyMatch,llPremium,llshare,tvLogout,llRequestSent;
     Animation animation;
     CountDownTimer countDownTimer;
     Context context;
-    public String url = "http://192.168.1.38:9094/api/request/count/accept-request/";
+    public String url = "http://192.168.1.35:9094/api/request/count/accept-request/";
     int[] images = {R.drawable.smartphone, R.drawable.documents, R.drawable.global};
     String[] text = {"phone Number to Connect Instantly", "100% Verified Biodatas", "Find Common connections"};
     private static final String ARG_PARAM1 = "param1";
@@ -89,7 +89,9 @@ public class DashBoardFragment extends Fragment {
         RequestAccept = view.findViewById(R.id.RequestAccept);
         Visitors = view.findViewById(R.id.Visitors);
         llMyMatch = view.findViewById(R.id.llMyMatch);
+        tvDashBoardUserAccountType = view.findViewById(R.id.tvDashBoardUserAccountType);
         llPremium = view.findViewById(R.id.llPremium);
+        tvDashBoardUserId=view.findViewById(R.id.tvDashBoardUserId);
         llPremiumMatch = view.findViewById(R.id.llPremiumMatch);
         RequestSent = view.findViewById(R.id.RequestSent);
         llRequestSent=view.findViewById(R.id.llRequestSent);
@@ -119,6 +121,9 @@ public class DashBoardFragment extends Fragment {
         });
         animator.start();
         getData();
+
+        tvDashBoardUserId.setText("["+sessionManager.getKeyProfileId()+"]");
+        tvDashBoardUserAccountType.setText(sessionManager.getKeyCreatedby());
         //  setData();
         listener();
 

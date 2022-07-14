@@ -54,11 +54,11 @@ public class SearchFragment extends Fragment {
     TextView tvMultipleMaritalStatusSearch;
     public String SearchUrl = Utils.memberUrl + "search/update/";
     public String getSearchDetailUrl = Utils.memberUrl + "search/get/";
-    public String ReligionUrl = "http://192.168.1.38:9094/api/get/religion-name";
-    public String countryUrl = "http://192.168.1.38:9094/api/get/country";
-    public String castUrl = "http://192.168.1.38:9094/api/get/all/cast";
-    public String stateUrl = "http://192.168.1.38:9094/api/get/state";
-    public String cityUrl = "http://192.168.1.38:9094/api/get/all/city";
+    public String ReligionUrl = "http://192.168.1.35:9094/api/get/religion-name";
+    public String countryUrl = "http://192.168.1.35:9094/api/get/country";
+    public String castUrl = "http://192.168.1.35:9094/api/get/all/cast";
+    public String stateUrl = "http://192.168.1.35:9094/api/get/state";
+    public String cityUrl = "http://192.168.1.35:9094/api/get/all/city";
 
 
     ArrayList<String> AgeListSearch = new ArrayList<>();
@@ -284,7 +284,7 @@ public class SearchFragment extends Fragment {
                 alertDialog.setIcon(R.drawable.height);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Height");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -342,7 +342,7 @@ public class SearchFragment extends Fragment {
                 alertDialog.setIcon(R.drawable.height);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Height");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -402,10 +402,10 @@ public class SearchFragment extends Fragment {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
                 // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.height);
+                alertDialog.setIcon(R.drawable.ic_age);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Age");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -460,10 +460,10 @@ public class SearchFragment extends Fragment {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
                 // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.height);
+                alertDialog.setIcon(R.drawable.ic_age);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Age");
 
                 // list of the items to be displayed to
                 // the user in the form of list

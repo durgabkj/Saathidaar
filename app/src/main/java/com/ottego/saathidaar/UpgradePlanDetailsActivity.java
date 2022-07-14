@@ -35,10 +35,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
     public String payment = "http://192.168.1.38:9094/upgrade/payment-pay/";
     private static final String TAG = "Razorpay";
     Checkout checkout;
-    RazorpayClient razorpayClient;
-    Order order;
-    private final String order_receipt_no = "Receipt No. " + System.currentTimeMillis() / 1000;
-    private final String order_reference_no = "Reference No. #" + System.currentTimeMillis() / 1000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,42 +72,24 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
 
     public void startPayment() {
 
-        Checkout checkout = new Checkout();
+        int amount = Math.round(Float.parseFloat(model.plan_price) * 100);
 
-        /**
-         * Set your logo here
-         */
+        Checkout checkout = new Checkout();
+        checkout.setKeyID("rzp_test_QHOsVAlUo7NNwl");
         checkout.setImage(R.drawable.image);
 
-        /**
-         * Reference to current activity
-         */
-        final Activity activity = this;
-
-        /**
-         * Pass your payment options to the Razorpay Checkout as a JSONObject
-         */
+        JSONObject object = new JSONObject();
         try {
-            JSONObject options = new JSONObject();
-
-            options.put("name", "Saathidaar.com");
-            options.put("description", "Reference No. #123456");
-            options.put("image", R.drawable.image);
-            options.put("order_id", "order_DBJOWzybf0sJbb");//from response of step 3.
-            options.put("theme.color", "#3399cc");
-            options.put("currency", "INR");
-           // options.put("amount", model.plan_price);//pass amount in currency subunits
-            options.put("prefill.email", sessionManager.getEmail());
-            options.put("prefill.contact",sessionManager.getPhone1());
-            JSONObject retryObj = new JSONObject();
-            retryObj.put("enabled", true);
-            retryObj.put("max_count", 4);
-            options.put("retry", retryObj);
-
-            checkout.open(activity, options);
-
-        } catch(Exception e) {
-            Log.e(TAG, "Error in starting Razorpay Checkout", e);
+            object.put("name", "Saathidaar.com");
+            object.put("description", model.plan_name+" Plan Payment");
+            object.put("theme.color", "");
+            object.put("amount", amount);
+            object.put("prefill.contact", sessionManager.getPhone1());
+            object.put("prefill.email", sessionManager.getEmail());
+            checkout.open(UpgradePlanDetailsActivity.this, object);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
         }
     }
 
@@ -124,7 +103,6 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
                 .Builder(UpgradePlanDetailsActivity.this);
 
         // Set the message show for the Alert time
-        builder.setMessage("Payment ID: " + s + "\nOrder ID: " + order.get("id") + "\n" + order_reference_no);
 
         // Set Alert Title
         builder.setTitle("Your Payment Details");

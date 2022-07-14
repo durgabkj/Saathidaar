@@ -113,6 +113,8 @@ public class PersonalInfoFragment extends Fragment {
 //                        binding.llNoDataPersonal.setVisibility(View.VISIBLE);
 //                        binding.scrvPersonalData.setVisibility(View.GONE);
                        model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
+                       // SessionProfileDetailModel model = gson.fromJson(String.valueOf(response.getJSONObject("data")), SessionProfileDetailModel.class);
+                        sessionManager.CreateProfileSession(model);
                            setData();
                         }else {
 
@@ -148,7 +150,8 @@ public class PersonalInfoFragment extends Fragment {
             binding.tvHealthDetail.setText(model.health_info);
             binding.tvUserReligion.setText(model.religion_name);
             binding.tvUserCommunity.setText(model.caste_name);
-            binding.tvUserSubCommunity.setText(model.subcaste);
+            binding.tvGender.setText(model.gender);
+            binding.tvUserSubCommunity.setText(model.sub_caste_name);
             binding.tvUserGotra.setText(model.gothra);
             binding.tvUserHPlaceofBirth.setText(sessionManager.getKeyofCountryofbirth()+","+sessionManager.getcityofbirth());
             binding.tvUserTimeofBirth.setText(sessionManager.getKeyHour()+":"+sessionManager.getKeyMinutes()+" "+sessionManager.getKeyTimeh()+","+sessionManager.getKeyTimeStatus());
