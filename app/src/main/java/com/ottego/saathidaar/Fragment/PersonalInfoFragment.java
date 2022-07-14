@@ -138,6 +138,7 @@ public class PersonalInfoFragment extends Fragment {
     private void setData() {
 
             binding.tvDob.setText(model.date_of_birth);
+        binding.tvUserAge.setText(model.age);
             binding.tvUserMaritalStatus.setText(model.marital_status);
             binding.tvUseNoOfChild.setText(model.no_of_children);
             binding.tvUserHeight.setText(model.height);
@@ -146,7 +147,6 @@ public class PersonalInfoFragment extends Fragment {
             binding.tvUserMotherTongue.setText(model.mother_tounge);
             binding.tvHealthDetail.setText(model.health_info);
             binding.tvUserReligion.setText(model.religion_name);
-            binding.tvUserCommunity.setText(model.caste_name);
             binding.tvUserCommunity.setText(model.caste_name);
             binding.tvUserSubCommunity.setText(model.subcaste);
             binding.tvUserGotra.setText(model.gothra);

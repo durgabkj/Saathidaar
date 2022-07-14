@@ -92,7 +92,7 @@ public class AcceptedInboxFragment extends Fragment {
             public void onResponse(JSONObject response) {
                 b.srlRecycleViewAcceptInvitation.setRefreshing(false);
                 progressDialog.dismiss();
-                Log.e("Invitation response", String.valueOf(response));
+                Log.e("Invitation accepted response", String.valueOf(response));
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelInbox.class);
                 if (data.results == 1) {

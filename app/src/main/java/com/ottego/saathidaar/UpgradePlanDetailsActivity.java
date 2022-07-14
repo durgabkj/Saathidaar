@@ -53,6 +53,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
         sessionManager = new SessionManager(context);
         setData();
         listener();
+        Checkout.clearUserData(context);
         setContentView(b.getRoot());
     }
 
@@ -79,7 +80,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
         /**
          * Set your logo here
          */
-        checkout.setImage(R.drawable.logo);
+        checkout.setImage(R.drawable.image);
 
         /**
          * Reference to current activity
@@ -92,9 +93,9 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
         try {
             JSONObject options = new JSONObject();
 
-            options.put("name", "Merchant Name");
+            options.put("name", "Saathidaar.com");
             options.put("description", "Reference No. #123456");
-            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
+            options.put("image", R.drawable.image);
             options.put("order_id", "order_DBJOWzybf0sJbb");//from response of step 3.
             options.put("theme.color", "#3399cc");
             options.put("currency", "INR");

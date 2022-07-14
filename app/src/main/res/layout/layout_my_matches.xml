@@ -36,34 +36,6 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="20dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/gray_transparent_bg"
-                    android:orientation="horizontal">
-
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/SpMenu"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_gravity="start">
 
             <LinearLayout
@@ -103,6 +75,41 @@
                         android:src="@drawable/ic_baseline_star_border_24" />
 
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/llShortBlock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/gray_transparent_bg"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/block_menber" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llBloked"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    android:background="@drawable/gray_transparent_bg">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="6dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/block" />
+
+                </LinearLayout>
+
+
 
 
                 <LinearLayout

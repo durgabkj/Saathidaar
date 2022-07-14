@@ -19,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.Adapter.DeleteInvitationAdapter;
 import com.ottego.saathidaar.Adapter.InboxInvitationAdapter;
 import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.databinding.FragmentDeleteInboxBinding;
@@ -34,7 +35,7 @@ public class DeleteInboxFragment extends Fragment {
     String member_id;
     InboxViewModel viewModel;
     public String InvitationDeleteUrl ="http://192.168.1.38:9094/api/request/rejected/get/all/";
-FragmentDeleteInboxBinding b;
+    FragmentDeleteInboxBinding b;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -121,7 +122,7 @@ FragmentDeleteInboxBinding b;
         b.rvDeleteInvitation.setLayoutManager(layoutManager);
         b.rvDeleteInvitation.setHasFixedSize(true);
         b.rvDeleteInvitation.setNestedScrollingEnabled(true);
-        InboxInvitationAdapter adapter = new InboxInvitationAdapter(context,data.data);
+        DeleteInvitationAdapter adapter = new DeleteInvitationAdapter(context,data.data);
         b.rvDeleteInvitation.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         if (adapter.getItemCount() != 0) {

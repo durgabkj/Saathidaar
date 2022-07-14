@@ -150,7 +150,7 @@ public class InboxFragment extends Fragment {
         adapter.addFragment(new AcceptedInboxFragment(), "Accept");
         adapter.addFragment(new SentInboxFragment(), "Sent");
         adapter.addFragment(new DeleteInboxFragment(), "Delete");
-        adapter.addFragment(new DeleteInboxFragment(), "Delete");
+        adapter.addFragment(new BlockMemberFragment(), "Blocked");
         viewPager.setAdapter(adapter);
     }
 }
