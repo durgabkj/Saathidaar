@@ -192,7 +192,6 @@
                                 android:shadowDx="2"
                                 android:shadowDy="2"
                                 android:shadowRadius="1.6"
-                                android:text="Durga singh"
                                 android:textColor="@color/white"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -207,7 +206,6 @@
                                 android:shadowDx="1.5"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
-                                android:text="22 years"
                                 android:textColor="@color/white"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -223,7 +221,7 @@
                                 android:shadowDx="1.5"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
-                                android:text="5'1"
+
                                 android:textColor="@color/white"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -247,7 +245,7 @@
                                 android:layout_marginEnd="8dp"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
-                                android:text="Mumbai"
+
                                 android:textColor="@color/white"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -263,7 +261,6 @@
                                 android:shadowDx="1.5"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
-                                android:text="Junior software Developer"
                                 android:textColor="@color/white"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -297,7 +294,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/italic"
-                            android:text="About Garima "
+
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -309,9 +306,7 @@
                             android:layout_marginTop="20dp"
                             android:maxLines="4"
                             android:fontFamily="@font/italic"
-                            android:text="I am a soft spoken, honest &amp; talented person. I have a good job, decent salary &amp; a nice house to live in. I think family as the first priority of my life. I think 5 years down the life I should be happily settled with my kids, a lovely soulmate with all the blessings of our parents &amp; relatives.
-I am modern thinker but also believe in good values given by our ancestors I also enjoy travelling, watching movies, going out for dinner, and having great intellectual conversations!"
-                            android:textColor="@color/black" />
+                                android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/tvViewMore"
@@ -378,8 +373,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp"
-                                android:text="Created by self" />
+                                android:padding="10dp" />
 
 
                             <TextView
@@ -388,8 +382,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp"
-                                android:text="Profile ID - SH119876" />
+                                android:padding="10dp" />
 
                         </LinearLayout>
 
@@ -468,7 +461,6 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_gravity="center"
                                     android:drawablePadding="4dp"
                                     android:fontFamily="@font/italic"
-                                    android:text="Born on **/**/****"
                                     android:textAlignment="center"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -521,7 +513,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Never Married"
+
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -573,7 +565,6 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Live in patna. Bihar,India"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -625,7 +616,6 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Hindu, Hindi"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -677,7 +667,6 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Gujarati,Vankar"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -729,8 +718,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Vegetarian"
-                                    android:textColor="@color/black"
+                                   android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
 
@@ -849,7 +837,6 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:drawableEnd="@drawable/lock"
                                     android:fontFamily="@font/italic"
-                                    android:text="987***********"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -900,9 +887,7 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:id="@+id/tvDetailEmailID"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:drawableEnd="@drawable/lock"
                                     android:fontFamily="@font/italic"
-                                    android:text="**********@gmail.com"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1022,7 +1007,6 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Investment Professional"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1075,7 +1059,6 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/italic"
-                                    android:text="*************"
                                     android:textAlignment="center"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -1181,7 +1164,6 @@ I am modern thinker but also believe in good values given by our ancestors I als
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Masters degree in Finance"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>

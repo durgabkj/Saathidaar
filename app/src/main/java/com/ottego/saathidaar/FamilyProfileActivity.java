@@ -1,5 +1,6 @@
 package com.ottego.saathidaar;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -8,11 +9,15 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -30,9 +35,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FamilyProfileActivity extends AppCompatActivity {
+    public String url = Utils.memberUrl + "app/family-details/update/";
     ActivityFamilyProfileBinding b;
     Context context;
-    public String url = Utils.memberUrl + "app/family-details/update/";
     String fatherStatus = "";
     String motherStatus = "";
     String companyNameF = "";
@@ -351,6 +356,7 @@ public class FamilyProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 submitForm();
+                hideKeyboard(view);
 
             }
         });
@@ -546,6 +552,35 @@ public class FamilyProfileActivity extends AppCompatActivity {
 //        return true;
 //
 //    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+    public void successDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        View layout_dialog = LayoutInflater.from(context).inflate(R.layout.alert_sucess_dialog, null);
+        builder.setView(layout_dialog);
+
+        AppCompatButton btnokSuccess = layout_dialog.findViewById(R.id.btnokSuccess);
+        // show dialog
+
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        dialog.setCancelable(false);
+
+        dialog.getWindow().setGravity(Gravity.CENTER);
+
+        btnokSuccess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+
+            }
+        });
+    }
+
     private void submitForm() {
         fatherStatus = b.etFStatus.getText().toString().trim();
         motherStatus = b.etMStatus.getText().toString().trim();
@@ -593,7 +628,7 @@ public class FamilyProfileActivity extends AppCompatActivity {
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
-
+                                successDialog();
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                                 // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             } else {

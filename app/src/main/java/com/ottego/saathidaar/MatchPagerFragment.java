@@ -14,6 +14,8 @@ import com.ottego.saathidaar.Adapter.ViewPagerMatchDetailAdapter;
 import com.ottego.saathidaar.databinding.FragmentMatchPagerBinding;
 import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
+import java.util.Objects;
+
 
 public class MatchPagerFragment extends DialogFragment {
     FragmentMatchPagerBinding b;
@@ -76,6 +78,7 @@ public class MatchPagerFragment extends DialogFragment {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+
             }
 
             // triggered when you select a new page
@@ -83,16 +86,18 @@ public class MatchPagerFragment extends DialogFragment {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
 
-//                if(position==0) {
-//                    backButton.setVisibility(View.INVISIBLE);
-//                }else  {
-//                    backButton.setVisibility(View.VISIBLE);
-//                }
-//                if(position < viewPager.getAdapter().getCount()-1 ) {
-//                    nextButton.setVisibility(View.VISIBLE);
-//                }else  {
-//                    nextButton.setVisibility(View.INVISIBLE);
-//                }
+
+                if (position == 0) {
+                    b.llPrevious.setVisibility(View.INVISIBLE);
+                } else {
+                    b.llPrevious.setVisibility(View.VISIBLE);
+                }
+                if (position < Objects.requireNonNull(b.vp2Details.getAdapter()).getItemCount() - 1) {
+                    b.llNext.setVisibility(View.VISIBLE);
+                } else {
+                    b.llNext.setVisibility(View.INVISIBLE);
+                }
+
 
             }
             // triggered when there is
@@ -100,8 +105,11 @@ public class MatchPagerFragment extends DialogFragment {
             @Override
             public void onPageScrollStateChanged(int state) {
                 super.onPageScrollStateChanged(state);
+
             }
         });
+
+
 
         b.vp2Details.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +126,6 @@ public class MatchPagerFragment extends DialogFragment {
                 b.vp2Details.setCurrentItem(b.vp2Details.getCurrentItem()+1, true);
             }
         });
-
 
         b.llPrevious.setOnClickListener(new View.OnClickListener() {
 

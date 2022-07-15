@@ -1,5 +1,6 @@
 package com.ottego.saathidaar;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -10,7 +11,10 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +23,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -62,6 +67,7 @@ String memberId;
     String[] stringArray1 =new String[0];
     String[] stringArray2 =new String[0];
     ArrayAdapter<String> countryAdapter;
+    ArrayList<String> workingAslist = new ArrayList<>();
     ArrayList<String> stateList = new ArrayList<>();
     ArrayAdapter<String> stateAdapter;
     String countryName;
@@ -85,9 +91,16 @@ String memberId;
         model = new Gson().fromJson(data, MemberProfileModel.class);
 
 
+        String[] workingAs = getResources().getStringArray(R.array.workingAs);
+
+
+        for (String string : workingAs) {
+            workingAslist.add(string);
+        }
+
         dialog = new Dialog(context);
         userAnnualIncome();
-        userWorkAs();
+
         UserWorkingWith();
         listener();
         getCountry(countryUrl);
@@ -99,15 +112,15 @@ String memberId;
 
     private void setData() {
         if (model != null) {
-            b.etAddUserEducation.setText(model.education);
+            b.etAddUserEducation.setText(model.highest_qualification);
             b.etAddUserCollegeAttended.setText(model.college_attended);
-            b.etIncome.setText(model.income);
-         //   b.etAddUserCollegeAttended.setText(model.college_attended);
+            b.etIncome.setText(model.annual_income);
+            //   b.etAddUserCollegeAttended.setText(model.college_attended);
             b.etWorkingWith.setText(model.working_with);
             b.etWorkingAs.setText(model.working_as);
             b.etCountry.setText(model.country_name);
-            b.etState.setText(model.state_name);
-            b.etCity.setText(model.city_name);
+            b.etState.setText(model.state);
+            b.etCity.setText(model.city);
             b.etAddUserCorigin.setText(model.ethnic_corigin);
             b.etAddUserZipPinCode.setText(model.pincode);
 
@@ -248,8 +261,10 @@ String memberId;
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String country = jsonObject1.getString("country_name");
                             Log.e("Country-list", String.valueOf(countryList));
+
                             countryList.add(country);
                              stringArray = new String[]{country};
+
 
                         }
                     }
@@ -335,71 +350,6 @@ String memberId;
 
     }
 
-    private void userWorkAs() {
-        final int[] checkedItem = {-1};
-        b.etWorkingAs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // AlertDialog builder instance to build the alert dialog
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-
-                // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
-
-                // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
-
-                // list of the items to be displayed to
-                // the user in the form of list
-                // so that user can select the item from
-                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
-                String[] workingAs = getResources().getStringArray(R.array.workingAs);
-                // the function setSingleChoiceItems is the function which builds
-                // the alert dialog with the single item selection
-                alertDialog.setSingleChoiceItems(workingAs, checkedItem[0], new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        // update the selected item which is selected by the user
-                        // so that it should be selected when user opens the dialog next time
-                        // and pass the instance to setSingleChoiceItems method
-                        checkedItem[0] = which;
-
-                        // now also update the TextView which previews the selected item
-                        b.etWorkingAs.setText(workingAs[which]);
-
-                        // when selected an item the dialog should be closed with the dismiss method
-                        dialog.dismiss();
-                    }
-                });
-
-                // set the negative button if the user
-                // is not interested to select or change
-                // already selected item
-                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                // create and build the AlertDialog instance
-                // with the AlertDialog builder instance
-                AlertDialog customAlertDialog = alertDialog.create();
-
-                // show the alert dialog when the button is clicked
-                customAlertDialog.show();
-                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
-                buttonbackground.setBackgroundColor(Color.BLACK);
-
-            }
-        });
-
-
-    }
-
     private void UserWorkingWith() {
             final int[] checkedItem = {-1};
             b.etWorkingWith.setOnClickListener(new View.OnClickListener() {
@@ -464,11 +414,19 @@ String memberId;
 
         }
 
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+
     private void listener() {
         b.btnSaveData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 submitForm();
+                hideKeyboard(view);
             }
         });
 
@@ -709,7 +667,92 @@ String memberId;
         });
 
 
+        b.etWorkingAs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                // set custom dialog
+                dialog.setContentView(R.layout.searchable_dropdown_item);
+
+                // set custom height and width
+                dialog.getWindow().setLayout(800, 900);
+
+                // set transparent background
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                // show dialog
+                dialog.show();
+
+                // Initialize and assign variable
+                EditText editText = dialog.findViewById(R.id.edit_text);
+                ListView listView = dialog.findViewById(R.id.list_view);
+
+                // Initialize array adapter
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, workingAslist);
+                // set adapter
+                listView.setAdapter(adapter);
+                editText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        adapter.getFilter().filter(s);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // when item selected from list
+                        // set selected item on textView
+                        b.etWorkingAs.setText(adapter.getItem(position));
+                        // Dismiss dialog
+                        dialog.dismiss();
+
+
+                    }
+                });
+
+            }
+        });
+
+
     }
+
+    public void successDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        View layout_dialog = LayoutInflater.from(context).inflate(R.layout.alert_sucess_dialog, null);
+        builder.setView(layout_dialog);
+
+        AppCompatButton btnokSuccess = layout_dialog.findViewById(R.id.btnokSuccess);
+        // show dialog
+
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        dialog.setCancelable(false);
+
+        dialog.getWindow().setGravity(Gravity.CENTER);
+
+        btnokSuccess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+
+            }
+        });
+    }
+
+
     private void submitForm() {
         higherEducation = b.etAddUserEducation.getText().toString().trim();
         collegeAttends = b.etAddUserCollegeAttended.getText().toString().trim();
@@ -718,13 +761,9 @@ String memberId;
         workingAs = b.etWorkingAs.getText().toString().trim();
         country = b.etCountry.getText().toString().trim();
         state = b.etState.getText().toString().trim();
-        city = b.etCountry.getText().toString().trim();
+        city = b.etCity.getText().toString().trim();
         origin = b.etAddUserCorigin.getText().toString().trim();
         pinCode = b.etAddUserZipPinCode.getText().toString().trim();
-//        mobile = b.etAddUserMobile.getText().toString().trim();
-//        relationWith = b.etAddUserRelationship.getText().toString().trim();
-//        callTime = b.etAddUserConvenientCall.getText().toString().trim();
-//        displatOption = b.etAddUserDisplayOption.getText().toString().trim();
 
         Map<String, String> params = new HashMap<String, String>();
         params.put("highest_qualification", higherEducation);
@@ -733,13 +772,13 @@ String memberId;
         params.put("working_as", workingAs);
         params.put("annual_income", income);
         params.put("pincode", pinCode);
-        params.put("city_name", city);
-        params.put("state_name", state);
+        params.put("city", city);
+        params.put("state", state);
         params.put("ethnic_corigin", origin);
         params.put("country_name", country);
         Log.e("params", String.valueOf(params));
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url+memberId, new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url + memberId, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -747,7 +786,7 @@ String memberId;
                         try {
                             String code = response.getString("results");
                             if (code.equals("1")) {
-
+                                successDialog();
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                                 // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             } else {

@@ -42,7 +42,7 @@ public class GalleryActivity extends AppCompatActivity {
     ActivityGalleryBinding b;
     SessionManager sessionManager;
 
-    String URL = Utils.memberUrl + "upload/photo";
+    String URL = Utils.memberUrl + "uploads/photo";
     ProgressDialog progressDialog;
     Context context;
     List<String> imageNameList = new ArrayList<>();
@@ -77,61 +77,63 @@ public class GalleryActivity extends AppCompatActivity {
         b.upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                  submit();
+                for(int i = 0; i < imagePathList.size(); i++) {
+                    uploadInThread(imagePathList.get(i));
+                }
+
+
 
             }
         });
     }
 
-    private void submit() {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
-
-
-
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("member_id", sessionManager.getMemberId());
-//        params.put("image_name", fileName);
-//        params.put("image_base_urls",selectedFileUri.toString());
-        Log.e("params", String.valueOf(params));
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL, new JSONObject(params),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        progressDialog.dismiss();
-                        Log.e("response", String.valueOf((response)));
-                        try {
-                            for(int i = 0; i < imagePathList.size(); i++) {
-                               uploadInThread(i);
-                            }
-
-                            String code = response.getString("results");
-                            if (code.equalsIgnoreCase("1")) {
-
-                              //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                            } else {
-                            //    Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        if (null != error.networkResponse) {
-                            Toast.makeText(context,"Try again......",Toast.LENGTH_LONG).show();
-                            Log.e("Error response", String.valueOf(error));
-                        }
-                    }
-                });
-
-        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(request);
-    }
+//    private void submit(String name, String path) {
+//        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
+//
+//        Map<String, String> params = new HashMap<String, String>();
+//        params.put("member_id", sessionManager.getMemberId());
+//      //  params.put("image_name", name);
+////       params.put("image",path.toString());
+//        Log.e("params", String.valueOf(params));
+//
+//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL, new JSONObject(params),
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        progressDialog.dismiss();
+//                        Log.e("response", String.valueOf((response)));
+//                        try {
+//                            for(int i = 0; i < imagePathList.size(); i++) {
+//
+//                            }
+//
+//                            String code = response.getString("results");
+//                            if (code.equalsIgnoreCase("1")) {
+//
+//                              //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+//                            } else {
+//                            //    Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        progressDialog.dismiss();
+//                        if (null != error.networkResponse) {
+//                            Toast.makeText(context,"Try again......",Toast.LENGTH_LONG).show();
+//                            Log.e("Error response", String.valueOf(error));
+//                        }
+//                    }
+//                });
+//
+//        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+//        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+//    }
 
 
     @Override
@@ -202,13 +204,13 @@ public class GalleryActivity extends AppCompatActivity {
         return temp;
     }
 
-    void uploadInThread(final int i) {
+    void uploadInThread(final String path) {
         new Thread(new Runnable()
         {
             @Override
             public void run()
             {
-                uploadFile(imagePathList.get(i));
+                uploadFile(path);
             }
         }).start();
     }
@@ -249,7 +251,8 @@ public class GalleryActivity extends AppCompatActivity {
                 connection.setRequestProperty("Connection", "Keep-Alive");
                 connection.setRequestProperty("ENCTYPE", "multipart/form-data");
                 connection.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
-                connection.setRequestProperty("uploaded_file", selectedFilePath);
+                connection.setRequestProperty("member_id", sessionManager.getMemberId());
+                connection.setRequestProperty("image", selectedFilePath);
 
                 //creating new dataoutputstream
                 dataOutputStream = new DataOutputStream(connection.getOutputStream());
@@ -267,6 +270,7 @@ public class GalleryActivity extends AppCompatActivity {
                 //setting the buffer as byte array of size of bufferSize
                 buffer = new byte[bufferSize];
 
+
                 //reads bytes from FileInputStream(from 0th index of buffer to buffersize)
                 bytesRead = fileInputStream.read(buffer, 0, bufferSize);
 
@@ -283,7 +287,7 @@ public class GalleryActivity extends AppCompatActivity {
                 dataOutputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
                 serverResponseCode = connection.getResponseCode();
                 String serverResponseMessage = connection.getResponseMessage();
-                Log.i("Osan", "Server Response is: " + serverResponseMessage + ": " + serverResponseCode);
+                Log.i("Durga", "Server Response is: " + serverResponseMessage + ": " + serverResponseCode);
                 if (serverResponseCode == 200) {
                     runOnUiThread(new Runnable() {
                         @Override

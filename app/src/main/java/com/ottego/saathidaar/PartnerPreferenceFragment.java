@@ -1,6 +1,7 @@
 package com.ottego.saathidaar;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -190,7 +192,10 @@ PartnerPreferenceModel model;
     }
 
 
-
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
     private void Height() {
 
         final int[] checkedItem = {-1};
@@ -555,6 +560,7 @@ PartnerPreferenceModel model;
             @Override
             public void onClick(View view) {
                 submitForm();
+                hideKeyboard(view);
             }
         });
 

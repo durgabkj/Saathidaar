@@ -1,6 +1,7 @@
 package com.ottego.saathidaar;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -155,6 +157,12 @@ public class SearchFragment extends Fragment {
         return view;
     }
 
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
     private void getData() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 getSearchDetailUrl + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
@@ -203,6 +211,7 @@ public class SearchFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 submitForm();
+                hideKeyboard(view);
             }
         });
 
@@ -969,7 +978,7 @@ public class SearchFragment extends Fragment {
 //                                   // sessionManager.createSUserDetails(sessionModel);
                                 Toast.makeText(context, code, Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                                 Intent intent = new Intent(context, MoreActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                  startActivity(intent);
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();

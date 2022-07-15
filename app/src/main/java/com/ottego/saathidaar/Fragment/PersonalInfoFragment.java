@@ -180,7 +180,7 @@ public class PersonalInfoFragment extends Fragment {
             binding.tvUserReligion.setText(model.religion_name);
             binding.tvUserCommunity.setText(model.caste_name);
             binding.tvGender.setText(model.gender);
-            binding.tvUserSubCommunity.setText(model.sub_caste_name);
+            binding.tvUserSubCommunity.setText(sessionManager.getKeyProSubCasteName());
             binding.tvUserGotra.setText(model.gothra);
             binding.tvUserHPlaceofBirth.setText(sessionManager.getKeyofCountryofbirth()+","+sessionManager.getcityofbirth());
             binding.tvUserTimeofBirth.setText(sessionManager.getKeyHour()+":"+sessionManager.getKeyMinutes()+" "+sessionManager.getKeyTimeh()+","+sessionManager.getKeyTimeStatus());

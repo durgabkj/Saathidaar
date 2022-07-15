@@ -1,5 +1,6 @@
 package com.ottego.saathidaar;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -89,7 +91,7 @@ public class HoroscopeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        b = FragmentHoroscopeBinding.inflate(getLayoutInflater());
+        b = FragmentHoroscopeBinding.inflate(inflater,container,false);
         context = getContext();
         sessionManager = new SessionManager(context);
         setDropDownData();
@@ -101,7 +103,10 @@ public class HoroscopeFragment extends Fragment {
         return b.getRoot();
     }
 
-
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
     private void setData1() {
         b.acvCountry.setText(model.country_of_birth);
         b.etHoroscopeBirthCity.setText(model.city_of_birth);
@@ -198,6 +203,7 @@ public class HoroscopeFragment extends Fragment {
             public void onClick(View v) {
                 if (checkForm()) {
                     submitForm();
+                    hideKeyboard(v);
                 }
             }
 

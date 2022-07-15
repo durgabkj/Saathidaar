@@ -146,11 +146,9 @@ FragmentFamilyInfoBinding b;
             b.tvUserMotherStatus.setText(sessionManager.getKeyProMStatus());
             b.tvUserFamilyLocation.setText(sessionManager.getKeyProFmlyLoca());
             b.tvUserNativePlace.setText(sessionManager.getKeyProNativePlace());
-//            int brother=(Integer.parseInt(model.married_male) + Integer.parseInt(model.unmarried_male));
-//            int sister=(Integer.parseInt(model.married_female) + Integer.parseInt(model.unmarried_female));
             b.tvUserBrothers.setText(model.married_male +": Married"+","+model.unmarried_male+" : Unmarried");
             b.tvUserSisters.setText(model.married_female+" : Married"+","+model.unmarried_female+" : Unmarried");
-            b.tvUserFamilyType.setText(sessionManager.getKeyFamilyValue());
+            b.tvUserFamilyType.setText(sessionManager.getKeyProFmlyType());
             b.tvUserFamilyAffluence.setText(sessionManager.getKeyProFmlyAfflu());
 
         }

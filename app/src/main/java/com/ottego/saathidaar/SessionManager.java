@@ -204,6 +204,8 @@ public class SessionManager {
         editor.putString(KEY_PRO_CITY_BIRTH, model.city_of_birth);
         editor.putString(KEY_PRO_GENDER, model.gender);
         editor.putString(KEY_PRO_CITY1, model.city);
+        editor.putString(KEY_PRO_STATE,  model.state_name);
+        editor.putString(KEY_PRO_CITY,model.city_name);
         editor.putString(KEY_FAMILY_VALUE, model.familyValues);
         editor.putString(KEY_MEM_NATIVE, model.membernative);
         editor.putString(KEY_PRO_PROFILECREATE, model.profilecreatedby);
@@ -310,6 +312,15 @@ public class SessionManager {
 
     public String getKeyProFComp() {
         return pref.getString(KEY_PRO_F_COMP, "");
+    }
+
+
+    public String getKeyProState() {
+        return pref.getString(KEY_PRO_STATE, "");
+    }
+
+    public String geyKeyProCity() {
+        return pref.getString(KEY_PRO_CITY, "");
     }
 
 

@@ -86,7 +86,7 @@ public class MatchesFragment extends Fragment {
         b.tlMatch.setupWithViewPager(b.vpMatch);
         b.tlMatch.getTabAt(1).select();
 
-
+b.tlMatch.getTabAt(7).view.setVisibility(View.GONE);
         b.vpMatch.setPagingEnable(false);
 
         b.tlMatch.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -118,6 +118,7 @@ public class MatchesFragment extends Fragment {
         adapter.addFragment(new SearchFragment(), "Search");
         adapter.addFragment(new RecentViewFragment(), "Recent Visitors");
         adapter.addFragment(new RecentlyViewedFragment(), "Recently Viewed");
+        adapter.addFragment(new MoreFragment(), "More");
         viewPager.setAdapter(adapter);
     }
 }

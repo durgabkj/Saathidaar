@@ -23,61 +23,12 @@ import org.json.JSONObject;
 
 public class MoreActivity extends AppCompatActivity {
 ActivityMoreBinding b;
-Context context;
-SessionManager sessionManager;
-DataModelNewMatches data;
-private String searchedUrl=Utils.memberUrl+"search/more/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         b=ActivityMoreBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
-context=MoreActivity.this;
-sessionManager=new SessionManager(context);
-        getData();
 
     }
 
-    public void getData() {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                searchedUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                //  b.srlRecycleBookmark.setRefreshing(false);
-                progressDialog.dismiss();
-                Log.e("My search Matches response", String.valueOf(response));
-                Gson gson = new Gson();
-                data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
-                if (data.results == 1) {
-                    setRecyclerView();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                error.printStackTrace();
-            }
-        });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-    }
-
-
-    private void setRecyclerView() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-        b.rvSearch.setLayoutManager(layoutManager);
-        b.rvSearch.setHasFixedSize(true);
-        b.rvSearch.setNestedScrollingEnabled(true);
-        NewMatchesAdapter adapter = new NewMatchesAdapter(context, data.data);
-        b.rvSearch.setAdapter(adapter);
-        if (adapter.getItemCount() != 0) {
-            b.llNoDataMore.setVisibility(View.GONE);
-            b.rvSearch.setVisibility(View.VISIBLE);
-
-        } else {
-            b.llNoDataMore.setVisibility(View.VISIBLE);
-        }
-    }
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -23,6 +24,7 @@ import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
 import com.ottego.saathidaar.Adapter.RecentVisitorAdapter;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentRecentlyViewedBinding;
+import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 import org.json.JSONObject;
 
@@ -31,7 +33,7 @@ FragmentRecentlyViewedBinding b;
     SessionManager sessionManager;
     Context context;
     DataModelNewMatches data;
-
+    NewMatchViewModel viewModel;
     public String recentlyViewed = Utils.memberUrl + "view-to/";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -68,6 +70,8 @@ FragmentRecentlyViewedBinding b;
         // Inflate the layout for this fragment
         b=FragmentRecentlyViewedBinding.inflate(inflater,container,false);
         context = getContext();
+        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
+
         sessionManager = new SessionManager(context);
         getData();
         return b.getRoot();
@@ -85,7 +89,9 @@ FragmentRecentlyViewedBinding b;
                 Log.e("recent visitors response", String.valueOf(response));
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
+                data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
                 if (data.results == 1) {
+                    viewModel._list.postValue(data.data);
                     setRecyclerView();
                 }
             }

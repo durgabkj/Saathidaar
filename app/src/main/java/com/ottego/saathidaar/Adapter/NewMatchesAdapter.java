@@ -6,8 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -23,7 +21,6 @@ import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.Utils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.ViewHolder> {
@@ -34,11 +31,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
     public NewMatchesAdapter(Context context, List<NewMatchesModel> list) {
         this.context = context;
         this.list = list;
-
-
     }
-
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -63,7 +56,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             public void onClick(View view) {
                 Utils.sentRequest(context, item.member_id);
                 holder.ivLike.setVisibility(View.GONE);
-holder.llConnect.setVisibility(View.VISIBLE);
+                 holder.llConnect.setVisibility(View.VISIBLE);
 
             }
         });
@@ -82,20 +75,10 @@ holder.llConnect.setVisibility(View.VISIBLE);
             @Override
             public void onClick(View view) {
                 Log.e("position", String.valueOf(position));
-//                /*ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) view.getContext(),
-//                        Pair.create(holder.ivUserMatch, "tnMemberImage"));
-//                Intent intent = new Intent(view.getContext(), MatchesDetailsActivity.class);
-//                intent.putExtra("data", new Gson().toJson(item));
-//                view.getContext().startActivity(intent, options.toBundle());*/
-
                 MatchPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
 
             }
         });
-
-
-
-
 
     }
 

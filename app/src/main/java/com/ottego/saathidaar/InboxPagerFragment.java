@@ -79,16 +79,16 @@ public class InboxPagerFragment extends DialogFragment {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
 
-//                if(position==0) {
-//                    backButton.setVisibility(View.INVISIBLE);
-//                }else  {
-//                    backButton.setVisibility(View.VISIBLE);
-//                }
-//                if(position < viewPager.getAdapter().getCount()-1 ) {
-//                    nextButton.setVisibility(View.VISIBLE);
-//                }else  {
-//                    nextButton.setVisibility(View.INVISIBLE);
-//                }
+                if(position==0) {
+                    b.llPreviousInbox.setVisibility(View.INVISIBLE);
+                }else  {
+                    b.llPreviousInbox.setVisibility(View.VISIBLE);
+                }
+                if(position < b.vp2DetailsInbox.getAdapter().getItemCount() - 1) {
+                    b.llNextInbox.setVisibility(View.VISIBLE);
+                }else  {
+                    b.llNextInbox.setVisibility(View.INVISIBLE);
+                }
 
             }
 
@@ -108,22 +108,22 @@ public class InboxPagerFragment extends DialogFragment {
         });
 
 
-//        nextButton.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                viewPager.setCurrentItem(viewPager.getCurrentItem()+1, true);
-//            }
-//        });
-//
-//
-//        backButton.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                viewPager.setCurrentItem(viewPager.getCurrentItem()-1, true);
-//            }
-//        });
+        b.llNextInbox.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                b.vp2DetailsInbox.setCurrentItem(b.vp2DetailsInbox.getCurrentItem()+1, true);
+            }
+        });
+
+
+        b.llPreviousInbox.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                b.vp2DetailsInbox.setCurrentItem(b.vp2DetailsInbox.getCurrentItem()-1, true);
+            }
+        });
 
 
         return b.getRoot();

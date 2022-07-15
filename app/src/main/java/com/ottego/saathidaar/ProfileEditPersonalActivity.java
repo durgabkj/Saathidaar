@@ -776,7 +776,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
     private void communityData() {
         String selectedCommunity = b.tvUserReligion.getText().toString().trim();
-        String url = "http://192.168.1.35:9094/api/get/cast-name/by/religion_name/" + selectedCommunity;
+        String url = "http://103.150.186.33:8080/saathidaar_backend/api/get/cast-name/by/religion_name/" + selectedCommunity;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url, null, new Response.Listener<JSONObject>() {

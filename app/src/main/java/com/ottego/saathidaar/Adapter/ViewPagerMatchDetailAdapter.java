@@ -24,7 +24,6 @@ public class ViewPagerMatchDetailAdapter extends FragmentStateAdapter {
         Log.e("member_id", viewModel.list.getValue().get(position).member_id);
 
         return MatchDetailsFragment.newInstance(viewModel.list.getValue().get(position).member_id, "");
-
     }
 
     @Override

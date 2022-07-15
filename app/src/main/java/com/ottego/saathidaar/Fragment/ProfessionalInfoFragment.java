@@ -118,8 +118,8 @@ public class ProfessionalInfoFragment extends Fragment {
         b.tvUserWorkingWitht.setText(model.working_with);
         b.tvWorkingAs.setText(model.working_as);
         b.tvUserCurrentResi.setText(model.country_name);
-        b.tvUserStateOfResidence.setText(model.state_name);
-        b.tvUserResidenceStatus.setText(model.city_name);
+        b.tvUserStateOfResidence.setText(model.state);
+        b.tvUserResidenceStatus.setText(model.city);
         b.tvUserPinCode.setText(model.pincode);
     }
 

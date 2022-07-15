@@ -253,11 +253,11 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:orientation="horizontal"
@@ -283,7 +283,7 @@
                         android:textSize="16sp"/>
                     <TextView
                         android:id="@+id/tvUserCurrentResi"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
                         android:fontFamily="@font/italic"
@@ -299,7 +299,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:orientation="horizontal"
@@ -325,7 +325,7 @@
 
                 <TextView
                     android:id="@+id/tvUserStateOfResidence"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:fontFamily="@font/italic"
@@ -343,7 +343,7 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:orientation="horizontal"
@@ -369,7 +369,7 @@
                     android:textSize="16sp"/>
                 <TextView
                     android:id="@+id/tvUserResidenceStatus"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:fontFamily="@font/italic"
@@ -385,7 +385,7 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:orientation="horizontal"
@@ -411,11 +411,10 @@
 
                 <TextView
                     android:id="@+id/tvUserPinCode"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:fontFamily="@font/italic"
-
                     android:textColor="@color/black"
                     android:layout_marginStart="15dp"
                     android:textStyle="bold"

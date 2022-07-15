@@ -58,6 +58,7 @@ public class MemberProfileModel {
     public  String religion_id;
     public String gender;
     public  String city;
+    public  String state;
     public String familyValues;
     public String membernative;
     public  String profilecreatedby;
