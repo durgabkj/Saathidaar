@@ -153,7 +153,7 @@ String memberId;
                 cityUrl + stateName, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf(response));
+               // Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -162,7 +162,7 @@ String memberId;
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String city = jsonObject1.getString("city_name");
                             cityList.add(city);
-                            Log.e("city-list", String.valueOf(cityList));
+                            //Log.e("city-list", String.valueOf(cityList));
                             stringArray2 = cityList.toArray(new String[cityList.size()]);
                         }
                     }
@@ -211,7 +211,7 @@ String memberId;
                 stateUrl + countryName, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf(response));
+               // Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -220,7 +220,7 @@ String memberId;
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String state = jsonObject1.getString("state_name");
                            stateList.add(state);
-                            Log.e("state-list Professional", String.valueOf(state));
+                           // Log.e("state-list Professional", String.valueOf(state));
                          //   stringArray1 = new String[]{state};
                              stringArray1 = stateList.toArray(new String[stateList.size()]);
                         }
@@ -251,7 +251,7 @@ String memberId;
                 countryUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf(response));
+                //Log.e("response", String.valueOf(response));
 
                 try {
                     String code = response.getString("results");
@@ -260,7 +260,7 @@ String memberId;
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String country = jsonObject1.getString("country_name");
-                            Log.e("Country-list", String.valueOf(countryList));
+                          //  Log.e("Country-list", String.valueOf(countryList));
 
                             countryList.add(country);
                              stringArray = new String[]{country};

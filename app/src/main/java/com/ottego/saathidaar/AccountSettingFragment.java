@@ -92,7 +92,7 @@ public class AccountSettingFragment extends Fragment {
             public void onClick(View view) {
                 b.tvEditPassword.setVisibility(View.GONE);
                 b.tvPasswordShow.setVisibility(View.GONE);
-                b.llSavePassword.setVisibility(View.VISIBLE);
+                b.llSavePasswordbutton.setVisibility(View.VISIBLE);
                 b.etOldPassword.setVisibility(View.VISIBLE);
                 b.etNewPassword.setVisibility(View.VISIBLE);
 
@@ -104,7 +104,7 @@ public class AccountSettingFragment extends Fragment {
             public void onClick(View view) {
                 b.tvEditPassword.setVisibility(View.VISIBLE);
                 b.tvPasswordShow.setVisibility(View.VISIBLE);
-                b.llSavePassword.setVisibility(View.GONE);
+                b.llSavePasswordbutton.setVisibility(View.GONE);
                 b.etOldPassword.setVisibility(View.GONE);
                 b.etNewPassword.setVisibility(View.GONE);
                 b.etOldPassword.setText("");
@@ -140,6 +140,13 @@ public class AccountSettingFragment extends Fragment {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
 
+                                b.etOldPassword.setText("");
+                                b.etNewPassword.setText("");
+                                b.tvPasswordShow.setVisibility(View.VISIBLE);
+                                b.tvEditPassword.setVisibility(View.VISIBLE);
+                                b.llSavePasswordbutton.setVisibility(View.GONE);
+                                b.etOldPassword.setVisibility(View.GONE);
+                                b.etNewPassword.setVisibility(View.GONE);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();

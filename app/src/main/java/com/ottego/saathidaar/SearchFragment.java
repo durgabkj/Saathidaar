@@ -800,7 +800,7 @@ public class SearchFragment extends Fragment {
                 countryUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf(response));
+             //   Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -809,7 +809,7 @@ public class SearchFragment extends Fragment {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String country = jsonObject1.getString("country_name");
                             countryList.add(country);
-                            Log.e("country-list", String.valueOf(countryList));
+                            //Log.e("country-list", String.valueOf(countryList));
                         }
                     }
 
@@ -853,7 +853,7 @@ public class SearchFragment extends Fragment {
                 stateUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf(response));
+               // Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -862,7 +862,7 @@ public class SearchFragment extends Fragment {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String state = jsonObject1.getString("state_name");
                             stateList.add(state);
-                            Log.e("state-list", String.valueOf(stateList));
+                           // Log.e("state-list", String.valueOf(stateList));
                         }
                     }
 
@@ -907,7 +907,7 @@ public class SearchFragment extends Fragment {
                 cityUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf(response));
+               // Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -916,7 +916,7 @@ public class SearchFragment extends Fragment {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String city = jsonObject1.getString("city_name");
                             cityList.add(city);
-                            Log.e("city-list", String.valueOf(cityList));
+                           // Log.e("city-list", String.valueOf(cityList));
                         }
                     }
 
@@ -969,7 +969,7 @@ public class SearchFragment extends Fragment {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.e("response", String.valueOf((response)));
+                       // Log.e("response", String.valueOf((response)));
                         try {
                             String code = response.getString("message");
                             if (!code.equalsIgnoreCase("") && code != null) {

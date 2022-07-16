@@ -405,7 +405,7 @@ public class GalleryActivity extends AppCompatActivity {
             }
 
             outputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
-            Log.e("durga", String.valueOf(connection.getResponseCode()));
+            Log.e("Connection response", String.valueOf(connection.getResponseCode()));
 
             if (200 != connection.getResponseCode()) {
 //                throw new CustomException("Failed to upload code:" + connection.getResponseCode() + " " + connection.getResponseMessage());

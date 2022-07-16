@@ -684,7 +684,7 @@ city=tvMultipleCity.getText().toString().toString();
                 getPreference+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf((response)));
+              //  Log.e("response", String.valueOf((response)));
                 Gson gson = new Gson();
                 model = gson.fromJson(String.valueOf(response), PartnerPreferenceModel.class);
                 setData();
@@ -760,7 +760,7 @@ tvMultipleReligion.setText(model.partner_religions);
                 countryUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf(response));
+               // Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -769,7 +769,7 @@ tvMultipleReligion.setText(model.partner_religions);
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String country = jsonObject1.getString("country_name");
                             countryList.add(country);
-                            Log.e("country-list", String.valueOf(countryList));
+                           // Log.e("country-list", String.valueOf(countryList));
                         }
                     }
 
@@ -813,7 +813,7 @@ tvMultipleReligion.setText(model.partner_religions);
                 stateUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf(response));
+              //  Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -822,7 +822,7 @@ tvMultipleReligion.setText(model.partner_religions);
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String state = jsonObject1.getString("state_name");
                             stateList.add(state);
-                            Log.e("state-list", String.valueOf(stateList));
+                           // Log.e("state-list", String.valueOf(stateList));
                         }
                     }
 
@@ -867,7 +867,7 @@ tvMultipleReligion.setText(model.partner_religions);
                 cityUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf(response));
+              //  Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -876,7 +876,7 @@ tvMultipleReligion.setText(model.partner_religions);
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String city = jsonObject1.getString("city_name");
                             cityList.add(city);
-                            Log.e("city-list", String.valueOf(cityList));
+                           // Log.e("city-list", String.valueOf(cityList));
                         }
                     }
 
@@ -921,7 +921,7 @@ tvMultipleReligion.setText(model.partner_religions);
                 castUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf(response));
+               // Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -930,7 +930,7 @@ tvMultipleReligion.setText(model.partner_religions);
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String religion = jsonObject1.getString("cast_name");
                             castList.add(religion);
-                            Log.e("cast-list", String.valueOf(castList));
+                           // Log.e("cast-list", String.valueOf(castList));
                         }
                     }
 
@@ -975,7 +975,7 @@ tvMultipleReligion.setText(model.partner_religions);
                 ReligionUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf(response));
+              //  Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -984,7 +984,7 @@ tvMultipleReligion.setText(model.partner_religions);
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String religion = jsonObject1.getString("religion_name");
                             religionList.add(religion);
-                            Log.e("Religion-list", String.valueOf(religionList));
+                           // Log.e("Religion-list", String.valueOf(religionList));
                         }
                     }
 

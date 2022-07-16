@@ -782,7 +782,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf(response));
+              //  Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -792,7 +792,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                             String cast = jsonObject1.getString("cast_name");
 //                                            Log.e("cast", cast);
                             communityList.add(cast);
-                            Log.e("cast-list", String.valueOf(communityList));
+                          //  Log.e("cast-list", String.valueOf(communityList));
                         }
                     }
                     communityAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, communityList);
@@ -819,7 +819,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 ReligionUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf(response));
+               // Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -828,7 +828,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String religion = jsonObject1.getString("religion_name");
                             religionList.add(religion);
-                            Log.e("Religion-list", String.valueOf(religionList));
+                          //  Log.e("Religion-list", String.valueOf(religionList));
                         }
                     }
                     religionAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, religionList);
@@ -902,7 +902,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                         // when item selected from list
                         // set selected item on textView
                         b.tvUserCommunity.setText(communityAdapter.getItem(position));
-                        Log.e("position", communityAdapter.getItem((int) id));
+                       // Log.e("position", communityAdapter.getItem((int) id));
                         communityList.clear();
                         dialog.dismiss();
                         // Dismiss dialog

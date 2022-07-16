@@ -51,6 +51,7 @@
 
 
             <LinearLayout
+                android:id="@+id/llShowpass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -108,7 +109,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/llSavePassword"
+                    android:id="@+id/llSavePasswordbutton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
@@ -120,7 +121,7 @@
                         android:id="@+id/tvSavePass"
                         android:layout_width="100dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/gradient_button"
+                        android:background="@drawable/button_hover"
                         android:padding="5dp"
                         android:text="Save"
                         android:gravity="center"
