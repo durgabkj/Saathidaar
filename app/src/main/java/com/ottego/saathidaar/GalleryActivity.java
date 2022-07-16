@@ -1,5 +1,6 @@
 package com.ottego.saathidaar;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -13,12 +14,19 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
+import com.ottego.saathidaar.Adapter.ImageAdapter;
+import com.ottego.saathidaar.Adapter.RemoveShortListAdapter;
+import com.ottego.saathidaar.Model.DataModelImage;
+import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.ActivityGalleryBinding;
 
 import org.json.JSONException;
@@ -45,9 +53,10 @@ import java.util.Map;
 public class GalleryActivity extends AppCompatActivity {
     ActivityGalleryBinding b;
     SessionManager sessionManager;
-
+DataModelImage dataModelImage;
     String URL = Utils.memberUrl + "uploads/photo";
     ProgressDialog progressDialog;
+    String getImageURL = Utils.memberUrl + "app/get/photo/";
     Context context;
     List<String> imageNameList = new ArrayList<>();
     List<String> imagePathList = new ArrayList<>();
@@ -61,6 +70,7 @@ public class GalleryActivity extends AppCompatActivity {
         setContentView(b.getRoot());
         context = GalleryActivity.this;
         sessionManager = new SessionManager(context);
+        getData();
         listener();
     }
 
@@ -84,7 +94,6 @@ public class GalleryActivity extends AppCompatActivity {
                 for (int i = 0; i < imagePathList.size(); i++) {
                     uploadInThread(imagePathList.get(i));
                 }
-
 
             }
         });
@@ -446,6 +455,52 @@ public class GalleryActivity extends AppCompatActivity {
             }
         }
         return sb.toString();
+    }
+
+
+
+
+    private void getData() {
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                getImageURL+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                progressDialog.dismiss();
+                Log.e("image response", String.valueOf(response));
+                Gson gson = new Gson();
+                dataModelImage = gson.fromJson(String.valueOf(response), DataModelImage.class);
+                if (dataModelImage.results == 1) {
+                    setRecyclerView();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+    }
+
+
+    private void setRecyclerView() {
+        GridLayoutManager layoutManager = new GridLayoutManager(context,5);
+        b.rvMyImage.setLayoutManager(layoutManager);
+        b.rvMyImage.setHasFixedSize(true);
+        b.rvMyImage.setNestedScrollingEnabled(true);
+        ImageAdapter adapter = new ImageAdapter(context,dataModelImage.data);
+        b.rvMyImage.setAdapter(adapter);
+
+        if (adapter.getItemCount() != 0) {
+            b.llNoDataImage.setVisibility(View.GONE);
+            b.rvMyImage.setVisibility(View.VISIBLE);
+
+        } else {
+            b.llNoDataImage.setVisibility(View.VISIBLE);
+        }
     }
 
 }

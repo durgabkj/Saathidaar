@@ -146,7 +146,7 @@ public class DashBoardFragment extends Fragment {
         profilePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context,UploadImageActivity.class);
+                Intent intent=new Intent(context,GalleryActivity.class);
                 startActivity(intent);
             }
         });

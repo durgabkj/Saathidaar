@@ -103,7 +103,7 @@
 
 
                 <LinearLayout
-                    android:layout_width="70dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="8dp"
@@ -111,8 +111,8 @@
                     >
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:padding="10dp"
                         android:layout_marginStart="8dp"
                         android:scaleType="centerCrop"
@@ -125,8 +125,9 @@
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
                         android:shadowDy="1.3"
+                        android:gravity="center"
                         android:shadowRadius="1.6"
-                        android:textSize="17sp"
+                        android:textSize="12sp"
                         android:layout_gravity="center"
                         android:textColor="@color/white"/>
 
@@ -235,7 +236,7 @@
                         android:shadowDx="1.5"
                         android:fontFamily="@font/italic"
                         android:shadowDy="1.3"
-                        android:maxLength="10"
+                        android:maxLength="15"
                         android:shadowRadius="1.6"
                         android:text="Junior software Developer"
                         android:textColor="@color/white"

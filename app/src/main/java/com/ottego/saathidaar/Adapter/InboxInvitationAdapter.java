@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.ottego.saathidaar.InboxPagerFragment;
-import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.Model.InboxModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.Utils;
@@ -42,48 +41,49 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull InboxInvitationAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         InboxModel item = list.get(position);
         Log.e(" Inbox model", new Gson().toJson(item));
 
-        holder.tvInvDeleteName.setText(item.first_name + " " + item.last_name);
-        holder.tvInvDeleteAge.setText(item.mage);
-        holder.tvInvDeleteHeight.setText(item.religion);
-        holder.tvInvDeleteCity.setText(item.maritalStatus);
-holder.tvInvDeleteWorkAs.setText(item.country);
-
-        holder.llBlock.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Utils.acceptRequest(context, item.member_id);
-                 holder.llBlock.setVisibility(View.GONE);
-                 holder.llBlocked.setVisibility(View.VISIBLE);
-                 holder.llDelete1.setVisibility(View.GONE);
-            }
-        });
-
-
-        holder.llDelete1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Utils.deleteRequest(context, item.member_id);
-              //  holder.llAccept.setVisibility(View.GONE);
-                holder.llDelete1.setVisibility(View.GONE);
-                holder.llDeletedInvitation.setVisibility(View.VISIBLE);
-
-            }
-        });
-
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e("position Inbox", String.valueOf(position));
-                InboxPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "Inbox_pager_fragment");
-
-            }
-        });
+//        holder.tvInvDeleteName.setText(item.first_name + " " + item.last_name);
+//        holder.tvInvDeleteAge.setText(item.mage);
+//        holder.tvInvDeleteHeight.setText(item.religion);
+//        holder.tvInvDeleteCity.setText(item.maritalStatus);
+//        holder.tvInvDeleteWorkAs.setText(item.country);
+//
+//        holder.llBlock.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Utils.acceptRequest(context, item.member_id);
+//                 holder.llBlock.setVisibility(View.GONE);
+//                 holder.llBlocked.setVisibility(View.VISIBLE);
+//                 holder.llDelete1.setVisibility(View.GONE);
+//            }
+//        });
+//
+//
+//        holder.llDelete1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Utils.deleteRequest(context, item.member_id);
+//              //  holder.llAccept.setVisibility(View.GONE);
+//                holder.llDelete1.setVisibility(View.GONE);
+//                holder.llDeletedInvitation.setVisibility(View.VISIBLE);
+//
+//            }
+//        });
+//
+//
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Log.e("position Inbox", String.valueOf(position));
+//                InboxPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "Inbox_pager_fragment");
+//
+//            }
+//        });
 
 
     }

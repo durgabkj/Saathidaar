@@ -22,9 +22,6 @@
         android:theme="@style/Theme.Saathidaar"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".UploadImageActivity"
-            android:exported="false" />
-        <activity
             android:name=".RequestAcceptActivity"
             android:exported="false" />
         <activity

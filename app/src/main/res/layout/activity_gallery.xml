@@ -15,29 +15,81 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             app:title="Gallery"
+            app:menu="@menu/menu_add"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
             app:navigationIconTint="@color/black"
             app:titleTextColor="@color/black" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <Button
+
+
+        <LinearLayout
+            android:id="@+id/llNoDataImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/ic_no_data" />
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:id="@+id/llCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMyImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:text="Choose"
-        android:id="@+id/choose"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:text="Upload"
-        android:id="@+id/upload"/>
+        android:layout_height="70dp"
+        android:orientation="vertical">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:text="Choose"
+            android:id="@+id/choose"/>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewFileName"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:text="Upload"
+            android:id="@+id/upload"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewFileName"/>
+    </LinearLayout>
+
+
+
+
+
+
 
 </LinearLayout>

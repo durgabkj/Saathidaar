@@ -37,7 +37,7 @@ FragmentBlockMemberBinding b;
     DataModelNewMatches data;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    public String blockMember = Utils.memberUrl + "recent-visitors/";
+    public String blockMember = Utils.memberUrl + "get/block-member/";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;

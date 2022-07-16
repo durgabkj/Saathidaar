@@ -38,6 +38,7 @@ public class Utils {
     public static  String location ="http://103.150.186.33:8080/saathidaar_backend/api/get/";
     public static String privacy="http://103.150.186.33:8080/saathidaar_backend/api/privacy/update/";
     public static String alert= "http://103.150.186.33:8080/saathidaar_backend/api/alert/";
+    public static String imageUrl= "http://103.150.186.33:8080/";
     public static String role_user="USER";
 
 

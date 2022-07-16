@@ -141,6 +141,7 @@
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/button_hover.xml" value="0.1685" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/cardview_design.xml" value="0.1755" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/checkmark.xml" value="0.1755" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.1765" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/ic_baseline_library_books_24.xml" value="0.166" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/ic_baseline_live_help_24.xml" value="0.166" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/drawable/ic_baseline_lock_person_24.xml" value="0.152" />
@@ -205,14 +206,18 @@
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/layout_accepted.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/layout_delete_invitation.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/layout_gallery.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/layout_image_gride.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/layout_invitation_inbox.xml" value="0.23802083333333332" />
-        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/layout_my_matches.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/layout_my_matches.xml" value="0.264" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/layout_religion_item.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/layout_remove_shortlist.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/layout_sent_item.xml" value="0.264" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/layout_upgrade_page.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/progressbar.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/recentlyview.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/searchable_dropdown_item.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/un_block_layout.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/menu/menu_add.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/multipleselectionspinner/src/main/res/drawable/ic_clear_opaque_24dp.xml" value="0.1645" />
       </map>
     </option>
