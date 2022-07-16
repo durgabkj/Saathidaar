@@ -37,7 +37,7 @@ public class DashBoardFragment extends Fragment {
     TextView tvPremiumText, RequestAccept,tvDashBoardUserId,tvDashBoardUserAccountType, Visitors, RequestSent,tvDashboardUpgrade,tvDashBoardUserName;
     int position = 0;
     DataModelDashboard model;
-    LinearLayout llPremiumMatch,llMyMatch,llPremium,llshare,tvLogout,llRequestSent;
+    LinearLayout llPremiumMatch,llMyMatch,llPremium,llshare,tvLogout,llRequestSent,llProfileVisi,llAcceptRequest;
     Animation animation;
     CountDownTimer countDownTimer;
     Context context;
@@ -96,6 +96,9 @@ public class DashBoardFragment extends Fragment {
         RequestSent = view.findViewById(R.id.RequestSent);
         llRequestSent=view.findViewById(R.id.llRequestSent);
         tvDashBoardUserName=view.findViewById(R.id.tvDashBoardUserName);
+        llAcceptRequest=view.findViewById(R.id.llAcceptRequest);
+        llProfileVisi=view.findViewById(R.id.llProfileVisi);
+
         context = getContext();
         sessionManager = new SessionManager(context);
         set();
@@ -151,6 +154,8 @@ public class DashBoardFragment extends Fragment {
         llRequestSent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Animation bounce = AnimationUtils.loadAnimation(context, R.anim.bounce);
+                llRequestSent.startAnimation(bounce);
                 Intent intent=new Intent(context,TestActivity.class);
                 startActivity(intent);
             }
@@ -238,6 +243,25 @@ public class DashBoardFragment extends Fragment {
                 } catch (Exception e) {
                     intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=app.com.mymealdabba"));
                 }
+            }
+        });
+        llProfileVisi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Animation bounce = AnimationUtils.loadAnimation(context, R.anim.bounce);
+                llProfileVisi.startAnimation(bounce);
+                Intent intent=new Intent(context,ProfileVisitorsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        llAcceptRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Animation bounce = AnimationUtils.loadAnimation(context, R.anim.bounce);
+                llAcceptRequest.startAnimation(bounce);
+                Intent intent=new Intent(context,RequestAcceptActivity.class);
+                startActivity(intent);
             }
         });
 

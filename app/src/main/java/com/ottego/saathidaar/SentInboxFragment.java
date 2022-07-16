@@ -118,7 +118,7 @@ public class SentInboxFragment extends Fragment {
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
     }
-    @SuppressLint("NotifyDataSetChanged")
+
     private void setRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         b.rvSentInvitation.setLayoutManager(layoutManager);
@@ -126,7 +126,7 @@ public class SentInboxFragment extends Fragment {
         b.rvSentInvitation.setNestedScrollingEnabled(true);
         SentInvitationAdapter adapter = new SentInvitationAdapter(context,data.data);
         b.rvSentInvitation.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+
         if (adapter.getItemCount() != 0) {
             b.llNoDataSentInvitation.setVisibility(View.GONE);
             b.rvSentInvitation.setVisibility(View.VISIBLE);

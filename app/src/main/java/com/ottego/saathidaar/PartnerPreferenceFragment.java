@@ -9,9 +9,12 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,6 +27,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -559,13 +563,38 @@ PartnerPreferenceModel model;
         tvPartnerPreferencesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Animation bounce = AnimationUtils.loadAnimation(context, R.anim.bounce);
+                tvPartnerPreferencesBtn.startAnimation(bounce);
                 submitForm();
                 hideKeyboard(view);
             }
         });
+    }
 
 
 
+    public void successDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        View layout_dialog = LayoutInflater.from(context).inflate(R.layout.alert_sucess_dialog, null);
+        builder.setView(layout_dialog);
+
+        AppCompatButton btnokSuccess = layout_dialog.findViewById(R.id.btnokSuccess);
+        // show dialog
+
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        dialog.setCancelable(false);
+
+        dialog.getWindow().setGravity(Gravity.CENTER);
+
+        btnokSuccess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+
+            }
+        });
     }
 
     private void submitForm() {
@@ -624,6 +653,7 @@ city=tvMultipleCity.getText().toString().toString();
 //                                    Gson gson = new Gson();
 //                                    UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);
 //                                   // sessionManager.createSUserDetails(sessionModel);
+                                successDialog();
                                 Toast.makeText(context, code, Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                                 //Intent intent = new Intent(context, OtpVerificationActivity.class);
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

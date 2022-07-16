@@ -89,7 +89,6 @@ FragmentRecentlyViewedBinding b;
                 Log.e("recent visitors response", String.valueOf(response));
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
-                data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
                 if (data.results == 1) {
                     viewModel._list.postValue(data.data);
                     setRecyclerView();

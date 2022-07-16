@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
@@ -25,6 +26,7 @@ import com.ottego.saathidaar.Adapter.RemoveShortListAdapter;
 import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentShortListBinding;
+import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 import org.json.JSONObject;
 
@@ -36,6 +38,7 @@ public class ShortListFragment extends Fragment {
     String member_id;
     public String ShortListUrl ="http://103.150.186.33:8080/saathidaar_backend/api/shortlist/get/all/";
     FragmentShortListBinding b;
+    NewMatchViewModel viewModel;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -72,6 +75,7 @@ public class ShortListFragment extends Fragment {
        b=FragmentShortListBinding.inflate(getLayoutInflater());
        context=getContext();
        sessionManager=new SessionManager(context);
+        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
         getData();
         listener();
 
@@ -99,6 +103,7 @@ public class ShortListFragment extends Fragment {
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
                 if (data.results == 1) {
+                    viewModel._list.postValue(data.data);
                     setRecyclerView();
                 }
             }
@@ -112,8 +117,8 @@ public class ShortListFragment extends Fragment {
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
     }
+
     @SuppressLint("NotifyDataSetChanged")
     private void setRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);

@@ -149,7 +149,7 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="350dp"
-                    android:layout_height="90dp"
+                    android:layout_height="80dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="200dp"
                     app:cardCornerRadius="5dp">
@@ -166,6 +166,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:elevation="20dp"
+                            android:background="@drawable/rzp_border"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -192,10 +193,12 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/llProfileVisi"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
+                            android:background="@drawable/rzp_border"
                             android:orientation="vertical">
 
                             <TextView
@@ -221,10 +224,12 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/llAcceptRequest"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1.1"
                             android:gravity="center"
+                            android:background="@drawable/rzp_border"
                             android:orientation="vertical">
 
                             <TextView

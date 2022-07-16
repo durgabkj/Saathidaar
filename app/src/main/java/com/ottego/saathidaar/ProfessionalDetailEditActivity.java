@@ -751,8 +751,6 @@ String memberId;
             }
         });
     }
-
-
     private void submitForm() {
         higherEducation = b.etAddUserEducation.getText().toString().trim();
         collegeAttends = b.etAddUserCollegeAttended.getText().toString().trim();

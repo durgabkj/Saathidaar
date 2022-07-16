@@ -24,17 +24,21 @@ import com.ottego.saathidaar.databinding.ActivityGalleryBinding;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -77,10 +81,9 @@ public class GalleryActivity extends AppCompatActivity {
         b.upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(int i = 0; i < imagePathList.size(); i++) {
+                for (int i = 0; i < imagePathList.size(); i++) {
                     uploadInThread(imagePathList.get(i));
                 }
-
 
 
             }
@@ -205,125 +208,244 @@ public class GalleryActivity extends AppCompatActivity {
     }
 
     void uploadInThread(final String path) {
-        new Thread(new Runnable()
-        {
+        new Thread(new Runnable() {
             @Override
-            public void run()
-            {
-                uploadFile(path);
+            public void run() {
+//                uploadFile(path);
+                //setup params
+                Map<String, String> params = new HashMap<String, String>(1);
+                params.put("member_id", sessionManager.getMemberId());
+
+                String result = multipartRequest(URL, params, path, "image", "image/jpeg");
+//next parse result string
             }
         }).start();
     }
 
-    public int uploadFile(final String selectedFilePath) {
-        int serverResponseCode = 0;
-        HttpURLConnection connection;
-        DataOutputStream dataOutputStream;
-        String lineEnd = "\r\n";
+//    public int uploadFile(final String selectedFilePath) {
+//        int serverResponseCode = 0;
+//        HttpURLConnection connection;
+//        DataOutputStream dataOutputStream;
+//        String lineEnd = "\r\n";
+//        String twoHyphens = "--";
+//        String boundary = "*****";
+//
+//        int bytesRead, bytesAvailable, bufferSize;
+//        byte[] buffer;
+//        int maxBufferSize = 1 * 1024 * 1024;
+//        File selectedFile = new File(selectedFilePath);
+//
+//        String[] parts = selectedFilePath.split("/");
+//        final String fileName = parts[parts.length - 1];
+//
+//        if (!selectedFile.isFile()) {
+//            runOnUiThread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    b.textViewFileName.setText("Source file doesn't exist: " + selectedFilePath);
+//                }
+//            });
+//            return 0;
+//        } else {
+//            try {
+//                FileInputStream fileInputStream = new FileInputStream(selectedFile);
+//                java.net.URL url = new URL(URL);
+//                connection = (HttpURLConnection) url.openConnection();
+//                connection.setDoInput(true);//Allow Inputs
+//                connection.setDoOutput(true);//Allow Outputs
+//                connection.setUseCaches(false);//Don't use a cached Copy
+//                connection.setRequestMethod("POST");
+//                connection.setRequestProperty("Connection", "Keep-Alive");
+//                connection.setRequestProperty("ENCTYPE", "multipart/form-data");
+//                connection.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+//                connection.setRequestProperty("member_id", sessionManager.getMemberId());
+//                connection.setRequestProperty("image", selectedFilePath);
+//
+//                //creating new dataoutputstream
+//                dataOutputStream = new DataOutputStream(connection.getOutputStream());
+//
+//                //writing bytes to data outputstream
+//                dataOutputStream.writeBytes(twoHyphens + boundary + lineEnd);
+//                dataOutputStream.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\"" + selectedFilePath + "\"" + lineEnd);
+//
+//                dataOutputStream.writeBytes(lineEnd);
+//
+//                //returns no. of bytes present in fileInputStream
+//                bytesAvailable = fileInputStream.available();
+//                //selecting the buffer size as minimum of available bytes or 1 MB
+//                bufferSize = Math.min(bytesAvailable, maxBufferSize);
+//                //setting the buffer as byte array of size of bufferSize
+//                buffer = new byte[bufferSize];
+//
+//
+//                //reads bytes from FileInputStream(from 0th index of buffer to buffersize)
+//                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+//
+//                //loop repeats till bytesRead = -1, i.e., no bytes are left to read
+//                while (bytesRead > 0) {
+//                    //write the bytes read from inputstream
+//                    dataOutputStream.write(buffer, 0, bufferSize);
+//                    bytesAvailable = fileInputStream.available();
+//                    bufferSize = Math.min(bytesAvailable, maxBufferSize);
+//                    bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+//                }
+//
+//                dataOutputStream.writeBytes(lineEnd);
+//                dataOutputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+//                serverResponseCode = connection.getResponseCode();
+//                String serverResponseMessage = connection.getResponseMessage();
+//                Log.i("Durga", "Server Response is: " + serverResponseMessage + ": " + serverResponseCode);
+//                if (serverResponseCode == 200) {
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            finish();
+//                            Toast.makeText(context, "Event added successfully", Toast.LENGTH_SHORT).show();
+//
+//                            //  textViewFileName.setText("File Upload completed.\n\n You can see the uploaded file here: \n\n" + MyUrl.URL + "uploads/"+ fileName);
+//                        }
+//                    });
+//                }
+//
+//                //closing the input and output streams
+//                fileInputStream.close();
+//                dataOutputStream.flush();
+//                dataOutputStream.close();
+//
+//
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Toast.makeText(context, "Please give permission for storage", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            } catch (MalformedURLException e) {
+//                e.printStackTrace();
+//                Toast.makeText(context, "URL error!", Toast.LENGTH_SHORT).show();
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                Toast.makeText(context, "Cannot Read/Write File!", Toast.LENGTH_SHORT).show();
+//            }
+//            return serverResponseCode;
+//        }
+//    }
+
+
+    public String multipartRequest(String urlTo, Map<String, String> parmas, String filepath, String filefield, String fileMimeType) {
+        HttpURLConnection connection = null;
+        DataOutputStream outputStream = null;
+        InputStream inputStream = null;
+
         String twoHyphens = "--";
-        String boundary = "*****";
+        String boundary = "*****" + Long.toString(System.currentTimeMillis()) + "*****";
+        String lineEnd = "\r\n";
+
+        String result = "";
 
         int bytesRead, bytesAvailable, bufferSize;
         byte[] buffer;
         int maxBufferSize = 1 * 1024 * 1024;
-        File selectedFile = new File(selectedFilePath);
 
-        String[] parts = selectedFilePath.split("/");
-        final String fileName = parts[parts.length - 1];
+        String[] q = filepath.split("/");
+        int idx = q.length - 1;
 
-        if (!selectedFile.isFile()) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    b.textViewFileName.setText("Source file doesn't exist: " + selectedFilePath);
-                }
-            });
-            return 0;
-        } else {
-            try {
-                FileInputStream fileInputStream = new FileInputStream(selectedFile);
-                java.net.URL url = new URL(URL);
-                connection = (HttpURLConnection) url.openConnection();
-                connection.setDoInput(true);//Allow Inputs
-                connection.setDoOutput(true);//Allow Outputs
-                connection.setUseCaches(false);//Don't use a cached Copy
-                connection.setRequestMethod("POST");
-                connection.setRequestProperty("Connection", "Keep-Alive");
-                connection.setRequestProperty("ENCTYPE", "multipart/form-data");
-                connection.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
-                connection.setRequestProperty("member_id", sessionManager.getMemberId());
-                connection.setRequestProperty("image", selectedFilePath);
+        try {
+            File file = new File(filepath);
+            FileInputStream fileInputStream = new FileInputStream(file);
 
-                //creating new dataoutputstream
-                dataOutputStream = new DataOutputStream(connection.getOutputStream());
+            URL url = new URL(urlTo);
+            connection = (HttpURLConnection) url.openConnection();
 
-                //writing bytes to data outputstream
-                dataOutputStream.writeBytes(twoHyphens + boundary + lineEnd);
-                dataOutputStream.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\"" + selectedFilePath + "\"" + lineEnd);
+            connection.setDoInput(true);
+            connection.setDoOutput(true);
+            connection.setUseCaches(false);
 
-                dataOutputStream.writeBytes(lineEnd);
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Connection", "Keep-Alive");
+            connection.setRequestProperty("User-Agent", "Android Multipart HTTP Client 1.0");
+            connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
 
-                //returns no. of bytes present in fileInputStream
+            outputStream = new DataOutputStream(connection.getOutputStream());
+            outputStream.writeBytes(twoHyphens + boundary + lineEnd);
+            outputStream.writeBytes("Content-Disposition: form-data; name=\"" + filefield + "\"; filename=\"" + q[idx] + "\"" + lineEnd);
+            outputStream.writeBytes("Content-Type: " + fileMimeType + lineEnd);
+            outputStream.writeBytes("Content-Transfer-Encoding: binary" + lineEnd);
+
+            outputStream.writeBytes(lineEnd);
+
+            bytesAvailable = fileInputStream.available();
+            bufferSize = Math.min(bytesAvailable, maxBufferSize);
+            buffer = new byte[bufferSize];
+
+            bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+            while (bytesRead > 0) {
+                outputStream.write(buffer, 0, bufferSize);
                 bytesAvailable = fileInputStream.available();
-                //selecting the buffer size as minimum of available bytes or 1 MB
                 bufferSize = Math.min(bytesAvailable, maxBufferSize);
-                //setting the buffer as byte array of size of bufferSize
-                buffer = new byte[bufferSize];
-
-
-                //reads bytes from FileInputStream(from 0th index of buffer to buffersize)
                 bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+            }
 
-                //loop repeats till bytesRead = -1, i.e., no bytes are left to read
-                while (bytesRead > 0) {
-                    //write the bytes read from inputstream
-                    dataOutputStream.write(buffer, 0, bufferSize);
-                    bytesAvailable = fileInputStream.available();
-                    bufferSize = Math.min(bytesAvailable, maxBufferSize);
-                    bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-                }
+            outputStream.writeBytes(lineEnd);
 
-                dataOutputStream.writeBytes(lineEnd);
-                dataOutputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
-                serverResponseCode = connection.getResponseCode();
-                String serverResponseMessage = connection.getResponseMessage();
-                Log.i("Durga", "Server Response is: " + serverResponseMessage + ": " + serverResponseCode);
-                if (serverResponseCode == 200) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            finish();
-                            Toast.makeText(context, "Event added successfully", Toast.LENGTH_SHORT).show();
+            // Upload POST Data
+            Iterator<String> keys = parmas.keySet().iterator();
+            while (keys.hasNext()) {
+                String key = keys.next();
+                String value = parmas.get(key);
 
-                            //  textViewFileName.setText("File Upload completed.\n\n You can see the uploaded file here: \n\n" + MyUrl.URL + "uploads/"+ fileName);
-                        }
-                    });
-                }
+                outputStream.writeBytes(twoHyphens + boundary + lineEnd);
+                outputStream.writeBytes("Content-Disposition: form-data; name=\"" + key + "\"" + lineEnd);
+                outputStream.writeBytes("Content-Type: text/plain" + lineEnd);
+                outputStream.writeBytes(lineEnd);
+                outputStream.writeBytes(value);
+                outputStream.writeBytes(lineEnd);
+            }
 
-                //closing the input and output streams
-                fileInputStream.close();
-                dataOutputStream.flush();
-                dataOutputStream.close();
+            outputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+            Log.e("durga", String.valueOf(connection.getResponseCode()));
 
+            if (200 != connection.getResponseCode()) {
+//                throw new CustomException("Failed to upload code:" + connection.getResponseCode() + " " + connection.getResponseMessage());
+            }
 
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(context, "Please give permission for storage", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-                Toast.makeText(context, "URL error!", Toast.LENGTH_SHORT).show();
+            inputStream = connection.getInputStream();
 
+            result = this.convertStreamToString(inputStream);
+
+            fileInputStream.close();
+            inputStream.close();
+            outputStream.flush();
+            outputStream.close();
+
+            return result;
+        } catch (Exception e) {
+//            logger.error(e);
+//            throw new CustomException(e)
+        }
+        return "error;";
+    }
+    private String convertStreamToString(InputStream is) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        StringBuilder sb = new StringBuilder();
+
+        String line = null;
+        try {
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                is.close();
             } catch (IOException e) {
                 e.printStackTrace();
-                Toast.makeText(context, "Cannot Read/Write File!", Toast.LENGTH_SHORT).show();
             }
-            return serverResponseCode;
         }
+        return sb.toString();
     }
 
 }

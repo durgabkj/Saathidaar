@@ -1,16 +1,12 @@
 package com.ottego.saathidaar;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
@@ -55,7 +51,7 @@ public class MatchesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        b = FragmentMatchesBinding.inflate(getLayoutInflater());
+        b = FragmentMatchesBinding.inflate(inflater, container, false);
 
 //scroll auto
        // b.hsvMatch.fullScroll(ScrollView.FOCUS_LEFT);
@@ -70,23 +66,11 @@ public class MatchesFragment extends Fragment {
 //        }, 1000);
 
 
-
-        return b.getRoot();
-    }
-
-
-
-
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
         setUpViewPager(b.vpMatch);
         b.tlMatch.setupWithViewPager(b.vpMatch);
-        b.tlMatch.getTabAt(1).select();
+          b.tlMatch.getTabAt(1).select();
 
-b.tlMatch.getTabAt(7).view.setVisibility(View.GONE);
+//b.tlMatch.getTabAt(7).view.setVisibility(View.GONE);
         b.vpMatch.setPagingEnable(false);
 
         b.tlMatch.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -107,7 +91,21 @@ b.tlMatch.getTabAt(7).view.setVisibility(View.GONE);
 
             }
         });
+
+
+
+        return b.getRoot();
     }
+
+
+
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+         }
 
     private void setUpViewPager(ViewPager viewPager) {
         HomeTablayoutAdapter adapter = new HomeTablayoutAdapter(getChildFragmentManager());

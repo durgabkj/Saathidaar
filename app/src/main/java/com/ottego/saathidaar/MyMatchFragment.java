@@ -86,31 +86,6 @@ public class MyMatchFragment extends Fragment {
 
 
 
-    public void successDialog()
-    {
-        AlertDialog.Builder builder=new AlertDialog.Builder(context);
-        View layout_dialog= LayoutInflater.from(context).inflate(R.layout.alert_sucess_dialog,null);
-        builder.setView(layout_dialog);
-
-        AppCompatButton btnokSuccess =layout_dialog.findViewById(R.id.btnokSuccess);
-        // show dialog
-
-         dialog=builder.create();
-        dialog.show();
-        dialog.setCancelable(false);
-
-        dialog.getWindow().setGravity(Gravity.CENTER);
-
-        btnokSuccess.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-
-            }
-        });
-    }
-
-
     public void getData() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Data Loading...", false, false);
         progressDialog.setIcon(R.drawable.ic_progress_bar);

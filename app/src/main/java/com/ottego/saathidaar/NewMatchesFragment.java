@@ -71,7 +71,7 @@ public class NewMatchesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        b = FragmentNewMatchesBinding.inflate(getLayoutInflater());
+        b = FragmentNewMatchesBinding.inflate(inflater,container,false);
         context = getContext();
         viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
 

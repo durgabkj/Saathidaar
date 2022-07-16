@@ -1,5 +1,6 @@
 package com.ottego.saathidaar.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.Model.HoroscopeModel;
 import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.Model.SessionProfileDetailModel;
 import com.ottego.saathidaar.MySingleton;
@@ -34,9 +36,11 @@ import org.json.JSONObject;
 public class PersonalInfoFragment extends Fragment {
     FragmentPersonalInfoBinding binding;
     public static String url = Utils.memberUrl + "my-profile/";
+    public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
     Context context;
     MemberProfileModel  model;
     SessionManager sessionManager;
+    HoroscopeModel horoscopeModel;
     String id = "";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,8 +82,53 @@ public class PersonalInfoFragment extends Fragment {
         sessionManager = new SessionManager(context);
         listener();
         getMemberData();
+        getData();
         return binding.getRoot();
     }
+
+
+
+    private void getData() {
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                urlGetHoroscope + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                progressDialog.dismiss();
+                Log.e("response", String.valueOf(response));
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        Gson gson = new Gson();
+                        horoscopeModel = gson.fromJson(String.valueOf(response), HoroscopeModel.class);
+                        setHoroData();
+
+                    } else {
+                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+    }
+
+    private void setHoroData() {
+        binding.tvUserHPlaceofBirth.setText(horoscopeModel.country_of_birth+","+horoscopeModel.city_of_birth);
+        binding.tvUserTimeofBirth.setText(horoscopeModel.hours+":"+horoscopeModel.minutes+" "+horoscopeModel.time+","+horoscopeModel.time_status);
+
+    }
+
     private void listener() {
         binding.ivCameraEditPersonalInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,9 +231,7 @@ public class PersonalInfoFragment extends Fragment {
             binding.tvGender.setText(model.gender);
             binding.tvUserSubCommunity.setText(sessionManager.getKeyProSubCasteName());
             binding.tvUserGotra.setText(model.gothra);
-            binding.tvUserHPlaceofBirth.setText(sessionManager.getKeyofCountryofbirth()+","+sessionManager.getcityofbirth());
-            binding.tvUserTimeofBirth.setText(sessionManager.getKeyHour()+":"+sessionManager.getKeyMinutes()+" "+sessionManager.getKeyTimeh()+","+sessionManager.getKeyTimeStatus());
-        }
+              }
 
 
     }

@@ -11,9 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.Utils;
@@ -64,6 +66,15 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
                 Utils.removeShortList(context, item.member_id);
                 holder.llShortList1.setVisibility(View.VISIBLE);
                 holder.llShortListRemove1.setVisibility(View.GONE);
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("position", String.valueOf(position));
+                MatchPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
+
             }
         });
 

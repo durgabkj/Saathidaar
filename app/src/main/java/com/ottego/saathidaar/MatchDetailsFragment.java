@@ -90,6 +90,7 @@ public class MatchDetailsFragment extends Fragment {
         //   Map<String, String> params = new HashMap<String, String>();
 //        params.put("member_ID",mParam1);
         Log.e("params", String.valueOf(mParam1));
+        Log.e("prefParams", PreferenceDetailUrl + mParam1 + "/" + sessionManager.getMemberId());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, PreferenceDetailUrl + mParam1 + "/" + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -293,6 +294,7 @@ public class MatchDetailsFragment extends Fragment {
         Map<String, String> params = new HashMap<String, String>();
 //        params.put("member_ID",mParam1);
 //        Log.e("params", String.valueOf(params));
+        Log.e("dataParams", memberDetail + mParam1);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, memberDetail + mParam1, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -330,10 +332,10 @@ public class MatchDetailsFragment extends Fragment {
             b.tvMatchCityDetail.setText(model.city);
             b.tvNewMatchWorkAsDetail.setText(model.working_as);
             b.tvNameUserDetails.setText("About" + "  " + model.first_name);
-         //   b.tvAboutUserDetails.setText(model.about_ourself);
+            b.tvAboutUserDetails.setText(model.about_ourself);
 
             b.tvCreatedBy.setText("Profile CreateBy" + " " + model.profilecreatedby);
-            //b.tvProfileID.setText("Profile ID"+" "+model.);
+            b.tvProfileID.setText("Profile ID" + " " + model.profile_id);
             b.tvDetailAge.setText(model.age + " yrs old");
             b.tvDetailHeight.setText("Height - " + model.height);
             b.tvDetailDob.setText("Born on" + " " + model.date_of_birth);

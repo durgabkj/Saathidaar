@@ -43,9 +43,9 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         NewMatchesModel item = list.get(position);
-        Log.e(" New Matches model", new Gson().toJson(item));
+//        Log.e(" New Matches model", new Gson().toJson(item));
 
-        holder.tvNewMatchName.setText(item.first_name + " " + item.last_name);
+        holder.tvNewMatchName.setText(item.first_name + " " + item.member_id);
         holder.tvNewMatchAge.setText(item.mage);
         holder.tvNewMatchHeight.setText(item.religion);
         holder.tvNewMatchCity.setText(item.maritalStatus);
