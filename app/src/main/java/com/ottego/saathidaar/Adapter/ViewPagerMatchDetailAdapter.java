@@ -12,7 +12,6 @@ import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 public class ViewPagerMatchDetailAdapter extends FragmentStateAdapter {
     NewMatchViewModel viewModel;
-
     public ViewPagerMatchDetailAdapter(@NonNull FragmentActivity fragmentActivity, NewMatchViewModel viewModel) {
         super(fragmentActivity);
         this.viewModel = viewModel;

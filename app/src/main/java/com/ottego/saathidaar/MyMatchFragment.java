@@ -5,12 +5,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +25,7 @@ import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentMyMatchBinding;
 import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -88,12 +88,11 @@ public class MyMatchFragment extends Fragment {
 
     public void getData() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Data Loading...", false, false);
-        progressDialog.setIcon(R.drawable.ic_progress_bar);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 MyMatchUrl + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                //  b.srlRecycleBookmark.setRefreshing(false);
+                Log.e("response", String.valueOf((response)));
                 progressDialog.dismiss();
 
                 Log.e("My Matches response", String.valueOf(response));
@@ -114,7 +113,6 @@ public class MyMatchFragment extends Fragment {
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
     }
-
 
     private void setRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);

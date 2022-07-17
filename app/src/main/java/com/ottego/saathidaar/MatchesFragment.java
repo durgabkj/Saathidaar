@@ -13,6 +13,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.ottego.saathidaar.Adapter.HomeTablayoutAdapter;
 import com.ottego.saathidaar.databinding.FragmentMatchesBinding;
 
+import java.util.Objects;
+
 
 public class MatchesFragment extends Fragment {
     FragmentMatchesBinding b;
@@ -53,24 +55,13 @@ public class MatchesFragment extends Fragment {
         // Inflate the layout for this fragment
         b = FragmentMatchesBinding.inflate(inflater, container, false);
 
-//scroll auto
-       // b.hsvMatch.fullScroll(ScrollView.FOCUS_LEFT);
-
-
-//        new Handler().postDelayed(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                b.TodayMatch.performClick();
-//            }
-//        }, 1000);
 
 
         setUpViewPager(b.vpMatch);
         b.tlMatch.setupWithViewPager(b.vpMatch);
-          b.tlMatch.getTabAt(1).select();
+          Objects.requireNonNull(b.tlMatch.getTabAt(1)).select();
 
-//b.tlMatch.getTabAt(7).view.setVisibility(View.GONE);
+Objects.requireNonNull(b.tlMatch.getTabAt(7)).view.setVisibility(View.GONE);
         b.vpMatch.setPagingEnable(false);
 
         b.tlMatch.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

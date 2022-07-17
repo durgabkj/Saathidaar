@@ -154,8 +154,8 @@ DataModelImage dataModelImage;
 
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == PICK_FILE_REQUEST) {
-                imageNameList.clear();
-                imagePathList.clear();
+//                imageNameList.clear();
+//                imagePathList.clear();
                 if (data.getClipData() != null) {
                     int count = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
                     for (int i = 0; i < count; i++) {
@@ -484,8 +484,6 @@ DataModelImage dataModelImage;
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
     }
-
-
     private void setRecyclerView() {
         GridLayoutManager layoutManager = new GridLayoutManager(context,5);
         b.rvMyImage.setLayoutManager(layoutManager);
