@@ -160,7 +160,7 @@
                     android:elevation="20dp"
                     android:padding="10dp"
                     android:text="Edit Details"
-                     android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:translationZ="20dp" />
             </androidx.cardview.widget.CardView>

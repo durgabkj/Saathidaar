@@ -76,8 +76,8 @@ public class NewMatchesFragment extends Fragment {
         viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
 
         sessionManager=new SessionManager(context);
-        animation = AnimationUtils.loadAnimation(context, R.anim.move);
-        b.llCard.startAnimation(animation);
+//        animation = AnimationUtils.loadAnimation(context, R.anim.move);
+//        b.llCard.startAnimation(animation);
         getData("");
         listener();
 

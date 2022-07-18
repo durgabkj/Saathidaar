@@ -2,7 +2,6 @@ package com.ottego.saathidaar;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +14,7 @@ public class ShowImageActivity extends AppCompatActivity {
     ActivityShowImageBinding b;
     Context context;
     ImageModel model;
-
+    String position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,10 +23,6 @@ public class ShowImageActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String data = bundle.getString("data");
         model = new Gson().fromJson(data, ImageModel.class);
-context=ShowImageActivity.this;
-
-
-
 
         setData();
         listener();

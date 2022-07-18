@@ -52,22 +52,19 @@ public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.ViewHolder>
                     .load(Utils.imageUrl + item.member_images)
                     .into(holder.ivUserImage);
 
-
-
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, ShowImageActivity.class);
                     intent.putExtra("data", new Gson().toJson(item));
+                    int  pos = (int) getItemId(position);
+                    intent.putExtra("pos", pos);
                     context.startActivity(intent);
                 }
             });
 
+
         }
-
-
-
-
 
         @Override
         public int getItemCount() {

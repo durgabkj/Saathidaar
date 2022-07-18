@@ -105,6 +105,7 @@ Spinner SpMenu;
             llShortListRemove = itemView.findViewById(R.id.llShortListRemove);
             llShortList = itemView.findViewById(R.id.llShortList);
             llConnect=itemView.findViewById(R.id.llConnect);
+
         }
     }
 }

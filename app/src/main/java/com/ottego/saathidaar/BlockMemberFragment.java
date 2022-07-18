@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.Adapter.BlockMemberAdapter;
 import com.ottego.saathidaar.Adapter.RecentVisitorAdapter;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentBlockMemberBinding;
@@ -110,7 +111,7 @@ FragmentBlockMemberBinding b;
         b.rvBlock.setLayoutManager(layoutManager);
         b.rvBlock.setHasFixedSize(true);
         b.rvBlock.setNestedScrollingEnabled(true);
-        RecentVisitorAdapter adapter = new RecentVisitorAdapter(context, data.data);
+        BlockMemberAdapter adapter = new BlockMemberAdapter(context, data.data);
         b.rvBlock.setAdapter(adapter);
         if (adapter.getItemCount() != 0) {
             b.llNoDataBlock.setVisibility(View.GONE);

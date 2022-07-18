@@ -11,6 +11,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/mtGalleryToolBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -55,6 +56,7 @@
                 android:id="@+id/rvMyImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
                 android:orientation="vertical"
                 android:visibility="gone"/>
 
@@ -62,31 +64,19 @@
 
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:orientation="vertical">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
-            android:text="Choose"
-            android:id="@+id/choose"/>
-
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
-            android:text="Upload"
-            android:id="@+id/upload"/>
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textViewFileName"/>
-    </LinearLayout>
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/button_hover"
+            android:text="Upload Images"
+            android:id="@+id/upload"/>
 
-</LinearLayout>
+
+
+    </LinearLayout>

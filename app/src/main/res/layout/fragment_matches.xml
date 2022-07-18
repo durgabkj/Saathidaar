@@ -24,13 +24,51 @@
         app:tabIndicatorHeight="0dp"
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/white"
-        app:tabTextColor="@color/black" />
+        app:tabTextColor="@color/black" >
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="50dp"
+            android:text="New Matches"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="50dp"
+            android:text="My Matches"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="50dp"
+            android:text="Today's Matches"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="50dp"
+            android:text="Short-Listed"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="50dp"
+            android:text="Search"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="50dp"
+            android:text="Recent Visitors"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="50dp"
+            android:text="Recently Viewed"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.tabs.TabLayout>
 
     <com.ottego.saathidaar.SwipeDisabledPager
         android:id="@+id/vpMatch"
         tools:ignore="NotSibling"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fcvMatches"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
 
 
 </LinearLayout>

@@ -77,25 +77,55 @@ public class InboxFragment extends Fragment {
         context = getContext();
         sessionManager = new SessionManager(context);
 
-        getDataCount();
-        return b.getRoot();
-    }
 
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        setUpViewPager(b.vpInbox);
-        b.tlInbox.setupWithViewPager(b.vpInbox);
+        //   setUpViewPager(b.vpInbox);
+      //  b.tlInbox.setupWithViewPager(b.vpInbox);
         b.vpInbox.setPagingEnable(false);
+
+
+        getChildFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fcvInbox, invitationFragment)
+                .commit();
 
         b.tlInbox.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
-                b.vpInbox.setCurrentItem(tab.getPosition());
+//                b.vpMatch.setCurrentItem(tab.getPosition());
+                Fragment fragment = null;
+
+                switch (tab.getPosition()){
+                    case 0:{
+                        fragment= InvitationFragment.newInstance("","");
+                        break;
+                    }
+                    case 1:{
+                        fragment= AcceptedInboxFragment.newInstance("", "");
+                        break;
+                    }
+                    case 2:{
+                        fragment= SentInboxFragment.newInstance("", "");
+                        break;
+                    }
+                    case 3:{
+                        fragment= DeleteInboxFragment.newInstance("", "");
+                        break;
+                    }
+                    case 4:{
+                        fragment= BlockMemberFragment.newInstance("", "");
+                        break;
+                    }
+
+                }
+
+                getChildFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fcvInbox, fragment)
+                        .commit();
+
             }
 
             @Override
@@ -108,6 +138,17 @@ public class InboxFragment extends Fragment {
 
             }
         });
+
+
+        getDataCount();
+        return b.getRoot();
+    }
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
     }
 
 
@@ -155,9 +196,5 @@ public class InboxFragment extends Fragment {
         adapter.addFragment(new BlockMemberFragment(), "Blocked");
         viewPager.setAdapter(adapter);
     }
-
-
-
-
 
 }

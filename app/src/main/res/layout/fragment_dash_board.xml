@@ -502,6 +502,7 @@ android:textSize="14dp"
                                 android:text="Terms &amp; Conditions"
                                 android:textSize="14dp"
                                 android:drawablePadding="8dp"
+                                android:drawableTint="@color/colorPrimary"
                                 android:drawableStart="@drawable/ic_baseline_library_books_24"
                                 android:textStyle="bold"
                                 android:textColor="@color/colorPrimary" />

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
@@ -19,6 +21,7 @@ import java.util.Objects;
 public class MatchesFragment extends Fragment {
     FragmentMatchesBinding b;
 
+    MyMatchFragment myMatchFragment=new MyMatchFragment();
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -56,20 +59,66 @@ public class MatchesFragment extends Fragment {
         b = FragmentMatchesBinding.inflate(inflater, container, false);
 
 
-
-        setUpViewPager(b.vpMatch);
+      /*  setUpViewPager(b.vpMatch);
         b.tlMatch.setupWithViewPager(b.vpMatch);
           Objects.requireNonNull(b.tlMatch.getTabAt(1)).select();
 
-Objects.requireNonNull(b.tlMatch.getTabAt(7)).view.setVisibility(View.GONE);
+        b.tlMatch.getTabAt(7).view.setVisibility(View.GONE);
+        b.vpMatch.setPagingEnable(false);*/
         b.vpMatch.setPagingEnable(false);
+        Objects.requireNonNull(b.tlMatch.getTabAt(1)).select();
+
+
+        getChildFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fcvMatches, myMatchFragment)
+                .commit();
+
 
         b.tlMatch.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
-                b.vpMatch.setCurrentItem(tab.getPosition());
+//                b.vpMatch.setCurrentItem(tab.getPosition());
+                Fragment fragment = null;
+
+                switch (tab.getPosition()){
+                    case 0:{
+                        fragment= NewMatchesFragment.newInstance("","");
+                        break;
+                    }
+                    case 1:{
+                        fragment= MyMatchFragment.newInstance("", "");
+                        break;
+                    }
+                    case 2:{
+                        fragment= TodayMatchFragment.newInstance("", "");
+                        break;
+                    }
+                    case 3:{
+                        fragment= ShortListFragment.newInstance("", "");
+                        break;
+                    }
+                    case 4:{
+                        fragment= SearchFragment.newInstance("", "");
+                        break;
+                    }
+                    case 5:{
+                        fragment= RecentViewFragment.newInstance("", "");
+                        break;
+                    }
+                    case 6:{
+                        fragment= RecentlyViewedFragment.newInstance("", "");
+                        break;
+                    }
+                }
+
+                getChildFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fcvMatches, fragment)
+                        .commit();
+
             }
 
             @Override

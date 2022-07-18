@@ -10,10 +10,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -76,17 +78,33 @@ DataModelImage dataModelImage;
 
     private void listener() {
         //opening image chooser option
-        b.choose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_FILE_REQUEST);
-            }
+//        b.choose.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.setType("image/*");
+//                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+//                intent.setAction(Intent.ACTION_GET_CONTENT);
+//                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_FILE_REQUEST);
+//            }
+//
+//        });
 
+        b.mtGalleryToolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId()==R.id.menu_top_add){
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_FILE_REQUEST);
+                }
+                return false;
+            }
         });
+
+
 
         b.upload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,7 +203,7 @@ DataModelImage dataModelImage;
             try {
                 String fileName = getFileName(context, selectedFileUri);
                 imageNameList.add(fileName);
-                b.textViewFileName.setText(fileName);
+               // b.textViewFileName.setText(fileName);
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
@@ -485,7 +503,7 @@ DataModelImage dataModelImage;
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
     }
     private void setRecyclerView() {
-        GridLayoutManager layoutManager = new GridLayoutManager(context,5);
+        GridLayoutManager layoutManager = new GridLayoutManager(context,2);
         b.rvMyImage.setLayoutManager(layoutManager);
         b.rvMyImage.setHasFixedSize(true);
         b.rvMyImage.setNestedScrollingEnabled(true);

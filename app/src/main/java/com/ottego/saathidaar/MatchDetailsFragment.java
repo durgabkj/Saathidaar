@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -78,6 +79,8 @@ public class MatchDetailsFragment extends Fragment {
         b = FragmentMatchDetailsBinding.inflate(inflater, container, false);
         context = getContext();
         sessionManager = new SessionManager(context);
+        animation = AnimationUtils.loadAnimation(context, R.anim.move);
+        b.llDetailCad.startAnimation(animation);
         listener();
         getData();
         setData();
@@ -283,12 +286,59 @@ public class MatchDetailsFragment extends Fragment {
                 b.tvViewMore.setVisibility(View.VISIBLE);
             }
         });
-
+b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        sentRequest();
+    }
+});
 
 //
 
 
     }
+
+
+
+    public  void sentRequest() {
+        String url = Utils.memberUrl + "send-request";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("request_from_id",sessionManager.getMemberId() );
+        params.put("request_to_id", mParam1);
+        params.put("request_status","Pending");
+        Log.e("params request sent", String.valueOf(params));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e(" request sent response", String.valueOf((response)));
+                        try {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+                                Toast.makeText(context,"Request Send Successfully",Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
+
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+
+    }
+
 
     private void getData() {
         Map<String, String> params = new HashMap<String, String>();

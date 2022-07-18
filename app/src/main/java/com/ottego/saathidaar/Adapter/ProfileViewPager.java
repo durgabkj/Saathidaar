@@ -16,16 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProfileViewPager extends FragmentPagerAdapter {
-    //    Context mContext;
-//    int TotalTabs;
+
     private List<Fragment> fragmentList = new ArrayList<>();
     private List<String> titleList = new ArrayList<>();
-
-//    public ProfileViewPager(Context context, FragmentManager fragmentManager, int totalTabs) {
-//        super(fragmentManager);
-////        mContext = context;
-////        TotalTabs = totalTabs;
-//    }
 
     public ProfileViewPager(FragmentManager fragmentManager) {
         super(fragmentManager);
@@ -34,21 +27,8 @@ public class ProfileViewPager extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Log.d("position", position + "");
-//        switch (position) {
-//            case 0:
-//                return new PersonalInfoFragment();
-//            case 1:
-//                return new FamilyInfoFragment();
-//
-//            case 2:
-//                return new ProfessionalInfoFragment();
-//            default:
-//                return null;
-
         return fragmentList.get(position);
     }
-
-//}
 
     @Override
     public int getCount() {
@@ -61,9 +41,9 @@ public class ProfileViewPager extends FragmentPagerAdapter {
         return titleList.get(position);
     }
 
-
     public void addFragment(Fragment fragment ,String title){
         fragmentList.add(fragment);
         titleList.add(title);
     }
+
 }

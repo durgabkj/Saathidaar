@@ -225,8 +225,8 @@ public class Utils {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         String url = Utils.memberUrl + "request-accept-reject";
         Map<String, String> params = new HashMap<String, String>();
-        params.put("request_from_id",member_id );
-        params.put("request_to_id",new SessionManager(context).getMemberId());
+        params.put("request_from_id",new SessionManager(context).getMemberId());
+        params.put("request_to_id",member_id);
         params.put("request_status","Rejected");
         Log.e("params request delete", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
@@ -271,6 +271,48 @@ public class Utils {
         params.put("request_status","Pending");
         Log.e("params request sent", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e(" request sent response", String.valueOf((response)));
+                        try {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+                                Toast.makeText(context,"Request Send Successfully",Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
+
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+
+    }
+
+
+
+    public static void blockMember(Context context, String member_id) {
+        String Blockurl = Utils.memberUrl + "send-block-member";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("request_from_id", new SessionManager(context).getMemberId());
+        params.put("request_to_id", member_id);
+        params.put("block_by_id", new SessionManager(context).getMemberId());
+        params.put("request_status","Block");
+        Log.e("params request sent", String.valueOf(params));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Blockurl, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

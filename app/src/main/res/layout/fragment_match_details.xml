@@ -77,51 +77,51 @@
 
                     </FrameLayout>
 
-<!--                    <FrameLayout-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center_vertical">-->
+                    <!--                    <FrameLayout-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_gravity="center_vertical">-->
 
-<!--                        <LinearLayout-->
-<!--                            android:id="@+id/llPrevious"-->
-<!--                            android:layout_width="40dp"-->
-<!--                            android:layout_height="80dp"-->
-<!--                            android:background="@drawable/previous_button_bg"-->
-<!--                            android:orientation="horizontal"-->
-<!--                            android:padding="10dp">-->
+                    <!--                        <LinearLayout-->
+                    <!--                            android:id="@+id/llPrevious"-->
+                    <!--                            android:layout_width="40dp"-->
+                    <!--                            android:layout_height="80dp"-->
+                    <!--                            android:background="@drawable/previous_button_bg"-->
+                    <!--                            android:orientation="horizontal"-->
+                    <!--                            android:padding="10dp">-->
 
-<!--                            <ImageView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:src="@drawable/ic_arrow_left_2827" />-->
-
-
-<!--                        </LinearLayout>-->
-
-<!--                    </FrameLayout>-->
-
-<!--                    <FrameLayout-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center_vertical|end">-->
-
-<!--                        <LinearLayout-->
-<!--                            android:id="@+id/llNext"-->
-<!--                            android:layout_width="40dp"-->
-<!--                            android:layout_height="80dp"-->
-<!--                            android:background="@drawable/next_previous_bg"-->
-<!--                            android:orientation="horizontal"-->
-<!--                            android:padding="10dp">-->
-
-<!--                            <ImageView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:src="@drawable/ic_arrow_next_2825" />-->
+                    <!--                            <ImageView-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:src="@drawable/ic_arrow_left_2827" />-->
 
 
-<!--                        </LinearLayout>-->
+                    <!--                        </LinearLayout>-->
 
-<!--                    </FrameLayout>-->
+                    <!--                    </FrameLayout>-->
+
+                    <!--                    <FrameLayout-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_gravity="center_vertical|end">-->
+
+                    <!--                        <LinearLayout-->
+                    <!--                            android:id="@+id/llNext"-->
+                    <!--                            android:layout_width="40dp"-->
+                    <!--                            android:layout_height="80dp"-->
+                    <!--                            android:background="@drawable/next_previous_bg"-->
+                    <!--                            android:orientation="horizontal"-->
+                    <!--                            android:padding="10dp">-->
+
+                    <!--                            <ImageView-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:src="@drawable/ic_arrow_next_2825" />-->
+
+
+                    <!--                        </LinearLayout>-->
+
+                    <!--                    </FrameLayout>-->
 
                     <FrameLayout
                         android:layout_width="wrap_content"
@@ -192,13 +192,14 @@
                                 android:shadowDx="2"
                                 android:shadowDy="2"
                                 android:shadowRadius="1.6"
+                                android:text="Durga singh"
                                 android:textColor="@color/white"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/tvNewMatchAge"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:fontFamily="@font/italic"
@@ -206,6 +207,7 @@
                                 android:shadowDx="1.5"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
+                                android:text="22 years"
                                 android:textColor="@color/white"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -221,14 +223,16 @@
                                 android:shadowDx="1.5"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
+                                android:text="5'1"
                                 android:textColor="@color/white"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:orientation="horizontal">
 
 
@@ -237,12 +241,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/italic"
-                                android:maxLength="15"
+                                android:maxLength="10"
                                 android:shadowColor="#000000"
                                 android:shadowDx="1.5"
                                 android:layout_marginEnd="8dp"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
+                                android:text="Mumbai"
                                 android:textColor="@color/white"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -253,11 +258,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:fontFamily="@font/italic"
-                                android:maxLength="35"
+                                android:maxLength="25"
                                 android:shadowColor="#000000"
                                 android:shadowDx="1.5"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
+                                android:text="Junior software Developer"
                                 android:textColor="@color/white"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -291,7 +297,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/italic"
-
+                            android:text="About Garima "
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -303,7 +309,9 @@
                             android:layout_marginTop="20dp"
                             android:maxLines="4"
                             android:fontFamily="@font/italic"
-                                android:textColor="@color/black" />
+                            android:text="I am a soft spoken, honest &amp; talented person. I have a good job, decent salary &amp; a nice house to live in. I think family as the first priority of my life. I think 5 years down the life I should be happily settled with my kids, a lovely soulmate with all the blessings of our parents &amp; relatives.
+I am modern thinker but also believe in good values given by our ancestors I also enjoy travelling, watching movies, going out for dinner, and having great intellectual conversations!"
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/tvViewMore"
@@ -370,7 +378,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp" />
+                                android:padding="10dp"
+                                android:text="Created by self" />
 
 
                             <TextView
@@ -379,7 +388,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp" />
+                                android:padding="10dp"
+                                android:text="Profile ID - SH119876" />
 
                         </LinearLayout>
 
@@ -458,6 +468,7 @@
                                     android:layout_gravity="center"
                                     android:drawablePadding="4dp"
                                     android:fontFamily="@font/italic"
+                                    android:text="Born on **/**/****"
                                     android:textAlignment="center"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -510,7 +521,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-
+                                    android:text="Never Married"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -562,6 +573,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
+                                    android:text="Live in patna. Bihar,India"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -613,6 +625,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
+                                    android:text="Hindu, Hindi"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -664,6 +677,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
+                                    android:text="Gujarati,Vankar"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -715,7 +729,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                   android:textColor="@color/black"
+                                    android:text="Vegetarian"
+                                    android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
 
@@ -832,7 +847,9 @@
                                     android:id="@+id/tvDetailCall"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:drawableEnd="@drawable/lock"
                                     android:fontFamily="@font/italic"
+                                    android:text="987***********"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -883,7 +900,9 @@
                                     android:id="@+id/tvDetailEmailID"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:drawableEnd="@drawable/lock"
                                     android:fontFamily="@font/italic"
+                                    android:text="**********@gmail.com"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -978,7 +997,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_call_24" />
+                                    app:srcCompat="@drawable/ic_baseline_work_24"/>
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1003,6 +1022,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
+                                    android:text="Investment Professional"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1029,7 +1049,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_baseline_corporate_fare_24" />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1055,6 +1075,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/italic"
+                                    android:text="*************"
                                     android:textAlignment="center"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -1082,7 +1103,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_baseline_currency_rupee_24" />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1135,7 +1156,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_baseline_import_contacts_24" />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1149,7 +1170,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Annual Income"
+                                    android:text="Highest Qualification"
                                     android:textSize="14sp"
 
                                     />
@@ -1160,6 +1181,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
+                                    android:text="Masters degree in Finance"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1186,7 +1208,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_internet_education_graduation_svgrepo_com" />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1238,7 +1260,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_college" />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1387,6 +1409,7 @@
                             android:layout_marginTop="20dp"
                             android:text="You Match 9/12 of her Preferences"
                             android:textAlignment="center"
+                            android:layout_gravity="center"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -2056,99 +2079,99 @@
                         </LinearLayout>
 
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:orientation="horizontal">
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="20dp"-->
+<!--                            android:orientation="horizontal">-->
 
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_margin="10dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:orientation="vertical">-->
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
-                                    android:text="Diet"
-                                    android:textSize="14sp"
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:fontFamily="@font/italic"-->
+<!--                                    android:text="Diet"-->
+<!--                                    android:textSize="14sp"-->
 
-                                    />
-
-
-                                <TextView
-                                    android:id="@+id/tvDetailDietMatch"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
-                                    android:text="Non-Vg"
-                                    android:textColor="@color/black"
-                                    android:textSize="14sp" />
-                            </LinearLayout>
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/cvcheck8"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:visibility="gone"
-                                app:cardBackgroundColor="@color/white"
-                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                                app:strokeColor="@color/gray_dark"
-                                app:strokeWidth="1dp">
-
-                                <ImageView
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"
-                                    android:layout_gravity="center"
-                                    android:padding="5dp"
-                                    app:srcCompat="@drawable/ic_check" />
-                            </com.google.android.material.card.MaterialCardView>
+<!--                                    />-->
 
 
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/cvDot8"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:visibility="gone"
-                                app:cardBackgroundColor="@color/white"
-                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                                app:strokeColor="@color/gray_dark"
-                                app:strokeWidth="1dp">
+<!--                                <TextView-->
+<!--                                    android:id="@+id/tvDetailDietMatch"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:fontFamily="@font/italic"-->
+<!--                                    android:text="Non-Vg"-->
+<!--                                    android:textColor="@color/black"-->
+<!--                                    android:textSize="14sp" />-->
+<!--                            </LinearLayout>-->
+<!--                            <com.google.android.material.card.MaterialCardView-->
+<!--                                android:id="@+id/cvcheck8"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:visibility="gone"-->
+<!--                                app:cardBackgroundColor="@color/white"-->
+<!--                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"-->
+<!--                                app:strokeColor="@color/gray_dark"-->
+<!--                                app:strokeWidth="1dp">-->
 
-                                <ImageView
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"
-                                    android:layout_gravity="center"
-                                    android:padding="5dp"
-                                    app:srcCompat="@drawable/ic_dots" />
-                            </com.google.android.material.card.MaterialCardView>
+<!--                                <ImageView-->
+<!--                                    android:layout_width="35dp"-->
+<!--                                    android:layout_height="35dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:padding="5dp"-->
+<!--                                    app:srcCompat="@drawable/ic_check" />-->
+<!--                            </com.google.android.material.card.MaterialCardView>-->
 
 
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/cvClear8"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:visibility="gone"
-                                app:cardBackgroundColor="@color/white"
-                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                                app:strokeColor="@color/gray_dark"
-                                app:strokeWidth="1dp">
+<!--                            <com.google.android.material.card.MaterialCardView-->
+<!--                                android:id="@+id/cvDot8"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:visibility="gone"-->
+<!--                                app:cardBackgroundColor="@color/white"-->
+<!--                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"-->
+<!--                                app:strokeColor="@color/gray_dark"-->
+<!--                                app:strokeWidth="1dp">-->
 
-                                <ImageView
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"
-                                    android:layout_gravity="center"
-                                    android:padding="5dp"
-                                    app:srcCompat="@drawable/close" />
-                            </com.google.android.material.card.MaterialCardView>
+<!--                                <ImageView-->
+<!--                                    android:layout_width="35dp"-->
+<!--                                    android:layout_height="35dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:padding="5dp"-->
+<!--                                    app:srcCompat="@drawable/ic_dots" />-->
+<!--                            </com.google.android.material.card.MaterialCardView>-->
 
-                        </LinearLayout>
+
+<!--                            <com.google.android.material.card.MaterialCardView-->
+<!--                                android:id="@+id/cvClear8"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:visibility="gone"-->
+<!--                                app:cardBackgroundColor="@color/white"-->
+<!--                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"-->
+<!--                                app:strokeColor="@color/gray_dark"-->
+<!--                                app:strokeWidth="1dp">-->
+
+<!--                                <ImageView-->
+<!--                                    android:layout_width="35dp"-->
+<!--                                    android:layout_height="35dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:padding="5dp"-->
+<!--                                    app:srcCompat="@drawable/close" />-->
+<!--                            </com.google.android.material.card.MaterialCardView>-->
+
+<!--                        </LinearLayout>-->
 
 
                         <LinearLayout
@@ -2711,6 +2734,7 @@
                     app:cardCornerRadius="100dp">
 
                     <ImageView
+                        android:id="@+id/ivDetailsConnect"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:background="@color/white"

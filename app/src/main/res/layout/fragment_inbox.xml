@@ -11,29 +11,54 @@
         android:id="@+id/tlInbox"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        app:tabMode="scrollable"
-        app:tabGravity="fill"
         android:elevation="20dp"
-        android:translationZ="20dp"
         android:textAlignment="center"
+        android:translationZ="20dp"
+        app:tabBackground="@drawable/tab_selector"
+        app:tabGravity="fill"
         app:tabTextAppearance="@style/TextAppearance.AppCompat.Caption"
-        app:tabIndicatorHeight="0dp"
+        app:tabIndicator="@null"
         app:tabIndicatorColor="@android:color/transparent"
         app:tabIndicatorGravity="stretch"
-        app:tabBackground="@drawable/tab_selector"
-        app:tabIndicator="@null"
+        app:tabIndicatorHeight="0dp"
+        app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/white"
-        app:tabTextColor="@color/black"
-        />
+        app:tabTextColor="@color/black" >
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="50dp"
+            android:text="Invitation"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="50dp"
+            android:text="Accept"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="50dp"
+            android:text="Sent"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="50dp"
+            android:text="Delete"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="50dp"
+            android:text="Block"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.tabs.TabLayout>
 
 
     <com.ottego.saathidaar.SwipeDisabledPager
         android:layout_width="match_parent"
         tools:ignore="NotSibling"
+        android:visibility="gone"
         android:layout_height="match_parent"
         android:id="@+id/vpInbox"
         />
 
 
-
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fcvInbox"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

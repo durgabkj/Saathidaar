@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,7 +23,6 @@ import java.util.List;
 
 public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitationAdapter.ViewHolder>{
 
-    private AdapterView.OnItemClickListener onItemClickListener;
     Context context;
     List<InboxModel> list;
 
@@ -40,50 +38,49 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         return new InboxInvitationAdapter.ViewHolder(view);
     }
 
-
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull InboxInvitationAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         InboxModel item = list.get(position);
         Log.e(" Inbox model", new Gson().toJson(item));
 
-//        holder.tvInvDeleteName.setText(item.first_name + " " + item.last_name);
-//        holder.tvInvDeleteAge.setText(item.mage);
-//        holder.tvInvDeleteHeight.setText(item.religion);
-//        holder.tvInvDeleteCity.setText(item.maritalStatus);
-//        holder.tvInvDeleteWorkAs.setText(item.country);
-//
-//        holder.llBlock.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Utils.acceptRequest(context, item.member_id);
-//                 holder.llBlock.setVisibility(View.GONE);
-//                 holder.llBlocked.setVisibility(View.VISIBLE);
-//                 holder.llDelete1.setVisibility(View.GONE);
-//            }
-//        });
-//
-//
-//        holder.llDelete1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Utils.deleteRequest(context, item.member_id);
-//              //  holder.llAccept.setVisibility(View.GONE);
-//                holder.llDelete1.setVisibility(View.GONE);
-//                holder.llDeletedInvitation.setVisibility(View.VISIBLE);
-//
-//            }
-//        });
-//
-//
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.e("position Inbox", String.valueOf(position));
-//                InboxPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "Inbox_pager_fragment");
-//
-//            }
-//        });
+        holder.tvInvNewMatchName.setText(item.first_name + " " + item.last_name);
+        holder.tvInvNewMatchAge.setText(item.mage);
+        holder.tvInvNewMatchHeight.setText(item.religion);
+        holder.tvInvNewMatchCity.setText(item.maritalStatus);
+        holder.tvInvNewMatchWorkAs.setText(item.country);
+
+        holder.llAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.acceptRequest(context, item.member_id);
+                holder.llAccept.setVisibility(View.GONE);
+                holder.llAccepted.setVisibility(View.VISIBLE);
+                holder.llDelete.setVisibility(View.GONE);
+            }
+        });
+
+
+        holder.llDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.deleteRequest(context, item.member_id);
+                holder.llAccept.setVisibility(View.GONE);
+                holder.llDelete.setVisibility(View.GONE);
+                holder.llDeleted.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("position Inbox", String.valueOf(position));
+                InboxPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "Inbox_pager_fragment");
+
+            }
+        });
 
 
     }
@@ -95,22 +92,25 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
     }
 
 
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvInvDeleteWorkAs, tvInvDeleteCity, tvInvDeleteHeight, tvInvDeleteName, tvInvDeleteAge;
-        LinearLayout llBlocked,llBlock,llDeletedInvitation,llDelete1;
+
+
+        TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs;
+        LinearLayout llAccept, llDelete, llAccepted, llDeleted;
+
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
-            tvInvDeleteAge = itemView.findViewById(R.id.tvInvDeleteAge);
-            tvInvDeleteName = itemView.findViewById(R.id.tvInvDeleteName);
-            tvInvDeleteHeight = itemView.findViewById(R.id.tvInvDeleteHeight);
-            tvInvDeleteCity = itemView.findViewById(R.id.tvInvDeleteCity);
-            tvInvDeleteWorkAs = itemView.findViewById(R.id.tvInvDeleteWorkAs);
-            llBlocked = itemView.findViewById(R.id.llBlocked);
-            llBlock = itemView.findViewById(R.id.llBlock);
-            llDelete1 = itemView.findViewById(R.id.llDelete1);
-            llDeletedInvitation = itemView.findViewById(R.id.llDeletedInvitation);
+
+            tvInvNewMatchAge = itemView.findViewById(R.id.tvInvNewMatchAge);
+            tvInvNewMatchName = itemView.findViewById(R.id.tvInvNewMatchName);
+            tvInvNewMatchHeight = itemView.findViewById(R.id.tvInvNewMatchHeight);
+            tvInvNewMatchCity = itemView.findViewById(R.id.tvInvNewMatchCity);
+            tvInvNewMatchWorkAs = itemView.findViewById(R.id.tvInvNewMatchWorkAs);
+            llAccepted = itemView.findViewById(R.id.llAccepted);
+            llAccept = itemView.findViewById(R.id.llAccept);
+            llDelete = itemView.findViewById(R.id.llDelete);
+            llDeleted = itemView.findViewById(R.id.llDeleted);
         }
     }
 }

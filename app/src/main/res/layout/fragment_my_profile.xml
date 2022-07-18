@@ -96,9 +96,10 @@
             android:maxLength="150"
             android:maxLines="4"
             android:padding="3dp"
+            android:drawableTint="@color/white"
             android:text="View More..."
             android:textAlignment="center"
-            android:textColor="@color/teal_700"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
         <TextView
@@ -111,9 +112,10 @@
             android:maxLines="4"
             android:visibility="gone"
             android:padding="3dp"
+            android:drawableTint="@color/white"
             android:text="View Less..."
             android:textAlignment="center"
-            android:textColor="@color/teal_700"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
     </LinearLayout>

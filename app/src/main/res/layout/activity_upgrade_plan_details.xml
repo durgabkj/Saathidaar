@@ -215,11 +215,7 @@ android:id="@+id/tvPayAmountUpgrade"
             android:background="@drawable/gradient_button"
             tools:ignore="RtlCompat" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-android:layout_gravity="end"
-            android:text="Not started yet..."/>
+
 
     </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
