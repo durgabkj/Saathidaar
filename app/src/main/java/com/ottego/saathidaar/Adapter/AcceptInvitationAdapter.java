@@ -2,6 +2,7 @@ package com.ottego.saathidaar.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.InboxPagerFragment;
 import com.ottego.saathidaar.Model.InboxModel;
 import com.ottego.saathidaar.R;
@@ -59,6 +61,14 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 
             }
         });
+
+        holder.llPhotoAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(view.getContext(), GalleryActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
 
@@ -71,7 +81,8 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs;
-        LinearLayout llCAll,llWhatsApp;
+        LinearLayout llCAll,llWhatsApp, llPhotoAccept;
+
 
         public ViewHolder(@NonNull View itemView) {
 
@@ -82,6 +93,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
             tvInvNewMatchCity = itemView.findViewById(R.id.tvInvNewMatchCity);
             tvInvNewMatchWorkAs = itemView.findViewById(R.id.tvInvNewMatchWorkAs);
             llCAll = itemView.findViewById(R.id.llCAll);
+            llPhotoAccept = itemView.findViewById(R.id.llPhotoAccept);
             llWhatsApp = itemView.findViewById(R.id.llWhatsApp);
         }
     }

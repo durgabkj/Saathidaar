@@ -40,35 +40,17 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:orientation="horizontal"
+                android:padding="10dp"
+                android:orientation="vertical"
                 >
 
-
-
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/gray_transparent_bg"
-                    >
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="10dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_dots" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
+                    android:id="@+id/llPhotoSent"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:orientation="horizontal"
-                    android:layout_gravity="end"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/oval_bg"
                     >
 
@@ -91,6 +73,81 @@
                         android:textSize="17sp"
                         android:layout_gravity="center"
                         android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/llBlockedSent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:cardCornerRadius="100dp"
+                        >
+                        <ImageView
+                            android:id="@+id/ivBlocked"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@color/white"
+                            android:padding="3dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/block" />
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:shadowColor="#000000"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="1.6"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:text="Blocked"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llBlockSent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:cardCornerRadius="100dp"
+                        >
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@color/white"
+                            android:padding="3dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/block_menber" />
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:shadowColor="#000000"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:fontFamily="@font/italic"
+                        android:shadowRadius="1.6"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:text="Block Member"/>
 
                 </LinearLayout>
 
@@ -239,7 +296,7 @@
                             android:textSize="14sp"
                             android:fontFamily="@font/italic"
                             android:textStyle="bold"
-                            android:text="Decline"/>
+                            android:text="Cancel Invitation"/>
 
                     </LinearLayout>
                     <LinearLayout
@@ -271,7 +328,7 @@
                             android:textColor="@color/white"
                             android:textSize="14sp"
                             android:textStyle="bold"
-                            android:text="Declined"/>
+                            android:text="Canceled"/>
 
                     </LinearLayout>
                 </LinearLayout>

@@ -85,7 +85,6 @@ public class MyMatchFragment extends Fragment {
     }
 
 
-
     public void getData() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Data Loading...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,

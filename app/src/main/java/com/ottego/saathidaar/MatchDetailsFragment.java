@@ -79,8 +79,8 @@ public class MatchDetailsFragment extends Fragment {
         b = FragmentMatchDetailsBinding.inflate(inflater, container, false);
         context = getContext();
         sessionManager = new SessionManager(context);
-        animation = AnimationUtils.loadAnimation(context, R.anim.move);
-        b.llDetailCad.startAnimation(animation);
+//        animation = AnimationUtils.loadAnimation(context, R.anim.move);
+//        b.llDetailCad.startAnimation(animation);
         listener();
         getData();
         setData();

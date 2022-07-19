@@ -2,6 +2,7 @@ package com.ottego.saathidaar.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
@@ -77,6 +79,13 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
 
             }
         });
+        holder.llPhotoShortList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(view.getContext(), GalleryActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
 
     }
@@ -90,7 +99,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageListViewMess;
         TextView tvNewMatchNameRs, tvNewMatchAgeRs, tvNewMatchHeightRs, tvNewMatchCityRs, tvNewMatchWorkAsRs;
-        LinearLayout llMess,llShortListRemove1,llShortList1;
+        LinearLayout llMess,llShortListRemove1,llShortList1,llPhotoShortList;
         LinearLayout ivLike;
 
         public ViewHolder(@NonNull View itemView) {
@@ -102,6 +111,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
             tvNewMatchCityRs = itemView.findViewById(R.id.tvNewMatchCityRs);
             tvNewMatchWorkAsRs = itemView.findViewById(R.id.tvNewMatchWorkAsRs);
             ivLike = itemView.findViewById(R.id.ivLike);
+            llPhotoShortList=itemView.findViewById(R.id.llPhotoShortList);
             llShortListRemove1 = itemView.findViewById(R.id.llShortListRemove1);
             llShortList1 = itemView.findViewById(R.id.llShortList1);
         }

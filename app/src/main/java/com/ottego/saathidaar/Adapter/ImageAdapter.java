@@ -2,7 +2,7 @@ package com.ottego.saathidaar.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +14,10 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
 import com.ottego.saathidaar.GalleryPagerFragment;
-import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.Model.ImageModel;
 import com.ottego.saathidaar.R;
-import com.ottego.saathidaar.ShowImageActivity;
+import com.ottego.saathidaar.ShowImageFragment;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
@@ -52,14 +50,13 @@ public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.ViewHolder>
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    Intent intent = new Intent(context, ShowImageActivity.class);
+//                    Intent intent = new Intent(context, ShowImageFragment.class);
 //                    intent.putExtra("data", new Gson().toJson(item));
 //                    intent.putExtra("position", position);
 //                    context.startActivity(intent);
 
                     Log.e("position", String.valueOf(position));
-                    GalleryPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "gallery_pager_fragment");
-
+                    GalleryPagerFragment.newInstance(String.valueOf(position),"").show(((FragmentActivity) context).getSupportFragmentManager(), "gallery_pager_fragment");
                 }
             });
 

@@ -2,6 +2,7 @@ package com.ottego.saathidaar.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.InboxPagerFragment;
 import com.ottego.saathidaar.Model.InboxModel;
 import com.ottego.saathidaar.R;
@@ -83,6 +85,14 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         });
 
 
+        holder.llPhotoInvitation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(view.getContext(), GalleryActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -96,7 +106,7 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
 
 
         TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs;
-        LinearLayout llAccept, llDelete, llAccepted, llDeleted;
+        LinearLayout llAccept, llDelete, llAccepted, llDeleted,llPhotoInvitation;
 
         public ViewHolder(@NonNull View itemView) {
 
@@ -110,7 +120,8 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
             llAccepted = itemView.findViewById(R.id.llAccepted);
             llAccept = itemView.findViewById(R.id.llAccept);
             llDelete = itemView.findViewById(R.id.llDelete);
-            llDeleted = itemView.findViewById(R.id.llDeleted);
+            llDeleted=itemView.findViewById(R.id.llDeleted);
+            llPhotoInvitation=itemView.findViewById(R.id.llPhotoInvitation);
         }
     }
 }

@@ -2,6 +2,7 @@ package com.ottego.saathidaar.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
@@ -51,6 +53,16 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         holder.tvNewMatchCity.setText(item.maritalStatus);
 
 
+
+        holder.llPhotoMyMatches.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(view.getContext(), GalleryActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+
         holder.ivLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,6 +92,8 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             }
         });
 
+
+
     }
 
     @Override
@@ -90,7 +104,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivUserMatch;
         TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
-        LinearLayout llMess, llShortListRemove, llShortList;
+        LinearLayout llMess, llShortListRemove, llShortList,llPhotoMyMatches;
         LinearLayout ivLike,llConnect;
 Spinner SpMenu;
         public ViewHolder(@NonNull View itemView) {
@@ -101,6 +115,7 @@ Spinner SpMenu;
             tvNewMatchCity = itemView.findViewById(R.id.tvNewMatchCity);
             tvNewMatchWorkAs = itemView.findViewById(R.id.tvNewMatchWorkAs);
             ivLike = itemView.findViewById(R.id.ivLike);
+            llPhotoMyMatches=itemView.findViewById(R.id.llPhotoMyMatches);
             ivUserMatch = itemView.findViewById(R.id.ivUserMatch);
             llShortListRemove = itemView.findViewById(R.id.llShortListRemove);
             llShortList = itemView.findViewById(R.id.llShortList);

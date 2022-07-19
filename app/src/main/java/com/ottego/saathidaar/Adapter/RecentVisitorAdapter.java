@@ -2,6 +2,7 @@ package com.ottego.saathidaar.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +16,10 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
-import com.ottego.saathidaar.Utils;
 
 import java.util.List;
 
@@ -72,6 +73,14 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 }
             });
 
+            holder.llPhotoRecentV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), GalleryActivity.class);
+                    context.startActivity(intent);
+                }
+            });
+
         }
 
 
@@ -86,7 +95,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivUserMatch;
             TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
-
+            LinearLayout llPhotoRecentV;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -95,6 +104,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 tvNewMatchHeight = itemView.findViewById(R.id.tvRecentViewHeightRs);
                 tvNewMatchCity = itemView.findViewById(R.id.tvRecentViewCityRs);
                 tvNewMatchWorkAs = itemView.findViewById(R.id.tvRecentViewWorkAsRs);
+                llPhotoRecentV = itemView.findViewById(R.id.llPhotoRecentV);
 
             }
         }

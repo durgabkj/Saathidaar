@@ -21,9 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Saathidaar"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".ShowImageActivity"
-            android:exported="false" />
+
         <activity
             android:name=".RequestAcceptActivity"
             android:exported="false" />

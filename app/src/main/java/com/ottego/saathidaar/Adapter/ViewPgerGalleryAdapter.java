@@ -22,9 +22,9 @@ public class ViewPgerGalleryAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        Log.e("member_id", viewModel.list.getValue().get(position).image_id);
+        Log.e("image_id", viewModel.list.getValue().get(position).image_id);
 
-        return ShowImageFragment.newInstance(viewModel.list.getValue().get(position).member_images, "");
+        return ShowImageFragment.newInstance(viewModel.list.getValue().get(position).member_images, viewModel._list.getValue().get(position).image_id);
     }
 
     @Override
