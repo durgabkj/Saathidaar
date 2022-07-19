@@ -1,6 +1,5 @@
 package com.ottego.saathidaar;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -16,8 +15,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -26,24 +25,21 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.ImageAdapter;
-import com.ottego.saathidaar.Adapter.RemoveShortListAdapter;
 import com.ottego.saathidaar.Model.DataModelImage;
-import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.ActivityGalleryBinding;
+import com.ottego.saathidaar.viewmodel.GalleryViewModel;
+import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -62,7 +58,7 @@ DataModelImage dataModelImage;
     Context context;
     List<String> imageNameList = new ArrayList<>();
     List<String> imagePathList = new ArrayList<>();
-
+    GalleryViewModel viewModel;
     private static final int PICK_FILE_REQUEST = 1;
 
     @Override
@@ -71,24 +67,15 @@ DataModelImage dataModelImage;
         b = ActivityGalleryBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
         context = GalleryActivity.this;
-        sessionManager = new SessionManager(context);
+
+        viewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
+
+       sessionManager = new SessionManager(context);
         getData();
         listener();
     }
 
     private void listener() {
-        //opening image chooser option
-//        b.choose.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent();
-//                intent.setType("image/*");
-//                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-//                intent.setAction(Intent.ACTION_GET_CONTENT);
-//                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_FILE_REQUEST);
-//            }
-//
-//        });
 
         b.mtGalleryToolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -116,55 +103,6 @@ DataModelImage dataModelImage;
             }
         });
     }
-
-//    private void submit(String name, String path) {
-//        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
-//
-//        Map<String, String> params = new HashMap<String, String>();
-//        params.put("member_id", sessionManager.getMemberId());
-//      //  params.put("image_name", name);
-////       params.put("image",path.toString());
-//        Log.e("params", String.valueOf(params));
-//
-//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL, new JSONObject(params),
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        progressDialog.dismiss();
-//                        Log.e("response", String.valueOf((response)));
-//                        try {
-//                            for(int i = 0; i < imagePathList.size(); i++) {
-//
-//                            }
-//
-//                            String code = response.getString("results");
-//                            if (code.equalsIgnoreCase("1")) {
-//
-//                              //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-//                            } else {
-//                            //    Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-//                            }
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        progressDialog.dismiss();
-//                        if (null != error.networkResponse) {
-//                            Toast.makeText(context,"Try again......",Toast.LENGTH_LONG).show();
-//                            Log.e("Error response", String.valueOf(error));
-//                        }
-//                    }
-//                });
-//
-//        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//        MySingleton.myGetMySingleton(context).myAddToRequest(request);
-//    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -248,119 +186,6 @@ DataModelImage dataModelImage;
             }
         }).start();
     }
-
-//    public int uploadFile(final String selectedFilePath) {
-//        int serverResponseCode = 0;
-//        HttpURLConnection connection;
-//        DataOutputStream dataOutputStream;
-//        String lineEnd = "\r\n";
-//        String twoHyphens = "--";
-//        String boundary = "*****";
-//
-//        int bytesRead, bytesAvailable, bufferSize;
-//        byte[] buffer;
-//        int maxBufferSize = 1 * 1024 * 1024;
-//        File selectedFile = new File(selectedFilePath);
-//
-//        String[] parts = selectedFilePath.split("/");
-//        final String fileName = parts[parts.length - 1];
-//
-//        if (!selectedFile.isFile()) {
-//            runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    b.textViewFileName.setText("Source file doesn't exist: " + selectedFilePath);
-//                }
-//            });
-//            return 0;
-//        } else {
-//            try {
-//                FileInputStream fileInputStream = new FileInputStream(selectedFile);
-//                java.net.URL url = new URL(URL);
-//                connection = (HttpURLConnection) url.openConnection();
-//                connection.setDoInput(true);//Allow Inputs
-//                connection.setDoOutput(true);//Allow Outputs
-//                connection.setUseCaches(false);//Don't use a cached Copy
-//                connection.setRequestMethod("POST");
-//                connection.setRequestProperty("Connection", "Keep-Alive");
-//                connection.setRequestProperty("ENCTYPE", "multipart/form-data");
-//                connection.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
-//                connection.setRequestProperty("member_id", sessionManager.getMemberId());
-//                connection.setRequestProperty("image", selectedFilePath);
-//
-//                //creating new dataoutputstream
-//                dataOutputStream = new DataOutputStream(connection.getOutputStream());
-//
-//                //writing bytes to data outputstream
-//                dataOutputStream.writeBytes(twoHyphens + boundary + lineEnd);
-//                dataOutputStream.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\"" + selectedFilePath + "\"" + lineEnd);
-//
-//                dataOutputStream.writeBytes(lineEnd);
-//
-//                //returns no. of bytes present in fileInputStream
-//                bytesAvailable = fileInputStream.available();
-//                //selecting the buffer size as minimum of available bytes or 1 MB
-//                bufferSize = Math.min(bytesAvailable, maxBufferSize);
-//                //setting the buffer as byte array of size of bufferSize
-//                buffer = new byte[bufferSize];
-//
-//
-//                //reads bytes from FileInputStream(from 0th index of buffer to buffersize)
-//                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-//
-//                //loop repeats till bytesRead = -1, i.e., no bytes are left to read
-//                while (bytesRead > 0) {
-//                    //write the bytes read from inputstream
-//                    dataOutputStream.write(buffer, 0, bufferSize);
-//                    bytesAvailable = fileInputStream.available();
-//                    bufferSize = Math.min(bytesAvailable, maxBufferSize);
-//                    bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-//                }
-//
-//                dataOutputStream.writeBytes(lineEnd);
-//                dataOutputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
-//                serverResponseCode = connection.getResponseCode();
-//                String serverResponseMessage = connection.getResponseMessage();
-//                Log.i("Durga", "Server Response is: " + serverResponseMessage + ": " + serverResponseCode);
-//                if (serverResponseCode == 200) {
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            finish();
-//                            Toast.makeText(context, "Event added successfully", Toast.LENGTH_SHORT).show();
-//
-//                            //  textViewFileName.setText("File Upload completed.\n\n You can see the uploaded file here: \n\n" + MyUrl.URL + "uploads/"+ fileName);
-//                        }
-//                    });
-//                }
-//
-//                //closing the input and output streams
-//                fileInputStream.close();
-//                dataOutputStream.flush();
-//                dataOutputStream.close();
-//
-//
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        Toast.makeText(context, "Please give permission for storage", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//            } catch (MalformedURLException e) {
-//                e.printStackTrace();
-//                Toast.makeText(context, "URL error!", Toast.LENGTH_SHORT).show();
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                Toast.makeText(context, "Cannot Read/Write File!", Toast.LENGTH_SHORT).show();
-//            }
-//            return serverResponseCode;
-//        }
-//    }
-
-
     public String multipartRequest(String urlTo, Map<String, String> parmas, String filepath, String filefield, String fileMimeType) {
         HttpURLConnection connection = null;
         DataOutputStream outputStream = null;
@@ -475,9 +300,6 @@ DataModelImage dataModelImage;
         return sb.toString();
     }
 
-
-
-
     private void getData() {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
@@ -489,6 +311,7 @@ DataModelImage dataModelImage;
                 Gson gson = new Gson();
                 dataModelImage = gson.fromJson(String.valueOf(response), DataModelImage.class);
                 if (dataModelImage.results == 1) {
+                    viewModel._list.postValue(dataModelImage.data);
                     setRecyclerView();
                 }
             }

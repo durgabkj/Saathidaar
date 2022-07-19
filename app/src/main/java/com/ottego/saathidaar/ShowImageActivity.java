@@ -2,6 +2,8 @@ package com.ottego.saathidaar;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,16 +16,20 @@ public class ShowImageActivity extends AppCompatActivity {
     ActivityShowImageBinding b;
     Context context;
     ImageModel model;
-    String position;
+    int position;
+    String image;
+    int index=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         b = ActivityShowImageBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
-        Bundle bundle = getIntent().getExtras();
-        String data = bundle.getString("data");
-        model = new Gson().fromJson(data, ImageModel.class);
+        image = getIntent().getStringExtra("data");
+//        String data = bundle.getString("data");
+//        model = new Gson().fromJson(data, ImageModel.class);
 
+position=getIntent().getIntExtra("position",0);
+        Log.d("image", String.valueOf(model));
         setData();
         listener();
     }
@@ -32,11 +38,9 @@ public class ShowImageActivity extends AppCompatActivity {
 
     }
 
-
     private void setData() {
-        Glide.with(context)
+        Glide.with(getApplicationContext())
                 .load(Utils.imageUrl + model.member_images)
                 .into(b.ivProfilePic);
     }
-
 }
