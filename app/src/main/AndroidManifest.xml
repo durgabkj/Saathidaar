@@ -21,7 +21,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Saathidaar"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".MyMatchesShowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfessionalDetaisShowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FamilyDetailShowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PersonalInfoShowActivity"
+            android:exported="false" />
         <activity
             android:name=".RequestAcceptActivity"
             android:exported="false" />

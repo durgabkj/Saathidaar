@@ -126,12 +126,12 @@ public class HoroscopeFragment extends Fragment {
     }
 
     private void getData() {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 urlGetHoroscope + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                progressDialog.dismiss();
+              //  progressDialog.dismiss();
                 Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
@@ -153,7 +153,7 @@ public class HoroscopeFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
+               // progressDialog.dismiss();
                 error.printStackTrace();
             }
         });

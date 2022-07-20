@@ -67,6 +67,17 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 }
             });
 
+
+            holder.llShortListRecentV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Utils.blockMember(context, item.member_id);
+                    holder.llShortListRecentV.setVisibility(View.GONE);
+                    holder.llShortListRemove.setVisibility(View.VISIBLE);
+                }
+            });
+
+
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -104,7 +115,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivUserMatch;
             TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
-            LinearLayout llPhotoRecentV,llShortBlockRecentV,llBlockedRecentV,ivLikeRecentVisitors;
+            LinearLayout llPhotoRecentV,llShortBlockRecentV,llBlockedRecentV,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -117,6 +128,9 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 llShortBlockRecentV=itemView.findViewById(R.id.llShortBlockRecentV);
                 llBlockedRecentV=itemView.findViewById(R.id.llBlockedRecentV);
                 ivLikeRecentVisitors=itemView.findViewById(R.id.ivLikeRecentVisitors);
+
+                llShortListRecentV=itemView.findViewById(R.id.llShortListRecentV);
+                llShortListRemove=itemView.findViewById(R.id.llShortListRemove);
 
 
 

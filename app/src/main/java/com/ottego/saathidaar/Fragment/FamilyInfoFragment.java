@@ -3,14 +3,13 @@ package com.ottego.saathidaar.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -21,7 +20,6 @@ import com.google.gson.Gson;
 import com.ottego.saathidaar.FamilyProfileActivity;
 import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.MySingleton;
-import com.ottego.saathidaar.ProfileEditPersonalActivity;
 import com.ottego.saathidaar.SessionManager;
 import com.ottego.saathidaar.Utils;
 import com.ottego.saathidaar.databinding.FragmentFamilyInfoBinding;
@@ -126,8 +124,7 @@ FragmentFamilyInfoBinding b;
     }
 
     private void setData() {
-        if(model!=null)
-        {
+
 //            b.tvUserFatherStatus.setText(model.father_status);
 //            b.tvUserMotherStatus.setText(model.mother_status);
 //            b.tvUserFamilyLocation.setText(model.family_location);
@@ -139,15 +136,15 @@ FragmentFamilyInfoBinding b;
 //            b.tvUserFamilyType.setText(model.family_type);
 //            b.tvUserFamilyAffluence.setText(model.family_affluence);
 
-
+        if (sessionManager != null) {
 
 
             b.tvUserFatherStatus.setText(sessionManager.getKeyProFStaus());
             b.tvUserMotherStatus.setText(sessionManager.getKeyProMStatus());
             b.tvUserFamilyLocation.setText(sessionManager.getKeyProFmlyLoca());
             b.tvUserNativePlace.setText(sessionManager.getKeyProNativePlace());
-            b.tvUserBrothers.setText(model.married_male +": Married"+","+model.unmarried_male+" : Unmarried");
-            b.tvUserSisters.setText(model.married_female+" : Married"+","+model.unmarried_female+" : Unmarried");
+            b.tvUserBrothers.setText(model.married_male + ": Married" + "," + model.unmarried_male + " : Unmarried");
+            b.tvUserSisters.setText(model.married_female + " : Married" + "," + model.unmarried_female + " : Unmarried");
             b.tvUserFamilyType.setText(sessionManager.getKeyProFmlyType());
             b.tvUserFamilyAffluence.setText(sessionManager.getKeyProFmlyAfflu());
 

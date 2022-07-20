@@ -64,7 +64,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
     }
 
     private void updatePayment(){
-            final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
+          //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
             Map<String, String> params = new HashMap<String, String>();
             params.put("member_id", sessionManager.getMemberId());
             params.put("plan_name", model.plan_name);
@@ -75,7 +75,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            progressDialog.dismiss();
+                            //progressDialog.dismiss();
                             Log.e("response", String.valueOf((response)));
                             try {
                                 String code = response.getString("results");
@@ -94,7 +94,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            progressDialog.dismiss();
+                         //   progressDialog.dismiss();
                             if (null != error.networkResponse) {
                                 Toast.makeText(context,"Try again......",Toast.LENGTH_LONG).show();
                                 Log.e("Error response", String.valueOf(error));

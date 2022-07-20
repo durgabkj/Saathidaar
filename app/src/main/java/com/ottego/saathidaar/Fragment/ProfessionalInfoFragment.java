@@ -3,14 +3,13 @@ package com.ottego.saathidaar.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -112,15 +111,19 @@ public class ProfessionalInfoFragment extends Fragment {
     }
 
     private void setData() {
-        b.tvUserHigherEdu.setText(model.highest_qualification);
-        b.tvUserCollegeName.setText(model.college_attended);
-        b.tvUserIncome.setText(model.annual_income);
-        b.tvUserWorkingWitht.setText(model.working_with);
-        b.tvWorkingAs.setText(model.working_as);
-        b.tvUserCurrentResi.setText(model.country_name);
-        b.tvUserStateOfResidence.setText(model.state);
-        b.tvUserResidenceStatus.setText(model.city);
-        b.tvUserPinCode.setText(model.pincode);
+        if (model != null) {
+            b.tvUserHigherEdu.setText(model.highest_qualification);
+            b.tvUserCollegeName.setText(model.college_attended);
+            b.tvUserIncome.setText(model.annual_income);
+            b.tvUserWorkingWitht.setText(model.working_with);
+            b.tvWorkingAs.setText(model.working_as);
+            b.tvUserCurrentResi.setText(model.country_name);
+            b.tvUserStateOfResidence.setText(model.state);
+            b.tvUserResidenceStatus.setText(model.city);
+            b.tvUserPinCode.setText(model.pincode);
+        }
+
+
     }
 
     private void listener() {

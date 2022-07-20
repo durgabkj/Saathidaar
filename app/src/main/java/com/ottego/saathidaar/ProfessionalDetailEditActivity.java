@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -747,6 +748,8 @@ String memberId;
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
+                Intent intent=new Intent(context,ProfessionalDetaisShowActivity.class);
+                startActivity(intent);
 
             }
         });

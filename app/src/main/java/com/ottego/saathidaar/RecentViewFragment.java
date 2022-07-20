@@ -73,7 +73,17 @@ public class RecentViewFragment extends Fragment {
 
         viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
         getData();
+        listener();
         return b.getRoot();
+    }
+
+    private void listener() {
+        b.srlRecycleViewRecentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getData();
+            }
+        });
     }
 
     public void getData() {
@@ -82,7 +92,7 @@ public class RecentViewFragment extends Fragment {
                 recentVisitor + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                //  b.srlRecycleBookmark.setRefreshing(false);
+                 b.srlRecycleViewRecentView.setRefreshing(false);
              //   progressDialog.dismiss();
                 Log.e("recent visitors response", String.valueOf(response));
                 Gson gson = new Gson();
@@ -96,6 +106,7 @@ public class RecentViewFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                // progressDialog.dismiss();
+                b.srlRecycleViewRecentView.setRefreshing(false);
                 error.printStackTrace();
             }
         });

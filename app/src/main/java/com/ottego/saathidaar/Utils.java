@@ -105,7 +105,7 @@ public class Utils {
     }
 
     public static void removeShortList(Context context, String member_id) {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
+       // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
         String url = Utils.memberUrl + "remove-to-shortlist";
         Map<String, String> params = new HashMap<String, String>();
         params.put("shortlist_from_id",new SessionManager(context).getMemberId());
@@ -136,7 +136,7 @@ public class Utils {
     }
 
     public static void shortList(Context context, String member_id) {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+      //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         String url = Utils.memberUrl + "add-to-shortlist";
         Map<String, String> params = new HashMap<String, String>();
         params.put("shortlist_from_id",new SessionManager(context).getMemberId());
@@ -147,7 +147,7 @@ public class Utils {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        progressDialog.dismiss();
+                      //  progressDialog.dismiss();
                         Log.e(" Shortlist response", String.valueOf((response)));
                         try {
                             String code = response.getString("results");
@@ -165,7 +165,7 @@ public class Utils {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
+                       // progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error response", String.valueOf(error));
                         }
@@ -178,7 +178,7 @@ public class Utils {
     }
 
     public static void acceptRequest(Context context, String member_id) {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         String url = Utils.memberUrl + "request-accept-reject";
         Map<String, String> params = new HashMap<String, String>();
         params.put("request_from_id",member_id );
@@ -220,7 +220,7 @@ public class Utils {
     }
 
     public static void deleteRequest(Context context, String member_id) {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+      //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         String url = Utils.memberUrl + "request-accept-reject";
         Map<String, String> params = new HashMap<String, String>();
         params.put("request_from_id",new SessionManager(context).getMemberId());
@@ -262,7 +262,7 @@ public class Utils {
     }
 
     public static void sentRequest(Context context, String member_id) {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
+      //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
         String url = Utils.memberUrl + "send-request";
         Map<String, String> params = new HashMap<String, String>();
         params.put("request_from_id", new SessionManager(context).getMemberId());
@@ -347,8 +347,7 @@ public class Utils {
     }
 
     public static void UnblockMember(Context context, String member_id) {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
-
+       // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
         String BlockUrl = Utils.memberUrl + "block-member";
         Map<String, String> params = new HashMap<String, String>();
         params.put("request_from_id", member_id);

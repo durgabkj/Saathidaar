@@ -79,13 +79,13 @@ FragmentMoreBinding b;
 
 
     public void getData() {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 searchedUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 //  b.srlRecycleBookmark.setRefreshing(false);
-                progressDialog.dismiss();
+             //   progressDialog.dismiss();
                 Log.e("My search Matches response", String.valueOf(response));
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
@@ -97,7 +97,7 @@ FragmentMoreBinding b;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
+               // progressDialog.dismiss();
                 error.printStackTrace();
             }
         });

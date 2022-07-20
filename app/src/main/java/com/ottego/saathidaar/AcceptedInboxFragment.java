@@ -90,7 +90,7 @@ public class AcceptedInboxFragment extends Fragment {
                 InvitationAcceptUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                b.srlRecycleViewAcceptInvitation.setRefreshing(false);
+              //  b.srlRecycleViewAcceptInvitation.setRefreshing(false);
                // progressDialog.dismiss();
                 Log.e("Invitation accepted response", String.valueOf(response));
                 Gson gson = new Gson();
@@ -103,7 +103,7 @@ public class AcceptedInboxFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                b.srlRecycleViewAcceptInvitation.setRefreshing(false);
+               // b.srlRecycleViewAcceptInvitation.setRefreshing(false);
               //  progressDialog.dismiss();
                 error.printStackTrace();
             }

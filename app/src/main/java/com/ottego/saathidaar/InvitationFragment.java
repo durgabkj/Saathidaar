@@ -33,6 +33,7 @@ public class InvitationFragment extends Fragment {
     Context context;
     InboxViewModel viewModel;
     String member_Id;
+    String id = "";
     SessionManager sessionManager;
     public String InvitationUrl = "http://103.150.186.33:8080/saathidaar_backend/api/request/invitations/get/all/";
     private static final String ARG_PARAM1 = "param1";
@@ -74,7 +75,6 @@ public class InvitationFragment extends Fragment {
         member_Id = sessionManager.getMemberId().trim();
         Log.e("member", member_Id);
         viewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
-        getData("");
         listener();
         return b.getRoot();
     }
@@ -89,7 +89,7 @@ public class InvitationFragment extends Fragment {
     }
 
     public void getData(String id) {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 InvitationUrl + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override

@@ -84,8 +84,8 @@
                         >
                         <ImageView
                             android:id="@+id/ivBlocked"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
                             android:background="@color/white"
                             android:padding="3dp"
                             android:scaleType="centerCrop"
@@ -100,9 +100,9 @@
                         android:layout_marginTop="3dp"
                         android:shadowRadius="1.6"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
-                        android:text="Blocked"/>
+                        android:text=" Member Blocked"/>
 
                 </LinearLayout>
 
@@ -165,8 +165,9 @@
                     android:id="@+id/llShortList1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:visibility="gone"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
                     android:background="@drawable/gray_transparent_bg"
                     >
 
@@ -249,6 +250,7 @@
                         android:shadowDx="2"
                         android:shadowDy="2"
                         android:maxLength="15"
+                        android:inputType="textCapWords"
                         android:fontFamily="@font/italic"
                         android:shadowRadius="1.6"
                         android:text="Durga singh"
@@ -324,7 +326,6 @@
                         android:maxLength="15"
                         android:inputType = "textCapWords"
                         android:shadowRadius="1.6"
-                        android:text="Junior software Developer"
                         android:textColor="@color/white"
                         android:textSize="12sp"
                         android:textStyle="bold" />

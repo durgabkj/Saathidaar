@@ -2,29 +2,21 @@ package com.ottego.saathidaar;
 
 import android.content.Context;
 import android.content.IntentFilter;
-import android.graphics.PorterDuff;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.ottego.saathidaar.Adapter.ViewPageAdapter;
 import com.ottego.saathidaar.databinding.ActivityNavigationBinding;
 
-import java.util.Locale;
-
 public class NavigationActivity extends AppCompatActivity {
     ActivityNavigationBinding b;
-    private boolean doubleBackToExitPressedOnce;
     MyReceiver myReceiver=new MyReceiver();
-
-    private Handler mHandler = new Handler();
     TabLayout tabLayout;
     SwipeDisabledPager viewPager;
     Context context;
@@ -35,7 +27,14 @@ public class NavigationActivity extends AppCompatActivity {
             R.drawable.ic_user,
             R.drawable.ic_diamond,
     };
-
+    private boolean doubleBackToExitPressedOnce;
+    private final Runnable mRunnable = new Runnable() {
+        @Override
+        public void run() {
+            doubleBackToExitPressedOnce = false;
+        }
+    };
+    private Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,14 +89,6 @@ public class NavigationActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).select();
 
     }
-
-
-    private final Runnable mRunnable = new Runnable() {
-        @Override
-        public void run() {
-            doubleBackToExitPressedOnce = false;
-        }
-    };
 
     @Override
     protected void onDestroy()
