@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -80,20 +81,28 @@ public class MyMatchFragment extends Fragment {
         context = getContext();
         sessionManager = new SessionManager(context);
         viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
-        getData();
+        getData("");
+        listener();
         return b.getRoot();
     }
 
-
-    public void getData() {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Data Loading...", false, false);
+    void listener() {
+        b.srlRecycleViewMyMatches.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData("");
+            }
+        });
+    }
+    public void getData(String id) {
+        //final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Data Loading...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 MyMatchUrl + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf((response)));
-                progressDialog.dismiss();
-
+               // progressDialog.dismiss();
+                b.srlRecycleViewMyMatches.setRefreshing(false);
                 Log.e("My Matches response", String.valueOf(response));
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
@@ -105,7 +114,8 @@ public class MyMatchFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
+              //  progressDialog.dismiss();
+                b.srlRecycleViewMyMatches.setRefreshing(false);
                 error.printStackTrace();
             }
         });

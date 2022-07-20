@@ -321,7 +321,7 @@ getDataActivate();
     }
 
     private void submitFormActivate() {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         Map<String, String> params = new HashMap<String, String>();
         params.put("activate_id",Activate_deactivate);
         params.put("member_ID",sessionManager.getMemberId());
@@ -330,7 +330,7 @@ getDataActivate();
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        progressDialog.dismiss();
+                        //progressDialog.dismiss();
                         Log.e("response", String.valueOf((response)));
                         try {String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
@@ -347,7 +347,7 @@ getDataActivate();
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
+                       // progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error response", String.valueOf(error));
                         }
@@ -360,7 +360,7 @@ getDataActivate();
     }
 
     private void submitForm() {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+     //   final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         Map<String, String> params = new HashMap<String, String>();
         params.put("hide_period_time_month",hide);
         Log.e("params ", String.valueOf(params));
@@ -368,7 +368,7 @@ getDataActivate();
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        progressDialog.dismiss();
+                       // progressDialog.dismiss();
                         Log.e("response", String.valueOf((response)));
                         try {String code = response.getString("result");
                             if (code.equalsIgnoreCase("1")) {
@@ -386,7 +386,7 @@ getDataActivate();
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
+                       // progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error response", String.valueOf(error));
                         }

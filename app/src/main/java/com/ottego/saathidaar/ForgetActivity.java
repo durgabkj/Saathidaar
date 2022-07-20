@@ -176,7 +176,7 @@ public class ForgetActivity extends AppCompatActivity {
     }
 
     private void submit() {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "please wait....", false, false);
+      //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "please wait....", false, false);
         Map<String, String> params = new HashMap<String, String>();
         params.put("phone", phone);
         Log.e("params", String.valueOf(params));
@@ -184,7 +184,7 @@ public class ForgetActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        progressDialog.dismiss();
+                       // progressDialog.dismiss();
                         Log.e("response", String.valueOf((response)));
                         try {
                             String code = response.getString("result");
@@ -210,7 +210,7 @@ public class ForgetActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
+                       // progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Toast.makeText(context, "Try again......", Toast.LENGTH_LONG).show();
                             Log.e("Error response", String.valueOf(error));

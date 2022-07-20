@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void submitForm() {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
+      final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
         Map<String, String> params = new HashMap<String, String>();
         params.put("username", email);
         params.put("password", password);

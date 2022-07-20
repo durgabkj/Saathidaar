@@ -49,7 +49,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         Log.e(" New Matches model", new Gson().toJson(item));
 
         holder.tvNewMatchNameRs.setText(item.first_name + " " + item.last_name);
-        holder.tvNewMatchAgeRs.setText(item.mage+"Yrs");
+        holder.tvNewMatchAgeRs.setText(item.mage+" Yrs");
         holder.tvNewMatchHeightRs.setText(item.religion);
         holder.tvNewMatchCityRs.setText(item.maritalStatus);
 
@@ -80,7 +80,8 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
                 Utils.blockMember(context, item.member_id);
                 holder.llBlockShortList.setVisibility(View.GONE);
                 holder.llBlockedShortList.setVisibility(View.VISIBLE);
-                holder.llAcceptDelete.setEnabled(false);
+                holder.ivLikeShortList.setVisibility(View.GONE);
+
             }
         });
 
@@ -113,7 +114,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         ImageView imageListViewMess;
         TextView tvNewMatchNameRs, tvNewMatchAgeRs, tvNewMatchHeightRs, tvNewMatchCityRs, tvNewMatchWorkAsRs;
         LinearLayout llMess,llShortListRemove1,llShortList1,llPhotoShortList;
-        LinearLayout ivLikeShortList,llBlockShortList,llBlockedShortList,llAcceptDelete,llConnectShortList;
+        LinearLayout ivLikeShortList,llBlockShortList,llBlockedShortList,llConnectShortList;
 
         public ViewHolder(@NonNull View itemView) {
 
@@ -129,7 +130,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
             llShortList1 = itemView.findViewById(R.id.llShortList1);
             llBlockedShortList=itemView.findViewById(R.id.llBlockedShortList);
             llBlockShortList=itemView.findViewById(R.id.llBlockShortList);
-            llAcceptDelete=itemView.findViewById(R.id.llAcceptDelete);
+
             llConnectShortList=itemView.findViewById(R.id.llConnectShortList);
 
         }

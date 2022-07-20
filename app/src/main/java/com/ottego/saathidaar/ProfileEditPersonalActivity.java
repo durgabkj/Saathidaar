@@ -273,6 +273,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
+                Intent intent=new Intent(context,PersonalInfoShowActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -685,7 +687,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                             if (code.equals("1")) {
                                 Gson gson = new Gson();
                                 successDialog();
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                                // sessionManager.createSessionLogin(userId);
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }

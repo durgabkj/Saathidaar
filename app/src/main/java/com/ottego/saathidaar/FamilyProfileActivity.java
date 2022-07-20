@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -576,6 +577,8 @@ public class FamilyProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
+                Intent intent=new Intent(context,FamilyDetailShowActivity.class);
+                startActivity(intent);
 
             }
         });

@@ -276,7 +276,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/textInputLayoutStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:hint="Select Multiple Mother Tongue">
 
@@ -629,7 +629,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/italic"
                     android:layout_centerInParent="true"
                     android:hint="Select city">
@@ -696,7 +696,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/textInputLayoutStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:hint="Select Multiple Qualification">
 
@@ -733,7 +733,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/textInputLayoutStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:hint="Select working with">
 
@@ -743,12 +743,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
-                            android:fontFamily="@font/italic"
                             android:focusable="true"
+                            android:fontFamily="@font/italic"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                             android:focusableInTouchMode="false"
                             android:importantForAutofill="no"
-                            android:maxLines="1"
                             app:showSearch="true"
                             app:sort="true" />
                     </com.google.android.material.textfield.TextInputLayout>

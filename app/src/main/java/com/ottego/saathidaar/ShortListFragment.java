@@ -97,7 +97,7 @@ public class ShortListFragment extends Fragment {
                 ShortListUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                b.srlRecycleViewShortList.setRefreshing(false);
+               b.srlRecycleViewShortList.setRefreshing(false);
                // progressDialog.dismiss();
                 Log.e("ShortList response", String.valueOf(response));
                 Gson gson = new Gson();
@@ -110,7 +110,7 @@ public class ShortListFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                b.srlRecycleViewShortList.setRefreshing(false);
+               b.srlRecycleViewShortList.setRefreshing(false);
              //   progressDialog.dismiss();
                 error.printStackTrace();
             }

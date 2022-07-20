@@ -322,10 +322,11 @@ public class DashBoardFragment extends Fragment {
     }
 
     private void setData() {
-        RequestAccept.setText(model.data.get(0).accept_request_count);
-        RequestSent.setText(model.data.get(0).sent_request_count);
-        Visitors.setText(model.data.get(0).recent_visitors_count);
-
+        if (model.data != null && model.data.size() > 0   && model.data.isEmpty()) {
+            RequestAccept.setText(model.data.get(0).accept_request_count);
+            RequestSent.setText(model.data.get(0).sent_request_count);
+            Visitors.setText(model.data.get(0).recent_visitors_count);
+        }
     }
 
     private void set() {
