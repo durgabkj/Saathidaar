@@ -68,9 +68,6 @@ public class Utils {
         }
     }
 
-
-
-
     public static void sendDeviceId(final Context context) {
         final String url_device = Utils.userUrl + "deviceidset.php";
         //final SessionManager sessionManager = new SessionManager(context);
@@ -107,12 +104,9 @@ public class Utils {
         new SendDeviceId().execute();
     }
 
-
-
-
-
     public static void removeShortList(Context context, String member_id) {
-           String url = Utils.memberUrl + "remove-to-shortlist";
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
+        String url = Utils.memberUrl + "remove-to-shortlist";
         Map<String, String> params = new HashMap<String, String>();
         params.put("shortlist_from_id",new SessionManager(context).getMemberId());
         params.put("shortlist_to_id",member_id);
@@ -122,6 +116,7 @@ public class Utils {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                       // progressDialog.dismiss();
                         Log.e(" Shortlist remove response", String.valueOf((response)));
                     }
                 },
@@ -129,6 +124,7 @@ public class Utils {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if (null != error.networkResponse) {
+                          //  progressDialog.dismiss();
                             Log.e("Error response", String.valueOf(error));
                         }
                     }
@@ -138,6 +134,7 @@ public class Utils {
         MySingleton.myGetMySingleton(context).myAddToRequest(request);
 
     }
+
     public static void shortList(Context context, String member_id) {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         String url = Utils.memberUrl + "add-to-shortlist";
@@ -179,6 +176,7 @@ public class Utils {
         MySingleton.myGetMySingleton(context).myAddToRequest(request);
 
     }
+
     public static void acceptRequest(Context context, String member_id) {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         String url = Utils.memberUrl + "request-accept-reject";
@@ -191,7 +189,7 @@ public class Utils {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        progressDialog.dismiss();
+                      //  progressDialog.dismiss();
                         Log.e(" request sent response", String.valueOf((response)));
                         try {
                             String code = response.getString("message");
@@ -209,7 +207,7 @@ public class Utils {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
+                       // progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error response", String.valueOf(error));
                         }
@@ -233,7 +231,7 @@ public class Utils {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        progressDialog.dismiss();
+                     //   progressDialog.dismiss();
                         Log.e(" request delete response", String.valueOf((response)));
                         try {
                             String code = response.getString("message");
@@ -251,7 +249,7 @@ public class Utils {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
+                      //  progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error response", String.valueOf(error));
                         }
@@ -264,7 +262,8 @@ public class Utils {
     }
 
     public static void sentRequest(Context context, String member_id) {
-         String url = Utils.memberUrl + "send-request";
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
+        String url = Utils.memberUrl + "send-request";
         Map<String, String> params = new HashMap<String, String>();
         params.put("request_from_id", new SessionManager(context).getMemberId());
         params.put("request_to_id", member_id);
@@ -274,6 +273,7 @@ public class Utils {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                     //   progressDialog.dismiss();
                         Log.e(" request sent response", String.valueOf((response)));
                         try {
                             String code = response.getString("results");
@@ -291,6 +291,7 @@ public class Utils {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                       // progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error response", String.valueOf(error));
                         }
@@ -302,27 +303,71 @@ public class Utils {
 
     }
 
-
-
     public static void blockMember(Context context, String member_id) {
-        String Blockurl = Utils.memberUrl + "send-block-member";
+        //final ProgressDialog progressDialog = ProgressDialog.show(context, null, "please wait....", false, false);
+        String BlockUrl = Utils.memberUrl + "block-member";
         Map<String, String> params = new HashMap<String, String>();
-        params.put("request_from_id", new SessionManager(context).getMemberId());
-        params.put("request_to_id", member_id);
+        params.put("request_from_id",(member_id));
+        params.put("request_to_id",new SessionManager(context).getMemberId() );
         params.put("block_by_id", new SessionManager(context).getMemberId());
         params.put("request_status","Block");
         Log.e("params request sent", String.valueOf(params));
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Blockurl, new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, BlockUrl, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                   @Override
+                   public void onResponse(JSONObject response) {
+                      // progressDialog.dismiss();
+                        Log.e(" block response", String.valueOf((response)));
+                        try {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+                                Toast.makeText(context, response.getString("message"),Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                        }
+                   }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                      //  progressDialog.dismiss();
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
+
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+
+    }
+
+    public static void UnblockMember(Context context, String member_id) {
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
+
+        String BlockUrl = Utils.memberUrl + "block-member";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("request_from_id", member_id);
+        params.put("request_to_id", new SessionManager(context).getMemberId());
+        params.put("block_by_id", new SessionManager(context).getMemberId());
+        params.put("request_status","Un-Block");
+        Log.e("params request sent", String.valueOf(params));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, BlockUrl, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                     //   progressDialog.dismiss();
                         Log.e(" request sent response", String.valueOf((response)));
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
-                                Toast.makeText(context,"Request Send Successfully",Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Member Unblock",Toast.LENGTH_LONG).show();
                             } else {
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Member  not Unblock", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -333,6 +378,7 @@ public class Utils {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                       // progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error response", String.valueOf(error));
                         }
@@ -363,7 +409,6 @@ public class Utils {
 
         return time;
     }
-
 
     public static String getTimeInMonth(String time) {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.US);

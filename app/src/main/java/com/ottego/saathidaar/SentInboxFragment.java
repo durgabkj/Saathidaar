@@ -91,13 +91,13 @@ public class SentInboxFragment extends Fragment {
     }
 
     private void getData() {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 InvitationSentUrl+member_id, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 b.srlRecycleViewSentInvitation.setRefreshing(false);
-                progressDialog.dismiss();
+              //  progressDialog.dismiss();
                 Log.e(" deleted Invitation response", String.valueOf(response));
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelInbox.class);
@@ -110,7 +110,7 @@ public class SentInboxFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 b.srlRecycleViewSentInvitation.setRefreshing(false);
-                progressDialog.dismiss();
+               // progressDialog.dismiss();
                 error.printStackTrace();
             }
         });

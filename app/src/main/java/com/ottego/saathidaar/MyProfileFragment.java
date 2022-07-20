@@ -3,6 +3,7 @@ package com.ottego.saathidaar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Gravity;
@@ -11,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Scroller;
 import android.widget.TextView;
 
@@ -33,8 +37,10 @@ public class MyProfileFragment extends Fragment {
     ViewPager viewPager;
     TextView tvUserName, tvUserEmail,tvUserDetailsReadLess,tvUserDetailsReadMore,tvAboutUs;
     SessionManager sessionManager;
+    ImageView profilePic;
     AppCompatImageView ivClear;
     Context context;
+    ScrollView MyProfileDetail;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -81,7 +87,8 @@ public class MyProfileFragment extends Fragment {
         tvUserDetailsReadMore=view.findViewById(R.id.tvUserDetailsReadMore);
         tvUserDetailsReadLess=view.findViewById(R.id.tvUserDetailsReadLess);
         tvAboutUs=view.findViewById(R.id.tvAboutUs);
-
+        profilePic=view.findViewById(R.id.profilePic);
+       // MyProfileDetail=view.findViewById(R.id.MyProfileDetail);
         tvAboutUs.setText(sessionManager.getKeyProAboutus());
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         listener();
@@ -110,7 +117,13 @@ public class MyProfileFragment extends Fragment {
             }
         });
 
-
+        profilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(),GalleryActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

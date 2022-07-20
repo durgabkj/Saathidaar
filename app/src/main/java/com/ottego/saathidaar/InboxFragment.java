@@ -180,10 +180,30 @@ public class InboxFragment extends Fragment {
 //        Visitors.setText(model.data.get(0).recent_visitors_count);
         BadgeDrawable badgeDrawable = b.tlInbox.getTabAt(1).getOrCreateBadge();
         badgeDrawable.setNumber(Integer.parseInt(model.data.get(0).accept_request_count));
-        b.tlInbox.getTabAt(2).getOrCreateBadge().setNumber(Integer.parseInt(model.data.get(0).sent_request_count));
         badgeDrawable.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
         badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
         badgeDrawable.setBadgeGravity(BadgeDrawable.TOP_END);
+
+        BadgeDrawable badgeDrawable1 = b.tlInbox.getTabAt(2).getOrCreateBadge();
+        badgeDrawable1.setNumber(Integer.parseInt(model.data.get(0).sent_request_count));
+        badgeDrawable1.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+        badgeDrawable1.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+        badgeDrawable1.setBadgeGravity(BadgeDrawable.TOP_END);
+
+
+        BadgeDrawable badgeDrawable2 = b.tlInbox.getTabAt(3).getOrCreateBadge();
+        badgeDrawable2.setNumber(Integer.parseInt(model.data.get(0).deleted_request_count));
+        badgeDrawable2.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+        badgeDrawable2.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+        badgeDrawable2.setBadgeGravity(BadgeDrawable.TOP_END);
+
+
+        BadgeDrawable badgeDrawable3 = b.tlInbox.getTabAt(4).getOrCreateBadge();
+        badgeDrawable3.setNumber(Integer.parseInt(model.data.get(0).block_request_count));
+        badgeDrawable3.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+        badgeDrawable3.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+        badgeDrawable3.setBadgeGravity(BadgeDrawable.TOP_END);
+
     }
 
 

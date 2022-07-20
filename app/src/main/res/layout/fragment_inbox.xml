@@ -27,23 +27,23 @@
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="50dp"
-            android:text="Invitation"
+            android:text="Invitation  "
             android:layout_height="wrap_content"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="50dp"
-            android:text="Accept"
+            android:text="Accept   "
             android:layout_height="wrap_content"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="50dp"
-            android:text="Sent"
+            android:text="Sent   "
             android:layout_height="wrap_content"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="50dp"
-            android:text="Delete"
+            android:text="Delete  "
             android:layout_height="wrap_content"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="50dp"
-            android:text="Block"
+            android:text="Block  "
             android:layout_height="wrap_content"/>
     </com.google.android.material.tabs.TabLayout>
 

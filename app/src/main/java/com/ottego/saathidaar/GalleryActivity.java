@@ -42,6 +42,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -77,6 +78,16 @@ DataModelImage dataModelImage;
 
     private void listener() {
 
+
+
+        b.mtGalleryToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
         b.mtGalleryToolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -107,7 +118,6 @@ DataModelImage dataModelImage;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == PICK_FILE_REQUEST) {
 //                imageNameList.clear();
@@ -116,8 +126,8 @@ DataModelImage dataModelImage;
                     int count = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
                     for (int i = 0; i < count; i++) {
                         Uri imageUri = data.getClipData().getItemAt(i).getUri();
-                        Log.e("imageUri1", String.valueOf(imageUri));
-                        pathFile(imageUri);
+                        Log.e("imageUri1 h", String.valueOf(imageUri));
+                       pathFile(imageUri);
                         //do something with the image (save it to some directory or whatever you need to do with it here)
                     }
                 } else if (data.getData() != null) {
@@ -335,7 +345,7 @@ DataModelImage dataModelImage;
 
         if (adapter.getItemCount() != 0) {
             b.llNoDataImage.setVisibility(View.GONE);
-            b.rvMyImage.setVisibility(View.VISIBLE);
+            b.llCard.setVisibility(View.VISIBLE);
 
         } else {
             b.llNoDataImage.setVisibility(View.VISIBLE);

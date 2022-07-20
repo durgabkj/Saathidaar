@@ -46,6 +46,7 @@
                                 android:background="@color/white"
                                 android:scaleType="centerCrop"
                                 android:src="@drawable/local" />
+
                         </com.google.android.material.card.MaterialCardView>
 
 
@@ -65,6 +66,8 @@
                                 app:srcCompat="@drawable/ic_round_camera_alt_24" />
                         </com.google.android.material.card.MaterialCardView>
                     </FrameLayout>
+
+
 
 
                 </LinearLayout>
@@ -123,8 +126,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="3dp"
                             android:fontFamily="@font/italic"
-
                             android:textColor="@color/white" />
+
                     </LinearLayout>
 
 
@@ -134,16 +137,27 @@
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:layout_marginStart="55dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="30dp"
                         android:background="@drawable/white_button_bg"
                         android:drawablePadding="1dp"
                         android:fontFamily="@font/italic"
-                        android:padding="10dp"
                         android:gravity="center_vertical"
+                        android:padding="10dp"
                         android:text="Upgrade Now"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
                         app:drawableStartCompat="@drawable/ic_diamond" />
+
+
+                    <TextView
+                        android:id="@+id/tvDashBoardUploadImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:fontFamily="@font/italic"
+                        android:text="Upload Image"
+
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
 

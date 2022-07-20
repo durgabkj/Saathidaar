@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -74,7 +75,17 @@ FragmentBlockMemberBinding b;
 
         viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
         getData();
+        listener();
         return b.getRoot();
+    }
+
+    private void listener() {
+        b.srlRecycleViewBlock.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData();
+            }
+        });
     }
 
 
@@ -85,7 +96,7 @@ FragmentBlockMemberBinding b;
             @Override
             public void onResponse(JSONObject response) {
                 //  b.srlRecycleBookmark.setRefreshing(false);
-                progressDialog.dismiss();
+              b.srlRecycleViewBlock.setRefreshing(false);
                 Log.e("recent visitors response", String.valueOf(response));
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
@@ -97,8 +108,9 @@ FragmentBlockMemberBinding b;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
+               // progressDialog.dismiss();
                 error.printStackTrace();
+                b.srlRecycleViewBlock.setRefreshing(false);
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));

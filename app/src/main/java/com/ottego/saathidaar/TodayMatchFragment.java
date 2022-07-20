@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -76,7 +77,17 @@ public class TodayMatchFragment extends Fragment {
 sessionManager=new SessionManager(context);
         viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
         getData();
+        listener();
         return b.getRoot();
+    }
+
+    private void listener() {
+        b.srlRecycleViewTodayMatch.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData();
+            }
+        });
     }
 
     public void getData() {
@@ -85,7 +96,7 @@ sessionManager=new SessionManager(context);
                 MyMatchUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                //  b.srlRecycleBookmark.setRefreshing(false);
+                b.srlRecycleViewTodayMatch.setRefreshing(false);
               //  progressDialog.dismiss();
                 Log.e("Today Matches response", String.valueOf(response));
                 Gson gson = new Gson();
@@ -100,6 +111,7 @@ sessionManager=new SessionManager(context);
             public void onErrorResponse(VolleyError error) {
                // progressDialog.dismiss();
                 error.printStackTrace();
+                b.srlRecycleViewTodayMatch.setRefreshing(false);
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));

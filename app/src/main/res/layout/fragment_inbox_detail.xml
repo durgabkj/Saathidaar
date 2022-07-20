@@ -185,14 +185,13 @@
                             <TextView
                                 android:id="@+id/tvNewMatchName"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:fontFamily="@font/italic"
                                 android:maxLength="15"
                                 android:shadowColor="#000000"
                                 android:shadowDx="2"
                                 android:shadowDy="2"
                                 android:shadowRadius="1.6"
-                                android:text="Durga singh"
                                 android:textColor="@color/white"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -207,7 +206,6 @@
                                 android:shadowDx="1.5"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
-                                android:text="22 years"
                                 android:textColor="@color/white"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -223,7 +221,7 @@
                                 android:shadowDx="1.5"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
-                                android:text="5'1"
+
                                 android:textColor="@color/white"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -247,7 +245,6 @@
                                 android:layout_marginEnd="8dp"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
-                                android:text="Mumbai"
                                 android:textColor="@color/white"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -263,7 +260,6 @@
                                 android:shadowDx="1.5"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
-                                android:text="Junior software Developer"
                                 android:textColor="@color/white"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -297,7 +293,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/italic"
-                            android:text="About Garima "
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -308,9 +303,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:maxLines="4"
+                            android:inputType="textCapWords"
                             android:fontFamily="@font/italic"
-                            android:text="I am a soft spoken, honest &amp; talented person. I have a good job, decent salary &amp; a nice house to live in. I think family as the first priority of my life. I think 5 years down the life I should be happily settled with my kids, a lovely soulmate with all the blessings of our parents &amp; relatives.
-I am modern thinker but also believe in good values given by our ancestors I also enjoy travelling, watching movies, going out for dinner, and having great intellectual conversations!"
                             android:textColor="@color/black" />
 
                         <TextView
@@ -337,6 +331,72 @@ I am modern thinker but also believe in good values given by our ancestors I als
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:translationZ="20dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="20dp"
+                    app:cardMaxElevation="4dp"
+                    app:cardPreventCornerOverlap="true">
+
+
+                    <LinearLayout
+                        android:id="@+id/lltextDetailsFamily"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvNameUserFamilyDetails"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/italic"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/tvAboutUserFamilyDetails"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:maxLines="4"
+                            android:inputType="textCapSentences"
+                            android:fontFamily="@font/italic"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/tvViewMoreFamily"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                            android:text="View more"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvViewLessFamily"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_up_24"
+                            android:text="View less"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"

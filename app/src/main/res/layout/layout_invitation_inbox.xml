@@ -107,6 +107,7 @@
                         android:shadowColor="#000000"
                         android:shadowDx="2"
                         android:shadowDy="2"
+                        android:layout_marginTop="3dp"
                         android:shadowRadius="1.6"
                         android:textColor="@color/white"
                         android:textSize="14sp"
@@ -142,6 +143,7 @@
                         android:shadowColor="#000000"
                         android:shadowDx="2"
                         android:shadowDy="2"
+                        android:layout_marginTop="3dp"
                         android:fontFamily="@font/italic"
                         android:shadowRadius="1.6"
                         android:textColor="@color/white"
@@ -169,6 +171,7 @@
                 android:paddingVertical="10dp">
 
                 <LinearLayout
+                    android:id="@+id/llAcceptDelete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
@@ -287,6 +290,7 @@
                         android:id="@+id/llDeleted"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
                         android:visibility="gone"
                         android:orientation="vertical">
 
@@ -399,6 +403,7 @@
                         android:fontFamily="@font/italic"
                         android:maxLength="18"
                         android:text="Mumbai"
+                        android:inputType = "textCapWords"
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -414,7 +419,7 @@
                         android:fontFamily="@font/italic"
                         android:maxLength="20"
                         android:shadowRadius="1.6"
-                        android:text="Junior software Developer"
+                        android:inputType = "textCapWords"
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold" />

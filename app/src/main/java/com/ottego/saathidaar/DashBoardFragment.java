@@ -3,6 +3,7 @@ package com.ottego.saathidaar;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -17,8 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -27,23 +26,27 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.DataModelDashboard;
+import com.ottego.saathidaar.Model.ImageModel;
 
 import org.json.JSONObject;
 
 
 public class DashBoardFragment extends Fragment {
     SessionManager sessionManager;
-    ImageView ivPremiumImage,profilePic;
-    TextView tvPremiumText, RequestAccept,tvDashBoardUserId,tvDashBoardUserAccountType, Visitors, RequestSent,tvDashboardUpgrade,tvDashBoardUserName;
+    ImageView ivPremiumImage, profilePic;
+    TextView tvPremiumText, RequestAccept, tvDashBoardUserId, tvDashBoardUserAccountType, tvDashBoardUploadImage, Visitors, RequestSent, tvDashboardUpgrade, tvDashBoardUserName;
     int position = 0;
     DataModelDashboard model;
-    LinearLayout llPremiumMatch,llMyMatch,llPremium,llshare,tvLogout,llRequestSent,llProfileVisi,llAcceptRequest;
+    LinearLayout llPremiumMatch, llMyMatch, llPremium, llshare, tvLogout, llRequestSent, llProfileVisi, llAcceptRequest;
     Animation animation;
     CountDownTimer countDownTimer;
     Context context;
+    ImageModel imageModel;
     public String url = "http://103.150.186.33:8080/saathidaar_backend/api/request/count/accept-request/";
     int[] images = {R.drawable.smartphone, R.drawable.documents, R.drawable.global};
     String[] text = {"phone Number to Connect Instantly", "100% Verified Biodatas", "Find Common connections"};
+    String image;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -80,24 +83,42 @@ public class DashBoardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
+        context = getContext();
+        sessionManager = new SessionManager(context);
+
+//       if(sessionManager.getKeyProGender().equalsIgnoreCase("female"))
+//       {
+//           profilePic.setBackgroundResource(R.drawable.woman);;
+//
+//        }else
+//       {
+//          // profilePic.setImageResource(R.drawable.woman);
+//       }
+
+
+        Log.e("gender", sessionManager.getKeyProGender());
+
+
         ivPremiumImage = view.findViewById(R.id.ivPremiumImage);
         tvPremiumText = view.findViewById(R.id.tvPremiumText);
         tvLogout = view.findViewById(R.id.tvLogout);
-        profilePic=view.findViewById(R.id.profilePic);
-        llshare=view.findViewById(R.id.llshare);
-        tvDashboardUpgrade=view.findViewById(R.id.tvDashboardpgrade);
+        profilePic = view.findViewById(R.id.profilePic);
+        llshare = view.findViewById(R.id.llshare);
+        tvDashboardUpgrade = view.findViewById(R.id.tvDashboardpgrade);
         RequestAccept = view.findViewById(R.id.RequestAccept);
         Visitors = view.findViewById(R.id.Visitors);
         llMyMatch = view.findViewById(R.id.llMyMatch);
         tvDashBoardUserAccountType = view.findViewById(R.id.tvDashBoardUserAccountType);
         llPremium = view.findViewById(R.id.llPremium);
-        tvDashBoardUserId=view.findViewById(R.id.tvDashBoardUserId);
+        tvDashBoardUploadImage = view.findViewById(R.id.tvDashBoardUploadImage);
+        tvDashBoardUserId = view.findViewById(R.id.tvDashBoardUserId);
         llPremiumMatch = view.findViewById(R.id.llPremiumMatch);
         RequestSent = view.findViewById(R.id.RequestSent);
         llRequestSent=view.findViewById(R.id.llRequestSent);
         tvDashBoardUserName=view.findViewById(R.id.tvDashBoardUserName);
         llAcceptRequest=view.findViewById(R.id.llAcceptRequest);
         llProfileVisi=view.findViewById(R.id.llProfileVisi);
+
 
         context = getContext();
         sessionManager = new SessionManager(context);
@@ -137,6 +158,16 @@ public class DashBoardFragment extends Fragment {
 
 
     private void listener() {
+
+        tvDashBoardUploadImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), GalleryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         tvLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

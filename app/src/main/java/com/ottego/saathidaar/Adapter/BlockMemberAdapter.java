@@ -20,6 +20,7 @@ import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
+import com.ottego.saathidaar.Utils;
 
 import java.util.List;
 
@@ -49,13 +50,20 @@ import java.util.List;
             Log.e(" New Matches model", new Gson().toJson(item));
 
             holder.tvBlockName.setText(item.first_name + " " + item.last_name);
-            holder.tvBlockAge.setText(item.mage);
+            holder.tvBlockAge.setText(item.mage+" yrs");
             holder.tvNewBlockHeight.setText(item.religion);
             holder.tvBlockCity.setText(item.maritalStatus);
             holder.tvBlockWorkAs.setText(item.income);
 
 
-
+            holder.ivUnblock.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Utils.UnblockMember(context, item.member_id);
+                    holder.ivUnblock.setVisibility(View.GONE);
+                    holder.llConnectBlock.setVisibility(View.VISIBLE);
+                }
+            });
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -91,7 +99,7 @@ import java.util.List;
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivUserMatch;
             TextView tvBlockName, tvBlockAge, tvNewBlockHeight, tvBlockCity, tvBlockWorkAs;
-            LinearLayout llPhotoBlock;
+            LinearLayout llPhotoBlock,ivUnblock,llConnectBlock;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -101,6 +109,8 @@ import java.util.List;
                 tvBlockCity = itemView.findViewById(R.id.tvBlockCity);
                 tvBlockWorkAs = itemView.findViewById(R.id.tvBlockWorkAs);
                 llPhotoBlock = itemView.findViewById(R.id.llPhotoBlock);
+                ivUnblock=itemView.findViewById(R.id.ivUnblock);
+                llConnectBlock=itemView.findViewById(R.id.llConnectBlock);
 
             }
         }

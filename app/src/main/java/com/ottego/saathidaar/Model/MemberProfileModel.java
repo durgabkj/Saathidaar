@@ -1,6 +1,9 @@
 package com.ottego.saathidaar.Model;
 
+import java.util.List;
+
 public class MemberProfileModel {
+    public List<GalleryModel> images;
     public  String height;
     public String weight;
     public  String lifestyles;

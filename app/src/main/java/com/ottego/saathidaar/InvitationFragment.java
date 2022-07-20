@@ -95,7 +95,7 @@ public class InvitationFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 b.srlRecycleViewInvitation.setRefreshing(false);
-                progressDialog.dismiss();
+               // progressDialog.dismiss();
                 Log.e("Invitation response", String.valueOf(response));
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelInbox.class);
@@ -108,7 +108,7 @@ public class InvitationFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 b.srlRecycleViewInvitation.setRefreshing(false);
-                progressDialog.dismiss();
+              //  progressDialog.dismiss();
                 error.printStackTrace();
             }
         });

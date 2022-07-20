@@ -75,6 +75,18 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         });
 
 
+        holder.llBlockInvitation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.blockMember(context, item.member_id);
+                holder.llBlockInvitation.setVisibility(View.GONE);
+                holder.llBlockedInvitation.setVisibility(View.VISIBLE);
+                holder.llAcceptDelete.setVisibility(View.GONE);
+
+            }
+        });
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,7 +118,7 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
 
 
         TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs;
-        LinearLayout llAccept, llDelete, llAccepted, llDeleted,llPhotoInvitation;
+        LinearLayout llAccept, llDelete, llAccepted, llDeleted,llPhotoInvitation,llBlockInvitation,llBlockedInvitation,llAcceptDelete;
 
         public ViewHolder(@NonNull View itemView) {
 
@@ -122,6 +134,9 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
             llDelete = itemView.findViewById(R.id.llDelete);
             llDeleted=itemView.findViewById(R.id.llDeleted);
             llPhotoInvitation=itemView.findViewById(R.id.llPhotoInvitation);
+            llBlockInvitation=itemView.findViewById(R.id.llBlockInvitation);
+            llBlockedInvitation=itemView.findViewById(R.id.llBlockedInvitation);
+            llAcceptDelete=itemView.findViewById(R.id.llAcceptDelete);
         }
     }
 }

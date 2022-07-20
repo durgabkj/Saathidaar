@@ -22,7 +22,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.HoroscopeModel;
 import com.ottego.saathidaar.Model.MemberProfileModel;
-import com.ottego.saathidaar.Model.SessionProfileDetailModel;
 import com.ottego.saathidaar.MySingleton;
 import com.ottego.saathidaar.ProfileEditPersonalActivity;
 import com.ottego.saathidaar.SessionManager;
@@ -217,8 +216,9 @@ public class PersonalInfoFragment extends Fragment {
 
     private void setData() {
 
+        if (model != null) {
             binding.tvDob.setText(model.date_of_birth);
-        binding.tvUserAge.setText(model.age);
+            binding.tvUserAge.setText(model.age);
             binding.tvUserMaritalStatus.setText(model.marital_status);
             binding.tvUseNoOfChild.setText(model.no_of_children);
             binding.tvUserHeight.setText(model.height);
@@ -229,9 +229,11 @@ public class PersonalInfoFragment extends Fragment {
             binding.tvUserReligion.setText(model.religion_name);
             binding.tvUserCommunity.setText(model.caste_name);
             binding.tvGender.setText(model.gender);
-            binding.tvUserSubCommunity.setText(sessionManager.getKeyProSubCasteName());
+            binding.tvUserSubCommunity.setText(model.sub_caste_name);
             binding.tvUserGotra.setText(model.gothra);
-              }
+        }
+
+    }
 
 
     }

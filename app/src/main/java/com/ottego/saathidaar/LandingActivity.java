@@ -228,7 +228,7 @@ public class LandingActivity extends AppCompatActivity {
 //                                    Gson gson = new Gson();
 //                                    UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);
 //                                   // sessionManager.createSUserDetails(sessionModel);
-                                      Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+                                     // Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                                     Intent intent = new Intent(context, OtpVerificationActivity.class);
                                     intent.putExtra("mobile", phone);
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -69,6 +69,17 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
                 context.startActivity(intent);
             }
         });
+
+
+        holder.llBlockAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.blockMember(context, item.member_id);
+                holder.llBlockAccept.setVisibility(View.GONE);
+                holder.llBlockedAccept.setVisibility(View.VISIBLE);
+                holder.llAcceptCallMsgDecline.setEnabled(false);
+            }
+        });
     }
 
 
@@ -81,7 +92,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs;
-        LinearLayout llCAll,llWhatsApp, llPhotoAccept;
+        LinearLayout llCAll,llWhatsApp, llPhotoAccept,llBlockAccept,llBlockedAccept,llAcceptCallMsgDecline;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -95,6 +106,9 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
             llCAll = itemView.findViewById(R.id.llCAll);
             llPhotoAccept = itemView.findViewById(R.id.llPhotoAccept);
             llWhatsApp = itemView.findViewById(R.id.llWhatsApp);
+            llBlockAccept=itemView.findViewById(R.id.llBlockAccept);
+            llBlockedAccept=itemView.findViewById(R.id.llBlockedAccept);
+            llAcceptCallMsgDecline=itemView.findViewById(R.id.llAcceptCallMsgDecline);
         }
     }
 }

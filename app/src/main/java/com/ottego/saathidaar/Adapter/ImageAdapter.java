@@ -14,6 +14,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+import com.ottego.saathidaar.DashBoardFragment;
 import com.ottego.saathidaar.GalleryPagerFragment;
 import com.ottego.saathidaar.Model.ImageModel;
 import com.ottego.saathidaar.R;
@@ -54,9 +56,15 @@ public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.ViewHolder>
 //                    intent.putExtra("data", new Gson().toJson(item));
 //                    intent.putExtra("position", position);
 //                    context.startActivity(intent);
-
+                   // DashBoardFragment.newInstance(new Gson().toJson(item),"");
                     Log.e("position", String.valueOf(position));
                     GalleryPagerFragment.newInstance(String.valueOf(position),"").show(((FragmentActivity) context).getSupportFragmentManager(), "gallery_pager_fragment");
+
+//               DashBoardFragment dashBoardFragment=new DashBoardFragment();
+//               Bundle arg=new Bundle();
+//               arg.putString("image",item.member_images);
+//               dashBoardFragment.setArguments(arg);
+
                 }
             });
 

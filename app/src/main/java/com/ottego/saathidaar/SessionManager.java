@@ -18,6 +18,9 @@ public class SessionManager {
     public static final String KEY_EMAIL1 = "email";
     public static final String KEY_ENABLE = "enabled";
     public static final String KEY_USERID = "username";
+    public static final String KEY_GENDER = "gender";
+    public static final String KEY_PROFILE_ID_Log = "profile_id";
+
 
 
     //USER DETAIL
@@ -25,7 +28,6 @@ public class SessionManager {
     public static final String KEY_LNAME = "lastname";
     public static final String KEY_PHONE = "phone";
     public static final String KEY_EMAIL = "email";
-    public static final String KEY_GENDER = "gender";
     public static final String KEY_ROLE = "role";
     public static final String KEY_CREATEDBY = "profilecreatedby";
 
@@ -131,6 +133,8 @@ public class SessionManager {
         editor.putString(KEY_EMAIL1, model.email);
         editor.putString(KEY_ENABLE, model.enabled);
         editor.putString(KEY_USERID, model.username);
+        editor.putString(KEY_GENDER, model.gender);
+        editor.putString(KEY_PROFILE_ID_Log, model.profile_id);
 
         editor.commit();
     }
@@ -154,6 +158,12 @@ public class SessionManager {
 
     public String getEmail() {
         return pref.getString(KEY_EMAIL1, "");
+    }
+    public String getKeyGender() {
+        return pref.getString(KEY_GENDER, "");
+    }
+    public String getKey_profile_id() {
+        return pref.getString(KEY_PROFILE_ID_Log, "");
     }
 
     public void CreateProfileSession(MemberProfileModel model) {

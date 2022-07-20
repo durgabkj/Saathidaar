@@ -54,11 +54,11 @@ import java.util.List;
             holder.tvInvDeleteCity.setText(item.maritalStatus);
             holder.tvInvDeleteWorkAs.setText(item.country);
 
-            holder.llBlock.setOnClickListener(new View.OnClickListener() {
+            holder.llBlockDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Utils.acceptRequest(context, item.member_id);
-                    holder.llBlock.setVisibility(View.GONE);
+                    Utils.blockMember(context, item.member_id);
+                    holder.llBlockDelete.setVisibility(View.GONE);
                     holder.llBlocked.setVisibility(View.VISIBLE);
                     holder.llDelete1.setVisibility(View.GONE);
                 }
@@ -75,7 +75,6 @@ import java.util.List;
 
                 }
             });
-
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -108,7 +107,7 @@ import java.util.List;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             TextView tvInvDeleteWorkAs, tvInvDeleteCity, tvInvDeleteHeight, tvInvDeleteName, tvInvDeleteAge;
-            LinearLayout llBlocked,llBlock,llDeletedInvitation,llDelete1,llPhotoDelete;
+            LinearLayout llBlocked,llBlockDelete,llDeletedInvitation,llDelete1,llPhotoDelete;
             public ViewHolder(@NonNull View itemView) {
 
                 super(itemView);
@@ -118,7 +117,7 @@ import java.util.List;
                 tvInvDeleteCity = itemView.findViewById(R.id.tvInvDeleteCity);
                 tvInvDeleteWorkAs = itemView.findViewById(R.id.tvInvDeleteWorkAs);
                 llBlocked = itemView.findViewById(R.id.llBlocked);
-                llBlock = itemView.findViewById(R.id.llBlock);
+                llBlockDelete = itemView.findViewById(R.id.llBlockDelete);
                 llDelete1 = itemView.findViewById(R.id.llDelete1);
                 llDeletedInvitation = itemView.findViewById(R.id.llDeletedInvitation);
                 llPhotoDelete=itemView.findViewById(R.id.llPhotoDelete);

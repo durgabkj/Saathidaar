@@ -444,7 +444,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tvGender"
+                android:id="@+id/tvGenderEdit"
                 android:layout_width="match_parent"
                 android:fontFamily="@font/italic"
                 android:textColor="@color/colorPrimary"

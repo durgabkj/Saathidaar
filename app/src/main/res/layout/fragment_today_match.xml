@@ -23,6 +23,13 @@
                 android:background="@drawable/ic_no_data" />
         </LinearLayout>
 
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srlRecycleViewTodayMatch"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
     <LinearLayout
         android:id="@+id/llCard"
         android:layout_width="match_parent"
@@ -38,5 +45,6 @@
             android:orientation="vertical"/>
 
     </LinearLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

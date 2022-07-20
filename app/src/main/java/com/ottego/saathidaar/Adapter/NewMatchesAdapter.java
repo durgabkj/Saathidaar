@@ -16,7 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.gson.Gson;
 import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.Model.NewMatchesModel;
@@ -47,7 +46,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         NewMatchesModel item = list.get(position);
 //        Log.e(" New Matches model", new Gson().toJson(item));
 
-        holder.tvNewMatchName.setText(item.first_name + " " + item.member_id);
+        holder.tvNewMatchName.setText(item.first_name + " " + item.last_name);
         holder.tvNewMatchAge.setText(item.mage);
         holder.tvNewMatchHeight.setText(item.religion);
         holder.tvNewMatchCity.setText(item.maritalStatus);
@@ -83,6 +82,18 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             }
         });
 
+
+        holder.llShortBlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.blockMember(context, item.member_id);
+                holder.llShortBlock.setVisibility(View.GONE);
+                holder.llBlocked.setVisibility(View.VISIBLE);
+                holder.llShortList.setEnabled(false);
+                holder.ivLike.setEnabled(false);
+            }
+        });
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,9 +115,10 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivUserMatch;
         TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
-        LinearLayout llMess, llShortListRemove, llShortList,llPhotoMyMatches;
-        LinearLayout ivLike,llConnect;
-Spinner SpMenu;
+        LinearLayout llMess, llShortListRemove, llShortList, llPhotoMyMatches, llShortBlock,llBlocked;
+        LinearLayout ivLike, llConnect;
+        Spinner SpMenu;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNewMatchAge = itemView.findViewById(R.id.tvNewMatchAge);
@@ -119,7 +131,9 @@ Spinner SpMenu;
             ivUserMatch = itemView.findViewById(R.id.ivUserMatch);
             llShortListRemove = itemView.findViewById(R.id.llShortListRemove);
             llShortList = itemView.findViewById(R.id.llShortList);
-            llConnect=itemView.findViewById(R.id.llConnect);
+            llConnect = itemView.findViewById(R.id.llConnect);
+            llShortBlock = itemView.findViewById(R.id.llShortBlock);
+            llBlocked=itemView.findViewById(R.id.llBlocked);
 
         }
     }

@@ -54,10 +54,12 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         holder.tvNewMatchCityRs.setText(item.maritalStatus);
 
 
-        holder.ivLike.setOnClickListener(new View.OnClickListener() {
+        holder.ivLikeShortList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Utils.sentRequest(context, item.member_id);
+                holder.ivLikeShortList.setVisibility(View.GONE);
+                holder.llConnectShortList.setVisibility(View.VISIBLE);
 
             }
         });
@@ -68,6 +70,17 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
                 Utils.removeShortList(context, item.member_id);
                 holder.llShortList1.setVisibility(View.VISIBLE);
                 holder.llShortListRemove1.setVisibility(View.GONE);
+            }
+        });
+
+
+        holder.llBlockShortList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.blockMember(context, item.member_id);
+                holder.llBlockShortList.setVisibility(View.GONE);
+                holder.llBlockedShortList.setVisibility(View.VISIBLE);
+                holder.llAcceptDelete.setEnabled(false);
             }
         });
 
@@ -100,7 +113,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         ImageView imageListViewMess;
         TextView tvNewMatchNameRs, tvNewMatchAgeRs, tvNewMatchHeightRs, tvNewMatchCityRs, tvNewMatchWorkAsRs;
         LinearLayout llMess,llShortListRemove1,llShortList1,llPhotoShortList;
-        LinearLayout ivLike;
+        LinearLayout ivLikeShortList,llBlockShortList,llBlockedShortList,llAcceptDelete,llConnectShortList;
 
         public ViewHolder(@NonNull View itemView) {
 
@@ -110,10 +123,15 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
             tvNewMatchHeightRs = itemView.findViewById(R.id.tvNewMatchHeightRs);
             tvNewMatchCityRs = itemView.findViewById(R.id.tvNewMatchCityRs);
             tvNewMatchWorkAsRs = itemView.findViewById(R.id.tvNewMatchWorkAsRs);
-            ivLike = itemView.findViewById(R.id.ivLike);
+            ivLikeShortList = itemView.findViewById(R.id.ivLikeShortList);
             llPhotoShortList=itemView.findViewById(R.id.llPhotoShortList);
             llShortListRemove1 = itemView.findViewById(R.id.llShortListRemove1);
             llShortList1 = itemView.findViewById(R.id.llShortList1);
+            llBlockedShortList=itemView.findViewById(R.id.llBlockedShortList);
+            llBlockShortList=itemView.findViewById(R.id.llBlockShortList);
+            llAcceptDelete=itemView.findViewById(R.id.llAcceptDelete);
+            llConnectShortList=itemView.findViewById(R.id.llConnectShortList);
+
         }
     }
 }

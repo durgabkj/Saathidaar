@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@color/black"
     android:layout_height="match_parent"
-    tools:context=".ShowImageActivity">
+    tools:context=".ShowImageFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -113,16 +113,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="20dp"
                 android:fontFamily="@font/italic"
-                android:padding="6dp"
+                android:padding="8dp"
                 android:shadowColor="#000000"
+                android:background="@drawable/button_hover"
                 android:shadowDx="2"
                 android:shadowDy="2"
                 android:shadowRadius="1.6"
                 android:text="Make this Profile photo"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

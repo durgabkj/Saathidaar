@@ -260,6 +260,7 @@ public class InboxDetailFragment extends Fragment {
             public void onClick(View view) {
             }
         });
+
         b.tvViewMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -267,6 +268,25 @@ public class InboxDetailFragment extends Fragment {
                 b.tvViewLess.setVisibility(View.VISIBLE);
                 b.tvViewMore.setVisibility(View.GONE);
 
+            }
+        });
+
+        b.tvViewMoreFamily.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.tvAboutUserFamilyDetails.setMaxLines(20);
+                b.tvViewLessFamily.setVisibility(View.VISIBLE);
+                b.tvViewMoreFamily.setVisibility(View.GONE);
+
+            }
+        });
+
+        b.tvViewLessFamily.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.tvAboutUserFamilyDetails.setMaxLines(4);
+                b.tvViewLessFamily.setVisibility(View.GONE);
+                b.tvViewMoreFamily.setVisibility(View.VISIBLE);
             }
         });
 
@@ -327,10 +347,13 @@ public class InboxDetailFragment extends Fragment {
             b.tvMatchCityDetail.setText(model.city);
             b.tvNewMatchWorkAsDetail.setText(model.working_as);
             b.tvNameUserDetails.setText("About" + "  " + model.first_name);
-            //   b.tvAboutUserDetails.setText(model.about_ourself);
+             b.tvAboutUserDetails.setText(model.about_ourself);
+
+            b.tvNameUserFamilyDetails.setText("About " + " Family" );
+            b.tvAboutUserFamilyDetails.setText(model.FamilyDetails);
 
             b.tvCreatedBy.setText("Profile CreateBy" + " " + model.profilecreatedby);
-            //b.tvProfileID.setText("Profile ID"+" "+model.);
+            b.tvProfileID.setText("Profile ID"+" "+model.profile_id);
             b.tvDetailAge.setText(model.age + " yrs old");
             b.tvDetailHeight.setText("Height - " + model.height);
             b.tvDetailDob.setText("Born on" + " " + model.date_of_birth);

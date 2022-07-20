@@ -77,6 +77,17 @@ import java.util.List;
             });
 
 
+            holder.llBlockSent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Utils.blockMember(context, item.member_id);
+                    holder.llBlockSent.setVisibility(View.GONE);
+                    holder.llBlockedSent.setVisibility(View.VISIBLE);
+
+                }
+            });
+
+
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -108,7 +119,7 @@ import java.util.List;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs;
-            LinearLayout llAccept,llDelete,llAccepted,llDeleted,llPhotoSent;
+            LinearLayout llAccept,llDelete,llAccepted,llDeleted,llPhotoSent,llBlockSent,llBlockedSent;
             public ViewHolder(@NonNull View itemView) {
 
                 super(itemView);
@@ -122,6 +133,8 @@ import java.util.List;
                 llDelete = itemView.findViewById(R.id.llDelete);
                 llDeleted = itemView.findViewById(R.id.llDeleted);
                 llPhotoSent=itemView.findViewById(R.id.llPhotoSent);
+                llBlockSent=itemView.findViewById(R.id.llBlockSent);
+                llBlockedSent=itemView.findViewById(R.id.llBlockedSent);
             }
         }
     }

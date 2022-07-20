@@ -1,25 +1,42 @@
 package com.ottego.saathidaar;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.HomeTablayoutAdapter;
+import com.ottego.saathidaar.Model.DataModelDashboard;
 import com.ottego.saathidaar.databinding.FragmentMatchesBinding;
+
+import org.json.JSONObject;
 
 import java.util.Objects;
 
 
 public class MatchesFragment extends Fragment {
     FragmentMatchesBinding b;
+    SessionManager sessionManager;
+    Context context;
+    DataModelDashboard model;
+    public String url = "http://103.150.186.33:8080/saathidaar_backend/api/request/count/accept-request/";
 
     MyMatchFragment myMatchFragment=new MyMatchFragment();
     private static final String ARG_PARAM1 = "param1";
@@ -58,7 +75,8 @@ public class MatchesFragment extends Fragment {
         // Inflate the layout for this fragment
         b = FragmentMatchesBinding.inflate(inflater, container, false);
 
-
+context=getContext();
+sessionManager=new SessionManager(context);
       /*  setUpViewPager(b.vpMatch);
         b.tlMatch.setupWithViewPager(b.vpMatch);
           Objects.requireNonNull(b.tlMatch.getTabAt(1)).select();
@@ -138,7 +156,53 @@ public class MatchesFragment extends Fragment {
     }
 
 
+    private void getDataCount() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf((response)));
+                Gson gson = new Gson();
+                model = gson.fromJson(String.valueOf(response), DataModelDashboard.class);
+                setData();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
+
+    }
+
+    private void setData() {
+//        RequestAccept.setText(model.data.get(0).accept_request_count);
+//        RequestSent.setText(model.data.get(0).sent_request_count);
+//        Visitors.setText(model.data.get(0).recent_visitors_count);
+        BadgeDrawable badgeDrawable = b.tlMatch.getTabAt(0).getOrCreateBadge();
+        badgeDrawable.setNumber(Integer.parseInt(model.data.get(0).new_matches_count));
+        badgeDrawable.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+        badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+        badgeDrawable.setBadgeGravity(BadgeDrawable.TOP_END);
+
+        BadgeDrawable badgeDrawable1 = b.tlMatch.getTabAt(1).getOrCreateBadge();
+        badgeDrawable1.setNumber(Integer.parseInt(model.data.get(0).my_matches_count));
+        badgeDrawable1.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+        badgeDrawable1.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+        badgeDrawable1.setBadgeGravity(BadgeDrawable.TOP_END);
+
+
+        BadgeDrawable badgeDrawable2 = b.tlMatch.getTabAt(2).getOrCreateBadge();
+        badgeDrawable2.setNumber(Integer.parseInt(model.data.get(0).todays_matches_count));
+        badgeDrawable2.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+        badgeDrawable2.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+        badgeDrawable2.setBadgeGravity(BadgeDrawable.TOP_END);
+
+
+    }
 
 
     @Override

@@ -278,6 +278,27 @@ public class MatchDetailsFragment extends Fragment {
             }
         });
 
+
+        b.tvViewMoreFamily.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.tvAboutUserFamilyDetails.setMaxLines(20);
+                b.tvViewLessFamily.setVisibility(View.VISIBLE);
+                b.tvViewMoreFamily.setVisibility(View.GONE);
+
+            }
+        });
+
+        b.tvViewLessFamily.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.tvAboutUserFamilyDetails.setMaxLines(4);
+                b.tvViewLessFamily.setVisibility(View.GONE);
+                b.tvViewMoreFamily.setVisibility(View.VISIBLE);
+            }
+        });
+
+
         b.tvViewLess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -345,7 +366,7 @@ b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
 //        params.put("member_ID",mParam1);
 //        Log.e("params", String.valueOf(params));
         Log.e("dataParams", memberDetail + mParam1);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, memberDetail + mParam1, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, memberDetail + mParam1+"/"+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf(response));
@@ -377,13 +398,14 @@ b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
     private void setData() {
         if (model != null) {
             b.tvNewMatchName.setText(model.first_name + " " + model.last_name);
-            b.tvNewMatchAge.setText(model.age + " yrs");
+            b.tvNewMatchAge.setText(model.age + " "+"yrs");
             b.tvNewMatchHeight.setText(model.height + " feet");
             b.tvMatchCityDetail.setText(model.city);
             b.tvNewMatchWorkAsDetail.setText(model.working_as);
             b.tvNameUserDetails.setText("About" + "  " + model.first_name);
             b.tvAboutUserDetails.setText(model.about_ourself);
-
+            b.tvNameUserFamilyDetails.setText("About " + " Family" );
+            b.tvAboutUserFamilyDetails.setText(model.FamilyDetails);
             b.tvCreatedBy.setText("Profile CreateBy" + " " + model.profilecreatedby);
             b.tvProfileID.setText("Profile ID" + " " + model.profile_id);
             b.tvDetailAge.setText(model.age + " yrs old");

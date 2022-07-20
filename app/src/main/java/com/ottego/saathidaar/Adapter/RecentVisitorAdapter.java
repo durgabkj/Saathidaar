@@ -20,6 +20,7 @@ import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
+import com.ottego.saathidaar.Utils;
 
 import java.util.List;
 
@@ -56,7 +57,15 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
             holder.tvNewMatchWorkAs.setText(item.income);
 
 
-
+            holder.llShortBlockRecentV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Utils.blockMember(context, item.member_id);
+                    holder.llShortBlockRecentV.setVisibility(View.GONE);
+                    holder.llBlockedRecentV.setVisibility(View.VISIBLE);
+                    holder.ivLikeRecentVisitors.setEnabled(false);
+                }
+            });
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -95,7 +104,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivUserMatch;
             TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
-            LinearLayout llPhotoRecentV;
+            LinearLayout llPhotoRecentV,llShortBlockRecentV,llBlockedRecentV,ivLikeRecentVisitors;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -105,6 +114,11 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 tvNewMatchCity = itemView.findViewById(R.id.tvRecentViewCityRs);
                 tvNewMatchWorkAs = itemView.findViewById(R.id.tvRecentViewWorkAsRs);
                 llPhotoRecentV = itemView.findViewById(R.id.llPhotoRecentV);
+                llShortBlockRecentV=itemView.findViewById(R.id.llShortBlockRecentV);
+                llBlockedRecentV=itemView.findViewById(R.id.llBlockedRecentV);
+                ivLikeRecentVisitors=itemView.findViewById(R.id.ivLikeRecentVisitors);
+
+
 
             }
         }

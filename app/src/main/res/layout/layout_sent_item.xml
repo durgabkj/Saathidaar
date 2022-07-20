@@ -363,6 +363,7 @@
                     android:maxLength="15"
                     android:fontFamily="@font/italic"
                     android:shadowRadius="1.6"
+                    android:inputType = "textCapWords"
                     android:text="Durga singh"
                     android:textColor="@color/white"
                     android:textSize="18sp"
@@ -417,6 +418,7 @@
                     android:fontFamily="@font/italic"
                     android:maxLength="18"
                     android:text="Mumbai"
+                    android:inputType = "textCapWords"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -432,7 +434,7 @@
                     android:fontFamily="@font/italic"
                     android:maxLength="20"
                     android:shadowRadius="1.6"
-                    android:text="Junior software Developer"
+                    android:inputType = "textCapWords"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     android:textStyle="bold" />

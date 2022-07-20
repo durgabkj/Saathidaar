@@ -79,13 +79,13 @@ FragmentRecentlyViewedBinding b;
 
 
     public void getData() {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 recentlyViewed + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 //  b.srlRecycleBookmark.setRefreshing(false);
-                progressDialog.dismiss();
+              //  progressDialog.dismiss();
                 Log.e("recent visitors response", String.valueOf(response));
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
@@ -97,7 +97,7 @@ FragmentRecentlyViewedBinding b;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
+              //  progressDialog.dismiss();
                 error.printStackTrace();
             }
         });
