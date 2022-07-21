@@ -446,7 +446,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:layout_centerVertical="true"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="30dp"
                         android:layout_toRightOf="@id/tvHome"
@@ -458,25 +457,50 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:orientation="vertical">
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal">
+
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_centerHorizontal="true"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
-                        android:layout_marginTop="20dp"
-                        android:text="LINKS | Member Login | Member Signup | Customer Support|"
+                        android:text="LINKS |"
                         android:textColor="@color/black"
                         android:textSize="10dp" />
-                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/tvLandingMemberLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:text=" Member Login |"
+                    android:textColor="@color/black"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/tvLandingMemberSignUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:text=" Member Signup |"
+                    android:textColor="@color/black"
+                    android:textSize="10dp" />
+
+
+                <TextView
+                    android:id="@+id/tvLandingCustomerSupport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:text=" Customer Support|"
+                    android:textColor="@color/black"
+                    android:textSize="10dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -521,8 +545,8 @@
                         android:layout_height="match_parent"
                         android:layout_centerHorizontal="true"
                         android:layout_marginStart="0dp"
-                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/italic"
+                        android:layout_marginBottom="30dp"
                         android:text="Be the first to know about new arrivals,look books,sales and promos!"
                         android:textColor="@color/black"
                         android:textSize="10dp" />

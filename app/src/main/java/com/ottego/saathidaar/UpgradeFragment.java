@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -19,20 +18,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.ottego.saathidaar.Adapter.UpgradeAdapter;
-import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.Model.DataModelUpgrade;
-import com.ottego.saathidaar.Model.UpgradeModel;
 import com.ottego.saathidaar.databinding.FragmentUpgradeBinding;
 
 import org.json.JSONObject;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
 
 
 public class UpgradeFragment extends Fragment {
@@ -73,6 +63,7 @@ public class UpgradeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         b = FragmentUpgradeBinding.inflate(getLayoutInflater());
+        context=getContext();
         getData();
         listener();
         return b.getRoot();
@@ -82,24 +73,24 @@ public class UpgradeFragment extends Fragment {
     }
 
     public void getData() {
-       // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 UpgradeUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                // progressDialog.dismiss();
+                progressDialog.dismiss();
                 Log.e("Upgrade response", String.valueOf(response));
-                Gson gson=new Gson();
+                Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelUpgrade.class);
-             // model = new Gson().fromJson(String.valueOf(response), new TypeToken<List<UpgradeModel>>() {}.getType());
-               Log.e("response", String.valueOf(response));
+                // model = new Gson().fromJson(String.valueOf(response), new TypeToken<List<UpgradeModel>>() {}.getType());
+                Log.e("response", String.valueOf(response));
                setRecyclerView();
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-              //  progressDialog.dismiss();
+                progressDialog.dismiss();
                 error.printStackTrace();
             }
         });

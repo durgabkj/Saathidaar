@@ -2,6 +2,7 @@ package com.ottego.saathidaar;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +11,6 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -34,6 +33,7 @@ public class InboxFragment extends Fragment {
     FragmentInboxBinding b;
     DataModelDashboard model;
     Context context;
+    Handler mHandler;
     SessionManager sessionManager;
     InvitationFragment invitationFragment = new InvitationFragment();
     AcceptedInboxFragment acceptedInboxFragment = new AcceptedInboxFragment();
@@ -68,6 +68,13 @@ public class InboxFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    private final Runnable m_Runnable = new Runnable() {
+        public void run() {
+            //  Toast.makeText(context,"hello",Toast.LENGTH_LONG).show();
+            InboxFragment.this.mHandler.postDelayed(m_Runnable, 5000);
+        }
+
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,12 +84,12 @@ public class InboxFragment extends Fragment {
         context = getContext();
         sessionManager = new SessionManager(context);
 
+        //Auto Refresh Activity...
+        this.mHandler = new Handler();
+        m_Runnable.run();
 
 
-        //   setUpViewPager(b.vpInbox);
-      //  b.tlInbox.setupWithViewPager(b.vpInbox);
         b.vpInbox.setPagingEnable(false);
-
 
         getChildFragmentManager()
                 .beginTransaction()

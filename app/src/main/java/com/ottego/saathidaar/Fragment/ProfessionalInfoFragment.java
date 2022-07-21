@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -76,13 +77,13 @@ public class ProfessionalInfoFragment extends Fragment {
         getMemberData();
         return b.getRoot();
     }
-
     private void getMemberData() {
         Log.e("url", url);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url+memberId, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                b.srlRecycleViewProfessionalDetails.setRefreshing(false);
                 Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
@@ -102,6 +103,7 @@ public class ProfessionalInfoFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                b.srlRecycleViewProfessionalDetails.setRefreshing(false);
                 error.printStackTrace();
             }
         });
@@ -127,6 +129,15 @@ public class ProfessionalInfoFragment extends Fragment {
     }
 
     private void listener() {
+
+        b.srlRecycleViewProfessionalDetails.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getMemberData();
+            }
+        });
+
+
         b.ivCameraEducationInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

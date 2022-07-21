@@ -639,9 +639,7 @@ city=tvMultipleCity.getText().toString().toString();
         params.put("partner_profile_created", createdBy);
         params.put("partner_lifestyles", diet);
 
-//        params.put("search_marital_status", country);
-//        params.put("search_mother_tongue",state);
-//        params.put("search_cast", city);
+
 
         params.put("member_id", sessionManager.getMemberId());
         Log.e("params", String.valueOf(params));

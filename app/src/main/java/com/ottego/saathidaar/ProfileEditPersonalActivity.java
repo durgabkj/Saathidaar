@@ -199,7 +199,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 alertDialog.setIcon(R.drawable.food);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose LifeStyle");
+                alertDialog.setTitle("Choose Life Style");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -249,9 +249,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
 
     }
-
-
-
     public void successDialog()
     {
         AlertDialog.Builder builder=new AlertDialog.Builder(context);
@@ -291,7 +288,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
                 // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.height);
+                alertDialog.setIcon(R.drawable.ic_baseline_perm_identity_24);
 
                 // title of the alert dialog
                 alertDialog.setTitle("Choose Gender");
@@ -919,37 +916,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     }
 
     private void HealthDetails() {
-////        {
-////            @Override
-////            public boolean isEnabled(int position) {
-////            if (position == 0) {
-////                return false;
-////            } else {
-////                return true;
-////            }
-////        }
-////        };
-//        //Setting the ArrayAdapter data on the Spinner
-//
-//        b.spUserHealthDetail.setAdapter(healthAdapter);
-////        b.spUserHealthDetail.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-////            @Override
-////            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-////                // First item will be gray
-////                if (parent.getItemAtPosition(position).equals("Select")) {
-////                    onNothingSelected(parent);
-////                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.gray_dark));
-////                } else {
-////                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.black));
-////
-////                }
-////            }
-////
-////            @Override
-////            public void onNothingSelected(AdapterView<?> parent) {
-////            }
-////        });
-
         final int[] checkedItem = {-1};
         b.etHealth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -959,7 +925,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
                 // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.height);
+                alertDialog.setIcon(R.drawable.healthcare);
 
                 // title of the alert dialog
                 alertDialog.setTitle("Choose Health");
@@ -1297,10 +1263,10 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
                 // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+                alertDialog.setIcon(R.drawable.marital);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose MaritalStatus");
+                alertDialog.setTitle("Choose Marital Status");
 
                 // list of the items to be displayed to
                 // the user in the form of list

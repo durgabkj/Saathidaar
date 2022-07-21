@@ -142,7 +142,7 @@
                 android:maxLines="40"
                 android:lines="5"
                 android:scrollbars="vertical"
-                android:maxLength="300"
+                android:maxLength="2000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -169,7 +169,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="/300"
+                    android:text="/2000"
                     android:layout_gravity="right"
                    />
             </LinearLayout>
@@ -433,7 +433,7 @@
                     android:enabled="true"
                     android:textColor="@color/black"
                     android:gravity="center_vertical"
-                    android:hint="select  Diet"
+                    android:hint="select your Diet"
                     android:editable="false"
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="8dp"
@@ -615,6 +615,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Cast"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/colorPrimary"
 
                     />
@@ -623,6 +624,7 @@
                     android:id="@+id/tvUserCommunity"
                     style="@style/PersonalDataTextView"
                     android:layout_width="match_parent"
+                    android:fontFamily="@font/italic"
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                     android:gravity="center_vertical"
@@ -642,6 +644,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Sub Cast"
+                android:fontFamily="@font/italic"
                 android:textColor="@color/colorPrimary"
 
                 />
@@ -650,6 +653,7 @@
                 android:id="@+id/tvUserSubCommunity"
                 style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
+                android:fontFamily="@font/italic"
                 android:layout_height="40dp"
                 android:hint="Sub Cast" />
 
@@ -666,6 +670,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Gotra/Gotram"
+                android:fontFamily="@font/italic"
                 android:textColor="@color/colorPrimary"
 
                 />
@@ -675,6 +680,7 @@
                 style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:fontFamily="@font/italic"
                 android:hint="Enter your Gotra" />
         </LinearLayout>
 

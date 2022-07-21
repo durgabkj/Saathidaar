@@ -76,7 +76,6 @@
                         android:orientation="horizontal"
                         android:padding="10dp">
 
-                        College(s) Attended
 
                         <TextView
                             android:layout_width="0dp"

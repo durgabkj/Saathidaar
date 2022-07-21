@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -82,9 +83,9 @@ public class SentInboxFragment extends Fragment {
     }
 
     private void listener() {
-        b.srlRecycleViewSentInvitation.setOnClickListener(new View.OnClickListener() {
+        b.srlRecycleViewSentInvitation.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onClick(View view) {
+            public void onRefresh() {
                 getData();
             }
         });

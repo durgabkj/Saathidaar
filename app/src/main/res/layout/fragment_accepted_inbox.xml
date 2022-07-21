@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".AcceptedInboxFragment">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srlRecycleViewAccept"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
         <LinearLayout
             android:id="@+id/llNoDataInvitation"
             android:layout_width="match_parent"
@@ -27,11 +33,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/srlRecycleViewAcceptInvitation"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
+<!--            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--                android:id="@+id/srlRecycleViewAcceptInvitation"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="1">-->
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvAcceptInvitation"
@@ -40,8 +46,8 @@
                     android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"/>
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+<!--    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
 
         </LinearLayout>
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>

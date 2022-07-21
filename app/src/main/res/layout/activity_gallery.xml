@@ -16,7 +16,6 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             app:title="Gallery"
-
             app:menu="@menu/menu_add"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
             app:navigationIconTint="@color/black"
@@ -51,7 +50,11 @@
             android:visibility="gone"
             android:orientation="vertical">
 
-
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/srlRecycleViewGallery"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvMyImage"
                 android:layout_width="match_parent"
@@ -59,7 +62,7 @@
                 android:layout_margin="8dp"
                 android:orientation="vertical"
                 />
-
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         </LinearLayout>
 
 

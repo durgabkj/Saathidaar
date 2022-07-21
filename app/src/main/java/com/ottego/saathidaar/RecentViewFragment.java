@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -78,9 +79,9 @@ public class RecentViewFragment extends Fragment {
     }
 
     private void listener() {
-        b.srlRecycleViewRecentView.setOnClickListener(new View.OnClickListener() {
+        b.srlRecycleViewRecentView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onClick(View view) {
+            public void onRefresh() {
                 getData();
             }
         });

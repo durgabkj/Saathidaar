@@ -89,7 +89,7 @@ public class MyProfileFragment extends Fragment {
         tvAboutUs=view.findViewById(R.id.tvAboutUs);
         profilePic=view.findViewById(R.id.profilePic);
        // MyProfileDetail=view.findViewById(R.id.MyProfileDetail);
-        tvAboutUs.setText(sessionManager.getKeyProAboutus());
+       tvAboutUs.setText(sessionManager.getKeyProAboutus());
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         listener();
         setPreLoadData();
@@ -101,7 +101,7 @@ public class MyProfileFragment extends Fragment {
         tvUserDetailsReadMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvAboutUs.setMaxLines(30);
+                tvAboutUs.setMaxLines(100);
                 tvUserDetailsReadMore.setVisibility(View.GONE);
                 tvUserDetailsReadLess.setVisibility(View.VISIBLE);
             }
@@ -111,7 +111,7 @@ public class MyProfileFragment extends Fragment {
         tvUserDetailsReadLess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvAboutUs.setMaxLines(4);
+                tvAboutUs.setMaxLines(6);
                 tvUserDetailsReadMore.setVisibility(View.VISIBLE);
                 tvUserDetailsReadLess.setVisibility(View.GONE);
             }
@@ -164,7 +164,7 @@ public class MyProfileFragment extends Fragment {
     }
 
     private void setPreLoadData() {
-        tvUserName.setText(sessionManager.getName());
+        tvUserName.setText(sessionManager.getName()+" "+sessionManager.getLastName());
         tvUserEmail.setText(sessionManager.getEmail());
 
     }

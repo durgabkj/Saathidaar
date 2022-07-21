@@ -6,149 +6,164 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:ignore="ExtraText">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle">
+
+                    <ImageView
+                        android:id="@+id/profilePic"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:background="@color/white"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/local" />
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:id="@+id/iv_camera"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_baseline_create_24" />
+                </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/italic"
+                android:inputType="textCapWords"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="1.6"
+                android:text="durgaQgmail.com"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvUserEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/italic"
+                android:inputType="textCapWords"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="1.6"
+                android:text="durgaQgmail.com"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvAboutUs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/italic"
+                android:maxLines="4"
+                android:padding="8dp"
+                android:text="Personal notes consist ofPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user oPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user oPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user oPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user oPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user o titles and text rendered into a block. The notes are specific to each authenticatedPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated userPersonal notes consist ofPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user oPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user oPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user oPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user oPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user o titles and text rendered into a block. The notes are specific to each authenticatedPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user o user on the Personal notes consist ofPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user oPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user oPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user oPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user oPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user o titles and text rendered into a block. The notes are specific to each authenticatedPersonal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user o user on the  o user on the site and can be added and deleted only by the user who created them.notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them..notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them..notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them..notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them..."
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvUserDetailsReadMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_baseline_arrow_drop_down_24"
+                android:drawableTint="@color/white"
+                android:fontFamily="@font/italic"
+                android:gravity="center"
+                android:background="@drawable/line_gradient"
+                android:layout_marginBottom="8dp"
+                android:padding="3dp"
+                android:text="View More..."
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvUserDetailsReadLess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/line_gradient"
+                android:drawableStart="@drawable/ic_baseline_keyboard_arrow_up_24"
+                android:drawableTint="@color/white"
+                android:fontFamily="@font/italic"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginBottom="8dp"
+                android:padding="3dp"
+                android:text="View Less..."
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </ScrollView>
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:orientation="vertical">
 
-        <FrameLayout
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp">
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tlProfile"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextAppearance="@style/TextAppearance.AppCompat.Caption" />
+        app:tabIndicatorAnimationMode="elastic"
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle">
-
-                <ImageView
-                    android:id="@+id/profilePic"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:background="@color/white"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/local" />
-            </com.google.android.material.card.MaterialCardView>
+        />
 
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
-                android:layout_gravity="bottom|end"
-                app:strokeWidth="1dp"
-                app:strokeColor="@color/white"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/iv_camera"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:padding="5dp"
-                    app:srcCompat="@drawable/ic_baseline_create_24"
-                    />
-            </com.google.android.material.card.MaterialCardView>
-        </FrameLayout>
+        <!--    </ScrollView>-->
 
-        <TextView
-            android:id="@+id/tvUserName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/italic"
-            android:text="Durga Singh"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvUserEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/italic"
-            android:text="Durga.Singhbkj@gmail.com"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvAboutUs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/italic"
-            android:maxLines="4"
-            android:padding="8dp"
-            android:text="Personal notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them.notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them..notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them..notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them..notes consist of titles and text rendered into a block. The notes are specific to each authenticated user on the site and can be added and deleted only by the user who created them..."
-            android:textAlignment="center"
-            android:textColor="@color/white" />
-
-        <TextView
-            android:id="@+id/tvUserDetailsReadMore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/italic"
-            android:maxLength="150"
-            android:maxLines="4"
-            android:padding="3dp"
-            android:drawableTint="@color/white"
-            android:text="View More..."
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvUserDetailsReadLess"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_baseline_keyboard_arrow_up_24"
-            android:fontFamily="@font/italic"
-            android:maxLength="150"
-            android:maxLines="4"
-            android:visibility="gone"
-            android:padding="3dp"
-            android:drawableTint="@color/white"
-            android:text="View Less..."
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
-
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vpMyProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="NotSibling" />
     </LinearLayout>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tlProfile"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        app:tabBackground="@drawable/tab_selector"
-        app:tabSelectedTextColor="@color/white"
-        app:tabTextAppearance="@style/TextAppearance.AppCompat.Caption" />
-    app:tabIndicatorAnimationMode="elastic"
-
-    />
-    //app:tabIndicatorHeight="1.5dp"
-    // app:tabSelectedTextColor="@color/teal_700"
-
-    <!--    <ScrollView-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent">-->
-
-
-    <!--    </ScrollView>-->
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/vpMyProfile"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="NotSibling" />
 
 </LinearLayout>
 
 
-</LinearLayout>

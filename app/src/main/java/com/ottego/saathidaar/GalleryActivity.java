@@ -6,17 +6,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -24,11 +25,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
+import com.hbisoft.pickit.PickiT;
+import com.hbisoft.pickit.PickiTCallbacks;
 import com.ottego.saathidaar.Adapter.ImageAdapter;
 import com.ottego.saathidaar.Model.DataModelImage;
 import com.ottego.saathidaar.databinding.ActivityGalleryBinding;
 import com.ottego.saathidaar.viewmodel.GalleryViewModel;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 import org.json.JSONObject;
 
@@ -42,17 +44,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class GalleryActivity extends AppCompatActivity {
+public class GalleryActivity extends AppCompatActivity implements PickiTCallbacks {
     ActivityGalleryBinding b;
     SessionManager sessionManager;
-DataModelImage dataModelImage;
+    DataModelImage dataModelImage;
     String URL = Utils.memberUrl + "uploads/photo";
     ProgressDialog progressDialog;
     String getImageURL = Utils.memberUrl + "app/get/photo/";
@@ -62,22 +63,28 @@ DataModelImage dataModelImage;
     GalleryViewModel viewModel;
     private static final int PICK_FILE_REQUEST = 1;
 
+    PickiT pickiT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         b = ActivityGalleryBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
         context = GalleryActivity.this;
-
+        pickiT = new PickiT(this, this, this);
         viewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
 
-       sessionManager = new SessionManager(context);
+        sessionManager = new SessionManager(context);
         getData();
         listener();
     }
 
     private void listener() {
-
+        b.srlRecycleViewGallery.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData();
+            }
+        });
 
 
         b.mtGalleryToolBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -109,6 +116,7 @@ DataModelImage dataModelImage;
             public void onClick(View v) {
                 for (int i = 0; i < imagePathList.size(); i++) {
                     uploadInThread(imagePathList.get(i));
+
                 }
 
             }
@@ -126,39 +134,41 @@ DataModelImage dataModelImage;
                     int count = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
                     for (int i = 0; i < count; i++) {
                         Uri imageUri = data.getClipData().getItemAt(i).getUri();
-                        Log.e("imageUri1 h", String.valueOf(imageUri));
-                       pathFile(imageUri);
-                        //do something with the image (save it to some directory or whatever you need to do with it here)
+                        pickiT.getPath(imageUri, Build.VERSION.SDK_INT);
+
+//                        Log.e("imageUri1 h", String.valueOf(imageUri));
+//                        pathFile(imageUri);
+//                        //do something with the image (save it to some directory or whatever you need to do with it here)
                     }
                 } else if (data.getData() != null) {
                     Uri imagePath = data.getData();
-                    Log.e("imageUri1", "data path:  " + String.valueOf(imagePath));
-                    pathFile(imagePath);
-                    //do something with the image (save it to some directory or whatever you need to do with it here)
+                    pickiT.getPath(imagePath, Build.VERSION.SDK_INT);
+//                    Log.e("imageUri1", "data path:  " + String.valueOf(imagePath));
+//                    pathFile(imagePath);
+//                    //do something with the image (save it to some directory or whatever you need to do with it here)
                 }
-
             }
         }
     }
 
 
-    public void pathFile(Uri selectedFileUri) {
-        String filePath = FilePath.getPath(this, selectedFileUri);
-        imagePathList.add(filePath);
-        Log.e("imageUri1", "parse Path:" + filePath);
-
-        if (filePath != null && !filePath.equals("")) {
-            try {
-                String fileName = getFileName(context, selectedFileUri);
-                imageNameList.add(fileName);
-               // b.textViewFileName.setText(fileName);
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            }
-        } else {
-            Toast.makeText(this, "Cannot upload attachment", Toast.LENGTH_SHORT).show();
-        }
-    }
+//    public void pathFile(Uri selectedFileUri) {
+//        String filePath = FilePath.getPath(this, selectedFileUri);
+//        imagePathList.add(filePath);
+//        Log.e("imageUri1", "parse Path:" + filePath);
+//
+//        if (filePath != null && !filePath.equals("")) {
+//            try {
+//                String fileName = getFileName(context, selectedFileUri);
+//                imageNameList.add(fileName);
+//               // b.textViewFileName.setText(fileName);
+//            } catch (URISyntaxException e) {
+//                e.printStackTrace();
+//            }
+//        } else {
+//            Toast.makeText(this, "Cannot upload attachment", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
 
     public static String getFileName(Context context, Uri uri) throws URISyntaxException {
@@ -188,15 +198,18 @@ DataModelImage dataModelImage;
             public void run() {
 //                uploadFile(path);
                 //setup params
-                Map<String, String> params = new HashMap<String, String>(1);
+                Map<String, String> params = new HashMap<String, String>();
                 params.put("member_id", sessionManager.getMemberId());
 
                 String result = multipartRequest(URL, params, path, "image", "image/jpeg");
 //next parse result string
+                // Log.e("result",result);
             }
         }).start();
     }
     public String multipartRequest(String urlTo, Map<String, String> parmas, String filepath, String filefield, String fileMimeType) {
+        Log.e("params", String.valueOf(parmas));
+        Log.e("params1", filepath);
         HttpURLConnection connection = null;
         DataOutputStream outputStream = null;
         InputStream inputStream = null;
@@ -257,7 +270,7 @@ DataModelImage dataModelImage;
             while (keys.hasNext()) {
                 String key = keys.next();
                 String value = parmas.get(key);
-
+                Log.e("durga", "response: " + key + "value");
                 outputStream.writeBytes(twoHyphens + boundary + lineEnd);
                 outputStream.writeBytes("Content-Disposition: form-data; name=\"" + key + "\"" + lineEnd);
                 outputStream.writeBytes("Content-Type: text/plain" + lineEnd);
@@ -268,9 +281,9 @@ DataModelImage dataModelImage;
 
             outputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
             Log.e("Connection response", String.valueOf(connection.getResponseCode()));
-
+            Log.e("durga", "response: " + connection.getResponseCode());
             if (200 != connection.getResponseCode()) {
-//                throw new CustomException("Failed to upload code:" + connection.getResponseCode() + " " + connection.getResponseMessage());
+//              throw new CustomException("Failed to upload code:" + connection.getResponseCode() + " " + connection.getResponseMessage());
             }
 
             inputStream = connection.getInputStream();
@@ -287,7 +300,7 @@ DataModelImage dataModelImage;
 //            logger.error(e);
 //            throw new CustomException(e)
         }
-        return "error;";
+        return "error";
     }
     private String convertStreamToString(InputStream is) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -310,14 +323,65 @@ DataModelImage dataModelImage;
         return sb.toString();
     }
 
+
+    @Override
+    public void PickiTonUriReturned() {
+
+    }
+
+    @Override
+    public void PickiTonStartListener() {
+
+    }
+
+    @Override
+    public void PickiTonProgressUpdate(int progress) {
+
+    }
+
+    @Override
+    public void PickiTonCompleteListener(String path, boolean wasDriveFile, boolean wasUnknownProvider, boolean wasSuccessful, String Reason) {
+        Log.e("durga", "path single: " + path.toString());
+        imagePathList.clear();
+        imagePathList.add(path);
+    }
+
+    @Override
+    public void PickiTonMultipleCompleteListener(ArrayList<String> paths, boolean wasSuccessful, String Reason) {
+        Log.e("durga", "paths: " + paths.toString());
+        imagePathList.clear();
+        imagePathList.addAll(paths);
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        super.onPointerCaptureChanged(hasCapture);
+    }
+
+    @Override
+    public void onBackPressed() {
+        pickiT.deleteTemporaryFile(this);
+        super.onBackPressed();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (!isChangingConfigurations()) {
+            pickiT.deleteTemporaryFile(this);
+        }
+    }
+
+
     private void getData() {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                getImageURL+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                getImageURL + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                progressDialog.dismiss();
-                Log.e("image response", String.valueOf(response));
+                //   progressDialog.dismiss();
+                b.srlRecycleViewGallery.setRefreshing(false);
+                // Log.e("image response", String.valueOf(response));
                 Gson gson = new Gson();
                 dataModelImage = gson.fromJson(String.valueOf(response), DataModelImage.class);
                 if (dataModelImage.results == 1) {
@@ -328,19 +392,21 @@ DataModelImage dataModelImage;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
+                b.srlRecycleViewGallery.setRefreshing(false);
+                // progressDialog.dismiss();
                 error.printStackTrace();
             }
         });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
     }
+
     private void setRecyclerView() {
-        GridLayoutManager layoutManager = new GridLayoutManager(context,2);
+        GridLayoutManager layoutManager = new GridLayoutManager(context, 2);
         b.rvMyImage.setLayoutManager(layoutManager);
         b.rvMyImage.setHasFixedSize(true);
         b.rvMyImage.setNestedScrollingEnabled(true);
-        ImageAdapter adapter = new ImageAdapter(context,dataModelImage.data);
+        ImageAdapter adapter = new ImageAdapter(context, dataModelImage.data);
         b.rvMyImage.setAdapter(adapter);
 
         if (adapter.getItemCount() != 0) {
@@ -351,5 +417,4 @@ DataModelImage dataModelImage;
             b.llNoDataImage.setVisibility(View.VISIBLE);
         }
     }
-
 }

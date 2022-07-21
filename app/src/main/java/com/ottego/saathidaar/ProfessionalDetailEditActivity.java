@@ -297,10 +297,10 @@ String memberId;
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
                 // set the custom icon to the alert dialog
-                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+                alertDialog.setIcon(R.drawable.money);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Income");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -361,10 +361,10 @@ String memberId;
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
                     // set the custom icon to the alert dialog
-                    alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
+                    alertDialog.setIcon(R.drawable.ic_baseline_work_24);
 
                     // title of the alert dialog
-                    alertDialog.setTitle("Choose an Item");
+                    alertDialog.setTitle("Choose Working with");
 
                     // list of the items to be displayed to
                     // the user in the form of list
@@ -488,67 +488,6 @@ String memberId;
 
             }
         });
-
-
-//        final int[] checkedItem = {-1};
-//        b.etCountry.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                // AlertDialog builder instance to build the alert dialog
-//                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-//
-//                // set the custom icon to the alert dialog
-//                alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
-//
-//                // title of the alert dialog
-//                alertDialog.setTitle("Choose an Item");
-//
-//                // list of the items to be displayed to
-//                // the user in the form of list
-//                // so that user can select the item from
-//                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
-//                // the function setSingleChoiceItems is the function which builds
-//                // the alert dialog with the single item selection
-//                alertDialog.setSingleChoiceItems(stringArray, checkedItem[0], new DialogInterface.OnClickListener() {
-//
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//                        // update the selected item which is selected by the user
-//                        // so that it should be selected when user opens the dialog next time
-//                        // and pass the instance to setSingleChoiceItems method
-//                        checkedItem[0] = which;
-//
-//                        // now also update the TextView which previews the selected item
-//                        b.etCountry.setText(stringArray[which]);
-//
-//                        // when selected an item the dialog should be closed with the dismiss method
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//                // set the negative button if the user
-//                // is not interested to select or change
-//                // already selected item
-//                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.cancel();
-//                    }
-//                });
-//
-//                // create and build the AlertDialog instance
-//                // with the AlertDialog builder instance
-//                AlertDialog customAlertDialog = alertDialog.create();
-//
-//                // show the alert dialog when the button is clicked
-//                customAlertDialog.show();
-//                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
-//                buttonbackground.setBackgroundColor(Color.BLACK);
-//
-//            }
-//        });
 
         b.etState.setOnClickListener(new View.OnClickListener() {
             @Override

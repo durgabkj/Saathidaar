@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -74,7 +75,17 @@ FragmentRecentlyViewedBinding b;
 
         sessionManager = new SessionManager(context);
         getData();
+        listener();
         return b.getRoot();
+    }
+
+    private void listener() {
+        b.srlRecycleViewRecentlyViewed.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData();
+            }
+        });
     }
 
 
@@ -84,7 +95,7 @@ FragmentRecentlyViewedBinding b;
                 recentlyViewed + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                //  b.srlRecycleBookmark.setRefreshing(false);
+                  b.srlRecycleViewRecentlyViewed.setRefreshing(false);
               //  progressDialog.dismiss();
                 Log.e("recent visitors response", String.valueOf(response));
                 Gson gson = new Gson();
@@ -98,6 +109,7 @@ FragmentRecentlyViewedBinding b;
             @Override
             public void onErrorResponse(VolleyError error) {
               //  progressDialog.dismiss();
+                b.srlRecycleViewRecentlyViewed.setRefreshing(false);
                 error.printStackTrace();
             }
         });

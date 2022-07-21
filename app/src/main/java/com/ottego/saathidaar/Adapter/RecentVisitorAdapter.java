@@ -63,7 +63,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                     Utils.blockMember(context, item.member_id);
                     holder.llShortBlockRecentV.setVisibility(View.GONE);
                     holder.llBlockedRecentV.setVisibility(View.VISIBLE);
-                    holder.ivLikeRecentVisitors.setEnabled(false);
+                    holder.ivLikeRecentVisitors.setVisibility(View.GONE);
                 }
             });
 
@@ -71,7 +71,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
             holder.llShortListRecentV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Utils.blockMember(context, item.member_id);
+                    Utils.shortList(context, item.member_id);
                     holder.llShortListRecentV.setVisibility(View.GONE);
                     holder.llShortListRemove.setVisibility(View.VISIBLE);
                 }

@@ -96,7 +96,7 @@ FragmentBlockMemberBinding b;
             @Override
             public void onResponse(JSONObject response) {
                 //  b.srlRecycleBookmark.setRefreshing(false);
-           //   b.srlRecycleViewBlock.setRefreshing(false);
+             b.srlRecycleViewBlock.setRefreshing(false);
                 Log.e("recent visitors response", String.valueOf(response));
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
@@ -110,7 +110,7 @@ FragmentBlockMemberBinding b;
             public void onErrorResponse(VolleyError error) {
                // progressDialog.dismiss();
                 error.printStackTrace();
-              //  b.srlRecycleViewBlock.setRefreshing(false);
+                b.srlRecycleViewBlock.setRefreshing(false);
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));

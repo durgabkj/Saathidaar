@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -79,6 +80,16 @@ FragmentFamilyInfoBinding b;
     }
 
     private void listener() {
+
+
+        b.srlRecycleViewFamilyDetails.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getMemberData();
+            }
+        });
+
+
         b.ivCameraEditFamilyInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,6 +105,7 @@ FragmentFamilyInfoBinding b;
                 url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                b.srlRecycleViewFamilyDetails.setRefreshing(false);
                 Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
@@ -113,6 +125,7 @@ FragmentFamilyInfoBinding b;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                b.srlRecycleViewFamilyDetails.setRefreshing(false);
                 error.printStackTrace();
             }
         });

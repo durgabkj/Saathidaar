@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -79,9 +80,18 @@ public class AcceptedInboxFragment extends Fragment {
         viewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
         member_id = sessionManager.getMemberId();
         getData();
-
+listener();
         return b.getRoot();
 
+    }
+
+    private void listener() {
+        b.srlRecycleViewAccept.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData();
+            }
+        });
     }
 
     private void getData() {
@@ -90,7 +100,7 @@ public class AcceptedInboxFragment extends Fragment {
                 InvitationAcceptUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-              //  b.srlRecycleViewAcceptInvitation.setRefreshing(false);
+               b.srlRecycleViewAccept.setRefreshing(false);
                // progressDialog.dismiss();
                 Log.e("Invitation accepted response", String.valueOf(response));
                 Gson gson = new Gson();
@@ -103,7 +113,7 @@ public class AcceptedInboxFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-               // b.srlRecycleViewAcceptInvitation.setRefreshing(false);
+                b.srlRecycleViewAccept.setRefreshing(false);
               //  progressDialog.dismiss();
                 error.printStackTrace();
             }

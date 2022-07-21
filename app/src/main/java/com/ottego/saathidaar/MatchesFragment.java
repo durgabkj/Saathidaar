@@ -189,6 +189,7 @@ sessionManager=new SessionManager(context);
             badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
             badgeDrawable.setBadgeGravity(BadgeDrawable.TOP_END);
 
+
             BadgeDrawable badgeDrawable1 = b.tlMatch.getTabAt(1).getOrCreateBadge();
             badgeDrawable1.setNumber(Integer.parseInt(model.data.get(0).my_matches_count));
             badgeDrawable1.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));

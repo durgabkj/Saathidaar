@@ -43,6 +43,7 @@
                                 android:id="@+id/profilePic"
                                 android:layout_width="90dp"
                                 android:layout_height="90dp"
+                                android:tooltipText="Upload Image"
                                 android:background="@color/white"
                                 android:scaleType="centerCrop"
                                 android:src="@drawable/local" />
@@ -62,6 +63,7 @@
                                 android:id="@+id/iv_camera"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
+                                android:tooltipText="Upload Image"
                                 android:padding="5dp"
                                 app:srcCompat="@drawable/ic_round_camera_alt_24" />
                         </com.google.android.material.card.MaterialCardView>
@@ -154,6 +156,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
+                        android:visibility="gone"
                         android:fontFamily="@font/italic"
                         android:text="Upload Image"
 
@@ -357,7 +360,6 @@
 
 
                 </LinearLayout>
-
 
 
 
@@ -588,6 +590,7 @@ android:textSize="14dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:text="Tap to Rate App"
+                                android:textColor="@color/black"
                                 android:fontFamily="@font/italic"
                               />
                         </LinearLayout>
@@ -725,6 +728,7 @@ android:textSize="14dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/italic"
                     android:layout_gravity="center"
                     android:text="NEWSLETTER"/>
@@ -735,6 +739,7 @@ android:textSize="14dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:textSize="10sp"
+                    android:textColor="@color/colorPrimary"
                     android:fontFamily="@font/italic"
                     android:layout_gravity="center"
                     android:text="Be the first to know about new arrivals,look books,sell and promos!"/>
