@@ -304,19 +304,19 @@ public class Utils {
     }
 
     public static void blockMember(Context context, String member_id) {
-        //final ProgressDialog progressDialog = ProgressDialog.show(context, null, "please wait....", false, false);
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "please wait....", false, false);
         String BlockUrl = Utils.memberUrl + "block-member";
         Map<String, String> params = new HashMap<String, String>();
         params.put("request_from_id",(member_id));
         params.put("request_to_id",new SessionManager(context).getMemberId() );
         params.put("block_by_id", new SessionManager(context).getMemberId());
-        params.put("request_status","Block");
+        params.put("block_status","Block");
         Log.e("params request sent", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, BlockUrl, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                    @Override
                    public void onResponse(JSONObject response) {
-                      // progressDialog.dismiss();
+                       progressDialog.dismiss();
                         Log.e(" block response", String.valueOf((response)));
                         try {
                             String code = response.getString("results");
@@ -334,7 +334,7 @@ public class Utils {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                      //  progressDialog.dismiss();
+                        progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error response", String.valueOf(error));
                         }
@@ -353,7 +353,7 @@ public class Utils {
         params.put("request_from_id", member_id);
         params.put("request_to_id", new SessionManager(context).getMemberId());
         params.put("block_by_id", new SessionManager(context).getMemberId());
-        params.put("request_status","Un-Block");
+        params.put("block_status","Un-Block");
         Log.e("params request sent", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, BlockUrl, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
