@@ -54,7 +54,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     ActivityGalleryBinding b;
     SessionManager sessionManager;
     DataModelImage dataModelImage;
-    String URL = Utils.memberUrl + "uploads/photo";
+    String URL = "http://103.150.186.33:8080/saathidaar_backend/api/member/uploads/photo";
     ProgressDialog progressDialog;
     String getImageURL = Utils.memberUrl + "app/get/photo/";
     Context context;
@@ -69,11 +69,10 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         super.onCreate(savedInstanceState);
         b = ActivityGalleryBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
-        context = GalleryActivity.this;
         pickiT = new PickiT(this, this, this);
         viewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
-
-        sessionManager = new SessionManager(context);
+        context = GalleryActivity.this;
+       sessionManager = new SessionManager(context);
         getData();
         listener();
     }
@@ -230,7 +229,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         try {
             File file = new File(filepath);
             FileInputStream fileInputStream = new FileInputStream(file);
-
+            Log.e("file", String.valueOf(file));
             URL url = new URL(urlTo);
             connection = (HttpURLConnection) url.openConnection();
 
@@ -248,7 +247,6 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             outputStream.writeBytes("Content-Disposition: form-data; name=\"" + filefield + "\"; filename=\"" + q[idx] + "\"" + lineEnd);
             outputStream.writeBytes("Content-Type: " + fileMimeType + lineEnd);
             outputStream.writeBytes("Content-Transfer-Encoding: binary" + lineEnd);
-
             outputStream.writeBytes(lineEnd);
 
             bytesAvailable = fileInputStream.available();
@@ -267,6 +265,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 
             // Upload POST Data
             Iterator<String> keys = parmas.keySet().iterator();
+            Log.e("hey-keys", String.valueOf(keys));
             while (keys.hasNext()) {
                 String key = keys.next();
                 String value = parmas.get(key);
@@ -400,7 +399,6 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
     }
-
     private void setRecyclerView() {
         GridLayoutManager layoutManager = new GridLayoutManager(context, 2);
         b.rvMyImage.setLayoutManager(layoutManager);

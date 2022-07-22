@@ -120,7 +120,6 @@ public class ShortListFragment extends Fragment {
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     private void setRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         b.rvShortList.setLayoutManager(layoutManager);
@@ -128,7 +127,6 @@ public class ShortListFragment extends Fragment {
         b.rvShortList.setNestedScrollingEnabled(true);
         RemoveShortListAdapter adapter = new RemoveShortListAdapter(context,data.data);
         b.rvShortList.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
         if (adapter.getItemCount() != 0) {
             b.llNoDataShortList.setVisibility(View.GONE);
             b.rvShortList.setVisibility(View.VISIBLE);

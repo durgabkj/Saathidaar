@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.MatchPagerFragment;
+import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.Utils;
@@ -96,7 +97,8 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
             holder.llPhotoRecentV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(view.getContext(), GalleryActivity.class);
+                    Intent intent=new Intent(view.getContext(), MemberGalleryActivity.class);
+                    intent.putExtra("Member_id", item.member_id);
                     context.startActivity(intent);
                 }
             });

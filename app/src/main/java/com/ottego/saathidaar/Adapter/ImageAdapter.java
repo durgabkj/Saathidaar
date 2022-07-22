@@ -52,18 +52,11 @@ public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.ViewHolder>
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    Intent intent = new Intent(context, ShowImageFragment.class);
-//                    intent.putExtra("data", new Gson().toJson(item));
-//                    intent.putExtra("position", position);
-//                    context.startActivity(intent);
-                   // DashBoardFragment.newInstance(new Gson().toJson(item),"");
+
                     Log.e("position", String.valueOf(position));
                     GalleryPagerFragment.newInstance(String.valueOf(position),"").show(((FragmentActivity) context).getSupportFragmentManager(), "gallery_pager_fragment");
 
-//               DashBoardFragment dashBoardFragment=new DashBoardFragment();
-//               Bundle arg=new Bundle();
-//               arg.putString("image",item.member_images);
-//               dashBoardFragment.setArguments(arg);
+
 
                 }
             });

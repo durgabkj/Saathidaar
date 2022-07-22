@@ -167,6 +167,7 @@
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_login.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_matches_details.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_member_gallery.xml" value="0.16296296296296298" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_more.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_my_matches_show.xml" value="0.22395833333333334" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/activity_navigation.xml" value="0.23802083333333332" />
@@ -206,6 +207,7 @@
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_match_details.xml" value="0.19266441821247893" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_match_pager.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_matches.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_member_gallery_show.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_more.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_my_match.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_my_profile.xml" value="0.23802083333333332" />

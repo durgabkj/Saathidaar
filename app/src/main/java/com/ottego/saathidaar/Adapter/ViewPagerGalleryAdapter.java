@@ -7,14 +7,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.ottego.saathidaar.MatchDetailsFragment;
+import com.ottego.saathidaar.MemberGalleryShowFragment;
 import com.ottego.saathidaar.ShowImageFragment;
 import com.ottego.saathidaar.viewmodel.GalleryViewModel;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
-public class ViewPgerGalleryAdapter extends FragmentStateAdapter {
+public class ViewPagerGalleryAdapter extends FragmentStateAdapter {
     GalleryViewModel viewModel;
-    public ViewPgerGalleryAdapter(@NonNull FragmentActivity fragmentActivity, GalleryViewModel viewModel) {
+    public ViewPagerGalleryAdapter(@NonNull FragmentActivity fragmentActivity, GalleryViewModel viewModel) {
         super(fragmentActivity);
         this.viewModel = viewModel;
     }
@@ -24,6 +23,7 @@ public class ViewPgerGalleryAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         Log.e("image_id", viewModel.list.getValue().get(position).image_id);
 
+      //  MemberGalleryShowFragment.newInstance(viewModel.list.getValue().get(position).member_images, viewModel._list.getValue().get(position).image_id);
         return ShowImageFragment.newInstance(viewModel.list.getValue().get(position).member_images, viewModel._list.getValue().get(position).image_id);
     }
 

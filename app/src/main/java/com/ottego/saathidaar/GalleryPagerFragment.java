@@ -3,7 +3,6 @@ package com.ottego.saathidaar;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -11,11 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ottego.saathidaar.Adapter.ViewPagerMatchDetailAdapter;
-import com.ottego.saathidaar.Adapter.ViewPgerGalleryAdapter;
+import com.ottego.saathidaar.Adapter.ViewPagerGalleryAdapter;
+import com.ottego.saathidaar.Adapter.ViewPagerMemberGalleryAdapter;
 import com.ottego.saathidaar.databinding.FragmentGalleryPagerBinding;
 import com.ottego.saathidaar.viewmodel.GalleryViewModel;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 import java.util.Objects;
 
@@ -65,10 +63,12 @@ FragmentGalleryPagerBinding b;
 
 
         // of ViewPager2Adapter
-        ViewPgerGalleryAdapter viewPager2Adapter = new ViewPgerGalleryAdapter(requireActivity(), viewModel);
+        ViewPagerGalleryAdapter viewPager2Adapter = new ViewPagerGalleryAdapter(requireActivity(), viewModel);
+        ViewPagerMemberGalleryAdapter viewPagerMemberGalleryAdapter = new ViewPagerMemberGalleryAdapter(requireActivity(), viewModel);
 
         // adding the adapter to viewPager2
         // to show the views in recyclerview
+        b.vp2DetailsImage.setAdapter(viewPagerMemberGalleryAdapter);
         b.vp2DetailsImage.setAdapter(viewPager2Adapter);
         b.vp2DetailsImage.setCurrentItem(Integer.parseInt(mParam1));
         // To get swipe event of viewpager2

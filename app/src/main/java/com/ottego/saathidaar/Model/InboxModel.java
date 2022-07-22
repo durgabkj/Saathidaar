@@ -1,5 +1,7 @@
 package com.ottego.saathidaar.Model;
 
+import java.util.List;
+
 public class InboxModel {
     public String income;
     public String member_id;
@@ -25,5 +27,6 @@ public class InboxModel {
     public String gender;
     public String request_status_date;
     public String country;
+    public List<GalleryModel> images;
 
 }
