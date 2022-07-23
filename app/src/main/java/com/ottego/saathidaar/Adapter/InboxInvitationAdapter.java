@@ -53,6 +53,9 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         holder.tvInvNewMatchCity.setText(item.maritalStatus);
         holder.tvInvNewMatchWorkAs.setText(item.country);
 
+        holder.tvInvitationMessageInbox.setText(item.request_message);
+        holder.tvInvitationDateInbox.setText(item.request_status_date);
+
         holder.llAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,7 +122,7 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs;
+        TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs,tvInvitationMessageInbox,tvInvitationDateInbox;
         LinearLayout llAccept, llDelete, llAccepted, llDeleted,llPhotoInvitation,llBlockInvitation,llBlockedInvitation,llAcceptDelete;
 
         public ViewHolder(@NonNull View itemView) {
@@ -139,6 +142,10 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
             llBlockInvitation=itemView.findViewById(R.id.llBlockInvitation);
             llBlockedInvitation=itemView.findViewById(R.id.llBlockedInvitation);
             llAcceptDelete=itemView.findViewById(R.id.llAcceptDelete);
+
+
+            tvInvitationMessageInbox=itemView.findViewById(R.id.tvInvitationMessageInbox);
+            tvInvitationDateInbox=itemView.findViewById(R.id.tvInvitationDateInbox);
         }
     }
 }

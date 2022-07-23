@@ -165,8 +165,7 @@
             android:layout_gravity="bottom"
             android:background="@drawable/bg_gradient"
             android:orientation="vertical"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp">
+            >
 
             <LinearLayout
                 android:id="@+id/llAcceptCallMsgDecline"
@@ -398,7 +397,7 @@
                     android:shadowDy="1.3"
                     android:shadowRadius="1.6"
                     android:text="Mumbai"
-                    android:maxLength="8"
+                    android:maxLength="15"
                     android:fontFamily="@font/italic"
                     android:inputType="textCapWords"
                     android:textColor="@color/white"
@@ -406,7 +405,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvInvNewMatchWorkAs"
+                    android:id="@+id/tvInvNewMatchWorkAsAccept"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -414,7 +413,7 @@
                     android:shadowDx="1.5"
                     android:shadowDy="1.3"
                     android:fontFamily="@font/italic"
-                    android:maxLength="25"
+                    android:maxLength="22"
                     android:shadowRadius="1.6"
                     android:inputType="textCapWords"
                     android:text="Junior software Developer"
@@ -423,13 +422,59 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPrediction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                android:visibility="gone"
+                android:background="@drawable/side_border_green"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/tvInvitationMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="She Sent the invitation"
+                    android:shadowColor="@color/wallet_holo_blue_light"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:fontFamily="@font/italic"
+                    android:shadowRadius="1.6"
+                    android:textAlignment="textStart"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tvInvitationDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:textStyle="bold"
+                    android:shadowColor="@color/wallet_holo_blue_light"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:fontFamily="@font/italic"
+                    android:shadowRadius="1.6"
+                    android:text="22-07-22 : 8:30 PM"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp" />
+            </LinearLayout>
         </LinearLayout>
 
 
 
 
 
+
     </com.google.android.material.card.MaterialCardView>
+
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -439,7 +484,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/line_gradient"/>
 
 </LinearLayout>

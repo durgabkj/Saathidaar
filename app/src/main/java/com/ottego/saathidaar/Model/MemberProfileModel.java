@@ -63,6 +63,7 @@ public class MemberProfileModel {
     public String state;
     public String familyValues;
     public String membernative;
+    public String profile_photo;
     public String profilecreatedby;
     public String country_name;
     public String time_status;

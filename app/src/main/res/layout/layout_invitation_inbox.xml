@@ -167,9 +167,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:background="@drawable/bg_gradient"
-                android:orientation="vertical"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="10dp">
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/llAcceptDelete"
@@ -426,6 +424,48 @@
                         android:textStyle="bold" />
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llMsgDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/side_border_green"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tvInvitationMessageInbox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="She Sent the invitation"
+                        android:shadowColor="@color/wallet_holo_blue_light"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:fontFamily="@font/italic"
+                        android:shadowRadius="1.6"
+                        android:textAlignment="textStart"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tvInvitationDateInbox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:textStyle="bold"
+                        android:shadowColor="@color/wallet_holo_blue_light"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:fontFamily="@font/italic"
+                        android:shadowRadius="1.6"
+                        android:text="22-07-22 : 8:30 PM"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16dp" />
+                </LinearLayout>
             </LinearLayout>
 
 
@@ -442,6 +482,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/line_gradient"/>
 </LinearLayout>

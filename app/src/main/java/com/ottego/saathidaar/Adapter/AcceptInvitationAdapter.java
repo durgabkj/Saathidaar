@@ -53,6 +53,9 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         holder.tvInvNewMatchAge.setText(item.mage);
         holder.tvInvNewMatchHeight.setText(item.religion);
         holder.tvInvNewMatchCity.setText(item.maritalStatus);
+        holder.tvInvNewMatchWorkAsAccept.setText(item.country);
+        holder.tvInvitationMessage.setText(item.request_message);
+        holder.tvInvitationDate.setText(item.request_status_date);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +96,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs;
+        TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAsAccept,tvInvitationMessage,tvInvitationDate;
         LinearLayout llCAll,llWhatsApp, llPhotoAccept,llBlockAccept,llBlockedAccept,llAcceptCallMsgDecline;
 
 
@@ -104,13 +107,16 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
             tvInvNewMatchName = itemView.findViewById(R.id.tvInvNewMatchName);
             tvInvNewMatchHeight = itemView.findViewById(R.id.tvInvNewMatchHeight);
             tvInvNewMatchCity = itemView.findViewById(R.id.tvInvNewMatchCity);
-            tvInvNewMatchWorkAs = itemView.findViewById(R.id.tvInvNewMatchWorkAs);
+            tvInvNewMatchWorkAsAccept = itemView.findViewById(R.id.tvInvNewMatchWorkAsAccept);
             llCAll = itemView.findViewById(R.id.llCAll);
             llPhotoAccept = itemView.findViewById(R.id.llPhotoAccept);
             llWhatsApp = itemView.findViewById(R.id.llWhatsApp);
             llBlockAccept=itemView.findViewById(R.id.llBlockAccept);
             llBlockedAccept=itemView.findViewById(R.id.llBlockedAccept);
             llAcceptCallMsgDecline=itemView.findViewById(R.id.llAcceptCallMsgDecline);
+
+            tvInvitationMessage=itemView.findViewById(R.id.tvInvitationMessage);
+            tvInvitationDate=itemView.findViewById(R.id.tvInvitationDate);
         }
     }
 }
