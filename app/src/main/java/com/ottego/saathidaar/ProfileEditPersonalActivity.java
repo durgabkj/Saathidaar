@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Fragment.PersonalInfoFragment;
 import com.ottego.saathidaar.Model.DataModelReligion;
@@ -172,6 +174,10 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             b.tvUserReligion.setText(model.religion_name);
             b.etHealth.setText(model.health_info);
             b.tvUserGotra.setText(model.gothra);
+
+            Glide.with(context)
+                    .load(Utils.imageUrl+model.profile_photo)
+                    .into(b.profilePic);
         }
 
 

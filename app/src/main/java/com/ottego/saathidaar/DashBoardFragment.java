@@ -24,6 +24,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.DataModelDashboard;
 import com.ottego.saathidaar.Model.ImageModel;
@@ -33,7 +34,7 @@ import org.json.JSONObject;
 
 public class DashBoardFragment extends Fragment {
     SessionManager sessionManager;
-    ImageView ivPremiumImage, profilePic;
+    ImageView ivPremiumImage, profilePicDashBoard;
     TextView tvPremiumText, RequestAccept, tvDashBoardUserId, tvDashBoardUserAccountType, tvDashBoardUploadImage, Visitors, RequestSent, tvDashboardUpgrade, tvDashBoardUserName;
     int position = 0;
     DataModelDashboard model;
@@ -83,26 +84,14 @@ public class DashBoardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
-        context = getContext();
+      context = getContext();
         sessionManager = new SessionManager(context);
-
-//       if(sessionManager.getKeyProGender().equalsIgnoreCase("female"))
-//       {
-//           profilePic.setBackgroundResource(R.drawable.woman);;
-//
-//        }else
-//       {
-//          // profilePic.setImageResource(R.drawable.woman);
-//       }
-
-
-        Log.e("gender", sessionManager.getKeyProGender());
 
 
         ivPremiumImage = view.findViewById(R.id.ivPremiumImage);
         tvPremiumText = view.findViewById(R.id.tvPremiumText);
         tvLogout = view.findViewById(R.id.tvLogout);
-        profilePic = view.findViewById(R.id.profilePic);
+        profilePicDashBoard = view.findViewById(R.id.profilePicDashBoard);
         llshare = view.findViewById(R.id.llshare);
         tvDashboardUpgrade = view.findViewById(R.id.tvDashboardpgrade);
         RequestAccept = view.findViewById(R.id.RequestAccept);
@@ -119,9 +108,6 @@ public class DashBoardFragment extends Fragment {
         llAcceptRequest=view.findViewById(R.id.llAcceptRequest);
         llProfileVisi=view.findViewById(R.id.llProfileVisi);
 
-
-        context = getContext();
-        sessionManager = new SessionManager(context);
         set();
         Log.e("hey_member",sessionManager.getMemberId());
 
@@ -148,6 +134,10 @@ public class DashBoardFragment extends Fragment {
 
         tvDashBoardUserId.setText("["+sessionManager.getKeyProfileId()+"]");
         tvDashBoardUserAccountType.setText(sessionManager.getKeyCreatedby());
+
+        Glide.with(context)
+                .load(Utils.imageUrl+sessionManager.getKEY_PROFILE_Pic())
+                .into(profilePicDashBoard);
         //  setData();
         listener();
 
@@ -174,7 +164,7 @@ public class DashBoardFragment extends Fragment {
                 sessionManager.logoutUser();
             }
         });
-        profilePic.setOnClickListener(new View.OnClickListener() {
+        profilePicDashBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(context,GalleryActivity.class);

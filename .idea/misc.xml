@@ -197,7 +197,7 @@
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_delete_inbox.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_email_and_sms_alert.xml" value="0.264" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_family_info.xml" value="0.23802083333333332" />
-        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_gallery_pager.xml" value="0.264" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_gallery_pager.xml" value="0.2" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_hide_delete_profile.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_home.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_horoscope.xml" value="0.23802083333333332" />
@@ -208,6 +208,7 @@
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_match_details.xml" value="0.19266441821247893" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_match_pager.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_matches.xml" value="0.23802083333333332" />
+        <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_member_gallery_pager.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_member_gallery_show.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_more.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/layout/fragment_my_match.xml" value="0.23802083333333332" />

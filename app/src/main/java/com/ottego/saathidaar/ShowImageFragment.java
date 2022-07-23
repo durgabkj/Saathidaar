@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bumptech.glide.Glide;
 import com.ottego.saathidaar.Model.ImageModel;
+import com.ottego.saathidaar.Model.SessionModel;
 import com.ottego.saathidaar.databinding.FragmentShowImageBinding;
 
 import org.json.JSONException;
@@ -60,10 +61,6 @@ FragmentShowImageBinding b;
         }
     }
 
-
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,8 +75,6 @@ FragmentShowImageBinding b;
         listener();
         return b.getRoot();
     }
-
-
     private void listener() {
 
         b.mtbImage.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -92,6 +87,7 @@ FragmentShowImageBinding b;
             }
         });
 
+
         b.tvMakeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,17 +97,13 @@ FragmentShowImageBinding b;
 
 
     }
-
     private void setProfile() {
-        String ProfileSetUrl = Utils.memberUrl + "profile/photo";
-        HashMap<String, Integer> params = new HashMap<>();
-
-        int memberId = Integer.parseInt(sessionManager.getMemberId());
-        int image1 = Integer.parseInt(mParam2);
-        params.put("member_id", memberId);
-        params.put("image_id", image1);
+        String ProfileSetUrl = Utils.memberUrl + "profile/photo/";
+        HashMap<String, String> params = new HashMap<>();
+      //  params.put("member_id", memberId);
+        params.put("image_id", mParam2);
         Log.e("params image id", String.valueOf(params));
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, ProfileSetUrl, new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, ProfileSetUrl+sessionManager.getMemberId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -126,7 +118,7 @@ FragmentShowImageBinding b;
 //                                        .load(mParam2)
 //                                        .placeholder(R.drawable.man)
 //                                        .into(b.ivProfilePic);
-
+                                new  SessionManager(context).setImageId(mParam2);
                             } else {
                                 Toast.makeText(getActivity(), "Try after sometime....", Toast.LENGTH_SHORT).show();
                             }

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.ottego.saathidaar.GalleryPagerFragment;
+import com.ottego.saathidaar.MemberGalleryPagerFragment;
 import com.ottego.saathidaar.Model.GalleryModel;
 import com.ottego.saathidaar.Model.ImageModel;
 import com.ottego.saathidaar.Model.MemberProfileModel;
@@ -24,8 +25,8 @@ import java.util.List;
 
 public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageGalleryAdapter.ViewHolder> {
     Context context;
-    List<GalleryModel> list;
-    public MemberImageGalleryAdapter(Context context, List<GalleryModel> list) {
+    List<ImageModel> list;
+    public MemberImageGalleryAdapter(Context context, List<ImageModel> list) {
         this.context = context;
         this.list = list;
     }
@@ -39,25 +40,19 @@ public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageG
 
     @Override
     public void onBindViewHolder(@NonNull MemberImageGalleryAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        GalleryModel item = list.get(position);
+        ImageModel item = list.get(position);
 //        Log.e(" New Matches model", new Gson().toJson(item));
 
-
-//        for (GalleryModel image : item.images) {
-//           // Log.e("image", Utils.IMAGEURL + image.ImagePath);
-//            if (image.IsDefault.equalsIgnoreCase("1")) {
-//                Glide.with(context)
-//                        .load(Utils.IMAGEURL + image.ImagePath)
-//                        .into(holder.imageFavListViewMess);
-//            }
-//        }
+        Glide.with(context)
+                .load(Utils.imageUrl + item.member_images)
+                .into(holder.ivUserImageMember);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Log.e("position", String.valueOf(position));
-                GalleryPagerFragment.newInstance(String.valueOf(position),"").show(((FragmentActivity) context).getSupportFragmentManager(), "gallery_pager_fragment");
+                MemberGalleryPagerFragment.newInstance(String.valueOf(position),"").show(((FragmentActivity) context).getSupportFragmentManager(), "gallery_pager_fragment");
 
 
 
@@ -74,11 +69,11 @@ public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageG
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-
+ImageView ivUserImageMember;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-
+            ivUserImageMember=itemView.findViewById(R.id.ivUserImageMember);
         }
     }
 }

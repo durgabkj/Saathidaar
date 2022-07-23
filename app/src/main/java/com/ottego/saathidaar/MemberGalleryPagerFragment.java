@@ -3,6 +3,8 @@ package com.ottego.saathidaar;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -10,38 +12,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ottego.saathidaar.Adapter.ViewPagerGalleryAdapter;
 import com.ottego.saathidaar.Adapter.ViewPagerMemberGalleryAdapter;
 import com.ottego.saathidaar.databinding.FragmentGalleryPagerBinding;
+import com.ottego.saathidaar.databinding.FragmentMemberGalleryPagerBinding;
+import com.ottego.saathidaar.databinding.FragmentMemberGalleryShowBinding;
 import com.ottego.saathidaar.viewmodel.GalleryViewModel;
 
 import java.util.Objects;
 
-
-public class GalleryPagerFragment extends DialogFragment {
-FragmentGalleryPagerBinding b;
+public class MemberGalleryPagerFragment extends DialogFragment {
+    FragmentMemberGalleryPagerBinding b;
+    GalleryViewModel viewModel;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    GalleryViewModel viewModel;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public GalleryPagerFragment() {
+    public MemberGalleryPagerFragment() {
         // Required empty public constructor
     }
-    @Override
-    public int getTheme() {
-        return R.style.FullScreenDialogTheme;
-    }
 
-    public static GalleryPagerFragment newInstance(String param1, String param2) {
-        GalleryPagerFragment fragment = new GalleryPagerFragment();
+    public static MemberGalleryPagerFragment newInstance(String param1, String param2) {
+        MemberGalleryPagerFragment fragment = new MemberGalleryPagerFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public int getTheme() {
+        return R.style.FullScreenDialogTheme;
     }
 
     @Override
@@ -57,19 +61,19 @@ FragmentGalleryPagerBinding b;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        b=FragmentGalleryPagerBinding.inflate(inflater, container, false);
+        b = FragmentMemberGalleryPagerBinding.inflate(inflater, container, false);
 
         viewModel = new ViewModelProvider(requireActivity()).get(GalleryViewModel.class);
 
 
         // of ViewPager2Adapter
-      ViewPagerGalleryAdapter viewPager2Adapter = new ViewPagerGalleryAdapter(requireActivity(), viewModel);
-       // ViewPagerMemberGalleryAdapter viewPagerMemberGalleryAdapter = new ViewPagerMemberGalleryAdapter(requireActivity(), viewModel);
+        // ViewPagerGalleryAdapter viewPager2Adapter = new ViewPagerGalleryAdapter(requireActivity(), viewModel);
+        ViewPagerMemberGalleryAdapter viewPagerMemberGalleryAdapter = new ViewPagerMemberGalleryAdapter(requireActivity(), viewModel);
 
         // adding the adapter to viewPager2
         // to show the views in recyclerview
-      //  b.vp2DetailsImage.setAdapter(viewPagerMemberGalleryAdapter);
-       b.vp2DetailsImage.setAdapter(viewPager2Adapter);
+        b.vp2DetailsImage.setAdapter(viewPagerMemberGalleryAdapter);
+        //  b.vp2DetailsImage.setAdapter(viewPager2Adapter);
         b.vp2DetailsImage.setCurrentItem(Integer.parseInt(mParam1));
         // To get swipe event of viewpager2
 
@@ -101,6 +105,7 @@ FragmentGalleryPagerBinding b;
 
 
             }
+
             // triggered when there is
             // scroll state will be changed
             @Override
@@ -109,7 +114,6 @@ FragmentGalleryPagerBinding b;
 
             }
         });
-
 
 
         b.vp2DetailsImage.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +128,7 @@ FragmentGalleryPagerBinding b;
 
             @Override
             public void onClick(View view) {
-                b.vp2DetailsImage.setCurrentItem(b.vp2DetailsImage.getCurrentItem()+1, true);
+                b.vp2DetailsImage.setCurrentItem(b.vp2DetailsImage.getCurrentItem() + 1, true);
             }
         });
 
@@ -132,11 +136,13 @@ FragmentGalleryPagerBinding b;
 
             @Override
             public void onClick(View view) {
-                b.vp2DetailsImage.setCurrentItem(b.vp2DetailsImage.getCurrentItem()-1, true);
+                b.vp2DetailsImage.setCurrentItem(b.vp2DetailsImage.getCurrentItem() - 1, true);
             }
         });
 
 
         return b.getRoot();
     }
+
+
 }

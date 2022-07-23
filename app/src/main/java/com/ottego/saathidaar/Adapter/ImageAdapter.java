@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.DashBoardFragment;
 import com.ottego.saathidaar.GalleryPagerFragment;
+import com.ottego.saathidaar.MemberGalleryPagerFragment;
 import com.ottego.saathidaar.Model.ImageModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.ShowImageFragment;
@@ -52,13 +53,9 @@ public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.ViewHolder>
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                     Log.e("position", String.valueOf(position));
                     GalleryPagerFragment.newInstance(String.valueOf(position),"").show(((FragmentActivity) context).getSupportFragmentManager(), "gallery_pager_fragment");
-
-
-
-                }
+                         }
             });
 
 
@@ -75,7 +72,7 @@ public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.ViewHolder>
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
 
-                ivUserImage = itemView.findViewById(R.id.ivUserImage);
+                ivUserImage = itemView.findViewById(R.id.ivUserImageMember);
 
             }
         }

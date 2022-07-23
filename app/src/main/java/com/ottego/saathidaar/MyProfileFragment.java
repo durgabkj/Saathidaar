@@ -25,6 +25,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
 import com.ottego.saathidaar.Adapter.ProfileViewPager;
 import com.ottego.saathidaar.Fragment.FamilyInfoFragment;
@@ -166,6 +167,10 @@ public class MyProfileFragment extends Fragment {
     private void setPreLoadData() {
         tvUserName.setText(sessionManager.getName()+" "+sessionManager.getLastName());
         tvUserEmail.setText(sessionManager.getEmail());
+
+        Glide.with(context)
+                .load(Utils.imageUrl+sessionManager.getKEY_PROFILE_Pic())
+                .into(profilePic);
 
     }
 }

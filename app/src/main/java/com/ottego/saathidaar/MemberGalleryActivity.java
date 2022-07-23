@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -20,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.ImageAdapter;
+import com.ottego.saathidaar.Adapter.MemberImageGalleryAdapter;
 import com.ottego.saathidaar.Model.DataModelImage;
 import com.ottego.saathidaar.databinding.ActivityGalleryBinding;
 import com.ottego.saathidaar.databinding.ActivityMemberGalleryBinding;
@@ -32,7 +34,6 @@ import java.util.List;
 
 public class MemberGalleryActivity extends AppCompatActivity {
 ActivityMemberGalleryBinding b;
-    SessionManager sessionManager;
     DataModelImage dataModelImage;
     String getImageURL = Utils.memberUrl + "app/get/photo/";
     Context context;
@@ -46,6 +47,7 @@ ActivityMemberGalleryBinding b;
         viewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
         context=MemberGalleryActivity.this;
         member_id = getIntent().getStringExtra("Member_id");
+        Log.e("hello durga",member_id);
         getData();
         listener();
     }
@@ -70,7 +72,7 @@ ActivityMemberGalleryBinding b;
     private void getData() {
         //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                getImageURL + member_id, null, new Response.Listener<JSONObject>() {
+                getImageURL+member_id, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 //   progressDialog.dismiss();
@@ -99,7 +101,7 @@ ActivityMemberGalleryBinding b;
         b.rvMemberImage.setLayoutManager(layoutManager);
         b.rvMemberImage.setHasFixedSize(true);
         b.rvMemberImage.setNestedScrollingEnabled(true);
-        ImageAdapter adapter = new ImageAdapter(context, dataModelImage.data);
+        MemberImageGalleryAdapter adapter = new MemberImageGalleryAdapter(context, dataModelImage.data);
         b.rvMemberImage.setAdapter(adapter);
 
         if (adapter.getItemCount() != 0) {

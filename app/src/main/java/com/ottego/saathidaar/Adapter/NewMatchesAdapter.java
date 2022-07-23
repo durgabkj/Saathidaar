@@ -16,9 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.ottego.saathidaar.GalleryActivity;
+import com.ottego.saathidaar.MatchDetailsFragment;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
+import com.ottego.saathidaar.MemberGalleryShowFragment;
+import com.ottego.saathidaar.Model.GalleryModel;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.Utils;
@@ -52,6 +56,11 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         holder.tvNewMatchHeight.setText(item.religion);
         holder.tvNewMatchCity.setText(item.maritalStatus);
 
+        for (GalleryModel image : item.images) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + image.member_images)
+                        .into(holder.ivUserMatch);
+            }
 
 
         holder.llPhotoMyMatches.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +110,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             public void onClick(View view) {
                 Log.e("position", String.valueOf(position));
                 MatchPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
+
 
             }
         });

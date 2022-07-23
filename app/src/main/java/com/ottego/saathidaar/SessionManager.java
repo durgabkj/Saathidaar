@@ -21,7 +21,8 @@ public class SessionManager {
     public static final String KEY_GENDER = "gender";
     public static final String KEY_PROFILE_ID_Log = "profile_id";
 
-
+//profile pic id
+public  static  final String KEY_PROFILE_ID="image_id";
 
     //USER DETAIL
     public static final String KEY_FNAME = "firstName";
@@ -37,7 +38,7 @@ public class SessionManager {
 
     public static final String KEY_HEIGHT = "height";
     public static final String KEY_WEIGHT = "weight";
-    public static final String KEY_PROFILE_ID="profile_id";
+    public static final String KEY_PROFILE_ID1="profile_id";
     public static final String KEY_PRO_LIFESTYLE = "lifestyles";
     public static final String KEY_PRO_ABOUTUS = "about_ourself";
     public static final String KEY_PRO_KNOWN_LANG = "known_languages";
@@ -54,6 +55,7 @@ public class SessionManager {
     public static final String KEY_PRO_MARITAL_STATUS = "marital_status";
     public static final String KEY_PRO_NO_CHILD = "no_of_children";
     public static final String KEY_PRO_DOB = "date_of_birth";
+    public static final String KEY_PROFILE_PIC = "profile_photo";
     public static final String KEY_PRO_AGE = "age";
     public static final String KEY_PRO_HEALTH = "health_info";
     public static final String KEY_PRO_BLOOD = "blood_group";
@@ -183,6 +185,7 @@ public class SessionManager {
         editor.putString(KEY_PRO_MARITAL_STATUS, model.marital_status);
         editor.putString(KEY_PRO_NO_CHILD, model.no_of_children);
         editor.putString(KEY_PRO_DOB, model.date_of_birth);
+        editor.putString(KEY_PROFILE_PIC, model.profile_photo);
         editor.putString(KEY_PRO_AGE, model.age);
         editor.putString(KEY_PRO_HEALTH, model.health_info);
         editor.putString(KEY_PRO_BLOOD, model.blood_group);
@@ -455,7 +458,9 @@ public class SessionManager {
         return pref.getString(KEY_PRO_MOB, "");
     }
 
-
+    public String getKEY_PROFILE_Pic() {
+        return pref.getString(KEY_PROFILE_PIC, "");
+    }
 
     public boolean isLoggedIn() {
         return pref.getBoolean(IS_LOGIN, false);
@@ -514,4 +519,15 @@ public class SessionManager {
     public String getKeyTimeh() {
         return pref.getString(KEY_TIMEH, "");
     }
-}
+
+    public void setImageId(String mParam2) {
+            editor.putString(KEY_PROFILE_ID, mParam2);
+            editor.commit();
+        }
+
+        public String getImageProfileId() {
+            return pref.getString(KEY_PROFILE_ID, "");
+        }
+
+    }
+
