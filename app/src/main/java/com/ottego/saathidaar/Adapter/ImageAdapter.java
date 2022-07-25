@@ -67,12 +67,13 @@ public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.ViewHolder>
         }
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            ImageView ivUserImage;
+            ImageView ivUserImage,ivUserImageMember1;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
 
                 ivUserImage = itemView.findViewById(R.id.ivUserImageMember);
+               // ivUserImageMember1 = itemView.findViewById(R.id.ivUserImageMember1);
 
             }
         }

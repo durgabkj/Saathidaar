@@ -58,6 +58,7 @@ public class MemberProfileModel {
     public String unmarried_male;
     public String city_of_birth;
     public String religion_id;
+    public String profile_contact_number;
     public String gender;
     public String city;
     public String state;

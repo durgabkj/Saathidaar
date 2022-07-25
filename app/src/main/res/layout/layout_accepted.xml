@@ -26,10 +26,46 @@
 
 
         <ImageView
+            android:id="@+id/ivProfileAcceptInvi"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="@drawable/local" />
+
+
+        <LinearLayout
+            android:id="@+id/llNo_imageFemaleListAccept"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="@drawable/line_gradient"
+            android:orientation="horizontal" />
+
+        <FrameLayout
+            android:id="@+id/flNoImageMaleFemaleListAccept"
+            android:layout_width="120dp"
+            android:visibility="gone"
+            android:layout_height="120dp"
+            android:layout_gravity="center">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle">
+
+                <ImageView
+                    android:id="@+id/ivNoImageMaleFemaleAccept"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_no_image__male_"
+                    android:transitionName="tnMemberImage" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+        </FrameLayout>
 
         <FrameLayout
             android:layout_width="wrap_content"

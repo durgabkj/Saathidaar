@@ -16,6 +16,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.MemberPreferenceModel;
 import com.ottego.saathidaar.Model.MemberProfileModel;
@@ -38,7 +39,6 @@ public class InboxDetailFragment extends Fragment {
     public String memberDetail = Utils.memberUrl + "get-details/";
     public String PreferenceDetailUrl = Utils.memberUrl + "match/preference/";
     Context context;
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
@@ -76,6 +76,7 @@ public class InboxDetailFragment extends Fragment {
         listener();
         getData();
          setData();
+         getLoginMemberData();
          getMemberPreferenceData();
         return b.getRoot();
     }
@@ -116,7 +117,6 @@ public class InboxDetailFragment extends Fragment {
     }
 
     private void setMemberPrefData() {
-
         b.matchPreferenceCount.setText("You Match " + memberPreferenceModel.match_count + "/" + memberPreferenceModel.total_preference + " of " + " " + memberPreferenceModel.gender_preference);
         b.tvDetailAgeMatch.setText(memberPreferenceModel.partner_age);
         b.tvDetailHeightMatch.setText(memberPreferenceModel.partner_height);
@@ -307,8 +307,6 @@ public class InboxDetailFragment extends Fragment {
 
     private void getData() {
         Map<String, String> params = new HashMap<String, String>();
-//        params.put("member_ID",mParam1);
-//        Log.e("params", String.valueOf(params));
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, memberDetail + mParam1, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -367,8 +365,90 @@ public class InboxDetailFragment extends Fragment {
             b.tvDetailAnnualIncome.setText("Earn " + model.annual_income);
             b.tvDetailEducationField.setText(model.highest_qualification);
             b.tvDetailCollege.setText(model.college_attended);
+
+
+            if (!(!model.profile_photo.isEmpty()) && !(model.profile_photo != null)) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .into(b.ivDetailUserImage);
+
+
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .into(b.profileDetailPic1Partner);
+            } else {
+                if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                    b.llNoImageFemale.setVisibility(View.VISIBLE);
+                    b.flNoImageMaleFemale.setVisibility(View.VISIBLE);
+                    b.ivDetailUserImage.setVisibility(View.GONE);
+
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__female_)
+                            .into(b.ivNoImageMaleFemale);
+
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__female_)
+                            .into(b.profileDetailPic1Partner);
+                } else {
+                    b.llNoImageFemale.setVisibility(View.VISIBLE);
+                    b.flNoImageMaleFemale.setVisibility(View.VISIBLE);
+                    b.ivDetailUserImage.setVisibility(View.GONE);
+
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__male_)
+                            .into(b.ivNoImageMaleFemale);
+
+
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__male_)
+                            .into(b.profileDetailPic1Partner);
+                }
+            }
+
         }
 
 
+    }
+
+
+    private void getLoginMemberData() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                DashBoardFragment.Profile_url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // binding.srlRecycleViewPersonalDetails.setRefreshing(false);
+                Log.e("response", String.valueOf(response));
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        Gson gson = new Gson();
+                        model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
+                        setDataMember();
+                    } else {
+
+                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //  binding.srlRecycleViewPersonalDetails.setRefreshing(false);
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+    }
+
+    private void setDataMember() {
+        Glide.with(context)
+                .load(Utils.imageUrl + model.profile_photo)
+                .into(b.profileDetailPic);
     }
 }

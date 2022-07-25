@@ -25,35 +25,48 @@
 
         <!--            android:alpha="0.2"-->
         <ImageView
+            android:id="@+id/ivRemoveShortList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-
             android:src="@drawable/local" />
 
-<!--        <FrameLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_vertical|center"-->
-<!--            >-->
-<!--            -->
 
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/llLockImage"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="@drawable/gray_transparent_bg"-->
-<!--                    >-->
+        <LinearLayout
+            android:id="@+id/llNo_imageFemaleRemoveShortList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="@drawable/line_gradient"
+            android:orientation="horizontal" />
 
-<!--                    <androidx.appcompat.widget.AppCompatImageView-->
-<!--                        android:layout_width="100dp"-->
-<!--                        android:layout_height="100dp"-->
-<!--                        android:padding="3dp"-->
-<!--                        android:scaleType="centerCrop"-->
-<!--                        android:src="@drawable/ic_baseline_lock_person_24" />-->
+        <FrameLayout
+            android:id="@+id/flNoImageMaleFemaleRemoveShortList"
+            android:layout_width="120dp"
+            android:visibility="gone"
+            android:layout_height="120dp"
+            android:layout_gravity="center">
 
-<!--                </LinearLayout>-->
-<!--        </FrameLayout>-->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle">
+
+                <ImageView
+                    android:id="@+id/ivNoImageMaleFemaleRemoveShortList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_no_image__male_"
+                    android:transitionName="tnMemberImage" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+        </FrameLayout>
+
+
 
         <FrameLayout
             android:layout_width="wrap_content"

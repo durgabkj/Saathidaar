@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -25,12 +26,13 @@ import com.ottego.saathidaar.MemberGalleryShowFragment;
 import com.ottego.saathidaar.Model.GalleryModel;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
+import com.ottego.saathidaar.SessionManager;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
 
 public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.ViewHolder> {
-
+SessionManager sessionManager;
     Context context;
     List<NewMatchesModel> list;
 
@@ -50,18 +52,45 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         NewMatchesModel item = list.get(position);
 //        Log.e(" New Matches model", new Gson().toJson(item));
-
+sessionManager=new SessionManager(context);
         holder.tvNewMatchName.setText(item.first_name + " " + item.last_name);
         holder.tvNewMatchAge.setText(item.mage);
         holder.tvNewMatchHeight.setText(item.religion);
         holder.tvNewMatchCity.setText(item.maritalStatus);
 
-        for (GalleryModel image : item.images) {
+//        for (GalleryModel image : item.images) {
+//                Glide.with(context)
+//                        .load(Utils.imageUrl + image.member_images)
+//                        .into(holder.ivUserMatch);
+//            }
+//
+        if (!(!item.profile_photo.isEmpty()) && !(item.profile_photo != null)) {
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .into(holder.ivUserMatch);
+
+        } else {
+            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                holder.llNo_imageFemaleList.setVisibility(View.VISIBLE);
+                holder.flNoImageMaleFemaleList.setVisibility(View.VISIBLE);
+                holder.ivUserMatch.setVisibility(View.GONE);
                 Glide.with(context)
-                        .load(Utils.imageUrl + image.member_images)
-                        .into(holder.ivUserMatch);
+                        .load(R.drawable.ic_no_image__female_)
+                        .into(holder.ivNoImageMaleFemaleMatch);
+
+            } else {
+                holder.llNo_imageFemaleList.setVisibility(View.VISIBLE);
+                holder.flNoImageMaleFemaleList.setVisibility(View.VISIBLE);
+                holder.ivUserMatch.setVisibility(View.GONE);
+
+                Glide.with(context)
+                        .load(R.drawable.ic_no_image__male_)
+                        .into(holder.ivNoImageMaleFemaleMatch);
+
             }
 
+
+        }
 
         holder.llPhotoMyMatches.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,10 +154,11 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView ivUserMatch;
+        ImageView ivUserMatch,ivNoImageMaleFemaleMatch;
         TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
         LinearLayout llMess, llShortListRemove, llShortList, llPhotoMyMatches, llShortBlock,llBlocked;
-        LinearLayout ivLike, llConnect;
+        LinearLayout ivLike, llConnect,llNo_imageFemaleList;
+        FrameLayout flNoImageMaleFemaleList;
         Spinner SpMenu;
 
         public ViewHolder(@NonNull View itemView) {
@@ -146,6 +176,12 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             llConnect = itemView.findViewById(R.id.llConnect);
             llShortBlock = itemView.findViewById(R.id.llShortBlock);
             llBlocked=itemView.findViewById(R.id.llBlocked);
+            llNo_imageFemaleList=itemView.findViewById(R.id.llNo_imageFemaleList);
+            flNoImageMaleFemaleList=itemView.findViewById(R.id.flNoImageMaleFemaleList);
+            ivNoImageMaleFemaleMatch=itemView.findViewById(R.id.ivNoImageMaleFemaleMatch);
+
+
+
 
         }
     }

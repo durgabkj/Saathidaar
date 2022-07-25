@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,18 +16,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
+import com.ottego.saathidaar.SessionManager;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
 
 
 public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdapter.ViewHolder>{
+    SessionManager sessionManager;
         Context context;
         List<NewMatchesModel> list;
 
@@ -50,6 +54,9 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
         public void onBindViewHolder(@NonNull RecentVisitorAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
             NewMatchesModel item = list.get(position);
             Log.e(" New Matches model", new Gson().toJson(item));
+
+            sessionManager = new SessionManager(context);
+
 
             holder.tvNewMatchName.setText(item.first_name + " " + item.last_name);
             holder.tvNewMatchAge.setText(item.mage);
@@ -103,10 +110,37 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 }
             });
 
+
+            if (!(!item.profile_photo.isEmpty()) && !(item.profile_photo != null)) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + item.profile_photo)
+                        .into(holder.ivRecentViewImage);
+
+            } else {
+                if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                    holder.llNo_imageFemaleListRecentView.setVisibility(View.VISIBLE);
+                    holder.flNoImageMaleFemaleListRecentView.setVisibility(View.VISIBLE);
+                    holder.ivRecentViewImage.setVisibility(View.GONE);
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__female_)
+                            .into(holder.ivNoImageMaleFemaleRecentView);
+
+                } else {
+                    holder.llNo_imageFemaleListRecentView.setVisibility(View.VISIBLE);
+                    holder.flNoImageMaleFemaleListRecentView.setVisibility(View.VISIBLE);
+                    holder.ivRecentViewImage.setVisibility(View.GONE);
+
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__male_)
+                            .into(holder.ivRecentViewImage);
+
+                }
+
+
+            }
+
+
         }
-
-
-
 
 
         @Override
@@ -115,10 +149,10 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
         }
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            ImageView ivUserMatch;
+            ImageView ivRecentViewImage,ivNoImageMaleFemaleRecentView;
             TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
-            LinearLayout llPhotoRecentV,llShortBlockRecentV,llBlockedRecentV,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove;
-
+            LinearLayout llPhotoRecentV,llShortBlockRecentV,llBlockedRecentV,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove,llNo_imageFemaleListRecentView;
+FrameLayout flNoImageMaleFemaleListRecentView;
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 tvNewMatchAge = itemView.findViewById(R.id.tvRecentViewAgeRs);
@@ -130,9 +164,13 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 llShortBlockRecentV=itemView.findViewById(R.id.llShortBlockRecentV);
                 llBlockedRecentV=itemView.findViewById(R.id.llBlockedRecentV);
                 ivLikeRecentVisitors=itemView.findViewById(R.id.ivLikeRecentVisitors);
-
                 llShortListRecentV=itemView.findViewById(R.id.llShortListRecentV);
                 llShortListRemove=itemView.findViewById(R.id.llShortListRemove);
+
+                flNoImageMaleFemaleListRecentView=itemView.findViewById(R.id.flNoImageMaleFemaleListRecentView);
+                ivRecentViewImage=itemView.findViewById(R.id.ivRecentViewImage);
+                ivNoImageMaleFemaleRecentView=itemView.findViewById(R.id.ivNoImageMaleFemaleRecentView);
+                llNo_imageFemaleListRecentView=itemView.findViewById(R.id.llNo_imageFemaleListRecentView);
 
 
 

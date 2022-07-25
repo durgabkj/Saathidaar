@@ -17,6 +17,7 @@ public class MemberPreferenceModel {
     public String my_height;
     public String my_qualification;
     public String my_state;
+    public String profile_photo;
     public String partner_religions;
     public String my_working_with;
     public String gender_preference;

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,17 +16,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
+import com.ottego.saathidaar.SessionManager;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
 
 public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortListAdapter.ViewHolder>{
+
+   SessionManager sessionManager;
     Context context;
     List<NewMatchesModel> list;
 
@@ -48,6 +53,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
     public void onBindViewHolder(@NonNull RemoveShortListAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         NewMatchesModel item = list.get(position);
         Log.e(" New Matches model", new Gson().toJson(item));
+sessionManager=new SessionManager(context);
 
         holder.tvNewMatchNameRs.setText(item.first_name + " " + item.last_name);
         holder.tvNewMatchAgeRs.setText(item.mage+" Yrs");
@@ -104,6 +110,37 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         });
 
 
+        if (!(!item.profile_photo.isEmpty()) && !(item.profile_photo != null)) {
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .into(holder.ivRemoveShortList);
+
+        } else {
+            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                holder.llNo_imageFemaleRemoveShortList.setVisibility(View.VISIBLE);
+                holder.flNoImageMaleFemaleRemoveShortList.setVisibility(View.VISIBLE);
+                holder.ivRemoveShortList.setVisibility(View.GONE);
+                Glide.with(context)
+                        .load(R.drawable.ic_no_image__female_)
+                        .into(holder.ivNoImageMaleFemaleRemoveShortList);
+
+            } else {
+                holder.llNo_imageFemaleRemoveShortList.setVisibility(View.VISIBLE);
+                holder.flNoImageMaleFemaleRemoveShortList.setVisibility(View.VISIBLE);
+                holder.ivRemoveShortList.setVisibility(View.GONE);
+
+                Glide.with(context)
+                        .load(R.drawable.ic_no_image__male_)
+                        .into(holder.ivRemoveShortList);
+
+            }
+
+
+        }
+
+
+
+
     }
     @Override
     public int getItemCount() {
@@ -113,11 +150,11 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageListViewMess;
+        ImageView ivRemoveShortList,ivNoImageMaleFemaleRemoveShortList;
         TextView tvNewMatchNameRs, tvNewMatchAgeRs, tvNewMatchHeightRs, tvNewMatchCityRs, tvNewMatchWorkAsRs;
-        LinearLayout llMess,llShortListRemove1,llShortList1,llPhotoShortList;
+        LinearLayout llMess,llShortListRemove1,llShortList1,llPhotoShortList,llNo_imageFemaleRemoveShortList;
         LinearLayout ivLikeShortList,llBlockShortList,llBlockedShortList,llConnectShortList;
-
+FrameLayout flNoImageMaleFemaleRemoveShortList;
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
@@ -132,8 +169,13 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
             llShortList1 = itemView.findViewById(R.id.llShortList1);
             llBlockedShortList=itemView.findViewById(R.id.llBlockedShortList);
             llBlockShortList=itemView.findViewById(R.id.llBlockShortList);
-
             llConnectShortList=itemView.findViewById(R.id.llConnectShortList);
+
+
+            ivRemoveShortList = itemView.findViewById(R.id.ivRemoveShortList);
+            ivNoImageMaleFemaleRemoveShortList=itemView.findViewById(R.id.ivNoImageMaleFemaleRemoveShortList);
+            llNo_imageFemaleRemoveShortList=itemView.findViewById(R.id.llNo_imageFemaleRemoveShortList);
+            flNoImageMaleFemaleRemoveShortList=itemView.findViewById(R.id.flNoImageMaleFemaleRemoveShortList);
 
         }
     }

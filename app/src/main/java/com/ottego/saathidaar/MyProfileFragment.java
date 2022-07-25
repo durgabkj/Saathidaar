@@ -225,8 +225,8 @@ public class MyProfileFragment extends Fragment {
     }
 
     private void setData() {
-//        Glide.with(context)
-//                .load(Utils.imageUrl+model.profile_photo)
-//                .into(profilePic);
+        Glide.with(context)
+                .load(Utils.imageUrl+model.profile_photo)
+                .into(profilePic);
     }
 }

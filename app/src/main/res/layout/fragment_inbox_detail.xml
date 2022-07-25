@@ -55,6 +55,17 @@
                         android:src="@drawable/local"
                         android:transitionName="tnMemberImage" />
 
+
+                    <LinearLayout
+                        android:id="@+id/llNo_imageFemale"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"
+                        android:background="@drawable/line_gradient"
+                        android:orientation="horizontal" />
+
+
+
                     <FrameLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -76,53 +87,6 @@
                         </LinearLayout>
 
                     </FrameLayout>
-
-                    <!--                    <FrameLayout-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_gravity="center_vertical">-->
-
-                    <!--                        <LinearLayout-->
-                    <!--                            android:id="@+id/llPrevious"-->
-                    <!--                            android:layout_width="40dp"-->
-                    <!--                            android:layout_height="80dp"-->
-                    <!--                            android:background="@drawable/previous_button_bg"-->
-                    <!--                            android:orientation="horizontal"-->
-                    <!--                            android:padding="10dp">-->
-
-                    <!--                            <ImageView-->
-                    <!--                                android:layout_width="wrap_content"-->
-                    <!--                                android:layout_height="wrap_content"-->
-                    <!--                                android:src="@drawable/ic_arrow_left_2827" />-->
-
-
-                    <!--                        </LinearLayout>-->
-
-                    <!--                    </FrameLayout>-->
-
-                    <!--                    <FrameLayout-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_gravity="center_vertical|end">-->
-
-                    <!--                        <LinearLayout-->
-                    <!--                            android:id="@+id/llNext"-->
-                    <!--                            android:layout_width="40dp"-->
-                    <!--                            android:layout_height="80dp"-->
-                    <!--                            android:background="@drawable/next_previous_bg"-->
-                    <!--                            android:orientation="horizontal"-->
-                    <!--                            android:padding="10dp">-->
-
-                    <!--                            <ImageView-->
-                    <!--                                android:layout_width="wrap_content"-->
-                    <!--                                android:layout_height="wrap_content"-->
-                    <!--                                android:src="@drawable/ic_arrow_next_2825" />-->
-
-
-                    <!--                        </LinearLayout>-->
-
-                    <!--                    </FrameLayout>-->
-
                     <FrameLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -166,6 +130,35 @@
                         </LinearLayout>
 
                     </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/flNoImageMaleFemale"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginVertical="70dp">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle">
+
+                            <ImageView
+                                android:id="@+id/ivNoImageMaleFemale"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_no_image__male_"
+                                android:transitionName="tnMemberImage" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+
+                    </FrameLayout>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1450,7 +1443,7 @@
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle">
 
                                 <ImageView
-                                    android:id="@+id/profileDetailPic1"
+                                    android:id="@+id/profileDetailPic1Partner"
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:background="@color/white"

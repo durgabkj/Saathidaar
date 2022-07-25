@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,19 +17,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.InboxPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.InboxModel;
 import com.ottego.saathidaar.R;
+import com.ottego.saathidaar.SessionManager;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
 
 public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitationAdapter.ViewHolder>{
 
-    private AdapterView.OnItemClickListener onItemClickListener;
+    SessionManager sessionManager;
     Context context;
     List<InboxModel> list;
 
@@ -48,6 +52,8 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
     public void onBindViewHolder(@NonNull AcceptInvitationAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         InboxModel item = list.get(position);
         Log.e(" New Matches model", new Gson().toJson(item));
+
+        sessionManager=new SessionManager(context);
 
         holder.tvInvNewMatchName.setText(item.first_name + " " + item.last_name);
         holder.tvInvNewMatchAge.setText(item.mage);
@@ -85,6 +91,36 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
                 holder.llAcceptCallMsgDecline.setEnabled(false);
             }
         });
+
+
+        if (!(!item.profile_photo.isEmpty()) && !(item.profile_photo != null)) {
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .into(holder.ivProfileAcceptInvi);
+
+        } else {
+            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                holder.llNo_imageFemaleListAccept.setVisibility(View.VISIBLE);
+                holder.flNoImageMaleFemaleListAccept.setVisibility(View.VISIBLE);
+                holder.ivProfileAcceptInvi.setVisibility(View.GONE);
+                Glide.with(context)
+                        .load(R.drawable.ic_no_image__female_)
+                        .into(holder.ivNoImageMaleFemaleAccept);
+
+            } else {
+                holder.llNo_imageFemaleListAccept.setVisibility(View.VISIBLE);
+                holder.flNoImageMaleFemaleListAccept.setVisibility(View.VISIBLE);
+                holder.ivProfileAcceptInvi.setVisibility(View.GONE);
+
+                Glide.with(context)
+                        .load(R.drawable.ic_no_image__male_)
+                        .into(holder.ivNoImageMaleFemaleAccept);
+
+            }
+
+
+        }
+
     }
 
 
@@ -97,9 +133,9 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAsAccept,tvInvitationMessage,tvInvitationDate;
-        LinearLayout llCAll,llWhatsApp, llPhotoAccept,llBlockAccept,llBlockedAccept,llAcceptCallMsgDecline;
-
-
+        LinearLayout llCAll,llWhatsApp, llPhotoAccept,llBlockAccept,llBlockedAccept,llAcceptCallMsgDecline,llNo_imageFemaleListAccept;
+FrameLayout flNoImageMaleFemaleListAccept;
+ImageView ivNoImageMaleFemaleAccept,ivProfileAcceptInvi;
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
@@ -117,6 +153,12 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 
             tvInvitationMessage=itemView.findViewById(R.id.tvInvitationMessage);
             tvInvitationDate=itemView.findViewById(R.id.tvInvitationDate);
+            llNo_imageFemaleListAccept=itemView.findViewById(R.id.llNo_imageFemaleList);
+            flNoImageMaleFemaleListAccept=itemView.findViewById(R.id.flNoImageMaleFemaleList);
+            ivNoImageMaleFemaleAccept=itemView.findViewById(R.id.ivNoImageMaleFemaleMatch);
+            ivProfileAcceptInvi=itemView.findViewById(R.id.ivProfileAcceptInvi);
+
+
         }
     }
 }

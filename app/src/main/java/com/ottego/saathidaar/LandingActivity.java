@@ -139,10 +139,10 @@ public class LandingActivity extends AppCompatActivity {
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
                     switch (checkedId) {
                         case R.id.female:
-                            gender = "male";
+                            gender = "female";
 
                         case R.id.male:
-                            gender = "female";
+                            gender = "male";
                     }
                 }
             });

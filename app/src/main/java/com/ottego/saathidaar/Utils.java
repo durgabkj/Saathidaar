@@ -104,6 +104,45 @@ public class Utils {
         new SendDeviceId().execute();
     }
 
+
+
+    public static void deleteImage(Context context,String photo_id) {
+        String DeleteUrl = Utils.memberUrl + "delete/photo/";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("id", photo_id);
+        Log.e("params image id", String.valueOf(params));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, DeleteUrl, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e(" delete image response", String.valueOf((response)));
+                        try {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+                                Toast.makeText(context, "Image Deleted Successfully,Refresh Gallery", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(context, "Try Again....", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
+
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+
+    }
+
     public static void removeShortList(Context context, String member_id) {
        // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
         String url = Utils.memberUrl + "remove-to-shortlist";

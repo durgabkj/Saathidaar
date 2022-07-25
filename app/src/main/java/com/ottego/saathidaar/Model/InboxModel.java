@@ -18,6 +18,7 @@ public class InboxModel {
     public String subcaste;
     public String state;
     public String height;
+    public String profile_photo;
     public String lifestyles;
     public String mother_tounge;
     public String request_message;

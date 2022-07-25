@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,7 +40,7 @@ public class MatchDetailsFragment extends Fragment {
     public String memberDetail = Utils.memberUrl + "get-details/";
     public String PreferenceDetailUrl = Utils.memberUrl + "match/preference/";
     Context context;
-
+    MemberProfileModel memberProfileModel;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -81,30 +80,14 @@ public class MatchDetailsFragment extends Fragment {
         context = getContext();
         sessionManager = new SessionManager(context);
         listener();
-        getData();
+        getPartnerData();
         setData();
         getMemberPreferenceData();
-
-        Glide.with(context)
-                .load(Utils.imageUrl +mParam2)
-                .into(b.ivDetailUserImage);
-
-
-        Glide.with(context)
-                .load(Utils.imageUrl +sessionManager.getKEY_PROFILE_Pic())
-                .into(b.profileDetailPicLoginUser);
-
-
-        Glide.with(context)
-                .load(Utils.imageUrl +mParam2)
-                .into(b.profileDetailPic1Partner);
+        getLoginMemberData();
         return b.getRoot();
     }
 
     private void getMemberPreferenceData() {
-
-        //   Map<String, String> params = new HashMap<String, String>();
-//        params.put("member_ID",mParam1);
         Log.e("params", String.valueOf(mParam1));
         Log.e("prefParams", PreferenceDetailUrl + mParam1 + "/" + sessionManager.getMemberId());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, PreferenceDetailUrl + mParam1 + "/" + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
@@ -219,17 +202,6 @@ public class MatchDetailsFragment extends Fragment {
         }
 
 
-//        if(memberPreferenceModel.my_working_with.equalsIgnoreCase("Yes")){
-//            b.cvcheck8.setVisibility(View.VISIBLE);
-//        }else if(memberPreferenceModel.my_working_with.equalsIgnoreCase("NO"))
-//        {
-//            b.cvClear8.setVisibility(View.VISIBLE);
-//        }else
-//        {
-//            b.cvDot8.setVisibility(View.VISIBLE);
-//        }
-
-
         if (memberPreferenceModel.my_annual_income.equalsIgnoreCase("Yes")) {
             b.cvcheck9.setVisibility(View.VISIBLE);
         } else if (memberPreferenceModel.my_annual_income.equalsIgnoreCase("NO")) {
@@ -255,16 +227,6 @@ public class MatchDetailsFragment extends Fragment {
             b.cvDot11.setVisibility(View.VISIBLE);
         }
 
-//        if(memberPreferenceModel.my_m.equalsIgnoreCase("Yes")){
-//            b.cvcheck12.setVisibility(View.VISIBLE);
-//        }else if(memberPreferenceModel.my_mother_tongue.equalsIgnoreCase("NO"))
-//        {
-//            b.cvClear11.setVisibility(View.VISIBLE);
-//        }else
-//        {
-//            b.cvDot11.setVisibility(View.VISIBLE);
-//        }
-
         if (memberPreferenceModel.my_city.equalsIgnoreCase("Yes")) {
             b.cvcheck13.setVisibility(View.VISIBLE);
         } else if (memberPreferenceModel.my_city.equalsIgnoreCase("NO")) {
@@ -274,7 +236,6 @@ public class MatchDetailsFragment extends Fragment {
         }
 
     }
-
     private void listener() {
         b.llBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -331,9 +292,6 @@ b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
 
 
     }
-
-
-
     public  void sentRequest() {
         String url = Utils.memberUrl + "send-request";
         Map<String, String> params = new HashMap<String, String>();
@@ -373,13 +331,10 @@ b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
 
     }
 
-
-    private void getData() {
+    private void getPartnerData() {
         Map<String, String> params = new HashMap<String, String>();
-//        params.put("member_ID",mParam1);
-//        Log.e("params", String.valueOf(params));
         Log.e("dataParams", memberDetail + mParam1);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, memberDetail + mParam1+"/"+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, memberDetail + mParam1 + "/" + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf(response));
@@ -408,10 +363,13 @@ b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
     }
+
+
+
     private void setData() {
         if (model != null) {
             b.tvNewMatchName.setText(model.first_name + " " + model.last_name);
-            b.tvNewMatchAge.setText(model.age + " "+"yrs");
+            b.tvNewMatchAge.setText(model.age + " " + "yrs");
             b.tvNewMatchHeight.setText(model.height + " feet");
             b.tvMatchCityDetail.setText(model.city);
             b.tvNewMatchWorkAsDetail.setText(model.working_as);
@@ -434,8 +392,90 @@ b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
             b.tvDetailAnnualIncome.setText("Earn " + model.annual_income);
             b.tvDetailEducationField.setText(model.highest_qualification);
             b.tvDetailCollege.setText(model.college_attended);
+
+
+
+            if (!(!model.profile_photo.isEmpty()) && !(model.profile_photo != null)) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .into(b.ivDetailUserImage);
+
+
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .into(b.profileDetailPic1Partner);
+            } else {
+                if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                    b.llNoImageFemale.setVisibility(View.VISIBLE);
+                    b.flNoImageMaleFemale.setVisibility(View.VISIBLE);
+                    b.ivDetailUserImage.setVisibility(View.GONE);
+
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__female_)
+                            .into(b.ivNoImageMaleFemale);
+
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__female_)
+                            .into(b.profileDetailPic1Partner);
+                } else {
+                    b.llNoImageFemale.setVisibility(View.VISIBLE);
+                    b.flNoImageMaleFemale.setVisibility(View.VISIBLE);
+                    b.ivDetailUserImage.setVisibility(View.GONE);
+
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__male_)
+                            .into(b.ivNoImageMaleFemale);
+
+
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__male_)
+                            .into(b.profileDetailPic1Partner);
+                }
+            }
+
         }
 
 
+    }
+
+    private void getLoginMemberData() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                DashBoardFragment.Profile_url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // binding.srlRecycleViewPersonalDetails.setRefreshing(false);
+                Log.e("response", String.valueOf(response));
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        Gson gson = new Gson();
+                        memberProfileModel = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
+                        setDataMember();
+                    } else {
+
+                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //  binding.srlRecycleViewPersonalDetails.setRefreshing(false);
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+    }
+
+    private void setDataMember() {
+        Glide.with(context)
+                .load(Utils.imageUrl + memberProfileModel.profile_photo)
+                .into(b.profileDetailPicLoginUser);
     }
 }

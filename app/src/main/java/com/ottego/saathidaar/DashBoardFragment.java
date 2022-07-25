@@ -3,7 +3,6 @@ package com.ottego.saathidaar;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -47,6 +46,7 @@ public class DashBoardFragment extends Fragment {
     Context context;
     ImageModel imageModel;
     public String url = "http://103.150.186.33:8080/saathidaar_backend/api/request/count/accept-request/";
+    public static String Profile_url = Utils.memberUrl + "my-profile/";
     int[] images = {R.drawable.smartphone, R.drawable.documents, R.drawable.global};
     String[] text = {"phone Number to Connect Instantly", "100% Verified Biodatas", "Find Common connections"};
     String image;
@@ -110,7 +110,7 @@ public class DashBoardFragment extends Fragment {
         tvDashBoardUserName=view.findViewById(R.id.tvDashBoardUserName);
         llAcceptRequest=view.findViewById(R.id.llAcceptRequest);
         llProfileVisi=view.findViewById(R.id.llProfileVisi);
-getMemberData();
+         getMemberData();
         set();
         Log.e("hey_member",sessionManager.getMemberId());
 
@@ -185,12 +185,6 @@ getMemberData();
         tvDashboardUpgrade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.vpMatch, new UpgradeFragment());
-//        fragmentTransaction.commit();
-
-               // replaceFragment(new UpgradeFragment());
                 Animation bounce = AnimationUtils.loadAnimation(context, R.anim.bounce);
                 tvDashboardUpgrade.startAnimation(bounce);
                 Intent intent=new Intent(context,UpgradeOnButtonActivity.class);
@@ -347,7 +341,7 @@ getMemberData();
 
     private void getMemberData() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                Profile_url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 // binding.srlRecycleViewPersonalDetails.setRefreshing(false);
@@ -356,12 +350,8 @@ getMemberData();
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
                         Gson gson = new Gson();
-//                        binding.llNoDataPersonal.setVisibility(View.VISIBLE);
-//                        binding.scrvPersonalData.setVisibility(View.GONE);
                         memberProfileModel = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
-                        // SessionProfileDetailModel model = gson.fromJson(String.valueOf(response.getJSONObject("data")), SessionProfileDetailModel.class);
-//                        sessionManager.CreateProfileSession(memberProfileModel);
-//                        setDataMember();
+                        setDataMember();
                     }else {
 
                         Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();

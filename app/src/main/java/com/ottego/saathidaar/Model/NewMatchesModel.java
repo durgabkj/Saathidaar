@@ -9,6 +9,7 @@ public class NewMatchesModel {
     public String request_status;
     public String mage;
     public String block_status;
+    public String profile_photo;
     public String last_name;
     public String first_name;
     public String maritalStatus;

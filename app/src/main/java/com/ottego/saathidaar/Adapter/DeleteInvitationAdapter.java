@@ -7,7 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,18 +16,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
-import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.InboxPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.InboxModel;
 import com.ottego.saathidaar.R;
+import com.ottego.saathidaar.SessionManager;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
     public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitationAdapter.ViewHolder>{
-
-        private AdapterView.OnItemClickListener onItemClickListener;
+        SessionManager sessionManager;
         Context context;
         List<InboxModel> list;
 
@@ -48,7 +49,7 @@ import java.util.List;
             InboxModel item = list.get(position);
             Log.e(" Inbox model", new Gson().toJson(item));
 
-
+sessionManager=new SessionManager(context);
             holder.tvInvDeleteName.setText(item.first_name + " " + item.last_name);
             holder.tvInvDeleteAge.setText(item.mage);
             holder.tvInvDeleteHeight.setText(item.religion);
@@ -89,12 +90,40 @@ import java.util.List;
             holder.llPhotoDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent=new Intent(view.getContext(), MemberGalleryActivity.class);
+                    Intent intent = new Intent(view.getContext(), MemberGalleryActivity.class);
                     intent.putExtra("Member_id", item.member_id);
                     context.startActivity(intent);
                 }
             });
 
+
+            if (!(!item.profile_photo.isEmpty()) && !(item.profile_photo != null)) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + item.profile_photo)
+                        .into(holder.ivDeleteInvitation);
+
+            } else {
+                if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                    holder.llNo_imageFemaleListDeleteInvi.setVisibility(View.VISIBLE);
+                    holder.flNoImageMaleFemaleListDeleteInvi.setVisibility(View.VISIBLE);
+                    holder.ivDeleteInvitation.setVisibility(View.GONE);
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__female_)
+                            .into(holder.ivNoImageMaleFemaleDeleteInvi);
+
+                } else {
+                    holder.llNo_imageFemaleListDeleteInvi.setVisibility(View.VISIBLE);
+                    holder.flNoImageMaleFemaleListDeleteInvi.setVisibility(View.VISIBLE);
+                    holder.ivDeleteInvitation.setVisibility(View.GONE);
+
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__male_)
+                            .into(holder.ivDeleteInvitation);
+
+                }
+
+
+            }
 
 
         }
@@ -109,7 +138,10 @@ import java.util.List;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             TextView tvInvDeleteWorkAs, tvInvDeleteCity, tvInvDeleteHeight, tvInvDeleteName, tvInvDeleteAge;
-            LinearLayout llBlocked,llBlockDelete,llDeletedInvitation,llDelete1,llPhotoDelete;
+            LinearLayout llBlocked,llBlockDelete,llDeletedInvitation,llDelete1,llPhotoDelete,llNo_imageFemaleListDeleteInvi;
+            ImageView ivDeleteInvitation,ivNoImageMaleFemaleDeleteInvi;
+            FrameLayout flNoImageMaleFemaleListDeleteInvi;
+
             public ViewHolder(@NonNull View itemView) {
 
                 super(itemView);
@@ -123,6 +155,11 @@ import java.util.List;
                 llDelete1 = itemView.findViewById(R.id.llDelete1);
                 llDeletedInvitation = itemView.findViewById(R.id.llDeletedInvitation);
                 llPhotoDelete=itemView.findViewById(R.id.llPhotoDelete);
+
+                llNo_imageFemaleListDeleteInvi = itemView.findViewById(R.id.llNo_imageFemaleListDeleteInvi);
+                ivDeleteInvitation = itemView.findViewById(R.id.ivDeleteInvitation);
+                ivNoImageMaleFemaleDeleteInvi = itemView.findViewById(R.id.ivNoImageMaleFemaleDeleteInvi);
+                flNoImageMaleFemaleListDeleteInvi=itemView.findViewById(R.id.flNoImageMaleFemaleListDeleteInvi);
 
             }
         }

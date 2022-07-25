@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,18 +16,19 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
-import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.InboxPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.InboxModel;
 import com.ottego.saathidaar.R;
+import com.ottego.saathidaar.SessionManager;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
 
 public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitationAdapter.ViewHolder>{
-
+    SessionManager sessionManager;
     Context context;
     List<InboxModel> list;
 
@@ -46,6 +49,7 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
     public void onBindViewHolder(@NonNull InboxInvitationAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         InboxModel item = list.get(position);
         Log.e(" Inbox model", new Gson().toJson(item));
+        sessionManager = new SessionManager(context);
 
         holder.tvInvNewMatchName.setText(item.first_name + " " + item.last_name);
         holder.tvInvNewMatchAge.setText(item.mage);
@@ -104,11 +108,40 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         holder.llPhotoInvitation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(view.getContext(), MemberGalleryActivity.class);
+                Intent intent = new Intent(view.getContext(), MemberGalleryActivity.class);
                 intent.putExtra("Member_id", item.member_id);
                 context.startActivity(intent);
             }
         });
+
+
+        if (!(!item.profile_photo.isEmpty()) && !(item.profile_photo != null)) {
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .into(holder.ivReceivedInvitation);
+
+        } else {
+            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                holder.llNo_imageFemaleListReceivedInvitation.setVisibility(View.VISIBLE);
+                holder.flNoImageMaleFemaleListReceivedInvitation.setVisibility(View.VISIBLE);
+                holder.ivReceivedInvitation.setVisibility(View.GONE);
+                Glide.with(context)
+                        .load(R.drawable.ic_no_image__female_)
+                        .into(holder.ivNoImageMaleFemaleReceivedInvitation);
+
+            } else {
+                holder.llNo_imageFemaleListReceivedInvitation.setVisibility(View.VISIBLE);
+                holder.flNoImageMaleFemaleListReceivedInvitation.setVisibility(View.VISIBLE);
+                holder.ivReceivedInvitation.setVisibility(View.GONE);
+
+                Glide.with(context)
+                        .load(R.drawable.ic_no_image__male_)
+                        .into(holder.ivReceivedInvitation);
+
+            }
+
+
+        }
 
     }
 
@@ -120,10 +153,10 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
-
-        TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs,tvInvitationMessageInbox,tvInvitationDateInbox;
-        LinearLayout llAccept, llDelete, llAccepted, llDeleted,llPhotoInvitation,llBlockInvitation,llBlockedInvitation,llAcceptDelete;
+        FrameLayout flNoImageMaleFemaleListReceivedInvitation;
+        ImageView ivNoImageMaleFemaleReceivedInvitation, ivReceivedInvitation;
+        TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs, tvInvitationMessageInbox, tvInvitationDateInbox;
+        LinearLayout llNo_imageFemaleListReceivedInvitation, llAccept, llDelete, llAccepted, llDeleted, llPhotoInvitation, llBlockInvitation, llBlockedInvitation, llAcceptDelete;
 
         public ViewHolder(@NonNull View itemView) {
 
@@ -137,15 +170,22 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
             llAccepted = itemView.findViewById(R.id.llAccepted);
             llAccept = itemView.findViewById(R.id.llAccept);
             llDelete = itemView.findViewById(R.id.llDelete);
-            llDeleted=itemView.findViewById(R.id.llDeleted);
-            llPhotoInvitation=itemView.findViewById(R.id.llPhotoInvitation);
-            llBlockInvitation=itemView.findViewById(R.id.llBlockInvitation);
-            llBlockedInvitation=itemView.findViewById(R.id.llBlockedInvitation);
-            llAcceptDelete=itemView.findViewById(R.id.llAcceptDelete);
+            llDeleted = itemView.findViewById(R.id.llDeleted);
+            llPhotoInvitation = itemView.findViewById(R.id.llPhotoInvitation);
+            llBlockInvitation = itemView.findViewById(R.id.llBlockInvitation);
+            llBlockedInvitation = itemView.findViewById(R.id.llBlockedInvitation);
+            llAcceptDelete = itemView.findViewById(R.id.llAcceptDelete);
 
 
-            tvInvitationMessageInbox=itemView.findViewById(R.id.tvInvitationMessageInbox);
-            tvInvitationDateInbox=itemView.findViewById(R.id.tvInvitationDateInbox);
+            tvInvitationMessageInbox = itemView.findViewById(R.id.tvInvitationMessageInbox);
+            tvInvitationDateInbox = itemView.findViewById(R.id.tvInvitationDateInbox);
+
+
+            llNo_imageFemaleListReceivedInvitation = itemView.findViewById(R.id.llNo_imageFemaleListReceivedInvitation);
+            flNoImageMaleFemaleListReceivedInvitation = itemView.findViewById(R.id.flNoImageMaleFemaleListReceivedInvitation);
+            ivNoImageMaleFemaleReceivedInvitation = itemView.findViewById(R.id.ivNoImageMaleFemaleReceivedInvitation);
+            ivReceivedInvitation = itemView.findViewById(R.id.ivReceivedInvitation);
+
         }
     }
 }

@@ -200,23 +200,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             }
         }
     }
-//    public void pathFile(Uri selectedFileUri) {
-//        String filePath = FilePath.getPath(this, selectedFileUri);
-//        imagePathList.add(filePath);
-//        Log.e("imageUri1", "parse Path:" + filePath);
-//
-//        if (filePath != null && !filePath.equals("")) {
-//            try {
-//                String fileName = getFileName(context, selectedFileUri);
-//                imageNameList.add(fileName);
-//               // b.textViewFileName.setText(fileName);
-//            } catch (URISyntaxException e) {
-//                e.printStackTrace();
-//            }
-//        } else {
-//            Toast.makeText(this, "Cannot upload attachment", Toast.LENGTH_SHORT).show();
-//        }
-//    }
+
  public static String getFileName(Context context, Uri uri) throws URISyntaxException {
         String temp = "";
         String[] projection = {OpenableColumns.DISPLAY_NAME};
@@ -390,14 +374,14 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 
     @Override
     public void PickiTonCompleteListener(String path, boolean wasDriveFile, boolean wasUnknownProvider, boolean wasSuccessful, String Reason) {
-        Log.e("durga", "path single: " + path.toString());
+        Log.e("durga", "path single: " + path);
         imagePathList.clear();
         imagePathList.add(path);
     }
 
     @Override
     public void PickiTonMultipleCompleteListener(ArrayList<String> paths, boolean wasSuccessful, String Reason) {
-        Log.e("durga", "paths: " + paths.toString());
+        Log.e("durga", "paths multiple : " + paths.toString());
         imagePathList.clear();
         imagePathList.addAll(paths);
     }
@@ -453,7 +437,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         GridLayoutManager layoutManager = new GridLayoutManager(context, 2);
         b.rvMyImage.setLayoutManager(layoutManager);
         b.rvMyImage.setHasFixedSize(true);
-        b.rvMyImage.setNestedScrollingEnabled(true);
+        b.rvMyImage.setNestedScrollingEnabled(false);
         ImageAdapter adapter = new ImageAdapter(context, dataModelImage.data);
         b.rvMyImage.setAdapter(adapter);
 
