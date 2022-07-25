@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -30,6 +32,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
@@ -67,6 +70,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     List<String> imageNameList = new ArrayList<>();
     List<String> imagePathList = new ArrayList<>();
     GalleryViewModel viewModel;
+    int count=0;
     private static final int PICK_FILE_REQUEST = 1;
 
     PickiT pickiT;
@@ -137,7 +141,8 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             ActivityCompat.requestPermissions(GalleryActivity.this, new String[] { permission }, requestCode);
         }
         else {
-            Toast.makeText(GalleryActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Permission already granted", Snackbar.LENGTH_LONG);
+            snackbar.show();
         }
     }
 
@@ -168,6 +173,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             }
             else {
                 Toast.makeText(GalleryActivity.this, "Storage Permission Denied", Toast.LENGTH_SHORT).show();
+
             }
         }
     }
@@ -178,24 +184,18 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == PICK_FILE_REQUEST) {
-//                imageNameList.clear();
-//                imagePathList.clear();
+                imageNameList.clear();
+                imagePathList.clear();
                 if (data.getClipData() != null) {
                     int count = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
                     for (int i = 0; i < count; i++) {
                         Uri imageUri = data.getClipData().getItemAt(i).getUri();
                         pickiT.getPath(imageUri, Build.VERSION.SDK_INT);
 
-//                        Log.e("imageUri1 h", String.valueOf(imageUri));
-//                        pathFile(imageUri);
-//                        //do something with the image (save it to some directory or whatever you need to do with it here)
                     }
                 } else if (data.getData() != null) {
                     Uri imagePath = data.getData();
                     pickiT.getPath(imagePath, Build.VERSION.SDK_INT);
-//                    Log.e("imageUri1", "data path:  " + String.valueOf(imagePath));
-//                    pathFile(imagePath);
-//                    //do something with the image (save it to some directory or whatever you need to do with it here)
                 }
             }
         }
@@ -226,13 +226,12 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         new Thread(new Runnable() {
             @Override
             public void run() {
-//                uploadFile(path);
-                //setup params
+//
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("member_id", sessionManager.getMemberId());
 
                 String result = multipartRequest(URL, params, path, "image", "image/jpeg");
-//next parse result string
+
                  Log.e("durga",result);
             }
         }).start();
@@ -407,6 +406,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 
 
     private void getData() {
+        count++;
         //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 getImageURL + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
@@ -432,12 +432,14 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+    refresh(1000);
     }
     private void setRecyclerView() {
-        GridLayoutManager layoutManager = new GridLayoutManager(context, 2);
+        GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);
         b.rvMyImage.setLayoutManager(layoutManager);
         b.rvMyImage.setHasFixedSize(true);
-        b.rvMyImage.setNestedScrollingEnabled(false);
+        b.rvMyImage.setNestedScrollingEnabled(true);
         ImageAdapter adapter = new ImageAdapter(context, dataModelImage.data);
         b.rvMyImage.setAdapter(adapter);
 
@@ -448,5 +450,20 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         } else {
             b.llNoDataImage.setVisibility(View.VISIBLE);
         }
+    }
+
+
+    private void refresh(int millisecond) {
+
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                getData();
+            }
+        };
+
+        handler.postDelayed(runnable, millisecond);
+
     }
 }

@@ -237,6 +237,13 @@ public class MatchDetailsFragment extends Fragment {
 
     }
     private void listener() {
+        b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.sentRequest(context,mParam1);
+            }
+        });
+
         b.llBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

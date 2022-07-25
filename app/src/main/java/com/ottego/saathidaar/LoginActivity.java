@@ -16,6 +16,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.SessionModel;
 import com.ottego.saathidaar.databinding.ActivityLoginBinding;
@@ -131,7 +132,9 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                             } else {
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                                Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), response.getString("message"),Snackbar.LENGTH_LONG);
+                                snackbar.show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +17,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -33,6 +34,8 @@ import com.ottego.saathidaar.Model.MemberProfileModel;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.logging.LogRecord;
+
 
 public class DashBoardFragment extends Fragment {
     SessionManager sessionManager;
@@ -45,11 +48,13 @@ public class DashBoardFragment extends Fragment {
     CountDownTimer countDownTimer;
     Context context;
     ImageModel imageModel;
+    int count = 0;
     public String url = "http://103.150.186.33:8080/saathidaar_backend/api/request/count/accept-request/";
     public static String Profile_url = Utils.memberUrl + "my-profile/";
     int[] images = {R.drawable.smartphone, R.drawable.documents, R.drawable.global};
     String[] text = {"phone Number to Connect Instantly", "100% Verified Biodatas", "Find Common connections"};
     String image;
+    SwipeRefreshLayout srlDashboard;
     MemberProfileModel memberProfileModel;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -87,10 +92,10 @@ public class DashBoardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
-      context = getContext();
+        context = getContext();
         sessionManager = new SessionManager(context);
 
-
+        srlDashboard = view.findViewById(R.id.srlDashboard);
         ivPremiumImage = view.findViewById(R.id.ivPremiumImage);
         tvPremiumText = view.findViewById(R.id.tvPremiumText);
         tvLogout = view.findViewById(R.id.tvLogout);
@@ -106,13 +111,13 @@ public class DashBoardFragment extends Fragment {
         tvDashBoardUserId = view.findViewById(R.id.tvDashBoardUserId);
         llPremiumMatch = view.findViewById(R.id.llPremiumMatch);
         RequestSent = view.findViewById(R.id.RequestSent);
-        llRequestSent=view.findViewById(R.id.llRequestSent);
-        tvDashBoardUserName=view.findViewById(R.id.tvDashBoardUserName);
-        llAcceptRequest=view.findViewById(R.id.llAcceptRequest);
-        llProfileVisi=view.findViewById(R.id.llProfileVisi);
-         getMemberData();
+        llRequestSent = view.findViewById(R.id.llRequestSent);
+        tvDashBoardUserName = view.findViewById(R.id.tvDashBoardUserName);
+        llAcceptRequest = view.findViewById(R.id.llAcceptRequest);
+        llProfileVisi = view.findViewById(R.id.llProfileVisi);
+        getMemberData();
         set();
-        Log.e("hey_member",sessionManager.getMemberId());
+        Log.e("hey_member", sessionManager.getMemberId());
 
         final ValueAnimator animator = ValueAnimator.ofFloat(0.0f, 1.0f);
         animator.setRepeatCount(ValueAnimator.INFINITE);
@@ -132,10 +137,12 @@ public class DashBoardFragment extends Fragment {
 
             }
         });
+
+
         animator.start();
         getData();
 
-        tvDashBoardUserId.setText("["+sessionManager.getKeyProfileId()+"]");
+        tvDashBoardUserId.setText("[" + sessionManager.getKeyProfileId() + "]");
         tvDashBoardUserAccountType.setText(sessionManager.getKeyCreatedby());
 
         //  setData();
@@ -167,7 +174,7 @@ public class DashBoardFragment extends Fragment {
         profilePicDashBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context,GalleryActivity.class);
+                Intent intent = new Intent(context, GalleryActivity.class);
                 startActivity(intent);
             }
         });
@@ -177,7 +184,7 @@ public class DashBoardFragment extends Fragment {
             public void onClick(View view) {
                 Animation bounce = AnimationUtils.loadAnimation(context, R.anim.bounce);
                 llRequestSent.startAnimation(bounce);
-                Intent intent=new Intent(context,TestActivity.class);
+                Intent intent = new Intent(context, TestActivity.class);
                 startActivity(intent);
             }
         });
@@ -187,7 +194,7 @@ public class DashBoardFragment extends Fragment {
             public void onClick(View view) {
                 Animation bounce = AnimationUtils.loadAnimation(context, R.anim.bounce);
                 tvDashboardUpgrade.startAnimation(bounce);
-                Intent intent=new Intent(context,UpgradeOnButtonActivity.class);
+                Intent intent = new Intent(context, UpgradeOnButtonActivity.class);
                 startActivity(intent);
             }
         });
@@ -265,7 +272,7 @@ public class DashBoardFragment extends Fragment {
             public void onClick(View view) {
                 Animation bounce = AnimationUtils.loadAnimation(context, R.anim.bounce);
                 llProfileVisi.startAnimation(bounce);
-                Intent intent=new Intent(context,ProfileVisitorsActivity.class);
+                Intent intent = new Intent(context, ProfileVisitorsActivity.class);
                 startActivity(intent);
             }
         });
@@ -275,19 +282,27 @@ public class DashBoardFragment extends Fragment {
             public void onClick(View view) {
                 Animation bounce = AnimationUtils.loadAnimation(context, R.anim.bounce);
                 llAcceptRequest.startAnimation(bounce);
-                Intent intent=new Intent(context,RequestAcceptActivity.class);
+                Intent intent = new Intent(context, RequestAcceptActivity.class);
                 startActivity(intent);
             }
         });
 
 
+//        srlDashboard.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                getMemberData();
+//            }
+//        });
+
     }
 
     private void getData() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                srlDashboard.setRefreshing(false);
                 Log.e("response", String.valueOf((response)));
                 Gson gson = new Gson();
                 model = gson.fromJson(String.valueOf(response), DataModelDashboard.class);
@@ -296,6 +311,7 @@ public class DashBoardFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                srlDashboard.setRefreshing(false);
                 error.printStackTrace();
             }
         });
@@ -306,7 +322,7 @@ public class DashBoardFragment extends Fragment {
     }
 
     private void setData() {
-        if (model.data != null && model.data.size() > 0   && model.data.isEmpty()) {
+        if (model.data != null && model.data.size() > 0 && model.data.isEmpty()) {
             RequestAccept.setText(model.data.get(0).accept_request_count);
             RequestSent.setText(model.data.get(0).sent_request_count);
             Visitors.setText(model.data.get(0).recent_visitors_count);
@@ -338,10 +354,10 @@ public class DashBoardFragment extends Fragment {
     }
 
 
-
     private void getMemberData() {
+        count++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                Profile_url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                Profile_url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 // binding.srlRecycleViewPersonalDetails.setRefreshing(false);
@@ -352,7 +368,7 @@ public class DashBoardFragment extends Fragment {
                         Gson gson = new Gson();
                         memberProfileModel = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
                         setDataMember();
-                    }else {
+                    } else {
 
                         Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }
@@ -372,12 +388,28 @@ public class DashBoardFragment extends Fragment {
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
+        refresh(1000);
     }
 
     private void setDataMember() {
         Glide.with(context)
-                .load(Utils.imageUrl+memberProfileModel.profile_photo)
+                .load(Utils.imageUrl + memberProfileModel.profile_photo)
                 .into(profilePicDashBoard);
     }
 
+    private void refresh(int millisecond) {
+
+     final   Handler handler= new Handler();
+       final  Runnable runnable=new Runnable() {
+           @Override
+           public void run() {
+               getMemberData();
+           }
+       };
+
+handler.postDelayed(runnable,millisecond);
+
+
+
+    }
 }

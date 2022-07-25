@@ -114,10 +114,11 @@ member_id=sessionManager.getMemberId();
                     JSONObject jsonObject = new JSONObject(response);
                     String code = jsonObject.getString("results");
                     if (code.equalsIgnoreCase("1")) {
-                      //  Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Profile Photo set Successfully", Toast.LENGTH_SHORT).show();
 
                     } else {
-                       // Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Profile Photo  not set  Try Again..!!", Toast.LENGTH_SHORT).show();
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

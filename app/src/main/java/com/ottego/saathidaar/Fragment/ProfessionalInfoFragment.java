@@ -3,6 +3,7 @@ package com.ottego.saathidaar.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,7 @@ public class ProfessionalInfoFragment extends Fragment {
     SessionManager sessionManager;
     MemberProfileModel model;
     String memberId;
+    int count=0;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -78,7 +80,7 @@ public class ProfessionalInfoFragment extends Fragment {
         return b.getRoot();
     }
     private void getMemberData() {
-        Log.e("url", url);
+        count++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url+memberId, null, new Response.Listener<JSONObject>() {
             @Override
@@ -109,7 +111,7 @@ public class ProfessionalInfoFragment extends Fragment {
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
+refresh(1000);
     }
 
     private void setData() {
@@ -146,6 +148,21 @@ public class ProfessionalInfoFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+    }
+
+
+    private void refresh(int millisecond) {
+
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                getMemberData();
+            }
+        };
+
+        handler.postDelayed(runnable, millisecond);
 
     }
 }

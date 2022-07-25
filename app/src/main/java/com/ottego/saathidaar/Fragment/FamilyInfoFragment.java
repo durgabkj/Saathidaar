@@ -3,6 +3,9 @@ package com.ottego.saathidaar.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +37,16 @@ FragmentFamilyInfoBinding b;
     MemberProfileModel model;
     Context context;
     SessionManager sessionManager;
+    int count = 0;
+    String fatherStatus = "";
+    String motherStatus = "";
+    String companyNameF = "";
+    String designationF = "";
+    String natureBusinessF = "";
+    String companyNameM = "";
+    String designationM = "";
+    String natureBusinessM = "";
+
     public static String url = Utils.memberUrl + "my-profile/";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -98,9 +111,109 @@ FragmentFamilyInfoBinding b;
                 context.startActivity(intent);
             }
         });
+
+
+
+        b.tvUserMotherStatus.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                motherStatus = b.tvUserMotherStatus.getText().toString();
+                if (motherStatus.equalsIgnoreCase("Retired")) {
+                    b.llMCompany.setVisibility(View.VISIBLE);
+                    b.llMDesignation.setVisibility(View.VISIBLE);
+                    b.llMNatureBusiness.setVisibility(View.GONE);
+                }
+                if (motherStatus.equalsIgnoreCase("Employed")) {
+                    b.llMCompany.setVisibility(View.VISIBLE);
+                    b.llMDesignation.setVisibility(View.VISIBLE);
+                    b.llMNatureBusiness.setVisibility(View.GONE);
+                }
+                if (motherStatus.equalsIgnoreCase("Business")) {
+                    b.llMNatureBusiness.setVisibility(View.VISIBLE);
+                    b.llMCompany.setVisibility(View.GONE);
+                    b.llMDesignation.setVisibility(View.GONE);
+                }
+                if (motherStatus.equalsIgnoreCase("Not Employed")) {
+                    b.llMNatureBusiness.setVisibility(View.GONE);
+                    b.llMCompany.setVisibility(View.GONE);
+                    b.llMDesignation.setVisibility(View.GONE);
+                }
+                if (motherStatus.equalsIgnoreCase("Passed Away")) {
+                    b.llMNatureBusiness.setVisibility(View.GONE);
+                    b.llMCompany.setVisibility(View.GONE);
+                    b.llMDesignation.setVisibility(View.GONE);
+                }
+
+                if (motherStatus.equalsIgnoreCase("House Wife")) {
+                    b.llMNatureBusiness.setVisibility(View.GONE);
+                    b.llMCompany.setVisibility(View.GONE);
+                    b.llMDesignation.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        b.tvUserFatherStatus.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                fatherStatus = b.tvUserFatherStatus.getText().toString();
+
+                if (fatherStatus.equalsIgnoreCase("Retired")) {
+                    b.llCompanyName.setVisibility(View.VISIBLE);
+                    b.llDesignation.setVisibility(View.VISIBLE);
+                    b.llBusiness.setVisibility(View.GONE);
+                }
+
+                if (fatherStatus.equalsIgnoreCase("Employed")) {
+                    b.llCompanyName.setVisibility(View.VISIBLE);
+                    b.llDesignation.setVisibility(View.VISIBLE);
+                    b.llBusiness.setVisibility(View.GONE);
+                }
+                if (fatherStatus.equalsIgnoreCase("Business")) {
+                    b.llBusiness.setVisibility(View.VISIBLE);
+                    b.llCompanyName.setVisibility(View.GONE);
+                    b.llDesignation.setVisibility(View.GONE);
+                }
+
+                if (fatherStatus.equalsIgnoreCase("Not Employed")) {
+                    b.llBusiness.setVisibility(View.GONE);
+                    b.llCompanyName.setVisibility(View.GONE);
+                    b.llDesignation.setVisibility(View.GONE);
+                }
+
+
+                if (fatherStatus.equalsIgnoreCase("Passed Away")) {
+                    b.llBusiness.setVisibility(View.GONE);
+                    b.llCompanyName.setVisibility(View.GONE);
+                    b.llDesignation.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
     }
 
     private void getMemberData() {
+        count++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
@@ -133,36 +246,60 @@ FragmentFamilyInfoBinding b;
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
 
-
+        refresh(1000);
     }
 
     private void setData() {
-
-//            b.tvUserFatherStatus.setText(model.father_status);
-//            b.tvUserMotherStatus.setText(model.mother_status);
-//            b.tvUserFamilyLocation.setText(model.family_location);
-//            b.tvUserNativePlace.setText(model.native_place);
-////            int brother=(Integer.parseInt(model.married_male) + Integer.parseInt(model.unmarried_male));
-////            int sister=(Integer.parseInt(model.married_female) + Integer.parseInt(model.unmarried_female));
-//            b.tvUserBrothers.setText("brother"+","+model.married_male+" : Married"+","+model.unmarried_male+" : Unmarried");
-//            b.tvUserSisters.setText("sister"+","+model.married_female+" : Married"+","+model.unmarried_female+" : Unmarried");
-//            b.tvUserFamilyType.setText(model.family_type);
-//            b.tvUserFamilyAffluence.setText(model.family_affluence);
-
         if (sessionManager != null) {
+            b.tvUserFatherStatus.setText(model.father_status);
+            b.tvUserMotherStatus.setText(model.mother_status);
+            b.tvUserFamilyLocation.setText(model.family_location);
+            b.tvUserNativePlace.setText(model.native_place);
+            if(!model.unmarried_female.isEmpty() || !model.married_female.isEmpty())
+            {
+                    b.tvUserSisters.setText(new StringBuilder().append(model.married_female).append(" : Married").append(",").append(model.unmarried_female).append(" : Unmarried").toString());
 
+            }
+            if(!model.unmarried_male.isEmpty() || !model.married_male.isEmpty())
+            {
+                  b.tvUserBrothers.setText(new StringBuilder().append(model.married_male).append(" : Married").append(",").append(model.unmarried_male).append(" : Unmarried").toString());
+            }
 
-            b.tvUserFatherStatus.setText(sessionManager.getKeyProFStaus());
-            b.tvUserMotherStatus.setText(sessionManager.getKeyProMStatus());
-            b.tvUserFamilyLocation.setText(sessionManager.getKeyProFmlyLoca());
-            b.tvUserNativePlace.setText(sessionManager.getKeyProNativePlace());
-            b.tvUserBrothers.setText(model.married_male + ": Married" + "," + model.unmarried_male + " : Unmarried");
-            b.tvUserSisters.setText(model.married_female + " : Married" + "," + model.unmarried_female + " : Unmarried");
-            b.tvUserFamilyType.setText(sessionManager.getKeyProFmlyType());
-            b.tvUserFamilyAffluence.setText(sessionManager.getKeyProFmlyAfflu());
+           b.tvUserFamilyType.setText(model.family_type);
+            b.tvUserFamilyAffluence.setText(model.family_affluence);
+            b.tvUserFatherCompany.setText(model.father_company_name);
+            b.tvUserFatherDesignation.setText(model.father_designation);
+            b.tvUserFatherNatureofBusiness.setText(model.father_business_name);
 
+            b.tvUserMotherCompany.setText(model.mother_company_name);
+            b.tvUserMotherDesignation.setText(model.mother_designation);
+            b.tvUserMotherNatureofBusiness.setText(model.mother_business_name);
         }
+//        if (sessionManager != null) {
+//            b.tvUserFatherStatus.setText(sessionManager.getKeyProFStaus());
+//            b.tvUserMotherStatus.setText(sessionManager.getKeyProMStatus());
+//            b.tvUserFamilyLocation.setText(sessionManager.getKeyProFmlyLoca());
+//            b.tvUserNativePlace.setText(sessionManager.getKeyProNativePlace());
+//            b.tvUserBrothers.setText(model.married_male + ": Married" + "," + model.unmarried_male + " : Unmarried");
+//            b.tvUserSisters.setText(model.married_female + " : Married" + "," + model.unmarried_female + " : Unmarried");
+//            b.tvUserFamilyType.setText(sessionManager.getKeyProFmlyType());
+//            b.tvUserFamilyAffluence.setText(sessionManager.getKeyProFmlyAfflu());
+//        }
 
+
+    }
+
+    private void refresh(int millisecond) {
+
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                getMemberData();
+            }
+        };
+
+        handler.postDelayed(runnable, millisecond);
 
     }
 }

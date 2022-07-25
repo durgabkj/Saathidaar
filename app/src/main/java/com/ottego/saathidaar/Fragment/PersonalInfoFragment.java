@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -38,10 +39,11 @@ public class PersonalInfoFragment extends Fragment {
     public static String url = Utils.memberUrl + "my-profile/";
     public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
     Context context;
-    MemberProfileModel  model;
+    MemberProfileModel model;
     SessionManager sessionManager;
     HoroscopeModel horoscopeModel;
     String id = "";
+    int count = 0;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -87,14 +89,13 @@ public class PersonalInfoFragment extends Fragment {
     }
 
 
-
     private void getData() {
-      //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 urlGetHoroscope + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-              //  progressDialog.dismiss();
+                //  progressDialog.dismiss();
                 binding.srlRecycleViewPersonalDetails.setRefreshing(false);
                 Log.e("response", String.valueOf(response));
                 try {
@@ -117,7 +118,7 @@ public class PersonalInfoFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 binding.srlRecycleViewPersonalDetails.setRefreshing(false);
-               // progressDialog.dismiss();
+                // progressDialog.dismiss();
                 error.printStackTrace();
             }
         });
@@ -126,8 +127,8 @@ public class PersonalInfoFragment extends Fragment {
     }
 
     private void setHoroData() {
-        binding.tvUserHPlaceofBirth.setText(horoscopeModel.country_of_birth+","+horoscopeModel.city_of_birth);
-        binding.tvUserTimeofBirth.setText(horoscopeModel.hours+":"+horoscopeModel.minutes+" "+horoscopeModel.time+","+horoscopeModel.time_status);
+        binding.tvUserHPlaceofBirth.setText(horoscopeModel.country_of_birth + "," + horoscopeModel.city_of_birth);
+        binding.tvUserTimeofBirth.setText(horoscopeModel.hours + ":" + horoscopeModel.minutes + " " + horoscopeModel.time + "," + horoscopeModel.time_status);
 
     }
 
@@ -143,12 +144,11 @@ public class PersonalInfoFragment extends Fragment {
         });
 
 
-
         binding.ivCameraEditPersonalInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), ProfileEditPersonalActivity.class);
-               intent.putExtra("data", new Gson().toJson(model));
+                intent.putExtra("data", new Gson().toJson(model));
                 context.startActivity(intent);
 //                startActivity(intent);
             }
@@ -174,11 +174,10 @@ public class PersonalInfoFragment extends Fragment {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
 
-              String status=binding.tvUserMaritalStatus.getText().toString().trim();
-              if(status.equalsIgnoreCase("Never Married"))
-              {
-                  binding.llChild.setVisibility(View.GONE);
-              }
+                String status = binding.tvUserMaritalStatus.getText().toString().trim();
+                if (status.equalsIgnoreCase("Never Married")) {
+                    binding.llChild.setVisibility(View.GONE);
+                }
 
 
             }
@@ -193,8 +192,9 @@ public class PersonalInfoFragment extends Fragment {
     }
 
     private void getMemberData() {
+        count++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 binding.srlRecycleViewPersonalDetails.setRefreshing(false);
@@ -205,11 +205,11 @@ public class PersonalInfoFragment extends Fragment {
                         Gson gson = new Gson();
 //                        binding.llNoDataPersonal.setVisibility(View.VISIBLE);
 //                        binding.scrvPersonalData.setVisibility(View.GONE);
-                       model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
-                       // SessionProfileDetailModel model = gson.fromJson(String.valueOf(response.getJSONObject("data")), SessionProfileDetailModel.class);
+                        model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
+                        // SessionProfileDetailModel model = gson.fromJson(String.valueOf(response.getJSONObject("data")), SessionProfileDetailModel.class);
                         sessionManager.CreateProfileSession(model);
-                           setData();
-                        }else {
+                        setData();
+                    } else {
 
                         Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }
@@ -229,11 +229,12 @@ public class PersonalInfoFragment extends Fragment {
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
+        refresh(1000);
     }
 
     private void setData() {
 
-        if (model != null ) {
+        if (model != null) {
             binding.tvDob.setText(model.date_of_birth);
             binding.tvUserAge.setText(model.age);
             binding.tvUserMaritalStatus.setText(model.marital_status);
@@ -252,5 +253,17 @@ public class PersonalInfoFragment extends Fragment {
 
     }
 
+    private void refresh(int millisecond) {
+
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                getMemberData();
+            }
+        };
+
+        handler.postDelayed(runnable, millisecond);
 
     }
+}
