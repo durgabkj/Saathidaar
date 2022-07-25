@@ -18,6 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.MemberPreferenceModel;
 import com.ottego.saathidaar.Model.MemberProfileModel;
@@ -83,6 +84,20 @@ public class MatchDetailsFragment extends Fragment {
         getData();
         setData();
         getMemberPreferenceData();
+
+        Glide.with(context)
+                .load(Utils.imageUrl +mParam2)
+                .into(b.ivDetailUserImage);
+
+
+        Glide.with(context)
+                .load(Utils.imageUrl +sessionManager.getKEY_PROFILE_Pic())
+                .into(b.profileDetailPicLoginUser);
+
+
+        Glide.with(context)
+                .load(Utils.imageUrl +mParam2)
+                .into(b.profileDetailPic1Partner);
         return b.getRoot();
     }
 

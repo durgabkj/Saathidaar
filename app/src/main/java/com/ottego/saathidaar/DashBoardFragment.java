@@ -16,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -28,7 +29,9 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.DataModelDashboard;
 import com.ottego.saathidaar.Model.ImageModel;
+import com.ottego.saathidaar.Model.MemberProfileModel;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -47,7 +50,7 @@ public class DashBoardFragment extends Fragment {
     int[] images = {R.drawable.smartphone, R.drawable.documents, R.drawable.global};
     String[] text = {"phone Number to Connect Instantly", "100% Verified Biodatas", "Find Common connections"};
     String image;
-
+    MemberProfileModel memberProfileModel;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -107,7 +110,7 @@ public class DashBoardFragment extends Fragment {
         tvDashBoardUserName=view.findViewById(R.id.tvDashBoardUserName);
         llAcceptRequest=view.findViewById(R.id.llAcceptRequest);
         llProfileVisi=view.findViewById(R.id.llProfileVisi);
-
+getMemberData();
         set();
         Log.e("hey_member",sessionManager.getMemberId());
 
@@ -135,9 +138,6 @@ public class DashBoardFragment extends Fragment {
         tvDashBoardUserId.setText("["+sessionManager.getKeyProfileId()+"]");
         tvDashBoardUserAccountType.setText(sessionManager.getKeyCreatedby());
 
-        Glide.with(context)
-                .load(Utils.imageUrl+sessionManager.getKEY_PROFILE_Pic())
-                .into(profilePicDashBoard);
         //  setData();
         listener();
 
@@ -345,7 +345,49 @@ public class DashBoardFragment extends Fragment {
 
 
 
+    private void getMemberData() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // binding.srlRecycleViewPersonalDetails.setRefreshing(false);
+                Log.e("response", String.valueOf(response));
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        Gson gson = new Gson();
+//                        binding.llNoDataPersonal.setVisibility(View.VISIBLE);
+//                        binding.scrvPersonalData.setVisibility(View.GONE);
+                        memberProfileModel = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
+                        // SessionProfileDetailModel model = gson.fromJson(String.valueOf(response.getJSONObject("data")), SessionProfileDetailModel.class);
+//                        sessionManager.CreateProfileSession(memberProfileModel);
+//                        setDataMember();
+                    }else {
 
+                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                    }
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //  binding.srlRecycleViewPersonalDetails.setRefreshing(false);
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+    }
+
+    private void setDataMember() {
+        Glide.with(context)
+                .load(Utils.imageUrl+memberProfileModel.profile_photo)
+                .into(profilePicDashBoard);
+    }
 
 }

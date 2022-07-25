@@ -1,9 +1,11 @@
 package com.ottego.saathidaar;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -12,9 +14,13 @@ import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -97,6 +103,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         b.mtGalleryToolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, PICK_FILE_REQUEST);
                 if (item.getItemId()==R.id.menu_top_add){
                     Intent intent = new Intent();
                     intent.setType("image/*");
@@ -121,6 +128,50 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             }
         });
     }
+
+    // Function to check and request permission
+    public void checkPermission(String permission, int requestCode)
+    {
+        // Checking if permission is not granted
+        if (ContextCompat.checkSelfPermission(GalleryActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(GalleryActivity.this, new String[] { permission }, requestCode);
+        }
+        else {
+            Toast.makeText(GalleryActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == PICK_FILE_REQUEST) {
+
+            // Checking whether user granted the permission or not.
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                // Showing the toast message
+                Toast.makeText(GalleryActivity.this, "Camera Permission Granted", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(GalleryActivity.this, "Camera Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if (requestCode == PICK_FILE_REQUEST) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(GalleryActivity.this, "Storage Permission Granted", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(GalleryActivity.this, "Storage Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -149,8 +200,6 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             }
         }
     }
-
-
 //    public void pathFile(Uri selectedFileUri) {
 //        String filePath = FilePath.getPath(this, selectedFileUri);
 //        imagePathList.add(filePath);
@@ -168,9 +217,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 //            Toast.makeText(this, "Cannot upload attachment", Toast.LENGTH_SHORT).show();
 //        }
 //    }
-
-
-    public static String getFileName(Context context, Uri uri) throws URISyntaxException {
+ public static String getFileName(Context context, Uri uri) throws URISyntaxException {
         String temp = "";
         String[] projection = {OpenableColumns.DISPLAY_NAME};
         Cursor cursor = null;
@@ -202,7 +249,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 
                 String result = multipartRequest(URL, params, path, "image", "image/jpeg");
 //next parse result string
-                // Log.e("result",result);
+                 Log.e("durga",result);
             }
         }).start();
     }
@@ -281,8 +328,11 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             outputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
             Log.e("Connection response", String.valueOf(connection.getResponseCode()));
             Log.e("durga", "response: " + connection.getResponseCode());
-            if (200 != connection.getResponseCode()) {
-//              throw new CustomException("Failed to upload code:" + connection.getResponseCode() + " " + connection.getResponseMessage());
+            if (connection.getResponseCode()==200) {
+                Toast.makeText(GalleryActivity.this,"Photo Uploaded Successfully,Please Refresh your gallery",Toast.LENGTH_LONG).show();
+              }else
+            {
+                Toast.makeText(GalleryActivity.this,"Photo  not Uploaded Try Again..!!",Toast.LENGTH_LONG).show();
             }
 
             inputStream = connection.getInputStream();

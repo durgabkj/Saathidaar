@@ -1427,7 +1427,7 @@
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle">
 
                                 <ImageView
-                                    android:id="@+id/profileDetailPic"
+                                    android:id="@+id/profileDetailPicLoginUser"
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:background="@color/white"
@@ -1452,7 +1452,7 @@
                                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle">
 
                                 <ImageView
-                                    android:id="@+id/profileDetailPic1"
+                                    android:id="@+id/profileDetailPic1Partner"
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:background="@color/white"
