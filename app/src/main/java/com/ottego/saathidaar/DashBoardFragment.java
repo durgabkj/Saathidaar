@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -33,8 +34,6 @@ import com.ottego.saathidaar.Model.MemberProfileModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.logging.LogRecord;
 
 
 public class DashBoardFragment extends Fragment {
@@ -94,8 +93,8 @@ public class DashBoardFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
         context = getContext();
         sessionManager = new SessionManager(context);
-
-        srlDashboard = view.findViewById(R.id.srlDashboard);
+//
+//        srlDashboard = view.findViewById(R.id.srlDashboard);
         ivPremiumImage = view.findViewById(R.id.ivPremiumImage);
         tvPremiumText = view.findViewById(R.id.tvPremiumText);
         tvLogout = view.findViewById(R.id.tvLogout);
@@ -147,14 +146,12 @@ public class DashBoardFragment extends Fragment {
 
         //  setData();
         listener();
-
         tvDashBoardUserName.setText(sessionManager.getName());
         return view;
 
     }
 
-
-    private void listener() {
+            private void listener() {
 
         tvDashBoardUploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -298,11 +295,12 @@ public class DashBoardFragment extends Fragment {
     }
 
     private void getData() {
+        count++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                srlDashboard.setRefreshing(false);
+             //   srlDashboard.setRefreshing(false);
                 Log.e("response", String.valueOf((response)));
                 Gson gson = new Gson();
                 model = gson.fromJson(String.valueOf(response), DataModelDashboard.class);
@@ -311,23 +309,25 @@ public class DashBoardFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                srlDashboard.setRefreshing(false);
+              //  srlDashboard.setRefreshing(false);
                 error.printStackTrace();
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
+refresh(1000);
 
     }
 
     private void setData() {
-        if (model.data != null && model.data.size() > 0 && model.data.isEmpty()) {
+        if (model.data != null || model.data.size() > 0 || model.data.isEmpty()) {
             RequestAccept.setText(model.data.get(0).accept_request_count);
             RequestSent.setText(model.data.get(0).sent_request_count);
             Visitors.setText(model.data.get(0).recent_visitors_count);
         }
     }
+
+
 
     private void set() {
         if (countDownTimer != null) {
@@ -392,10 +392,25 @@ public class DashBoardFragment extends Fragment {
     }
 
     private void setDataMember() {
-        Glide.with(context)
-                .load(Utils.imageUrl + memberProfileModel.profile_photo)
-                .into(profilePicDashBoard);
+        if (memberProfileModel.profile_photo != null && !memberProfileModel.profile_photo.isEmpty()) {
+            Glide.with(context)
+                    .load(Utils.imageUrl + memberProfileModel.profile_photo)
+                    .into(profilePicDashBoard);
+        } else {
+            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                Glide.with(context)
+                        .load(R.drawable.ic_no_image__male_)
+                        .into(profilePicDashBoard);
+
+            } else {
+                Glide.with(context)
+                        .load(R.drawable.ic_no_image__female_)
+                        .into(profilePicDashBoard);
+
+            }
+        }
     }
+
 
     private void refresh(int millisecond) {
 

@@ -1,19 +1,16 @@
 package com.ottego.saathidaar;
 
-import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -22,8 +19,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.AcceptInvitationAdapter;
-import com.ottego.saathidaar.Adapter.InboxInvitationAdapter;
-import com.ottego.saathidaar.Model.DataModelDashboard;
 import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.databinding.FragmentAcceptedInboxBinding;
 import com.ottego.saathidaar.viewmodel.InboxViewModel;

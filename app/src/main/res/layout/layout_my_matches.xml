@@ -29,7 +29,6 @@
             android:id="@+id/ivUserMatch"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/local"
             android:scaleType="centerCrop"
            />
 
@@ -162,6 +161,7 @@
                         android:src="@drawable/ic_camera" />
 
                     <TextView
+                        android:id="@+id/tvImageCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:shadowColor="#000000"
@@ -170,7 +170,6 @@
                         android:gravity="center"
                         android:layout_gravity="center"
                         android:shadowRadius="1.6"
-                        android:text="2"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 
@@ -301,7 +300,7 @@
                 android:layout_gravity="end|bottom"
                 android:visibility="gone"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="20dp"
+                android:layout_marginVertical="10dp"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView

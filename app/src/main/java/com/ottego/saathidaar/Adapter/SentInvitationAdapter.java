@@ -113,7 +113,7 @@ import java.util.List;
             });
 
 
-            if (!(!item.profile_photo.isEmpty()) && !(item.profile_photo != null)) {
+            if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .into(holder.ivSentInvitation);
@@ -140,6 +140,15 @@ import java.util.List;
 
 
             }
+
+            if((item.request_message!= null || item.request_status_date!= null) && (!item.request_message.isEmpty() || !item.request_status_date.isEmpty()) )
+            {
+                holder.tvInvitationMessageSent.setText(item.request_message);
+                // holder.tvInvitationDateInbox.setText(item.request_status_date);
+
+            }else {
+                holder.llMsgDateSent.setVisibility(View.GONE);
+            }
             }
 
 
@@ -151,10 +160,10 @@ import java.util.List;
 
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs;
-            LinearLayout llAccept,llDelete,llAccepted,llDeleted,llPhotoSent,llBlockSent,llBlockedSent,llNo_imageFemaleSentInvitation;
+            TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs,tvInvitationMessageSent;
+            LinearLayout llAccept,llDelete,llAccepted,llDeleted,llPhotoSent,llBlockSent,llBlockedSent,llNo_imageFemaleSentInvitation,llMsgDateSent;
             ImageView ivNoImageMaleFemaleSentInvitation,ivSentInvitation;
-FrameLayout flNoImageMaleFemaleSentInvitation;
+            FrameLayout flNoImageMaleFemaleSentInvitation;
             public ViewHolder(@NonNull View itemView) {
 
                 super(itemView);
@@ -170,8 +179,8 @@ FrameLayout flNoImageMaleFemaleSentInvitation;
                 llPhotoSent=itemView.findViewById(R.id.llPhotoSent);
                 llBlockSent=itemView.findViewById(R.id.llBlockSent);
                 llBlockedSent=itemView.findViewById(R.id.llBlockedSent);
-
-
+                llMsgDateSent=itemView.findViewById(R.id.llMsgDateSent);
+                tvInvitationMessageSent=itemView.findViewById(R.id.tvInvitationMessageSent);
                 llNo_imageFemaleSentInvitation = itemView.findViewById(R.id.llNo_imageFemaleSentInvitation);
                 ivNoImageMaleFemaleSentInvitation=itemView.findViewById(R.id.ivNoImageMaleFemaleSentInvitation);
                 ivSentInvitation=itemView.findViewById(R.id.ivSentInvitation);

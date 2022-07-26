@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
@@ -54,7 +55,7 @@ public class MyProfileFragment extends Fragment {
     AppCompatImageView ivClear;
     Context context;
     ScrollView MyProfileDetail;
-
+int count=0;
     public static String url = Utils.memberUrl + "my-profile/";
 
     MemberProfileModel model;
@@ -190,6 +191,7 @@ public class MyProfileFragment extends Fragment {
 
 
     private void getMemberData() {
+        count++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
@@ -221,12 +223,47 @@ public class MyProfileFragment extends Fragment {
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
+refresh(1000);
     }
 
     private void setData() {
-        Glide.with(context)
-                .load(Utils.imageUrl+model.profile_photo)
-                .into(profilePic);
+//        Glide.with(context)
+//                .load(Utils.imageUrl+model.profile_photo)
+//                .into(profilePic);
+
+        if (model.profile_photo != null && !model.profile_photo.isEmpty()) {
+            Glide.with(context)
+                    .load(Utils.imageUrl + model.profile_photo)
+                    .into(profilePic);
+        } else {
+            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                Glide.with(context)
+                        .load(R.drawable.ic_no_image__male_)
+                        .into(profilePic);
+
+            } else {
+                Glide.with(context)
+                        .load(R.drawable.ic_no_image__female_)
+                        .into(profilePic);
+
+            }
+        }
+    }
+
+
+    private void refresh(int millisecond) {
+
+        final Handler handler= new Handler();
+        final  Runnable runnable=new Runnable() {
+            @Override
+            public void run() {
+                getMemberData();
+            }
+        };
+
+        handler.postDelayed(runnable,millisecond);
+
+
+
     }
 }

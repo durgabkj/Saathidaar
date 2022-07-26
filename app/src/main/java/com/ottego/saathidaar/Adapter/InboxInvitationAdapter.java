@@ -50,15 +50,13 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         InboxModel item = list.get(position);
         Log.e(" Inbox model", new Gson().toJson(item));
         sessionManager = new SessionManager(context);
-
         holder.tvInvNewMatchName.setText(item.first_name + " " + item.last_name);
         holder.tvInvNewMatchAge.setText(item.mage);
         holder.tvInvNewMatchHeight.setText(item.religion);
         holder.tvInvNewMatchCity.setText(item.maritalStatus);
         holder.tvInvNewMatchWorkAs.setText(item.country);
 
-        holder.tvInvitationMessageInbox.setText(item.request_message);
-        holder.tvInvitationDateInbox.setText(item.request_status_date);
+
 
         holder.llAccept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +113,7 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         });
 
 
-        if (!(!item.profile_photo.isEmpty()) && !(item.profile_photo != null)) {
+        if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .into(holder.ivReceivedInvitation);
@@ -140,7 +138,15 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
 
             }
 
+        }
 
+        if((item.request_message!= null || item.request_status_date!= null) && (!item.request_message.isEmpty() || !item.request_status_date.isEmpty()) )
+        {
+            holder.tvInvitationMessageInbox.setText(item.request_message);
+           // holder.tvInvitationDateInbox.setText(item.request_status_date);
+
+        }else {
+            holder.llMsgDate.setVisibility(View.GONE);
         }
 
     }
@@ -156,7 +162,7 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         FrameLayout flNoImageMaleFemaleListReceivedInvitation;
         ImageView ivNoImageMaleFemaleReceivedInvitation, ivReceivedInvitation;
         TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs, tvInvitationMessageInbox, tvInvitationDateInbox;
-        LinearLayout llNo_imageFemaleListReceivedInvitation, llAccept, llDelete, llAccepted, llDeleted, llPhotoInvitation, llBlockInvitation, llBlockedInvitation, llAcceptDelete;
+        LinearLayout llNo_imageFemaleListReceivedInvitation, llAccept, llDelete, llAccepted, llDeleted, llPhotoInvitation, llBlockInvitation, llBlockedInvitation, llAcceptDelete,llMsgDate;
 
         public ViewHolder(@NonNull View itemView) {
 
@@ -179,7 +185,7 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
 
             tvInvitationMessageInbox = itemView.findViewById(R.id.tvInvitationMessageInbox);
             tvInvitationDateInbox = itemView.findViewById(R.id.tvInvitationDateInbox);
-
+            llMsgDate=itemView.findViewById(R.id.llMsgDate);
 
             llNo_imageFemaleListReceivedInvitation = itemView.findViewById(R.id.llNo_imageFemaleListReceivedInvitation);
             flNoImageMaleFemaleListReceivedInvitation = itemView.findViewById(R.id.flNoImageMaleFemaleListReceivedInvitation);

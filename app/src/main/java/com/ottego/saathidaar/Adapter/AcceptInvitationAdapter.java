@@ -93,7 +93,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         });
 
 
-        if (!(!item.profile_photo.isEmpty()) && !(item.profile_photo != null)) {
+        if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .into(holder.ivProfileAcceptInvi);

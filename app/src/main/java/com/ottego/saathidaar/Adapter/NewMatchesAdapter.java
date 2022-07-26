@@ -18,12 +18,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.ottego.saathidaar.GalleryActivity;
-import com.ottego.saathidaar.MatchDetailsFragment;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
-import com.ottego.saathidaar.MemberGalleryShowFragment;
-import com.ottego.saathidaar.Model.GalleryModel;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.SessionManager;
@@ -52,7 +48,7 @@ SessionManager sessionManager;
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         NewMatchesModel item = list.get(position);
 //        Log.e(" New Matches model", new Gson().toJson(item));
-sessionManager=new SessionManager(context);
+         sessionManager=new SessionManager(context);
         holder.tvNewMatchName.setText(item.first_name + " " + item.last_name);
         holder.tvNewMatchAge.setText(item.mage);
         holder.tvNewMatchHeight.setText(item.religion);
@@ -64,7 +60,7 @@ sessionManager=new SessionManager(context);
 //                        .into(holder.ivUserMatch);
 //            }
 //
-        if (!(!item.profile_photo.isEmpty()) && !(item.profile_photo != null)) {
+        if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .into(holder.ivUserMatch);
@@ -144,8 +140,6 @@ sessionManager=new SessionManager(context);
             }
         });
 
-
-
     }
 
     @Override
@@ -154,10 +148,10 @@ sessionManager=new SessionManager(context);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView ivUserMatch,ivNoImageMaleFemaleMatch;
-        TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
-        LinearLayout llMess, llShortListRemove, llShortList, llPhotoMyMatches, llShortBlock,llBlocked;
-        LinearLayout ivLike, llConnect,llNo_imageFemaleList;
+        ImageView ivUserMatch, ivNoImageMaleFemaleMatch;
+        TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs, tvImageCount;
+        LinearLayout llMess, llShortListRemove, llShortList, llPhotoMyMatches, llShortBlock, llBlocked;
+        LinearLayout ivLike, llConnect, llNo_imageFemaleList;
         FrameLayout flNoImageMaleFemaleList;
         Spinner SpMenu;
 
@@ -178,7 +172,8 @@ sessionManager=new SessionManager(context);
             llBlocked=itemView.findViewById(R.id.llBlocked);
             llNo_imageFemaleList=itemView.findViewById(R.id.llNo_imageFemaleList);
             flNoImageMaleFemaleList=itemView.findViewById(R.id.flNoImageMaleFemaleList);
-            ivNoImageMaleFemaleMatch=itemView.findViewById(R.id.ivNoImageMaleFemaleMatch);
+            ivNoImageMaleFemaleMatch = itemView.findViewById(R.id.ivNoImageMaleFemaleMatch);
+            tvImageCount = itemView.findViewById(R.id.tvImageCount);
 
 
 

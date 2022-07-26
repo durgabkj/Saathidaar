@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".MatchDetailsFragment">
+    tools:context=".InboxDetailFragment">
 
 
     <ImageView
@@ -75,6 +75,7 @@
                             android:id="@+id/llBack"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             android:orientation="horizontal"
                             android:padding="10dp">
 
@@ -93,23 +94,25 @@
                         android:layout_gravity="end">
 
                         <LinearLayout
+                            android:id="@+id/llShowMemberImageInbox"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
                             android:orientation="horizontal"
-                            android:padding="10dp">
+                            >
 
                             <LinearLayout
-                                android:layout_width="70dp"
-                                android:layout_height="wrap_content"
+                                android:layout_width="60dp"
+                                android:layout_height="30dp"
                                 android:layout_marginStart="10dp"
                                 android:background="@drawable/oval_bg"
                                 android:orientation="horizontal">
 
                                 <androidx.appcompat.widget.AppCompatImageView
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
                                     android:layout_marginStart="8dp"
-                                    android:padding="10dp"
+                                    android:padding="8dp"
                                     android:scaleType="centerCrop"
                                     android:src="@drawable/ic_camera" />
 
@@ -123,7 +126,7 @@
                                     android:shadowRadius="1.6"
                                     android:text="2"
                                     android:textColor="@color/white"
-                                    android:textSize="17sp" />
+                                    android:textSize="14sp" />
 
                             </LinearLayout>
 
@@ -2725,6 +2728,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:visibility="gone"
         android:layout_gravity="bottom"
         android:orientation="vertical">
 
@@ -2738,6 +2742,7 @@
             android:layout_height="60dp"
             android:layout_margin="3dp"
             android:elevation="20dp"
+
             android:translationZ="20dp"
             app:cardBackgroundColor="@color/white"
             app:cardElevation="20dp"
@@ -2779,6 +2784,24 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    app:cardCornerRadius="100dp">
+
+                    <ImageView
+                        android:id="@+id/ivDetailsConnectedInbox"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@color/white"
+                        android:padding="6dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_check_black_24dp" />
+                </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -2786,6 +2809,7 @@
                     app:cardCornerRadius="100dp">
 
                     <ImageView
+                        android:id="@+id/ivConnectInbox"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:background="@color/white"

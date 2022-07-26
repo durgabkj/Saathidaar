@@ -28,8 +28,7 @@
             android:id="@+id/ivRecentViewImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/local" />
+            android:scaleType="matrix" />
 
 
 
@@ -295,6 +294,47 @@
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:id="@+id/llConnectedRecently"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:visibility="gone"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="10dp"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="100dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/ivAccept"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@color/white"
+                        android:padding="8dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_check_black_24dp" />
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:fontFamily="@font/italic"
+                    android:shadowRadius="1.6"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:text="Connected"/>
+
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/ivLikeRecentVisitors"
                 android:layout_width="wrap_content"

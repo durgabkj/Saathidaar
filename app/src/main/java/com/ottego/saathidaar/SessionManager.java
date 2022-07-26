@@ -24,6 +24,9 @@ public class SessionManager {
 //profile pic id
 public  static  final String KEY_PROFILE_ID="image_id";
 
+    //image count
+    public  static  final String KEY_IMAGE_COUNT  ="image_count";
+
     //USER DETAIL
     public static final String KEY_FNAME = "firstName";
     public static final String KEY_LNAME = "lastname";
@@ -529,5 +532,5 @@ public  static  final String KEY_PROFILE_ID="image_id";
             return pref.getString(KEY_PROFILE_ID, "");
         }
 
-    }
+}
 

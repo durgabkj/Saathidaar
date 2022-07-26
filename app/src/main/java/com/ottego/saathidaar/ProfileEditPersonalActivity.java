@@ -175,11 +175,29 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             b.etHealth.setText(model.health_info);
             b.tvUserGotra.setText(model.gothra);
 
-            Glide.with(context)
-                    .load(Utils.imageUrl+model.profile_photo)
-                    .into(b.profilePic);
-        }
+//            Glide.with(context)
+//                    .load(Utils.imageUrl+model.profile_photo)
+//                    .into(b.profilePic);
 
+
+            if (model.profile_photo != null && !model.profile_photo.isEmpty()) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .into(b.profilePic);
+            } else {
+                if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__male_)
+                            .into(b.profilePic);
+
+                } else {
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__female_)
+                            .into(b.profilePic);
+
+                }
+            }
+        }
 
         //   b.multiSelectionAge.setSelected(minAdapter.getPosition(model.age));
         //   b.tvEditMaritalStatus.setSelection(Integer.parseInt(model.marital_status));

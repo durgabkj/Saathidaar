@@ -1,6 +1,7 @@
 package com.ottego.saathidaar;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -237,10 +238,25 @@ public class MatchDetailsFragment extends Fragment {
 
     }
     private void listener() {
+
+        b.llShowMemberImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(context, MemberGalleryActivity.class);
+                intent.putExtra("Member_id",mParam1);
+                context.startActivity(intent);
+            }
+        });
+
+
+
+
         b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Utils.sentRequest(context,mParam1);
+                b.ivDetailsConnect.setVisibility(View.GONE);
+                b.ivDetailsConnected.setVisibility(View.VISIBLE);
             }
         });
 
@@ -399,10 +415,12 @@ b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
             b.tvDetailAnnualIncome.setText("Earn " + model.annual_income);
             b.tvDetailEducationField.setText(model.highest_qualification);
             b.tvDetailCollege.setText(model.college_attended);
+            b.tvDetailEmailID.setText(model.profile_email_id);
+            b.tvDetailCall.setText(model.profile_contact_number);
 
 
 
-            if (!(!model.profile_photo.isEmpty()) && !(model.profile_photo != null)) {
+            if (model.profile_photo != null && !model.profile_photo.isEmpty()) {
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
                         .into(b.ivDetailUserImage);
@@ -481,8 +499,27 @@ b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
     }
 
     private void setDataMember() {
-        Glide.with(context)
-                .load(Utils.imageUrl + memberProfileModel.profile_photo)
-                .into(b.profileDetailPicLoginUser);
+//        Glide.with(context)
+//                .load(Utils.imageUrl + memberProfileModel.profile_photo)
+//                .into(b.profileDetailPicLoginUser);
+
+
+        if (memberProfileModel.profile_photo != null && !memberProfileModel.profile_photo.isEmpty()) {
+            Glide.with(context)
+                    .load(Utils.imageUrl + memberProfileModel.profile_photo)
+                    .into(b.profileDetailPicLoginUser);
+        } else {
+            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                Glide.with(context)
+                        .load(R.drawable.ic_no_image__male_)
+                        .into(b.profileDetailPicLoginUser);
+
+            } else {
+                Glide.with(context)
+                        .load(R.drawable.ic_no_image__female_)
+                        .into(b.profileDetailPicLoginUser);
+
+            }
+        }
     }
 }

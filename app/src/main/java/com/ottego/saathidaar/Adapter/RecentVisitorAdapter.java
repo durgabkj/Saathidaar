@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
-import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.NewMatchesModel;
@@ -111,7 +110,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
             });
 
 
-            if (!(!item.profile_photo.isEmpty()) && !(item.profile_photo != null)) {
+            if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .into(holder.ivRecentViewImage);
@@ -136,8 +135,16 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
 
                 }
 
-
             }
+            holder.ivLikeRecentVisitors.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Utils.sentRequest(context,item.member_id);
+                    holder.ivLikeRecentVisitors.setVisibility(View.GONE);
+                    holder.llConnectedRecently.setVisibility(View.VISIBLE);
+                }
+            });
+
 
 
         }
@@ -151,8 +158,8 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivRecentViewImage,ivNoImageMaleFemaleRecentView;
             TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
-            LinearLayout llPhotoRecentV,llShortBlockRecentV,llBlockedRecentV,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove,llNo_imageFemaleListRecentView;
-FrameLayout flNoImageMaleFemaleListRecentView;
+            LinearLayout llPhotoRecentV,llShortBlockRecentV,llBlockedRecentV,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove,llNo_imageFemaleListRecentView,llConnectedRecently;
+            FrameLayout flNoImageMaleFemaleListRecentView;
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 tvNewMatchAge = itemView.findViewById(R.id.tvRecentViewAgeRs);
@@ -166,7 +173,7 @@ FrameLayout flNoImageMaleFemaleListRecentView;
                 ivLikeRecentVisitors=itemView.findViewById(R.id.ivLikeRecentVisitors);
                 llShortListRecentV=itemView.findViewById(R.id.llShortListRecentV);
                 llShortListRemove=itemView.findViewById(R.id.llShortListRemove);
-
+                llConnectedRecently=itemView.findViewById(R.id.llConnectedRecently);
                 flNoImageMaleFemaleListRecentView=itemView.findViewById(R.id.flNoImageMaleFemaleListRecentView);
                 ivRecentViewImage=itemView.findViewById(R.id.ivRecentViewImage);
                 ivNoImageMaleFemaleRecentView=itemView.findViewById(R.id.ivNoImageMaleFemaleRecentView);

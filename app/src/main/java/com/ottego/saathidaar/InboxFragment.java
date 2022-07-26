@@ -85,8 +85,8 @@ public class InboxFragment extends Fragment {
         sessionManager = new SessionManager(context);
 
         //Auto Refresh Activity...
-        this.mHandler = new Handler();
-        m_Runnable.run();
+//        this.mHandler = new Handler();
+//        m_Runnable.run();
 
 
         b.vpInbox.setPagingEnable(false);

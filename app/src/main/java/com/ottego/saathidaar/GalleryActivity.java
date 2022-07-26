@@ -70,7 +70,8 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     List<String> imageNameList = new ArrayList<>();
     List<String> imagePathList = new ArrayList<>();
     GalleryViewModel viewModel;
-    int count=0;
+   // int count=0;
+    private static final int REQUEST_STORAGE_PERMISSION = 100;
     private static final int PICK_FILE_REQUEST = 1;
 
     PickiT pickiT;
@@ -128,7 +129,8 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                     uploadInThread(imagePathList.get(i));
 
                 }
-
+                getData();
+                refresh(1000);
             }
         });
     }
@@ -154,7 +156,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == PICK_FILE_REQUEST) {
+        if (requestCode == REQUEST_STORAGE_PERMISSION) {
 
             // Checking whether user granted the permission or not.
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -166,7 +168,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                 Toast.makeText(GalleryActivity.this, "Camera Permission Denied", Toast.LENGTH_SHORT).show();
             }
         }
-        else if (requestCode == PICK_FILE_REQUEST) {
+        else if (requestCode == REQUEST_STORAGE_PERMISSION) {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(GalleryActivity.this, "Storage Permission Granted", Toast.LENGTH_SHORT).show();
@@ -406,7 +408,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 
 
     private void getData() {
-        count++;
+       // count++;
         //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 getImageURL + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
@@ -433,7 +435,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
-    refresh(1000);
+
     }
     private void setRecyclerView() {
         GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);

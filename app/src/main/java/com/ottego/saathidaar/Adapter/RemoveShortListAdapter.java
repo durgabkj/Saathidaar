@@ -53,7 +53,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
     public void onBindViewHolder(@NonNull RemoveShortListAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         NewMatchesModel item = list.get(position);
         Log.e(" New Matches model", new Gson().toJson(item));
-sessionManager=new SessionManager(context);
+         sessionManager=new SessionManager(context);
 
         holder.tvNewMatchNameRs.setText(item.first_name + " " + item.last_name);
         holder.tvNewMatchAgeRs.setText(item.mage+" Yrs");
@@ -110,7 +110,7 @@ sessionManager=new SessionManager(context);
         });
 
 
-        if (!(!item.profile_photo.isEmpty()) && !(item.profile_photo != null)) {
+        if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .into(holder.ivRemoveShortList);
@@ -132,10 +132,7 @@ sessionManager=new SessionManager(context);
                 Glide.with(context)
                         .load(R.drawable.ic_no_image__male_)
                         .into(holder.ivRemoveShortList);
-
             }
-
-
         }
 
 
@@ -154,7 +151,7 @@ sessionManager=new SessionManager(context);
         TextView tvNewMatchNameRs, tvNewMatchAgeRs, tvNewMatchHeightRs, tvNewMatchCityRs, tvNewMatchWorkAsRs;
         LinearLayout llMess,llShortListRemove1,llShortList1,llPhotoShortList,llNo_imageFemaleRemoveShortList;
         LinearLayout ivLikeShortList,llBlockShortList,llBlockedShortList,llConnectShortList;
-FrameLayout flNoImageMaleFemaleRemoveShortList;
+       FrameLayout flNoImageMaleFemaleRemoveShortList;
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
@@ -170,7 +167,6 @@ FrameLayout flNoImageMaleFemaleRemoveShortList;
             llBlockedShortList=itemView.findViewById(R.id.llBlockedShortList);
             llBlockShortList=itemView.findViewById(R.id.llBlockShortList);
             llConnectShortList=itemView.findViewById(R.id.llConnectShortList);
-
 
             ivRemoveShortList = itemView.findViewById(R.id.ivRemoveShortList);
             ivNoImageMaleFemaleRemoveShortList=itemView.findViewById(R.id.ivNoImageMaleFemaleRemoveShortList);

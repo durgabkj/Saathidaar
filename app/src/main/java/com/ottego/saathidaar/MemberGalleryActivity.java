@@ -34,6 +34,7 @@ import java.util.List;
 
 public class MemberGalleryActivity extends AppCompatActivity {
 ActivityMemberGalleryBinding b;
+    SessionManager sessionManager;
     DataModelImage dataModelImage;
     String getImageURL = Utils.memberUrl + "app/get/photo/";
     Context context;
@@ -46,8 +47,9 @@ ActivityMemberGalleryBinding b;
         setContentView(b.getRoot());
         viewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
         context=MemberGalleryActivity.this;
+        sessionManager=new SessionManager(context);
         member_id = getIntent().getStringExtra("Member_id");
-        Log.e("hello durga",member_id);
+      //  Log.e("hello durga",member_id);
         getData();
         listener();
     }
@@ -103,7 +105,6 @@ ActivityMemberGalleryBinding b;
         b.rvMemberImage.setNestedScrollingEnabled(true);
         MemberImageGalleryAdapter adapter = new MemberImageGalleryAdapter(context, dataModelImage.data);
         b.rvMemberImage.setAdapter(adapter);
-
         if (adapter.getItemCount() != 0) {
             b.llNoDataImage.setVisibility(View.GONE);
             b.llCardMember.setVisibility(View.VISIBLE);

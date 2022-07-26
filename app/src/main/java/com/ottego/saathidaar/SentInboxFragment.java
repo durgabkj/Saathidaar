@@ -31,7 +31,6 @@ import org.json.JSONObject;
 
 
 public class SentInboxFragment extends Fragment {
-
   FragmentSentInboxBinding b;
     Context context;
     SessionManager sessionManager;

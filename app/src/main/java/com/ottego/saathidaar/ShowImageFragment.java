@@ -1,8 +1,6 @@
 package com.ottego.saathidaar;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,11 +17,10 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
+import com.google.android.material.snackbar.Snackbar;
 import com.ottego.saathidaar.Model.ImageModel;
-import com.ottego.saathidaar.Model.SessionModel;
 import com.ottego.saathidaar.databinding.FragmentShowImageBinding;
 
 import org.json.JSONException;
@@ -72,7 +69,7 @@ String member_id;
         b = FragmentShowImageBinding.inflate(inflater, container, false);
         context = getContext();
         sessionManager = new SessionManager(context);
-member_id=sessionManager.getMemberId();
+        member_id=sessionManager.getMemberId();
         Log.e("image_path", mParam1);
         Log.e("image_id", mParam2);
         setData();
@@ -102,13 +99,14 @@ member_id=sessionManager.getMemberId();
 
 
     }
+
     private void setProfile() {
         String ProfileSetUrl = Utils.memberUrl + "profile/photo/";
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        //   final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, ProfileSetUrl+member_id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                progressDialog.dismiss();
+                // progressDialog.dismiss();
                 Log.e("response", response);
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -129,7 +127,7 @@ member_id=sessionManager.getMemberId();
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
+                        //  progressDialog.dismiss();
                         error.printStackTrace();
                         Toast.makeText(context, "Sorry, something went wrong. Please try again.", Toast.LENGTH_SHORT).show();
                     }
