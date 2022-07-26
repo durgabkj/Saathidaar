@@ -7,44 +7,49 @@
     android:layout_height="match_parent"
     tools:context=".InvitationFragment">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srlRecycleViewInvitation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/llNoDataInvitation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
 
-        <LinearLayout
-            android:id="@+id/llNoDataInvitation"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:background="@color/white"
-            android:orientation="vertical"
-            tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/ic_no_data" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llCardInvitation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:background="@drawable/ic_no_data" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llCardInvitation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/srlRecycleViewInvitation"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvInvitation"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvInvitation"
-                    android:layout_width="match_parent"
-                    android:layout_margin="15dp"
-                    android:visibility="gone"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"/>
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
 
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>

@@ -231,8 +231,8 @@ public class Utils {
                       //  progressDialog.dismiss();
                         Log.e(" request sent response", String.valueOf((response)));
                         try {
-                            String code = response.getString("message");
-                            if (code.equalsIgnoreCase("request are Accepted..")) {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(context,"Request accepted ",Toast.LENGTH_LONG).show();
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -259,23 +259,23 @@ public class Utils {
     }
 
     public static void deleteRequest(Context context, String member_id) {
-      //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         String url = Utils.memberUrl + "request-accept-reject";
         Map<String, String> params = new HashMap<String, String>();
-        params.put("request_from_id",new SessionManager(context).getMemberId());
-        params.put("request_to_id",member_id);
+        params.put("request_from_id",member_id);
+        params.put("request_to_id",new SessionManager(context).getMemberId());
         params.put("request_status","Rejected");
         Log.e("params request delete", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                     //   progressDialog.dismiss();
+                     progressDialog.dismiss();
                         Log.e(" request delete response", String.valueOf((response)));
                         try {
                             String code = response.getString("message");
-                            if (code.equalsIgnoreCase("request are Deleted..")) {
-                                Toast.makeText(context,"Request accepted ",Toast.LENGTH_LONG).show();
+                            if (code.equalsIgnoreCase("request are Rejected..")) {
+                                Toast.makeText(context,"Request Deleted ",Toast.LENGTH_LONG).show();
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
@@ -288,7 +288,7 @@ public class Utils {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                      //  progressDialog.dismiss();
+                       progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error response", String.valueOf(error));
                         }

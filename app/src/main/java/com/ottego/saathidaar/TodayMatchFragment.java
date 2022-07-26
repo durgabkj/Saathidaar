@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -126,6 +127,7 @@ sessionManager=new SessionManager(context);
         b.rvTodayMatches.setNestedScrollingEnabled(true);
         NewMatchesAdapter adapter = new NewMatchesAdapter(context, data.data);
         b.rvTodayMatches.setAdapter(adapter);
+        adapter.notifyItemRangeChanged(0, adapter.getItemCount());
         if (adapter.getItemCount() != 0) {
             b.llNoDataToday.setVisibility(View.GONE);
             b.rvTodayMatches.setVisibility(View.VISIBLE);
@@ -133,5 +135,19 @@ sessionManager=new SessionManager(context);
         } else {
             b.llNoDataToday.setVisibility(View.VISIBLE);
         }
+    }
+
+
+    private void refresh(int millisecond) {
+
+        final Handler handler= new Handler();
+        final  Runnable runnable=new Runnable() {
+            @Override
+            public void run() {
+                getData();
+            }
+        };
+
+        handler.postDelayed(runnable,millisecond);
     }
 }

@@ -49,9 +49,9 @@ import java.util.List;
             InboxModel item = list.get(position);
             Log.e(" Inbox model", new Gson().toJson(item));
 
-sessionManager=new SessionManager(context);
+            sessionManager=new SessionManager(context);
             holder.tvInvDeleteName.setText(item.first_name + " " + item.last_name);
-            holder.tvInvDeleteAge.setText(item.mage);
+            holder.tvInvDeleteAge.setText(item.mage +"yrs");
             holder.tvInvDeleteHeight.setText(item.religion);
             holder.tvInvDeleteCity.setText(item.maritalStatus);
             holder.tvInvDeleteWorkAs.setText(item.country);
@@ -97,7 +97,7 @@ sessionManager=new SessionManager(context);
             });
 
 
-            if (!(!item.profile_photo.isEmpty()) && !(item.profile_photo != null)) {
+            if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .into(holder.ivDeleteInvitation);

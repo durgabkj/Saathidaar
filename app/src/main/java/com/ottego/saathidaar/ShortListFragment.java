@@ -1,6 +1,7 @@
 package com.ottego.saathidaar;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +44,7 @@ public class ShortListFragment extends Fragment {
     NewMatchViewModel viewModel;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+int count=0;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -79,7 +81,6 @@ public class ShortListFragment extends Fragment {
         viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
         getData();
         listener();
-
        return  b.getRoot();
     }
 
@@ -93,6 +94,7 @@ public class ShortListFragment extends Fragment {
     }
 
     private void getData() {
+        count++;
       //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 ShortListUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
@@ -118,9 +120,12 @@ public class ShortListFragment extends Fragment {
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+        refresh(1000);
+
     }
 
     private void setRecyclerView() {
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         b.rvShortList.setLayoutManager(layoutManager);
         b.rvShortList.setHasFixedSize(true);
@@ -134,5 +139,22 @@ public class ShortListFragment extends Fragment {
         } else {
             b.llNoDataShortList.setVisibility(View.VISIBLE);
         }
+
+    }
+
+    private void refresh(int millisecond) {
+
+        final Handler handler= new Handler();
+        final  Runnable runnable=new Runnable() {
+            @Override
+            public void run() {
+                getData();
+            }
+        };
+
+        handler.postDelayed(runnable,millisecond);
+
+
+
     }
 }

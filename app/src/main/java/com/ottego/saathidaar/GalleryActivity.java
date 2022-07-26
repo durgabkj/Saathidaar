@@ -130,7 +130,6 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 
                 }
                 getData();
-                refresh(1000);
             }
         });
     }

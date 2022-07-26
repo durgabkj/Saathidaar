@@ -51,7 +51,7 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         Log.e(" Inbox model", new Gson().toJson(item));
         sessionManager = new SessionManager(context);
         holder.tvInvNewMatchName.setText(item.first_name + " " + item.last_name);
-        holder.tvInvNewMatchAge.setText(item.mage);
+        holder.tvInvNewMatchAge.setText(item.mage+" yrs");
         holder.tvInvNewMatchHeight.setText(item.religion);
         holder.tvInvNewMatchCity.setText(item.maritalStatus);
         holder.tvInvNewMatchWorkAs.setText(item.country);

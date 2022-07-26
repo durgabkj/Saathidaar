@@ -82,13 +82,24 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         });
 
 
+
+        holder.llDeleteAccet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.deleteRequest(context, item.member_id);
+                holder.llDeleteAccet.setVisibility(View.GONE);
+                holder.llDeletedAccept.setVisibility(View.VISIBLE);
+            }
+        });
+
+
         holder.llBlockAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Utils.blockMember(context, item.member_id);
                 holder.llBlockAccept.setVisibility(View.GONE);
                 holder.llBlockedAccept.setVisibility(View.VISIBLE);
-                holder.llAcceptCallMsgDecline.setEnabled(false);
+                holder.llAcceptCallMsgDecline.setVisibility(View.GONE);
             }
         });
 
@@ -133,7 +144,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAsAccept,tvInvitationMessage,tvInvitationDate;
-        LinearLayout llCAll,llWhatsApp, llPhotoAccept,llBlockAccept,llBlockedAccept,llAcceptCallMsgDecline,llNo_imageFemaleListAccept;
+        LinearLayout llCAll,llWhatsApp, llPhotoAccept,llBlockAccept,llBlockedAccept,llAcceptCallMsgDecline,llNo_imageFemaleListAccept,llDeleteAccet,llDeletedAccept;
 FrameLayout flNoImageMaleFemaleListAccept;
 ImageView ivNoImageMaleFemaleAccept,ivProfileAcceptInvi;
         public ViewHolder(@NonNull View itemView) {
@@ -157,6 +168,9 @@ ImageView ivNoImageMaleFemaleAccept,ivProfileAcceptInvi;
             flNoImageMaleFemaleListAccept=itemView.findViewById(R.id.flNoImageMaleFemaleList);
             ivNoImageMaleFemaleAccept=itemView.findViewById(R.id.ivNoImageMaleFemaleMatch);
             ivProfileAcceptInvi=itemView.findViewById(R.id.ivProfileAcceptInvi);
+
+            llDeleteAccet=itemView.findViewById(R.id.llDeleteAccet);
+            llDeletedAccept=itemView.findViewById(R.id.llDeletedAccept);
 
 
         }
