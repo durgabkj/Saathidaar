@@ -36,6 +36,7 @@ public class TodayMatchFragment extends Fragment {
     DataModelNewMatches data;
     FragmentTodayMatchBinding b;
     NewMatchViewModel viewModel;
+    int count=0;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -121,13 +122,13 @@ sessionManager=new SessionManager(context);
 
 
     private void setRecyclerView() {
+       // count++;
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         b.rvTodayMatches.setLayoutManager(layoutManager);
         b.rvTodayMatches.setHasFixedSize(true);
         b.rvTodayMatches.setNestedScrollingEnabled(true);
         NewMatchesAdapter adapter = new NewMatchesAdapter(context, data.data);
         b.rvTodayMatches.setAdapter(adapter);
-        adapter.notifyItemRangeChanged(0, adapter.getItemCount());
         if (adapter.getItemCount() != 0) {
             b.llNoDataToday.setVisibility(View.GONE);
             b.rvTodayMatches.setVisibility(View.VISIBLE);
@@ -135,6 +136,7 @@ sessionManager=new SessionManager(context);
         } else {
             b.llNoDataToday.setVisibility(View.VISIBLE);
         }
+     //   refresh(1000);
     }
 
 

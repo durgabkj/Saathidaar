@@ -198,7 +198,7 @@ public class PersonalInfoFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 binding.srlRecycleViewPersonalDetails.setRefreshing(false);
-                Log.e("response", String.valueOf(response));
+              //  Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {

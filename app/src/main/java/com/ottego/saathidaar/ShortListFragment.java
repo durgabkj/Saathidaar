@@ -94,7 +94,7 @@ int count=0;
     }
 
     private void getData() {
-        count++;
+
       //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 ShortListUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
@@ -120,12 +120,11 @@ int count=0;
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-        refresh(1000);
 
     }
 
     private void setRecyclerView() {
-
+// count++;
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         b.rvShortList.setLayoutManager(layoutManager);
         b.rvShortList.setHasFixedSize(true);
@@ -139,7 +138,7 @@ int count=0;
         } else {
             b.llNoDataShortList.setVisibility(View.VISIBLE);
         }
-
+//refresh(1000);
     }
 
     private void refresh(int millisecond) {

@@ -191,9 +191,50 @@
 
         </FrameLayout>
 
+        <FrameLayout
+            android:id="@+id/flPremiumSent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="3dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/crown" />
 
+            </LinearLayout>
 
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/llPremiumMsgSent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:inputType="textCapWords"
+                android:fontFamily="@font/italic"
+                android:shadowRadius="1.6"
+                android:text="Image show only to premium member"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -414,6 +455,7 @@
                     android:shadowColor="#000000"
                     android:shadowDx="1.5"
                     android:shadowDy="1.3"
+                    android:fontFamily="@font/italic"
                     android:shadowRadius="1.6"
                     android:text="22 years"
                     android:textColor="@color/white"
@@ -430,6 +472,7 @@
                     android:shadowDy="1.3"
                     android:shadowRadius="1.6"
                     android:text="5'1"
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -536,4 +579,11 @@
         android:layout_height="1dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/line_gradient"/>
+
+
+
+<!--    for delete person layout....-->
+
+
+
 </LinearLayout>

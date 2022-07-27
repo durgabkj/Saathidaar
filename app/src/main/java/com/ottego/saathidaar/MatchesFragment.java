@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -179,13 +180,10 @@ sessionManager=new SessionManager(context);
     }
 
     private void setData() {
-//        RequestAccept.setText(model.data.get(0).accept_request_count);
-//        RequestSent.setText(model.data.get(0).sent_request_count);
-//        Visitors.setText(model.data.get(0).recent_visitors_count);
         if (model.data != null && model.data.size() > 0)  {
             BadgeDrawable badgeDrawable = b.tlMatch.getTabAt(0).getOrCreateBadge();
             badgeDrawable.setNumber(Integer.parseInt(model.data.get(0).new_matches_count));
-            badgeDrawable.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+            badgeDrawable.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.colorPrimary));
             badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
             badgeDrawable.setBadgeGravity(BadgeDrawable.TOP_END);
 
@@ -194,7 +192,9 @@ sessionManager=new SessionManager(context);
             badgeDrawable1.setNumber(Integer.parseInt(model.data.get(0).my_matches_count));
             badgeDrawable1.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
             badgeDrawable1.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            badgeDrawable1.setMaxCharacterCount(10);
             badgeDrawable1.setBadgeGravity(BadgeDrawable.TOP_END);
+            badgeDrawable1.setVisible(true);
 
 
             BadgeDrawable badgeDrawable2 = b.tlMatch.getTabAt(2).getOrCreateBadge();
@@ -205,6 +205,9 @@ sessionManager=new SessionManager(context);
 
         }
     }
+
+
+
 
 
     @Override

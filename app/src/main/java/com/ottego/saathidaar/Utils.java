@@ -264,7 +264,7 @@ public class Utils {
         Map<String, String> params = new HashMap<String, String>();
         params.put("request_from_id",member_id);
         params.put("request_to_id",new SessionManager(context).getMemberId());
-        params.put("request_status","Rejected");
+        params.put("request_status","Canceled");
         Log.e("params request delete", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
                 new Response.Listener<JSONObject>() {

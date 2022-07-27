@@ -43,6 +43,28 @@
             android:orientation="horizontal" />
 
         <FrameLayout
+            android:id="@+id/flPremiumDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="3dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/crown" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
             android:id="@+id/flNoImageMaleFemaleListDeleteInvi"
             android:layout_width="120dp"
             android:visibility="gone"
@@ -117,7 +139,28 @@
         </FrameLayout>
 
 
-
+        <LinearLayout
+            android:id="@+id/llPremiumMsgDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:inputType="textCapWords"
+                android:fontFamily="@font/italic"
+                android:shadowRadius="1.6"
+                android:text="Image show only to premium member"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
 
         <LinearLayout

@@ -24,7 +24,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -118,6 +117,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                 }
                 return false;
             }
+
         });
 
 
@@ -127,15 +127,16 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             public void onClick(View v) {
                 for (int i = 0; i < imagePathList.size(); i++) {
                     uploadInThread(imagePathList.get(i));
-
+                    getData();
                 }
-                getData();
+
             }
+
         });
     }
 
     // Function to check and request permission
-    public void checkPermission(String permission, int requestCode)
+    public boolean checkPermission(String permission, int requestCode)
     {
         // Checking if permission is not granted
         if (ContextCompat.checkSelfPermission(GalleryActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
@@ -145,8 +146,8 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Permission already granted", Snackbar.LENGTH_LONG);
             snackbar.show();
         }
+        return false;
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -185,8 +186,8 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == PICK_FILE_REQUEST) {
-                imageNameList.clear();
-                imagePathList.clear();
+//                imageNameList.clear();
+//                imagePathList.clear();
                 if (data.getClipData() != null) {
                     int count = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
                     for (int i = 0; i < count; i++) {
@@ -252,7 +253,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 
         int bytesRead, bytesAvailable, bufferSize;
         byte[] buffer;
-        int maxBufferSize = 1 * 1024 * 1024;
+        int maxBufferSize = 1048576;
 
         String[] q = filepath.split("/");
         int idx = q.length - 1;
@@ -290,6 +291,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                 bytesAvailable = fileInputStream.available();
                 bufferSize = Math.min(bytesAvailable, maxBufferSize);
                 bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+                outputStream.flush();
             }
 
             outputStream.writeBytes(lineEnd);
@@ -312,13 +314,18 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             outputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
             Log.e("Connection response", String.valueOf(connection.getResponseCode()));
             Log.e("durga", "response: " + connection.getResponseCode());
-            if (connection.getResponseCode()==200) {
-                Toast.makeText(GalleryActivity.this,"Photo Uploaded Successfully,Please Refresh your gallery",Toast.LENGTH_LONG).show();
-              }else
-            {
-                Toast.makeText(GalleryActivity.this,"Photo  not Uploaded Try Again..!!",Toast.LENGTH_LONG).show();
-            }
+            if (connection.getResponseCode() == 200) {
 
+                runOnUiThread(new Runnable() {
+                    public void run() {
+
+                      //  tv.setText("Upload Complete");
+                        Toast.makeText(GalleryActivity.this,
+                                "File Upload Complete.", Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                });
+            }
             inputStream = connection.getInputStream();
 
             result = this.convertStreamToString(inputStream);
@@ -467,4 +474,13 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         handler.postDelayed(runnable, millisecond);
 
     }
+
+
+
+//
+//    android.view.ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
+//    layoutParams.width = 80;
+//    layoutParams.height = 80;
+//imageView.setLayoutParams(layoutParams);
+
 }

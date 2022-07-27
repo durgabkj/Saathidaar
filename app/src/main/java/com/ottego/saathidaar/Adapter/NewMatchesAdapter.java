@@ -1,12 +1,19 @@
 package com.ottego.saathidaar.Adapter;
 
+import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
+
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,6 +25,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.NewMatchesModel;
@@ -26,6 +35,8 @@ import com.ottego.saathidaar.SessionManager;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.ViewHolder> {
 SessionManager sessionManager;
@@ -54,16 +65,19 @@ SessionManager sessionManager;
         holder.tvNewMatchHeight.setText(item.religion);
         holder.tvNewMatchCity.setText(item.maritalStatus);
 
-//        for (GalleryModel image : item.images) {
-//                Glide.with(context)
-//                        .load(Utils.imageUrl + image.member_images)
-//                        .into(holder.ivUserMatch);
-//            }
-//
         if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
+//            Glide.with(context)
+//                    .load(Utils.imageUrl + item.profile_photo)
+//                    .into(holder.ivUserMatch);
+// For Premium member
+
+            Glide.with(context).load(Utils.imageUrl + item.profile_photo)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                  .placeholder(new ColorDrawable(Color.BLACK))
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .transform(new BlurTransformation(20, 8))
                     .into(holder.ivUserMatch);
+
 
         } else {
             if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
@@ -111,6 +125,8 @@ SessionManager sessionManager;
         holder.llShortList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Animation animation = AnimationUtils.loadAnimation(context, R.anim.move);
+                holder.llItemAnimation.startAnimation(animation);
                 Utils.shortList(context, item.member_id);
                 holder.llShortList.setVisibility(View.GONE);
                 holder.llShortListRemove.setVisibility(View.VISIBLE);
@@ -140,6 +156,13 @@ SessionManager sessionManager;
             }
         });
 
+
+        if(item.premium_status.equalsIgnoreCase("1"))
+        {
+            holder.flPremiumMatch.setVisibility(View.VISIBLE);
+        }
+
+
     }
 
     @Override
@@ -150,9 +173,9 @@ SessionManager sessionManager;
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivUserMatch, ivNoImageMaleFemaleMatch;
         TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs, tvImageCount;
-        LinearLayout llMess, llShortListRemove, llShortList, llPhotoMyMatches, llShortBlock, llBlocked;
+        LinearLayout llMess, llShortListRemove, llShortList, llPhotoMyMatches, llShortBlock, llBlocked,llItemAnimation;
         LinearLayout ivLike, llConnect, llNo_imageFemaleList;
-        FrameLayout flNoImageMaleFemaleList;
+        FrameLayout flNoImageMaleFemaleList,flPremiumMatch;
         Spinner SpMenu;
 
         public ViewHolder(@NonNull View itemView) {
@@ -174,8 +197,8 @@ SessionManager sessionManager;
             flNoImageMaleFemaleList=itemView.findViewById(R.id.flNoImageMaleFemaleList);
             ivNoImageMaleFemaleMatch = itemView.findViewById(R.id.ivNoImageMaleFemaleMatch);
             tvImageCount = itemView.findViewById(R.id.tvImageCount);
-
-
+            llItemAnimation=itemView.findViewById(R.id.llItemAnimation);
+            flPremiumMatch=itemView.findViewById(R.id.flPremiumMatch);
 
 
         }
