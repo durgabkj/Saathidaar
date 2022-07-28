@@ -246,6 +246,21 @@
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/menu/menu_add.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/menu/menu_delete.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/multipleselectionspinner/src/main/res/drawable/ic_clear_opaque_24dp.xml" value="0.1645" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/activity_profile_visitors.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_accepted_inbox.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_dash_board.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_delete_inbox.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_matches.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_my_match.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_premium_matches.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/layout_accepted.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/layout_delete_invitation.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/layout_invitation_inbox.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/layout_my_matches.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/layout_remove_shortlist.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/layout_sent_item.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/recentlyview.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/un_block_layout.xml" value="0.24818840579710144" />
       </map>
     </option>
   </component>

@@ -15,5 +15,6 @@ public class NewMatchesModel {
     public String first_name;
     public String maritalStatus;
     public String religion;
+    public String images_count;
 
 }

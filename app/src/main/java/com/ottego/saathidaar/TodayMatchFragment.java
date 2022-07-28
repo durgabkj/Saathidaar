@@ -1,6 +1,5 @@
 package com.ottego.saathidaar;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -29,7 +28,7 @@ import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 import org.json.JSONObject;
 
 
-public class TodayMatchFragment extends Fragment {
+public class TodayMatchFragment extends Fragment implements ApiListener {
     public String MyMatchUrl = Utils.memberUrl + "todays/matches/";
     Context context;
     SessionManager sessionManager;
@@ -127,7 +126,7 @@ sessionManager=new SessionManager(context);
         b.rvTodayMatches.setLayoutManager(layoutManager);
         b.rvTodayMatches.setHasFixedSize(true);
         b.rvTodayMatches.setNestedScrollingEnabled(true);
-        NewMatchesAdapter adapter = new NewMatchesAdapter(context, data.data);
+        NewMatchesAdapter adapter = new NewMatchesAdapter(context, data.data,this);
         b.rvTodayMatches.setAdapter(adapter);
         if (adapter.getItemCount() != 0) {
             b.llNoDataToday.setVisibility(View.GONE);
@@ -151,5 +150,15 @@ sessionManager=new SessionManager(context);
         };
 
         handler.postDelayed(runnable,millisecond);
+    }
+
+    @Override
+    public void onSuccess(int position) {
+        getData();
+    }
+
+    @Override
+    public void onFail(int position) {
+
     }
 }

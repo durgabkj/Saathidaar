@@ -9,6 +9,7 @@ public class InboxModel {
     public String mage;
     public String block_status;
     public String last_name;
+    public String images_count;
     public String first_name;
     public String maritalStatus;
     public String religion;
@@ -17,6 +18,7 @@ public class InboxModel {
     public String profilecreatedby;
     public String subcaste;
     public String state;
+    public String premium_status;
     public String height;
     public String profile_photo;
     public String lifestyles;

@@ -31,7 +31,7 @@ import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 import org.json.JSONObject;
 
 
-public class BlockMemberFragment extends Fragment {
+public class BlockMemberFragment extends Fragment implements ApiListener{
 FragmentBlockMemberBinding b;
     SessionManager sessionManager;
     Context context;
@@ -123,7 +123,7 @@ FragmentBlockMemberBinding b;
         b.rvBlock.setLayoutManager(layoutManager);
         b.rvBlock.setHasFixedSize(true);
         b.rvBlock.setNestedScrollingEnabled(true);
-        BlockMemberAdapter adapter = new BlockMemberAdapter(context, data.data);
+        BlockMemberAdapter adapter = new BlockMemberAdapter(context, data.data,this);
         b.rvBlock.setAdapter(adapter);
         if (adapter.getItemCount() != 0) {
             b.llNoDataBlock.setVisibility(View.GONE);
@@ -132,5 +132,16 @@ FragmentBlockMemberBinding b;
         } else {
             b.llNoDataBlock.setVisibility(View.VISIBLE);
         }
+    }
+
+
+    @Override
+    public void onSuccess(int position) {
+        getData();
+    }
+
+    @Override
+    public void onFail(int position) {
+
     }
 }

@@ -26,7 +26,7 @@ import com.ottego.saathidaar.viewmodel.InboxViewModel;
 import org.json.JSONObject;
 
 
-public class AcceptedInboxFragment extends Fragment {
+public class AcceptedInboxFragment extends Fragment implements ApiListener {
     Context context;
     InboxViewModel viewModel;
     SessionManager sessionManager;
@@ -123,7 +123,7 @@ listener();
         b.rvAcceptInvitation.setLayoutManager(layoutManager);
         b.rvAcceptInvitation.setHasFixedSize(true);
         b.rvAcceptInvitation.setNestedScrollingEnabled(true);
-        AcceptInvitationAdapter adapter = new AcceptInvitationAdapter(context, data.data);
+        AcceptInvitationAdapter adapter = new AcceptInvitationAdapter(context, data.data,this);
         b.rvAcceptInvitation.setAdapter(adapter);
         if (adapter.getItemCount() != 0) {
             b.llNoDataInvitation.setVisibility(View.GONE);
@@ -132,6 +132,16 @@ listener();
         } else {
             b.llNoDataInvitation.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onSuccess(int position) {
+        getData();
+    }
+
+    @Override
+    public void onFail(int position) {
+
     }
 }
 

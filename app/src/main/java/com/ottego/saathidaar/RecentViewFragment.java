@@ -1,6 +1,5 @@
 package com.ottego.saathidaar;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,17 +18,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
-import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
 import com.ottego.saathidaar.Adapter.RecentVisitorAdapter;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
-import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.databinding.FragmentRecentViewBinding;
 import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 import org.json.JSONObject;
 
 
-public class RecentViewFragment extends Fragment {
+public class RecentViewFragment extends Fragment implements ApiListener {
     FragmentRecentViewBinding b;
     SessionManager sessionManager;
     Context context;
@@ -121,7 +118,7 @@ public class RecentViewFragment extends Fragment {
         b.rvRecentView.setLayoutManager(layoutManager);
         b.rvRecentView.setHasFixedSize(true);
         b.rvRecentView.setNestedScrollingEnabled(true);
-        RecentVisitorAdapter adapter = new RecentVisitorAdapter(context, data.data);
+        RecentVisitorAdapter adapter = new RecentVisitorAdapter(context, data.data,this);
         b.rvRecentView.setAdapter(adapter);
         if (adapter.getItemCount() != 0) {
             b.llNoDataRecentView.setVisibility(View.GONE);
@@ -130,5 +127,15 @@ public class RecentViewFragment extends Fragment {
         } else {
             b.llNoDataRecentView.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onSuccess(int position) {
+        getData();
+    }
+
+    @Override
+    public void onFail(int position) {
+
     }
 }

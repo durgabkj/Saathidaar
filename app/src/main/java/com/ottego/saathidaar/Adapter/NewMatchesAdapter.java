@@ -1,9 +1,6 @@
 package com.ottego.saathidaar.Adapter;
 
-import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
-
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -31,6 +28,7 @@ import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
+import com.ottego.saathidaar.ApiListener;
 import com.ottego.saathidaar.SessionManager;
 import com.ottego.saathidaar.Utils;
 
@@ -39,14 +37,17 @@ import java.util.List;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.ViewHolder> {
-SessionManager sessionManager;
+    SessionManager sessionManager;
     Context context;
     List<NewMatchesModel> list;
+    ApiListener clickListener;
 
-    public NewMatchesAdapter(Context context, List<NewMatchesModel> list) {
+    public NewMatchesAdapter(Context context, List<NewMatchesModel> list, ApiListener clickListener) {
         this.context = context;
         this.list = list;
+        this.clickListener=clickListener;
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -59,13 +60,14 @@ SessionManager sessionManager;
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         NewMatchesModel item = list.get(position);
 //        Log.e(" New Matches model", new Gson().toJson(item));
-         sessionManager=new SessionManager(context);
+        sessionManager = new SessionManager(context);
         holder.tvNewMatchName.setText(item.first_name + " " + item.last_name);
         holder.tvNewMatchAge.setText(item.mage);
         holder.tvNewMatchHeight.setText(item.religion);
         holder.tvNewMatchCity.setText(item.maritalStatus);
+        holder.tvImageCount.setText(item.images_count);
 
-        if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
+        if (item.profile_photo != null && !item.profile_photo.isEmpty() && item.premium_status.equalsIgnoreCase("1")) {
 //            Glide.with(context)
 //                    .load(Utils.imageUrl + item.profile_photo)
 //                    .into(holder.ivUserMatch);
@@ -73,7 +75,7 @@ SessionManager sessionManager;
 
             Glide.with(context).load(Utils.imageUrl + item.profile_photo)
                     .transition(DrawableTransitionOptions.withCrossFade())
-                  .placeholder(new ColorDrawable(Color.BLACK))
+                    .placeholder(new ColorDrawable(Color.BLACK))
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .transform(new BlurTransformation(20, 8))
                     .into(holder.ivUserMatch);
@@ -100,12 +102,13 @@ SessionManager sessionManager;
             }
 
 
+
         }
 
         holder.llPhotoMyMatches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent intent=new Intent(view.getContext(), MemberGalleryActivity.class);
+                Intent intent = new Intent(view.getContext(), MemberGalleryActivity.class);
                 intent.putExtra("Member_id", item.member_id);
                 context.startActivity(intent);
             }
@@ -117,7 +120,7 @@ SessionManager sessionManager;
             public void onClick(View view) {
                 Utils.sentRequest(context, item.member_id);
                 holder.ivLike.setVisibility(View.GONE);
-                 holder.llConnect.setVisibility(View.VISIBLE);
+                holder.llConnect.setVisibility(View.VISIBLE);
 
             }
         });
@@ -125,8 +128,6 @@ SessionManager sessionManager;
         holder.llShortList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Animation animation = AnimationUtils.loadAnimation(context, R.anim.move);
-                holder.llItemAnimation.startAnimation(animation);
                 Utils.shortList(context, item.member_id);
                 holder.llShortList.setVisibility(View.GONE);
                 holder.llShortListRemove.setVisibility(View.VISIBLE);
@@ -138,7 +139,9 @@ SessionManager sessionManager;
         holder.llShortBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.blockMember(context, item.member_id);
+                Animation animation = AnimationUtils.loadAnimation(context, R.anim.move);
+                holder.llItemAnimation.startAnimation(animation);
+                Utils.blockMember(context, item.member_id, clickListener);
                 holder.llShortBlock.setVisibility(View.GONE);
                 holder.llBlocked.setVisibility(View.VISIBLE);
                 holder.llShortList.setEnabled(false);
@@ -156,9 +159,7 @@ SessionManager sessionManager;
             }
         });
 
-
-        if(item.premium_status.equalsIgnoreCase("1"))
-        {
+        if (item.premium_status.equalsIgnoreCase("1")) {
             holder.flPremiumMatch.setVisibility(View.VISIBLE);
         }
 
@@ -173,9 +174,9 @@ SessionManager sessionManager;
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivUserMatch, ivNoImageMaleFemaleMatch;
         TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs, tvImageCount;
-        LinearLayout llMess, llShortListRemove, llShortList, llPhotoMyMatches, llShortBlock, llBlocked,llItemAnimation;
+        LinearLayout llMess, llShortListRemove, llShortList, llPhotoMyMatches, llShortBlock, llBlocked, llItemAnimation;
         LinearLayout ivLike, llConnect, llNo_imageFemaleList;
-        FrameLayout flNoImageMaleFemaleList,flPremiumMatch;
+        FrameLayout flNoImageMaleFemaleList, flPremiumMatch;
         Spinner SpMenu;
 
         public ViewHolder(@NonNull View itemView) {
@@ -186,20 +187,19 @@ SessionManager sessionManager;
             tvNewMatchCity = itemView.findViewById(R.id.tvNewMatchCity);
             tvNewMatchWorkAs = itemView.findViewById(R.id.tvNewMatchWorkAs);
             ivLike = itemView.findViewById(R.id.ivLike);
-            llPhotoMyMatches=itemView.findViewById(R.id.llPhotoMyMatches);
+            llPhotoMyMatches = itemView.findViewById(R.id.llPhotoMyMatches);
             ivUserMatch = itemView.findViewById(R.id.ivUserMatch);
             llShortListRemove = itemView.findViewById(R.id.llShortListRemove);
             llShortList = itemView.findViewById(R.id.llShortList);
             llConnect = itemView.findViewById(R.id.llConnect);
             llShortBlock = itemView.findViewById(R.id.llShortBlock);
-            llBlocked=itemView.findViewById(R.id.llBlocked);
-            llNo_imageFemaleList=itemView.findViewById(R.id.llNo_imageFemaleList);
-            flNoImageMaleFemaleList=itemView.findViewById(R.id.flNoImageMaleFemaleList);
+            llBlocked = itemView.findViewById(R.id.llBlocked);
+            llNo_imageFemaleList = itemView.findViewById(R.id.llNo_imageFemaleList);
+            flNoImageMaleFemaleList = itemView.findViewById(R.id.flNoImageMaleFemaleList);
             ivNoImageMaleFemaleMatch = itemView.findViewById(R.id.ivNoImageMaleFemaleMatch);
             tvImageCount = itemView.findViewById(R.id.tvImageCount);
-            llItemAnimation=itemView.findViewById(R.id.llItemAnimation);
-            flPremiumMatch=itemView.findViewById(R.id.flPremiumMatch);
-
+            llItemAnimation = itemView.findViewById(R.id.llItemAnimation);
+            flPremiumMatch = itemView.findViewById(R.id.flPremiumMatch);
 
         }
     }

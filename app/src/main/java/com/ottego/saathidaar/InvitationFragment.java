@@ -1,14 +1,11 @@
 package com.ottego.saathidaar;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -20,19 +17,16 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.InboxInvitationAdapter;
 import com.ottego.saathidaar.Model.DataModelInbox;
-import com.ottego.saathidaar.Model.SessionModel;
 import com.ottego.saathidaar.databinding.FragmentInvitationBinding;
 import com.ottego.saathidaar.viewmodel.InboxViewModel;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class InvitationFragment extends Fragment {
+public class InvitationFragment extends Fragment implements ApiListener {
     DataModelInbox data;
     FragmentInvitationBinding b;
     Context context;
@@ -125,7 +119,7 @@ public class InvitationFragment extends Fragment {
         b.rvInvitation.setLayoutManager(layoutManager);
         b.rvInvitation.setHasFixedSize(true);
         b.rvInvitation.setNestedScrollingEnabled(true);
-        InboxInvitationAdapter adapter = new InboxInvitationAdapter(context, data.data);
+        InboxInvitationAdapter adapter = new InboxInvitationAdapter(context, data.data,this);
         b.rvInvitation.setAdapter(adapter);
         if (adapter.getItemCount() != 0) {
             b.llNoDataInvitation.setVisibility(View.GONE);
@@ -133,5 +127,15 @@ public class InvitationFragment extends Fragment {
         } else {
             b.llNoDataInvitation.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onSuccess(int position) {
+        getData();
+    }
+
+    @Override
+    public void onFail(int position) {
+
     }
 }

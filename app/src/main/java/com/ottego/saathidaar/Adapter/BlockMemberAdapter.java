@@ -3,10 +3,14 @@ package com.ottego.saathidaar.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,7 +21,10 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.ApiListener;
 import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
@@ -28,15 +35,17 @@ import com.ottego.saathidaar.Utils;
 
 import java.util.List;
 
-    public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.ViewHolder>{
+import jp.wasabeef.glide.transformations.BlurTransformation;
+
+public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.ViewHolder>{
         SessionManager sessionManager;
         Context context;
         List<NewMatchesModel> list;
-
-        public BlockMemberAdapter(Context context, List<NewMatchesModel> list) {
+    ApiListener clickListener;
+        public BlockMemberAdapter(Context context, List<NewMatchesModel> list,ApiListener clickListener) {
             this.context = context;
             this.list = list;
-
+            this.clickListener=clickListener;
 
         }
 
@@ -60,12 +69,15 @@ import java.util.List;
             holder.tvNewBlockHeight.setText(item.religion);
             holder.tvBlockCity.setText(item.maritalStatus);
             holder.tvBlockWorkAs.setText(item.income);
+            holder.tvImageCountUnBlock.setText(item.images_count);
 
 
             holder.ivUnblock.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Utils.UnblockMember(context, item.member_id);
+                    Animation animation = AnimationUtils.loadAnimation(context, R.anim.move);
+                    holder.llUnBlockAnimation.startAnimation(animation);
+                    Utils.UnblockMember(context, item.member_id,clickListener);
                     holder.ivUnblock.setVisibility(View.GONE);
                     holder.llConnectBlock.setVisibility(View.VISIBLE);
                 }
@@ -97,7 +109,15 @@ import java.util.List;
             });
 
 
-
+            if (item.profile_photo != null && !item.profile_photo.isEmpty() && item.premium_status.equalsIgnoreCase(("1"))) {
+                // For Premium member
+                Glide.with(context).load(Utils.imageUrl + item.profile_photo)
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .placeholder(new ColorDrawable(Color.BLACK))
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(holder.ivBlockProfileImage);
+            }
 
             if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
                 Glide.with(context)
@@ -137,8 +157,8 @@ import java.util.List;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivBlockProfileImage,ivNoImageMaleFemaleBlock;
-            TextView tvBlockName, tvBlockAge, tvNewBlockHeight, tvBlockCity, tvBlockWorkAs;
-            LinearLayout llPhotoBlock,ivUnblock,llConnectBlock,llNo_imageFemaleListBlock;
+            TextView tvBlockName, tvBlockAge, tvNewBlockHeight, tvBlockCity, tvBlockWorkAs,tvImageCountUnBlock;
+            LinearLayout llPhotoBlock,ivUnblock,llConnectBlock,llNo_imageFemaleListBlock,llUnBlockAnimation;
 
             FrameLayout flNoImageMaleFemaleListBlock;
 
@@ -152,8 +172,8 @@ import java.util.List;
                 llPhotoBlock = itemView.findViewById(R.id.llPhotoBlock);
                 ivUnblock=itemView.findViewById(R.id.ivUnblock);
                 llConnectBlock=itemView.findViewById(R.id.llConnectBlock);
-
-
+                tvImageCountUnBlock=itemView.findViewById(R.id.tvImageCountUnBlock);
+                llUnBlockAnimation=itemView.findViewById(R.id.llUnBlockAnimation);
                 ivBlockProfileImage=itemView.findViewById(R.id.ivBlockProfileImage);
                 ivNoImageMaleFemaleBlock=itemView.findViewById(R.id.ivNoImageMaleFemaleBlock);
                 flNoImageMaleFemaleListBlock=itemView.findViewById(R.id.flNoImageMaleFemaleListBlock);

@@ -27,7 +27,7 @@ import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 import org.json.JSONObject;
 
 
-public class MyMatchFragment extends Fragment {
+public class MyMatchFragment extends Fragment implements ApiListener {
     Context context;
     FragmentMyMatchBinding b;
     SessionManager sessionManager;
@@ -91,6 +91,7 @@ public class MyMatchFragment extends Fragment {
             }
         });
     }
+
     public void getData(String id) {
         //final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Data Loading...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
@@ -98,7 +99,7 @@ public class MyMatchFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf((response)));
-               // progressDialog.dismiss();
+                // progressDialog.dismiss();
                 b.srlRecycleViewMyMatches.setRefreshing(false);
                 Log.e("My Matches response", String.valueOf(response));
                 Gson gson = new Gson();
@@ -111,7 +112,7 @@ public class MyMatchFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-              //  progressDialog.dismiss();
+                //  progressDialog.dismiss();
                 b.srlRecycleViewMyMatches.setRefreshing(false);
                 error.printStackTrace();
             }
@@ -125,7 +126,7 @@ public class MyMatchFragment extends Fragment {
         b.rvMyMatches.setLayoutManager(layoutManager);
         b.rvMyMatches.setHasFixedSize(true);
         b.rvMyMatches.setNestedScrollingEnabled(true);
-        NewMatchesAdapter adapter = new NewMatchesAdapter(context, data.data);
+        NewMatchesAdapter adapter = new NewMatchesAdapter(context, data.data, this);
         b.rvMyMatches.setAdapter(adapter);
         if (adapter.getItemCount() != 0) {
             b.llNoDataMatch.setVisibility(View.GONE);
@@ -134,5 +135,16 @@ public class MyMatchFragment extends Fragment {
         } else {
             b.llNoDataMatch.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onSuccess(int position) {
+
+        getData("");
+    }
+
+    @Override
+    public void onFail(int position) {
+
     }
 }

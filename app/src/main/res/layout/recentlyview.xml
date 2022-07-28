@@ -45,6 +45,7 @@
             android:id="@+id/flPremiumRecentView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_gravity="end">
 
             <LinearLayout
@@ -194,7 +195,7 @@
                         android:gravity="center"
                         android:layout_gravity="center"
                         android:shadowRadius="1.6"
-                        android:text="2"
+                        android:id="@+id/tvImageCountRecentView"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 

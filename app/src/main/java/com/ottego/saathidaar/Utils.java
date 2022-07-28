@@ -2,7 +2,6 @@ package com.ottego.saathidaar;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -15,8 +14,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.google.gson.Gson;
-import com.ottego.saathidaar.Model.SessionModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -143,7 +140,7 @@ public class Utils {
 
     }
 
-    public static void removeShortList(Context context, String member_id) {
+    public static void removeShortList(Context context, String member_id,ApiListener apiListener) {
        // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
         String url = Utils.memberUrl + "remove-to-shortlist";
         Map<String, String> params = new HashMap<String, String>();
@@ -157,15 +154,13 @@ public class Utils {
                     public void onResponse(JSONObject response) {
                        // progressDialog.dismiss();
                         Log.e(" Shortlist remove response", String.valueOf((response)));
+                        apiListener.onSuccess(0);
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        if (null != error.networkResponse) {
-                          //  progressDialog.dismiss();
-                            Log.e("Error response", String.valueOf(error));
-                        }
+                error -> {
+                    if (null != error.networkResponse) {
+                      //  progressDialog.dismiss();
+                        Log.e("Error response", String.valueOf(error));
                     }
                 });
 
@@ -342,7 +337,7 @@ public class Utils {
 
     }
 
-    public static void blockMember(Context context, String member_id) {
+    public static void blockMember(Context context, String member_id, ApiListener apiListener) {
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "please wait....", false, false);
         String BlockUrl = Utils.memberUrl + "block-member";
         Map<String, String> params = new HashMap<String, String>();
@@ -360,8 +355,10 @@ public class Utils {
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
+                                apiListener.onSuccess(0);
                                 Toast.makeText(context, response.getString("message"),Toast.LENGTH_LONG).show();
                             } else {
+                                apiListener.onFail(0);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -385,7 +382,7 @@ public class Utils {
 
     }
 
-    public static void UnblockMember(Context context, String member_id) {
+    public static void UnblockMember(Context context, String member_id, ApiListener apiListener) {
        // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
         String BlockUrl = Utils.memberUrl + "block-member";
         Map<String, String> params = new HashMap<String, String>();
@@ -403,8 +400,10 @@ public class Utils {
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
+                                apiListener.onSuccess(0);
                                 Toast.makeText(context, "Member Unblock",Toast.LENGTH_LONG).show();
                             } else {
+                                apiListener.onFail(0);
                                 Toast.makeText(context, "Member  not Unblock", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {

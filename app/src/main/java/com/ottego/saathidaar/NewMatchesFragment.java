@@ -1,6 +1,5 @@
 package com.ottego.saathidaar;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -29,7 +27,7 @@ import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 import org.json.JSONObject;
 
 
-public class NewMatchesFragment extends Fragment {
+public class NewMatchesFragment extends Fragment implements ApiListener {
     Context context;
     FragmentNewMatchesBinding b;
     Animation animation;
@@ -127,7 +125,7 @@ public class NewMatchesFragment extends Fragment {
         b.rvNewMatches.setLayoutManager(layoutManager);
         b.rvNewMatches.setHasFixedSize(true);
         b.rvNewMatches.setNestedScrollingEnabled(true);
-        NewMatchesAdapter adapter = new NewMatchesAdapter(context, data.data);
+        NewMatchesAdapter adapter = new NewMatchesAdapter(context, data.data,this);
         b.rvNewMatches.setAdapter(adapter);
 
         if (adapter.getItemCount() != 0) {
@@ -137,5 +135,15 @@ public class NewMatchesFragment extends Fragment {
         } else {
             b.llNoData.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onSuccess(int position) {
+        getData("");
+    }
+
+    @Override
+    public void onFail(int position) {
+
     }
 }

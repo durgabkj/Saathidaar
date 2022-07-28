@@ -1,7 +1,6 @@
 package com.ottego.saathidaar;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +20,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.DeleteInvitationAdapter;
-import com.ottego.saathidaar.Adapter.InboxInvitationAdapter;
 import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.databinding.FragmentDeleteInboxBinding;
 import com.ottego.saathidaar.viewmodel.InboxViewModel;
@@ -29,7 +27,7 @@ import com.ottego.saathidaar.viewmodel.InboxViewModel;
 import org.json.JSONObject;
 
 
-public class DeleteInboxFragment extends Fragment {
+public class DeleteInboxFragment extends Fragment implements ApiListener {
     Context context;
     SessionManager sessionManager;
     DataModelInbox data;
@@ -123,7 +121,7 @@ public class DeleteInboxFragment extends Fragment {
         b.rvDeleteInvitation.setLayoutManager(layoutManager);
         b.rvDeleteInvitation.setHasFixedSize(true);
         b.rvDeleteInvitation.setNestedScrollingEnabled(true);
-        DeleteInvitationAdapter adapter = new DeleteInvitationAdapter(context,data.data);
+        DeleteInvitationAdapter adapter = new DeleteInvitationAdapter(context,data.data,this);
         b.rvDeleteInvitation.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         if (adapter.getItemCount() != 0) {
@@ -133,5 +131,15 @@ public class DeleteInboxFragment extends Fragment {
         } else {
             b.llNoDataDeleteInvitation.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onSuccess(int position) {
+        getData();
+    }
+
+    @Override
+    public void onFail(int position) {
+
     }
 }

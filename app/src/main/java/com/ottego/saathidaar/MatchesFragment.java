@@ -115,19 +115,25 @@ sessionManager=new SessionManager(context);
                         fragment= TodayMatchFragment.newInstance("", "");
                         break;
                     }
+
                     case 3:{
+                        fragment= PremiumMatchesFragment.newInstance("", "");
+                        break;
+                    }
+
+                    case 4:{
                         fragment= ShortListFragment.newInstance("", "");
                         break;
                     }
-                    case 4:{
+                    case 5:{
                         fragment= SearchFragment.newInstance("", "");
                         break;
                     }
-                    case 5:{
+                    case 6:{
                         fragment= RecentViewFragment.newInstance("", "");
                         break;
                     }
-                    case 6:{
+                    case 7:{
                         fragment= RecentlyViewedFragment.newInstance("", "");
                         break;
                     }

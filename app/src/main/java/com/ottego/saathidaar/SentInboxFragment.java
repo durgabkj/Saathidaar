@@ -1,7 +1,5 @@
 package com.ottego.saathidaar;
 
-import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -21,7 +19,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
-import com.ottego.saathidaar.Adapter.InboxInvitationAdapter;
 import com.ottego.saathidaar.Adapter.SentInvitationAdapter;
 import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.databinding.FragmentSentInboxBinding;
@@ -30,7 +27,7 @@ import com.ottego.saathidaar.viewmodel.InboxViewModel;
 import org.json.JSONObject;
 
 
-public class SentInboxFragment extends Fragment {
+public class SentInboxFragment extends Fragment  implements ApiListener {
   FragmentSentInboxBinding b;
     Context context;
     SessionManager sessionManager;
@@ -124,7 +121,7 @@ public class SentInboxFragment extends Fragment {
         b.rvSentInvitation.setLayoutManager(layoutManager);
         b.rvSentInvitation.setHasFixedSize(true);
         b.rvSentInvitation.setNestedScrollingEnabled(true);
-        SentInvitationAdapter adapter = new SentInvitationAdapter(context,data.data);
+        SentInvitationAdapter adapter = new SentInvitationAdapter(context,data.data,this);
         b.rvSentInvitation.setAdapter(adapter);
 
         if (adapter.getItemCount() != 0) {
@@ -134,5 +131,15 @@ public class SentInboxFragment extends Fragment {
         } else {
             b.llNoDataSentInvitation.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onSuccess(int position) {
+        getData();
+    }
+
+    @Override
+    public void onFail(int position) {
+
     }
 }

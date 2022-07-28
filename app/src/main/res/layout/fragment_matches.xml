@@ -39,6 +39,11 @@
             android:layout_height="wrap_content"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="50dp"
+            android:text="Premium Matches     "
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="50dp"
             android:text="Short-Listed    "
             android:layout_height="wrap_content"/>
         <com.google.android.material.tabs.TabItem

@@ -126,12 +126,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2"
+                        android:id="@+id/tvImageCountInvitation"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
-                        android:textSize="17sp"
+                        android:textSize="14sp"
                         android:layout_gravity="center"
                         android:textColor="@color/white"/>
 

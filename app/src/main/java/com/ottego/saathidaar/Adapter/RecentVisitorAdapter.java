@@ -3,6 +3,8 @@ package com.ottego.saathidaar.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,26 +19,31 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
+import com.ottego.saathidaar.ApiListener;
 import com.ottego.saathidaar.SessionManager;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.BlurTransformation;
 
 
 public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdapter.ViewHolder>{
     SessionManager sessionManager;
         Context context;
         List<NewMatchesModel> list;
-
-        public RecentVisitorAdapter(Context context, List<NewMatchesModel> list) {
+    ApiListener clickListener;
+        public RecentVisitorAdapter(Context context, List<NewMatchesModel> list, ApiListener clickListener) {
             this.context = context;
             this.list = list;
-
+            this.clickListener=clickListener;
 
         }
 
@@ -62,12 +69,13 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
             holder.tvNewMatchHeight.setText(item.religion);
             holder.tvNewMatchCity.setText(item.maritalStatus);
             holder.tvNewMatchWorkAs.setText(item.income);
+            holder.tvImageCountRecentView.setText(item.images_count);
 
 
             holder.llShortBlockRecentV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Utils.blockMember(context, item.member_id);
+                    Utils.blockMember(context, item.member_id,clickListener);
                     holder.llShortBlockRecentV.setVisibility(View.GONE);
                     holder.llBlockedRecentV.setVisibility(View.VISIBLE);
                     holder.ivLikeRecentVisitors.setVisibility(View.GONE);
@@ -110,10 +118,22 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
             });
 
 
-            if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
+
+            if (item.profile_photo != null && !item.profile_photo.isEmpty() && item.premium_status.equalsIgnoreCase(("1"))) {
+                // For Premium member
+                Glide.with(context).load(Utils.imageUrl + item.profile_photo)
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .placeholder(new ColorDrawable(Color.BLACK))
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(holder.ivRecentViewImage);
+            }
+
+            if (item.profile_photo != null && !item.profile_photo.isEmpty() && item.premium_status.equalsIgnoreCase(("1"))) {
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .into(holder.ivRecentViewImage);
+
 
             } else {
                 if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
@@ -131,7 +151,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
 
                     Glide.with(context)
                             .load(R.drawable.ic_no_image__male_)
-                            .into(holder.ivRecentViewImage);
+                            .into(holder.ivNoImageMaleFemaleRecentView);
 
                 }
 
@@ -145,7 +165,9 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 }
             });
 
-
+            if (item.premium_status.equalsIgnoreCase("1")) {
+                holder.flPremiumRecentView.setVisibility(View.VISIBLE);
+            }
 
         }
 
@@ -157,9 +179,9 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivRecentViewImage,ivNoImageMaleFemaleRecentView;
-            TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs;
+            TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs,tvImageCountRecentView;
             LinearLayout llPhotoRecentV,llShortBlockRecentV,llBlockedRecentV,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove,llNo_imageFemaleListRecentView,llConnectedRecently;
-            FrameLayout flNoImageMaleFemaleListRecentView;
+            FrameLayout flNoImageMaleFemaleListRecentView,flPremiumRecentView;
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 tvNewMatchAge = itemView.findViewById(R.id.tvRecentViewAgeRs);
@@ -178,8 +200,8 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 ivRecentViewImage=itemView.findViewById(R.id.ivRecentViewImage);
                 ivNoImageMaleFemaleRecentView=itemView.findViewById(R.id.ivNoImageMaleFemaleRecentView);
                 llNo_imageFemaleListRecentView=itemView.findViewById(R.id.llNo_imageFemaleListRecentView);
-
-
+                flPremiumRecentView=itemView.findViewById(R.id.flPremiumRecentView);
+                tvImageCountRecentView=itemView.findViewById(R.id.tvImageCountRecentView);
 
             }
         }

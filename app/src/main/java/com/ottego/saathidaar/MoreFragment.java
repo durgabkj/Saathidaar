@@ -1,6 +1,5 @@
 package com.ottego.saathidaar;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -27,7 +26,7 @@ import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 import org.json.JSONObject;
 
 
-public class MoreFragment extends Fragment {
+public class MoreFragment extends Fragment implements ApiListener {
 FragmentMoreBinding b;
     Context context;
     SessionManager sessionManager;
@@ -111,7 +110,7 @@ FragmentMoreBinding b;
         b.rvSearch.setLayoutManager(layoutManager);
         b.rvSearch.setHasFixedSize(true);
         b.rvSearch.setNestedScrollingEnabled(true);
-        NewMatchesAdapter adapter = new NewMatchesAdapter(context, data.data);
+        NewMatchesAdapter adapter = new NewMatchesAdapter(context, data.data,this);
         b.rvSearch.setAdapter(adapter);
         if (adapter.getItemCount() != 0) {
             b.llNoDataMore.setVisibility(View.GONE);
@@ -120,5 +119,15 @@ FragmentMoreBinding b;
         } else {
             b.llNoDataMore.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onSuccess(int position) {
+        getData();
+    }
+
+    @Override
+    public void onFail(int position) {
+
     }
 }
