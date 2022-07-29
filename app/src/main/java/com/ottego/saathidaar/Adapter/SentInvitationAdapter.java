@@ -166,6 +166,14 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
             }else {
                 holder.llMsgDateSent.setVisibility(View.GONE);
             }
+
+            if ((item.premium_status.equalsIgnoreCase("1")))
+            {
+                holder.tvLevelPremiumSent.setVisibility(View.VISIBLE);
+                holder.flPremiumSent.setVisibility(View.VISIBLE);
+                holder.llPremiumMsgSent.setVisibility(View.VISIBLE);
+            }
+
             }
 
 
@@ -177,13 +185,16 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
 
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs,tvInvitationMessageSent,tvImageCountSent;
-            LinearLayout llAccept,llDelete,llAccepted,llDeleted,llPhotoSent,llBlockSent,llBlockedSent,llNo_imageFemaleSentInvitation,llMsgDateSent;
+            TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight,tvLevelPremiumSent, tvInvNewMatchCity, tvInvNewMatchWorkAs,tvInvitationMessageSent,tvImageCountSent;
+            LinearLayout llAccept,llDelete,llAccepted,llDeleted,llPremiumMsgSent,llPhotoSent,llBlockSent,llBlockedSent,llNo_imageFemaleSentInvitation,llMsgDateSent;
             ImageView ivNoImageMaleFemaleSentInvitation,ivSentInvitation;
-            FrameLayout flNoImageMaleFemaleSentInvitation;
+            FrameLayout flNoImageMaleFemaleSentInvitation,flPremiumSent;
             public ViewHolder(@NonNull View itemView) {
 
                 super(itemView);
+                tvLevelPremiumSent=itemView.findViewById(R.id.tvLevelPremiumSent);
+                flPremiumSent=itemView.findViewById(R.id.flPremiumSent);
+                llPremiumMsgSent=itemView.findViewById(R.id.llPremiumMsgSent);
                 tvInvNewMatchAge = itemView.findViewById(R.id.tvInvNewMatchAge);
                 tvInvNewMatchName = itemView.findViewById(R.id.tvInvNewMatchName);
                 tvInvNewMatchHeight = itemView.findViewById(R.id.tvInvNewMatchHeight);

@@ -23,40 +23,41 @@
         app:tabIndicatorGravity="stretch"
         app:tabIndicatorHeight="0dp"
         app:tabMode="scrollable"
+        app:tabPaddingEnd="20dp"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/black" >
         <com.google.android.material.tabs.TabItem
             android:layout_width="50dp"
-            android:text="New Matches     "
+            android:text="New Matches    "
             android:layout_height="wrap_content"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="50dp"
-            android:text="My Matches      "
+            android:text="My Matches    "
             android:layout_height="wrap_content"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="50dp"
-            android:text="Today's Matches     "
+            android:text="Today's Matches    "
             android:layout_height="wrap_content"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="50dp"
-            android:text="Premium Matches     "
+            android:text="Premium Matches"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="50dp"
-            android:text="Short-Listed    "
+            android:text="ShortListed"
             android:layout_height="wrap_content"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="50dp"
-            android:text="Search   "
+            android:text="Search"
             android:layout_height="wrap_content"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="50dp"
-            android:text="Recent Visitors  "
+            android:text="Recent Visitors    "
             android:layout_height="wrap_content"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="50dp"
-            android:text="Recently Viewed  "
+            android:text="Recently Viewed    "
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.tabs.TabLayout>

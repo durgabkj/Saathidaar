@@ -188,6 +188,15 @@
                 </LinearLayout>
 
             </FrameLayout>
+            <TextView
+                android:id="@+id/tvLevelPremiumMatch"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="2dp"
+                android:visibility="gone"
+                android:background="@color/colorPrimary"
+                android:textStyle="bold" />
             <FrameLayout
                 android:id="@+id/flPremiumMatch"
                 android:layout_width="wrap_content"
@@ -217,8 +226,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
+                android:orientation="vertical"
                 android:gravity="center"
                 >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:translationX="10dp"
+                    android:elevation="20dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/hideimage"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -227,11 +244,28 @@
                     android:shadowDy="4"
                     android:inputType="textCapWords"
                     android:fontFamily="@font/italic"
-                    android:shadowRadius="1.6"
+                    android:shadowRadius="7.6"
                     android:text="Image show only to premium member"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPremiumContactMatch"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/gradient_button"
+                    android:elevation="20dp"
+                    android:fontFamily="@font/italic"
+                    android:padding="10dp"
+                    android:text="Go Upgrade Now"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:translationZ="20dp" />
+
             </LinearLayout>
 
             <FrameLayout

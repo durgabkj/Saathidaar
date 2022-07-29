@@ -98,7 +98,7 @@ public class InvitationFragment extends Fragment implements ApiListener {
                 Log.e("Invitation response", String.valueOf(response));
                 Gson gson = new Gson();
                 data = gson.fromJson(String.valueOf(response), DataModelInbox.class);
-                if (data.results == 1) {
+                if (data.my_results == 1) {
                     viewModel._list.postValue(data.data);
                     setRecyclerView();
                 }
@@ -138,4 +138,8 @@ public class InvitationFragment extends Fragment implements ApiListener {
     public void onFail(int position) {
 
     }
+
+
+
+
 }

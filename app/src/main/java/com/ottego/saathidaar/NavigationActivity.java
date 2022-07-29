@@ -2,6 +2,7 @@ package com.ottego.saathidaar;
 
 import android.content.Context;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,9 +15,11 @@ import com.google.android.material.tabs.TabLayout;
 import com.ottego.saathidaar.Adapter.ViewPageAdapter;
 import com.ottego.saathidaar.databinding.ActivityNavigationBinding;
 
+import java.util.Objects;
+
 public class NavigationActivity extends AppCompatActivity {
     ActivityNavigationBinding b;
-    MyReceiver myReceiver=new MyReceiver();
+    MyReceiver myReceiver = new MyReceiver();
     TabLayout tabLayout;
     SwipeDisabledPager viewPager;
     Context context;
@@ -45,7 +48,7 @@ public class NavigationActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tlMatch);
         viewPager = findViewById(R.id.vpMatch);
 
-
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.tap);
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         tabLayout.addTab(tabLayout.newTab().setText("Home"));
@@ -55,23 +58,20 @@ public class NavigationActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Premium"));
         setupTabIcons();
 
+
 //      tabLayout.setSmoothScrollingEnabled(false);
 
         viewPager.setPagingEnable(false);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         ViewPageAdapter adapter = new ViewPageAdapter(this, getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
-
-
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
-                viewPager.setCurrentItem(tab.getPosition());
+                 viewPager.setCurrentItem(tab.getPosition());
+                mp.start();
 
             }
 
@@ -83,19 +83,23 @@ public class NavigationActivity extends AppCompatActivity {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 //  viewPager.setCurrentItem(tab.getPosition());
+
             }
+
+
         });
 
-        tabLayout.getTabAt(1).select();
+        Objects.requireNonNull(tabLayout.getTabAt(1)).select();
 
     }
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
 
-        if (mHandler != null) { mHandler.removeCallbacks(mRunnable); }
+        if (mHandler != null) {
+            mHandler.removeCallbacks(mRunnable);
+        }
     }
 
     @Override
@@ -123,9 +127,9 @@ public class NavigationActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
 
-        IntentFilter filter=new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
 
-registerReceiver(myReceiver ,filter);
+        registerReceiver(myReceiver, filter);
 
         super.onStart();
     }
@@ -133,7 +137,7 @@ registerReceiver(myReceiver ,filter);
 
     @Override
     protected void onStop() {
-    unregisterReceiver(myReceiver);
+        unregisterReceiver(myReceiver);
 
         super.onStop();
     }

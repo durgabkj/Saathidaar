@@ -127,9 +127,9 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             public void onClick(View v) {
                 for (int i = 0; i < imagePathList.size(); i++) {
                     uploadInThread(imagePathList.get(i));
-                    getData();
-                }
 
+                }
+                getData();
             }
 
         });

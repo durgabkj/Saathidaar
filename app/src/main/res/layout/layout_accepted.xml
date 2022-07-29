@@ -66,6 +66,15 @@
 
 
         </FrameLayout>
+        <TextView
+            android:id="@+id/tvLevelPremiumDelete"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="2dp"
+            android:visibility="gone"
+            android:background="@color/colorPrimary"
+            android:textStyle="bold" />
         <FrameLayout
             android:id="@+id/flPremiumAccept"
             android:layout_width="wrap_content"
@@ -151,8 +160,8 @@
                         >
                         <ImageView
                             android:id="@+id/ivBlocked"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:background="@color/white"
                             android:padding="3dp"
                             android:scaleType="centerCrop"
@@ -166,7 +175,7 @@
                         android:shadowDy="2"
                         android:shadowRadius="1.6"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:text="Blocked"/>
 
@@ -187,8 +196,8 @@
                         >
                         <ImageView
                             android:id="@+id/ivAccept"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:background="@color/white"
                             android:padding="3dp"
                             android:scaleType="centerCrop"
@@ -203,7 +212,7 @@
                         android:fontFamily="@font/italic"
                         android:shadowRadius="1.6"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:text="Block Member"/>
 
@@ -217,24 +226,33 @@
             android:id="@+id/llPremiumMsgAccept"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
             android:layout_gravity="center"
+            android:visibility="gone"
+            android:orientation="vertical"
             android:layout_margin="20dp"
             android:gravity="center"
             >
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:translationX="10dp"
+                android:elevation="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/hideimage"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="#000000"
-                android:shadowDx="2"
-                android:shadowDy="2"
+                android:shadowDx="4"
+                android:shadowDy="4"
                 android:inputType="textCapWords"
-                android:background="@color/colorPrimary"
                 android:fontFamily="@font/italic"
-                android:shadowRadius="1.6"
+                android:shadowRadius="7.8"
                 android:text="Image show only to premium member"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -268,8 +286,8 @@
                         app:cardCornerRadius="100dp"
                         >
                         <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:background="@color/white"
                             android:padding="6dp"
                             android:scaleType="centerCrop"
@@ -306,8 +324,8 @@
                         >
                         <ImageView
                             android:id="@+id/ivDecline"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:background="@color/white"
                             android:padding="3dp"
                             android:scaleType="centerCrop"
@@ -344,10 +362,10 @@
                         >
                         <ImageView
                             android:id="@+id/ivDeclineAccept"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:background="@color/white"
-                            android:padding="3dp"
+                            android:padding="6dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_baseline_close_24" />
                     </androidx.cardview.widget.CardView>
@@ -380,8 +398,8 @@
                         app:cardCornerRadius="100dp"
                         >
                         <pl.droidsonroids.gif.GifImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:background="#fff"
                             android:src="@drawable/deleted" />
                     </androidx.cardview.widget.CardView>
@@ -428,6 +446,7 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
 
                 <TextView
                     android:id="@+id/tvInvNewMatchAge"
@@ -489,7 +508,7 @@
                     android:id="@+id/tvInvNewMatchWorkAsAccept"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="10dp"
                     android:shadowColor="#000000"
                     android:shadowDx="1.5"
                     android:shadowDy="1.3"

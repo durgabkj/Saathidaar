@@ -63,9 +63,6 @@ FragmentMemberGalleryShowBinding b;
         return b.getRoot();
     }
     private void listener() {
-
-
-
     }
     private void setData() {
         Glide.with(getActivity())

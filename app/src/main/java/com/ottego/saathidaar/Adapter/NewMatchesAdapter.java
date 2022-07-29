@@ -30,6 +30,7 @@ import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.ApiListener;
 import com.ottego.saathidaar.SessionManager;
+import com.ottego.saathidaar.UpgradeOnButtonActivity;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
@@ -159,8 +160,19 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             }
         });
 
+
+        holder.tvPremiumContactMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
         if (item.premium_status.equalsIgnoreCase("1")) {
             holder.flPremiumMatch.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgMatches.setVisibility(View.VISIBLE);
+            holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
         }
 
 
@@ -173,14 +185,15 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivUserMatch, ivNoImageMaleFemaleMatch;
-        TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs, tvImageCount;
+        TextView tvNewMatchName, tvNewMatchAge,tvPremiumContactMatch, tvLevelPremiumMatch,tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs, tvImageCount;
         LinearLayout llMess, llShortListRemove, llShortList, llPhotoMyMatches, llShortBlock, llBlocked, llItemAnimation;
-        LinearLayout ivLike, llConnect, llNo_imageFemaleList;
+        LinearLayout ivLike, llConnect, llNo_imageFemaleList,llPremiumMsgMatches;
         FrameLayout flNoImageMaleFemaleList, flPremiumMatch;
         Spinner SpMenu;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            tvPremiumContactMatch=itemView.findViewById(R.id.tvPremiumContactMatch);
             tvNewMatchAge = itemView.findViewById(R.id.tvNewMatchAge);
             tvNewMatchName = itemView.findViewById(R.id.tvNewMatchName);
             tvNewMatchHeight = itemView.findViewById(R.id.tvNewMatchHeight);
@@ -200,6 +213,8 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             tvImageCount = itemView.findViewById(R.id.tvImageCount);
             llItemAnimation = itemView.findViewById(R.id.llItemAnimation);
             flPremiumMatch = itemView.findViewById(R.id.flPremiumMatch);
+            llPremiumMsgMatches=itemView.findViewById(R.id.llPremiumMsgMatches);
+            tvLevelPremiumMatch=itemView.findViewById(R.id.tvLevelPremiumMatch);
 
         }
     }

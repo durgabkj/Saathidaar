@@ -79,6 +79,8 @@ public class InboxDetailFragment extends Fragment {
          setData();
          getLoginMemberData();
          getMemberPreferenceData();
+
+
         return b.getRoot();
     }
 
@@ -387,6 +389,7 @@ public class InboxDetailFragment extends Fragment {
             b.tvDetailCollege.setText(model.college_attended);
             b.tvDetailEmailID.setText(model.profile_email_id);
             b.tvDetailCall.setText(model.profile_contact_number);
+            b.tvImageCountInbox.setText(model.images_count);
 
 
             if (model.profile_photo != null && !model.profile_photo.isEmpty()) {
@@ -427,6 +430,13 @@ public class InboxDetailFragment extends Fragment {
                 }
             }
 
+        }
+
+        if (model.premium_status.equalsIgnoreCase("1"))
+        {
+            b.llPremiumMsgInboxDetails.setVisibility(View.VISIBLE);
+            b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
+            b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
         }
 
 

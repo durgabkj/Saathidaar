@@ -147,7 +147,12 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
 
             }
 
-
+            if ((item.premium_status.equalsIgnoreCase("1")))
+            {
+                holder.tvLevelPremiumBlock.setVisibility(View.VISIBLE);
+                holder.flPremiumBlock.setVisibility(View.VISIBLE);
+                holder.llPremiumMsgUnBlock.setVisibility(View.VISIBLE);
+            }
         }
 
         @Override
@@ -157,13 +162,14 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivBlockProfileImage,ivNoImageMaleFemaleBlock;
-            TextView tvBlockName, tvBlockAge, tvNewBlockHeight, tvBlockCity, tvBlockWorkAs,tvImageCountUnBlock;
-            LinearLayout llPhotoBlock,ivUnblock,llConnectBlock,llNo_imageFemaleListBlock,llUnBlockAnimation;
-
-            FrameLayout flNoImageMaleFemaleListBlock;
+            TextView tvBlockName, tvBlockAge, tvLevelPremiumBlock,tvNewBlockHeight, tvBlockCity, tvBlockWorkAs,tvImageCountUnBlock;
+            LinearLayout llPhotoBlock,ivUnblock,llConnectBlock,llNo_imageFemaleListBlock,llUnBlockAnimation,llPremiumMsgUnBlock;
+            FrameLayout flNoImageMaleFemaleListBlock,flPremiumBlock;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
+                tvLevelPremiumBlock=itemView.findViewById(R.id.tvLevelPremiumBlock);
+                llPremiumMsgUnBlock=itemView.findViewById(R.id.llPremiumMsgUnBlock);
                 tvBlockAge = itemView.findViewById(R.id.tvBlockAge);
                 tvBlockName = itemView.findViewById(R.id.tvNewBlockName);
                 tvNewBlockHeight = itemView.findViewById(R.id.tvNewBlockHeight);
@@ -178,6 +184,7 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
                 ivNoImageMaleFemaleBlock=itemView.findViewById(R.id.ivNoImageMaleFemaleBlock);
                 flNoImageMaleFemaleListBlock=itemView.findViewById(R.id.flNoImageMaleFemaleListBlock);
                 llNo_imageFemaleListBlock=itemView.findViewById(R.id.llNo_imageFemaleListBlock);
+                flPremiumBlock=itemView.findViewById(R.id.flPremiumBlock);
             }
         }
     }

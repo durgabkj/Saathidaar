@@ -147,6 +147,13 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
             }
         }
 
+        if(item.premium_status.equalsIgnoreCase("1"))
+        {
+            holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
+            holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgRemoveShortlist.setVisibility(View.VISIBLE);
+        }
+
 
     }
 
@@ -158,14 +165,17 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivRemoveShortList, ivNoImageMaleFemaleRemoveShortList;
-        TextView tvNewMatchNameRs, tvNewMatchAgeRs, tvNewMatchHeightRs, tvNewMatchCityRs, tvNewMatchWorkAsRs, tvImageCountRemoveShortList;
+        TextView tvNewMatchNameRs,tvLevelPremiumRemoveShortList, tvNewMatchAgeRs, tvNewMatchHeightRs, tvNewMatchCityRs, tvNewMatchWorkAsRs, tvImageCountRemoveShortList;
         LinearLayout llMess, llShortListRemove1, llShortList1, llPhotoShortList, llNo_imageFemaleRemoveShortList;
-        LinearLayout ivLikeShortList, llBlockShortList, llBlockedShortList, llConnectShortList;
-        FrameLayout flNoImageMaleFemaleRemoveShortList;
+        LinearLayout ivLikeShortList, llBlockShortList, llPremiumMsgRemoveShortlist,llBlockedShortList, llConnectShortList;
+        FrameLayout flNoImageMaleFemaleRemoveShortList,flPremiumRemove_shortList;
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
+            tvLevelPremiumRemoveShortList = itemView.findViewById(R.id.tvLevelPremiumRemoveShortList);
+            flPremiumRemove_shortList = itemView.findViewById(R.id.flPremiumRemove_shortList);
+            llPremiumMsgRemoveShortlist=itemView.findViewById(R.id.llPremiumMsgRemoveShortlist);
             tvNewMatchAgeRs = itemView.findViewById(R.id.tvNewMatchAgeRs);
             tvNewMatchNameRs = itemView.findViewById(R.id.tvNewMatchNameRs);
             tvNewMatchHeightRs = itemView.findViewById(R.id.tvNewMatchHeightRs);

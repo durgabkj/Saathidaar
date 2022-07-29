@@ -167,6 +167,9 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
 
             if (item.premium_status.equalsIgnoreCase("1")) {
                 holder.flPremiumRecentView.setVisibility(View.VISIBLE);
+                holder.tvLevelPremiumRecent.setVisibility(View.VISIBLE);
+                holder.llPremiumMsgRecentlyView.setVisibility(View.VISIBLE);
+
             }
 
         }
@@ -179,8 +182,8 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivRecentViewImage,ivNoImageMaleFemaleRecentView;
-            TextView tvNewMatchName, tvNewMatchAge, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs,tvImageCountRecentView;
-            LinearLayout llPhotoRecentV,llShortBlockRecentV,llBlockedRecentV,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove,llNo_imageFemaleListRecentView,llConnectedRecently;
+            TextView tvNewMatchName, tvNewMatchAge,tvLevelPremiumRecent, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs,tvImageCountRecentView;
+            LinearLayout llPhotoRecentV,llShortBlockRecentV,llBlockedRecentV,llPremiumMsgRecentlyView,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove,llNo_imageFemaleListRecentView,llConnectedRecently;
             FrameLayout flNoImageMaleFemaleListRecentView,flPremiumRecentView;
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -202,7 +205,8 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 llNo_imageFemaleListRecentView=itemView.findViewById(R.id.llNo_imageFemaleListRecentView);
                 flPremiumRecentView=itemView.findViewById(R.id.flPremiumRecentView);
                 tvImageCountRecentView=itemView.findViewById(R.id.tvImageCountRecentView);
-
+                llPremiumMsgRecentlyView=itemView.findViewById(R.id.llPremiumMsgRecentlyView);
+                tvLevelPremiumRecent=itemView.findViewById(R.id.tvLevelPremiumRecent);
             }
         }
     }

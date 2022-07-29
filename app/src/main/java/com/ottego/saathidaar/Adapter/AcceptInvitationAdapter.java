@@ -34,16 +34,17 @@ import java.util.List;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
-public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitationAdapter.ViewHolder>{
+public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitationAdapter.ViewHolder> {
 
     SessionManager sessionManager;
     Context context;
     List<InboxModel> list;
     ApiListener clickListener;
+
     public AcceptInvitationAdapter(Context context, List<InboxModel> list, ApiListener clickListener) {
         this.context = context;
         this.list = list;
-        this.clickListener=clickListener;
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -59,7 +60,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         InboxModel item = list.get(position);
         Log.e(" New Matches model", new Gson().toJson(item));
 
-        sessionManager=new SessionManager(context);
+        sessionManager = new SessionManager(context);
 
         holder.tvInvNewMatchName.setText(item.first_name + " " + item.last_name);
         holder.tvInvNewMatchAge.setText(item.mage);
@@ -82,12 +83,11 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         holder.llPhotoAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(view.getContext(), MemberGalleryActivity.class);
+                Intent intent = new Intent(view.getContext(), MemberGalleryActivity.class);
                 intent.putExtra("Member_id", item.member_id);
                 context.startActivity(intent);
             }
         });
-
 
 
         holder.llDeleteAccet.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +103,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         holder.llBlockAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.blockMember(context, item.member_id,clickListener);
+                Utils.blockMember(context, item.member_id, clickListener);
                 holder.llBlockAccept.setVisibility(View.GONE);
                 holder.llBlockedAccept.setVisibility(View.VISIBLE);
                 holder.llAcceptCallMsgDecline.setVisibility(View.GONE);
@@ -152,6 +152,18 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 
         if (item.premium_status.equalsIgnoreCase("1")) {
             holder.flPremiumAccept.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgAccept.setVisibility(View.VISIBLE);
+            holder.tvLevelPremiumDelete.setVisibility(View.VISIBLE);
+
+        }
+
+
+        if (item.request_message != null && !item.request_message.isEmpty()) {
+            holder.tvInvitationAccetMessage.setText(item.request_message);
+            // holder.tvInvitationDateInbox.setText(item.request_status_date);
+
+        } else {
+            holder.llMessageAccept.setVisibility(View.GONE);
         }
 
     }
@@ -163,12 +175,12 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
     }
 
 
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvInvNewMatchName, tvInvNewMatchAge, tvImageCountAccept,tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAsAccept,tvInvitationDate,tvInvitationAccetMessage;
-        LinearLayout llCAll,llWhatsApp, llPhotoAccept,llBlockAccept,llBlockedAccept,llAcceptCallMsgDecline,llNo_imageFemaleListAccept,llDeleteAccet,llDeletedAccept;
-FrameLayout flNoImageMaleFemaleListAccept,flPremiumAccept;
-ImageView ivNoImageMaleFemaleAccept,ivProfileAcceptInvi;
+        TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvitationAccetMessage, tvLevelPremiumDelete, tvImageCountAccept, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAsAccept, tvInvitationDate;
+        LinearLayout llCAll, llWhatsApp, llPhotoAccept, llMessageAccept, llBlockAccept, llBlockedAccept, llAcceptCallMsgDecline, llNo_imageFemaleListAccept, llDeleteAccet, llDeletedAccept, llPremiumMsgAccept;
+        FrameLayout flNoImageMaleFemaleListAccept, flPremiumAccept;
+        ImageView ivNoImageMaleFemaleAccept, ivProfileAcceptInvi;
+
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
@@ -178,21 +190,25 @@ ImageView ivNoImageMaleFemaleAccept,ivProfileAcceptInvi;
             tvInvNewMatchCity = itemView.findViewById(R.id.tvInvNewMatchCity);
             tvInvNewMatchWorkAsAccept = itemView.findViewById(R.id.tvInvNewMatchWorkAsAccept);
             llCAll = itemView.findViewById(R.id.llCAll);
+            tvInvitationAccetMessage = itemView.findViewById(R.id.tvInvitationAccetMessage);
             llPhotoAccept = itemView.findViewById(R.id.llPhotoAccept);
             llWhatsApp = itemView.findViewById(R.id.llWhatsApp);
-            llBlockAccept=itemView.findViewById(R.id.llBlockAccept);
-            llBlockedAccept=itemView.findViewById(R.id.llBlockedAccept);
-            llAcceptCallMsgDecline=itemView.findViewById(R.id.llAcceptCallMsgDecline);
-            tvImageCountAccept=itemView.findViewById(R.id.tvImageCountAccept);
-            tvInvitationAccetMessage=itemView.findViewById(R.id.tvInvitationAccetMessage);
-            tvInvitationDate=itemView.findViewById(R.id.tvInvitationDate);
-            llNo_imageFemaleListAccept=itemView.findViewById(R.id.llNo_imageFemaleList);
-            flNoImageMaleFemaleListAccept=itemView.findViewById(R.id.flNoImageMaleFemaleList);
-            ivNoImageMaleFemaleAccept=itemView.findViewById(R.id.ivNoImageMaleFemaleMatch);
-            ivProfileAcceptInvi=itemView.findViewById(R.id.ivProfileAcceptInvi);
-            flPremiumAccept=itemView.findViewById(R.id.flPremiumAccept);
-            llDeleteAccet=itemView.findViewById(R.id.llDeleteAccet);
-            llDeletedAccept=itemView.findViewById(R.id.llDeletedAccept);
+            llBlockAccept = itemView.findViewById(R.id.llBlockAccept);
+            llMessageAccept = itemView.findViewById(R.id.llMessageAccept);
+            llBlockedAccept = itemView.findViewById(R.id.llBlockedAccept);
+            llAcceptCallMsgDecline = itemView.findViewById(R.id.llAcceptCallMsgDecline);
+            tvImageCountAccept = itemView.findViewById(R.id.tvImageCountAccept);
+           // tvInvitationAccetMessage = itemView.findViewById(R.id.tvInvitationAccetMessage);
+            tvInvitationDate = itemView.findViewById(R.id.tvInvitationDate);
+            llNo_imageFemaleListAccept = itemView.findViewById(R.id.llNo_imageFemaleList);
+            flNoImageMaleFemaleListAccept = itemView.findViewById(R.id.flNoImageMaleFemaleList);
+            ivNoImageMaleFemaleAccept = itemView.findViewById(R.id.ivNoImageMaleFemaleMatch);
+            ivProfileAcceptInvi = itemView.findViewById(R.id.ivProfileAcceptInvi);
+            flPremiumAccept = itemView.findViewById(R.id.flPremiumAccept);
+            llDeleteAccet = itemView.findViewById(R.id.llDeleteAccet);
+            llDeletedAccept = itemView.findViewById(R.id.llDeletedAccept);
+            llPremiumMsgAccept = itemView.findViewById(R.id.llPremiumMsgAccept);
+            tvLevelPremiumDelete = itemView.findViewById(R.id.tvLevelPremiumDelete);
 
 
         }

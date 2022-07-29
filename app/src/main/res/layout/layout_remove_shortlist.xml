@@ -39,12 +39,21 @@
             android:background="@drawable/line_gradient"
             android:orientation="horizontal" />
 
-
+        <TextView
+            android:id="@+id/tvLevelPremiumRemoveShortList"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="2dp"
+            android:visibility="gone"
+            android:background="@color/colorPrimary"
+            android:textStyle="bold" />
 
         <FrameLayout
             android:id="@+id/flPremiumRemove_shortList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_gravity="end">
 
             <LinearLayout
@@ -264,9 +273,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
             android:layout_margin="20dp"
             android:gravity="center"
             >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:translationX="10dp"
+                android:elevation="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/hideimage"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

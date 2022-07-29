@@ -4,5 +4,5 @@ import java.util.List;
 
 public class DataModelInbox {
     public List<InboxModel>data;
-    public int results;
+    public int my_results;
 }

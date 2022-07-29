@@ -1,6 +1,7 @@
 package com.ottego.saathidaar;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -113,7 +114,9 @@ String member_id;
                     String code = jsonObject.getString("results");
                     if (code.equalsIgnoreCase("1")) {
                         Toast.makeText(context, "Profile Photo set Successfully", Toast.LENGTH_SHORT).show();
-
+                        Intent intent=new Intent(context,GalleryActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(context, "Profile Photo  not set  Try Again..!!", Toast.LENGTH_SHORT).show();
 

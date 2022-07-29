@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.Model.HoroscopeModel;
 import com.ottego.saathidaar.Model.MemberPreferenceModel;
 import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.databinding.FragmentMatchDetailsBinding;
@@ -41,6 +42,8 @@ public class MatchDetailsFragment extends Fragment {
     public String memberDetail = Utils.memberUrl + "get-details/";
     public String PreferenceDetailUrl = Utils.memberUrl + "match/preference/";
     Context context;
+    HoroscopeModel horoscopeModel;
+    public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
     MemberProfileModel memberProfileModel;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -82,10 +85,53 @@ public class MatchDetailsFragment extends Fragment {
         sessionManager = new SessionManager(context);
         listener();
         getPartnerData();
+        getHoroscopeData();
         setData();
         getMemberPreferenceData();
         getLoginMemberData();
         return b.getRoot();
+    }
+
+
+
+    private void getHoroscopeData() {
+        //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                urlGetHoroscope + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                //  progressDialog.dismiss();
+                Log.e("response", String.valueOf(response));
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        Gson gson = new Gson();
+                        horoscopeModel = gson.fromJson(String.valueOf(response), HoroscopeModel.class);
+                        setHoroData();
+
+                    } else {
+                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // progressDialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+    }
+
+    private void setHoroData() {
+b.tvDetailPlaceOfBirth.setText(horoscopeModel.country_of_birth+" ,"+horoscopeModel.city_of_birth+" ,"+horoscopeModel.hours+" :"+horoscopeModel.minutes);
+b.tvDetailManglik.setText(horoscopeModel.manglik);
     }
 
     private void getMemberPreferenceData() {
@@ -304,15 +350,15 @@ public class MatchDetailsFragment extends Fragment {
                 b.tvViewMore.setVisibility(View.VISIBLE);
             }
         });
+
+
 b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         sentRequest();
     }
+
 });
-
-//
-
 
     }
     public  void sentRequest() {
@@ -387,8 +433,6 @@ b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
 
     }
 
-
-
     private void setData() {
         if (model != null) {
             b.tvNewMatchName.setText(model.first_name + " " + model.last_name);
@@ -417,7 +461,7 @@ b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
             b.tvDetailCollege.setText(model.college_attended);
             b.tvDetailEmailID.setText(model.profile_email_id);
             b.tvDetailCall.setText(model.profile_contact_number);
-
+            b.tvImageCountDetail.setText(model.images_count);
 
 
             if (model.profile_photo != null && !model.profile_photo.isEmpty()) {
@@ -458,7 +502,15 @@ b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
                 }
             }
 
+            if (model.premium_status.equalsIgnoreCase("1"))
+            {
+                b.llPremiumMsgMatchesDetails.setVisibility(View.VISIBLE);
+                b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
+                b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
+            }
+
         }
+
 
 
     }

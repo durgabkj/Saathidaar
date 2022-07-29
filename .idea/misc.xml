@@ -246,21 +246,41 @@
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/menu/menu_add.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/app/src/main/res/menu/menu_delete.xml" value="0.23802083333333332" />
         <entry key="..\:/Saathidaar/saathidar-android/multipleselectionspinner/src/main/res/drawable/ic_clear_opaque_24dp.xml" value="0.1645" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/drawable/bg_gradient.xml" value="0.167" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/drawable/oval_bg.xml" value="0.1215" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/drawable/progress_bar_states.xml" value="0.1215" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/drawable/seleted.xml" value="0.1215" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/drawable/tab_background_selected.xml" value="0.1215" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/drawable/tab_background_unselected.xml" value="0.1215" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/drawable/tab_selector.xml" value="0.1215" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/drawable/unselected.xml" value="0.1215" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/activity_profile_visitors.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/activity_upgrade_on_button.xml" value="0.25" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_accepted_inbox.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_dash_board.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_delete_inbox.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_horoscope.xml" value="0.25" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_inbox.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_inbox_detail.xml" value="0.20425531914893616" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_invitation.xml" value="0.2359375" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_match_details.xml" value="0.20851433536055602" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_matches.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_member_gallery_show.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_my_match.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_premium_matches.xml" value="0.24818840579710144" />
-        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/layout_accepted.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/fragment_show_image.xml" value="0.25" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/layout_accepted.xml" value="0.264" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/layout_delete_invitation.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/layout_invitation_inbox.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/layout_my_matches.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/layout_notification.xml" value="0.25" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/layout_remove_shortlist.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/layout_sent_item.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/recentlyview.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/layout/un_block_layout.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/menu_add.xml" value="0.25" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/menu_delete.xml" value="0.25" />
+        <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/remove.xml" value="0.25" />
       </map>
     </option>
   </component>

@@ -67,10 +67,10 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
 
 
 
-        holder.llAccept.setOnClickListener(new View.OnClickListener() {
+        holder.llAccept.setOnClickListener(new View.OnClickListener()  {
             @Override
             public void onClick(View view) {
-                Utils.acceptRequest(context, item.member_id);
+                Utils.acceptRequest(context, item.member_id,clickListener);
                 holder.llAccept.setVisibility(View.GONE);
                 holder.llAccepted.setVisibility(View.VISIBLE);
                 holder.llDelete.setVisibility(View.GONE);
@@ -169,6 +169,13 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
             holder.llMsgDate.setVisibility(View.GONE);
         }
 
+        if ((item.premium_status.equalsIgnoreCase("1")))
+        {
+            holder.llPremiumMsgInvitation.setVisibility(View.VISIBLE);
+            holder.flPremiumInvitation.setVisibility(View.VISIBLE);
+            holder.tvLevelPremiumInvitation.setVisibility(View.VISIBLE);
+        }
+
     }
 
 
@@ -181,14 +188,15 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
     public static class ViewHolder extends RecyclerView.ViewHolder {
         FrameLayout flNoImageMaleFemaleListReceivedInvitation;
         ImageView ivNoImageMaleFemaleReceivedInvitation, ivReceivedInvitation;
-        TextView tvInvNewMatchName,tvImageCountInvitation, tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs, tvInvitationMessageInbox, tvInvitationDateInbox;
-        LinearLayout llNo_imageFemaleListReceivedInvitation, llAccept, llDelete, llAccepted, llDeleted, llPhotoInvitation, llBlockInvitation, llBlockedInvitation, llAcceptDelete,llMsgDate;
+        TextView tvInvNewMatchName,tvImageCountInvitation, tvLevelPremiumInvitation,tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs, tvInvitationMessageInbox, tvInvitationDateInbox;
+        LinearLayout llNo_imageFemaleListReceivedInvitation, llPremiumMsgInvitation,llAccept, llDelete, llAccepted, llDeleted, llPhotoInvitation, llBlockInvitation, llBlockedInvitation, llAcceptDelete,llMsgDate,flPremiumInvitation;
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
 
             tvInvNewMatchAge = itemView.findViewById(R.id.tvInvNewMatchAge);
+            flPremiumInvitation = itemView.findViewById(R.id.flPremiumInvitation);
             tvInvNewMatchName = itemView.findViewById(R.id.tvInvNewMatchName);
             tvInvNewMatchHeight = itemView.findViewById(R.id.tvInvNewMatchHeight);
             tvInvNewMatchCity = itemView.findViewById(R.id.tvInvNewMatchCity);
@@ -202,11 +210,11 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
             llBlockedInvitation = itemView.findViewById(R.id.llBlockedInvitation);
             llAcceptDelete = itemView.findViewById(R.id.llAcceptDelete);
             tvImageCountInvitation=itemView.findViewById(R.id.tvImageCountInvitation);
-
+            llPremiumMsgInvitation=itemView.findViewById(R.id.llPremiumMsgInvitation);
             tvInvitationMessageInbox = itemView.findViewById(R.id.tvInvitationMessageInbox);
             tvInvitationDateInbox = itemView.findViewById(R.id.tvInvitationDateInbox);
             llMsgDate=itemView.findViewById(R.id.llMsgDate);
-
+            tvLevelPremiumInvitation=itemView.findViewById(R.id.tvLevelPremiumInvitation);
             llNo_imageFemaleListReceivedInvitation = itemView.findViewById(R.id.llNo_imageFemaleListReceivedInvitation);
             flNoImageMaleFemaleListReceivedInvitation = itemView.findViewById(R.id.flNoImageMaleFemaleListReceivedInvitation);
             ivNoImageMaleFemaleReceivedInvitation = itemView.findViewById(R.id.ivNoImageMaleFemaleReceivedInvitation);

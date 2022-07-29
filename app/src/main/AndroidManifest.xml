@@ -16,6 +16,17 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
 
+
+    <uses-sdk android:minSdkVersion="24"
+        android:targetSdkVersion="32"
+        tools:ignore="GradleOverrides" />
+    <supports-screens
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:anyDensity="true"
+        android:largeScreens="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -92,11 +103,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_test_QHOsVAlUo7NNwl" />
+
+
+
     </application>
 
 </manifest>

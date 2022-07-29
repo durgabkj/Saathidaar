@@ -52,10 +52,41 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/local"
                         android:transitionName="tnMemberImage" />
 
+                    <TextView
+                        android:id="@+id/tvLevelPremiumInboxDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="2dp"
+                        android:visibility="gone"
+                        android:background="@color/colorPrimary"
+                        android:textStyle="bold" />
+                    <FrameLayout
+                        android:id="@+id/flPremiumInboxDetails"
+                        android:layout_width="wrap_content"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start">
 
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:padding="3dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/crown" />
+
+                        </LinearLayout>
+
+
+
+                    </FrameLayout>
                     <LinearLayout
                         android:id="@+id/llNo_imageFemale"
                         android:layout_width="match_parent"
@@ -64,7 +95,37 @@
                         android:background="@drawable/line_gradient"
                         android:orientation="horizontal" />
 
-
+                    <LinearLayout
+                        android:id="@+id/llPremiumMsgInboxDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="20dp"
+                        android:visibility="gone"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        >
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:translationX="10dp"
+                            android:elevation="20dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/hideimage"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:shadowColor="#000000"
+                            android:shadowDx="4"
+                            android:shadowDy="4"
+                            android:inputType="textCapWords"
+                            android:fontFamily="@font/italic"
+                            android:shadowRadius="7.6"
+                            android:text="Image show only to premium member"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
                     <FrameLayout
                         android:layout_width="wrap_content"
@@ -117,6 +178,7 @@
                                     android:src="@drawable/ic_camera" />
 
                                 <TextView
+                                    android:id="@+id/tvImageCountInbox"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -1425,8 +1487,7 @@
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:background="@color/white"
-                                    android:scaleType="centerCrop"
-                                    android:src="@drawable/local" />
+                                    android:scaleType="centerCrop" />
 
 
                             </com.google.android.material.card.MaterialCardView>
@@ -1450,8 +1511,7 @@
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:background="@color/white"
-                                    android:scaleType="centerCrop"
-                                    android:src="@drawable/local" />
+                                    android:scaleType="centerCrop" />
 
 
                             </com.google.android.material.card.MaterialCardView>

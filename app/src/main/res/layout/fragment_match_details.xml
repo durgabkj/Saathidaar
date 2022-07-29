@@ -53,7 +53,37 @@
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
                         android:transitionName="tnMemberImage" />
+                    <TextView
+                        android:id="@+id/tvLevelPremiumMatchDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="2dp"
+                        android:visibility="gone"
+                        android:background="@color/colorPrimary"
+                        android:textStyle="bold" />
+                    <FrameLayout
+                        android:id="@+id/flPremiumMatchDetails"
+                        android:layout_width="wrap_content"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start">
 
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:padding="3dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/crown" />
+
+                        </LinearLayout>
+
+                    </FrameLayout>
 
                     <LinearLayout
                         android:id="@+id/llNo_imageFemale"
@@ -62,7 +92,6 @@
                         android:visibility="gone"
                         android:background="@drawable/line_gradient"
                         android:orientation="horizontal" />
-
 
                     <FrameLayout
                         android:layout_width="wrap_content"
@@ -87,6 +116,38 @@
                         </LinearLayout>
 
                     </FrameLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llPremiumMsgMatchesDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="20dp"
+                        android:visibility="gone"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        >
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:translationX="10dp"
+                            android:elevation="20dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/hideimage"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:shadowColor="#000000"
+                            android:shadowDx="4"
+                            android:shadowDy="4"
+                            android:inputType="textCapWords"
+                            android:fontFamily="@font/italic"
+                            android:shadowRadius="7.6"
+                            android:text="Image show only to premium member"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
                     <FrameLayout
 
                         android:layout_width="wrap_content"
@@ -117,6 +178,7 @@
                                     android:src="@drawable/ic_camera" />
 
                                 <TextView
+                                    android:id="@+id/tvImageCountDetail"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -1003,6 +1065,138 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:translationZ="20dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="20dp"
+                    app:cardMaxElevation="4dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/italic"
+                            android:text="HoroScope Details"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    app:srcCompat="@drawable/location" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/italic"
+                                    android:text="Place Of Birth"
+                                    android:textSize="14sp"
+
+                                    />
+
+
+                                <TextView
+                                    android:id="@+id/tvDetailPlaceOfBirth"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/italic"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    app:srcCompat="@drawable/astrology" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/italic"
+                                    android:text="Manglik"
+                                    android:textSize="14sp"
+
+                                    />
+
+
+                                <TextView
+                                    android:id="@+id/tvDetailManglik"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/italic"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"

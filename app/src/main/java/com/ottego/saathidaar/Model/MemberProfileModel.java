@@ -13,6 +13,7 @@ public class MemberProfileModel {
     public String profile_id;
     public String income;
     public String hobbies;
+    public String premium_status;
     public String expectations;
     public String religion_name;
     public String caste_name;
@@ -27,6 +28,7 @@ public class MemberProfileModel {
     public String health_info;
     public String blood_group;
     public String gothra;
+    public String my_profile_photo;
     public String ethnic_corigin;
     public String pincode;
     public String father_status;
@@ -40,6 +42,7 @@ public class MemberProfileModel {
     public String family_location;
     public String native_place;
     public String family_type;
+    public String images_count;
     public String family_values;
     public String family_affluence;
     public String highest_qualification;
