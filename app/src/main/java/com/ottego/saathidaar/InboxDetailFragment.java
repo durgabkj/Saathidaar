@@ -29,6 +29,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import jp.wasabeef.glide.transformations.BlurTransformation;
+
 public class InboxDetailFragment extends Fragment {
 
     FragmentInboxDetailBinding b;
@@ -367,13 +369,13 @@ public class InboxDetailFragment extends Fragment {
             b.tvMatchCityDetail.setText(model.city);
             b.tvNewMatchWorkAsDetail.setText(model.working_as);
             b.tvNameUserDetails.setText("About" + "  " + model.first_name);
-             b.tvAboutUserDetails.setText(model.about_ourself);
+            b.tvAboutUserDetails.setText(model.about_ourself);
 
-            b.tvNameUserFamilyDetails.setText("About " + " Family" );
+            b.tvNameUserFamilyDetails.setText("About " + " Family");
             b.tvAboutUserFamilyDetails.setText(model.FamilyDetails);
 
             b.tvCreatedBy.setText("Profile CreateBy" + " " + model.profilecreatedby);
-            b.tvProfileID.setText("Profile ID"+" "+model.profile_id);
+            b.tvProfileID.setText("Profile ID" + " " + model.profile_id);
             b.tvDetailAge.setText(model.age + " yrs old");
             b.tvDetailHeight.setText("Height - " + model.height);
             b.tvDetailDob.setText("Born on" + " " + model.date_of_birth);
@@ -392,49 +394,48 @@ public class InboxDetailFragment extends Fragment {
             b.tvImageCountInbox.setText(model.images_count);
 
 
-            if (model.profile_photo != null && !model.profile_photo.isEmpty()) {
+            if (model.photo_privacy.equalsIgnoreCase("1")) {
+                b.llShowMemberImageInbox.setVisibility(View.VISIBLE);
+                b.flPremiumInboxDetails.setVisibility(View.GONE);
+                b.llPremiumMsgInboxDetails.setVisibility(View.GONE);
+                b.tvLevelPremiumInboxDetails.setVisibility(View.GONE);
+
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                        //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                        .into(b.ivDetailUserImage);
+
+            } else if (model.photo_privacy.equalsIgnoreCase("3")) {
+                b.llShowMemberImageInbox.setVisibility(View.GONE);
+                b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
+                b.llPremiumMsgInboxDetails.setVisibility(View.VISIBLE);
+                b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(b.ivDetailUserImage);
+            } else if (model.photo_privacy.equalsIgnoreCase(model.my_premium_status)) {
+                b.flPremiumInboxDetails.setVisibility(View.GONE);
+                b.llPremiumMsgInboxDetails.setVisibility(View.GONE);
+                b.tvLevelPremiumInboxDetails.setVisibility(View.GONE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
                         .into(b.ivDetailUserImage);
-
-
+            } else {
+                b.llShowMemberImageInbox.setVisibility(View.GONE);
+                b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
+                b.llPremiumMsgInboxDetails.setVisibility(View.VISIBLE);
+                b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
-                        .into(b.profileDetailPic1Partner);
-            } else {
-                if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
-                    b.llNoImageFemale.setVisibility(View.VISIBLE);
-                    b.flNoImageMaleFemale.setVisibility(View.VISIBLE);
-                    b.ivDetailUserImage.setVisibility(View.GONE);
-
-                    Glide.with(context)
-                            .load(R.drawable.ic_no_image__female_)
-                            .into(b.ivNoImageMaleFemale);
-
-                    Glide.with(context)
-                            .load(R.drawable.ic_no_image__female_)
-                            .into(b.profileDetailPic1Partner);
-                } else {
-                    b.llNoImageFemale.setVisibility(View.VISIBLE);
-                    b.flNoImageMaleFemale.setVisibility(View.VISIBLE);
-                    b.ivDetailUserImage.setVisibility(View.GONE);
-
-                    Glide.with(context)
-                            .load(R.drawable.ic_no_image__male_)
-                            .into(b.ivNoImageMaleFemale);
-
-
-                    Glide.with(context)
-                            .load(R.drawable.ic_no_image__male_)
-                            .into(b.profileDetailPic1Partner);
-                }
+                        .transform(new BlurTransformation(20, 8))
+                        .into(b.ivDetailUserImage);
             }
-
         }
 
-        if (model.premium_status.equalsIgnoreCase("1"))
+            if (model.premium_status.equalsIgnoreCase("1"))
         {
-            b.llPremiumMsgInboxDetails.setVisibility(View.VISIBLE);
             b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
             b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
         }

@@ -25,6 +25,7 @@ public class MemberProfileModel {
     public String no_of_children;
     public String date_of_birth;
     public String age;
+    public String photo_privacy;
     public String health_info;
     public String blood_group;
     public String gothra;

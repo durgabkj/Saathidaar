@@ -231,28 +231,35 @@ refresh(1000);
 //                .load(Utils.imageUrl+model.profile_photo)
 //                .into(profilePic);
 
-        if (model.profile_photo != null && !model.profile_photo.isEmpty()) {
-            Glide.with(context)
-                    .load(Utils.imageUrl + model.profile_photo)
-                    .into(profilePic);
-        } else {
-            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__male_)
-                        .into(profilePic);
 
-            } else {
                 Glide.with(context)
-                        .load(R.drawable.ic_no_image__female_)
-                        .into(profilePic);
+                .load(Utils.imageUrl + model.profile_photo)
+                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__male_:R.drawable.ic_no_image__female_)
+             //   .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                .into(profilePic);
 
-            }
-        }
+
+//        if (model.profile_photo != null && !model.profile_photo.isEmpty()) {
+//            Glide.with(context)
+//                    .load(Utils.imageUrl + model.profile_photo)
+//                    .into(profilePic);
+//        } else {
+//            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+//                Glide.with(context)
+//                        .load(R.drawable.ic_no_image__male_)
+//                        .into(profilePic);
+//
+//            } else {
+//                Glide.with(context)
+//                        .load(R.drawable.ic_no_image__female_)
+//                        .into(profilePic);
+//
+//            }
+//        }
     }
 
 
     private void refresh(int millisecond) {
-
         final Handler handler= new Handler();
         final  Runnable runnable=new Runnable() {
             @Override

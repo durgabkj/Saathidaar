@@ -13,6 +13,7 @@ public class NewMatchesModel {
     public String my_premium_status;
     public String profile_photo;
     public String last_name;
+    public String photo_privacy;
     public String first_name;
     public String maritalStatus;
     public String religion;

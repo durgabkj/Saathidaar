@@ -281,6 +281,17 @@
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/menu_add.xml" value="0.25" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/menu_delete.xml" value="0.25" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/remove.xml" value="0.25" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_no_image__female_.xml" value="0.156" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_inbox_detail.xml" value="0.21371326803205698" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_match_details.xml" value="0.2388888888888889" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/layout_accepted.xml" value="0.22826086956521738" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/layout_delete_invitation.xml" value="0.25" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/layout_invitation_inbox.xml" value="0.25" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/layout_my_matches.xml" value="0.22826086956521738" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/layout_remove_shortlist.xml" value="0.22826086956521738" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/layout_sent_item.xml" value="0.25" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/recentlyview.xml" value="0.25" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/un_block_layout.xml" value="0.25" />
       </map>
     </option>
   </component>

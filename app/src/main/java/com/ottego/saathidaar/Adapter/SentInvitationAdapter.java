@@ -120,13 +120,58 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
                 }
             });
 
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
-                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
-                    .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-                    .into(holder.ivSentInvitation);
+//            Glide.with(context)
+//                    .load(Utils.imageUrl + item.profile_photo)
+//                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
+//                    .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+//                    .into(holder.ivSentInvitation);
 
-            if((item.request_message!= null || item.request_status_date!= null) && (!item.request_message.isEmpty() || !item.request_status_date.isEmpty()) )
+
+
+
+            if (item.photo_privacy.equalsIgnoreCase("1")) {
+                holder.llPhotoSent.setVisibility(View.VISIBLE);
+                holder.flPremiumSent.setVisibility(View.GONE);
+                holder.llPremiumMsgSent.setVisibility(View.GONE);
+                holder.tvLevelPremiumSent.setVisibility(View.GONE);
+
+                Glide.with(context)
+                        .load(Utils.imageUrl + item.profile_photo)
+                        .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                        //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                        .into(holder.ivSentInvitation);
+
+            } else if (item.photo_privacy.equalsIgnoreCase("3")) {
+                holder.llPhotoSent.setVisibility(View.GONE);
+                holder.flPremiumSent.setVisibility(View.VISIBLE);
+                holder.llPremiumMsgSent.setVisibility(View.VISIBLE);
+                holder.tvLevelPremiumSent.setVisibility(View.VISIBLE);
+                Glide.with(context)
+                        .load(Utils.imageUrl + item.profile_photo)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(holder.ivSentInvitation);
+            } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
+                holder.flPremiumSent.setVisibility(View.GONE);
+                holder.llPremiumMsgSent.setVisibility(View.GONE);
+                holder.tvLevelPremiumSent.setVisibility(View.GONE);
+                Glide.with(context)
+                        .load(Utils.imageUrl + item.profile_photo)
+                        .into(holder.ivSentInvitation);
+            } else {
+                holder.llPhotoSent.setVisibility(View.GONE);
+                holder.flPremiumSent.setVisibility(View.VISIBLE);
+                holder.llPremiumMsgSent.setVisibility(View.VISIBLE);
+                holder.tvLevelPremiumSent.setVisibility(View.VISIBLE);
+                Glide.with(context)
+                        .load(Utils.imageUrl + item.profile_photo)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(holder.ivSentInvitation);
+            }
+
+
+
+
+            if((item.request_message!= null  && !item.request_message.isEmpty()))
             {
                 holder.tvInvitationMessageSent.setText(item.request_message);
                 // holder.tvInvitationDateInbox.setText(item.request_status_date);
@@ -139,7 +184,6 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
             {
                 holder.tvLevelPremiumSent.setVisibility(View.VISIBLE);
                 holder.flPremiumSent.setVisibility(View.VISIBLE);
-                holder.llPremiumMsgSent.setVisibility(View.VISIBLE);
             }
 
             }

@@ -18,6 +18,7 @@ public class InboxModel {
     public String known_languages;
     public String profilecreatedby;
     public String subcaste;
+    public String photo_privacy;
     public String state;
     public String premium_status;
     public String height;

@@ -116,12 +116,53 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                     context.startActivity(intent);
                 }
             });
+//
+//            Glide.with(context)
+//                    .load(Utils.imageUrl + item.profile_photo)
+//                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
+//                    .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+//                    .into(holder.ivRecentViewImage);
 
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
-                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
-                    .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-                    .into(holder.ivRecentViewImage);
+
+
+            if (item.photo_privacy.equalsIgnoreCase("1")) {
+                holder.llPhotoRecentV.setVisibility(View.VISIBLE);
+                holder.flPremiumRecentView.setVisibility(View.GONE);
+                holder.llPremiumMsgRecentlyView.setVisibility(View.GONE);
+                holder.tvLevelPremiumRecent.setVisibility(View.GONE);
+
+                Glide.with(context)
+                        .load(Utils.imageUrl + item.profile_photo)
+                        .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                        //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                        .into(holder.ivRecentViewImage);
+
+            } else if (item.photo_privacy.equalsIgnoreCase("3")) {
+                holder.llPhotoRecentV.setVisibility(View.GONE);
+                holder.flPremiumRecentView.setVisibility(View.VISIBLE);
+                holder.llPremiumMsgRecentlyView.setVisibility(View.VISIBLE);
+                holder.tvLevelPremiumRecent.setVisibility(View.VISIBLE);
+                Glide.with(context)
+                        .load(Utils.imageUrl + item.profile_photo)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(holder.ivRecentViewImage);
+            } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
+                holder.flPremiumRecentView.setVisibility(View.GONE);
+                holder.llPremiumMsgRecentlyView.setVisibility(View.GONE);
+                holder.tvLevelPremiumRecent.setVisibility(View.GONE);
+                Glide.with(context)
+                        .load(Utils.imageUrl + item.profile_photo)
+                        .into(holder.ivRecentViewImage);
+            } else {
+                holder.llPhotoRecentV.setVisibility(View.GONE);
+                holder.flPremiumRecentView.setVisibility(View.VISIBLE);
+                holder.llPremiumMsgRecentlyView.setVisibility(View.VISIBLE);
+                holder.tvLevelPremiumRecent.setVisibility(View.VISIBLE);
+                Glide.with(context)
+                        .load(Utils.imageUrl + item.profile_photo)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(holder.ivRecentViewImage);
+            }
 
 
             holder.ivLikeRecentVisitors.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +177,6 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
             if (item.premium_status.equalsIgnoreCase("1")) {
                 holder.flPremiumRecentView.setVisibility(View.VISIBLE);
                 holder.tvLevelPremiumRecent.setVisibility(View.VISIBLE);
-                holder.llPremiumMsgRecentlyView.setVisibility(View.VISIBLE);
 
             }
 

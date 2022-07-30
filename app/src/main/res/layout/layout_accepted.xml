@@ -66,7 +66,7 @@
 
         </FrameLayout>
         <TextView
-            android:id="@+id/tvLevelPremiumDelete"
+            android:id="@+id/tvLevelPremiumAccept"
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:paddingHorizontal="10dp"

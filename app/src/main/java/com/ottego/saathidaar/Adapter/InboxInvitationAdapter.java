@@ -121,14 +121,55 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
             }
         });
 
+//
+//        Glide.with(context)
+//                .load(Utils.imageUrl + item.profile_photo)
+//                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
+//                .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+//                .into(holder.ivReceivedInvitation);
 
-        Glide.with(context)
-                .load(Utils.imageUrl + item.profile_photo)
-                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
-                .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-                .into(holder.ivReceivedInvitation);
 
-        if((item.request_message!= null || item.request_status_date!= null) && (!item.request_message.isEmpty() || !item.request_status_date.isEmpty()) )
+        if (item.photo_privacy.equalsIgnoreCase("1")) {
+            holder.llPhotoInvitation.setVisibility(View.VISIBLE);
+            holder.flPremiumInvitation.setVisibility(View.GONE);
+            holder.llPremiumMsgInvitation.setVisibility(View.GONE);
+            holder.tvLevelPremiumInvitation.setVisibility(View.GONE);
+
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                    //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                    .into(holder.ivReceivedInvitation);
+
+        } else if (item.photo_privacy.equalsIgnoreCase("3")) {
+            holder.llPhotoInvitation.setVisibility(View.GONE);
+            holder.flPremiumInvitation.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgInvitation.setVisibility(View.VISIBLE);
+            holder.tvLevelPremiumInvitation.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivReceivedInvitation);
+        } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
+            holder.flPremiumInvitation.setVisibility(View.GONE);
+            holder.llPremiumMsgInvitation.setVisibility(View.GONE);
+            holder.tvLevelPremiumInvitation.setVisibility(View.GONE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .into(holder.ivReceivedInvitation);
+        } else {
+            holder.llPhotoInvitation.setVisibility(View.GONE);
+            holder.flPremiumInvitation.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgInvitation.setVisibility(View.VISIBLE);
+            holder.tvLevelPremiumInvitation.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivReceivedInvitation);
+        }
+
+
+        if((item.request_message!= null) && (!item.request_message.isEmpty()) )
         {
             holder.tvInvitationMessageInbox.setText(item.request_message);
            // holder.tvInvitationDateInbox.setText(item.request_status_date);
@@ -139,7 +180,6 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
 
         if ((item.premium_status.equalsIgnoreCase("1")))
         {
-            holder.llPremiumMsgInvitation.setVisibility(View.VISIBLE);
             holder.flPremiumInvitation.setVisibility(View.VISIBLE);
             holder.tvLevelPremiumInvitation.setVisibility(View.VISIBLE);
         }

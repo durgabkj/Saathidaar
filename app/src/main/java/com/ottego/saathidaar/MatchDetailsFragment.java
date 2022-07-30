@@ -31,6 +31,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import jp.wasabeef.glide.transformations.BlurTransformation;
+
 
 public class MatchDetailsFragment extends Fragment {
     FragmentMatchDetailsBinding b;
@@ -44,7 +46,6 @@ public class MatchDetailsFragment extends Fragment {
     Context context;
     HoroscopeModel horoscopeModel;
     public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
-    MemberProfileModel memberProfileModel;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -88,10 +89,9 @@ public class MatchDetailsFragment extends Fragment {
         getHoroscopeData();
         setData();
         getMemberPreferenceData();
-        getLoginMemberData();
+        //getLoginMemberData();
         return b.getRoot();
     }
-
 
 
     private void getHoroscopeData() {
@@ -130,8 +130,8 @@ public class MatchDetailsFragment extends Fragment {
     }
 
     private void setHoroData() {
-b.tvDetailPlaceOfBirth.setText(horoscopeModel.country_of_birth+" ,"+horoscopeModel.city_of_birth+" ,"+horoscopeModel.hours+" :"+horoscopeModel.minutes);
-b.tvDetailManglik.setText(horoscopeModel.manglik);
+        b.tvDetailPlaceOfBirth.setText(horoscopeModel.country_of_birth + " ," + horoscopeModel.city_of_birth + " ," + horoscopeModel.hours + " :" + horoscopeModel.minutes);
+        b.tvDetailManglik.setText(horoscopeModel.manglik);
     }
 
     private void getMemberPreferenceData() {
@@ -283,24 +283,23 @@ b.tvDetailManglik.setText(horoscopeModel.manglik);
         }
 
     }
+
     private void listener() {
 
         b.llShowMemberImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context, MemberGalleryActivity.class);
-                intent.putExtra("Member_id",mParam1);
+                Intent intent = new Intent(context, MemberGalleryActivity.class);
+                intent.putExtra("Member_id", mParam1);
                 context.startActivity(intent);
             }
         });
 
 
-
-
         b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.sentRequest(context,mParam1);
+                Utils.sentRequest(context, mParam1);
                 b.ivDetailsConnect.setVisibility(View.GONE);
                 b.ivDetailsConnected.setVisibility(View.VISIBLE);
             }
@@ -352,21 +351,22 @@ b.tvDetailManglik.setText(horoscopeModel.manglik);
         });
 
 
-b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        sentRequest();
+        b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sentRequest();
+            }
+
+        });
+
     }
 
-});
-
-    }
-    public  void sentRequest() {
+    public void sentRequest() {
         String url = Utils.memberUrl + "send-request";
         Map<String, String> params = new HashMap<String, String>();
-        params.put("request_from_id",sessionManager.getMemberId() );
+        params.put("request_from_id", sessionManager.getMemberId());
         params.put("request_to_id", mParam1);
-        params.put("request_status","Pending");
+        params.put("request_status", "Pending");
         Log.e("params request sent", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
@@ -376,7 +376,7 @@ b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
-                                Toast.makeText(context,"Request Send Successfully",Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Request Send Successfully", Toast.LENGTH_LONG).show();
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
@@ -442,7 +442,7 @@ b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
             b.tvNewMatchWorkAsDetail.setText(model.working_as);
             b.tvNameUserDetails.setText("About" + "  " + model.first_name);
             b.tvAboutUserDetails.setText(model.about_ourself);
-            b.tvNameUserFamilyDetails.setText("About " + " Family" );
+            b.tvNameUserFamilyDetails.setText("About " + " Family");
             b.tvAboutUserFamilyDetails.setText(model.FamilyDetails);
             b.tvCreatedBy.setText("Profile CreateBy" + " " + model.profilecreatedby);
             b.tvProfileID.setText("Profile ID" + " " + model.profile_id);
@@ -463,115 +463,81 @@ b.ivDetailsConnect.setOnClickListener(new View.OnClickListener() {
             b.tvDetailCall.setText(model.profile_contact_number);
             b.tvImageCountDetail.setText(model.images_count);
 
+            if (model.my_profile_photo != null && !model.my_profile_photo.isEmpty()) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.my_profile_photo)
+                        .into(b.profileDetailPicLoginUser);
+            } else {
+                if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__male_)
+                            .into(b.profileDetailPicLoginUser);
 
-            if (model.profile_photo != null && !model.profile_photo.isEmpty()) {
+                } else {
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__female_)
+                            .into(b.profileDetailPicLoginUser);
+
+                }
+            }
+
+
+            if (model.photo_privacy.equalsIgnoreCase("1")) {
+                b.llShowMemberImage.setVisibility(View.VISIBLE);
+                b.flPremiumMatchDetails.setVisibility(View.GONE);
+                b.llPremiumMsgMatchesDetails.setVisibility(View.GONE);
+                b.tvLevelPremiumMatchDetails.setVisibility(View.GONE);
+
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                        //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                        .into(b.ivDetailUserImage);
+
+            } else if (model.photo_privacy.equalsIgnoreCase("3")) {
+                b.llShowMemberImage.setVisibility(View.GONE);
+                b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
+                b.llPremiumMsgMatchesDetails.setVisibility(View.VISIBLE);
+                b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(b.ivDetailUserImage);
+            } else if (model.photo_privacy.equalsIgnoreCase(model.my_premium_status)) {
+                b.flPremiumMatchDetails.setVisibility(View.GONE);
+                b.llPremiumMsgMatchesDetails.setVisibility(View.GONE);
+                b.tvLevelPremiumMatchDetails.setVisibility(View.GONE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
                         .into(b.ivDetailUserImage);
-
-
+            } else {
+                b.llShowMemberImage.setVisibility(View.GONE);
+                b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
+                b.llPremiumMsgMatchesDetails.setVisibility(View.VISIBLE);
+                b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
-                        .into(b.profileDetailPic1Partner);
-            } else {
-                if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
-                    b.llNoImageFemale.setVisibility(View.VISIBLE);
-                    b.flNoImageMaleFemale.setVisibility(View.VISIBLE);
-                    b.ivDetailUserImage.setVisibility(View.GONE);
-
-                    Glide.with(context)
-                            .load(R.drawable.ic_no_image__female_)
-                            .into(b.ivNoImageMaleFemale);
-
-                    Glide.with(context)
-                            .load(R.drawable.ic_no_image__female_)
-                            .into(b.profileDetailPic1Partner);
-                } else {
-                    b.llNoImageFemale.setVisibility(View.VISIBLE);
-                    b.flNoImageMaleFemale.setVisibility(View.VISIBLE);
-                    b.ivDetailUserImage.setVisibility(View.GONE);
-
-                    Glide.with(context)
-                            .load(R.drawable.ic_no_image__male_)
-                            .into(b.ivNoImageMaleFemale);
-
-
-                    Glide.with(context)
-                            .load(R.drawable.ic_no_image__male_)
-                            .into(b.profileDetailPic1Partner);
-                }
+                        .transform(new BlurTransformation(20, 8))
+                        .into(b.ivDetailUserImage);
             }
 
-            if (model.premium_status.equalsIgnoreCase("1"))
-            {
-                b.llPremiumMsgMatchesDetails.setVisibility(View.VISIBLE);
-                b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
-                b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
-            }
 
-        }
-
-
-
-    }
-
-    private void getLoginMemberData() {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                DashBoardFragment.Profile_url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                // binding.srlRecycleViewPersonalDetails.setRefreshing(false);
-                Log.e("response", String.valueOf(response));
-                try {
-                    String code = response.getString("results");
-                    if (code.equalsIgnoreCase("1")) {
-                        Gson gson = new Gson();
-                        memberProfileModel = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
-                        setDataMember();
-                    } else {
-
-                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //  binding.srlRecycleViewPersonalDetails.setRefreshing(false);
-                error.printStackTrace();
-            }
-        });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
-    }
-
-    private void setDataMember() {
-//        Glide.with(context)
-//                .load(Utils.imageUrl + memberProfileModel.profile_photo)
-//                .into(b.profileDetailPicLoginUser);
-
-
-        if (memberProfileModel.profile_photo != null && !memberProfileModel.profile_photo.isEmpty()) {
             Glide.with(context)
-                    .load(Utils.imageUrl + memberProfileModel.profile_photo)
-                    .into(b.profileDetailPicLoginUser);
-        } else {
-            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__male_)
-                        .into(b.profileDetailPicLoginUser);
+                    .load(Utils.imageUrl + model.profile_photo)
+                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                    //.transform(!model.my_premium_status.equals(model.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                    .into(b.profileDetailPic1Partner);
 
-            } else {
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__female_)
-                        .into(b.profileDetailPicLoginUser);
 
-            }
+        if (model.premium_status.equalsIgnoreCase("1")) {
+            b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
+            b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
         }
+        }
+
+
+
+
+
     }
 }

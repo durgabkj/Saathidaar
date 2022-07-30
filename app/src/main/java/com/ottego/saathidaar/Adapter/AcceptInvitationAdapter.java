@@ -56,7 +56,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 
 
     @Override
-    public void onBindViewHolder(@NonNull AcceptInvitationAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         InboxModel item = list.get(position);
         Log.e(" New Matches model", new Gson().toJson(item));
 
@@ -111,18 +111,57 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         });
 
 
-        Glide.with(context)
-                .load(Utils.imageUrl + item.profile_photo)
-                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
-                .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-                .into(holder.ivProfileAcceptInvi);
+//        Glide.with(context)
+//                .load(Utils.imageUrl + item.profile_photo)
+//                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
+//                .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+//                .into(holder.ivProfileAcceptInvi);
 
+
+
+        if (item.photo_privacy.equalsIgnoreCase("1")) {
+            holder.llPhotoAccept.setVisibility(View.VISIBLE);
+            holder.flPremiumAccept.setVisibility(View.GONE);
+            holder.llPremiumMsgAccept.setVisibility(View.GONE);
+            holder.tvLevelPremiumAccept.setVisibility(View.GONE);
+
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                    //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                    .into(holder.ivProfileAcceptInvi);
+
+        } else if (item.photo_privacy.equalsIgnoreCase("3")) {
+            holder.llPhotoAccept.setVisibility(View.GONE);
+            holder.flPremiumAccept.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgAccept.setVisibility(View.VISIBLE);
+            holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivProfileAcceptInvi);
+        } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
+            holder.flPremiumAccept.setVisibility(View.GONE);
+            holder.llPremiumMsgAccept.setVisibility(View.GONE);
+            holder.tvLevelPremiumAccept.setVisibility(View.GONE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .into(holder.ivProfileAcceptInvi);
+        } else {
+            holder.llPhotoAccept.setVisibility(View.GONE);
+            holder.flPremiumAccept.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgAccept.setVisibility(View.VISIBLE);
+            holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivProfileAcceptInvi);
+        }
 
 
         if (item.premium_status.equalsIgnoreCase("1")) {
             holder.flPremiumAccept.setVisibility(View.VISIBLE);
-            holder.llPremiumMsgAccept.setVisibility(View.VISIBLE);
-            holder.tvLevelPremiumDelete.setVisibility(View.VISIBLE);
+            holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
 
         }
 
@@ -145,7 +184,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvitationAccetMessage, tvLevelPremiumDelete, tvImageCountAccept, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAsAccept, tvInvitationDate;
+        TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvitationAccetMessage, tvLevelPremiumAccept, tvImageCountAccept, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAsAccept, tvInvitationDate;
         LinearLayout llCAll, llWhatsApp, llPhotoAccept, llMessageAccept, llBlockAccept, llBlockedAccept, llAcceptCallMsgDecline, llNo_imageFemaleListAccept, llDeleteAccet, llDeletedAccept, llPremiumMsgAccept;
         FrameLayout flNoImageMaleFemaleListAccept, flPremiumAccept;
         ImageView ivNoImageMaleFemaleAccept, ivProfileAcceptInvi;
@@ -177,7 +216,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
             llDeleteAccet = itemView.findViewById(R.id.llDeleteAccet);
             llDeletedAccept = itemView.findViewById(R.id.llDeletedAccept);
             llPremiumMsgAccept = itemView.findViewById(R.id.llPremiumMsgAccept);
-            tvLevelPremiumDelete = itemView.findViewById(R.id.tvLevelPremiumDelete);
+            tvLevelPremiumAccept = itemView.findViewById(R.id.tvLevelPremiumAccept);
 
 
         }

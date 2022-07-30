@@ -31,7 +31,6 @@ import java.util.List;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortListAdapter.ViewHolder> {
-
     SessionManager sessionManager;
     Context context;
     List<NewMatchesModel> list;
@@ -124,17 +123,59 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
 //        }
 
 
-        Glide.with(context)
-                .load(Utils.imageUrl + item.profile_photo)
-                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
-                .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-                .into(holder.ivRemoveShortList);
+//        Glide.with(context)
+//                .load(Utils.imageUrl + item.profile_photo)
+//                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
+//                .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+//                .into(holder.ivRemoveShortList);
+
+
+
+
+        if (item.photo_privacy.equalsIgnoreCase("1")) {
+            holder.llPhotoShortList.setVisibility(View.VISIBLE);
+            holder.flPremiumRemove_shortList.setVisibility(View.GONE);
+            holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
+            holder.tvLevelPremiumRemoveShortList.setVisibility(View.GONE);
+
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                    //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                    .into(holder.ivRemoveShortList);
+
+        } else if (item.photo_privacy.equalsIgnoreCase("3")) {
+            holder.llPhotoShortList.setVisibility(View.GONE);
+            holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgRemoveShortlist.setVisibility(View.VISIBLE);
+            holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivRemoveShortList);
+        } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
+            holder.flPremiumRemove_shortList.setVisibility(View.GONE);
+            holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
+            holder.tvLevelPremiumRemoveShortList.setVisibility(View.GONE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .into(holder.ivRemoveShortList);
+        } else {
+            holder.llPhotoShortList.setVisibility(View.GONE);
+            holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgRemoveShortlist.setVisibility(View.VISIBLE);
+            holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivRemoveShortList);
+        }
+
 
         if(item.premium_status.equalsIgnoreCase("1"))
         {
             holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
             holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
-            holder.llPremiumMsgRemoveShortlist.setVisibility(View.VISIBLE);
         }
 
 

@@ -46,7 +46,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
     public NewMatchesAdapter(Context context, List<NewMatchesModel> list, ApiListener clickListener) {
         this.context = context;
         this.list = list;
-        this.clickListener=clickListener;
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -68,13 +68,44 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         holder.tvNewMatchCity.setText(item.maritalStatus);
         holder.tvImageCount.setText(item.images_count);
 
-        Glide.with(context)
-                .load(Utils.imageUrl + item.profile_photo)
-                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
-                .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-                .into(holder.ivUserMatch);
+        if (item.photo_privacy.equalsIgnoreCase("1")) {
+            holder.llPhotoMyMatches.setVisibility(View.VISIBLE);
+            holder.flPremiumMatch.setVisibility(View.GONE);
+            holder.llPremiumMsgMatches.setVisibility(View.GONE);
+            holder.tvLevelPremiumMatch.setVisibility(View.GONE);
 
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                    //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                    .into(holder.ivUserMatch);
 
+        } else if (item.photo_privacy.equalsIgnoreCase("3")) {
+            holder.llPhotoMyMatches.setVisibility(View.GONE);
+            holder.flPremiumMatch.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgMatches.setVisibility(View.VISIBLE);
+            holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivUserMatch);
+        } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
+            holder.flPremiumMatch.setVisibility(View.GONE);
+            holder.llPremiumMsgMatches.setVisibility(View.GONE);
+            holder.tvLevelPremiumMatch.setVisibility(View.GONE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .into(holder.ivUserMatch);
+        } else {
+            holder.llPhotoMyMatches.setVisibility(View.GONE);
+            holder.flPremiumMatch.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgMatches.setVisibility(View.VISIBLE);
+            holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivUserMatch);
+        }
 
 
         holder.llPhotoMyMatches.setOnClickListener(new View.OnClickListener() {
@@ -142,7 +173,6 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
 
         if (item.premium_status.equalsIgnoreCase("1")) {
             holder.flPremiumMatch.setVisibility(View.VISIBLE);
-            holder.llPremiumMsgMatches.setVisibility(View.VISIBLE);
             holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
         }
 
@@ -156,15 +186,15 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivUserMatch, ivNoImageMaleFemaleMatch;
-        TextView tvNewMatchName, tvNewMatchAge,tvPremiumContactMatch, tvLevelPremiumMatch,tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs, tvImageCount;
+        TextView tvNewMatchName, tvNewMatchAge, tvPremiumContactMatch, tvLevelPremiumMatch, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs, tvImageCount;
         LinearLayout llMess, llShortListRemove, llShortList, llPhotoMyMatches, llShortBlock, llBlocked, llItemAnimation;
-        LinearLayout ivLike, llConnect, llNo_imageFemaleList,llPremiumMsgMatches;
+        LinearLayout ivLike, llConnect, llNo_imageFemaleList, llPremiumMsgMatches;
         FrameLayout flNoImageMaleFemaleList, flPremiumMatch;
         Spinner SpMenu;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvPremiumContactMatch=itemView.findViewById(R.id.tvPremiumContactMatch);
+            tvPremiumContactMatch = itemView.findViewById(R.id.tvPremiumContactMatch);
             tvNewMatchAge = itemView.findViewById(R.id.tvNewMatchAge);
             tvNewMatchName = itemView.findViewById(R.id.tvNewMatchName);
             tvNewMatchHeight = itemView.findViewById(R.id.tvNewMatchHeight);
@@ -184,8 +214,8 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             tvImageCount = itemView.findViewById(R.id.tvImageCount);
             llItemAnimation = itemView.findViewById(R.id.llItemAnimation);
             flPremiumMatch = itemView.findViewById(R.id.flPremiumMatch);
-            llPremiumMsgMatches=itemView.findViewById(R.id.llPremiumMsgMatches);
-            tvLevelPremiumMatch=itemView.findViewById(R.id.tvLevelPremiumMatch);
+            llPremiumMsgMatches = itemView.findViewById(R.id.llPremiumMsgMatches);
+            tvLevelPremiumMatch = itemView.findViewById(R.id.tvLevelPremiumMatch);
 
         }
     }

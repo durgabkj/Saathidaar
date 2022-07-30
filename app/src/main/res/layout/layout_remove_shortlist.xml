@@ -229,6 +229,7 @@
                 <LinearLayout
                     android:id="@+id/llPhotoShortList"
                     android:layout_width="60dp"
+                    android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_gravity="center"
