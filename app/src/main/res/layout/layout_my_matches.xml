@@ -38,7 +38,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/local"
                 android:adjustViewBounds="true"
                 />
 
@@ -226,6 +225,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
+                android:visibility="gone"
                 android:orientation="vertical"
                 android:gravity="center"
                 >

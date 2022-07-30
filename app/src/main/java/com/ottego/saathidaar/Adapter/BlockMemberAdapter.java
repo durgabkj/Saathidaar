@@ -109,43 +109,11 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
             });
 
 
-            if (item.profile_photo != null && !item.profile_photo.isEmpty() && item.premium_status.equalsIgnoreCase(("1"))) {
-                // For Premium member
-                Glide.with(context).load(Utils.imageUrl + item.profile_photo)
-                        .transition(DrawableTransitionOptions.withCrossFade())
-                        .placeholder(new ColorDrawable(Color.BLACK))
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .transform(new BlurTransformation(20, 8))
-                        .into(holder.ivBlockProfileImage);
-            }
-
-            if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
-                Glide.with(context)
-                        .load(Utils.imageUrl + item.profile_photo)
-                        .into(holder.ivBlockProfileImage);
-
-            } else {
-                if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
-                    holder.llNo_imageFemaleListBlock.setVisibility(View.VISIBLE);
-                    holder.flNoImageMaleFemaleListBlock.setVisibility(View.VISIBLE);
-                    holder.ivBlockProfileImage.setVisibility(View.GONE);
-                    Glide.with(context)
-                            .load(R.drawable.ic_no_image__female_)
-                            .into(holder.ivNoImageMaleFemaleBlock);
-
-                } else {
-                    holder.llNo_imageFemaleListBlock.setVisibility(View.VISIBLE);
-                    holder.flNoImageMaleFemaleListBlock.setVisibility(View.VISIBLE);
-                    holder.ivBlockProfileImage.setVisibility(View.GONE);
-
-                    Glide.with(context)
-                            .load(R.drawable.ic_no_image__male_)
-                            .into(holder.ivNoImageMaleFemaleBlock);
-
-                }
-
-
-            }
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
+                    .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                    .into(holder.ivBlockProfileImage);
 
             if ((item.premium_status.equalsIgnoreCase("1")))
             {

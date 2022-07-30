@@ -68,43 +68,14 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         holder.tvNewMatchCity.setText(item.maritalStatus);
         holder.tvImageCount.setText(item.images_count);
 
-        if (item.profile_photo != null && !item.profile_photo.isEmpty() && item.premium_status.equalsIgnoreCase("1")) {
-//            Glide.with(context)
-//                    .load(Utils.imageUrl + item.profile_photo)
-//                    .into(holder.ivUserMatch);
-// For Premium member
-
-            Glide.with(context).load(Utils.imageUrl + item.profile_photo)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .placeholder(new ColorDrawable(Color.BLACK))
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .transform(new BlurTransformation(20, 8))
-                    .into(holder.ivUserMatch);
-
-
-        } else {
-            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
-                holder.llNo_imageFemaleList.setVisibility(View.VISIBLE);
-                holder.flNoImageMaleFemaleList.setVisibility(View.VISIBLE);
-                holder.ivUserMatch.setVisibility(View.GONE);
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__female_)
-                        .into(holder.ivNoImageMaleFemaleMatch);
-
-            } else {
-                holder.llNo_imageFemaleList.setVisibility(View.VISIBLE);
-                holder.flNoImageMaleFemaleList.setVisibility(View.VISIBLE);
-                holder.ivUserMatch.setVisibility(View.GONE);
-
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__male_)
-                        .into(holder.ivNoImageMaleFemaleMatch);
-
-            }
+        Glide.with(context)
+                .load(Utils.imageUrl + item.profile_photo)
+                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
+                .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                .into(holder.ivUserMatch);
 
 
 
-        }
 
         holder.llPhotoMyMatches.setOnClickListener(new View.OnClickListener() {
             @Override

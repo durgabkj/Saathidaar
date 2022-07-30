@@ -117,45 +117,13 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 }
             });
 
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
+                    .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                    .into(holder.ivRecentViewImage);
 
 
-            if (item.profile_photo != null && !item.profile_photo.isEmpty() && item.premium_status.equalsIgnoreCase(("1"))) {
-                // For Premium member
-                Glide.with(context).load(Utils.imageUrl + item.profile_photo)
-                        .transition(DrawableTransitionOptions.withCrossFade())
-                        .placeholder(new ColorDrawable(Color.BLACK))
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .transform(new BlurTransformation(20, 8))
-                        .into(holder.ivRecentViewImage);
-            }
-
-            if (item.profile_photo != null && !item.profile_photo.isEmpty() && item.premium_status.equalsIgnoreCase(("1"))) {
-                Glide.with(context)
-                        .load(Utils.imageUrl + item.profile_photo)
-                        .into(holder.ivRecentViewImage);
-
-
-            } else {
-                if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
-                    holder.llNo_imageFemaleListRecentView.setVisibility(View.VISIBLE);
-                    holder.flNoImageMaleFemaleListRecentView.setVisibility(View.VISIBLE);
-                    holder.ivRecentViewImage.setVisibility(View.GONE);
-                    Glide.with(context)
-                            .load(R.drawable.ic_no_image__female_)
-                            .into(holder.ivNoImageMaleFemaleRecentView);
-
-                } else {
-                    holder.llNo_imageFemaleListRecentView.setVisibility(View.VISIBLE);
-                    holder.flNoImageMaleFemaleListRecentView.setVisibility(View.VISIBLE);
-                    holder.ivRecentViewImage.setVisibility(View.GONE);
-
-                    Glide.with(context)
-                            .load(R.drawable.ic_no_image__male_)
-                            .into(holder.ivNoImageMaleFemaleRecentView);
-
-                }
-
-            }
             holder.ivLikeRecentVisitors.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -109,43 +109,12 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
         });
 
 
-        if (item.profile_photo != null && !item.profile_photo.isEmpty() && item.premium_status.equalsIgnoreCase(("1"))) {
-            // For Premium member
-            Glide.with(context).load(Utils.imageUrl + item.profile_photo)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .placeholder(new ColorDrawable(Color.BLACK))
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .transform(new BlurTransformation(20, 8))
-                    .into(holder.ivDeleteInvitation);
-        }
+        Glide.with(context)
+                .load(Utils.imageUrl + item.profile_photo)
+                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
+                .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                .into(holder.ivDeleteInvitation);
 
-        if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
-                    .into(holder.ivDeleteInvitation);
-
-        } else {
-            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
-                holder.llNo_imageFemaleListDeleteInvi.setVisibility(View.VISIBLE);
-                holder.flNoImageMaleFemaleListDeleteInvi.setVisibility(View.VISIBLE);
-                holder.ivDeleteInvitation.setVisibility(View.GONE);
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__female_)
-                        .into(holder.ivNoImageMaleFemaleDeleteInvi);
-
-            } else {
-                holder.llNo_imageFemaleListDeleteInvi.setVisibility(View.VISIBLE);
-                holder.flNoImageMaleFemaleListDeleteInvi.setVisibility(View.VISIBLE);
-                holder.ivDeleteInvitation.setVisibility(View.GONE);
-
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__male_)
-                        .into(holder.ivDeleteInvitation);
-
-            }
-
-
-        }
 
         if ((item.premium_status.equalsIgnoreCase("1")))
         {

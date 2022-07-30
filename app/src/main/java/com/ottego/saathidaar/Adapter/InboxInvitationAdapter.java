@@ -122,43 +122,11 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         });
 
 
-        if (item.profile_photo != null && !item.profile_photo.isEmpty() && item.premium_status.equalsIgnoreCase(("1"))) {
-            // For Premium member
-            Glide.with(context).load(Utils.imageUrl + item.profile_photo)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .placeholder(new ColorDrawable(Color.BLACK))
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .transform(new BlurTransformation(20, 8))
-                    .into(holder.ivReceivedInvitation);
-        }
-
-
-        if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
-                    .into(holder.ivReceivedInvitation);
-
-        } else {
-            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
-                holder.llNo_imageFemaleListReceivedInvitation.setVisibility(View.VISIBLE);
-                holder.flNoImageMaleFemaleListReceivedInvitation.setVisibility(View.VISIBLE);
-                holder.ivReceivedInvitation.setVisibility(View.GONE);
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__female_)
-                        .into(holder.ivNoImageMaleFemaleReceivedInvitation);
-
-            } else {
-                holder.llNo_imageFemaleListReceivedInvitation.setVisibility(View.VISIBLE);
-                holder.flNoImageMaleFemaleListReceivedInvitation.setVisibility(View.VISIBLE);
-                holder.ivReceivedInvitation.setVisibility(View.GONE);
-
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__male_)
-                        .into(holder.ivReceivedInvitation);
-
-            }
-
-        }
+        Glide.with(context)
+                .load(Utils.imageUrl + item.profile_photo)
+                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
+                .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                .into(holder.ivReceivedInvitation);
 
         if((item.request_message!= null || item.request_status_date!= null) && (!item.request_message.isEmpty() || !item.request_status_date.isEmpty()) )
         {

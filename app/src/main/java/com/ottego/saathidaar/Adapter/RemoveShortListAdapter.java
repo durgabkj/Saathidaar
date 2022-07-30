@@ -28,6 +28,8 @@ import com.ottego.saathidaar.Utils;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.BlurTransformation;
+
 public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortListAdapter.ViewHolder> {
 
     SessionManager sessionManager;
@@ -122,30 +124,11 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
 //        }
 
 
-        if (item.profile_photo != null && !item.profile_photo.isEmpty()) {
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
-                    .into(holder.ivRemoveShortList);
-
-        } else {
-            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
-                holder.llNo_imageFemaleRemoveShortList.setVisibility(View.VISIBLE);
-                holder.flNoImageMaleFemaleRemoveShortList.setVisibility(View.VISIBLE);
-                holder.ivRemoveShortList.setVisibility(View.GONE);
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__female_)
-                        .into(holder.ivNoImageMaleFemaleRemoveShortList);
-
-            } else {
-                holder.llNo_imageFemaleRemoveShortList.setVisibility(View.VISIBLE);
-                holder.flNoImageMaleFemaleRemoveShortList.setVisibility(View.VISIBLE);
-                holder.ivRemoveShortList.setVisibility(View.GONE);
-
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__male_)
-                        .into(holder.ivRemoveShortList);
-            }
-        }
+        Glide.with(context)
+                .load(Utils.imageUrl + item.profile_photo)
+                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
+                .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                .into(holder.ivRemoveShortList);
 
         if(item.premium_status.equalsIgnoreCase("1"))
         {

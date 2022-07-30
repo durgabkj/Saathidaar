@@ -31,6 +31,7 @@ public class MemberProfileModel {
     public String my_profile_photo;
     public String ethnic_corigin;
     public String pincode;
+    public String my_premium_status;
     public String father_status;
     public String father_company_name;
     public String father_designation;

@@ -14,6 +14,7 @@ public class InboxModel {
     public String maritalStatus;
     public String religion;
     public String contact_number;
+    public String my_premium_status;
     public String known_languages;
     public String profilecreatedby;
     public String subcaste;
