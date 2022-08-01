@@ -255,7 +255,7 @@ public class Utils {
 
     }
 
-    public static void deleteRequest(Context context, String member_id) {
+    public static void deleteRequest(Context context, String member_id, ApiListener apiListener) {
        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         String url = Utils.memberUrl + "request-accept-reject";
         Map<String, String> params = new HashMap<String, String>();
@@ -272,8 +272,10 @@ public class Utils {
                         try {
                             String code = response.getString("message");
                             if (code.equalsIgnoreCase("request are Rejected..")) {
+                                apiListener.onSuccess(0);
                                 Toast.makeText(context,"Request Deleted ",Toast.LENGTH_LONG).show();
                             } else {
+                                apiListener.onFail(0);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {

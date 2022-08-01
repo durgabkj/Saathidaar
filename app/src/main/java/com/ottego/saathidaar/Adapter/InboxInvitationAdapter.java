@@ -81,7 +81,7 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         holder.llDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.deleteRequest(context, item.member_id);
+                Utils.deleteRequest(context, item.member_id,clickListener);
                 holder.llAccept.setVisibility(View.GONE);
                 holder.llDelete.setVisibility(View.GONE);
                 holder.llDeleted.setVisibility(View.VISIBLE);

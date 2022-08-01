@@ -93,7 +93,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         holder.llDeleteAccet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.deleteRequest(context, item.member_id);
+                Utils.deleteRequest(context, item.member_id,clickListener);
                 holder.llDeleteAccet.setVisibility(View.GONE);
                 holder.llDeletedAccept.setVisibility(View.VISIBLE);
             }

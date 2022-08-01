@@ -76,7 +76,6 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
                 AppCompatTextView tvPrice =layout_dialog.findViewById(R.id.tvPrice);
                 AppCompatTextView tvPriceTotal =layout_dialog.findViewById(R.id.tvPriceTotal);
                 AppCompatImageView ivClear =layout_dialog.findViewById(R.id.ivClearPlan);
-
                 AppCompatButton btnProceed =layout_dialog.findViewById(R.id.btnProceed);
 
 
@@ -108,8 +107,11 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
                 btnProceed.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) v.getContext(),
+                                Pair.create(holder.tvPriceUpgrade, "tnMembershipPlan"));
                         Intent intent = new Intent(v.getContext(), UpgradePlanDetailsActivity.class);
-                        v.getContext().startActivity(intent);
+                        intent.putExtra("data", new Gson().toJson(item));
+                        v.getContext().startActivity(intent, options.toBundle());
                     }
                 });
 
