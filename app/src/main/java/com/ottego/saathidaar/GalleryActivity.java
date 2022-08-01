@@ -1,7 +1,9 @@
 package com.ottego.saathidaar;
 
 import android.Manifest;
+import android.animation.ValueAnimator;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -13,12 +15,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.OpenableColumns;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -66,10 +74,9 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     ProgressDialog progressDialog;
     String getImageURL = Utils.memberUrl + "app/get/photo/";
     Context context;
-    List<String> imageNameList = new ArrayList<>();
     List<String> imagePathList = new ArrayList<>();
     GalleryViewModel viewModel;
-   // int count=0;
+    int count=0;
     private static final int REQUEST_STORAGE_PERMISSION = 100;
     private static final int PICK_FILE_REQUEST = 1;
 
@@ -83,6 +90,11 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         viewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
         context = GalleryActivity.this;
        sessionManager = new SessionManager(context);
+
+
+        // Now we will call setSelected() method
+        // and pass boolean value as true
+        b.marqueeText.setSelected(true);
         getData();
         listener();
     }
@@ -132,6 +144,31 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                 getData();
             }
 
+        });
+        b.mcvImageGuidLinesGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                View layout_dialog1= LayoutInflater.from(context).inflate(R.layout.layout_image_guid_lines,null);
+                builder.setView(layout_dialog1);
+
+                AppCompatButton ok =layout_dialog1.findViewById(R.id.buttonOk);
+                // show dialog
+
+                AlertDialog dialog=builder.create();
+                dialog.show();
+                dialog.setCancelable(false);
+
+                dialog.getWindow().setGravity(Gravity.CENTER);
+
+                ok.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+
+                    }
+                });
+            }
         });
     }
 
@@ -186,15 +223,19 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == PICK_FILE_REQUEST) {
-//                imageNameList.clear();
-//                imagePathList.clear();
+                imagePathList.clear();
                 if (data.getClipData() != null) {
                     int count = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
-                    for (int i = 0; i < count; i++) {
-                        Uri imageUri = data.getClipData().getItemAt(i).getUri();
-                        pickiT.getPath(imageUri, Build.VERSION.SDK_INT);
+                   if(count >3) {
+                       Toast.makeText(context, "You can Only upload three Images", Toast.LENGTH_SHORT).show();
+                   }
+                   else {
+                       for (int i = 0; i < count; i++) {
+                           Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                           pickiT.getPath(imageUri, Build.VERSION.SDK_INT);
 
-                    }
+                       }
+                   }
                 } else if (data.getData() != null) {
                     Uri imagePath = data.getData();
                     pickiT.getPath(imagePath, Build.VERSION.SDK_INT);
@@ -231,7 +272,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 //
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("member_id", sessionManager.getMemberId());
-
+                Log.e("durga", "spload start: "+path);
                 String result = multipartRequest(URL, params, path, "image", "image/jpeg");
 
                  Log.e("durga",result);
@@ -382,7 +423,6 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     @Override
     public void PickiTonCompleteListener(String path, boolean wasDriveFile, boolean wasUnknownProvider, boolean wasSuccessful, String Reason) {
         Log.e("durga", "path single: " + path);
-        imagePathList.clear();
         imagePathList.add(path);
     }
 
@@ -414,7 +454,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 
 
     private void getData() {
-       // count++;
+        count++;
         //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 getImageURL + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
@@ -440,7 +480,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
+refresh(1000);
 
     }
     private void setRecyclerView() {

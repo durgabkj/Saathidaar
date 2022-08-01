@@ -1,15 +1,18 @@
 package com.ottego.saathidaar;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
@@ -95,6 +98,31 @@ String member_id;
             @Override
             public void onClick(View view) {
                 setProfile();
+            }
+        });
+        b.mcvImageGuidLines.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                View layout_dialog1= LayoutInflater.from(context).inflate(R.layout.layout_image_guid_lines,null);
+                builder.setView(layout_dialog1);
+
+                AppCompatButton ok =layout_dialog1.findViewById(R.id.buttonOk);
+                // show dialog
+
+                AlertDialog dialog=builder.create();
+                dialog.show();
+                dialog.setCancelable(false);
+
+                dialog.getWindow().setGravity(Gravity.CENTER);
+
+                ok.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+
+                    }
+                });
             }
         });
 
