@@ -241,6 +241,9 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                     pickiT.getPath(imagePath, Build.VERSION.SDK_INT);
                 }
             }
+        }else
+        {
+            Toast.makeText(context, "You haven't pick any image", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -294,7 +297,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 
         int bytesRead, bytesAvailable, bufferSize;
         byte[] buffer;
-        int maxBufferSize = 1048576;
+        int maxBufferSize = 1*1024*1024;
 
         String[] q = filepath.split("/");
         int idx = q.length - 1;
@@ -490,7 +493,6 @@ refresh(1000);
         b.rvMyImage.setNestedScrollingEnabled(true);
         ImageAdapter adapter = new ImageAdapter(context, dataModelImage.data);
         b.rvMyImage.setAdapter(adapter);
-
         if (adapter.getItemCount() != 0) {
             b.llNoDataImage.setVisibility(View.GONE);
             b.llCard.setVisibility(View.VISIBLE);

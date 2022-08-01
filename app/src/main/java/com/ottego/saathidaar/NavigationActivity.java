@@ -48,7 +48,7 @@ public class NavigationActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tlMatch);
         viewPager = findViewById(R.id.vpMatch);
 
-        final MediaPlayer mp = MediaPlayer.create(this, R.raw.tap);
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.app);
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         tabLayout.addTab(tabLayout.newTab().setText("Home"));

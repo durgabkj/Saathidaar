@@ -1,30 +1,20 @@
 package com.ottego.saathidaar;
 
-import android.app.AlertDialog;
+import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Scroller;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -227,16 +217,17 @@ refresh(1000);
     }
 
     private void setData() {
+        if (isValidContextForGlide(context)) {
 //        Glide.with(context)
 //                .load(Utils.imageUrl+model.profile_photo)
 //                .into(profilePic);
 
 
-                Glide.with(context)
-                .load(Utils.imageUrl + model.profile_photo)
-                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__male_:R.drawable.ic_no_image__female_)
-             //   .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-                .into(profilePic);
+            Glide.with(context)
+                    .load(Utils.imageUrl + model.profile_photo)
+                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    //   .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                    .into(profilePic);
 
 
 //        if (model.profile_photo != null && !model.profile_photo.isEmpty()) {
@@ -256,6 +247,7 @@ refresh(1000);
 //
 //            }
 //        }
+        }
     }
 
 
@@ -268,9 +260,22 @@ refresh(1000);
             }
         };
 
-        handler.postDelayed(runnable,millisecond);
+        handler.postDelayed(runnable, millisecond);
 
 
+    }
 
+
+    public static boolean isValidContextForGlide(final Context context) {
+        if (context == null) {
+            return false;
+        }
+        if (context instanceof Activity) {
+            final Activity activity = (Activity) context;
+            if (activity.isDestroyed() || activity.isFinishing()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

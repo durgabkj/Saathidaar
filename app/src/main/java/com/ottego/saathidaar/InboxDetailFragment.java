@@ -432,12 +432,19 @@ public class InboxDetailFragment extends Fragment {
                         .transform(new BlurTransformation(20, 8))
                         .into(b.ivDetailUserImage);
             }
-        }
 
             if (model.premium_status.equalsIgnoreCase("1"))
-        {
-            b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
-            b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
+            {
+                b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
+                b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
+            }
+
+            Glide.with(context)
+                    .load(Utils.imageUrl + model.profile_photo)
+                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                    //.transform(!model.my_premium_status.equals(model.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                    .into(b.profileDetailPic1Partner);
+
         }
 
 

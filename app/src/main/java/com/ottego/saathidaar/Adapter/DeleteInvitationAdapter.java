@@ -162,6 +162,12 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
         }
 
 
+        if(item.request_message.contains("declined"))
+        {
+            holder.llBlockAcceptButton.setVisibility(View.GONE);
+        }
+
+
     }
 
 
@@ -173,13 +179,14 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvInvDeleteWorkAs, tvInvDeleteCity,tvLevelPremiumDelete, tvImageCountDelete, tvInvDeleteHeight, tvInvDeleteName, tvInvDeleteAge, tvInvitationDeleteMessageInbox;
-        LinearLayout llBlocked,llBlockDelete, llDeletedInvitation,llPremiumMsgDelete, llDelete1, llPhotoDelete, llNo_imageFemaleListDeleteInvi;
+        LinearLayout llBlocked,llBlockDelete, llDeletedInvitation,llBlockAcceptButton,llPremiumMsgDelete, llDelete1, llPhotoDelete, llNo_imageFemaleListDeleteInvi;
         ImageView ivDeleteInvitation, ivNoImageMaleFemaleDeleteInvi;
         FrameLayout flNoImageMaleFemaleListDeleteInvi,flPremiumDelete;
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
+            llBlockAcceptButton=itemView.findViewById(R.id.llBlockAcceptButton);
             llPremiumMsgDelete=itemView.findViewById(R.id.llPremiumMsgDelete);
             tvInvDeleteAge = itemView.findViewById(R.id.tvInvDeleteAge);
             tvInvDeleteName = itemView.findViewById(R.id.tvInvDeleteName);

@@ -194,10 +194,10 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        FrameLayout flNoImageMaleFemaleListReceivedInvitation;
+        FrameLayout flNoImageMaleFemaleListReceivedInvitation,flPremiumInvitation;
         ImageView ivNoImageMaleFemaleReceivedInvitation, ivReceivedInvitation;
         TextView tvInvNewMatchName,tvImageCountInvitation, tvLevelPremiumInvitation,tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs, tvInvitationMessageInbox, tvInvitationDateInbox;
-        LinearLayout llNo_imageFemaleListReceivedInvitation, llPremiumMsgInvitation,llAccept, llDelete, llAccepted, llDeleted, llPhotoInvitation, llBlockInvitation, llBlockedInvitation, llAcceptDelete,llMsgDate,flPremiumInvitation;
+        LinearLayout llNo_imageFemaleListReceivedInvitation, llPremiumMsgInvitation,llAccept, llDelete, llAccepted, llDeleted, llPhotoInvitation, llBlockInvitation, llBlockedInvitation, llAcceptDelete,llMsgDate;
 
         public ViewHolder(@NonNull View itemView) {
 

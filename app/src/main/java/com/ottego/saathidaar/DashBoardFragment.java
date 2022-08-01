@@ -1,6 +1,7 @@
 package com.ottego.saathidaar;
 
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -151,7 +152,7 @@ public class DashBoardFragment extends Fragment {
 
     }
 
-            private void listener() {
+    private void listener() {
 
         tvDashBoardUploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -300,7 +301,7 @@ public class DashBoardFragment extends Fragment {
                 url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-             //   srlDashboard.setRefreshing(false);
+                //   srlDashboard.setRefreshing(false);
                 Log.e("response", String.valueOf((response)));
                 Gson gson = new Gson();
                 model = gson.fromJson(String.valueOf(response), DataModelDashboard.class);
@@ -309,13 +310,13 @@ public class DashBoardFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-              //  srlDashboard.setRefreshing(false);
+                //  srlDashboard.setRefreshing(false);
                 error.printStackTrace();
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-refresh(1000);
+        refresh(1000);
 
     }
 
@@ -326,7 +327,6 @@ refresh(1000);
             Visitors.setText(model.data.get(0).recent_visitors_count);
         }
     }
-
 
 
     private void set() {
@@ -361,7 +361,7 @@ refresh(1000);
             @Override
             public void onResponse(JSONObject response) {
                 // binding.srlRecycleViewPersonalDetails.setRefreshing(false);
-             //   Log.e("response", String.valueOf(response));
+                //   Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -392,39 +392,55 @@ refresh(1000);
     }
 
     private void setDataMember() {
-        if (memberProfileModel.profile_photo != null && !memberProfileModel.profile_photo.isEmpty()) {
-            Glide.with(context)
-                    .load(Utils.imageUrl + memberProfileModel.profile_photo)
-                    .into(profilePicDashBoard);
-        } else {
-            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__male_)
-                        .into(profilePicDashBoard);
 
+        if (isValidContextForGlide(context)){
+            // Load image via Glide lib using context
+            if (memberProfileModel.profile_photo != null && !memberProfileModel.profile_photo.isEmpty()) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + memberProfileModel.profile_photo)
+                        .into(profilePicDashBoard);
             } else {
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__female_)
-                        .into(profilePicDashBoard);
+                if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__male_)
+                            .into(profilePicDashBoard);
 
+                } else {
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__female_)
+                            .into(profilePicDashBoard);
+
+                }
             }
         }
+
     }
 
 
     private void refresh(int millisecond) {
 
-     final   Handler handler= new Handler();
-       final  Runnable runnable=new Runnable() {
-           @Override
-           public void run() {
-               getMemberData();
-           }
-       };
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                getMemberData();
+            }
+        };
 
-handler.postDelayed(runnable,millisecond);
+        handler.postDelayed(runnable, millisecond);
 
+    }
 
-
+    public static boolean isValidContextForGlide(final Context context) {
+        if (context == null) {
+            return false;
+        }
+        if (context instanceof Activity) {
+            final Activity activity = (Activity) context;
+            if (activity.isDestroyed() || activity.isFinishing()) {
+                return false;
+            }
+        }
+        return true;
     }
 }
