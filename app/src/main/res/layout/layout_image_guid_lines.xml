@@ -20,6 +20,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/italic"
             android:layout_marginTop="10dp"
             android:text="1.Add recent and clear photos."
             android:textAlignment="center"
@@ -29,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/italic"
             android:text="2.You can upload 3 photos to your profile. Each photo must be less than 50KB and in jpg, gif, png format."
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -39,6 +41,7 @@
             android:layout_marginTop="10dp"
             android:text="Beyond these basic rules, here are some reasons we reject photos::"
             android:textAlignment="center"
+            android:fontFamily="@font/italic"
        android:textColor="@color/black"
             android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -50,12 +53,14 @@
             android:layout_marginTop="10dp"
             android:text="1.You are the focus of your profile. Do not add group photos."
             android:textAlignment="center"
+            android:fontFamily="@font/italic"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/italic"
             android:text="2.Sideways or upside-down photos are likely to be rejected."
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -64,6 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/italic"
             android:text="3.Watermarked, digitally enhanced, morphed photos or photos with your personal information will be rejected."
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />

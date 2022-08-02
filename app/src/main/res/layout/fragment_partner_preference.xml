@@ -643,7 +643,6 @@
                         android:focusable="true"
                         android:focusableInTouchMode="false"
                         android:importantForAutofill="no"
-                        android:maxLines="1"
                         app:showSearch="true"
                         android:fontFamily="@font/italic"
                         app:sort="true" />

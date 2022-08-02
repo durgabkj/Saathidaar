@@ -26,17 +26,19 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Utils {
     public static int SERVER_TIMEOUT = 30000;
-    public static String userUrl ="http://103.150.186.33:8080/saathidaar_backend/api/users/";
-    public static String memberUrl ="http://103.150.186.33:8080/saathidaar_backend/api/member/";
-    public static  String location ="http://103.150.186.33:8080/saathidaar_backend/api/get/";
-    public static String privacy="http://103.150.186.33:8080/saathidaar_backend/api/privacy/update/";
-    public static String alert= "http://103.150.186.33:8080/saathidaar_backend/api/alert/";
-    public static String imageUrl= "http://103.150.186.33:8080/";
-    public static String role_user="USER";
+    public static String userUrl = "http://103.150.186.33:8080/saathidaar_backend/api/users/";
+    public static String memberUrl = "http://103.150.186.33:8080/saathidaar_backend/api/member/";
+    public static String location = "http://103.150.186.33:8080/saathidaar_backend/api/get/";
+    public static String privacy = "http://103.150.186.33:8080/saathidaar_backend/api/privacy/update/";
+    public static String alert = "http://103.150.186.33:8080/saathidaar_backend/api/alert/";
+    public static String imageUrl = "http://103.150.186.33:8080/";
+    public static String role_user = "USER";
 
 
 
@@ -55,6 +57,24 @@ public class Utils {
             return android.util.Patterns.PHONE.matcher(target).matches();
         }
     }
+
+
+//    public static boolean isValidEmail(String email) {
+//        if (email == null) {
+//            return false;
+//        }else
+//        {
+//
+//            // Regex to check valid domain name.
+//            String regex = "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+//                    + "(abc\\.com|abc\\.co|abc\\.nz|abc\\.org)$";
+//
+//            // Compile the ReGex
+//            boolean matcher = regex.matches(email);
+//            return matcher;
+//        }
+//
+//    }
 
     public static String utfString(String string) {
         try {
@@ -469,7 +489,6 @@ public class Utils {
         String dateString = formatter.format(new Date(time));
         return dateString;
     }
-
 
 
 }

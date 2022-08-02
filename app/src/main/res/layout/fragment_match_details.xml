@@ -238,6 +238,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:orientation="horizontal">
 
                             <TextView
@@ -289,6 +290,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:layout_gravity="center"
                             android:orientation="horizontal">
 
 
@@ -498,8 +500,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp"
-                                android:text="Created by self" />
+                                android:padding="10dp" />
 
 
                             <TextView
@@ -508,8 +509,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp"
-                                android:text="Profile ID - SH119876" />
+                                android:padding="10dp" />
 
                         </LinearLayout>
 
@@ -525,8 +525,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp"
-                                android:text="25 yrs old" />
+                                android:padding="10dp" />
 
 
                             <TextView
@@ -535,8 +534,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp"
-                                android:text="Height - 5'4" />
+                                android:padding="10dp" />
 
                         </LinearLayout>
 
@@ -588,7 +586,6 @@
                                     android:layout_gravity="center"
                                     android:drawablePadding="4dp"
                                     android:fontFamily="@font/italic"
-                                    android:text="Born on **/**/****"
                                     android:textAlignment="center"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -641,7 +638,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Never Married"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -693,7 +689,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Live in patna. Bihar,India"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -745,7 +740,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Hindu, Hindi"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -797,7 +791,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Gujarati,Vankar"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -849,7 +842,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Vegetarian"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -967,9 +959,7 @@
                                     android:id="@+id/tvDetailCall"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:drawableEnd="@drawable/lock"
                                     android:fontFamily="@font/italic"
-                                    android:text="987***********"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1020,9 +1010,7 @@
                                     android:id="@+id/tvDetailEmailID"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:drawableEnd="@drawable/lock"
                                     android:fontFamily="@font/italic"
-                                    android:text="**********@gmail.com"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1327,7 +1315,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/italic"
-                                    android:text="*************"
                                     android:textAlignment="center"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -2456,7 +2443,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="4 Lakh To 7 Lakh Annualy"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2551,7 +2537,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Hindu"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2646,7 +2631,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Hindi"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2741,7 +2725,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Don't Know"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>

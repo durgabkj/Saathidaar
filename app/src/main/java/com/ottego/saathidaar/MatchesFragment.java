@@ -189,15 +189,15 @@ sessionManager=new SessionManager(context);
         if (model.data != null && model.data.size() > 0)  {
             BadgeDrawable badgeDrawable = b.tlMatch.getTabAt(0).getOrCreateBadge();
             badgeDrawable.setNumber(Integer.parseInt(model.data.get(0).new_matches_count));
-            badgeDrawable.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.colorPrimary));
-            badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            badgeDrawable.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary));
+            badgeDrawable.setBadgeTextColor(ContextCompat.getColor(context, R.color.white));
             badgeDrawable.setBadgeGravity(BadgeDrawable.TOP_END);
 
 
             BadgeDrawable badgeDrawable1 = b.tlMatch.getTabAt(1).getOrCreateBadge();
             badgeDrawable1.setNumber(Integer.parseInt(model.data.get(0).my_matches_count));
-            badgeDrawable1.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
-            badgeDrawable1.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            badgeDrawable1.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary));
+            badgeDrawable1.setBadgeTextColor(ContextCompat.getColor(context, R.color.white));
             badgeDrawable1.setMaxCharacterCount(10);
             badgeDrawable1.setBadgeGravity(BadgeDrawable.TOP_END);
             badgeDrawable1.setVisible(true);
@@ -205,8 +205,8 @@ sessionManager=new SessionManager(context);
 
             BadgeDrawable badgeDrawable2 = b.tlMatch.getTabAt(2).getOrCreateBadge();
             badgeDrawable2.setNumber(Integer.parseInt(model.data.get(0).todays_matches_count));
-            badgeDrawable2.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
-            badgeDrawable2.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            badgeDrawable2.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary));
+            badgeDrawable2.setBadgeTextColor(ContextCompat.getColor(context, R.color.white));
             badgeDrawable2.setBadgeGravity(BadgeDrawable.TOP_END);
 
         }

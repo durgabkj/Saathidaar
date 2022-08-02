@@ -31,6 +31,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class LandingActivity extends AppCompatActivity {
     public static ViewPager viewPager;
@@ -243,7 +245,7 @@ public class LandingActivity extends AppCompatActivity {
 //                binding.txtpassword.setError(null);
 //            }
 
-            if (binding.spinner1.getSelectedItem().toString().trim() == "select One") {
+            if (binding.spinner1.getSelectedItem().toString().trim().contains("Profile created By")) {
                 Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
             }
 

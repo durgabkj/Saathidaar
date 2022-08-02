@@ -118,7 +118,6 @@ public class DashBoardFragment extends Fragment {
         getMemberData();
         set();
         Log.e("hey_member", sessionManager.getMemberId());
-
         final ValueAnimator animator = ValueAnimator.ofFloat(0.0f, 1.0f);
         animator.setRepeatCount(ValueAnimator.INFINITE);
         //  animator.setInterpolator(new LinearInterpolator());
@@ -137,12 +136,10 @@ public class DashBoardFragment extends Fragment {
 
             }
         });
-
-
         animator.start();
         getData();
 
-        tvDashBoardUserId.setText("[" + sessionManager.getKeyProfileId() + "]");
+        tvDashBoardUserId.setText("[" + sessionManager.getKey_profile_id() + "]");
         tvDashBoardUserAccountType.setText(sessionManager.getKeyCreatedby());
 
         //  setData();

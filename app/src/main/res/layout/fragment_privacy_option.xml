@@ -678,8 +678,8 @@ android:visibility="gone"
                 <TextView
                     android:id="@+id/tvDOBShowText"
                     android:layout_width="wrap_content"
+                    android:text="Visible to all Members"
                     android:layout_height="wrap_content"
-                    android:text="Show only the Month &amp; Year (mm/yyyy)"
                     android:textColor="#494747"
                     android:textSize="16sp" />
 

@@ -13,19 +13,22 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/mtbSentFragmentActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+
             app:title="Request Accept"
+            app:navigationIconTint="@color/white"
+            android:background="@color/colorPrimary"
+            app:titleTextColor="@color/white"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-            app:navigationIconTint="@color/black"
-            app:titleTextColor="@color/black" />
+        />
     </com.google.android.material.appbar.AppBarLayout>
 
     <fragment
         android:id="@+id/fragment1"
         android:name="com.ottego.saathidaar.AcceptedInboxFragment"
-        android:layout_width="0px"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         />

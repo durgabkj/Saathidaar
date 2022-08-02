@@ -141,7 +141,6 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                     uploadInThread(imagePathList.get(i));
 
                 }
-                getData();
             }
 
         });
@@ -193,19 +192,8 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == REQUEST_STORAGE_PERMISSION) {
-
-            // Checking whether user granted the permission or not.
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                // Showing the toast message
-                Toast.makeText(GalleryActivity.this, "Camera Permission Granted", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                Toast.makeText(GalleryActivity.this, "Camera Permission Denied", Toast.LENGTH_SHORT).show();
-            }
-        }
-        else if (requestCode == REQUEST_STORAGE_PERMISSION) {
+        // Checking whether user granted the permission or not.
+         if (requestCode == REQUEST_STORAGE_PERMISSION) {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(GalleryActivity.this, "Storage Permission Granted", Toast.LENGTH_SHORT).show();
@@ -275,7 +263,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 //
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("member_id", sessionManager.getMemberId());
-                Log.e("durga", "spload start: "+path);
+                Log.e("durga", "upload start: "+path);
                 String result = multipartRequest(URL, params, path, "image", "image/jpeg");
 
                  Log.e("durga",result);
@@ -297,7 +285,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 
         int bytesRead, bytesAvailable, bufferSize;
         byte[] buffer;
-        int maxBufferSize = 1*1024*1024;
+        int maxBufferSize = 1024 * 1024;
 
         String[] q = filepath.split("/");
         int idx = q.length - 1;
@@ -346,7 +334,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             while (keys.hasNext()) {
                 String key = keys.next();
                 String value = parmas.get(key);
-                Log.e("durga", "response: " + key + "value");
+                Log.e("durga", "response: " + key + " value");
                 outputStream.writeBytes(twoHyphens + boundary + lineEnd);
                 outputStream.writeBytes("Content-Disposition: form-data; name=\"" + key + "\"" + lineEnd);
                 outputStream.writeBytes("Content-Type: text/plain" + lineEnd);
@@ -484,7 +472,6 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 refresh(1000);
-
     }
     private void setRecyclerView() {
         GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);
