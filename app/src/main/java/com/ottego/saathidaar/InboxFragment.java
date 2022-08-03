@@ -33,12 +33,8 @@ public class InboxFragment extends Fragment {
     FragmentInboxBinding b;
     DataModelDashboard model;
     Context context;
-    Handler mHandler;
     SessionManager sessionManager;
     InvitationFragment invitationFragment = new InvitationFragment();
-    AcceptedInboxFragment acceptedInboxFragment = new AcceptedInboxFragment();
-    DeleteInboxFragment deleteInboxFragment = new DeleteInboxFragment();
-    SentInboxFragment sentInboxFragment = new SentInboxFragment();
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -68,13 +64,7 @@ public class InboxFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-    private final Runnable m_Runnable = new Runnable() {
-        public void run() {
-            //  Toast.makeText(context,"hello",Toast.LENGTH_LONG).show();
-            InboxFragment.this.mHandler.postDelayed(m_Runnable, 5000);
-        }
 
-    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,11 +73,6 @@ public class InboxFragment extends Fragment {
         b = FragmentInboxBinding.inflate(inflater, container, false);
         context = getContext();
         sessionManager = new SessionManager(context);
-
-        //Auto Refresh Activity...
-//        this.mHandler = new Handler();
-//        m_Runnable.run();
-
 
         b.vpInbox.setPagingEnable(false);
 
@@ -152,12 +137,6 @@ public class InboxFragment extends Fragment {
     }
 
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-    }
-
 
     private void getDataCount() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
@@ -217,14 +196,6 @@ public class InboxFragment extends Fragment {
     }
 
 
-    private void setUpViewPager(ViewPager viewPager) {
-        HomeTablayoutAdapter adapter = new HomeTablayoutAdapter(getChildFragmentManager());
-        adapter.addFragment(new InvitationFragment(), "Invitation");
-        adapter.addFragment(new AcceptedInboxFragment(), "Accept");
-        adapter.addFragment(new SentInboxFragment(), "Sent");
-        adapter.addFragment(new DeleteInboxFragment(), "Delete");
-        adapter.addFragment(new BlockMemberFragment(), "Blocked");
-        viewPager.setAdapter(adapter);
-    }
+
 
 }

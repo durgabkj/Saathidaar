@@ -6,13 +6,22 @@
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp"
+    android:layout_margin="8dp"
     android:layout_marginEnd="10dp"
     app:cardMaxElevation="10dp"
     app:cardPreventCornerOverlap="true">
 
 
-
-    <LinearLayout
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_margin="10dp"
         android:layout_height="wrap_content"
@@ -22,6 +31,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+          android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
@@ -42,14 +52,13 @@
                 android:textAllCaps="true"
                 android:textColor="@color/white"/>
 
-            <Space
-                android:layout_width="20dp"
-                android:layout_height="match_parent"/>
+
             <TextView
                 android:id="@+id/tvMonths"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1 Month"
+                android:layout_marginStart="10dp"
                 android:fontFamily="@font/italic"
                 android:textStyle="bold"
                 android:textAllCaps="true"/>
@@ -79,13 +88,11 @@
                 android:textAllCaps="true"
                 android:textColor="#00C853"/>
 
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="match_parent"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="₹5,120"
+                android:layout_marginStart="10dp"
                 android:fontFamily="@font/italic"
                 android:textAllCaps="true"/>
         </LinearLayout>
@@ -116,7 +123,7 @@
 
         <TextView
             android:id="@+id/btnDashboard"
-            android:layout_width="150dp"
+            android:layout_width="120dp"
             android:layout_height="40dp"
             android:padding="5dp"
             android:gravity="center"
@@ -142,7 +149,7 @@
             android:layout_margin="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Send unlimited messages"
                 android:drawablePadding="5dp"
@@ -160,7 +167,7 @@
                 android:background="@drawable/line_gradient"
                 android:layout_height="1dp"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="View upto 600 contact numbers"
                 android:textSize="14dp"
@@ -178,7 +185,7 @@
                 android:background="@drawable/line_gradient"
                 android:layout_height="1dp"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Standout from other profile"
                 android:textSize="14dp"
@@ -212,5 +219,9 @@
 
 
     </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
+
 </androidx.cardview.widget.CardView>
 

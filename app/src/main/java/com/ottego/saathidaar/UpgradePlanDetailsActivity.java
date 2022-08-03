@@ -1,5 +1,6 @@
 package com.ottego.saathidaar;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -211,6 +213,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
         alertDialog.show();
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onPaymentError(int i, String s) {
         Toast.makeText(getApplicationContext(), "Error: " + s, Toast.LENGTH_LONG).show();
@@ -274,6 +277,8 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
 
         // Show the Alert Dialog box
         alertDialog.show();
-
+        Button buttonbackground1 = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        buttonbackground1.setTextColor(R.color.colorPrimary);
     }
+
 }

@@ -1,23 +1,14 @@
 package com.ottego.saathidaar.Model;
 
 public class UserModel {
-    public String username;
-    public String firstName;
-    public String lastName;
-    public String email;
-    public String role;
     public String gender;
-    public String phone;
+
     public String profilecreatedby;
 
-    public UserModel(String username, String firstName, String lastName, String email, String role, String gender, String phone, String profilecreatedby) {
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.role = role;
+    public UserModel( String gender, String profilecreatedby) {
+
         this.gender = gender;
-        this.phone = phone;
+
         this.profilecreatedby = profilecreatedby;
     }
 }

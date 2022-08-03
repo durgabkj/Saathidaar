@@ -97,9 +97,6 @@ int count=0;
         tvUserDetailsReadLess=view.findViewById(R.id.tvUserDetailsReadLess);
         tvAboutUs=view.findViewById(R.id.tvAboutUs);
         profilePic=view.findViewById(R.id.profilePic);
-       // MyProfileDetail=view.findViewById(R.id.MyProfileDetail);
-       tvAboutUs.setText(sessionManager.getKeyProAboutus());
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         listener();
         getMemberData();
         setPreLoadData();
@@ -176,6 +173,7 @@ int count=0;
     private void setPreLoadData() {
         tvUserName.setText(sessionManager.getName()+" "+sessionManager.getLastName());
         tvUserEmail.setText(sessionManager.getEmail());
+        tvAboutUs.setText(sessionManager.getAbout_Description());
     }
 
 
@@ -225,7 +223,7 @@ refresh(1000);
 
             Glide.with(context)
                     .load(Utils.imageUrl + model.profile_photo)
-                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .placeholder(sessionManager.getUserGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     //   .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(profilePic);
 

@@ -27,17 +27,15 @@ import org.json.JSONObject;
 
 
 public class AcceptedInboxFragment extends Fragment implements ApiListener {
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    public String InvitationAcceptUrl = "http://103.150.186.33:8080/saathidaar_backend/api/request/accepted/get/all/";
     Context context;
     InboxViewModel viewModel;
     SessionManager sessionManager;
     DataModelInbox data;
     String member_id;
-
-    public String InvitationAcceptUrl = "http://103.150.186.33:8080/saathidaar_backend/api/request/accepted/get/all/";
     FragmentAcceptedInboxBinding b;
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -75,7 +73,7 @@ public class AcceptedInboxFragment extends Fragment implements ApiListener {
         viewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
         member_id = sessionManager.getMemberId();
         getData();
-listener();
+         listener();
         return b.getRoot();
 
     }

@@ -468,7 +468,7 @@ public class MatchDetailsFragment extends Fragment {
                         .load(Utils.imageUrl + model.my_profile_photo)
                         .into(b.profileDetailPicLoginUser);
             } else {
-                if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                if (sessionManager.getUserGender().equalsIgnoreCase("male")) {
                     Glide.with(context)
                             .load(R.drawable.ic_no_image__male_)
                             .into(b.profileDetailPicLoginUser);

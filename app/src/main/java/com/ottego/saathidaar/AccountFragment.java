@@ -1,16 +1,13 @@
 package com.ottego.saathidaar;
 
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.ottego.saathidaar.Adapter.HomeTablayoutAdapter;
@@ -60,18 +57,8 @@ public class AccountFragment extends Fragment {
                              Bundle savedInstanceState) {
     b=FragmentAccountBinding.inflate(getLayoutInflater());
 
-
-
-//        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.fcvSathidarAccount,accountSettingFragment);
-//        fragmentTransaction.commit();
-//listener();
         return b.getRoot();
     }
-
-//
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -79,7 +66,7 @@ public class AccountFragment extends Fragment {
 
         setUpViewPager(b.vpAccount);
         b.tlAccount.setupWithViewPager(b.vpAccount);
-b.vpAccount.setPagingEnable(false);
+        b.vpAccount.setPagingEnable(false);
 
         b.tlAccount.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
@@ -105,8 +92,9 @@ b.vpAccount.setPagingEnable(false);
         HomeTablayoutAdapter adapter = new HomeTablayoutAdapter(getChildFragmentManager());
         adapter.addFragment(new AccountSettingFragment(), "Account Settings");
         adapter.addFragment(new EmailAndSmsAlertFragment(), "Email Setting");
-        adapter.addFragment(new PrivacyOptionFragment(),"Privacy Option");
-        adapter.addFragment(new HideDeleteProfileFragment(),"Hide Un-Hide Profile");
+        adapter.addFragment(new KycFragment(), "Kyc");
+        adapter.addFragment(new PrivacyOptionFragment(), "Privacy Option");
+        adapter.addFragment(new HideDeleteProfileFragment(), "Hide Un-Hide Profile");
         viewPager.setAdapter(adapter);
     }
 }

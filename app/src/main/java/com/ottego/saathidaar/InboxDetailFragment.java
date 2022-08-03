@@ -402,7 +402,7 @@ public class InboxDetailFragment extends Fragment {
 
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
-                        .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                        .placeholder(sessionManager.getUserGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
                         //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                         .into(b.ivDetailUserImage);
 

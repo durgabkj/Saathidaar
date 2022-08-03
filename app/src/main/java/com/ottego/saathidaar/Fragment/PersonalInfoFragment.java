@@ -127,8 +127,8 @@ public class PersonalInfoFragment extends Fragment {
     }
 
     private void setHoroData() {
-        binding.tvUserHPlaceofBirth.setText(horoscopeModel.country_of_birth + "," + horoscopeModel.city_of_birth);
-        binding.tvUserTimeofBirth.setText(horoscopeModel.hours + ":" + horoscopeModel.minutes + " " + horoscopeModel.time + "," + horoscopeModel.time_status);
+        binding.tvUserHPlaceofBirth.setText(horoscopeModel.country_of_birth + horoscopeModel.city_of_birth);
+        binding.tvUserTimeofBirth.setText(horoscopeModel.hours  + horoscopeModel.minutes + horoscopeModel.time  + horoscopeModel.time_status);
 
     }
 
@@ -207,7 +207,7 @@ public class PersonalInfoFragment extends Fragment {
 //                        binding.scrvPersonalData.setVisibility(View.GONE);
                         model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
                         // SessionProfileDetailModel model = gson.fromJson(String.valueOf(response.getJSONObject("data")), SessionProfileDetailModel.class);
-                        sessionManager.CreateProfileSession(model);
+//                        sessionManager.CreateProfileSession(model);
                         setData();
                     } else {
 

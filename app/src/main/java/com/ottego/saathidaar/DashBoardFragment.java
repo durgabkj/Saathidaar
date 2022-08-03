@@ -140,7 +140,7 @@ public class DashBoardFragment extends Fragment {
         getData();
 
         tvDashBoardUserId.setText("[" + sessionManager.getKey_profile_id() + "]");
-        tvDashBoardUserAccountType.setText(sessionManager.getKeyCreatedby());
+       // tvDashBoardUserAccountType.setText(sessionManager.getUserGender());
 
         //  setData();
         listener();
@@ -397,7 +397,7 @@ public class DashBoardFragment extends Fragment {
                         .load(Utils.imageUrl + memberProfileModel.profile_photo)
                         .into(profilePicDashBoard);
             } else {
-                if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                if (sessionManager.getUserGender().equalsIgnoreCase("male")) {
                     Glide.with(context)
                             .load(R.drawable.ic_no_image__male_)
                             .into(profilePicDashBoard);

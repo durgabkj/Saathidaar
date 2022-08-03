@@ -1,5 +1,6 @@
 package com.ottego.saathidaar;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -162,8 +163,6 @@ public class HoroscopeFragment extends Fragment {
     }
 
     private void listener() {
-
-
         b.btnEditDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -257,7 +256,7 @@ public class HoroscopeFragment extends Fragment {
         Map<String, String> params = new HashMap<String, String>();
         params.put("country_of_birth", countryName);
         params.put("city_of_birth", cityName);
-        params.put("time", time);
+        params.put("time", ","+time);
         params.put("time_status", timeStatus);
         params.put("hours", hour);
         params.put("minutes", minutes);
@@ -274,7 +273,7 @@ public class HoroscopeFragment extends Fragment {
                             if (response != null) {
                                 Gson gson = new Gson();
                                 model = gson.fromJson(String.valueOf(response), HoroscopeModel.class);
-                                sessionManager.createHoroscope(model);
+//                                sessionManager.createHoroscope(model);
                                 b.cvShowDetails.setVisibility(View.VISIBLE);
                                 b.cvEditDetails.setVisibility(View.GONE);
                                 // getData(urlGetHoroscope);
@@ -381,7 +380,18 @@ public class HoroscopeFragment extends Fragment {
         b.actvapprox.setAdapter(apr);
     }
 
+    @SuppressLint("SetTextI18n")
     private void setData() {
+
+        String value="";
+//            if(model.hours!=null && !model.hours.equals(""))
+//                value=model.hours;
+//            if(model.minutes!=null && !model.minutes.equals(""))
+//                value = value +":"+model.minutes;
+//            if(model.time!=null && !model.time.equals(""))
+//                value = value +","+model.time;
+//            if(model.time_status!=null && !model.time_status.equals(""))
+//                value = value +","+model.time_status;
         if (model != null) {
             b.tvCountryOfBirth.setText(model.country_of_birth);
             b.tvCityofBirth.setText(model.city_of_birth);

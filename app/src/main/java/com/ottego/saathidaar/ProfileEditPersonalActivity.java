@@ -51,7 +51,9 @@ import com.hbisoft.pickit.PickiTCallbacks;
 import com.ottego.saathidaar.Fragment.PersonalInfoFragment;
 import com.ottego.saathidaar.Model.DataModelReligion;
 import com.ottego.saathidaar.Model.MemberProfileModel;
+import com.ottego.saathidaar.Model.SessionModel;
 import com.ottego.saathidaar.Model.SessionProfileDetailModel;
+import com.ottego.saathidaar.Model.UserModel;
 import com.ottego.saathidaar.databinding.ActivityProfileEditPersonalBinding;
 
 import org.json.JSONArray;
@@ -76,7 +78,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class ProfileEditPersonalActivity extends AppCompatActivity implements PickiTCallbacks {
+public class ProfileEditPersonalActivity extends AppCompatActivity {
     // String currentDate = DateFormat.getDateInstance(DateFormat.DEFAULT).format(calendar.getTime());
 // Permissions for accessing the storage
     private static final int SELECT_PICTURE = 100;
@@ -86,6 +88,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity implements Pi
     SessionManager sessionManager;
     ActivityProfileEditPersonalBinding b;
     Context context;
+    UserModel userModel;
     ArrayList<String> AgeList = new ArrayList<String>();
     ArrayAdapter<String> minAdapter;
     DataModelReligion data;
@@ -159,7 +162,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity implements Pi
 
         Log.e("personal data", data);
 
-        pickiT = new PickiT(this, this, this);
+
 
         // Initialize dialog
         dialog = new Dialog(context);
@@ -198,25 +201,23 @@ public class ProfileEditPersonalActivity extends AppCompatActivity implements Pi
             b.etHealth.setText(model.health_info);
             b.tvUserGotra.setText(model.gothra);
 
-//            Glide.with(context)
-//                    .load(Utils.imageUrl+model.profile_photo)
-//                    .into(b.profilePic);
+
 
 
             if (model.profile_photo != null && !model.profile_photo.isEmpty()) {
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
-                        .into(b.profilePic);
+                        .into(b.profilePicEdit);
             } else {
-                if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+                if (sessionManager.getUserGender().equalsIgnoreCase("male")) {
                     Glide.with(context)
                             .load(R.drawable.ic_no_image__male_)
-                            .into(b.profilePic);
+                            .into(b.profilePicEdit);
 
                 } else {
                     Glide.with(context)
                             .load(R.drawable.ic_no_image__female_)
-                            .into(b.profilePic);
+                            .into(b.profilePicEdit);
 
                 }
             }
@@ -226,55 +227,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity implements Pi
         //   b.tvEditMaritalStatus.setSelection(Integer.parseInt(model.marital_status));
 
     }
-
-
-
-
-    // Function to check and request permission
-    public boolean checkPermission(String permission, int requestCode)
-    {
-        // Checking if permission is not granted
-        if (ContextCompat.checkSelfPermission(ProfileEditPersonalActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
-            ActivityCompat.requestPermissions(ProfileEditPersonalActivity.this, new String[] { permission }, requestCode);
-        }
-        else {
-            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Permission already granted", Snackbar.LENGTH_LONG);
-            snackbar.show();
-        }
-        return false;
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,
-                                           @NonNull int[] grantResults)
-    {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == REQUEST_STORAGE_PERMISSION) {
-
-            // Checking whether user granted the permission or not.
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                // Showing the toast message
-                Toast.makeText(ProfileEditPersonalActivity.this, "Camera Permission Granted", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                Toast.makeText(ProfileEditPersonalActivity.this, "Camera Permission Denied", Toast.LENGTH_SHORT).show();
-            }
-        }
-        else if (requestCode == REQUEST_STORAGE_PERMISSION) {
-            if (grantResults.length > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(ProfileEditPersonalActivity.this, "Storage Permission Granted", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                Toast.makeText(ProfileEditPersonalActivity.this, "Storage Permission Denied", Toast.LENGTH_SHORT).show();
-
-            }
-        }
-    }
-
 
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -373,7 +325,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity implements Pi
         });
     }
 
-
     private void gender() {
         final int[] checkedItem = {-1};
         b.etGender.setOnClickListener(new View.OnClickListener() {
@@ -451,17 +402,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity implements Pi
         });
 
 
-        b.btnChooseImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, PICK_FILE_REQUEST);
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_FILE_REQUEST);
-            }
-        });
-
         b.mbDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -493,14 +433,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity implements Pi
                 }
             }
         };
-
-//        b.ivCamera.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                openImageChooser();
-//            }
-//        });
-
         b.tvUserReligion.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -633,133 +565,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity implements Pi
         }
 
 
-//        if (age.equals("selected")) {
-//            b.tvage.setError("please select age");
-//            b.tvage.setFocusableInTouchMode(true);
-//            b.tvage.requestFocus();
-//            return false;
-//        } else {
-//            b.tvage.setError(null);
-//        }
-//
-//        if (myMaritalS.equals("select")) {
-//            b.tvmarital.setError("please select Marital Status");
-//            b.tvmarital.setFocusableInTouchMode(true);
-//            b.tvmarital.requestFocus();
-//            return false;
-//        } else {
-//            b.tvmarital.setError(null);
-//        }
-//
-//        if (Height.equals("select")) {
-//            b.tvHeight.setError("please select Height");
-//            b.tvHeight.setFocusableInTouchMode(true);
-//            b.tvHeight.requestFocus();
-//            return false;
-//        } else {
-//            b.tvHeight.setError(null);
-//        }
-//
-//        if (bloodGroup.equals("select")) {
-//            b.tvBlood.setError("please select blood group");
-//            b.tvBlood.setFocusableInTouchMode(true);
-//            b.tvBlood.requestFocus();
-//            return false;
-//        } else {
-//            b.tvBlood.setError(null);
-//        }
 
-
-//        if (Diet.equals("select")) {
-//            b.tvDiet.setError("please select Diet");
-//            b.tvDiet.setFocusableInTouchMode(true);
-//            b.tvDiet.requestFocus();
-//            return false;
-//        } else {
-//            b.tvDiet.setError(null);
-//        }
-
-
-//        if (b.spUserHeight.getCount()==0){
-//            Toast.makeText(getApplicationContext(),"spinner hasn't values",
-//                    Toast.LENGTH_LONG).show();
-//        }
-
-
-//        if (GrewUpIn.isEmpty()) {
-//            b.etAddUserGrewUpIn.setError("Please enter your Grew Location");
-//            b.etAddUserGrewUpIn.setFocusableInTouchMode(true);
-//            b.etAddUserGrewUpIn.requestFocus();
-//            return false;
-//        } else {
-//            b.etAddUserGrewUpIn.setError(null);
-//        }
-
-
-//        if (Location.isEmpty()) {
-//            b.etAddUserLocation.setError("Please enter your Grew Location");
-//            b.etAddUserLocation.setFocusableInTouchMode(true);
-//            b.etAddUserLocation.requestFocus();
-//            return false;
-//        } else {
-//            b.etAddUserLocation.setError(null);
-//        }
-
-
-//        if (MotherTongue.isEmpty()) {
-//            b.tvMotherTongue.setError("Please enter your Mother Tongue");
-//            b.tvMotherTongue.setFocusableInTouchMode(true);
-//            b.tvMotherTongue.requestFocus();
-//            return false;
-//        } else {
-//            b.tvMotherTongue.setError(null);
-//        }
-//        if (HealthDetail.equals("select")) {
-//            b.tvHealth.setError("please select Health Detail");
-//            b.tvHealth.setFocusableInTouchMode(true);
-//            b.tvHealth.requestFocus();
-//            return false;
-//        } else {
-//            b.tvHealth.setError(null);
-//        }
-//
-//        if (Religion.isEmpty()) {
-//            b.tvUserReligion.setError("Please enter your Religion");
-//            b.tvUserReligion.setFocusableInTouchMode(true);
-//            b.tvUserReligion.requestFocus();
-//            return false;
-//        } else {
-//            b.tvUserReligion.setError(null);
-//        }
-
-//        if (cast.isEmpty()) {
-//            b.tvUserCommunity.setError("Please enter your Mother Tongue");
-//            b.tvUserCommunity.setFocusableInTouchMode(true);
-//            b.tvUserCommunity.requestFocus();
-//            return false;
-//        } else {
-//            b.tvUserCommunity.setError(null);
-//        }
-//
-//
-//        if (subCast.isEmpty()) {
-//            b.tvUserSubCommunity.setError("Please enter your Sub cast");
-//            b.tvUserSubCommunity.setFocusableInTouchMode(true);
-//            b.tvUserSubCommunity.requestFocus();
-//            return false;
-//        } else {
-//            b.tvUserSubCommunity.setError(null);
-//        }
-//
-//
-//        if (Gothram.isEmpty()) {
-//            b.tvUserGotra.setError("Please enter your Gotharm");
-//            b.tvUserGotra.setFocusableInTouchMode(true);
-//            b.tvUserGotra.requestFocus();
-//            return false;
-//        } else {
-//            b.tvUserGotra.setError(null);
-//        }
         return true;
 
     }
@@ -792,6 +598,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity implements Pi
                             String code = response.getString("results");
                             if (code.equals("1")) {
                                 Gson gson = new Gson();
+                                sessionManager.createSessionDescription(description);
+                                sessionManager.createSessionGender(gender);
                                 successDialog();
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                                 // sessionManager.createSessionLogin(userId);
@@ -1267,35 +1075,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity implements Pi
         });
 
 
-//        {
-//            @Override
-//            public boolean isEnabled(int position) {
-//                if (position == 0) {
-//                    return false;
-//                } else {
-//                    return true;
-//                }
-//            }
-//        };
-        //Setting the ArrayAdapter data on the Spinner
 
-//        b.spUserBloodGroup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                // First item will be gray
-//                if (parent.getItemAtPosition(position).equals("Select")) {
-//                    onNothingSelected(parent);
-//                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.gray_dark));
-//                } else {
-//                    ((TextView) view).setTextColor(ContextCompat.getColor(context, R.color.black));
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//            }
-//        });
 
     }
 
@@ -1489,204 +1269,4 @@ public class ProfileEditPersonalActivity extends AppCompatActivity implements Pi
 
 
     }
-
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == PICK_FILE_REQUEST) {
-//                imageNameList.clear();
-//                imagePathList.clear();
-                if (data.getClipData() != null) {
-                    Uri imagePath = data.getData();
-                    pickiT.getPath(imagePath, Build.VERSION.SDK_INT);
-                }
-            }
-        }
-    }
-
-
-//    void uploadInThread(final String path) {
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-////
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put("age", age);
-//        params.put("about_ourself", description);
-//        params.put("date_of_birth", Dob);
-//        params.put("marital_status", Marital_status);
-//        params.put("height", Height);
-//        params.put("blood_group", bloodGroup);
-//        params.put("mother_tounge", MotherTongue);
-//        params.put("health_info", HealthDetail);
-//        params.put("religion_name", Religion);
-//        params.put("caste_name", cast);
-//        params.put("sub_caste_name", subCast);
-//        params.put("gothra", Gothram);
-//        params.put("gender", gender);
-//        params.put("lifestyles", Diet);
-//        params.put("no_of_children", child);
-//                Log.e("durga", "spload start: "+path);
-//                String result = multipartRequest(URL, params, path, "image", "image/jpeg");
-//
-//                Log.e("durga",result);
-//            }
-//        }).start();
-//    }
-    public String multipartRequest(String urlTo, Map<String, String> parmas, String filepath, String filefield, String fileMimeType) {
-        Log.e("params", String.valueOf(parmas));
-        Log.e("params1", filepath);
-        HttpURLConnection connection = null;
-        DataOutputStream outputStream = null;
-        InputStream inputStream = null;
-
-        String twoHyphens = "--";
-        String boundary = "*****" + Long.toString(System.currentTimeMillis()) + "*****";
-        String lineEnd = "\r\n";
-
-        String result = "";
-
-        int bytesRead, bytesAvailable, bufferSize;
-        byte[] buffer;
-        int maxBufferSize = 1048576;
-
-        String[] q = filepath.split("/");
-        int idx = q.length - 1;
-
-        try {
-            File file = new File(filepath);
-            FileInputStream fileInputStream = new FileInputStream(file);
-            Log.e("file", String.valueOf(file));
-            URL url = new URL(urlTo);
-            connection = (HttpURLConnection) url.openConnection();
-
-            connection.setDoInput(true);
-            connection.setDoOutput(true);
-            connection.setUseCaches(false);
-
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("Connection", "Keep-Alive");
-            connection.setRequestProperty("User-Agent", "Android Multipart HTTP Client 1.0");
-            connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
-
-            outputStream = new DataOutputStream(connection.getOutputStream());
-            outputStream.writeBytes(twoHyphens + boundary + lineEnd);
-            outputStream.writeBytes("Content-Disposition: form-data; name=\"" + filefield + "\"; filename=\"" + q[idx] + "\"" + lineEnd);
-            outputStream.writeBytes("Content-Type: " + fileMimeType + lineEnd);
-            outputStream.writeBytes("Content-Transfer-Encoding: binary" + lineEnd);
-            outputStream.writeBytes(lineEnd);
-
-            bytesAvailable = fileInputStream.available();
-            bufferSize = Math.min(bytesAvailable, maxBufferSize);
-            buffer = new byte[bufferSize];
-
-            bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-            while (bytesRead > 0) {
-                outputStream.write(buffer, 0, bufferSize);
-                bytesAvailable = fileInputStream.available();
-                bufferSize = Math.min(bytesAvailable, maxBufferSize);
-                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-                outputStream.flush();
-            }
-
-            outputStream.writeBytes(lineEnd);
-
-            // Upload POST Data
-            Iterator<String> keys = parmas.keySet().iterator();
-            Log.e("hey-keys", String.valueOf(keys));
-            while (keys.hasNext()) {
-                String key = keys.next();
-                String value = parmas.get(key);
-                Log.e("durga", "response: " + key + "value");
-                outputStream.writeBytes(twoHyphens + boundary + lineEnd);
-                outputStream.writeBytes("Content-Disposition: form-data; name=\"" + key + "\"" + lineEnd);
-                outputStream.writeBytes("Content-Type: text/plain" + lineEnd);
-                outputStream.writeBytes(lineEnd);
-                outputStream.writeBytes(value);
-                outputStream.writeBytes(lineEnd);
-            }
-
-            outputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
-            Log.e("Connection response", String.valueOf(connection.getResponseCode()));
-            Log.e("durga", "response: " + connection.getResponseCode());
-            if (connection.getResponseCode() == 200) {
-
-                runOnUiThread(new Runnable() {
-                    public void run() {
-
-                        //  tv.setText("Upload Complete");
-                        Toast.makeText(ProfileEditPersonalActivity.this,
-                                        "File Upload Complete.", Toast.LENGTH_SHORT)
-                                .show();
-                    }
-                });
-            }
-            inputStream = connection.getInputStream();
-
-            result = this.convertStreamToString(inputStream);
-
-            fileInputStream.close();
-            inputStream.close();
-            outputStream.flush();
-            outputStream.close();
-
-            return result;
-        } catch (Exception e) {
-//            logger.error(e);
-//            throw new CustomException(e)
-        }
-        return "error";
-    }
-    private String convertStreamToString(InputStream is) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        StringBuilder sb = new StringBuilder();
-
-        String line = null;
-        try {
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return sb.toString();
-    }
-
-    @Override
-    public void PickiTonUriReturned() {
-
-    }
-
-    @Override
-    public void PickiTonStartListener() {
-
-    }
-
-    @Override
-    public void PickiTonProgressUpdate(int progress) {
-
-    }
-
-    @Override
-    public void PickiTonCompleteListener(String path, boolean wasDriveFile, boolean wasUnknownProvider, boolean wasSuccessful, String Reason) {
-        imagePathList.clear();
-        imagePathList.add(path);
-    }
-
-    @Override
-    public void PickiTonMultipleCompleteListener(ArrayList<String> paths, boolean wasSuccessful, String Reason) {
-
-    }
-
-
-
 }

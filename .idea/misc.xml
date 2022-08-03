@@ -281,20 +281,31 @@
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/menu_add.xml" value="0.25" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/menu_delete.xml" value="0.25" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/remove.xml" value="0.25" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_email.xml" value="0.161" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_kyc.xml" value="0.161" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_no_image__female_.xml" value="0.156" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_gallery.xml" value="0.25" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_landing.xml" value="0.25" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_login.xml" value="0.23435897435897435" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/activity_navigation.xml" value="0.234375" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_profile_edit_personal.xml" value="0.25" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_profile_visitors.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_request_accept.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_test.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_dash_board.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_family_info.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_horoscope.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_inbox_detail.xml" value="0.21371326803205698" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_kyc.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_match_details.xml" value="0.2388888888888889" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_my_match.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_my_profile.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_new_matches.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_partner_preference.xml" value="0.23435897435897435" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_personal_info.xml" value="0.25" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_privacy_option.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_professional_info.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_show_image.xml" value="0.264" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/internetconnection.xml" value="0.25" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/layout_accepted.xml" value="0.22826086956521738" />
@@ -306,6 +317,7 @@
         <entry key="..\:/saathidaar/app/src/main/res/layout/layout_my_matches.xml" value="0.22826086956521738" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/layout_remove_shortlist.xml" value="0.22826086956521738" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/layout_sent_item.xml" value="0.25" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/layout_upgrade_page.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/recentlyview.xml" value="0.25" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/un_block_layout.xml" value="0.25" />
       </map>
