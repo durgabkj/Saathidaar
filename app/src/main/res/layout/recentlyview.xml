@@ -28,8 +28,9 @@
             android:id="@+id/ivRecentViewImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="matrix" />
-
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_no_image__female_"
+           />
 
 
         <LinearLayout

@@ -26,6 +26,7 @@ import com.ottego.saathidaar.databinding.FragmentMyMatchBinding;
 import com.ottego.saathidaar.databinding.FragmentPremiumMatchesBinding;
 import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PremiumMatchesFragment extends Fragment implements ApiListener {
@@ -103,11 +104,16 @@ public class PremiumMatchesFragment extends Fragment implements ApiListener {
                 // progressDialog.dismiss();
               b.srlRecycleViewPremium.setRefreshing(false);
                 Log.e("premium Matches response", String.valueOf(response));
-                Gson gson = new Gson();
-                data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
-                if (data.results == 1) {
-                    viewModel._list.postValue(data.data);
-                    setRecyclerView();
+
+                try {
+                    if (response.getInt("results")==1) {
+                        Gson gson = new Gson();
+                        data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
+                        viewModel._list.postValue(data.data);
+                        setRecyclerView();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {

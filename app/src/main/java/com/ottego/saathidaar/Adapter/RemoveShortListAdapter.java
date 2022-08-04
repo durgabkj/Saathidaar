@@ -63,6 +63,10 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         holder.tvNewMatchCityRs.setText(item.maritalStatus);
         holder.tvImageCountRemoveShortList.setText(item.images_count);
 
+
+
+
+
         holder.ivLikeShortList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

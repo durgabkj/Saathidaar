@@ -26,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.ActivateModel;
+import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.Model.DataModelSmsAlert;
 import com.ottego.saathidaar.Model.HideUnHideModel;
 import com.ottego.saathidaar.databinding.FragmentHideDeleteProfileBinding;
@@ -101,8 +102,15 @@ getDataActivate();
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf((response)));
                 Gson gson = new Gson();
-                model1 = gson.fromJson(String.valueOf(response), ActivateModel.class);
-                setData1();
+                try {
+                    if (response.getInt("results")==1) {
+                        model1 = gson.fromJson(String.valueOf(response), ActivateModel.class);
+                        setData1();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -131,8 +139,15 @@ getDataActivate();
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf((response)));
                 Gson gson = new Gson();
-                model = gson.fromJson(String.valueOf(response), HideUnHideModel.class);
-                setData();
+                try {
+                    if (response.getInt("results")==1) {
+                        model = gson.fromJson(String.valueOf(response), HideUnHideModel.class);
+                        setData();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -156,17 +171,8 @@ getDataActivate();
         }else if (model.months!=null && model.months.equalsIgnoreCase("unhide")) {
             b.rbHide.setChecked(true);
         }
-
-
-
     }
-
-
     private void listener() {
-
-
-
-
         b.tvCancelHideUnhide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

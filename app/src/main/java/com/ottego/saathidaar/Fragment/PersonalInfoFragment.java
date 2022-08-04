@@ -1,5 +1,6 @@
 package com.ottego.saathidaar.Fragment;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -126,14 +127,18 @@ public class PersonalInfoFragment extends Fragment {
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
     }
 
+    @SuppressLint("SetTextI18n")
     private void setHoroData() {
-        binding.tvUserHPlaceofBirth.setText(horoscopeModel.country_of_birth + horoscopeModel.city_of_birth);
-        binding.tvUserTimeofBirth.setText(horoscopeModel.hours  + horoscopeModel.minutes + horoscopeModel.time  + horoscopeModel.time_status);
+
+        if(horoscopeModel!=null && !horoscopeModel.equals(""))
+        {
+            binding.tvUserHPlaceofBirth.setText(horoscopeModel.country_of_birth +","+ horoscopeModel.city_of_birth);
+            binding.tvUserTimeofBirth.setText(horoscopeModel.hours  + ":"+horoscopeModel.minutes + " "+horoscopeModel.time  +","+ horoscopeModel.time_status);
+        }
 
     }
 
     private void listener() {
-
 
         binding.srlRecycleViewPersonalDetails.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -177,6 +182,36 @@ public class PersonalInfoFragment extends Fragment {
                 String status = binding.tvUserMaritalStatus.getText().toString().trim();
                 if (status.equalsIgnoreCase("Never Married")) {
                     binding.llChild.setVisibility(View.GONE);
+                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+
+
+
+        binding.tvUserReligion.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+
+                String religion = binding.tvUserReligion.getText().toString().trim();
+                if (religion.equalsIgnoreCase("Hindi")) {
+                    binding.llGotra.setVisibility(View.VISIBLE);
+                }else {
+                    binding.llGotra.setVisibility(View.GONE);
                 }
 
 
@@ -234,7 +269,7 @@ public class PersonalInfoFragment extends Fragment {
 
     private void setData() {
 
-        if (model != null) {
+        if (model != null ) {
             binding.tvDob.setText(model.date_of_birth);
             binding.tvUserAge.setText(model.age);
             binding.tvUserMaritalStatus.setText(model.marital_status);

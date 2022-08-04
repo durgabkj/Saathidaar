@@ -200,8 +200,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             b.tvUserReligion.setText(model.religion_name);
             b.etHealth.setText(model.health_info);
             b.tvUserGotra.setText(model.gothra);
-
-
+            b.tvUserSubCommunity.setText(model.sub_caste_name);
 
 
             if (model.profile_photo != null && !model.profile_photo.isEmpty()) {

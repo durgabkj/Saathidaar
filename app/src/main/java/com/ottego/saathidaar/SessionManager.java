@@ -82,10 +82,10 @@ public class SessionManager {
     public String getKey_profile_id() {
         return pref.getString(KEY_PROFILE_ID_Log, "");
     }
-
     public String getKEY_PROFILE_CreatedBy() {
         return pref.getString(KEY_PROFILE_CreatedBy, "");
     }
+
 
     public boolean isLoggedIn() {
         return pref.getBoolean(IS_LOGIN, false);

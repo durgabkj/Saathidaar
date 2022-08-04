@@ -138,19 +138,23 @@ public class DashBoardFragment extends Fragment {
         });
         animator.start();
         getData();
-
-        tvDashBoardUserId.setText("[" + sessionManager.getKey_profile_id() + "]");
-       // tvDashBoardUserAccountType.setText(sessionManager.getUserGender());
-
+         setPreloadData();
         //  setData();
         listener();
-        tvDashBoardUserName.setText(sessionManager.getName());
         return view;
 
     }
 
-    private void listener() {
+    private void setPreloadData() {
+        count++;
+        tvDashBoardUserName.setText(sessionManager.getName());
+        tvDashBoardUserId.setText("[" + sessionManager.getKey_profile_id() + "]");
+        tvDashBoardUserAccountType.setText(sessionManager.getKEY_PROFILE_CreatedBy());
 
+        refresh(1000);
+    }
+
+    private void listener() {
         tvDashBoardUploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -283,13 +287,6 @@ public class DashBoardFragment extends Fragment {
         });
 
 
-//        srlDashboard.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                getMemberData();
-//            }
-//        });
-
     }
 
     private void getData() {
@@ -324,8 +321,6 @@ public class DashBoardFragment extends Fragment {
             Visitors.setText(model.data.get(0).recent_visitors_count);
         }
     }
-
-
     private void set() {
         if (countDownTimer != null) {
             countDownTimer.cancel();
@@ -389,7 +384,6 @@ public class DashBoardFragment extends Fragment {
     }
 
     private void setDataMember() {
-
         if (isValidContextForGlide(context)){
             // Load image via Glide lib using context
             if (memberProfileModel.profile_photo != null && !memberProfileModel.profile_photo.isEmpty()) {

@@ -97,7 +97,7 @@ public class MatchDetailsFragment extends Fragment {
     private void getHoroscopeData() {
         //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                urlGetHoroscope + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                urlGetHoroscope + mParam1, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 //  progressDialog.dismiss();
@@ -285,6 +285,33 @@ public class MatchDetailsFragment extends Fragment {
     }
 
     private void listener() {
+
+
+        b.tvPremiumCollegeAndCompany.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UpgradeOnButtonActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+        b.tvPremiumContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UpgradeOnButtonActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+        b.tvPremiumBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UpgradeOnButtonActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+
 
         b.llShowMemberImage.setOnClickListener(new View.OnClickListener() {
             @Override

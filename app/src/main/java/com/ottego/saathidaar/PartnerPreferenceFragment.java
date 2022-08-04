@@ -3,7 +3,6 @@ package com.ottego.saathidaar;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,12 +16,9 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -41,7 +37,6 @@ import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.gson.Gson;
 import com.ottego.multipleselectionspinner.MultipleSelection;
 import com.ottego.saathidaar.Model.PartnerPreferenceModel;
-import com.ottego.saathidaar.Model.SearchModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -571,9 +566,6 @@ PartnerPreferenceModel model;
             }
         });
     }
-
-
-
     public void successDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View layout_dialog = LayoutInflater.from(context).inflate(R.layout.alert_sucess_dialog, null);

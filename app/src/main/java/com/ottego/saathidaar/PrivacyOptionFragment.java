@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.DataModelPrivacyOption;
+import com.ottego.saathidaar.Model.DataModelSmsAlert;
 import com.ottego.saathidaar.databinding.FragmentPrivacyOptionBinding;
 
 import org.json.JSONException;
@@ -93,8 +94,15 @@ public class PrivacyOptionFragment extends Fragment {
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf((response)));
                 Gson gson = new Gson();
-                model = gson.fromJson(String.valueOf(response), DataModelPrivacyOption.class);
-                setData();
+                try {
+                    if (response.getInt("results")==1) {
+                        model = gson.fromJson(String.valueOf(response), DataModelPrivacyOption.class);
+                        setData();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -421,12 +429,20 @@ public class PrivacyOptionFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.e(" IncomePrivacy response", String.valueOf((response)));
-
+                        String code = null;
                         try {
-                            Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+                                b.llHideIncome.setVisibility(View.GONE);
+                                b.llshowIncomePrivacy.setVisibility(View.VISIBLE);
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -457,7 +473,8 @@ public class PrivacyOptionFragment extends Fragment {
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
-                                Gson gson = new Gson();
+                                b.llHideDOB.setVisibility(View.GONE);
+                                b.llshowDOBPrivacy.setVisibility(View.VISIBLE);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -494,6 +511,8 @@ public class PrivacyOptionFragment extends Fragment {
                         Log.e(" PhotoPrivacy response", String.valueOf((response)));
 
                         try {
+                            b.llHidePhoto.setVisibility(View.GONE);
+                            b.llshowPhotoPrivacy.setVisibility(View.VISIBLE);
                             Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -524,8 +543,9 @@ public class PrivacyOptionFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.e(" emailPrivacy response", String.valueOf((response)));
-
                         try {
+                            b.llHideEmail.setVisibility(View.GONE);
+                            b.llshowEmailPrivacy.setVisibility(View.VISIBLE);
                             Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -558,6 +578,8 @@ public class PrivacyOptionFragment extends Fragment {
                         Log.e(" phonePrivacy response", String.valueOf((response)));
 
                         try {
+                            b.llHidePhone.setVisibility(View.GONE);
+                            b.llshowPhonePrivacy.setVisibility(View.VISIBLE);
                             Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();

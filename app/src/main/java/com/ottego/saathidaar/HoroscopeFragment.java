@@ -2,15 +2,20 @@ package com.ottego.saathidaar;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -358,26 +363,260 @@ public class HoroscopeFragment extends Fragment {
 
 
     private void setDropDownData() {
-        String[] hour = getResources().getStringArray(R.array.Hour);
-        ArrayAdapter aa = new ArrayAdapter(requireActivity(), R.layout.dropdown_item, hour);
-        //Setting the ArrayAdapter data on the Spinner
-        b.acvHour.setAdapter(aa);
+
+        final int[] checkedItem1 = {-1};
+        b.acvHour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.ic_baseline_watch_later_24);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose Hour");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] Hour = getResources().getStringArray(R.array.Hour);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(Hour, checkedItem1[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem1[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        b.acvHour.setText(Hour[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+            }
 
 
-        String[] minutes = getResources().getStringArray(R.array.minutes);
-        ArrayAdapter min = new ArrayAdapter(requireActivity(), R.layout.dropdown_item, minutes);
-        //Setting the ArrayAdapter data on the Spinner
-        b.acvMinutes.setAdapter(min);
+        });
 
-        String[] am = getResources().getStringArray(R.array.ampm);
-        ArrayAdapter ampm = new ArrayAdapter(requireActivity(), R.layout.dropdown_item, am);
-        //Setting the ArrayAdapter data on the Spinner
-        b.actvampm.setAdapter(ampm);
 
-        String[] aprox = getResources().getStringArray(R.array.aprox);
-        ArrayAdapter apr = new ArrayAdapter(requireActivity(), R.layout.dropdown_item, aprox);
-        //Setting the ArrayAdapter data on the Spinner
-        b.actvapprox.setAdapter(apr);
+            final int[] checkedItem = {-1};
+            b.acvMinutes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    // AlertDialog builder instance to build the alert dialog
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                    // set the custom icon to the alert dialog
+                    alertDialog.setIcon(R.drawable.ic_baseline_watch_later_24);
+
+                    // title of the alert dialog
+                    alertDialog.setTitle("Choose Minutes");
+
+                    // list of the items to be displayed to
+                    // the user in the form of list
+                    // so that user can select the item from
+                    // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                    String[] minutes = getResources().getStringArray(R.array.minutes);
+                    // the function setSingleChoiceItems is the function which builds
+                    // the alert dialog with the single item selection
+                    alertDialog.setSingleChoiceItems(minutes, checkedItem[0], new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            // update the selected item which is selected by the user
+                            // so that it should be selected when user opens the dialog next time
+                            // and pass the instance to setSingleChoiceItems method
+                            checkedItem[0] = which;
+
+                            // now also update the TextView which previews the selected item
+                            b.acvMinutes.setText(minutes[which]);
+
+                            // when selected an item the dialog should be closed with the dismiss method
+                            dialog.dismiss();
+                        }
+                    });
+
+                    // set the negative button if the user
+                    // is not interested to select or change
+                    // already selected item
+                    alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    // create and build the AlertDialog instance
+                    // with the AlertDialog builder instance
+                    AlertDialog customAlertDialog = alertDialog.create();
+
+                    // show the alert dialog when the button is clicked
+                    customAlertDialog.show();
+                    Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                    buttonbackground.setBackgroundColor(Color.BLACK);
+                }
+
+
+            });
+
+        final int[] checkedItem2 = {-1};
+        b.actvampm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.ic_baseline_watch_later_24);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose A.M/P.M");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] ampm = getResources().getStringArray(R.array.ampm);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(ampm, checkedItem2[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem2[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        b.actvampm.setText(ampm[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+            }
+
+
+        });
+
+
+        final int[] checkedItem3 = {-1};
+        b.actvapprox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.ic_baseline_watch_later_24);
+
+                // title of the alert dialog
+                alertDialog.setTitle("Choose Timing");
+
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] approx = getResources().getStringArray(R.array.aprox);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(approx, checkedItem3[0], new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem3[0] = which;
+
+                        // now also update the TextView which previews the selected item
+                        b.actvapprox.setText(approx[which]);
+
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
+
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
+
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+            }
+
+
+        });
+
+
+
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -392,10 +631,10 @@ public class HoroscopeFragment extends Fragment {
 //                value = value +","+model.time;
 //            if(model.time_status!=null && !model.time_status.equals(""))
 //                value = value +","+model.time_status;
-        if (model != null) {
+        if (model != null && !model.equals("")) {
             b.tvCountryOfBirth.setText(model.country_of_birth);
             b.tvCityofBirth.setText(model.city_of_birth);
-            b.tvTimeofBirth.setText(model.hours + ":" + model.minutes + ":" + model.time + "," + model.time_status);
+            b.tvTimeofBirth.setText(model.hours + ":" + model.minutes + " " + model.time + "," + model.time_status);
             b.tvManglik.setText(model.manglik);
         }
     }

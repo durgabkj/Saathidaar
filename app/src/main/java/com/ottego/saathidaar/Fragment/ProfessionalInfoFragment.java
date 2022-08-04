@@ -77,6 +77,15 @@ public class ProfessionalInfoFragment extends Fragment {
         memberId=sessionManager.getMemberId();
         listener();
         getMemberData();
+
+        if(sessionManager.getUserGender().equalsIgnoreCase("male"))
+        {
+            b.tvLocatonOfPartner.setText("Location of Bride");
+        }else
+        {
+            b.tvLocatonOfPartner.setText("Location of Groom");
+        }
+
         return b.getRoot();
     }
     private void getMemberData() {
@@ -126,8 +135,6 @@ refresh(1000);
             b.tvUserResidenceStatus.setText(model.city);
             b.tvUserPinCode.setText(model.pincode);
         }
-
-
     }
 
     private void listener() {
@@ -148,9 +155,7 @@ refresh(1000);
                 startActivity(intent);
             }
         });
-
     }
-
 
     private void refresh(int millisecond) {
 

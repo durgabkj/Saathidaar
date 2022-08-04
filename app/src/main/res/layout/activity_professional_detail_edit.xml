@@ -177,6 +177,7 @@
                                 android:background="@drawable/transparent_edittext_border"
                                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                                 android:enabled="true"
+                                android:textColor="@color/black"
                                 android:fontFamily="@font/italic"
                                 android:gravity="center_vertical"
                                 android:hint="Working with"
@@ -222,6 +223,7 @@
                                 android:background="@drawable/transparent_edittext_border"
                                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                                 android:enabled="true"
+                                android:textColor="@color/black"
                                 android:fontFamily="@font/italic"
                                 android:gravity="center_vertical"
                                 android:hint="WorkingAs" />

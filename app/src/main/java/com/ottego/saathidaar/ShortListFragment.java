@@ -21,10 +21,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.RemoveShortListAdapter;
+import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentShortListBinding;
 import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -98,10 +100,14 @@ int count=0;
                // progressDialog.dismiss();
                 Log.e("ShortList response", String.valueOf(response));
                 Gson gson = new Gson();
-                data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
-                if (data.results == 1) {
-                    viewModel._list.postValue(data.data);
-                    setRecyclerView();
+                try {
+                    if (response.getInt("results")==1) {
+                        data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
+                        viewModel._list.postValue(data.data);
+                        setRecyclerView();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {

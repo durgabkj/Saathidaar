@@ -26,8 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardMaxElevation="20dp"
-
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         app:cardCornerRadius="8dp"
         android:translationZ="20dp">
         <fragment

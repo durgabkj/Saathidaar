@@ -108,6 +108,13 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         }
 
 
+        if(item.shortlist_status.equalsIgnoreCase("1") && item.shortlist_status!=null && !item.shortlist_status.isEmpty())
+        {
+            holder.llShortListRemove.setVisibility(View.VISIBLE);
+            holder.llShortList.setVisibility(View.GONE);
+        }
+
+
         holder.llPhotoMyMatches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

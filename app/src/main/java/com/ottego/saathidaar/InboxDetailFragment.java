@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.Model.HoroscopeModel;
 import com.ottego.saathidaar.Model.MemberPreferenceModel;
 import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.databinding.FragmentInboxDetailBinding;
@@ -42,11 +43,12 @@ public class InboxDetailFragment extends Fragment {
     public String memberDetail = Utils.memberUrl + "get-details/";
     public String PreferenceDetailUrl = Utils.memberUrl + "match/preference/";
     Context context;
+    public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
-
+    HoroscopeModel horoscopeModel;
     public InboxDetailFragment() {
         // Required empty public constructor
     }
@@ -81,11 +83,52 @@ public class InboxDetailFragment extends Fragment {
          setData();
          getLoginMemberData();
          getMemberPreferenceData();
-
+getHoroscopeData();
 
         return b.getRoot();
     }
 
+
+
+    private void getHoroscopeData() {
+        //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                urlGetHoroscope + mParam1, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                //  progressDialog.dismiss();
+                Log.e("response", String.valueOf(response));
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        Gson gson = new Gson();
+                        horoscopeModel = gson.fromJson(String.valueOf(response), HoroscopeModel.class);
+                        setHoroData();
+
+                    } else {
+                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // progressDialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+    }
+
+    private void setHoroData() {
+        b.tvInvboxDetailPlaceOfBirth.setText(horoscopeModel.country_of_birth + " ," + horoscopeModel.city_of_birth + " ," + horoscopeModel.hours + " :" + horoscopeModel.minutes);
+        b.tvInboxDetailManglik.setText(horoscopeModel.manglik);
+    }
 
     private void getMemberPreferenceData() {
 
@@ -260,6 +303,33 @@ public class InboxDetailFragment extends Fragment {
     }
 
     private void listener() {
+
+
+        b.tvPremiumCollegeAndCompany.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UpgradeOnButtonActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+        b.tvPremiumContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UpgradeOnButtonActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+        b.tvPremiumBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UpgradeOnButtonActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+
         b.llShowMemberImageInbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -393,7 +463,7 @@ public class InboxDetailFragment extends Fragment {
             b.tvDetailCall.setText(model.profile_contact_number);
             b.tvImageCountInbox.setText(model.images_count);
 
-
+Log.e("hey",model.my_premium_status);
             if (model.photo_privacy.equalsIgnoreCase("1")) {
                 b.llShowMemberImageInbox.setVisibility(View.VISIBLE);
                 b.flPremiumInboxDetails.setVisibility(View.GONE);
@@ -419,6 +489,7 @@ public class InboxDetailFragment extends Fragment {
                 b.flPremiumInboxDetails.setVisibility(View.GONE);
                 b.llPremiumMsgInboxDetails.setVisibility(View.GONE);
                 b.tvLevelPremiumInboxDetails.setVisibility(View.GONE);
+                b.llShowMemberImageInbox.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
                         .into(b.ivDetailUserImage);

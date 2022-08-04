@@ -121,7 +121,7 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
             }
         });
 
-//
+
 //        Glide.with(context)
 //                .load(Utils.imageUrl + item.profile_photo)
 //                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
@@ -154,6 +154,7 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
             holder.flPremiumInvitation.setVisibility(View.GONE);
             holder.llPremiumMsgInvitation.setVisibility(View.GONE);
             holder.tvLevelPremiumInvitation.setVisibility(View.GONE);
+            holder.llPhotoInvitation.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .into(holder.ivReceivedInvitation);

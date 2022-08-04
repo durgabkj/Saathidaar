@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.Model.DataModelSmsAlert;
 import com.ottego.saathidaar.Model.PartnerPreferenceModel;
 import com.ottego.saathidaar.databinding.FragmentEmailAndSmsAlertBinding;
@@ -89,11 +90,19 @@ DataModelSmsAlert model;
                 getSmsAlertUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response1", String.valueOf((response)));
+                Log.e("response", String.valueOf((response)));
                 Gson gson = new Gson();
-                model = gson.fromJson(String.valueOf(response), DataModelSmsAlert.class);
+                try {
+                    if (response.getInt("results")==1) {
+                        model = gson.fromJson(String.valueOf(response), DataModelSmsAlert.class);
+                        setData();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-                    setData();
+
+
 
             }
         }, new Response.ErrorListener() {

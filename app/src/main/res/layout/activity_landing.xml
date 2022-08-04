@@ -48,8 +48,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="210dp"
-                    android:gravity="center"
                     android:fontFamily="@font/italic"
+                    android:gravity="center"
                     android:text="...because a marriage is between two families"
                     android:textColor="@color/white"
                     android:textSize="20dp" />

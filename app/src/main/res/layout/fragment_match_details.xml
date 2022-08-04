@@ -1031,7 +1031,6 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/italic"
-                            android:text="To unlock Contact &amp; Email ID"
                             android:textColor="@color/black" />
 
 
@@ -1262,7 +1261,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Investment Professional"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1366,9 +1364,7 @@
                                     android:id="@+id/tvDetailAnnualIncome"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-
                                     android:fontFamily="@font/italic"
-                                    android:text="Earn INR 4 Lakh To &amp; Lakh annually"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1420,7 +1416,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Masters degree in Finance"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1472,7 +1467,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Finance / Commerce"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1524,7 +1518,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="*****************"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1682,7 +1675,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="26 To 29"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1776,7 +1768,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="5'5 to 5'10"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1872,7 +1863,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Never Married"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1968,7 +1958,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="India"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2064,7 +2053,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Maharastra"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2158,7 +2146,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Masters"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2253,7 +2240,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Government job"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2934,13 +2920,11 @@
                 android:layout_gravity="center"
                 android:orientation="horizontal">
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="20dp"
-
                     android:fontFamily="@font/italic"
                     android:shadowColor="#000000"
                     android:text="Like this profile?"
@@ -2963,14 +2947,13 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/ivDetailsConnected"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-
                     app:cardCornerRadius="100dp">
 
                     <ImageView
-                        android:id="@+id/ivDetailsConnected"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:background="@color/white"
@@ -2981,13 +2964,12 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/ivDetailsConnect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     app:cardCornerRadius="100dp">
-
                     <ImageView
-                        android:id="@+id/ivDetailsConnect"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:background="@color/white"

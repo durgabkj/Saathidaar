@@ -63,10 +63,7 @@ public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.ViewHolder>
 
         @Override
         public int getItemCount() {
-            if(3 > list.size())
-                return list.size();
-            else
-                return 3;
+            return Math.min(list.size(), 3);
         }
 
 

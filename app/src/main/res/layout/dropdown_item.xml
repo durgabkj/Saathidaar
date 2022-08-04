@@ -1,10 +1,10 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/textView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="5dp"
-    android:fontFamily="@font/italic"
-    android:textColor="#3A3939"
-    android:textStyle="bold"
-    android:textSize="12sp"
-     />
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:padding="10dp"
+android:ellipsize="end"
+android:maxLines="1"
+android:textAppearance="?attr/textAppearanceSubtitle1"
+    />
+

@@ -20,10 +20,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
+import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentNewMatchesBinding;
 import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -101,10 +103,14 @@ public class NewMatchesFragment extends Fragment implements ApiListener {
                 b.srlRecycleViewNewMatch.setRefreshing(false);
                 Log.e("New Matches response", String.valueOf(response));
                 Gson gson = new Gson();
-                data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
-                if (data.results == 1) {
-                    viewModel._list.postValue(data.data);
-                    setRecyclerView();
+                try {
+                    if (response.getInt("results")==1) {
+                        data = gson.fromJson(String.valueOf(response), DataModelNewMatches.class);
+                        viewModel._list.postValue(data.data);
+                        setRecyclerView();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {

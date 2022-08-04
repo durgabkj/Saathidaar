@@ -24,6 +24,7 @@ import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.databinding.FragmentDeleteInboxBinding;
 import com.ottego.saathidaar.viewmodel.InboxViewModel;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -97,10 +98,14 @@ public class DeleteInboxFragment extends Fragment implements ApiListener {
                // progressDialog.dismiss();
                 Log.e(" deleted Invitation response", String.valueOf(response));
                 Gson gson = new Gson();
-                data = gson.fromJson(String.valueOf(response), DataModelInbox.class);
-                if (data.results == 1) {
-                    viewModel._list.postValue(data.data);
-                    setRecyclerView();
+                try {
+                    if (response.getInt("results")==1) {
+                        data = gson.fromJson(String.valueOf(response), DataModelInbox.class);
+                        viewModel._list.postValue(data.data);
+                        setRecyclerView();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {

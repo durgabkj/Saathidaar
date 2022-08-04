@@ -7,6 +7,7 @@ public class NewMatchesModel {
     public String income;
     public String member_id;
     public String request_status;
+    public String shortlist_status;
     public String mage;
     public String block_status;
     public String premium_status;

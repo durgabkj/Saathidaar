@@ -13,6 +13,7 @@ public class InboxModel {
     public String first_name;
     public String maritalStatus;
     public String religion;
+    public String shortlist_status;
     public String contact_number;
     public String my_premium_status;
     public String known_languages;

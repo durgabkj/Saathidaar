@@ -173,8 +173,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_margin="10dp"
-        android:visibility="gone"
         android:elevation="3dp"
+        android:visibility="gone"
         android:translationZ="10dp">
 
         <LinearLayout
@@ -264,23 +264,25 @@
                         android:layout_weight="1"
                         android:background="@drawable/bg_edit_text">
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+
+
+                        <TextView
+                            android:id="@+id/acvHour"
                             android:layout_width="0dp"
                             android:layout_height="40dp"
-                            android:layout_weight="1">
-
-                            <AutoCompleteTextView
-                                android:id="@+id/acvHour"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/transparent_edittext_border"
-                                android:fontFamily="@font/italic"
-                                android:hint="Hour"
-                                android:textSize="12dp"
-                                android:padding="8dp" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
+                            android:layout_weight="1"
+                            android:editable="false"
+                            android:hint="Hour"
+                            android:gravity="center_vertical"
+                            android:fontFamily="@font/italic"
+                            android:textSize="14sp"
+                            android:inputType="none"
+                            android:textColor="@color/black"
+                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="14dp"
+                            android:background="@drawable/transparent_edittext_border"
+                            tools:ignore="Deprecated"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -290,25 +292,25 @@
                         android:layout_weight="1"
                         android:background="@drawable/bg_edit_text">
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_weight="1">
 
-                            <AutoCompleteTextView
+                            <TextView
                                 android:id="@+id/acvMinutes"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="40dp"
                                 android:layout_weight="1"
-                                android:background="@drawable/transparent_edittext_border"
-                                android:fontFamily="@font/italic"
+                                android:editable="false"
                                 android:hint="Minutes"
-                                android:textSize="12dp"
-                                android:padding="8dp" />
+                                android:gravity="center_vertical"
+                                android:fontFamily="@font/italic"
+                                android:textSize="14sp"
+                                android:inputType="none"
+                                android:textColor="@color/black"
+                                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="14dp"
+                                android:background="@drawable/transparent_edittext_border"
+                                tools:ignore="Deprecated"/>
 
-                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
 
@@ -318,25 +320,23 @@
                         android:layout_weight="1"
                         android:background="@drawable/bg_edit_text">
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <TextView
+                            android:id="@+id/actvampm"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:editable="false"
+                            android:hint="A.M/P.M"
+                            android:gravity="center_vertical"
+                            android:fontFamily="@font/italic"
+                            android:textSize="14sp"
+                            android:inputType="none"
+                            android:textColor="@color/black"
+                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                             android:layout_marginStart="8dp"
-                            android:layout_weight="1">
-
-                            <AutoCompleteTextView
-                                android:id="@+id/actvampm"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_weight="1"
-                                android:textSize="12dp"
-                                android:background="@drawable/transparent_edittext_border"
-                                android:fontFamily="@font/italic"
-                                android:hint="A.m/P.m"
-                                android:padding="8dp" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
+                            android:layout_marginEnd="14dp"
+                            android:background="@drawable/transparent_edittext_border"
+                            tools:ignore="Deprecated"/>
                     </LinearLayout>
 
 
@@ -352,34 +352,32 @@
 
                 />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginEnd="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_edit_text">
+
+            <TextView
+                android:id="@+id/actvapprox"
+                android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="3dp"
-                android:background="@drawable/bg_edit_text">
+                android:layout_weight="1"
+                android:editable="false"
+                android:hint="Select"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/italic"
+                android:textSize="14sp"
+                android:inputType="none"
+                android:textColor="@color/black"
+                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="14dp"
+                android:background="@drawable/transparent_edittext_border"
+                tools:ignore="Deprecated"/>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".1"
-                    android:background="@drawable/transparent_edittext_border">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/actvapprox"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:textSize="12dp"
-                        android:background="@drawable/transparent_edittext_border"
-                        android:fontFamily="@font/italic"
-                        android:hint="Timing Status"
-                        android:padding="8dp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-
+        </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
