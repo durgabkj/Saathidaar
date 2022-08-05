@@ -333,7 +333,6 @@
                         android:inputType="textCapWords"
                         android:fontFamily="@font/italic"
                         android:shadowRadius="1.6"
-                        android:text="Durga singh"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -348,7 +347,6 @@
                         android:fontFamily="@font/italic"
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
-                        android:text="22 years"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -362,7 +360,6 @@
                         android:shadowDx="1.5"
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
-                        android:text="5'1"
                         android:maxLength="10"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/white"
@@ -387,7 +384,6 @@
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
                         android:maxLength="20"
-                        android:text="Mumbai"
                         android:inputType = "textCapWords"
                         android:textColor="@color/white"
                         android:fontFamily="@font/italic"

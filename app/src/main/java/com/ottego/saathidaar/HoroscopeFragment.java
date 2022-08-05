@@ -612,10 +612,6 @@ public class HoroscopeFragment extends Fragment {
 
 
         });
-
-
-
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -623,7 +619,11 @@ public class HoroscopeFragment extends Fragment {
         if (model != null && !model.equals("")) {
             b.tvCountryOfBirth.setText(model.country_of_birth);
             b.tvCityofBirth.setText(model.city_of_birth);
-            b.tvTimeofBirth.setText(model.hours + model.minutes + model.time + model.time_status);
+
+            if((model.hours!=null || !model.hours.isEmpty()) && (model.minutes!=null || !model.minutes.isEmpty()) && (model.time!=null || !model.time.isEmpty()) && (model.time_status!=null || !model.time_status.isEmpty()))
+            {
+                b.tvTimeofBirth.setText(model.hours +":"+model.minutes + " "+model.time + ", "+model.time_status);
+            }
             b.tvManglik.setText(model.manglik);
         }
     }

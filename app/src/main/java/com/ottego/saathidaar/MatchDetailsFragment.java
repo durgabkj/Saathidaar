@@ -168,6 +168,7 @@ public class MatchDetailsFragment extends Fragment {
 
     private void setMemberPrefData() {
 if (memberPreferenceModel != null) {
+
     b.matchPreferenceCount.setText("You Match " + memberPreferenceModel.match_count + "/" + memberPreferenceModel.total_preference + " of " + " " + memberPreferenceModel.gender_preference);
     b.tvDetailAgeMatch.setText(memberPreferenceModel.partner_age);
     b.tvDetailHeightMatch.setText(memberPreferenceModel.partner_height);
@@ -184,102 +185,146 @@ if (memberPreferenceModel != null) {
     b.tvDetailcityMatch.setText(memberPreferenceModel.partner_city);
     b.tvDetailIncomeMatch.setText(memberPreferenceModel.partner_annual_income);
 
-
-    if (memberPreferenceModel.my_age.equalsIgnoreCase("Yes")) {
-        b.cvcheck1.setVisibility(View.VISIBLE);
-    } else if (memberPreferenceModel.my_age.equalsIgnoreCase("NO")) {
-        b.cvClear1.setVisibility(View.VISIBLE);
+    if (memberPreferenceModel.my_age != null) {
+        if (memberPreferenceModel.my_age.equalsIgnoreCase("Yes")) {
+            b.cvcheck1.setVisibility(View.VISIBLE);
+        } else if (memberPreferenceModel.my_age.equalsIgnoreCase("NO")) {
+            b.cvClear1.setVisibility(View.VISIBLE);
+        } else {
+            b.cvDot1.setVisibility(View.VISIBLE);
+        }
     } else {
-        b.cvDot1.setVisibility(View.VISIBLE);
+        b.llAgeMatch.setVisibility(View.GONE);
     }
 
 
-    if (memberPreferenceModel.my_height.equalsIgnoreCase("Yes")) {
-        b.cvcheck2.setVisibility(View.VISIBLE);
-    } else if (memberPreferenceModel.my_height.equalsIgnoreCase("NO")) {
-        b.cvClear2.setVisibility(View.VISIBLE);
+    if (memberPreferenceModel.my_height != null) {
+        if (memberPreferenceModel.my_height.equalsIgnoreCase("Yes")) {
+            b.cvcheck2.setVisibility(View.VISIBLE);
+        } else if (memberPreferenceModel.my_height.equalsIgnoreCase("NO")) {
+            b.cvClear2.setVisibility(View.VISIBLE);
+        } else {
+            b.cvDot2.setVisibility(View.VISIBLE);
+        }
     } else {
-        b.cvDot2.setVisibility(View.VISIBLE);
+        b.llHeightMatch.setVisibility(View.GONE);
+    }
+
+    if (memberPreferenceModel.my_marital_status != null) {
+        if (memberPreferenceModel.my_marital_status.equalsIgnoreCase("Yes")) {
+            b.cvcheck3.setVisibility(View.VISIBLE);
+        } else if (memberPreferenceModel.my_marital_status.equalsIgnoreCase("NO")) {
+            b.cvClear3.setVisibility(View.VISIBLE);
+        } else {
+            b.cvDot3.setVisibility(View.VISIBLE);
+        }
+    } else {
+        b.llMaritalMatch.setVisibility(View.GONE);
     }
 
 
-    if (memberPreferenceModel.my_marital_status.equalsIgnoreCase("Yes")) {
-        b.cvcheck3.setVisibility(View.VISIBLE);
-    } else if (memberPreferenceModel.my_marital_status.equalsIgnoreCase("NO")) {
-        b.cvClear3.setVisibility(View.VISIBLE);
+    if (memberPreferenceModel.my_country != null) {
+        if (memberPreferenceModel.my_country.equalsIgnoreCase("Yes")) {
+            b.cvcheck4.setVisibility(View.VISIBLE);
+        } else if (memberPreferenceModel.my_country.equalsIgnoreCase("NO")) {
+            b.cvClear4.setVisibility(View.VISIBLE);
+        } else {
+            b.cvDot4.setVisibility(View.VISIBLE);
+        }
     } else {
-        b.cvDot3.setVisibility(View.VISIBLE);
+        b.llCountryMatch.setVisibility(View.GONE);
     }
 
 
-    if (memberPreferenceModel.my_country.equalsIgnoreCase("Yes")) {
-        b.cvcheck4.setVisibility(View.VISIBLE);
-    } else if (memberPreferenceModel.my_country.equalsIgnoreCase("NO")) {
-        b.cvClear4.setVisibility(View.VISIBLE);
+    if (memberPreferenceModel.my_state != null) {
+        if (memberPreferenceModel.my_state.equalsIgnoreCase("Yes")) {
+            b.cvcheck5.setVisibility(View.VISIBLE);
+        } else if (memberPreferenceModel.my_state.equalsIgnoreCase("NO")) {
+            b.cvClear5.setVisibility(View.VISIBLE);
+        } else {
+            b.cvDot5.setVisibility(View.VISIBLE);
+        }
     } else {
-        b.cvDot4.setVisibility(View.VISIBLE);
+        b.llStateMatch.setVisibility(View.GONE);
     }
 
 
-    if (memberPreferenceModel.my_state.equalsIgnoreCase("Yes")) {
-        b.cvcheck5.setVisibility(View.VISIBLE);
-    } else if (memberPreferenceModel.my_state.equalsIgnoreCase("NO")) {
-        b.cvClear5.setVisibility(View.VISIBLE);
+    if (memberPreferenceModel.my_qualification != null) {
+        if (memberPreferenceModel.my_qualification.equalsIgnoreCase("Yes")) {
+            b.cvcheck6.setVisibility(View.VISIBLE);
+        } else if (memberPreferenceModel.my_qualification.equalsIgnoreCase("NO")) {
+            b.cvClear6.setVisibility(View.VISIBLE);
+        } else {
+            b.cvDot6.setVisibility(View.VISIBLE);
+        }
     } else {
-        b.cvDot5.setVisibility(View.VISIBLE);
+        b.llEducationMatch.setVisibility(View.GONE);
     }
 
 
-    if (memberPreferenceModel.my_qualification.equalsIgnoreCase("Yes")) {
-        b.cvcheck6.setVisibility(View.VISIBLE);
-    } else if (memberPreferenceModel.my_qualification.equalsIgnoreCase("NO")) {
-        b.cvClear6.setVisibility(View.VISIBLE);
+    if (memberPreferenceModel.my_working_with != null) {
+        if (memberPreferenceModel.my_working_with.equalsIgnoreCase("Yes")) {
+            b.cvcheck7.setVisibility(View.VISIBLE);
+        } else if (memberPreferenceModel.my_working_with.equalsIgnoreCase("NO")) {
+            b.cvClear7.setVisibility(View.VISIBLE);
+        } else {
+            b.cvDot7.setVisibility(View.VISIBLE);
+        }
     } else {
-        b.cvDot6.setVisibility(View.VISIBLE);
+        b.llWorkingWithMatch.setVisibility(View.GONE);
     }
 
 
-    if (memberPreferenceModel.my_working_with.equalsIgnoreCase("Yes")) {
-        b.cvcheck7.setVisibility(View.VISIBLE);
-    } else if (memberPreferenceModel.my_working_with.equalsIgnoreCase("NO")) {
-        b.cvClear7.setVisibility(View.VISIBLE);
+    if (memberPreferenceModel.my_annual_income != null) {
+        if (memberPreferenceModel.my_annual_income.equalsIgnoreCase("Yes")) {
+            b.cvcheck9.setVisibility(View.VISIBLE);
+        } else if (memberPreferenceModel.my_annual_income.equalsIgnoreCase("NO")) {
+            b.cvClear9.setVisibility(View.VISIBLE);
+        } else {
+            b.cvDot9.setVisibility(View.VISIBLE);
+        }
     } else {
-        b.cvDot7.setVisibility(View.VISIBLE);
+        b.llIncomeMatch.setVisibility(View.GONE);
     }
 
 
-    if (memberPreferenceModel.my_annual_income.equalsIgnoreCase("Yes")) {
-        b.cvcheck9.setVisibility(View.VISIBLE);
-    } else if (memberPreferenceModel.my_annual_income.equalsIgnoreCase("NO")) {
-        b.cvClear9.setVisibility(View.VISIBLE);
+    if (memberPreferenceModel.my_religions != null) {
+        if (memberPreferenceModel.my_religions.equalsIgnoreCase("Yes")) {
+            b.cvcheck10.setVisibility(View.VISIBLE);
+        } else if (memberPreferenceModel.my_religions.equalsIgnoreCase("NO")) {
+            b.cvClear10.setVisibility(View.VISIBLE);
+        } else {
+            b.cvDot10.setVisibility(View.VISIBLE);
+        }
     } else {
-        b.cvDot9.setVisibility(View.VISIBLE);
+        b.llReligionMatch.setVisibility(View.GONE);
     }
 
 
-    if (memberPreferenceModel.my_religions.equalsIgnoreCase("Yes")) {
-        b.cvcheck10.setVisibility(View.VISIBLE);
-    } else if (memberPreferenceModel.my_religions.equalsIgnoreCase("NO")) {
-        b.cvClear10.setVisibility(View.VISIBLE);
+    if (memberPreferenceModel.my_mother_tongue != null) {
+        if (memberPreferenceModel.my_mother_tongue.equalsIgnoreCase("Yes")) {
+            b.cvcheck11.setVisibility(View.VISIBLE);
+        } else if (memberPreferenceModel.my_mother_tongue.equalsIgnoreCase("NO")) {
+            b.cvClear11.setVisibility(View.VISIBLE);
+        } else {
+            b.cvDot11.setVisibility(View.VISIBLE);
+        }
     } else {
-        b.cvDot10.setVisibility(View.VISIBLE);
+        b.llMotherTongueMatch.setVisibility(View.GONE);
     }
 
-    if (memberPreferenceModel.my_mother_tongue.equalsIgnoreCase("Yes")) {
-        b.cvcheck11.setVisibility(View.VISIBLE);
-    } else if (memberPreferenceModel.my_mother_tongue.equalsIgnoreCase("NO")) {
-        b.cvClear11.setVisibility(View.VISIBLE);
+    if (memberPreferenceModel.my_city != null) {
+        if (memberPreferenceModel.my_city.equalsIgnoreCase("Yes")) {
+            b.cvcheck13.setVisibility(View.VISIBLE);
+        } else if (memberPreferenceModel.my_city.equalsIgnoreCase("NO")) {
+            b.cvClear13.setVisibility(View.VISIBLE);
+        } else {
+            b.cvDot13.setVisibility(View.VISIBLE);
+        }
     } else {
-        b.cvDot11.setVisibility(View.VISIBLE);
+        b.llCityMatch.setVisibility(View.GONE);
     }
 
-    if (memberPreferenceModel.my_city.equalsIgnoreCase("Yes")) {
-        b.cvcheck13.setVisibility(View.VISIBLE);
-    } else if (memberPreferenceModel.my_city.equalsIgnoreCase("NO")) {
-        b.cvClear13.setVisibility(View.VISIBLE);
-    } else {
-        b.cvDot13.setVisibility(View.VISIBLE);
-    }
 }
 
 
@@ -511,8 +556,8 @@ if (memberPreferenceModel != null) {
 
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
-                        .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
-                        //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                        .transform(!model.profile_photo.equals("")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                         .into(b.ivDetailUserImage);
 
             } else if (model.photo_privacy.equalsIgnoreCase("3")) {
@@ -545,7 +590,7 @@ if (memberPreferenceModel != null) {
 
             Glide.with(context)
                     .load(Utils.imageUrl + model.profile_photo)
-                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                    .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     //.transform(!model.my_premium_status.equals(model.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(b.profileDetailPic1Partner);
 

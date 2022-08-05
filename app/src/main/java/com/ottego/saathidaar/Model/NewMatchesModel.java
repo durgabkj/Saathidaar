@@ -9,6 +9,7 @@ public class NewMatchesModel {
     public String request_status;
     public String shortlist_status;
     public String mage;
+    public String gender;
     public String block_status;
     public String premium_status;
     public String my_premium_status;

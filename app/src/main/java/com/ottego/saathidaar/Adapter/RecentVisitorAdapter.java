@@ -64,6 +64,19 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
             sessionManager = new SessionManager(context);
 
 
+            if(item.shortlist_status.equalsIgnoreCase("1") && item.shortlist_status!=null && !item.shortlist_status.isEmpty())
+            {
+                holder.llShortListRecent.setVisibility(View.VISIBLE);
+                holder.llShortListRecentV.setVisibility(View.GONE);
+            }
+
+            if(item.request_status!=null && !item.request_status.isEmpty())
+            {
+                holder.llConnectedRecently.setVisibility(View.VISIBLE);
+                holder.ivLikeRecentVisitors.setVisibility(View.GONE);
+            }
+
+
             holder.tvNewMatchName.setText(item.first_name + " " + item.last_name);
             holder.tvNewMatchAge.setText(item.mage);
             holder.tvNewMatchHeight.setText(item.religion);
@@ -133,7 +146,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
 
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
-                        .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                         .into(holder.ivRecentViewImage);
 
@@ -191,10 +204,13 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivRecentViewImage,ivNoImageMaleFemaleRecentView;
             TextView tvNewMatchName, tvNewMatchAge,tvLevelPremiumRecent, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs,tvImageCountRecentView;
-            LinearLayout llPhotoRecentV,llShortBlockRecentV,llBlockedRecentV,llPremiumMsgRecentlyView,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove,llNo_imageFemaleListRecentView,llConnectedRecently;
+            LinearLayout llPhotoRecentV,llShortBlockRecentV,llConnectShortList,llShortListRecent,llBlockedRecentV,llPremiumMsgRecentlyView,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove,llNo_imageFemaleListRecentView,llConnectedRecently;
             FrameLayout flNoImageMaleFemaleListRecentView,flPremiumRecentView;
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
+
+                llConnectShortList=itemView.findViewById(R.id.llConnectShortList);
+                llShortListRecent=itemView.findViewById(R.id.llShortListRecent);
                 tvNewMatchAge = itemView.findViewById(R.id.tvRecentViewAgeRs);
                 tvNewMatchName = itemView.findViewById(R.id.ivRecentViewNameRs);
                 tvNewMatchHeight = itemView.findViewById(R.id.tvRecentViewHeightRs);

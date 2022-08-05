@@ -290,6 +290,7 @@
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_landing.xml" value="0.25" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_login.xml" value="0.23435897435897435" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/activity_more.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_navigation.xml" value="0.234375" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_professional_detail_edit.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_professional_detais_show.xml" value="0.23802083333333332" />
@@ -302,10 +303,12 @@
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_dash_board.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_email_and_sms_alert.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_family_info.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_hide_delete_profile.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_horoscope.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_inbox_detail.xml" value="0.21371326803205698" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_kyc.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_match_details.xml" value="0.2" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_more.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_my_match.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_my_profile.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_new_matches.xml" value="0.23802083333333332" />

@@ -10,6 +10,7 @@ public class MemberProfileModel {
     public String known_languages;
     public String education;
     public String job;
+    public String caste;
     public String profile_id;
     public String income;
     public String hobbies;

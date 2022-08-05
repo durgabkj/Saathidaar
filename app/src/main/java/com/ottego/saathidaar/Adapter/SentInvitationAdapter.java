@@ -137,7 +137,7 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
 
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
-                        .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                         .into(holder.ivSentInvitation);
 

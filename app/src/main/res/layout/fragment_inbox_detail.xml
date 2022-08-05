@@ -1612,6 +1612,7 @@
                             android:textStyle="bold" />
 
                         <LinearLayout
+                            android:id="@+id/llAgeMatch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -1705,6 +1706,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/llHeightMatch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -1800,6 +1802,7 @@
 
 
                         <LinearLayout
+                            android:id="@+id/llMaritalMatch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -1895,6 +1898,7 @@
 
 
                         <LinearLayout
+                            android:id="@+id/llCountryMatch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -1990,6 +1994,7 @@
 
 
                         <LinearLayout
+                            android:id="@+id/llStateMatch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -2083,6 +2088,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/llEducationMatch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -2177,6 +2183,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/llWorkingMatch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -2366,6 +2373,7 @@
 
 
                         <LinearLayout
+                            android:id="@+id/llIncomeMatch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -2460,6 +2468,7 @@
 
 
                         <LinearLayout
+                            android:id="@+id/llReligionMatch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -2553,6 +2562,7 @@
 
 
                         <LinearLayout
+                            android:id="@+id/llMotherToungeMatch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -2743,6 +2753,7 @@
 
 
                         <LinearLayout
+                            android:id="@+id/llCityMatch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"

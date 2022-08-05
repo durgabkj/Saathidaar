@@ -2,13 +2,9 @@ package com.ottego.saathidaar;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +15,8 @@ import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -26,8 +24,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.ActivateModel;
-import com.ottego.saathidaar.Model.DataModelNewMatches;
-import com.ottego.saathidaar.Model.DataModelSmsAlert;
 import com.ottego.saathidaar.Model.HideUnHideModel;
 import com.ottego.saathidaar.databinding.FragmentHideDeleteProfileBinding;
 
@@ -43,7 +39,7 @@ public  String hideUrl=Utils.memberUrl+"hide/";
     public  String activateDeacUrl=Utils.memberUrl+"activate/";
     public  String getHideUnhide=Utils.memberUrl+"get/hide/";
     public  String getActivate=Utils.memberUrl+"get/activate/";
-   FragmentHideDeleteProfileBinding b;
+    FragmentHideDeleteProfileBinding b;
    Context context;
    ActivateModel model1;
    HideUnHideModel model;
@@ -269,7 +265,7 @@ getDataActivate();
                 }
             }
         });
-
+        
         b.tvSaveHideUnhide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -282,45 +278,7 @@ getDataActivate();
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setTitle("Are you sure to Activate or Deactivate Profile ...?");
-                builder1.setMessage("No. of attempts: " +"\n" +
-                        "No. of wins: " +  "\n" +
-                        "No. of losses: ");
-
-                builder1.setCancelable(true);
-
-                builder1.setPositiveButton(
-                        "Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
-                                submitFormActivate();
-                              //  dialog.cancel();
-                            }
-                        });
-
-                builder1.setNegativeButton(
-                        "No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Toast.makeText(getContext(),"Nothing Happened",Toast.LENGTH_LONG).show();
-                                dialog.cancel();
-                            }
-                        });
-
-                AlertDialog alertDialog = builder1.create();
-                alertDialog.show();
-
-                // create the alert dialog with the
-                // alert dialog builder instance
-
-                Button buttonbackground1 = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-                buttonbackground1.setTextColor(R.color.colorPrimary);
-                Button buttonbackground3 = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
-                buttonbackground3.setTextColor(R.color.colorPrimary);
-
-
+                submitFormActivate();
             }
         });
 

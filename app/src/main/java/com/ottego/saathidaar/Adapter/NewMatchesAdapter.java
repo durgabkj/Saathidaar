@@ -76,7 +76,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
 
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
-                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__female_ : R.drawable.ic_no_image__male_)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(holder.ivUserMatch);
 
@@ -114,6 +114,12 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             holder.llShortList.setVisibility(View.GONE);
         }
 
+
+        if(item.request_status!=null && !item.request_status.isEmpty())
+        {
+            holder.llConnect.setVisibility(View.VISIBLE);
+            holder.ivLike.setVisibility(View.GONE);
+        }
 
         holder.llPhotoMyMatches.setOnClickListener(new View.OnClickListener() {
             @Override

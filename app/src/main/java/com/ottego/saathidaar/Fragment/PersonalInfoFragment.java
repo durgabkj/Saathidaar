@@ -132,9 +132,17 @@ public class PersonalInfoFragment extends Fragment {
 
         if(horoscopeModel!=null && !horoscopeModel.equals(""))
         {
-            binding.tvUserHPlaceofBirth.setText(horoscopeModel.country_of_birth +","+ horoscopeModel.city_of_birth);
-            binding.tvUserTimeofBirth.setText(horoscopeModel.hours  + ":"+horoscopeModel.minutes + " "+horoscopeModel.time  +","+ horoscopeModel.time_status);
-        }
+            if((horoscopeModel.hours!=null || !horoscopeModel.hours.isEmpty()) && (horoscopeModel.minutes!=null || !horoscopeModel.minutes.isEmpty()) && (horoscopeModel.time!=null || !horoscopeModel.time.isEmpty()) && (horoscopeModel.time_status!=null || !horoscopeModel.time_status.isEmpty()))
+            {
+                binding.tvUserTimeofBirth.setText(horoscopeModel.hours +":"+horoscopeModel.minutes + " "+horoscopeModel.time + " , "+horoscopeModel.time_status);
+            }
+
+            if((horoscopeModel.country_of_birth!=null || !horoscopeModel.country_of_birth.isEmpty()) && (horoscopeModel.city_of_birth!=null || !horoscopeModel.city_of_birth.isEmpty()))
+            {
+                binding.tvUserHPlaceofBirth.setText(horoscopeModel.country_of_birth +", "+ horoscopeModel.city_of_birth);
+            }
+
+     }
 
     }
 
@@ -279,7 +287,7 @@ public class PersonalInfoFragment extends Fragment {
             binding.tvUserMotherTongue.setText(model.mother_tounge);
             binding.tvHealthDetail.setText(model.health_info);
             binding.tvUserReligion.setText(model.religion_name);
-            binding.tvUserCommunity.setText(model.caste_name);
+            binding.tvUserCommunity.setText(model.caste);
             binding.tvGender.setText(model.gender);
             binding.tvUserSubCommunity.setText(model.sub_caste_name);
             binding.tvUserGotra.setText(model.gothra);
