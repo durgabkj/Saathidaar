@@ -26,8 +26,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 public class Utils {
@@ -84,6 +82,14 @@ public class Utils {
             return null;
         }
     }
+
+
+    public static String nullToBlank(String val){
+        if(val!=null && !val.equals("null"))
+            return val;
+        return "";
+    }
+
 
     public static void sendDeviceId(final Context context) {
         final String url_device = Utils.userUrl + "deviceidset.php";

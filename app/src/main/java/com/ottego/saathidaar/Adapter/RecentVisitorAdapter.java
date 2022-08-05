@@ -147,8 +147,10 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                        .centerCrop()
                         //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                         .into(holder.ivRecentViewImage);
+
 
             } else if (item.photo_privacy.equalsIgnoreCase("3")) {
                 holder.llPhotoRecentV.setVisibility(View.GONE);
@@ -158,6 +160,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .transform(new BlurTransformation(20, 8))
+                        .centerCrop()
                         .into(holder.ivRecentViewImage);
             } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
                 holder.flPremiumRecentView.setVisibility(View.GONE);
@@ -165,6 +168,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 holder.tvLevelPremiumRecent.setVisibility(View.GONE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
+                        .centerCrop()
                         .into(holder.ivRecentViewImage);
             } else {
                 holder.llPhotoRecentV.setVisibility(View.GONE);
@@ -174,6 +178,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .transform(new BlurTransformation(20, 8))
+                        .centerCrop()
                         .into(holder.ivRecentViewImage);
             }
 

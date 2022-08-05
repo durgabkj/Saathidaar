@@ -72,7 +72,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/black"
@@ -119,7 +119,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/black"
@@ -164,7 +164,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/black"
@@ -209,7 +209,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/black"
@@ -251,7 +251,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginStart="30dp"
                     android:text="-"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -295,7 +295,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/black"
@@ -341,7 +341,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/black"
@@ -386,7 +386,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/black"
@@ -427,7 +427,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginStart="30dp"
                     android:text="-"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -466,7 +466,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginStart="30dp"
                     android:text="-"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -509,17 +509,29 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvUserBrothers"
+                        android:id="@+id/tvUserBrothersMarried"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/italic"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvUserBrothersUMarried"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/black"
                         android:textSize="14sp"
@@ -548,21 +560,33 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginStart="30dp"
                     android:text="-"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvUserSisters"
+                    android:id="@+id/tvUserSistersMarried"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/italic"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvUserSistersUMarried"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/italic"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
@@ -586,7 +610,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginStart="30dp"
                     android:text="-"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -624,7 +648,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginStart="30dp"
                     android:text="-"
                     android:textColor="@color/black"
                     android:textSize="16sp"

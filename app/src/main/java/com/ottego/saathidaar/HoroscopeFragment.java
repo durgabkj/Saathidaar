@@ -620,7 +620,7 @@ public class HoroscopeFragment extends Fragment {
             b.tvCountryOfBirth.setText(model.country_of_birth);
             b.tvCityofBirth.setText(model.city_of_birth);
 
-            if((model.hours!=null || !model.hours.isEmpty()) && (model.minutes!=null || !model.minutes.isEmpty()) && (model.time!=null || !model.time.isEmpty()) && (model.time_status!=null || !model.time_status.isEmpty()))
+            if((model.hours!=null && !model.hours.equals("")) && (model.minutes!=null && !model.minutes.equals("")) && (model.time!=null && !model.time.equals("")) && (model.time_status!=null || !model.time_status.equals("")))
             {
                 b.tvTimeofBirth.setText(model.hours +":"+model.minutes + " "+model.time + ", "+model.time_status);
             }

@@ -62,11 +62,12 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         NewMatchesModel item = list.get(position);
 //        Log.e(" New Matches model", new Gson().toJson(item));
         sessionManager = new SessionManager(context);
-        holder.tvNewMatchName.setText(item.first_name + " " + item.last_name);
-        holder.tvNewMatchAge.setText(item.mage);
-        holder.tvNewMatchHeight.setText(item.religion);
-        holder.tvNewMatchCity.setText(item.maritalStatus);
+        holder.tvNewMatchName.setText(Utils.nullToBlank(item.first_name) + " " + Utils.nullToBlank(item.last_name));
+        holder.tvNewMatchAge.setText(Utils.nullToBlank(item.mage));
+        holder.tvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
+        holder.tvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
         holder.tvImageCount.setText(item.images_count);
+
 
         if (item.photo_privacy.equalsIgnoreCase("1")) {
             holder.llPhotoMyMatches.setVisibility(View.VISIBLE);

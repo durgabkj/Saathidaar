@@ -95,6 +95,28 @@ FragmentFamilyInfoBinding b;
     private void listener() {
 
 
+//        binding.tvDob.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//                binding.tvGender.setVisibility(View.VISIBLE);
+//
+//
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//            }
+//        });
+//
+
         b.srlRecycleViewFamilyDetails.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -255,15 +277,41 @@ FragmentFamilyInfoBinding b;
             b.tvUserMotherStatus.setText(model.mother_status);
             b.tvUserFamilyLocation.setText(model.family_location);
             b.tvUserNativePlace.setText(model.native_place);
-            if(!model.unmarried_female.isEmpty() || !model.married_female.isEmpty())
-            {
-                    b.tvUserSisters.setText(new StringBuilder().append(model.married_female).append(" : Married").append(",").append(model.unmarried_female).append(" : Unmarried").toString());
 
-            }
-            if(!model.unmarried_male.isEmpty() || !model.married_male.isEmpty())
+            if(model.married_female.equalsIgnoreCase(""))
             {
-                  b.tvUserBrothers.setText(new StringBuilder().append(model.married_male).append(" : Married").append(",").append(model.unmarried_male).append(" : Unmarried").toString());
+                b.tvUserSistersMarried.setVisibility(View.GONE);
+            }else
+            {
+                b.tvUserSistersMarried.setText(model.married_female+" : Married");
             }
+
+            if(model.unmarried_female.equalsIgnoreCase(""))
+            {
+                b.tvUserSistersUMarried.setVisibility(View.GONE);
+            }else
+            {
+                b.tvUserSistersUMarried.setText("  "+model.unmarried_female+" : UnMarried");
+            }
+
+
+
+            if(model.married_male.equalsIgnoreCase(""))
+            {
+                b.tvUserBrothersMarried.setVisibility(View.GONE);
+            }else
+            {
+                b.tvUserBrothersMarried.setText(model.married_male + " : Married");
+            }
+
+            if(model.unmarried_male.equalsIgnoreCase(""))
+            {
+                b.tvUserBrothersUMarried.setVisibility(View.GONE);
+            }else
+            {
+                b.tvUserBrothersUMarried.setText("  "+model.unmarried_male + " : UnMarried");
+            }
+
 
            b.tvUserFamilyType.setText(model.family_type);
             b.tvUserFamilyAffluence.setText(model.family_affluence);

@@ -60,7 +60,7 @@
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                             android:fontFamily="@font/italic"
                             android:enabled="true"
-                            android:hint="From"
+                            android:hint="Select"
                             android:gravity="center_vertical"
                             android:textSize="12dp"
                             android:layout_marginStart="8dp"
@@ -72,13 +72,15 @@
 
 
 
-                    <Space
-                        android:layout_width="10dp"
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="To"
                         android:layout_gravity="center"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:padding="2dp"
+                        android:textAlignment="center"
+                        android:gravity="center"
                         android:layout_height="wrap_content"/>
 
                     <!-- Drop down number 2-->
@@ -99,7 +101,7 @@
                             android:editable="false"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                             android:fontFamily="@font/italic"
-                            android:hint="To"
+                            android:hint="Select"
                             android:gravity="center_vertical"
                             android:textSize="12dp"
                             android:layout_marginStart="8dp"
@@ -143,7 +145,7 @@
                             android:layout_weight="1"
                             android:editable="false"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                            android:hint="From"
+                            android:hint="Select"
                             android:fontFamily="@font/italic"
                             android:textSize="12dp"
                             android:layout_marginStart="8dp"
@@ -153,13 +155,15 @@
 
                     </LinearLayout>
 
-                    <Space
-                        android:layout_width="10dp"
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="To"
                         android:layout_gravity="center"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:padding="2dp"
+                        android:textAlignment="center"
+                        android:gravity="center"
                         android:layout_height="wrap_content"/>
 
                     <!-- Drop down number 2-->
@@ -178,7 +182,7 @@
                             android:layout_weight="1"
                             android:editable="false"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                            android:hint="From"
+                            android:hint="Select"
                             android:fontFamily="@font/italic"
                             android:textSize="12dp"
                             android:layout_marginStart="8dp"
@@ -308,100 +312,64 @@
 
 
                 <RadioGroup
+                    android:id="@+id/rgManglikType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rgManglikType">
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp">
 
-                    <RadioButton
-                        android:id="@+id/mrbOpenToAll"
-                        android:layout_width="wrap_content"
-                        android:fontFamily="@font/italic"
-                        android:layout_weight="1"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Open to All" />
+                        android:orientation="horizontal"
+                        android:weightSum="2">
 
-                    <RadioButton
-                        android:id="@+id/mrbOnlyManglik"
-                        android:layout_width="wrap_content"
-                        android:fontFamily="@font/italic"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="Only manglik" />
+                        <RadioButton
+                            android:id="@+id/mrbOpenToAll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="15sp"
+                            android:text="Open to All" />
 
-                    <RadioButton
-                        android:id="@+id/mrbNoManglik"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/italic"
-                        android:layout_weight="1"
-                        android:layout_marginStart="-180dp"
-                        android:layout_marginTop="40dp"
-                        android:text="No manglik" />
+                        <RadioButton
+                            android:id="@+id/mrbOnlyManglik"
+                            android:layout_width="wrap_content"
+                            android:fontFamily="@font/italic"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Only manglik" />
 
-                    <RadioButton
-                        android:id="@+id/mrbDontNoManglik"
-                        android:layout_width="wrap_content"
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="0dp"
-                        android:fontFamily="@font/italic"
-                        android:layout_weight="1"
-                        android:layout_marginTop="40dp"
-                        android:text="Don't Know" />
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <RadioButton
+                            android:id="@+id/mrbNoManglik"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="15sp"
+                            android:text="No manglik" />
+
+                        <RadioButton
+                            android:id="@+id/mrbDontNoManglik"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/italic"
+                            android:text="Don't Know" />
+
+                    </LinearLayout>
+
+
 
                 </RadioGroup>
-
-
-<!--                <RadioGroup-->
-<!--                    android:id="@+id/rgManglikType"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    >-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_marginStart="8dp"-->
-<!--                        android:layout_height="wrap_content" >-->
-
-<!--                        <com.google.android.material.radiobutton.MaterialRadioButton-->
-<!--                            android:id="@+id/mrbOpenToAll"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_weight="1"-->
-<!--                            android:fontFamily="@font/italic"-->
-<!--                            android:text="Open to All" />-->
-
-<!--                        <com.google.android.material.radiobutton.MaterialRadioButton-->
-<!--                            android:id="@+id/mrbOnlyManglik"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:fontFamily="@font/italic"-->
-<!--                            android:layout_weight="1"-->
-<!--                            android:text="Only manglik"  />-->
-<!--                    </LinearLayout>-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_marginStart="8dp"-->
-<!--                        android:layout_height="wrap_content" >-->
-
-<!--                        <com.google.android.material.radiobutton.MaterialRadioButton-->
-<!--                            android:id="@+id/mrbNoManglik"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_weight="1"-->
-<!--                            android:fontFamily="@font/italic"-->
-<!--                            android:text="No manglik" />-->
-
-<!--                        <com.google.android.material.radiobutton.MaterialRadioButton-->
-<!--                            android:id="@+id/mrbDontNoManglik"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_weight="1"-->
-<!--                            android:fontFamily="@font/italic"-->
-<!--                            android:text="Don't Know"  />-->
-<!--                    </LinearLayout>-->
-<!--                </RadioGroup>-->
 
 
 
@@ -896,6 +864,8 @@
                     android:textStyle="bold"
                     android:background="@drawable/button_hover"
                     android:textColor="@color/white"/>
+
+
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>

@@ -392,6 +392,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcvFamilyDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -537,6 +538,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                           android:id="@+id/llDobDetail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -643,6 +645,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/llLiveINDetail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"

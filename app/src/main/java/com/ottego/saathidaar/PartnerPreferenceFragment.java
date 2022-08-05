@@ -53,14 +53,14 @@ import java.util.Map;
 public class PartnerPreferenceFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    MultipleSelection tvMultipleCast, tvMultipleReligion, multi_SelectionProfessionArea, multi_SelectionCountry, multi_SelectionState, multi_SelectionMotherTongue, tvMultipleCity,multi_SelectionQualification, multi_SelectionWorkingWith;
-    TextView  etFromAgePartnerPreference, etToAgePartnerPreference,tvMultipleMaritalStatus,tvPartnerPreferencesBtn,etIncomePartnerPreference,etProfilePreference,etDietPreference;
+    MultipleSelection tvMultipleCast, tvMultipleReligion, multi_SelectionProfessionArea, multi_SelectionCountry, multi_SelectionState, multi_SelectionMotherTongue, tvMultipleCity, multi_SelectionQualification, multi_SelectionWorkingWith;
+    TextView etFromAgePartnerPreference, etToAgePartnerPreference, tvMultipleMaritalStatus, tvPartnerPreferencesBtn, etIncomePartnerPreference, etProfilePreference, etDietPreference, tvProfileCreated;
     EditText etfromHeightPartnerPreference, etToHeightPartnerPreference;
     boolean[] selectedLanguage;
     SessionManager sessionManager;
     ChipGroup cpChild;
     RadioGroup rgManglikType;
-    MaterialRadioButton mrbNoManglik,mrbOpenToAll,mrbOnlyManglik,mrbDontNoManglik;
+    MaterialRadioButton mrbNoManglik, mrbOpenToAll, mrbOnlyManglik, mrbDontNoManglik;
 
 
     Context context;
@@ -156,7 +156,6 @@ PartnerPreferenceModel model;
         tvMultipleMaritalStatus = view.findViewById(R.id.tvMultipleMaritalStatus);
         multi_SelectionWorkingWith = view.findViewById(R.id.multi_SelectionWorkingWith);
         multi_SelectionProfessionArea = view.findViewById(R.id.multi_SelectionProfessionArea);
-
         rgManglikType = view.findViewById(R.id.rgManglikType);
         tvMultipleCity=view.findViewById(R.id.tvMultipleCity);
 //        tvEditDietPreference = view.findViewById(R.id.etDietPreference);
@@ -678,9 +677,13 @@ city=tvMultipleCity.getText().toString().toString();
             @Override
             public void onResponse(JSONObject response) {
               //  Log.e("response", String.valueOf((response)));
-                Gson gson = new Gson();
-                model = gson.fromJson(String.valueOf(response), PartnerPreferenceModel.class);
-                setData();
+                if(response!=null)
+                {
+                    Gson gson = new Gson();
+                    model = gson.fromJson(String.valueOf(response), PartnerPreferenceModel.class);
+                    setData();
+                }
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -695,39 +698,44 @@ city=tvMultipleCity.getText().toString().toString();
     }
 
     private void setData() {
+        if(model!=null)
+        {
+            tvMultipleMaritalStatus.setText(Utils.nullToBlank(model.partner_marital_status));
+            etFromAgePartnerPreference.setText(Utils.nullToBlank(model.partner_from_age));
+            etToAgePartnerPreference.setText(Utils.nullToBlank(model.partner_to_age));
+            // tvMultipleCity.setText(model.partner_city);
+            multi_SelectionState.setText(model.partner_state);
+            etfromHeightPartnerPreference.setText(Utils.nullToBlank(model.partner_from_height));
+            tvMultipleCity.setText(model.partner_city);
+            etToHeightPartnerPreference.setText(Utils.nullToBlank(model.partner_to_height));
+            multi_SelectionCountry.setText(model.partner_country);
+            multi_SelectionMotherTongue.setText(Utils.nullToBlank(model.partner_mother_tongue));
+            etProfilePreference.setText(Utils.nullToBlank(model.partner_profile_created));
+            multi_SelectionProfessionArea.setText(Utils.nullToBlank(model.partner_professional_area));
+            etIncomePartnerPreference.setText(Utils.nullToBlank(model.partner_annual_income));
+            etDietPreference.setText(Utils.nullToBlank(model.partner_lifestyles));
+            //  tvMultipleCity.setText(model.partner_city);
+            //  etfromHeightPartnerPreference.setText(model.partner_to_height);
+            //  multi_SelectionCountry.setText(model.partner_country);
+            // multi_SelectionMotherTongue.setText(model.partner_mother_tongue);
+            multi_SelectionWorkingWith.setText(Utils.nullToBlank(model.partner_working_with));
+            multi_SelectionQualification.setText(Utils.nullToBlank(model.partner_qualification));
+            tvMultipleCast.setText(model.partner_cast);
+            tvMultipleReligion.setText(model.partner_religions);
 
-        tvMultipleMaritalStatus.setText(model.partner_marital_status);
-        etFromAgePartnerPreference.setText(model.partner_from_age);
-        etToAgePartnerPreference.setText(model.partner_to_age);
-        tvMultipleCity.setText(model.partner_city);
-        multi_SelectionState.setText(model.partner_state);
-        etfromHeightPartnerPreference.setText(model.partner_from_height);
-        tvMultipleCity.setText(model.partner_city);
-        etToHeightPartnerPreference.setText(model.partner_to_height);
-        multi_SelectionCountry.setText(model.partner_country);
-        multi_SelectionMotherTongue.setText(model.partner_mother_tongue);
-etProfilePreference.setText(model.partner_profile_created);
-        multi_SelectionProfessionArea.setText(model.partner_professional_area);
-        etIncomePartnerPreference.setText(model.partner_annual_income);
-        etDietPreference.setText(model.partner_lifestyles);
-        tvMultipleCity.setText(model.partner_city);
-        etToHeightPartnerPreference.setText(model.partner_to_height);
-        multi_SelectionCountry.setText(model.partner_country);
-        multi_SelectionMotherTongue.setText(model.partner_mother_tongue);
-multi_SelectionWorkingWith.setText(model.partner_working_with);
-multi_SelectionQualification.setText(model.partner_qualification);
-tvMultipleCast.setText(model.partner_cast);
-tvMultipleReligion.setText(model.partner_religions);
 
-        if (model.partner_manglik_all!=null && model.partner_manglik_all.equalsIgnoreCase("All")){
-            mrbOpenToAll.setChecked(true);
-        }else if (model.partner_manglik_all!=null && model.partner_manglik_all.equalsIgnoreCase("Yes")){
-            mrbOnlyManglik.setChecked(true);
-        }else if (model.partner_manglik_all!=null && model.partner_manglik_all.equalsIgnoreCase("No")) {
-            mrbNoManglik.setChecked(true);
-        }else if (model.partner_manglik_all!=null && model.partner_manglik_all.equalsIgnoreCase("Don't Know")) {
-            mrbDontNoManglik.setChecked(true);
+            if (model.partner_manglik_all != null && model.partner_manglik_all.equalsIgnoreCase("All")) {
+                mrbOpenToAll.setChecked(true);
+            } else if (model.partner_manglik_all != null && model.partner_manglik_all.equalsIgnoreCase("Yes")) {
+                mrbOnlyManglik.setChecked(true);
+            } else if (model.partner_manglik_all != null && model.partner_manglik_all.equalsIgnoreCase("No")) {
+                mrbNoManglik.setChecked(true);
+            }else if (model.partner_manglik_all!=null && model.partner_manglik_all.equalsIgnoreCase("Don't Know")) {
+                mrbDontNoManglik.setChecked(true);
+            }
         }
+
+
     }
 
     private void multipleCountrySelectionCheckBox() {

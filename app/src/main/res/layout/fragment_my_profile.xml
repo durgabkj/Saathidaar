@@ -103,6 +103,7 @@
                 android:drawableTint="@color/white"
                 android:fontFamily="@font/italic"
                 android:gravity="center"
+                android:visibility="gone"
                 android:background="@drawable/gray_transparent_bg"
                 android:layout_marginBottom="8dp"
                 android:padding="3dp"

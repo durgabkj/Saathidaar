@@ -132,12 +132,12 @@ public class PersonalInfoFragment extends Fragment {
 
         if(horoscopeModel!=null && !horoscopeModel.equals(""))
         {
-            if((horoscopeModel.hours!=null || !horoscopeModel.hours.isEmpty()) && (horoscopeModel.minutes!=null || !horoscopeModel.minutes.isEmpty()) && (horoscopeModel.time!=null || !horoscopeModel.time.isEmpty()) && (horoscopeModel.time_status!=null || !horoscopeModel.time_status.isEmpty()))
+            if((horoscopeModel.hours!=null && !horoscopeModel.hours.isEmpty()) && (horoscopeModel.minutes!=null && !horoscopeModel.minutes.isEmpty()) && (horoscopeModel.time!=null && !horoscopeModel.time.isEmpty()) && (horoscopeModel.time_status!=null && !horoscopeModel.time_status.isEmpty()))
             {
                 binding.tvUserTimeofBirth.setText(horoscopeModel.hours +":"+horoscopeModel.minutes + " "+horoscopeModel.time + " , "+horoscopeModel.time_status);
             }
 
-            if((horoscopeModel.country_of_birth!=null || !horoscopeModel.country_of_birth.isEmpty()) && (horoscopeModel.city_of_birth!=null || !horoscopeModel.city_of_birth.isEmpty()))
+            if((horoscopeModel.country_of_birth!=null && !horoscopeModel.country_of_birth.isEmpty()) && (horoscopeModel.city_of_birth!=null && !horoscopeModel.city_of_birth.isEmpty()))
             {
                 binding.tvUserHPlaceofBirth.setText(horoscopeModel.country_of_birth +", "+ horoscopeModel.city_of_birth);
             }
@@ -202,6 +202,28 @@ public class PersonalInfoFragment extends Fragment {
         });
 
 
+
+
+        binding.tvDob.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    binding.tvGender.setVisibility(View.VISIBLE);
+
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
 
 

@@ -141,6 +141,9 @@ public class DashBoardFragment extends Fragment {
          setPreloadData();
         //  setData();
         listener();
+
+
+
         return view;
 
     }
@@ -202,11 +205,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://192.168.1.38:9094/account/help"));
+                intent.setData(Uri.parse("http://103.150.186.33:8080/account/help"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://192.168.1.38:9094/account/help"));
+                    intent.setData(Uri.parse("http://103.150.186.33:8080/account/help"));
                 }
             }
         });
@@ -216,11 +219,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://192.168.1.38:9094/account/help"));
+                intent.setData(Uri.parse("http://103.150.186.33:8080/account/help"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://192.168.1.38:9094/account/help"));
+                    intent.setData(Uri.parse("http://103.150.186.33:8080/account/help"));
                 }
             }
         });
@@ -230,11 +233,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("hhttp://192.168.1.38:9094/account/privacy-policy"));
+                intent.setData(Uri.parse("http://103.150.186.33:8080/account/privacy-policy"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://192.168.1.38:9094/account/privacy-policy"));
+                    intent.setData(Uri.parse("http://103.150.186.33:8080/account/privacy-policy"));
                 }
             }
         });
@@ -244,11 +247,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://192.168.1.38:9094/account/term-condition"));
+                intent.setData(Uri.parse("http://103.150.186.33:8080/account/term-condition"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://192.168.1.38:9094/account/term-condition"));
+                    intent.setData(Uri.parse("http://103.150.186.33:8080/account/term-condition"));
                 }
             }
         });
@@ -315,11 +318,13 @@ public class DashBoardFragment extends Fragment {
     }
 
     private void setData() {
+        count++;
         if (model.data != null || model.data.size() > 0 || model.data.isEmpty()) {
             RequestAccept.setText(model.data.get(0).accept_request_count);
             RequestSent.setText(model.data.get(0).sent_request_count);
             Visitors.setText(model.data.get(0).recent_visitors_count);
         }
+        refresh(1000);
     }
     private void set() {
         if (countDownTimer != null) {
@@ -384,26 +389,41 @@ public class DashBoardFragment extends Fragment {
     }
 
     private void setDataMember() {
-        if (isValidContextForGlide(context)){
-            // Load image via Glide lib using context
-            if (memberProfileModel.profile_photo != null && !memberProfileModel.profile_photo.isEmpty()) {
-                Glide.with(context)
-                        .load(Utils.imageUrl + memberProfileModel.profile_photo)
-                        .into(profilePicDashBoard);
-            } else {
-                if (sessionManager.getUserGender().equalsIgnoreCase("male")) {
-                    Glide.with(context)
-                            .load(R.drawable.ic_no_image__male_)
-                            .into(profilePicDashBoard);
 
+
+        if(memberProfileModel!=null)
+        {
+//            // code for hide premium button if member buy membership plan.
+//            if(memberProfileModel.premium_status.equalsIgnoreCase("1"))
+//            {
+//                tvDashboardUpgrade.setVisibility(View.GONE);
+//            }
+
+
+            if (isValidContextForGlide(context)){
+                // Load image via Glide lib using context
+                if (memberProfileModel.profile_photo != null && !memberProfileModel.profile_photo.isEmpty()) {
+                    Glide.with(context)
+                            .load(Utils.imageUrl + memberProfileModel.profile_photo)
+                            .into(profilePicDashBoard);
                 } else {
-                    Glide.with(context)
-                            .load(R.drawable.ic_no_image__female_)
-                            .into(profilePicDashBoard);
+                    if (sessionManager.getUserGender().equalsIgnoreCase("male")) {
+                        Glide.with(context)
+                                .load(R.drawable.ic_no_image__male_)
+                                .into(profilePicDashBoard);
 
+                    } else {
+                        Glide.with(context)
+                                .load(R.drawable.ic_no_image__female_)
+                                .into(profilePicDashBoard);
+
+                    }
                 }
             }
+
         }
+
+
 
     }
 

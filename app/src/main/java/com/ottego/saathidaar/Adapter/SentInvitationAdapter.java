@@ -61,10 +61,10 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
             InboxModel item = list.get(position);
             Log.e(" Inbox model", new Gson().toJson(item));
             sessionManager=new SessionManager(context);
-            holder.tvInvNewMatchName.setText(item.first_name + " " + item.last_name);
-            holder.tvInvNewMatchAge.setText(item.mage+" yrs");
-            holder.tvInvNewMatchHeight.setText(item.religion);
-            holder.tvInvNewMatchCity.setText(item.maritalStatus);
+            holder.tvInvNewMatchName.setText(Utils.nullToBlank(item.first_name) + " " + Utils.nullToBlank(item.last_name));
+            holder.tvInvNewMatchAge.setText(Utils.nullToBlank(item.mage+" yrs"));
+            holder.tvInvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
+            holder.tvInvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
             holder.tvInvNewMatchWorkAs.setText(item.country);
             holder.tvImageCountSent.setText(item.images_count);
 

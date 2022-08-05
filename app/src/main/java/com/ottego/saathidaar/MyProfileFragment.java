@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -105,6 +107,34 @@ int count=0;
     }
 
     private void listener() {
+
+        tvAboutUs.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                tvUserDetailsReadMore.setVisibility(View.VISIBLE);
+//                String status = tvAboutUs.getText().toString().trim();
+//                if (status.equalsIgnoreCase("")) {
+//
+//                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+
+
         tvUserDetailsReadMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -171,9 +201,11 @@ int count=0;
     }
 
     private void setPreLoadData() {
+        count++;
         tvUserName.setText(sessionManager.getName()+" "+sessionManager.getLastName());
         tvUserEmail.setText(sessionManager.getEmail());
         tvAboutUs.setText(sessionManager.getAbout_Description());
+        refresh(1000);
     }
 
 
