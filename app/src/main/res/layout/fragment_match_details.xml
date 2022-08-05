@@ -1031,11 +1031,12 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/italic"
+                            android:text="To unlock Contact &amp; Email ID"
                             android:textColor="@color/black" />
 
 
                         <TextView
-                            android:id="@+id/tvPremiumContact"
+                            android:id="@+id/tvPremiumCollegeAndCompany"
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -1525,38 +1526,12 @@
                         </LinearLayout>
 
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="20dp"
-                            android:background="@drawable/line_gradient" />
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="1dp"-->
+<!--                            android:layout_marginTop="20dp"-->
+<!--                            android:background="@drawable/line_gradient" />-->
 
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/italic"
-                            android:text="To unlock Contact &amp; Email ID"
-                            android:textColor="@color/black" />
-
-
-                        <TextView
-                            android:id="@+id/tvPremiumCollegeAndCompany"
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:background="@drawable/edt_text_border"
-                            android:elevation="20dp"
-                            android:fontFamily="@font/italic"
-                            android:padding="10dp"
-                            android:text="Go Upgrade Now"
-                            android:textAlignment="center"
-                            android:textColor="@color/colorPrimary"
-                            android:textStyle="bold"
-                            android:translationZ="20dp" />
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -1601,8 +1576,7 @@
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:background="@color/white"
-                                    android:scaleType="centerCrop"
-                                    android:src="@drawable/local" />
+                                    android:scaleType="centerCrop" />
 
 
                             </com.google.android.material.card.MaterialCardView>
@@ -1626,8 +1600,7 @@
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:background="@color/white"
-                                    android:scaleType="centerCrop"
-                                    android:src="@drawable/local" />
+                                    android:scaleType="centerCrop" />
 
 
                             </com.google.android.material.card.MaterialCardView>
@@ -2686,6 +2659,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
+                            android:visibility="gone"
                             android:orientation="horizontal">
 
 
@@ -2946,38 +2920,38 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/ivDetailsConnected"
+                    android:id="@+id/ivDetailsMatchConnected"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:visibility="gone"
                     app:cardCornerRadius="100dp">
 
                     <ImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:background="@color/white"
                         android:padding="6dp"
-                        android:visibility="gone"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_check_black_24dp" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/ivDetailsConnect"
+                    android:id="@+id/ivDetailsMatchConnect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     app:cardCornerRadius="100dp">
                     <ImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:background="@color/white"
                         android:padding="6dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_checkmark" />
                 </androidx.cardview.widget.CardView>
-
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>

@@ -11,7 +11,7 @@ public class SessionModel {
     public String gender;
     public String results;
     public String profile_id;
-    public String profilecreatedby;
+    public String profile_created_by;
 
     public SessionModel(String member_id, String firstName, String lastName, String email, String enabled, String phone, String username, String gender, String results, String profile_id,String profilecreatedby) {
         this.member_id = member_id;
@@ -24,7 +24,7 @@ public class SessionModel {
         this.gender = gender;
         this.results = results;
         this.profile_id = profile_id;
-        this.profilecreatedby = profilecreatedby;
+        this.profile_created_by = profilecreatedby;
     }
 
 

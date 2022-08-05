@@ -81,9 +81,9 @@ public class InboxDetailFragment extends Fragment {
         listener();
         getData();
          setData();
-         getLoginMemberData();
+         //getLoginMemberData();
          getMemberPreferenceData();
-getHoroscopeData();
+         getHoroscopeData();
 
         return b.getRoot();
     }
@@ -174,13 +174,12 @@ getHoroscopeData();
         b.tvDetailStateMatch.setText(memberPreferenceModel.partner_state);
         b.tvDetailEducationField.setText(memberPreferenceModel.partner_qualification);
         b.tvDetailWorkingWithMatch.setText(memberPreferenceModel.partner_working_with);
-        b.tvDetailAnnualIncome.setText(memberPreferenceModel.partner_annual_income);
 
 
         b.tvDetailReligionMatch.setText(memberPreferenceModel.partner_religions);
         b.tvDetailMotherTongueMatch.setText(memberPreferenceModel.partner_mother_tongue);
         b.tvDetailcityMatch.setText(memberPreferenceModel.partner_city);
-        b.tvDetailAnnualIncome.setText(memberPreferenceModel.partner_annual_income);
+        b.tvDetailIncomeMatch.setText(memberPreferenceModel.partner_annual_income);
 
 
         if (memberPreferenceModel.my_age.equalsIgnoreCase("Yes")) {
@@ -282,15 +281,7 @@ getHoroscopeData();
             b.cvDot11.setVisibility(View.VISIBLE);
         }
 
-//        if(memberPreferenceModel.my_m.equalsIgnoreCase("Yes")){
-//            b.cvcheck12.setVisibility(View.VISIBLE);
-//        }else if(memberPreferenceModel.my_mother_tongue.equalsIgnoreCase("NO"))
-//        {
-//            b.cvClear11.setVisibility(View.VISIBLE);
-//        }else
-//        {
-//            b.cvDot11.setVisibility(View.VISIBLE);
-//        }
+
 
         if (memberPreferenceModel.my_city.equalsIgnoreCase("Yes")) {
             b.cvcheck13.setVisibility(View.VISIBLE);
@@ -305,13 +296,13 @@ getHoroscopeData();
     private void listener() {
 
 
-        b.tvPremiumCollegeAndCompany.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, UpgradeOnButtonActivity.class);
-                context.startActivity(intent);
-            }
-        });
+//        b.tvPremiumCollegeAndCompany.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(context, UpgradeOnButtonActivity.class);
+//                context.startActivity(intent);
+//            }
+//        });
 
         b.tvPremiumContact.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -457,13 +448,14 @@ getHoroscopeData();
             b.tvDetailProfession.setText(model.working_as);
             b.tvDetailCompanyName.setText(model.working_with);
             b.tvDetailAnnualIncome.setText("Earn " + model.annual_income);
-            b.tvDetailEducationField.setText(model.highest_qualification);
+            b.tvDetailEducationField.setText(model.education);
             b.tvDetailCollege.setText(model.college_attended);
             b.tvDetailEmailID.setText(model.profile_email_id);
             b.tvDetailCall.setText(model.profile_contact_number);
             b.tvImageCountInbox.setText(model.images_count);
+            b.tvDetailHQualification.setText(model.highest_qualification);
 
-Log.e("hey",model.my_premium_status);
+            Log.e("hey",model.my_premium_status);
             if (model.photo_privacy.equalsIgnoreCase("1")) {
                 b.llShowMemberImageInbox.setVisibility(View.VISIBLE);
                 b.flPremiumInboxDetails.setVisibility(View.GONE);
@@ -516,68 +508,78 @@ Log.e("hey",model.my_premium_status);
                     //.transform(!model.my_premium_status.equals(model.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(b.profileDetailPic1Partner);
 
-        }
 
-
-    }
-
-
-    private void getLoginMemberData() {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                DashBoardFragment.Profile_url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                // binding.srlRecycleViewPersonalDetails.setRefreshing(false);
-                Log.e("response", String.valueOf(response));
-                try {
-                    String code = response.getString("results");
-                    if (code.equalsIgnoreCase("1")) {
-                        Gson gson = new Gson();
-                        model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
-                        setDataMember();
-                    } else {
-
-                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //  binding.srlRecycleViewPersonalDetails.setRefreshing(false);
-                error.printStackTrace();
-            }
-        });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
-    }
-
-    private void setDataMember() {
-//        Glide.with(context)
-//                .load(Utils.imageUrl + model.profile_photo)
-//                .into(b.profileDetailPic);
-
-        if (model.profile_photo != null && !model.profile_photo.isEmpty()) {
             Glide.with(context)
-                    .load(Utils.imageUrl + model.profile_photo)
+                    .load(Utils.imageUrl + model.my_profile_photo)
+                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    //.transform(!model.my_premium_status.equals(model.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(b.profileDetailPic);
-        } else {
-            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__male_)
-                        .into(b.profileDetailPic);
 
-            } else {
-                Glide.with(context)
-                        .load(R.drawable.ic_no_image__female_)
-                        .into(b.profileDetailPic);
+                }
 
-            }
+
         }
-    }
+
+
+
+//
+//
+//    private void getLoginMemberData() {
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+//                DashBoardFragment.Profile_url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+//            @Override
+//            public void onResponse(JSONObject response) {
+//                // binding.srlRecycleViewPersonalDetails.setRefreshing(false);
+//                Log.e("response", String.valueOf(response));
+//                try {
+//                    String code = response.getString("results");
+//                    if (code.equalsIgnoreCase("1")) {
+//                        Gson gson = new Gson();
+//                        model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
+//                        setDataMember();
+//                    } else {
+//
+//                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                //  binding.srlRecycleViewPersonalDetails.setRefreshing(false);
+//                error.printStackTrace();
+//            }
+//        });
+//        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+//        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+//
+//    }
+//
+//    private void setDataMember() {
+////        Glide.with(context)
+////                .load(Utils.imageUrl + model.profile_photo)
+////                .into(b.profileDetailPic);
+//
+//        if (model.profile_photo != null && !model.profile_photo.isEmpty()) {
+//            Glide.with(context)
+//                    .load(Utils.imageUrl + model.profile_photo)
+//                    .into(b.profileDetailPic);
+//        } else {
+//            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
+//                Glide.with(context)
+//                        .load(R.drawable.ic_no_image__male_)
+//                        .into(b.profileDetailPic);
+//
+//            } else {
+//                Glide.with(context)
+//                        .load(R.drawable.ic_no_image__female_)
+//                        .into(b.profileDetailPic);
+//
+//            }
+//        }
+//    }
 }

@@ -44,8 +44,8 @@
                     android:id="@+id/tvPhoneShowText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Only Premium Members"
                     android:textColor="#494747"
+                    android:text="Visible to all Member"
                     android:textSize="16sp" />
 
 
@@ -70,8 +70,8 @@
             <LinearLayout
                 android:id="@+id/llHidePhone"
                 android:layout_width="match_parent"
-                android:visibility="gone"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:orientation="horizontal"
                 >
 
@@ -176,8 +176,8 @@
                     android:id="@+id/tvEmailShowText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Visible to all Premium Members"
                     android:textColor="#494747"
+                    android:text="Visible to all Member"
                     android:textSize="16sp" />
 
 
@@ -310,8 +310,8 @@
                     android:id="@+id/tvPhotoShowText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Visible to all Members"
                     android:textColor="#494747"
+                    android:text="Visible to all Member"
                     android:textSize="16sp" />
 
 
@@ -445,9 +445,9 @@ android:visibility="gone"
                 <TextView
                     android:id="@+id/tvDOBShowText"
                     android:layout_width="wrap_content"
-                    android:text="Visible to all Members"
                     android:layout_height="wrap_content"
                     android:textColor="#494747"
+                    android:text="Visible to all Member"
                     android:textSize="16sp" />
 
 
@@ -581,8 +581,8 @@ android:visibility="gone"
                     android:id="@+id/tvIncomeShowText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Visible to all Members"
                     android:textColor="#494747"
+                    android:text="Visible to all Member"
                     android:textSize="16sp" />
 
 

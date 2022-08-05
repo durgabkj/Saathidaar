@@ -82,7 +82,7 @@ public class FamilyProfileActivity extends AppCompatActivity {
             b.etFatherCompanyName.setText(model.father_company_name);
             b.etFatherDesignation.setText(model.father_designation);
             b.etFatherNatureBusiness.setText(model.father_business_name);
-            b.etMStatus.setText(model.father_status);
+            b.etMStatus.setText(model.mother_status);
             b.etMotherCompanyName.setText(model.mother_company_name);
             b.etMotherDesignation.setText(model.mother_designation);
             b.etMotherNatureBusiness.setText(model.mother_business_name);

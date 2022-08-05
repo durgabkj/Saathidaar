@@ -213,7 +213,7 @@ FragmentFamilyInfoBinding b;
     }
 
     private void getMemberData() {
-        count++;
+       count++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
@@ -246,7 +246,7 @@ FragmentFamilyInfoBinding b;
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
 
-        refresh(1000);
+        refresh(3000);
     }
 
     private void setData() {

@@ -294,7 +294,6 @@ public class PrivacyOptionFragment extends Fragment {
             public void onClick(View view) {
                 b.llHideIncome.setVisibility(View.GONE);
                 b.llshowIncomePrivacy.setVisibility(View.VISIBLE);
-
                 b.tvEditDOB.setVisibility(View.VISIBLE);
                 b.tvEditPhone.setVisibility(View.VISIBLE);
                 b.tvEditPhoto.setVisibility(View.VISIBLE);
@@ -305,19 +304,16 @@ public class PrivacyOptionFragment extends Fragment {
         });
 
         b.radioGroupPhone.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 int id = group.getCheckedRadioButtonId();
                 RadioButton rb = b.radioGroupPhone.findViewById(id);
 //                OR
 //                RadioButton rb=(RadioButton) findViewById(checkedId);
-
                 radioText = rb.getText().toString();
                 b.tvPhoneShowText.setText(radioText);
             }
         });
-
 
         b.radioGroupEmail.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
@@ -365,7 +361,6 @@ public class PrivacyOptionFragment extends Fragment {
 
 
         b.radioGroupIncome.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 int id = group.getCheckedRadioButtonId();
@@ -382,13 +377,26 @@ public class PrivacyOptionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 submitPhoneForm();
+                b.llHidePhone.setVisibility(View.GONE);
+                b.llshowPhonePrivacy.setVisibility(View.VISIBLE);
+                b.tvEditDOB.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.VISIBLE);
+                b.tvEditIncome.setVisibility(View.VISIBLE);
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
             }
         });
 
-        b.tvSavePhoneHideShow.setOnClickListener(new View.OnClickListener() {
+        b.tvSaveEmailHideShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 submitEmailForm();
+                b.llHideEmail.setVisibility(View.GONE);
+                b.llshowEmailPrivacy.setVisibility(View.VISIBLE);
+
+                b.tvEditDOB.setVisibility(View.VISIBLE);
+                b.tvEditPhone.setVisibility(View.VISIBLE);
+                b.tvEditIncome.setVisibility(View.VISIBLE);
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
             }
         });
 
@@ -397,6 +405,14 @@ public class PrivacyOptionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 submitPhotoForm();
+                b.llHidePhoto.setVisibility(View.GONE);
+                b.llshowPhotoPrivacy.setVisibility(View.VISIBLE);
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
+
+                b.tvEditDOB.setVisibility(View.VISIBLE);
+                b.tvEditPhone.setVisibility(View.VISIBLE);
+                b.tvEditIncome.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.VISIBLE);
             }
         });
 
@@ -405,6 +421,13 @@ public class PrivacyOptionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 submitDobForm();
+                b.llHideDOB.setVisibility(View.GONE);
+                b.llshowDOBPrivacy.setVisibility(View.VISIBLE);
+
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
+                b.tvEditPhone.setVisibility(View.VISIBLE);
+                b.tvEditIncome.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.VISIBLE);
             }
         });
 
@@ -413,10 +436,14 @@ public class PrivacyOptionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 submitIncomeForm();
+                b.llHideIncome.setVisibility(View.GONE);
+                b.llshowIncomePrivacy.setVisibility(View.VISIBLE);
+                b.tvEditDOB.setVisibility(View.VISIBLE);
+                b.tvEditPhone.setVisibility(View.VISIBLE);
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.VISIBLE);
             }
         });
-
-
     }
 
     private void submitIncomeForm() {
@@ -433,8 +460,6 @@ public class PrivacyOptionFragment extends Fragment {
                         try {
                             code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
-                                b.llHideIncome.setVisibility(View.GONE);
-                                b.llshowIncomePrivacy.setVisibility(View.VISIBLE);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -473,8 +498,6 @@ public class PrivacyOptionFragment extends Fragment {
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
-                                b.llHideDOB.setVisibility(View.GONE);
-                                b.llshowDOBPrivacy.setVisibility(View.VISIBLE);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -511,8 +534,12 @@ public class PrivacyOptionFragment extends Fragment {
                         Log.e(" PhotoPrivacy response", String.valueOf((response)));
 
                         try {
-                            b.llHidePhoto.setVisibility(View.GONE);
-                            b.llshowPhotoPrivacy.setVisibility(View.VISIBLE);
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
                             Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -544,8 +571,12 @@ public class PrivacyOptionFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         Log.e(" emailPrivacy response", String.valueOf((response)));
                         try {
-                            b.llHideEmail.setVisibility(View.GONE);
-                            b.llshowEmailPrivacy.setVisibility(View.VISIBLE);
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
                             Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -578,8 +609,12 @@ public class PrivacyOptionFragment extends Fragment {
                         Log.e(" phonePrivacy response", String.valueOf((response)));
 
                         try {
-                            b.llHidePhone.setVisibility(View.GONE);
-                            b.llshowPhonePrivacy.setVisibility(View.VISIBLE);
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
                             Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();

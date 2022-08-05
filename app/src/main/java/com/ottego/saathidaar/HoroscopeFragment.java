@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -55,7 +54,7 @@ public class HoroscopeFragment extends Fragment {
     String minutes;
     String time;
     String timeStatus;
-    String manglik;
+    String manglik = "";
     public String url = Utils.memberUrl + "horoscope/update/";
     public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
 
@@ -104,8 +103,6 @@ public class HoroscopeFragment extends Fragment {
         listener();
         getCountry();
         getData();
-
-
         return b.getRoot();
     }
 
@@ -114,19 +111,22 @@ public class HoroscopeFragment extends Fragment {
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
     private void setData1() {
-        b.acvCountry.setText(model.country_of_birth);
-        b.etHoroscopeBirthCity.setText(model.city_of_birth);
-        b.acvHour.setText(model.hours);
-        b.acvMinutes.setText(model.minutes);
-        b.actvampm.setText(model.time);
-        b.actvapprox.setText(model.time_status);
+        if (model != null) {
 
-        if (model.manglik != null && model.manglik.equalsIgnoreCase("Yes")) {
-            b.radioButton1.setChecked(true);
-        } else if (model.manglik != null && model.manglik.equalsIgnoreCase("No")) {
-            b.radioButton2.setChecked(true);
-        } else if (model.manglik != null && model.manglik.equalsIgnoreCase("Don't Know")) {
-            b.radioButton3.setChecked(true);
+            b.acvCountry.setText(model.country_of_birth);
+            b.etHoroscopeBirthCity.setText(model.city_of_birth);
+            b.acvHour.setText(model.hours);
+            b.acvMinutes.setText(model.minutes);
+            b.actvampm.setText(model.time);
+            b.actvapprox.setText(model.time_status);
+
+            if (model.manglik != null && model.manglik.equalsIgnoreCase("Yes")) {
+                b.radioButton1.setChecked(true);
+            } else if (model.manglik != null && model.manglik.equalsIgnoreCase("No")) {
+                b.radioButton2.setChecked(true);
+            } else if (model.manglik != null && model.manglik.equalsIgnoreCase("Don't Know")) {
+                b.radioButton3.setChecked(true);
+            }
         }
 
     }
@@ -192,10 +192,10 @@ public class HoroscopeFragment extends Fragment {
                 switch (checkedId) {
                     case R.id.radio_button_1:
                         manglik = "yes";
-
+                        break;
                     case R.id.radio_button_2:
                         manglik = "no";
-
+                        break;
                     case R.id.radio_button_3:
                         manglik = "Don't Know";
                 }
@@ -261,7 +261,7 @@ public class HoroscopeFragment extends Fragment {
         Map<String, String> params = new HashMap<String, String>();
         params.put("country_of_birth", countryName);
         params.put("city_of_birth", cityName);
-        params.put("time", ","+time);
+        params.put("time", time);
         params.put("time_status", timeStatus);
         params.put("hours", hour);
         params.put("minutes", minutes);
@@ -360,7 +360,6 @@ public class HoroscopeFragment extends Fragment {
 //            alphabetsList.add(Character.toString(i));
         return countryList;
     }
-
 
     private void setDropDownData() {
 
@@ -621,20 +620,10 @@ public class HoroscopeFragment extends Fragment {
 
     @SuppressLint("SetTextI18n")
     private void setData() {
-
-        String value="";
-//            if(model.hours!=null && !model.hours.equals(""))
-//                value=model.hours;
-//            if(model.minutes!=null && !model.minutes.equals(""))
-//                value = value +":"+model.minutes;
-//            if(model.time!=null && !model.time.equals(""))
-//                value = value +","+model.time;
-//            if(model.time_status!=null && !model.time_status.equals(""))
-//                value = value +","+model.time_status;
         if (model != null && !model.equals("")) {
             b.tvCountryOfBirth.setText(model.country_of_birth);
             b.tvCityofBirth.setText(model.city_of_birth);
-            b.tvTimeofBirth.setText(model.hours + ":" + model.minutes + " " + model.time + "," + model.time_status);
+            b.tvTimeofBirth.setText(model.hours + model.minutes + model.time + model.time_status);
             b.tvManglik.setText(model.manglik);
         }
     }

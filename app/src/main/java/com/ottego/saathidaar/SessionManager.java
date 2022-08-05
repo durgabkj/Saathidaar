@@ -4,11 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
-import com.ottego.saathidaar.Model.HoroscopeModel;
-import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.Model.SessionModel;
-import com.ottego.saathidaar.Model.SessionProfileDetailModel;
-import com.ottego.saathidaar.Model.UserModel;
 
 public class SessionManager {
 
@@ -21,7 +17,7 @@ public class SessionManager {
     public static final String KEY_USERID = "username";
     public static final String KEY_GENDER = "gender";
     public static final String KEY_PROFILE_ID_Log = "profile_id";
-    public static final String KEY_PROFILE_CreatedBy = "profilecreatedby";
+    public static final String KEY_PROFILE_CreatedBy = "profile_created_by";
 
 //user data
     public static final String KEY_about_ourself = "about_ourself";
@@ -51,7 +47,7 @@ public class SessionManager {
         editor.putString(KEY_USERID, model.username);
         editor.putString(KEY_GENDER, model.gender);
         editor.putString(KEY_PROFILE_ID_Log, model.profile_id);
-        editor.putString(KEY_PROFILE_CreatedBy, model.profilecreatedby);
+        editor.putString(KEY_PROFILE_CreatedBy, model.profile_created_by);
 
         editor.commit();
     }

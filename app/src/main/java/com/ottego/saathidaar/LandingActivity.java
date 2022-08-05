@@ -142,6 +142,7 @@ public class LandingActivity extends AppCompatActivity {
                     switch (checkedId) {
                         case R.id.female:
                             gender = "female";
+                          break;
 
                         case R.id.male:
                             gender = "male";
