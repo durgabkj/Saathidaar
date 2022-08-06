@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ottego.saathidaar" >
+    package="com.ottego.saathidaar">
+
+    <uses-sdk
+        android:minSdkVersion="24"
+        android:targetSdkVersion="32"
+        tools:ignore="GradleOverrides" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,16 +21,12 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
 
-
-    <uses-sdk android:minSdkVersion="24"
-        android:targetSdkVersion="32"
-        tools:ignore="GradleOverrides" />
     <supports-screens
-        android:resizeable="true"
-        android:smallScreens="true"
-        android:normalScreens="true"
         android:anyDensity="true"
-        android:largeScreens="true" />
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
 
     <application
         android:allowBackup="true"
@@ -34,84 +35,83 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Saathidaar"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
         <activity
-            android:name=".MemberGalleryActivity"
+            android:name="com.ottego.saathidaar.KYCActivity"
             android:exported="false" />
         <activity
-            android:name=".MyMatchesShowActivity"
+            android:name="com.ottego.saathidaar.MemberGalleryActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfessionalDetaisShowActivity"
+            android:name="com.ottego.saathidaar.MyMatchesShowActivity"
             android:exported="false" />
         <activity
-            android:name=".FamilyDetailShowActivity"
+            android:name="com.ottego.saathidaar.ProfessionalDetaisShowActivity"
             android:exported="false" />
         <activity
-            android:name=".PersonalInfoShowActivity"
+            android:name="com.ottego.saathidaar.FamilyDetailShowActivity"
             android:exported="false" />
         <activity
-            android:name=".RequestAcceptActivity"
+            android:name="com.ottego.saathidaar.PersonalInfoShowActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileVisitorsActivity"
+            android:name="com.ottego.saathidaar.RequestAcceptActivity"
             android:exported="false" />
         <activity
-            android:name=".TestActivity"
+            android:name="com.ottego.saathidaar.ProfileVisitorsActivity"
             android:exported="false" />
         <activity
-            android:name=".UpgradeOnButtonActivity"
+            android:name="com.ottego.saathidaar.TestActivity"
             android:exported="false" />
         <activity
-            android:name=".GalleryActivity"
+            android:name="com.ottego.saathidaar.UpgradeOnButtonActivity"
             android:exported="false" />
         <activity
-            android:name=".MoreActivity"
+            android:name="com.ottego.saathidaar.GalleryActivity"
             android:exported="false" />
         <activity
-            android:name=".UpgradePlanDetailsActivity"
+            android:name="com.ottego.saathidaar.MoreActivity"
             android:exported="false" />
         <activity
-            android:name=".ForgetActivity"
+            android:name="com.ottego.saathidaar.UpgradePlanDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.ottego.saathidaar.ForgetActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.ottego.saathidaar.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".OtpVerificationActivity"
+            android:name="com.ottego.saathidaar.OtpVerificationActivity"
             android:exported="true" />
         <activity
-            android:name=".LandingActivity"
+            android:name="com.ottego.saathidaar.LandingActivity"
             android:exported="true" />
         <activity
-            android:name=".ProfessionalDetailEditActivity"
+            android:name="com.ottego.saathidaar.ProfessionalDetailEditActivity"
             android:exported="false" />
         <activity
-            android:name=".FamilyProfileActivity"
+            android:name="com.ottego.saathidaar.FamilyProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileEditPersonalActivity"
+            android:name="com.ottego.saathidaar.ProfileEditPersonalActivity"
             android:exported="false" />
         <activity
-            android:name=".NavigationActivity"
+            android:name="com.ottego.saathidaar.NavigationActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true" >
+            android:name="com.ottego.saathidaar.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_test_QHOsVAlUo7NNwl" />
-
-
-
     </application>
 
 </manifest>

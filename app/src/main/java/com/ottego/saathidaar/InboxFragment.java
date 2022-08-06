@@ -37,7 +37,7 @@ public class InboxFragment extends Fragment {
     InvitationFragment invitationFragment = new InvitationFragment();
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+int count=0;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -139,6 +139,7 @@ public class InboxFragment extends Fragment {
 
 
     private void getDataCount() {
+        count++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
@@ -156,7 +157,7 @@ public class InboxFragment extends Fragment {
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
+refresh(1000);
 
     }
 
@@ -192,10 +193,29 @@ public class InboxFragment extends Fragment {
             badgeDrawable3.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
             badgeDrawable3.setBadgeGravity(BadgeDrawable.TOP_END);
 
+
+            BadgeDrawable badgeDrawable4= b.tlInbox.getTabAt(0).getOrCreateBadge();
+            badgeDrawable4.setNumber(Integer.parseInt(model.data.get(0).invitations_count));
+            badgeDrawable4.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+            badgeDrawable4.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            badgeDrawable4.setBadgeGravity(BadgeDrawable.TOP_END);
+
         }
     }
 
+    private void refresh(int millisecond) {
 
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                getDataCount();
+            }
+        };
+
+        handler.postDelayed(runnable, millisecond);
+
+    }
 
 
 }

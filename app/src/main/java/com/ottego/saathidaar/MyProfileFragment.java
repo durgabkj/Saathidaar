@@ -117,11 +117,14 @@ int count=0;
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                tvUserDetailsReadMore.setVisibility(View.VISIBLE);
-//                String status = tvAboutUs.getText().toString().trim();
-//                if (status.equalsIgnoreCase("")) {
-//
-//                }
+
+                String status = tvAboutUs.getText().toString().trim();
+                if (status.equalsIgnoreCase("")) {
+                    tvUserDetailsReadMore.setVisibility(View.GONE);
+                }
+                else {
+                    tvUserDetailsReadMore.setVisibility(View.VISIBLE);
+                }
 
 
             }
@@ -131,8 +134,6 @@ int count=0;
 
             }
         });
-
-
 
 
         tvUserDetailsReadMore.setOnClickListener(new View.OnClickListener() {

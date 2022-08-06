@@ -176,34 +176,6 @@ public class PersonalInfoFragment extends Fragment {
             }
         });
 
-
-        binding.tvUserMaritalStatus.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-
-                String status = binding.tvUserMaritalStatus.getText().toString().trim();
-                if (status.equalsIgnoreCase("Never Married")) {
-                    binding.llChild.setVisibility(View.GONE);
-                }
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-
-
-
         binding.tvDob.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -213,7 +185,15 @@ public class PersonalInfoFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+                String dob = binding.tvDob.getText().toString().trim();
+                if (dob.equalsIgnoreCase("")) {
+                    binding.tvGender.setVisibility(View.GONE);
+                }
+                else {
                     binding.tvGender.setVisibility(View.VISIBLE);
+                }
+
+
 
 
 

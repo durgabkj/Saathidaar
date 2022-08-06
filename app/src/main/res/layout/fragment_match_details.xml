@@ -331,6 +331,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcvAboutDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -355,7 +356,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/italic"
-
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -364,9 +364,8 @@
                             android:id="@+id/tvAboutUserDetails"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="10dp"
                             android:maxLines="4"
-                            android:inputType="textCapWords"
                             android:fontFamily="@font/italic"
                              android:textColor="@color/black" />
 
@@ -418,7 +417,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tvNameUserFamilyDetails"
+                            android:id="@+id/tvNameUserFamilyDetailsHeading"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/italic"
@@ -430,9 +429,7 @@
                             android:id="@+id/tvAboutUserFamilyDetails"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:maxLines="4"
-                            android:inputType="textCapSentences"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="@font/italic"
                              android:textColor="@color/black" />
 
@@ -443,6 +440,7 @@
                             android:layout_gravity="center"
                             android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                             android:text="View more"
+
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -500,8 +498,11 @@
                                 android:id="@+id/tvCreatedBy"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/italic"
+                                android:textSize="12dp"
+                                android:layout_weight="1"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp" />
+                                android:padding="5dp" />
 
 
                             <TextView
@@ -509,8 +510,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
+                                android:textSize="12dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/italic"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp" />
+                                android:padding="5dp" />
 
                         </LinearLayout>
 
@@ -525,8 +529,11 @@
                                 android:id="@+id/tvDetailAge"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textSize="12dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/italic"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp" />
+                                android:padding="5dp" />
 
 
                             <TextView
@@ -534,8 +541,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
+                                android:fontFamily="@font/italic"
+                                android:textSize="13sp"
+                                android:layout_weight="1"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp" />
+                                android:padding="5dp" />
 
                         </LinearLayout>
 

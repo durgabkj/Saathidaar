@@ -38,11 +38,25 @@
 
 
     <TextView
+        android:id="@+id/tvEnterPhoneToForget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Just enter your phone number you've used to register with us to reset your password"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_gravity="center"
+        android:textSize="15sp"
+        android:fontFamily="@font/italic"/>
+
+    <TextView
+        android:id="@+id/tvEnterOTPToForget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OTP Successfully sent on your registered mobile number."
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:visibility="gone"
         android:layout_marginStart="40dp"
         android:layout_gravity="center"
         android:textSize="15sp"
@@ -54,12 +68,13 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
+        android:maxLength="10"
         android:textColorHint="@color/colorPrimary"
         android:background="@drawable/edt_text_border"
         android:drawableStart="@drawable/ic_baseline_stay_primary_portrait_24"
         android:fontFamily="@font/italic"
-        android:hint="Phone"
-        android:inputType="text" />
+        android:hint="Enter phone number"
+        android:inputType="number" />
 
 
 
@@ -91,6 +106,7 @@
         android:fontFamily="@font/italic"
         android:text="Resend OTP"
         android:padding="8dp"
+        android:visibility="gone"
         android:layout_marginRight="55dp"
         android:textColor="@color/colorPrimary"
         android:textSize="16dp"

@@ -20,457 +20,471 @@
         android:textColor="@color/white"
         android:textStyle="bold" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvShowDetails"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="20dp"
-        android:elevation="3dp"
-        android:translationZ="10dp"
-        app:cardCornerRadius="10dp">
-
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/italic"
-                    android:text="Country of Birth"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvCountryOfBirth"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/italic"
-                    android:hint="Add Details"
-                    android:textColorHint="@color/colorPrimary"
-                    tools:ignore="DuplicateIds" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/italic"
-                    android:text="City of Birth"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvCityofBirth"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/italic"
-                    android:hint="Add Details"
-                    android:textColorHint="@color/colorPrimary" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/italic"
-                    android:text="Time of Birth"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvTimeofBirth"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/italic"
-                    android:hint="Add Details"
-                    android:textColorHint="@color/colorPrimary" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/italic"
-                    android:text="Manglik"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvManglik"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/italic"
-                    android:hint="Add Details"
-                    android:textColorHint="@color/colorPrimary" />
-
-
-            </LinearLayout>
-
-
+            android:orientation="vertical"
+            >
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
+                android:id="@+id/cvShowDetails"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:layout_marginTop="20dp"
-                android:clickable="true"
-                android:clipToOutline="true"
-                android:elevation="20dp"
-                android:translationZ="20dp"
-                app:cardMaxElevation="20dp">
-
-                <TextView
-                    android:id="@+id/btnEditDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/button_hover"
-                    android:elevation="20dp"
-                    android:padding="10dp"
-                    android:text="Edit Details"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:translationZ="20dp" />
-            </androidx.cardview.widget.CardView>
-
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvEditDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_margin="10dp"
-        android:elevation="3dp"
-        android:visibility="gone"
-        android:translationZ="10dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tvc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/italic"
-                android:text="Country Name"
-
-                />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:context=".MainActivity">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/textInputLayoutStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_centerInParent="true"
-                    android:hint="Select Country">
-
-                    <com.ottego.multipleselectionspinner.MultipleSelection
-                        android:id="@+id/acvCountry"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:focusable="true"
-                        android:focusableInTouchMode="false"
-                        android:fontFamily="@font/italic"
-                        android:importantForAutofill="no"
-                        android:maxLines="1"
-                        app:showSearch="true"
-                        app:sort="true" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tvc1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/italic"
-                android:inputType="none"
-                android:text="City of Birth" />
-
-            <EditText
-                android:id="@+id/etHoroscopeBirthCity"
-                style="@style/PersonalDataTextView"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:fontFamily="@font/italic"
-                android:hint="Enter city of birth" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/italic"
-                android:text="Time of Birth"
-
-                />
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:elevation="3dp"
+                android:translationZ="10dp"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
+                    android:layout_margin="20dp"
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_marginEnd="3dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_edit_text">
-
-
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/acvHour"
                             android:layout_width="0dp"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:editable="false"
-                            android:hint="Hour"
-                            android:gravity="center_vertical"
                             android:fontFamily="@font/italic"
-                            android:textSize="14sp"
-                            android:inputType="none"
-                            android:textColor="@color/black"
-                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="14dp"
-                            android:background="@drawable/transparent_edittext_border"
-                            tools:ignore="Deprecated"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_marginEnd="3dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_edit_text">
-
-
-                            <TextView
-                                android:id="@+id/acvMinutes"
-                                android:layout_width="0dp"
-                                android:layout_height="40dp"
-                                android:layout_weight="1"
-                                android:editable="false"
-                                android:hint="Minutes"
-                                android:gravity="center_vertical"
-                                android:fontFamily="@font/italic"
-                                android:textSize="14sp"
-                                android:inputType="none"
-                                android:textColor="@color/black"
-                                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginEnd="14dp"
-                                android:background="@drawable/transparent_edittext_border"
-                                tools:ignore="Deprecated"/>
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_edit_text">
+                            android:text="Country of Birth"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/actvampm"
+                            android:id="@+id/tvCountryOfBirth"
                             android:layout_width="0dp"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:editable="false"
-                            android:hint="A.M/P.M"
-                            android:gravity="center_vertical"
                             android:fontFamily="@font/italic"
-                            android:textSize="14sp"
-                            android:inputType="none"
-                            android:textColor="@color/black"
-                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="14dp"
-                            android:background="@drawable/transparent_edittext_border"
-                            tools:ignore="Deprecated"/>
+                            android:hint="Add Details"
+                            android:textColorHint="@color/colorPrimary"
+                            tools:ignore="DuplicateIds" />
+
+
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/italic"
+                            android:text="City of Birth"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvCityofBirth"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/italic"
+                            android:hint="Add Details"
+                            android:textColorHint="@color/colorPrimary" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/italic"
+                            android:text="Time of Birth"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvTimeofBirth"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/italic"
+                            android:hint="Add Details"
+                            android:textColorHint="@color/colorPrimary" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/italic"
+                            android:text="Manglik"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvManglik"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/italic"
+                            android:hint="Add Details"
+                            android:textColorHint="@color/colorPrimary" />
+
+
+                    </LinearLayout>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:clickable="true"
+                        android:clipToOutline="true"
+                        android:elevation="20dp"
+                        android:translationZ="20dp"
+                        app:cardMaxElevation="20dp">
+
+                        <TextView
+                            android:id="@+id/btnEditDetails"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/button_hover"
+                            android:elevation="20dp"
+                            android:padding="10dp"
+                            android:text="Edit Details"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:translationZ="20dp" />
+                    </androidx.cardview.widget.CardView>
 
 
                 </LinearLayout>
-            </ScrollView>
+            </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/italic"
-                android:text="Timing Status"
-
-                />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginEnd="3dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_edit_text">
-
-            <TextView
-                android:id="@+id/actvapprox"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:editable="false"
-                android:hint="Select"
-                android:gravity="center_vertical"
-                android:fontFamily="@font/italic"
-                android:textSize="14sp"
-                android:inputType="none"
-                android:textColor="@color/black"
-                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="14dp"
-                android:background="@drawable/transparent_edittext_border"
-                tools:ignore="Deprecated"/>
-
-        </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/italic"
-                android:text="Manglik/Chevvai dosham
-"
-
-                />
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvEditDetails"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_edit_text">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_margin="10dp"
+                android:elevation="3dp"
+                android:visibility="gone"
+                android:translationZ="10dp">
 
-                <RadioGroup
-                    android:id="@+id/radioGroup"
-                    style="@style/ShapeAppearanceEditTextView"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
-                    android:orientation="horizontal">
+                    android:layout_margin="20dp"
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/radio_button_1"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                    <TextView
+                        android:id="@+id/tvc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:fontFamily="@font/italic"
-                        android:text="Yes" />
+                        android:text="Country Name"
 
-                    <RadioButton
-                        android:id="@+id/radio_button_2"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:context=".MainActivity">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/textInputLayoutStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_centerInParent="true"
+                            android:hint="Select Country">
+
+                            <com.ottego.multipleselectionspinner.MultipleSelection
+                                android:id="@+id/acvCountry"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                                android:focusable="true"
+                                android:focusableInTouchMode="false"
+                                android:fontFamily="@font/italic"
+                                android:importantForAutofill="no"
+                                android:maxLines="1"
+                                app:showSearch="true"
+                                app:sort="true" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvc1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
                         android:fontFamily="@font/italic"
-                        android:text="No" />
+                        android:inputType="none"
+                        android:text="City of Birth" />
 
-                    <RadioButton
-                        android:id="@+id/radio_button_3"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
+                    <EditText
+                        android:id="@+id/etHoroscopeBirthCity"
+                        style="@style/PersonalDataTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
                         android:fontFamily="@font/italic"
-                        android:text="Don't Know" />
+                        android:hint="Enter city of birth" />
 
-                </RadioGroup>
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/italic"
+                        android:text="Time of Birth"
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                        />
 
-                <TextView
-                    android:id="@+id/btnSaveDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/button_hover"
-                    android:padding="10dp"
-                    android:text="Save Details"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:fontFamily="@font/italic"
-                    android:text="or" />
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_marginEnd="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_edit_text">
 
-                <TextView
-                    android:id="@+id/tvCancel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:fontFamily="@font/italic"
-                    android:text="Cancel"
-                    android:textColor="@color/teal_700" />
-            </LinearLayout>
 
+
+                                <TextView
+                                    android:id="@+id/acvHour"
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="1"
+                                    android:editable="false"
+                                    android:hint="Hour"
+                                    android:gravity="center_vertical"
+                                    android:fontFamily="@font/italic"
+                                    android:textSize="14sp"
+                                    android:inputType="none"
+                                    android:textColor="@color/black"
+                                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginEnd="14dp"
+                                    android:background="@drawable/transparent_edittext_border"
+                                    tools:ignore="Deprecated"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_marginEnd="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_edit_text">
+
+
+                                <TextView
+                                    android:id="@+id/acvMinutes"
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="1"
+                                    android:editable="false"
+                                    android:hint="Minutes"
+                                    android:gravity="center_vertical"
+                                    android:fontFamily="@font/italic"
+                                    android:textSize="14sp"
+                                    android:inputType="none"
+                                    android:textColor="@color/black"
+                                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginEnd="14dp"
+                                    android:background="@drawable/transparent_edittext_border"
+                                    tools:ignore="Deprecated"/>
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_edit_text">
+
+                                <TextView
+                                    android:id="@+id/actvampm"
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="1"
+                                    android:editable="false"
+                                    android:hint="A.M/P.M"
+                                    android:gravity="center_vertical"
+                                    android:fontFamily="@font/italic"
+                                    android:textSize="14sp"
+                                    android:inputType="none"
+                                    android:textColor="@color/black"
+                                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginEnd="14dp"
+                                    android:background="@drawable/transparent_edittext_border"
+                                    tools:ignore="Deprecated"/>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </ScrollView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/italic"
+                        android:text="Timing Status"
+
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_edit_text">
+
+                        <TextView
+                            android:id="@+id/actvapprox"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:editable="false"
+                            android:hint="Select"
+                            android:gravity="center_vertical"
+                            android:fontFamily="@font/italic"
+                            android:textSize="14sp"
+                            android:inputType="none"
+                            android:textColor="@color/black"
+                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="14dp"
+                            android:background="@drawable/transparent_edittext_border"
+                            tools:ignore="Deprecated"/>
+
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/italic"
+                        android:text="Manglik/Chevvai dosham
+"
+
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_edit_text">
+
+                        <RadioGroup
+                            android:id="@+id/radioGroup"
+                            style="@style/ShapeAppearanceEditTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/radio_button_1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/italic"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:id="@+id/radio_button_2"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/italic"
+                                android:text="No" />
+
+                            <RadioButton
+                                android:id="@+id/radio_button_3"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/italic"
+                                android:text="Don't Know" />
+
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/btnSaveDetails"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/button_hover"
+                            android:padding="10dp"
+                            android:text="Save Details"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:fontFamily="@font/italic"
+                            android:text="or" />
+
+                        <TextView
+                            android:id="@+id/tvCancel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:fontFamily="@font/italic"
+                            android:text="Cancel"
+                            android:textColor="@color/teal_700" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
+    </ScrollView>
 
-    </androidx.cardview.widget.CardView>
+
+
 
 
 </LinearLayout>

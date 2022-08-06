@@ -196,7 +196,7 @@ public class DashBoardFragment extends Fragment {
             public void onClick(View view) {
                 Animation bounce = AnimationUtils.loadAnimation(context, R.anim.bounce);
                 tvDashboardUpgrade.startAnimation(bounce);
-                Intent intent = new Intent(context, UpgradeOnButtonActivity.class);
+                Intent intent = new Intent(context, KYCActivity.class);
                 startActivity(intent);
             }
         });

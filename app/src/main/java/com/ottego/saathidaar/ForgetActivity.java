@@ -192,12 +192,15 @@ public class ForgetActivity extends AppCompatActivity {
                                 b.etForgetPhone.setVisibility(View.GONE);
                                 b.btnForgetPassResend.setVisibility(View.GONE);
                                 b.btnForgetPass.setVisibility(View.GONE);
+                                b.tvEnterPhoneToForget.setVisibility(View.GONE);
 
                                 Toast.makeText(context, "OTP sent successfully", Toast.LENGTH_SHORT).show();
 
                                 b.etOTP.setVisibility(View.VISIBLE);
                                 b.btnForgetPassVerify.setVisibility(View.VISIBLE);
                                 b.btnForgetPassResend.setVisibility(View.VISIBLE);
+                                b.tvEnterOTPToForget.setVisibility(View.VISIBLE);
+
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }

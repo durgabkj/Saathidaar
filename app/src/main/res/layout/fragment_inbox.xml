@@ -21,6 +21,7 @@
         app:tabIndicatorColor="@android:color/transparent"
         app:tabIndicatorGravity="stretch"
         app:tabIndicatorHeight="0dp"
+        app:tabPaddingEnd="20dp"
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/black" >

@@ -141,20 +141,21 @@
 
                         <TextView
                             android:id="@+id/tvDashboardpgrade"
-                            android:layout_width="140dp"
+                            android:layout_width="100dp"
                             android:layout_height="40dp"
                             android:layout_gravity="center"
                             android:layout_marginStart="55dp"
                             android:layout_marginTop="30dp"
                             android:background="@drawable/white_button_bg"
-                            android:drawablePadding="1dp"
+                            android:drawablePadding="10dp"
                             android:fontFamily="@font/italic"
                             android:gravity="center_vertical"
                             android:padding="10dp"
-                            android:text="Upgrade Now"
+                            android:text="KYC"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
-                            app:drawableStartCompat="@drawable/ic_diamond" />
+                            android:drawableTint="@color/black"
+                            app:drawableStartCompat="@drawable/ic_file" />
 
 
                         <TextView

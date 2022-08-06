@@ -2,6 +2,7 @@ package com.ottego.saathidaar;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +39,7 @@ public class MatchesFragment extends Fragment {
     Context context;
     DataModelDashboard model;
     public String url = "http://103.150.186.33:8080/saathidaar_backend/api/request/count/accept-request/";
-
+     int count=0;
     MyMatchFragment myMatchFragment=new MyMatchFragment();
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -164,6 +165,7 @@ sessionManager=new SessionManager(context);
 
 
     private void getDataCount() {
+        count++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
@@ -181,7 +183,7 @@ sessionManager=new SessionManager(context);
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
+refresh(1000);
 
     }
 
@@ -209,6 +211,13 @@ sessionManager=new SessionManager(context);
             badgeDrawable2.setBadgeTextColor(ContextCompat.getColor(context, R.color.white));
             badgeDrawable2.setBadgeGravity(BadgeDrawable.TOP_END);
 
+
+            BadgeDrawable badgeDrawable3 = b.tlMatch.getTabAt(4).getOrCreateBadge();
+            badgeDrawable3.setNumber(Integer.parseInt(model.data.get(0).shortlists_count));
+            badgeDrawable3.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary));
+            badgeDrawable3.setBadgeTextColor(ContextCompat.getColor(context, R.color.white));
+            badgeDrawable3.setBadgeGravity(BadgeDrawable.TOP_END);
+
         }
     }
 
@@ -233,6 +242,22 @@ sessionManager=new SessionManager(context);
         adapter.addFragment(new RecentlyViewedFragment(), "Recently Viewed");
         adapter.addFragment(new MoreFragment(), "More");
         viewPager.setAdapter(adapter);
+    }
+
+
+
+    private void refresh(int millisecond) {
+
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                getDataCount();
+            }
+        };
+
+        handler.postDelayed(runnable, millisecond);
+
     }
 }
 

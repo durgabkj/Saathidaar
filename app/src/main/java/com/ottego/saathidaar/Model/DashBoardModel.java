@@ -10,6 +10,8 @@ public class DashBoardModel {
     public  String todays_matches_count;
     public  String deleted_request_count;
     public  String new_matches_count;
+    public  String invitations_count;
+    public  String shortlists_count;
 
 
 }

@@ -1,30 +1,51 @@
 package com.ottego.saathidaar;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.provider.OpenableColumns;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
+import com.ottego.saathidaar.Adapter.ImageAdapter;
 import com.ottego.saathidaar.Model.DataModelImage;
-import com.ottego.saathidaar.databinding.FragmentKycBinding;
+import com.ottego.saathidaar.databinding.ActivityGalleryBinding;
+import com.ottego.saathidaar.databinding.ActivityKycactivityBinding;
+import com.ottego.saathidaar.viewmodel.GalleryViewModel;
+
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -34,6 +55,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,69 +64,57 @@ import java.util.List;
 import java.util.Map;
 
 
-public class KycFragment extends Fragment implements PickiTCallbacks {
-    FragmentKycBinding b;
+public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
+    ActivityKycactivityBinding b;
     SessionManager sessionManager;
     DataModelImage dataModelImage;
     String URL = "http://103.150.186.33:8080/saathidaar_backend/api/member/uploads/photo";
     ProgressDialog progressDialog;
+    String getImageURL = Utils.memberUrl + "app/get/photo/";
     Context context;
-    PickiT pickiT;
     List<String> imagePathList = new ArrayList<>();
+    GalleryViewModel viewModel;
+    int count=0;
     private static final int REQUEST_STORAGE_PERMISSION = 100;
     private static final int PICK_FILE_REQUEST = 1;
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public KycFragment() {
-        // Required empty public constructor
-    }
-
-    public static KycFragment newInstance(String param1, String param2) {
-        KycFragment fragment = new KycFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    PickiT pickiT;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        b = FragmentKycBinding.inflate(getLayoutInflater());
+        b = ActivityKycactivityBinding.inflate(getLayoutInflater());
+        setContentView(b.getRoot());
+        pickiT = new PickiT(this, this, this);
+        viewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
+        context = KYCActivity.this;
+        sessionManager = new SessionManager(context);
         listener();
-        pickiT = new PickiT(context, this, requireActivity());
-        context = getContext();
-        return b.getRoot();
     }
 
     private void listener() {
+
+        b.mtbKYC.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
         b.mcvChooseKyc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, PICK_FILE_REQUEST);
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_FILE_REQUEST);
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_FILE_REQUEST);
+                }
 
-            }
         });
+
+
 
         b.mcvUploadKyc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,16 +126,18 @@ public class KycFragment extends Fragment implements PickiTCallbacks {
             }
 
         });
+
     }
 
-
     // Function to check and request permission
-    public boolean checkPermission(String permission, int requestCode) {
+    public boolean checkPermission(String permission, int requestCode)
+    {
         // Checking if permission is not granted
-        if (ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_DENIED) {
-            ActivityCompat.requestPermissions(requireActivity(), new String[]{permission}, requestCode);
-        } else {
-            Snackbar snackbar = Snackbar.make(requireActivity().findViewById(android.R.id.content), "Permission already granted", Snackbar.LENGTH_LONG);
+        if (ContextCompat.checkSelfPermission(KYCActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(KYCActivity.this, new String[] { permission }, requestCode);
+        }
+        else {
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Permission already granted", Snackbar.LENGTH_LONG);
             snackbar.show();
         }
         return false;
@@ -134,32 +146,36 @@ public class KycFragment extends Fragment implements PickiTCallbacks {
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
+                                           @NonNull int[] grantResults)
+    {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         // Checking whether user granted the permission or not.
         if (requestCode == REQUEST_STORAGE_PERMISSION) {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(context, "Storage Permission Granted", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(context, "Storage Permission Denied", Toast.LENGTH_SHORT).show();
+                Toast.makeText(KYCActivity.this, "Storage Permission Granted", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(KYCActivity.this, "Storage Permission Denied", Toast.LENGTH_SHORT).show();
 
             }
         }
     }
 
+
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == PICK_FILE_REQUEST) {
                 imagePathList.clear();
                 if (data.getClipData() != null) {
                     int count = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
-                    if (count > 3) {
+                    if(count >3) {
                         Toast.makeText(context, "You can Only upload three Images", Toast.LENGTH_SHORT).show();
-                    } else {
+                    }
+                    else {
                         for (int i = 0; i < count; i++) {
                             Uri imageUri = data.getClipData().getItemAt(i).getUri();
                             pickiT.getPath(imageUri, Build.VERSION.SDK_INT);
@@ -168,10 +184,12 @@ public class KycFragment extends Fragment implements PickiTCallbacks {
                     }
                 } else if (data.getData() != null) {
                     Uri imagePath = data.getData();
+                    b.ivKyc.setImageURI(imagePath);
                     pickiT.getPath(imagePath, Build.VERSION.SDK_INT);
                 }
             }
-        } else {
+        }else
+        {
             Toast.makeText(context, "You haven't pick any image", Toast.LENGTH_SHORT).show();
         }
     }
@@ -184,14 +202,13 @@ public class KycFragment extends Fragment implements PickiTCallbacks {
 //
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("member_id", sessionManager.getMemberId());
-                Log.e("durga", "upload start: " + path);
+                Log.e("durga", "upload start: "+path);
                 String result = multipartRequest(URL, params, path, "image", "image/jpeg");
 
-                Log.e("durga", result);
+                Log.e("durga",result);
             }
         }).start();
     }
-
     public String multipartRequest(String urlTo, Map<String, String> parmas, String filepath, String filefield, String fileMimeType) {
         Log.e("params", String.valueOf(parmas));
         Log.e("params1", filepath);
@@ -270,18 +287,15 @@ public class KycFragment extends Fragment implements PickiTCallbacks {
             Log.e("durga", "response: " + connection.getResponseCode());
             if (connection.getResponseCode() == 200) {
 
-                Toast.makeText(context,
-                        "File Upload Complete.", Toast.LENGTH_SHORT).show();
+                runOnUiThread(new Runnable() {
+                    public void run() {
 
-//                runOnUiThread(new Runnable() {
-//                    public void run() {
-//
-//                        //  tv.setText("Upload Complete");
-//                        Toast.makeText(context,
-//                                        "File Upload Complete.", Toast.LENGTH_SHORT)
-//                                .show();
-//                    }
-//                });
+                        //  tv.setText("Upload Complete");
+                        Toast.makeText(KYCActivity.this,
+                                        "File Upload Complete.", Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                });
             }
             inputStream = connection.getInputStream();
 
@@ -299,7 +313,6 @@ public class KycFragment extends Fragment implements PickiTCallbacks {
         }
         return "error";
     }
-
     private String convertStreamToString(InputStream is) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
@@ -340,7 +353,6 @@ public class KycFragment extends Fragment implements PickiTCallbacks {
     @Override
     public void PickiTonCompleteListener(String path, boolean wasDriveFile, boolean wasUnknownProvider, boolean wasSuccessful, String Reason) {
         Log.e("durga", "path single: " + path);
-        b.ivKyc.setImageURI(Uri.parse(path));
         imagePathList.add(path);
     }
 
@@ -351,7 +363,24 @@ public class KycFragment extends Fragment implements PickiTCallbacks {
         imagePathList.addAll(paths);
     }
 
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        super.onPointerCaptureChanged(hasCapture);
+    }
 
+    @Override
+    public void onBackPressed() {
+        pickiT.deleteTemporaryFile(this);
+        super.onBackPressed();
+    }
 
-}
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (!isChangingConfigurations()) {
+            pickiT.deleteTemporaryFile(this);
+        }
+    }
+
+    }
 

@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.ottego.saathidaar.InboxFragment;
-import com.ottego.saathidaar.KycFragment;
 import com.ottego.saathidaar.MatchesFragment;
 import com.ottego.saathidaar.HomeFragment;
 import com.ottego.saathidaar.AccountFragment;

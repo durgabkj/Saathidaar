@@ -344,9 +344,36 @@ if (memberPreferenceModel != null) {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                if (b.tvAboutUserFamilyDetails.equals("")) {
+                String details =  b.tvAboutUserFamilyDetails.getText().toString().trim();
+                if (details.equals("")) {
                     b.mcvFamilyDetail.setVisibility(View.GONE);
+                }else
+                {
+                    b.mcvFamilyDetail.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+        b.tvAboutUserDetails.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String AboutDetails =  b.tvAboutUserDetails.getText().toString().trim();
+                if (AboutDetails.equals("")) {
+                    b.mcvAboutDetail.setVisibility(View.GONE);
+                }else
+                {
+                    b.mcvAboutDetail.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -485,7 +512,6 @@ if (memberPreferenceModel != null) {
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
     }
-
     private void setData() {
         if (model != null) {
             b.tvNewMatchName.setText(model.first_name + " " + model.last_name);
@@ -501,7 +527,7 @@ if (memberPreferenceModel != null) {
             b.tvNewMatchWorkAsDetail.setText(Utils.nullToBlank(model.working_as));
             b.tvNameUserDetails.setText("About" + "  " + Utils.nullToBlank(model.first_name));
             b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
-            b.tvNameUserFamilyDetails.setText("About " + " Family");
+            b.tvNameUserFamilyDetailsHeading.setText("About " + " Family");
             b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails));
             b.tvCreatedBy.setText("Profile CreateBy" + " " + Utils.nullToBlank(model.profilecreatedby));
             b.tvProfileID.setText("Profile ID" + " " + Utils.nullToBlank(model.profile_id));
@@ -510,10 +536,9 @@ if (memberPreferenceModel != null) {
 
             b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
             b.tvDetailMaritalS.setText(Utils.nullToBlank(model.marital_status));
-            b.tvDetailLiveIn.setText("Live in" + " " + Utils.nullToBlank(model.city) + "." + Utils.nullToBlank(model.state_name) + "," + Utils.nullToBlank(model.country_name));
-
-            b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + "," +Utils.nullToBlank(model.mother_tounge) );
-            b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + "," + Utils.nullToBlank(model.sub_caste_name));
+            b.tvDetailLiveIn.setText("Live in" + " " + Utils.nullToBlank(model.city) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.country_name));
+            b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + " " +Utils.nullToBlank(model.mother_tounge) );
+            b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + " " + Utils.nullToBlank(model.sub_caste_name));
             b.tvDetailDiet.setText(Utils.nullToBlank(model.lifestyles));
             b.tvDetailProfession.setText(Utils.nullToBlank(model.working_as));
             b.tvDetailCompanyName.setText(Utils.nullToBlank(model.working_with));
@@ -590,7 +615,7 @@ if (memberPreferenceModel != null) {
             Glide.with(context)
                     .load(Utils.imageUrl + model.profile_photo)
                     .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                   // .transform(!model.photo_privacy.equals("2")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                    .transform(model.photo_privacy.equals("2")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(b.profileDetailPic1Partner);
 
 
@@ -606,6 +631,7 @@ if (memberPreferenceModel != null) {
             }else {
                 b.llPremiumMsgMatchesDetails.setVisibility(View.GONE);
             }
+
         }
 
     }

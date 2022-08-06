@@ -13,6 +13,7 @@ public class MemberProfileModel {
     public String caste;
     public String profile_id;
     public String income;
+    public String request_status;
     public String hobbies;
     public String premium_status;
     public String expectations;

@@ -3,6 +3,8 @@ package com.ottego.saathidaar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -330,15 +332,6 @@ public class InboxDetailFragment extends Fragment {
 
     private void listener() {
 
-
-//        b.tvPremiumCollegeAndCompany.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(context, UpgradeOnButtonActivity.class);
-//                context.startActivity(intent);
-//            }
-//        });
-
         b.tvPremiumContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -373,8 +366,6 @@ public class InboxDetailFragment extends Fragment {
                 b.ivDetailsConnectedInbox.setVisibility(View.VISIBLE);
             }
         });
-
-
         b.llBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -418,6 +409,57 @@ public class InboxDetailFragment extends Fragment {
                 b.tvViewMore.setVisibility(View.VISIBLE);
             }
         });
+
+
+        b.tvAboutUserFamilyDetails.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String details = b.tvAboutUserFamilyDetails.getText().toString().trim();
+                if (details.equals("")) {
+                    b.mcvFamilyDetailInbox.setVisibility(View.GONE);
+                } else {
+                    b.mcvFamilyDetailInbox.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+        b.tvAboutUserDetails.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+
+                String status = b.tvAboutUserDetails.getText().toString().trim();
+                if (status.equalsIgnoreCase("")) {
+                    b.mcvAboutUsDetailInbox.setVisibility(View.GONE);
+                } else {
+                    b.mcvAboutUsDetailInbox.setVisibility(View.VISIBLE);
+                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
 
     }
 
@@ -477,10 +519,10 @@ public class InboxDetailFragment extends Fragment {
 
             b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
             b.tvDetailMaritalS.setText(Utils.nullToBlank(model.marital_status));
-            b.tvDetailLiveIn.setText("Live in" + " " + Utils.nullToBlank(model.city) + "." + Utils.nullToBlank(model.state_name) + "," + Utils.nullToBlank(model.country_name));
+            b.tvDetailLiveIn.setText("Live in" + " " + Utils.nullToBlank(model.city) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.country_name));
 
-            b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + "," +Utils.nullToBlank(model.mother_tounge) );
-            b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + "," + Utils.nullToBlank(model.sub_caste_name));
+            b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + " " + Utils.nullToBlank(model.mother_tounge));
+            b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + "  " + Utils.nullToBlank(model.sub_caste_name));
             b.tvDetailDiet.setText(Utils.nullToBlank(model.lifestyles));
             b.tvDetailProfession.setText(Utils.nullToBlank(model.working_as));
             b.tvDetailCompanyName.setText(Utils.nullToBlank(model.working_with));
