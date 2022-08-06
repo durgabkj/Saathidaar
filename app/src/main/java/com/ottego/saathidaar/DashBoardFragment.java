@@ -51,7 +51,7 @@ public class DashBoardFragment extends Fragment {
     int count = 0;
     public String url = "http://103.150.186.33:8080/saathidaar_backend/api/request/count/accept-request/";
     public static String Profile_url = Utils.memberUrl + "my-profile/";
-    int[] images = {R.drawable.smartphone, R.drawable.documents, R.drawable.global};
+    int[] images = {R.drawable.smartphone, R.drawable.upload, R.drawable.global};
     String[] text = {"phone Number to Connect Instantly", "100% Verified Biodatas", "Find Common connections"};
     String image;
     SwipeRefreshLayout srlDashboard;

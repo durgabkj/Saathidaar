@@ -159,6 +159,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 holder.tvLevelPremiumRecent.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
+                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .transform(new BlurTransformation(20, 8))
                         .centerCrop()
                         .into(holder.ivRecentViewImage);
@@ -168,6 +169,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 holder.tvLevelPremiumRecent.setVisibility(View.GONE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
+                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .centerCrop()
                         .into(holder.ivRecentViewImage);
             } else {
@@ -178,6 +180,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .transform(new BlurTransformation(20, 8))
+                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .centerCrop()
                         .into(holder.ivRecentViewImage);
             }

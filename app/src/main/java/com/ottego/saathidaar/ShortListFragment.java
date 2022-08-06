@@ -90,7 +90,6 @@ int count=0;
     }
 
     private void getData() {
-
       //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 ShortListUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {

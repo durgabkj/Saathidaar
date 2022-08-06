@@ -590,7 +590,7 @@ if (memberPreferenceModel != null) {
             Glide.with(context)
                     .load(Utils.imageUrl + model.profile_photo)
                     .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    //.transform(!model.my_premium_status.equals(model.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                   // .transform(!model.photo_privacy.equals("2")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(b.profileDetailPic1Partner);
 
 

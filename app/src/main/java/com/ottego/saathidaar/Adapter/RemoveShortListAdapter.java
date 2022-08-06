@@ -146,6 +146,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .centerCrop()
                     //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(holder.ivRemoveShortList);
 
@@ -156,6 +157,8 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
             holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
+                    .centerCrop()
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     .transform(new BlurTransformation(20, 8))
                     .into(holder.ivRemoveShortList);
         } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
@@ -164,6 +167,8 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
             holder.tvLevelPremiumRemoveShortList.setVisibility(View.GONE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
+                    .centerCrop()
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     .into(holder.ivRemoveShortList);
         } else {
             holder.llPhotoShortList.setVisibility(View.GONE);
@@ -172,7 +177,9 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
             holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     .transform(new BlurTransformation(20, 8))
+                    .centerCrop()
                     .into(holder.ivRemoveShortList);
         }
 

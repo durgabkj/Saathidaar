@@ -35,13 +35,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
             android:padding="10dp"
-            android:scrollHorizontally="true"
-            android:singleLine="true"
-            android:textSize="14sp"
-            android:maxLines="3"
+
+            android:text="Note: You can upload 2 photos to your profile. Each photos must be less than 100kb and in jpg, gif, png,  format. All photos uploaded are screened as per Photo Guidelines and 98% of those get activated within 2 hours"
+            android:maxLines="6"
             android:textColor="@color/black"
             android:textStyle="bold"/>
 
@@ -106,8 +104,9 @@
             android:padding="10dp"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:text="You uploaded only three image, Please choose Perfect photo from your gallery"
+            android:text="You uploaded only two image, Please choose Perfect photo from your gallery"
             android:textSize="14sp"
+            android:visibility="gone"
             android:textColor="@color/black"
             android:textStyle="bold"/>
 

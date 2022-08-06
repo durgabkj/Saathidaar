@@ -136,6 +136,8 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
                 holder.tvLevelPremiumBlock.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
+                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                        .centerCrop()
                         .transform(new BlurTransformation(20, 8))
                         .into(holder.ivBlockProfileImage);
             } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
@@ -144,6 +146,8 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
                 holder.tvLevelPremiumBlock.setVisibility(View.GONE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
+                        .centerCrop()
+                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .into(holder.ivBlockProfileImage);
             } else {
                 holder.llPhotoBlock.setVisibility(View.GONE);
@@ -153,6 +157,8 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .transform(new BlurTransformation(20, 8))
+                        .centerCrop()
+                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .into(holder.ivBlockProfileImage);
             }
 

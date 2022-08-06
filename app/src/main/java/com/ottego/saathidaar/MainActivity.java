@@ -37,6 +37,6 @@ SessionManager sessionManager;
 //                startActivity(intent);
             }
 
-        }, 2000);
+        }, 1000);
     }
     }

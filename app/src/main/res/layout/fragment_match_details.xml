@@ -275,7 +275,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:fontFamily="@font/italic"
-                                android:maxLength="10"
+                                android:maxLength="15"
                                 android:shadowColor="#000000"
                                 android:shadowDx="1.5"
                                 android:shadowDy="1.3"

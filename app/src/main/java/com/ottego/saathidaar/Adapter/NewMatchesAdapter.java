@@ -88,6 +88,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     .transform(new BlurTransformation(20, 8))
                     .into(holder.ivUserMatch);
         } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
@@ -96,6 +97,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             holder.tvLevelPremiumMatch.setVisibility(View.GONE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     .into(holder.ivUserMatch);
         } else {
             holder.llPhotoMyMatches.setVisibility(View.GONE);
@@ -104,6 +106,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     .transform(new BlurTransformation(20, 8))
                     .into(holder.ivUserMatch);
         }

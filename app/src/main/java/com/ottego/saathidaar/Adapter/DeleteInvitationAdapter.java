@@ -135,6 +135,7 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .transform(new BlurTransformation(20, 8))
+                    .centerCrop()
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     .into(holder.ivDeleteInvitation);
         } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
@@ -143,6 +144,8 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
             holder.tvLevelPremiumDelete.setVisibility(View.GONE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .centerCrop()
                     .into(holder.ivDeleteInvitation);
         } else {
             holder.llPhotoDelete.setVisibility(View.GONE);
@@ -151,6 +154,8 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
             holder.tvLevelPremiumDelete.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .centerCrop()
                     .transform(new BlurTransformation(20, 8))
                     .into(holder.ivDeleteInvitation);
         }

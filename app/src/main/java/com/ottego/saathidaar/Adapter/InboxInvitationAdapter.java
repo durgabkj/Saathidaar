@@ -149,6 +149,7 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .transform(!item.profile_photo.equals("")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                    .centerCrop()
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     .into(holder.ivReceivedInvitation);
         } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
@@ -158,6 +159,8 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
             holder.llPhotoInvitation.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .centerCrop()
                     .into(holder.ivReceivedInvitation);
         } else {
             holder.llPhotoInvitation.setVisibility(View.GONE);
@@ -166,6 +169,8 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
             holder.tvLevelPremiumInvitation.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .centerCrop()
                     .transform(new BlurTransformation(20, 8))
                     .into(holder.ivReceivedInvitation);
         }

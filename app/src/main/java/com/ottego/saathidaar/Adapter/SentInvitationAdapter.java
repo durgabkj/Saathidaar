@@ -137,6 +137,7 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
 
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
+                        .centerCrop()
                         .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                         .into(holder.ivSentInvitation);
@@ -148,6 +149,8 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
                 holder.tvLevelPremiumSent.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
+                        .centerCrop()
+                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .transform(new BlurTransformation(20, 8))
                         .into(holder.ivSentInvitation);
             } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
@@ -156,6 +159,8 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
                 holder.tvLevelPremiumSent.setVisibility(View.GONE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
+                        .centerCrop()
+                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .into(holder.ivSentInvitation);
             } else {
                 holder.llPhotoSent.setVisibility(View.GONE);
@@ -165,7 +170,10 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .transform(new BlurTransformation(20, 8))
+                        .centerCrop()
+                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .into(holder.ivSentInvitation);
+
             }
 
 
