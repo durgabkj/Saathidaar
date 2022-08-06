@@ -466,6 +466,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:padding="8dp"
+                            android:maxLength="6"
                             android:layout_weight="1"
                             android:hint="Enter pine code"
                             android:inputType="number"

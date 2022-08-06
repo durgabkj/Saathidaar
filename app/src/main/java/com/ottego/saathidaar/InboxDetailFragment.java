@@ -88,8 +88,6 @@ public class InboxDetailFragment extends Fragment {
         return b.getRoot();
     }
 
-
-
     private void getHoroscopeData() {
         //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
@@ -169,42 +167,22 @@ public class InboxDetailFragment extends Fragment {
 
     private void setMemberPrefData() {
         if (memberPreferenceModel != null) {
-            b.tvNewMatchName.setText(model.first_name + " " + model.last_name);
 
-            if (model.age.equalsIgnoreCase("") && model.age.equalsIgnoreCase(null)) {
+            b.matchPreferenceCount.setText("You Match " + Utils.nullToBlank(memberPreferenceModel.match_count) + "/" + Utils.nullToBlank(memberPreferenceModel.total_preference) + " of " + " " + Utils.nullToBlank(memberPreferenceModel.gender_preference));
+            b.tvDetailAgeMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_age));
+            b.tvDetailHeightMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_height));
+            b.tvDetailMaritalStatusMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_marital_status));
+            b.tvDetailCountryMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_country));
 
-            } else {
-                b.tvNewMatchAge.setText(Utils.nullToBlank(model.age) + " " + "yrs");
-            }
-
-            b.tvNewMatchHeight.setText(Utils.nullToBlank(model.height));
-            b.tvMatchCityDetail.setText(Utils.nullToBlank(model.city));
-            b.tvNewMatchWorkAsDetail.setText(Utils.nullToBlank(model.working_as));
-            b.tvNameUserDetails.setText("About" + "  " + Utils.nullToBlank(model.first_name));
-            b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
-            b.tvNameUserFamilyDetails.setText("About " + " Family");
-            b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails));
-            b.tvCreatedBy.setText("Profile CreateBy" + " " + Utils.nullToBlank(model.profilecreatedby));
-            b.tvProfileID.setText("Profile ID" + " " + Utils.nullToBlank(model.profile_id));
-            b.tvDetailAge.setText(Utils.nullToBlank(model.age) + " yrs old");
-            b.tvDetailHeight.setText("Height - " + Utils.nullToBlank(model.height));
-            b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
-            b.tvDetailMaritalS.setText(Utils.nullToBlank(model.marital_status));
-            b.tvDetailLiveIn.setText("Live in" + " " + Utils.nullToBlank(model.city) + "." + Utils.nullToBlank(model.state_name) + "," + Utils.nullToBlank(model.country_name));
+            b.tvDetailStateMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_state));
+            b.tvDetailEducationMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_qualification));
+            b.tvDetailWorkingWithMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_working_with));
 
 
-            b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + "," + Utils.nullToBlank(model.mother_tounge));
-            b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + "," + Utils.nullToBlank(model.sub_caste_name));
-            b.tvDetailDiet.setText(Utils.nullToBlank(model.lifestyles));
-            b.tvDetailProfession.setText(Utils.nullToBlank(model.working_as));
-            b.tvDetailCompanyName.setText(Utils.nullToBlank(model.working_with));
-            b.tvDetailAnnualIncome.setText(Utils.nullToBlank(model.annual_income));
-            b.tvDetailEducationField.setText(Utils.nullToBlank(model.education));
-            b.tvDetailCollege.setText(Utils.nullToBlank(model.college_attended));
-            b.tvDetailEmailID.setText(Utils.nullToBlank(model.profile_email_id));
-            b.tvDetailCall.setText(Utils.nullToBlank(model.profile_contact_number));
-            b.tvImageCountInbox.setText(Utils.nullToBlank(model.images_count));
-            b.tvDetailHQualification.setText(Utils.nullToBlank(model.highest_qualification));
+            b.tvDetailReligionMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_religions));
+            b.tvDetailMotherTongueMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_mother_tongue));
+            b.tvDetailcityMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_city));
+            b.tvDetailIncomeMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_annual_income));
 
             if (memberPreferenceModel.my_age != null) {
                 if (memberPreferenceModel.my_age.equalsIgnoreCase("Yes")) {
@@ -441,10 +419,6 @@ public class InboxDetailFragment extends Fragment {
             }
         });
 
-
-//
-
-
     }
 
     private void getData() {
@@ -482,37 +456,61 @@ public class InboxDetailFragment extends Fragment {
     private void setData() {
         if (model != null) {
             b.tvNewMatchName.setText(model.first_name + " " + model.last_name);
-            b.tvNewMatchAge.setText(model.age + " yrs");
-            b.tvNewMatchHeight.setText(model.height + " feet");
-            b.tvMatchCityDetail.setText(model.city);
-            b.tvNewMatchWorkAsDetail.setText(model.working_as);
-            b.tvNameUserDetails.setText("About" + "  " + model.first_name);
-            b.tvAboutUserDetails.setText(model.about_ourself);
 
+            if (model.age.equalsIgnoreCase("") && model.age.equalsIgnoreCase(null)) {
+
+            } else {
+                b.tvNewMatchAge.setText(Utils.nullToBlank(model.age) + " " + "yrs");
+            }
+
+            b.tvNewMatchHeight.setText(Utils.nullToBlank(model.height));
+            b.tvMatchCityDetail.setText(Utils.nullToBlank(model.city));
+            b.tvNewMatchWorkAsDetail.setText(Utils.nullToBlank(model.working_as));
+            b.tvNameUserDetails.setText("About" + "  " + Utils.nullToBlank(model.first_name));
+            b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
             b.tvNameUserFamilyDetails.setText("About " + " Family");
-            b.tvAboutUserFamilyDetails.setText(model.FamilyDetails);
+            b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails));
+            b.tvCreatedBy.setText("Profile CreateBy" + " " + Utils.nullToBlank(model.profilecreatedby));
+            b.tvProfileID.setText("Profile ID" + " " + Utils.nullToBlank(model.profile_id));
+            b.tvDetailAge.setText(Utils.nullToBlank(model.age) + " yrs old");
+            b.tvDetailHeight.setText("Height - " + Utils.nullToBlank(model.height));
 
-            b.tvCreatedBy.setText("Profile CreateBy" + " " + model.profilecreatedby);
-            b.tvProfileID.setText("Profile ID" + " " + model.profile_id);
-            b.tvDetailAge.setText(model.age + " yrs old");
-            b.tvDetailHeight.setText("Height - " + model.height);
-            b.tvDetailDob.setText("Born on" + " " + model.date_of_birth);
-            b.tvDetailMaritalS.setText(model.marital_status);
-            b.tvDetailLiveIn.setText("Live in" + " " + model.city + "." + model.state_name + "," + model.country_name);
-            b.tvDetailReligionMotherTongue.setText(model.religion_name + "," + model.mother_tounge);
-            b.tvDetailCommunity.setText(model.caste_name + "," + model.sub_caste_name);
-            b.tvDetailDiet.setText(model.lifestyles);
-            b.tvDetailProfession.setText(model.working_as);
-            b.tvDetailCompanyName.setText(model.working_with);
-            b.tvDetailAnnualIncome.setText("Earn " + model.annual_income);
-            b.tvDetailEducationField.setText(model.education);
-            b.tvDetailCollege.setText(model.college_attended);
-            b.tvDetailEmailID.setText(model.profile_email_id);
-            b.tvDetailCall.setText(model.profile_contact_number);
-            b.tvImageCountInbox.setText(model.images_count);
-            b.tvDetailHQualification.setText(model.highest_qualification);
+            b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
+            b.tvDetailMaritalS.setText(Utils.nullToBlank(model.marital_status));
+            b.tvDetailLiveIn.setText("Live in" + " " + Utils.nullToBlank(model.city) + "." + Utils.nullToBlank(model.state_name) + "," + Utils.nullToBlank(model.country_name));
 
-            Log.e("hey",model.my_premium_status);
+            b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + "," +Utils.nullToBlank(model.mother_tounge) );
+            b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + "," + Utils.nullToBlank(model.sub_caste_name));
+            b.tvDetailDiet.setText(Utils.nullToBlank(model.lifestyles));
+            b.tvDetailProfession.setText(Utils.nullToBlank(model.working_as));
+            b.tvDetailCompanyName.setText(Utils.nullToBlank(model.working_with));
+            b.tvDetailAnnualIncome.setText(Utils.nullToBlank(model.annual_income));
+            b.tvDetailEducationField.setText(Utils.nullToBlank(model.education));
+            b.tvDetailCollege.setText(Utils.nullToBlank(model.college_attended));
+            b.tvDetailEmailID.setText(Utils.nullToBlank(model.profile_email_id));
+            b.tvDetailCall.setText(Utils.nullToBlank(model.profile_contact_number));
+            b.tvImageCountInbox.setText(Utils.nullToBlank(model.images_count));
+            b.tvDetailHQualification.setText(Utils.nullToBlank(model.highest_qualification));
+
+            if (model.my_profile_photo != null && !model.my_profile_photo.isEmpty()) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.my_profile_photo)
+                        .into(b.profileDetailPic);
+            } else {
+                if (sessionManager.getUserGender().equalsIgnoreCase("male")) {
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__male_)
+                            .into(b.profileDetailPic);
+
+                } else {
+                    Glide.with(context)
+                            .load(R.drawable.ic_no_image__female_)
+                            .into(b.profileDetailPic);
+
+                }
+            }
+
+
             if (model.photo_privacy.equalsIgnoreCase("1")) {
                 b.llShowMemberImageInbox.setVisibility(View.VISIBLE);
                 b.flPremiumInboxDetails.setVisibility(View.GONE);
@@ -522,7 +520,7 @@ public class InboxDetailFragment extends Fragment {
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
                         .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-//                        .transform(!model.profile_photo.equals("")?new BlurTransformation(1, 1):new BlurTransformation(20, 8))
+//                        .transform(!model.profile_photo.equals("")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                         .into(b.ivDetailUserImage);
 
             } else if (model.photo_privacy.equalsIgnoreCase("3")) {
@@ -532,13 +530,13 @@ public class InboxDetailFragment extends Fragment {
                 b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .transform(new BlurTransformation(20, 8))
                         .into(b.ivDetailUserImage);
             } else if (model.photo_privacy.equalsIgnoreCase(model.my_premium_status)) {
                 b.flPremiumInboxDetails.setVisibility(View.GONE);
                 b.llPremiumMsgInboxDetails.setVisibility(View.GONE);
                 b.tvLevelPremiumInboxDetails.setVisibility(View.GONE);
-                b.llShowMemberImageInbox.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
                         .into(b.ivDetailUserImage);
@@ -549,32 +547,32 @@ public class InboxDetailFragment extends Fragment {
                 b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .transform(new BlurTransformation(20, 8))
                         .into(b.ivDetailUserImage);
             }
 
-            if (model.premium_status.equalsIgnoreCase("1"))
-            {
-                b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
-                b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
-            }
 
             Glide.with(context)
                     .load(Utils.imageUrl + model.profile_photo)
                     .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    //.transform(!model.my_premium_status.equals(model.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                    .transform(!model.photo_privacy.equals("2")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(b.profileDetailPic1Partner);
 
 
-            Glide.with(context)
-                    .load(Utils.imageUrl + model.my_profile_photo)
-                    .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    //.transform(!model.my_premium_status.equals(model.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-                    .into(b.profileDetailPic);
-
-                }
+            if (model.premium_status.equalsIgnoreCase("1")) {
+                b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
+                b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
+            }
 
 
+            if(model.profile_photo != null)
+            {
+                b.llPremiumMsgInboxDetails.setVisibility(View.VISIBLE);
+            }else {
+                b.llPremiumMsgInboxDetails.setVisibility(View.GONE);
+            }
+        }
         }
 
 

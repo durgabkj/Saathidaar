@@ -332,8 +332,6 @@ if (memberPreferenceModel != null) {
     }
 
 }
-
-
     }
 
     private void listener() {
@@ -565,6 +563,7 @@ if (memberPreferenceModel != null) {
                 b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .transform(new BlurTransformation(20, 8))
                         .into(b.ivDetailUserImage);
             } else if (model.photo_privacy.equalsIgnoreCase(model.my_premium_status)) {
@@ -573,6 +572,7 @@ if (memberPreferenceModel != null) {
                 b.tvLevelPremiumMatchDetails.setVisibility(View.GONE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .into(b.ivDetailUserImage);
             } else {
                 b.llShowMemberImage.setVisibility(View.GONE);
@@ -581,6 +581,7 @@ if (memberPreferenceModel != null) {
                 b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .transform(new BlurTransformation(20, 8))
                         .into(b.ivDetailUserImage);
             }
@@ -597,6 +598,14 @@ if (memberPreferenceModel != null) {
             b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
             b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
         }
+
+
+            if(model.profile_photo != null)
+            {
+//                b.llPremiumMsgMatchesDetails.setVisibility(View.VISIBLE);
+            }else {
+                b.llPremiumMsgMatchesDetails.setVisibility(View.GONE);
+            }
         }
 
     }

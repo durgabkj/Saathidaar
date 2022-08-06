@@ -390,16 +390,8 @@ public class DashBoardFragment extends Fragment {
 
     private void setDataMember() {
 
-
         if(memberProfileModel!=null)
         {
-//            // code for hide premium button if member buy membership plan.
-//            if(memberProfileModel.premium_status.equalsIgnoreCase("1"))
-//            {
-//                tvDashboardUpgrade.setVisibility(View.GONE);
-//            }
-
-
             if (isValidContextForGlide(context)){
                 // Load image via Glide lib using context
                 if (memberProfileModel.profile_photo != null && !memberProfileModel.profile_photo.isEmpty()) {
@@ -421,9 +413,13 @@ public class DashBoardFragment extends Fragment {
                 }
             }
 
+            // code for hide premium button if member buy membership plan.
+//            if(memberProfileModel.premium_status.equalsIgnoreCase("1") && memberProfileModel!=null)
+//            {
+//                tvDashboardUpgrade.setVisibility(View.GONE);
+//            }
+
         }
-
-
 
     }
 
