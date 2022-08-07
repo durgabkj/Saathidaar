@@ -120,28 +120,11 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         });
 
 
-//        if (item.profile_photo != null && !item.profile_photo.isEmpty() && item.premium_status.equalsIgnoreCase(("1"))) {
-//            // For Premium member
-//            Glide.with(context).load(Utils.imageUrl + item.profile_photo)
-//                    .transition(DrawableTransitionOptions.withCrossFade())
-//                    .placeholder(new ColorDrawable(Color.BLACK))
-//                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                    .transform(new BlurTransformation(20, 8))
-//                    .into(holder.ivRemoveShortList);
-//        }
-
-
-//        Glide.with(context)
-//                .load(Utils.imageUrl + item.profile_photo)
-//                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
-//                .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-//                .into(holder.ivRemoveShortList);
-
         if (item.photo_privacy.equalsIgnoreCase("1")) {
-            holder.llPhotoShortList.setVisibility(View.VISIBLE);
-            holder.flPremiumRemove_shortList.setVisibility(View.GONE);
+            holder.llPhotoShortList.setEnabled(true);
+         //   holder.flPremiumRemove_shortList.setVisibility(View.GONE);
             holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
-            holder.tvLevelPremiumRemoveShortList.setVisibility(View.GONE);
+           // holder.tvLevelPremiumRemoveShortList.setVisibility(View.GONE);
 
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
@@ -151,10 +134,10 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
                     .into(holder.ivRemoveShortList);
 
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {
-            holder.llPhotoShortList.setVisibility(View.GONE);
-            holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
+            holder.llPhotoShortList.setEnabled(false);
+          //  holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
             holder.llPremiumMsgRemoveShortlist.setVisibility(View.VISIBLE);
-            holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
+           // holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .centerCrop()
@@ -162,24 +145,24 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
                     .transform(new BlurTransformation(20, 8))
                     .into(holder.ivRemoveShortList);
         } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
-            holder.flPremiumRemove_shortList.setVisibility(View.GONE);
+           // holder.flPremiumRemove_shortList.setVisibility(View.GONE);
+            holder.llPhotoShortList.setEnabled(true);
             holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
-            holder.tvLevelPremiumRemoveShortList.setVisibility(View.GONE);
+          //  holder.tvLevelPremiumRemoveShortList.setVisibility(View.GONE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .centerCrop()
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     .into(holder.ivRemoveShortList);
         } else {
-            holder.llPhotoShortList.setVisibility(View.GONE);
-            holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
+            holder.llPhotoShortList.setEnabled(false);
+         //   holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
             holder.llPremiumMsgRemoveShortlist.setVisibility(View.VISIBLE);
-            holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
+          //  holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     .transform(new BlurTransformation(20, 8))
-                    .centerCrop()
                     .into(holder.ivRemoveShortList);
         }
 

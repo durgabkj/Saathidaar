@@ -536,7 +536,7 @@ if (memberPreferenceModel != null) {
 
             b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
             b.tvDetailMaritalS.setText(Utils.nullToBlank(model.marital_status));
-            b.tvDetailLiveIn.setText("Live in" + " " + Utils.nullToBlank(model.city) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.country_name));
+            b.tvDetailLiveIn.setText(Utils.nullToBlank(model.city) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.country_name));
             b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + " " +Utils.nullToBlank(model.mother_tounge) );
             b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + " " + Utils.nullToBlank(model.sub_caste_name));
             b.tvDetailDiet.setText(Utils.nullToBlank(model.lifestyles));
@@ -570,10 +570,10 @@ if (memberPreferenceModel != null) {
 
 
             if (model.photo_privacy.equalsIgnoreCase("1")) {
-                b.llShowMemberImage.setVisibility(View.VISIBLE);
-                b.flPremiumMatchDetails.setVisibility(View.GONE);
+                b.llShowMemberImage.setEnabled(true);
+             //   b.flPremiumMatchDetails.setVisibility(View.GONE);
                 b.llPremiumMsgMatchesDetails.setVisibility(View.GONE);
-                b.tvLevelPremiumMatchDetails.setVisibility(View.GONE);
+               // b.tvLevelPremiumMatchDetails.setVisibility(View.GONE);
 
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
@@ -582,28 +582,29 @@ if (memberPreferenceModel != null) {
                         .into(b.ivDetailUserImage);
 
             } else if (model.photo_privacy.equalsIgnoreCase("3")) {
-                b.llShowMemberImage.setVisibility(View.GONE);
-                b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
+                b.llShowMemberImage.setEnabled(false);
+              //  b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
                 b.llPremiumMsgMatchesDetails.setVisibility(View.VISIBLE);
-                b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
+              //  b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
                         .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .transform(new BlurTransformation(20, 8))
                         .into(b.ivDetailUserImage);
             } else if (model.photo_privacy.equalsIgnoreCase(model.my_premium_status)) {
-                b.flPremiumMatchDetails.setVisibility(View.GONE);
+              //  b.flPremiumMatchDetails.setVisibility(View.GONE);
                 b.llPremiumMsgMatchesDetails.setVisibility(View.GONE);
-                b.tvLevelPremiumMatchDetails.setVisibility(View.GONE);
+                b.llShowMemberImage.setEnabled(true);
+              //  b.tvLevelPremiumMatchDetails.setVisibility(View.GONE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
                         .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .into(b.ivDetailUserImage);
             } else {
-                b.llShowMemberImage.setVisibility(View.GONE);
-                b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
+                b.llShowMemberImage.setEnabled(false);
+              //  b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
                 b.llPremiumMsgMatchesDetails.setVisibility(View.VISIBLE);
-                b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
+               // b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
                         .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
@@ -625,12 +626,19 @@ if (memberPreferenceModel != null) {
         }
 
 
-            if(model.profile_photo != null)
-            {
-//                b.llPremiumMsgMatchesDetails.setVisibility(View.VISIBLE);
-            }else {
-                b.llPremiumMsgMatchesDetails.setVisibility(View.GONE);
-            }
+//            if(model.profile_photo != null)
+//            {
+////                b.llPremiumMsgMatchesDetails.setVisibility(View.VISIBLE);
+//            }else {
+//                b.llPremiumMsgMatchesDetails.setVisibility(View.GONE);
+//            }
+
+//show request sent status
+//            if(model.request_status!=null && !model.request_status.isEmpty())
+//            {
+//                b.ivDetailsMatchConnected.setVisibility(View.VISIBLE);
+//                b.ivDetailsMatchConnect.setVisibility(View.GONE);
+//            }
 
         }
 

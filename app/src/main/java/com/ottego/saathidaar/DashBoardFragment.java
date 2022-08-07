@@ -233,11 +233,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://103.150.186.33:8080/account/privacy-policy"));
+                intent.setData(Uri.parse("https://103.150.186.33:8080/saathidaar/account/privacy-Policy"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://103.150.186.33:8080/account/privacy-policy"));
+                    intent.setData(Uri.parse("https://103.150.186.33:8080/saathidaar/account/privacy-Policy"));
                 }
             }
         });
@@ -247,11 +247,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://103.150.186.33:8080/account/term-condition"));
+                intent.setData(Uri.parse("https://103.150.186.33:8080/saathidaar/account/term-Condition"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://103.150.186.33:8080/account/term-condition"));
+                    intent.setData(Uri.parse("https://103.150.186.33:8080/saathidaar/account/term-Condition"));
                 }
             }
         });

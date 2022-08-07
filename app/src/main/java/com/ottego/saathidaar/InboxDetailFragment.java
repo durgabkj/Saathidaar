@@ -554,10 +554,10 @@ public class InboxDetailFragment extends Fragment {
 
 
             if (model.photo_privacy.equalsIgnoreCase("1")) {
-                b.llShowMemberImageInbox.setVisibility(View.VISIBLE);
-                b.flPremiumInboxDetails.setVisibility(View.GONE);
+                b.llShowMemberImageInbox.setEnabled(true);
+              //  b.flPremiumInboxDetails.setVisibility(View.GONE);
                 b.llPremiumMsgInboxDetails.setVisibility(View.GONE);
-                b.tvLevelPremiumInboxDetails.setVisibility(View.GONE);
+               // b.tvLevelPremiumInboxDetails.setVisibility(View.GONE);
 
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
@@ -566,27 +566,29 @@ public class InboxDetailFragment extends Fragment {
                         .into(b.ivDetailUserImage);
 
             } else if (model.photo_privacy.equalsIgnoreCase("3")) {
-                b.llShowMemberImageInbox.setVisibility(View.GONE);
-                b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
+                b.llShowMemberImageInbox.setEnabled(false);
+               // b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
                 b.llPremiumMsgInboxDetails.setVisibility(View.VISIBLE);
-                b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
+               // b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
                         .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .transform(new BlurTransformation(20, 8))
                         .into(b.ivDetailUserImage);
             } else if (model.photo_privacy.equalsIgnoreCase(model.my_premium_status)) {
-                b.flPremiumInboxDetails.setVisibility(View.GONE);
+               // b.flPremiumInboxDetails.setVisibility(View.GONE);
                 b.llPremiumMsgInboxDetails.setVisibility(View.GONE);
-                b.tvLevelPremiumInboxDetails.setVisibility(View.GONE);
+                b.llShowMemberImageInbox.setEnabled(true);
+               // b.tvLevelPremiumInboxDetails.setVisibility(View.GONE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .into(b.ivDetailUserImage);
             } else {
-                b.llShowMemberImageInbox.setVisibility(View.GONE);
-                b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
+                b.llShowMemberImageInbox.setEnabled(false);
+             //   b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
                 b.llPremiumMsgInboxDetails.setVisibility(View.VISIBLE);
-                b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
+              //  b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
                         .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
@@ -608,12 +610,13 @@ public class InboxDetailFragment extends Fragment {
             }
 
 
-            if(model.profile_photo != null)
-            {
-                b.llPremiumMsgInboxDetails.setVisibility(View.VISIBLE);
-            }else {
-                b.llPremiumMsgInboxDetails.setVisibility(View.GONE);
-            }
+//            if(model.profile_photo != null)
+//            {
+//                b.llPremiumMsgInboxDetails.setVisibility(View.VISIBLE);
+//            }else {
+//                b.llPremiumMsgInboxDetails.setVisibility(View.GONE);
+//            }
+
         }
         }
 

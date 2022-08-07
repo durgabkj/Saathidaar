@@ -202,11 +202,9 @@ int count=0;
     }
 
     private void setPreLoadData() {
-        count++;
         tvUserName.setText(sessionManager.getName()+" "+sessionManager.getLastName());
         tvUserEmail.setText(sessionManager.getEmail());
         tvAboutUs.setText(sessionManager.getAbout_Description());
-        refresh(1000);
     }
 
 
@@ -281,7 +279,6 @@ refresh(1000);
         }
     }
 
-
     private void refresh(int millisecond) {
         final Handler handler= new Handler();
         final  Runnable runnable=new Runnable() {
@@ -292,10 +289,7 @@ refresh(1000);
         };
 
         handler.postDelayed(runnable, millisecond);
-
-
     }
-
 
     public static boolean isValidContextForGlide(final Context context) {
         if (context == null) {

@@ -148,6 +148,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onPaymentSuccess(String s) {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
@@ -158,7 +159,8 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
                 .Builder(UpgradePlanDetailsActivity.this);
 
         // Set the message show for the Alert time
-
+// Set the message show for the Alert time
+        builder.setMessage("Success: " +"\n"+ s);
         // Set Alert Title
         builder.setTitle("Your Payment Details");
 
@@ -210,7 +212,10 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
         AlertDialog alertDialog = builder.create();
 
         // Show the Alert Dialog box
+
         alertDialog.show();
+        Button buttonbackground1 = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        buttonbackground1.setTextColor(R.color.colorPrimary);
     }
 
     @SuppressLint("ResourceAsColor")
@@ -223,7 +228,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
                 .Builder(UpgradePlanDetailsActivity.this);
 
         // Set the message show for the Alert time
-        builder.setMessage("Error: " + s);
+        builder.setMessage("Error: " +"\n"+ s);
 
         // Set Alert Title
         builder.setTitle("Your Payment Details");

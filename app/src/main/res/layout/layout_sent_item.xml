@@ -86,7 +86,6 @@
                     android:layout_height="30dp"
                     android:layout_marginStart="10dp"
                     android:orientation="horizontal"
-                    android:visibility="gone"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/oval_bg"
                     >
@@ -196,6 +195,7 @@
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:paddingHorizontal="10dp"
+            android:visibility="gone"
             android:paddingVertical="2dp"
             android:background="@color/colorPrimary"
             android:textStyle="bold" />
@@ -292,8 +292,8 @@
                             >
                             <ImageView
                                 android:id="@+id/ivAccept"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:background="@color/white"
                                 android:padding="6dp"
                                 android:scaleType="centerCrop"
@@ -333,8 +333,8 @@
 
                             <ImageView
                                 android:id="@+id/ivWhatsAppSent"
-                                android:layout_width="38dp"
-                                android:layout_height="40dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:background="@color/white"
                                 android:padding="3dp"
                                 android:scaleType="centerCrop"
@@ -373,8 +373,8 @@
                             >
                             <ImageView
                                 android:id="@+id/ivDecline"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:background="@color/white"
                                 android:padding="3dp"
                                 android:scaleType="centerCrop"
@@ -545,7 +545,7 @@
             android:orientation="horizontal"
             android:layout_marginTop="4dp"
             android:background="@drawable/side_border_green"
-            android:padding="10dp">
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/tvInvitationMessageSent"
@@ -560,7 +560,7 @@
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
-                android:textSize="16dp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/tvInvitationDateInbox"

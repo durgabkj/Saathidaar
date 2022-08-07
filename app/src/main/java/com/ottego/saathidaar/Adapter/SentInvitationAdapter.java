@@ -130,47 +130,44 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
 
 
             if (item.photo_privacy.equalsIgnoreCase("1")) {
-                holder.llPhotoSent.setVisibility(View.VISIBLE);
-                holder.flPremiumSent.setVisibility(View.GONE);
+                holder.llPhotoSent.setEnabled(true);
+              //  holder.flPremiumSent.setVisibility(View.GONE);
                 holder.llPremiumMsgSent.setVisibility(View.GONE);
-                holder.tvLevelPremiumSent.setVisibility(View.GONE);
-
+              //  holder.tvLevelPremiumSent.setVisibility(View.GONE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
-                        .centerCrop()
                         .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                         .into(holder.ivSentInvitation);
 
             } else if (item.photo_privacy.equalsIgnoreCase("3")) {
-                holder.llPhotoSent.setVisibility(View.GONE);
-                holder.flPremiumSent.setVisibility(View.VISIBLE);
+                holder.llPhotoSent.setEnabled(false);
+               // holder.flPremiumSent.setVisibility(View.VISIBLE);
                 holder.llPremiumMsgSent.setVisibility(View.VISIBLE);
-                holder.tvLevelPremiumSent.setVisibility(View.VISIBLE);
+             //   holder.tvLevelPremiumSent.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
-                        .centerCrop()
                         .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .transform(new BlurTransformation(20, 8))
                         .into(holder.ivSentInvitation);
+
             } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
-                holder.flPremiumSent.setVisibility(View.GONE);
+              //  holder.flPremiumSent.setVisibility(View.GONE);
                 holder.llPremiumMsgSent.setVisibility(View.GONE);
-                holder.tvLevelPremiumSent.setVisibility(View.GONE);
+                holder.llPhotoSent.setEnabled(true);
+               // holder.tvLevelPremiumSent.setVisibility(View.GONE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
-                        .centerCrop()
                         .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .into(holder.ivSentInvitation);
             } else {
-                holder.llPhotoSent.setVisibility(View.GONE);
-                holder.flPremiumSent.setVisibility(View.VISIBLE);
+                holder.llPhotoSent.setEnabled(false);
+               // holder.flPremiumSent.setVisibility(View.VISIBLE);
                 holder.llPremiumMsgSent.setVisibility(View.VISIBLE);
-                holder.tvLevelPremiumSent.setVisibility(View.VISIBLE);
+               // holder.tvLevelPremiumSent.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .transform(new BlurTransformation(20, 8))
-                        .centerCrop()
                         .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .into(holder.ivSentInvitation);
 

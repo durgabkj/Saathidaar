@@ -130,10 +130,10 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
 
 
         if (item.photo_privacy.equalsIgnoreCase("1")) {
-            holder.llPhotoInvitation.setVisibility(View.VISIBLE);
-            holder.flPremiumInvitation.setVisibility(View.GONE);
+            holder.llPhotoInvitation.setEnabled(true);
+           // holder.flPremiumInvitation.setVisibility(View.GONE);
             holder.llPremiumMsgInvitation.setVisibility(View.GONE);
-            holder.tvLevelPremiumInvitation.setVisibility(View.GONE);
+          //  holder.tvLevelPremiumInvitation.setVisibility(View.GONE);
 
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
@@ -142,35 +142,32 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
                     .into(holder.ivReceivedInvitation);
 
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {
-            holder.llPhotoInvitation.setVisibility(View.GONE);
-            holder.flPremiumInvitation.setVisibility(View.VISIBLE);
+            holder.llPhotoInvitation.setEnabled(false);
+          //  holder.flPremiumInvitation.setVisibility(View.VISIBLE);
             holder.llPremiumMsgInvitation.setVisibility(View.VISIBLE);
-            holder.tvLevelPremiumInvitation.setVisibility(View.VISIBLE);
+           // holder.tvLevelPremiumInvitation.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
-                    .transform(!item.profile_photo.equals("")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-                    .centerCrop()
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .transform(new BlurTransformation(20, 8))
                     .into(holder.ivReceivedInvitation);
         } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
-            holder.flPremiumInvitation.setVisibility(View.GONE);
+          //  holder.flPremiumInvitation.setVisibility(View.GONE);
             holder.llPremiumMsgInvitation.setVisibility(View.GONE);
-            holder.tvLevelPremiumInvitation.setVisibility(View.GONE);
-            holder.llPhotoInvitation.setVisibility(View.VISIBLE);
+           // holder.tvLevelPremiumInvitation.setVisibility(View.GONE);
+           holder.llPhotoInvitation.setEnabled(true);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    .centerCrop()
                     .into(holder.ivReceivedInvitation);
         } else {
-            holder.llPhotoInvitation.setVisibility(View.GONE);
-            holder.flPremiumInvitation.setVisibility(View.VISIBLE);
+            holder.llPhotoInvitation.setEnabled(false);
+         //   holder.flPremiumInvitation.setVisibility(View.VISIBLE);
             holder.llPremiumMsgInvitation.setVisibility(View.VISIBLE);
-            holder.tvLevelPremiumInvitation.setVisibility(View.VISIBLE);
+           // holder.tvLevelPremiumInvitation.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    .centerCrop()
                     .transform(new BlurTransformation(20, 8))
                     .into(holder.ivReceivedInvitation);
         }

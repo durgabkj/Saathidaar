@@ -9,9 +9,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.provider.OpenableColumns;
 import android.util.Log;
@@ -51,9 +54,12 @@ import com.ottego.saathidaar.viewmodel.GalleryViewModel;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -235,25 +241,56 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         }
     }
 
- public static String getFileName(Context context, Uri uri) throws URISyntaxException {
-        String temp = "";
-        String[] projection = {OpenableColumns.DISPLAY_NAME};
-        Cursor cursor = null;
-        if ("content".equalsIgnoreCase(uri.getScheme())) {
-            try {
-                cursor = context.getContentResolver().query(uri, projection, null, null, null);
-                int column_index = cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME);
-                if (cursor.moveToFirst()) {
-                    temp = cursor.getString(column_index);
-                    return temp;
-                }
-            } catch (Exception e) {
+    public String saveBitmapToFile(String path){
+        try {
+            File file = new File(path);
+            // BitmapFactory options to downsize the image
+            BitmapFactory.Options o = new BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            o.inSampleSize = 6;
+            // factor of downsizing the image
 
+            FileInputStream inputStream = new FileInputStream(file);
+            //Bitmap selectedBitmap = null;
+            BitmapFactory.decodeStream(inputStream, null, o);
+            inputStream.close();
+
+            // The new size we want to scale to
+            final int REQUIRED_SIZE=75;
+
+            // Find the correct scale value. It should be the power of 2.
+            int scale = 1;
+            while(o.outWidth / scale / 2 >= REQUIRED_SIZE &&
+                    o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+                scale *= 2;
             }
-        } else if (uri.getScheme().equalsIgnoreCase("file")) {
-            temp = uri.getLastPathSegment();
+
+            BitmapFactory.Options o2 = new BitmapFactory.Options();
+            o2.inSampleSize = scale;
+            inputStream = new FileInputStream(file);
+
+            Bitmap selectedBitmap = BitmapFactory.decodeStream(inputStream, null, o2);
+            inputStream.close();
+
+            String extr = Environment.getExternalStorageDirectory().toString();
+            File mFolder = new File(extr + "/Download/Sathidaar/");
+            if (!mFolder.exists()) {
+                mFolder.mkdir();
+            }
+
+            String name = path.substring(0,path.lastIndexOf("."));
+            String s = "tmp.png";
+            File f = new File(mFolder.getAbsolutePath(), s);
+            String strMyImagePath = f.getAbsolutePath();
+
+            FileOutputStream outputStream = new FileOutputStream(file);
+
+            selectedBitmap.compress(Bitmap.CompressFormat.JPEG, 100 , outputStream);
+
+            return strMyImagePath;
+        } catch (Exception e) {
+            return null;
         }
-        return temp;
     }
 
     void uploadInThread(final String path) {
@@ -270,6 +307,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             }
         }).start();
     }
+
     public String multipartRequest(String urlTo, Map<String, String> parmas, String filepath, String filefield, String fileMimeType) {
         Log.e("params", String.valueOf(parmas));
         Log.e("params1", filepath);
@@ -415,6 +453,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     public void PickiTonCompleteListener(String path, boolean wasDriveFile, boolean wasUnknownProvider, boolean wasSuccessful, String Reason) {
         Log.e("durga", "path single: " + path);
         imagePathList.add(path);
+
     }
 
     @Override

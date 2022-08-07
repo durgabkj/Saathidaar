@@ -139,49 +139,47 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
 
 
             if (item.photo_privacy.equalsIgnoreCase("1")) {
-                holder.llPhotoRecentV.setVisibility(View.VISIBLE);
-                holder.flPremiumRecentView.setVisibility(View.GONE);
+                holder.llPhotoRecentV.setEnabled(true);
+             //   holder.flPremiumRecentView.setVisibility(View.GONE);
                 holder.llPremiumMsgRecentlyView.setVisibility(View.GONE);
-                holder.tvLevelPremiumRecent.setVisibility(View.GONE);
+               // holder.tvLevelPremiumRecent.setVisibility(View.GONE);
 
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                        .centerCrop()
                         //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                         .into(holder.ivRecentViewImage);
 
 
             } else if (item.photo_privacy.equalsIgnoreCase("3")) {
-                holder.llPhotoRecentV.setVisibility(View.GONE);
-                holder.flPremiumRecentView.setVisibility(View.VISIBLE);
+                holder.llPhotoRecentV.setEnabled(false);
+             //   holder.flPremiumRecentView.setVisibility(View.VISIBLE);
                 holder.llPremiumMsgRecentlyView.setVisibility(View.VISIBLE);
-                holder.tvLevelPremiumRecent.setVisibility(View.VISIBLE);
+              //  holder.tvLevelPremiumRecent.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .transform(new BlurTransformation(20, 8))
-                        .centerCrop()
                         .into(holder.ivRecentViewImage);
+
             } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
-                holder.flPremiumRecentView.setVisibility(View.GONE);
+              //  holder.flPremiumRecentView.setVisibility(View.GONE);
                 holder.llPremiumMsgRecentlyView.setVisibility(View.GONE);
-                holder.tvLevelPremiumRecent.setVisibility(View.GONE);
+                holder.llPhotoRecentV.setEnabled(true);
+              //  holder.tvLevelPremiumRecent.setVisibility(View.GONE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                        .centerCrop()
                         .into(holder.ivRecentViewImage);
             } else {
-                holder.llPhotoRecentV.setVisibility(View.GONE);
-                holder.flPremiumRecentView.setVisibility(View.VISIBLE);
+                holder.llPhotoRecentV.setEnabled(false);
+               // holder.flPremiumRecentView.setVisibility(View.VISIBLE);
                 holder.llPremiumMsgRecentlyView.setVisibility(View.VISIBLE);
-                holder.tvLevelPremiumRecent.setVisibility(View.VISIBLE);
+              //  holder.tvLevelPremiumRecent.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
-                        .transform(new BlurTransformation(20, 8))
                         .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                        .centerCrop()
+                        .transform(new BlurTransformation(20, 8))
                         .into(holder.ivRecentViewImage);
             }
 
