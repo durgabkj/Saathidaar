@@ -188,6 +188,10 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
             holder.tvLevelPremiumInvitation.setVisibility(View.VISIBLE);
         }
 
+        if (item.images_count.equalsIgnoreCase("0")) {
+            holder.llPremiumMsgInvitation.setVisibility(View.GONE);
+        }
+
     }
 
 

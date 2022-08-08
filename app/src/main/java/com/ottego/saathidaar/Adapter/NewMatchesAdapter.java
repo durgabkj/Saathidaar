@@ -194,6 +194,10 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
         }
 
+        if (item.images_count.equalsIgnoreCase("0")) {
+            holder.llPremiumMsgMatches.setVisibility(View.GONE);
+        }
+
 
     }
 

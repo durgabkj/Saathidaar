@@ -94,37 +94,12 @@ FragmentFamilyInfoBinding b;
     }
 
     private void listener() {
-
-
-//        binding.tvDob.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//                binding.tvGender.setVisibility(View.VISIBLE);
-//
-//
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
-//            }
-//        });
-//
-
         b.srlRecycleViewFamilyDetails.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 getMemberData();
             }
         });
-
 
         b.ivCameraEditFamilyInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,9 +109,6 @@ FragmentFamilyInfoBinding b;
                 context.startActivity(intent);
             }
         });
-
-
-
         b.tvUserMotherStatus.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -236,13 +208,13 @@ FragmentFamilyInfoBinding b;
     }
 
     private void getMemberData() {
-      // count++;
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       count++;
+        //final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-               progressDialog.dismiss();
+             //  progressDialog.dismiss();
                 b.srlRecycleViewFamilyDetails.setRefreshing(false);
               //  Log.e("response", String.valueOf(response));
                 try {
@@ -263,7 +235,7 @@ FragmentFamilyInfoBinding b;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                 progressDialog.dismiss();
+                // progressDialog.dismiss();
                 b.srlRecycleViewFamilyDetails.setRefreshing(false);
                 error.printStackTrace();
             }
@@ -272,11 +244,11 @@ FragmentFamilyInfoBinding b;
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
 
-       // refresh(3000);
+     refresh(3000);
     }
 
     private void setData() {
-        if (sessionManager != null) {
+        if (model != null) {
             b.tvUserFatherStatus.setText(model.father_status);
             b.tvUserMotherStatus.setText(model.mother_status);
             b.tvUserFamilyLocation.setText(model.family_location);
@@ -327,16 +299,7 @@ FragmentFamilyInfoBinding b;
             b.tvUserMotherDesignation.setText(model.mother_designation);
             b.tvUserMotherNatureofBusiness.setText(model.mother_business_name);
         }
-//        if (sessionManager != null) {
-//            b.tvUserFatherStatus.setText(sessionManager.getKeyProFStaus());
-//            b.tvUserMotherStatus.setText(sessionManager.getKeyProMStatus());
-//            b.tvUserFamilyLocation.setText(sessionManager.getKeyProFmlyLoca());
-//            b.tvUserNativePlace.setText(sessionManager.getKeyProNativePlace());
-//            b.tvUserBrothers.setText(model.married_male + ": Married" + "," + model.unmarried_male + " : Unmarried");
-//            b.tvUserSisters.setText(model.married_female + " : Married" + "," + model.unmarried_female + " : Unmarried");
-//            b.tvUserFamilyType.setText(sessionManager.getKeyProFmlyType());
-//            b.tvUserFamilyAffluence.setText(sessionManager.getKeyProFmlyAfflu());
-//        }
+
 
 
     }

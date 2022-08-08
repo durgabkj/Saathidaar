@@ -1,5 +1,6 @@
 package com.ottego.saathidaar;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -161,6 +162,7 @@ int count=0;
 
     }
 
+    @SuppressLint("ResourceAsColor")
     private void setData() {
 //        RequestAccept.setText(model.data.get(0).accept_request_count);
 //        RequestSent.setText(model.data.get(0).sent_request_count);
@@ -169,36 +171,37 @@ int count=0;
 
             BadgeDrawable badgeDrawable = b.tlInbox.getTabAt(1).getOrCreateBadge();
             badgeDrawable.setNumber(Integer.parseInt(model.data.get(0).accept_request_count));
-            badgeDrawable.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
-            badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+        //    badgeDrawable.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
+           // badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
             badgeDrawable.setBadgeGravity(BadgeDrawable.TOP_END);
 
             BadgeDrawable badgeDrawable1 = b.tlInbox.getTabAt(2).getOrCreateBadge();
             badgeDrawable1.setNumber(Integer.parseInt(model.data.get(0).sent_request_count));
-            badgeDrawable1.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
-            badgeDrawable1.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+           // badgeDrawable1.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
+           // badgeDrawable1.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
             badgeDrawable1.setBadgeGravity(BadgeDrawable.TOP_END);
 
 
             BadgeDrawable badgeDrawable2 = b.tlInbox.getTabAt(3).getOrCreateBadge();
             badgeDrawable2.setNumber(Integer.parseInt(model.data.get(0).deleted_request_count));
-            badgeDrawable2.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
-            badgeDrawable2.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+           // badgeDrawable2.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
+           // badgeDrawable2.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
             badgeDrawable2.setBadgeGravity(BadgeDrawable.TOP_END);
 
 
             BadgeDrawable badgeDrawable3 = b.tlInbox.getTabAt(4).getOrCreateBadge();
             badgeDrawable3.setNumber(Integer.parseInt(model.data.get(0).block_request_count));
-            badgeDrawable3.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
-            badgeDrawable3.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+//           badgeDrawable3.setBackgroundColor(R.color.colorPrimary);
+//            badgeDrawable3.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
             badgeDrawable3.setBadgeGravity(BadgeDrawable.TOP_END);
 
 
             BadgeDrawable badgeDrawable4= b.tlInbox.getTabAt(0).getOrCreateBadge();
             badgeDrawable4.setNumber(Integer.parseInt(model.data.get(0).invitations_count));
-            badgeDrawable4.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
-            badgeDrawable4.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+           // badgeDrawable4.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
+           // badgeDrawable4.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
             badgeDrawable4.setBadgeGravity(BadgeDrawable.TOP_END);
+            badgeDrawable4.setVerticalOffsetWithText(10);
 
         }
     }

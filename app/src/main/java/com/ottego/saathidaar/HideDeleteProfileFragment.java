@@ -86,8 +86,8 @@ String Activate_deactivate;
        context=getContext();
        sessionManager=new SessionManager(context);
        listener();
-getData();
-getDataActivate();
+        getData();
+        getDataActivate();
        return b.getRoot();
     }
 

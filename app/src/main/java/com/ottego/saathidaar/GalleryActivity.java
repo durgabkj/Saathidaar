@@ -1,14 +1,12 @@
 package com.ottego.saathidaar;
 
 import android.Manifest;
-import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -16,15 +14,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -54,8 +48,6 @@ import com.ottego.saathidaar.viewmodel.GalleryViewModel;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -64,7 +56,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -80,9 +71,13 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     ProgressDialog progressDialog;
     String getImageURL = Utils.memberUrl + "app/get/photo/";
     Context context;
+    int countData=0;
+    ImageAdapter adapter;
+    int imageCount=0;
     List<String> imagePathList = new ArrayList<>();
     GalleryViewModel viewModel;
     int count=0;
+    long length;
     private static final int REQUEST_STORAGE_PERMISSION = 100;
     private static final int PICK_FILE_REQUEST = 1;
 
@@ -96,8 +91,6 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         viewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
         context = GalleryActivity.this;
        sessionManager = new SessionManager(context);
-
-
         // Now we will call setSelected() method
         // and pass boolean value as true
         b.marqueeText.setSelected(true);
@@ -134,19 +127,20 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                     startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_FILE_REQUEST);
                 }
                 return false;
-            }
+                }
 
         });
 
 
-
+// Upload image file..
         b.upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (int i = 0; i < imagePathList.size(); i++) {
-                    uploadInThread(imagePathList.get(i));
 
-                }
+                    for (int i = 0; i < imagePathList.size(); i++) {
+                        uploadInThread(imagePathList.get(i));
+
+                    }
             }
 
         });
@@ -211,7 +205,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         }
     }
 
-
+// pick image from gallery...
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -219,12 +213,12 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             if (requestCode == PICK_FILE_REQUEST) {
                 imagePathList.clear();
                 if (data.getClipData() != null) {
-                    int count = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
-                   if(count >3) {
+                     countData = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
+                   if(countData >2) {
                        Toast.makeText(context, "You can Only upload three Images", Toast.LENGTH_SHORT).show();
                    }
                    else {
-                       for (int i = 0; i < count; i++) {
+                       for (int i = 0; i < countData; i++) {
                            Uri imageUri = data.getClipData().getItemAt(i).getUri();
                            pickiT.getPath(imageUri, Build.VERSION.SDK_INT);
 
@@ -239,6 +233,9 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         {
             Toast.makeText(context, "You haven't pick any image", Toast.LENGTH_SHORT).show();
         }
+
+
+
     }
 
     public String saveBitmapToFile(String path){
@@ -279,7 +276,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             }
 
             String s = path.substring(path.lastIndexOf("/"));
-            Log.e("durgapath", s);
+          //  Log.e("durgapath", s);
             File f = new File(mFolder.getAbsolutePath(), s);
             String strMyImagePath = f.getAbsolutePath();
 
@@ -294,24 +291,38 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     }
 
     void uploadInThread(final String path) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-//
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("member_id", sessionManager.getMemberId());
-                Log.e("durga", "upload start: "+path);
 
-                String result = multipartRequest(URL, params, saveBitmapToFile(path), "image", "image/jpeg");
+        try{
+            File file = new File(String.valueOf(path));
+            length = file.length();
+            length = length/1024;
+            Log.e("image size ","connect " + String.valueOf(length));
+        }catch(Exception e){
+            System.out.println("File not found : " + e.getMessage() + e);
+        }
 
-                 Log.e("durga",result);
-            }
-        }).start();
+        if(length<=205)
+        {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("member_id", sessionManager.getMemberId());
+                    Log.e("durga", "upload start: "+path);
+                    String result = multipartRequest(URL, params, path, "image", "image/jpeg");
+                    Log.e("durga",result);
+                }
+            }).start();
+        }else
+        {
+            Toast.makeText(context,"Only 100 Kb image Accepted ",Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public String multipartRequest(String urlTo, Map<String, String> parmas, String filepath, String filefield, String fileMimeType) {
         Log.e("params", String.valueOf(parmas));
-        Log.e("params1", filepath);
+      //  Log.e("params1", filepath);
         HttpURLConnection connection = null;
         DataOutputStream outputStream = null;
         InputStream inputStream = null;
@@ -434,7 +445,6 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         return sb.toString();
     }
 
-
     @Override
     public void PickiTonUriReturned() {
 
@@ -483,7 +493,6 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         }
     }
 
-
     private void getData() {
         count++;
         //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
@@ -498,6 +507,16 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                 dataModelImage = gson.fromJson(String.valueOf(response), DataModelImage.class);
                 if (dataModelImage.results == 1) {
                     viewModel._list.postValue(dataModelImage.data);
+
+                    imageCount=dataModelImage.data.size();
+                    if(imageCount==2){
+                        //hide
+                        b.upload.setVisibility(View.INVISIBLE);
+                    }else{
+                        // unhine
+                        b.upload.setVisibility(View.VISIBLE);
+                    }
+
                     setRecyclerView();
                 }
             }
@@ -518,7 +537,7 @@ refresh(1000);
         b.rvMyImage.setLayoutManager(layoutManager);
         b.rvMyImage.setHasFixedSize(true);
         b.rvMyImage.setNestedScrollingEnabled(true);
-        ImageAdapter adapter = new ImageAdapter(context, dataModelImage.data);
+        adapter = new ImageAdapter(context, dataModelImage.data);
         b.rvMyImage.setAdapter(adapter);
         if (adapter.getItemCount() != 0) {
             b.llNoDataImage.setVisibility(View.GONE);
@@ -527,9 +546,9 @@ refresh(1000);
         } else {
             b.llNoDataImage.setVisibility(View.VISIBLE);
         }
+
+
     }
-
-
     private void refresh(int millisecond) {
 
         final Handler handler = new Handler();
@@ -544,12 +563,5 @@ refresh(1000);
 
     }
 
-
-
-//
-//    android.view.ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
-//    layoutParams.width = 80;
-//    layoutParams.height = 80;
-//imageView.setLayoutParams(layoutParams);
 
 }

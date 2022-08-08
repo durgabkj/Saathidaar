@@ -625,13 +625,9 @@ if (memberPreferenceModel != null) {
             b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
         }
 
-
-//            if(model.profile_photo != null)
-//            {
-////                b.llPremiumMsgMatchesDetails.setVisibility(View.VISIBLE);
-//            }else {
-//                b.llPremiumMsgMatchesDetails.setVisibility(View.GONE);
-//            }
+            if (model.images_count.equalsIgnoreCase("0")) {
+                b.llPremiumMsgMatchesDetails.setVisibility(View.GONE);
+            }
 
 //show request sent status
 //            if(model.request_status!=null && !model.request_status.isEmpty())

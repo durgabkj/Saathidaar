@@ -40,7 +40,7 @@ import org.json.JSONObject;
 public class DashBoardFragment extends Fragment {
     SessionManager sessionManager;
     ImageView ivPremiumImage, profilePicDashBoard;
-    TextView tvPremiumText, RequestAccept, tvDashBoardUserId, tvDashBoardUserAccountType, tvDashBoardUploadImage, Visitors, RequestSent, tvDashboardUpgrade, tvDashBoardUserName;
+    TextView tvPremiumText, RequestAccept,tvPremiumButton, tvDashBoardUserId, tvDashBoardUserAccountType, tvDashBoardUploadImage, Visitors, RequestSent, tvDashboardUpgrade, tvDashBoardUserName;
     int position = 0;
     DataModelDashboard model;
     LinearLayout llPremiumMatch, llMyMatch, llPremium, llshare, tvLogout, llRequestSent, llProfileVisi, llAcceptRequest;
@@ -95,7 +95,7 @@ public class DashBoardFragment extends Fragment {
         context = getContext();
         sessionManager = new SessionManager(context);
 //
-//        srlDashboard = view.findViewById(R.id.srlDashboard);
+      tvPremiumButton = view.findViewById(R.id.tvPremiumButton);
         ivPremiumImage = view.findViewById(R.id.ivPremiumImage);
         tvPremiumText = view.findViewById(R.id.tvPremiumText);
         tvLogout = view.findViewById(R.id.tvLogout);
@@ -187,6 +187,16 @@ public class DashBoardFragment extends Fragment {
                 Animation bounce = AnimationUtils.loadAnimation(context, R.anim.bounce);
                 llRequestSent.startAnimation(bounce);
                 Intent intent = new Intent(context, TestActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tvPremiumButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Animation bounce = AnimationUtils.loadAnimation(context, R.anim.bounce);
+//                tvDashboardUpgrade.startAnimation(bounce);
+                Intent intent = new Intent(context, UpgradeOnButtonActivity.class);
                 startActivity(intent);
             }
         });

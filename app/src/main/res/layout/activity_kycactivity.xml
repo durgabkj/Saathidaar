@@ -78,6 +78,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
+                            android:buttonTint="@color/white"
                             android:fontFamily="@font/italic"
                             android:text="Aadhar"
                             android:textColor="@color/white" />
@@ -90,6 +91,7 @@
                             android:layout_weight="1"
                             android:fontFamily="@font/italic"
                             android:text="Pan-Card"
+                            android:buttonTint="@color/white"
                             android:textColor="@color/white" />
 
                     </RadioGroup>
@@ -187,6 +189,41 @@
 
             </LinearLayout>
 
+
         </com.google.android.material.card.MaterialCardView>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Documents KYC Status :- "
+        android:drawablePadding="4dp"
+        android:textStyle="bold"
+        android:textSize="12dp"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:gravity="center" />
+    <TextView
+        android:id="@+id/tvKycId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pending"
+        android:drawablePadding="4dp"
+        android:textStyle="bold"
+        android:textSize="12dp"
+        android:layout_marginStart="10dp"
+        android:textColor="#FFC107"
+        android:textAlignment="center"
+        android:gravity="center" />
+
+
+</LinearLayout>
+
+
     </LinearLayout>
 </LinearLayout>

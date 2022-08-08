@@ -610,12 +610,9 @@ public class InboxDetailFragment extends Fragment {
             }
 
 
-//            if(model.profile_photo != null)
-//            {
-//                b.llPremiumMsgInboxDetails.setVisibility(View.VISIBLE);
-//            }else {
-//                b.llPremiumMsgInboxDetails.setVisibility(View.GONE);
-//            }
+            if (model.images_count.equalsIgnoreCase("0")) {
+                b.llPremiumMsgInboxDetails.setVisibility(View.GONE);
+            }
 
         }
         }
