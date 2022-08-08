@@ -499,20 +499,24 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                     b.llNoChild.setVisibility(View.GONE);
                 }
 
-                if (myMaritalS.equalsIgnoreCase("Divorce")) {
+                if (myMaritalS.equalsIgnoreCase("Divorced")) {
                     b.llNoChild.setVisibility(View.VISIBLE);
+                    b.tvmarital.setText(" ");
                 }
 
                 if (myMaritalS.equalsIgnoreCase("Widowed")) {
                     b.llNoChild.setVisibility(View.VISIBLE);
+                    b.tvmarital.setText("");
                 }
 
                 if (myMaritalS.equalsIgnoreCase("Awaiting Divorce")) {
                     b.llNoChild.setVisibility(View.VISIBLE);
+                    b.tvmarital.setText("");
                 }
 
                 if (myMaritalS.equalsIgnoreCase("Married")) {
                     b.llNoChild.setVisibility(View.VISIBLE);
+                    b.tvmarital.setText("");
                 }
             }
 

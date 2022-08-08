@@ -60,7 +60,7 @@ public class LandingActivity extends AppCompatActivity {
             listener();
 
             String[] items = new String[]{"Profile created By","Self", "Sibling", "Parents", "Relatives", "Friends", "Saathidaar.com", "Franchies"};
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.dropdown_item, items);
             binding.spinner1.setAdapter(adapter);
 
             int imgarray[] = {R.drawable.landing1, R.drawable.landing2, R.drawable.landing3};

@@ -1,5 +1,6 @@
 package com.ottego.saathidaar.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -235,11 +236,13 @@ FragmentFamilyInfoBinding b;
     }
 
     private void getMemberData() {
-       count++;
+      // count++;
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+               progressDialog.dismiss();
                 b.srlRecycleViewFamilyDetails.setRefreshing(false);
               //  Log.e("response", String.valueOf(response));
                 try {
@@ -260,6 +263,7 @@ FragmentFamilyInfoBinding b;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                 progressDialog.dismiss();
                 b.srlRecycleViewFamilyDetails.setRefreshing(false);
                 error.printStackTrace();
             }
@@ -268,7 +272,7 @@ FragmentFamilyInfoBinding b;
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
 
-        refresh(3000);
+       // refresh(3000);
     }
 
     private void setData() {

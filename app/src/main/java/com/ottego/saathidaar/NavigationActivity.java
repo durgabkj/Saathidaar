@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.TabHost;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.ottego.saathidaar.Adapter.ViewPageAdapter;
 import com.ottego.saathidaar.databinding.ActivityNavigationBinding;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class NavigationActivity extends AppCompatActivity {
@@ -23,6 +25,7 @@ public class NavigationActivity extends AppCompatActivity {
     TabLayout tabLayout;
     SwipeDisabledPager viewPager;
     Context context;
+   MediaPlayer mp;
     int[] tabIcons = {
             R.drawable.logo1,
             R.drawable.ic_couple,
@@ -47,8 +50,6 @@ public class NavigationActivity extends AppCompatActivity {
         context = NavigationActivity.this;
         tabLayout = findViewById(R.id.tlMatch);
         viewPager = findViewById(R.id.vpMatch);
-
-        final MediaPlayer mp = MediaPlayer.create(this, R.raw.app);
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         tabLayout.addTab(tabLayout.newTab().setText("Home"));
@@ -57,6 +58,7 @@ public class NavigationActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Account"));
         tabLayout.addTab(tabLayout.newTab().setText("Premium"));
         setupTabIcons();
+
 
 
 //      tabLayout.setSmoothScrollingEnabled(false);
@@ -71,7 +73,9 @@ public class NavigationActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                  viewPager.setCurrentItem(tab.getPosition());
-                mp.start();
+                  mp = MediaPlayer.create(NavigationActivity.this, R.raw.app);
+                  mp.start();
+
 
             }
 
@@ -90,7 +94,6 @@ public class NavigationActivity extends AppCompatActivity {
         });
 
         Objects.requireNonNull(tabLayout.getTabAt(1)).select();
-
     }
 
     @Override
@@ -138,7 +141,8 @@ public class NavigationActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         unregisterReceiver(myReceiver);
-
         super.onStop();
     }
+
+
 }

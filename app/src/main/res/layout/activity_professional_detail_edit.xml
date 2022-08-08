@@ -431,7 +431,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
                             android:fontFamily="@font/italic"
-                            android:text="Corigin " />
+                            android:text="Co-origin " />
 
                         <EditText
                             android:id="@+id/etAddUserCorigin"

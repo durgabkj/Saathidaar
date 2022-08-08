@@ -193,10 +193,6 @@ public class PersonalInfoFragment extends Fragment {
                     binding.tvGender.setVisibility(View.VISIBLE);
                 }
 
-
-
-
-
             }
 
             @Override
@@ -218,10 +214,54 @@ public class PersonalInfoFragment extends Fragment {
 
 
                 String religion = binding.tvUserReligion.getText().toString().trim();
-                if (religion.equalsIgnoreCase("Hindi")) {
+                if (religion.equalsIgnoreCase("Hindu")) {
                     binding.llGotra.setVisibility(View.VISIBLE);
                 }else {
                     binding.llGotra.setVisibility(View.GONE);
+                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        binding.tvGender.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+
+                String marital = binding.tvUserMaritalStatus.getText().toString().trim();
+                if (marital.equalsIgnoreCase("Never Married")) {
+                    binding.llChild.setVisibility(View.GONE);
+                }
+
+
+                if (marital.equalsIgnoreCase("Divorced")) {
+                    binding.llChild.setVisibility(View.VISIBLE);
+
+                }
+
+                if (marital.equalsIgnoreCase("Widowed")) {
+                    binding.llChild.setVisibility(View.VISIBLE);
+
+                }
+
+                if (marital.equalsIgnoreCase("Awaiting Divorce")) {
+                    binding.llChild.setVisibility(View.VISIBLE);
+                }
+
+                if (marital.equalsIgnoreCase("Married")) {
+                    binding.llChild.setVisibility(View.VISIBLE);
+
                 }
 
 
@@ -303,7 +343,7 @@ public class PersonalInfoFragment extends Fragment {
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                getMemberData();
+               // getMemberData();
             }
         };
 

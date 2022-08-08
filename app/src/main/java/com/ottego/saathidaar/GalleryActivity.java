@@ -278,8 +278,8 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                 mFolder.mkdir();
             }
 
-            String name = path.substring(0,path.lastIndexOf("."));
-            String s = "tmp.png";
+            String s = path.substring(path.lastIndexOf("/"));
+            Log.e("durgapath", s);
             File f = new File(mFolder.getAbsolutePath(), s);
             String strMyImagePath = f.getAbsolutePath();
 
@@ -301,7 +301,8 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("member_id", sessionManager.getMemberId());
                 Log.e("durga", "upload start: "+path);
-                String result = multipartRequest(URL, params, path, "image", "image/jpeg");
+
+                String result = multipartRequest(URL, params, saveBitmapToFile(path), "image", "image/jpeg");
 
                  Log.e("durga",result);
             }

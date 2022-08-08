@@ -71,15 +71,27 @@
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/italic"
+                        android:gravity="center"
+                        android:text="Select Gender"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="17sp" />
 
                     <RadioGroup
                         android:id="@+id/radioGroup"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <RadioButton
@@ -137,6 +149,7 @@
                         android:fontFamily="@font/italic"
                         android:hint="Firstname"
                         android:padding="8dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
                         android:textColor="@color/black" />
 
                     <Space
@@ -155,6 +168,7 @@
                         android:drawableTint="@color/black"
                         android:fontFamily="@font/italic"
                         android:hint="Lastname"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
                         android:padding="8dp"
                         android:textColor="@color/black" />
                 </LinearLayout>
@@ -218,7 +232,6 @@
                         android:layout_height="40dp"
                         android:clickable="true"
                         android:focusable="true"
-
                         android:focusableInTouchMode="false"
                         android:fontFamily="@font/italic"
                         android:importantForAutofill="no"
@@ -304,12 +317,13 @@
                         android:layout_height="70dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="120dp"
+                        android:gravity="center"
                         android:background="@drawable/user_profile_background">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_baseline_person_24"></ImageView>
+                            android:src="@drawable/ic_baseline_person_24"/>
                     </RelativeLayout>
 
                     <TextView
@@ -343,6 +357,7 @@
                             android:layout_height="70dp"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="370dp"
+                            android:gravity="center"
                             android:background="@drawable/user_profile_background">
 
                             <ImageView
@@ -382,6 +397,7 @@
                                 android:layout_height="70dp"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="630dp"
+                                android:gravity="center"
                                 android:background="@drawable/user_profile_background">
 
                                 <ImageView

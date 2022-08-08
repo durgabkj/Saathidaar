@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
+        android:fontFamily="@font/italic"
         android:text="My Alerts Manager"
         android:textAlignment="center" />
 
@@ -221,6 +222,7 @@
                         android:background="@color/gray_dark"
                         android:padding="5dp"
                         android:text="Alert"
+                        android:fontFamily="@font/italic"
                         android:textStyle="bold" />
 
                     <RadioGroup
@@ -232,6 +234,7 @@
                             android:id="@+id/rbTodayMatchDaily"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/italic"
                             android:checked="false"
                             android:text="Daily" />
 

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TabWidget;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -189,6 +190,9 @@ refresh(1000);
 
     private void setData() {
         if (model.data != null && model.data.size() > 0)  {
+
+
+
             BadgeDrawable badgeDrawable = b.tlMatch.getTabAt(0).getOrCreateBadge();
             badgeDrawable.setNumber(Integer.parseInt(model.data.get(0).new_matches_count));
             badgeDrawable.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
