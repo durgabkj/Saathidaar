@@ -28,6 +28,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -68,10 +69,11 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
     ActivityKycactivityBinding b;
     SessionManager sessionManager;
     DataModelImage dataModelImage;
-    String URL = "http://103.150.186.33:8080/saathidaar_backend/api/member/uploads/photo";
+    String URL = "http://103.150.186.33:8080/saathidaar_backend/api/member/app/uploads/kyc/photo";
     ProgressDialog progressDialog;
     String getImageURL = Utils.memberUrl + "app/get/photo/";
     Context context;
+    String document = "";
     List<String> imagePathList = new ArrayList<>();
     GalleryViewModel viewModel;
     int count=0;
@@ -93,6 +95,22 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
 
     private void listener() {
 
+
+        b.rgDocumentType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.mrbAadhar:
+                        document = "Aadhaar Card";
+                        break;
+
+                    case R.id.mrbPanCard:
+                        document = "Pan-Card";
+                        break;
+                }
+            }
+        });
+
         b.mtbKYC.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,9 +124,9 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
             public void onClick(View view) {
                 checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, PICK_FILE_REQUEST);
                     Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                // set type
+                intent.setType("*/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
                     startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_FILE_REQUEST);
                 }
 
@@ -202,8 +220,9 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
 //
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("member_id", sessionManager.getMemberId());
+                params.put("document_type",document);
                 Log.e("durga", "upload start: "+path);
-                String result = multipartRequest(URL, params, path, "image", "image/jpeg");
+                String result = multipartRequest(URL, params, path, "document", "application/*");
 
                 Log.e("durga",result);
             }

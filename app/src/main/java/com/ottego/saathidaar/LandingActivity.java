@@ -146,6 +146,7 @@ public class LandingActivity extends AppCompatActivity {
 
                         case R.id.male:
                             gender = "male";
+                            break;
                     }
                 }
             });

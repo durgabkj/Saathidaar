@@ -5,13 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.tabs.TabLayout;
-import com.ottego.saathidaar.Adapter.HomeTablayoutAdapter;
+import com.google.android.material.chip.ChipGroup;
 import com.ottego.saathidaar.databinding.FragmentAccountBinding;
+
+import java.util.List;
 
 
 public class AccountFragment extends Fragment {
@@ -55,45 +55,59 @@ public class AccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-    b=FragmentAccountBinding.inflate(getLayoutInflater());
+        b = FragmentAccountBinding.inflate(getLayoutInflater());
 
+        getChildFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fcvAccount, accountSettingFragment)
+                .commit();
+
+        b.chipGroupAccount.check(b.chipGroupAccount.getChildAt(0).getId());
+        listener();
         return b.getRoot();
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        setUpViewPager(b.vpAccount);
-        b.tlAccount.setupWithViewPager(b.vpAccount);
-        b.vpAccount.setPagingEnable(false);
-
-        b.tlAccount.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-
+    private void listener() {
+        b.chipGroupAccount.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
+            public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
+                b.vpAccount.setCurrentItem(group.getCheckedChipId());
+                Fragment fragment = null;
+                switch (group.getCheckedChipId()) {
+                    case R.id.chipAccountSetting: {
+                        fragment = AccountSettingFragment.newInstance("", "");
+                        break;
+                    }
+                    case R.id.chipEmailSetting: {
+                        fragment = EmailAndSmsAlertFragment.newInstance("", "");
+                        break;
+                    }
+                    case R.id.chipPrivacy: {
+                        fragment = PrivacyOptionFragment.newInstance("", "");
+                        break;
+                    }
 
-                b.vpAccount.setCurrentItem(tab.getPosition());
+                    case R.id.chipHideUnHide: {
+                        fragment = HideDeleteProfileFragment.newInstance("", "");
+                        break;
+                    }
+
+                    default: {
+                        fragment = AccountSettingFragment.newInstance("", "");
+                        break;
+                    }
+
+                }
+                getChildFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fcvAccount, fragment)
+                        .commit();
+
+
             }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
         });
     }
 
-    private void setUpViewPager(ViewPager viewPager) {
-        HomeTablayoutAdapter adapter = new HomeTablayoutAdapter(getChildFragmentManager());
-        adapter.addFragment(new AccountSettingFragment(), "Account Settings");
-        adapter.addFragment(new EmailAndSmsAlertFragment(), "Email Setting");
-        adapter.addFragment(new PrivacyOptionFragment(), "Privacy Option");
-        adapter.addFragment(new HideDeleteProfileFragment(), "Hide Un-Hide Profile");
-        viewPager.setAdapter(adapter);
-    }
+
 }

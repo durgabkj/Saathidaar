@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -20,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.HomeTablayoutAdapter;
@@ -27,6 +29,8 @@ import com.ottego.saathidaar.Model.DataModelDashboard;
 import com.ottego.saathidaar.databinding.FragmentInboxBinding;
 
 import org.json.JSONObject;
+
+import java.util.List;
 
 
 public class InboxFragment extends Fragment {
@@ -82,65 +86,61 @@ int count=0;
                 .replace(R.id.fcvInbox, invitationFragment)
                 .commit();
 
-        b.tlInbox.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        b.chipGroupInbox.check(b.chipGroupInbox.getChildAt(0).getId());
 
+        listener();
+        getDataCount();
+        return b.getRoot();
+    }
+
+    private void listener() {
+        b.chipGroupInbox.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-
-//                b.vpMatch.setCurrentItem(tab.getPosition());
+            public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
+                b.vpInbox.setCurrentItem(group.getCheckedChipId());
                 Fragment fragment = null;
+                switch (group.getCheckedChipId()) {
+                    case R.id.chipInvitation: {
+                        fragment = InvitationFragment.newInstance("", "");
+                        break;
+                    }
+                    case R.id.chipAccept: {
+                        fragment = AcceptedInboxFragment.newInstance("", "");
+                        break;
+                    }
+                    case R.id.chipSent: {
+                        fragment = SentInboxFragment.newInstance("", "");
+                        break;
+                    }
 
-                switch (tab.getPosition()){
-                    case 0:{
-                        fragment= InvitationFragment.newInstance("","");
+                    case R.id.chipDelete: {
+                        fragment = DeleteInboxFragment.newInstance("", "");
                         break;
                     }
-                    case 1:{
-                        fragment= AcceptedInboxFragment.newInstance("", "");
+
+                    case R.id.chipBlock: {
+                        fragment = BlockMemberFragment.newInstance("", "");
                         break;
                     }
-                    case 2:{
-                        fragment= SentInboxFragment.newInstance("", "");
-                        break;
-                    }
-                    case 3:{
-                        fragment= DeleteInboxFragment.newInstance("", "");
-                        break;
-                    }
-                    case 4:{
-                        fragment= BlockMemberFragment.newInstance("", "");
+                    default: {
+                        fragment = InvitationFragment.newInstance("", "");
                         break;
                     }
 
                 }
-
                 getChildFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fcvInbox, fragment)
                         .commit();
 
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
 
             }
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
         });
-
-
-        getDataCount();
-        return b.getRoot();
     }
 
 
-
     private void getDataCount() {
-        count++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
@@ -158,7 +158,7 @@ int count=0;
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-         refresh(1000);
+
 
     }
 
@@ -169,56 +169,14 @@ int count=0;
 //        Visitors.setText(model.data.get(0).recent_visitors_count);
         if (model.data != null && model.data.size() > 0) {
 
-            BadgeDrawable badgeDrawable = b.tlInbox.getTabAt(1).getOrCreateBadge();
-            badgeDrawable.setNumber(Integer.parseInt(model.data.get(0).accept_request_count));
-        //    badgeDrawable.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
-           // badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-            badgeDrawable.setBadgeGravity(BadgeDrawable.TOP_END);
+            b.chipInvitation.setText("Invitation" + "(" + model.data.get(0).invitations_count + ")");
+            b.chipAccept.setText("Accept " + "(" + model.data.get(0).accept_request_count + ")");
+            b.chipSent.setText("Sent " + "(" + model.data.get(0).sent_request_count + ")");
+             b.chipDelete.setText("Delete "+"("+model.data.get(0).deleted_request_count+")");
+            b.chipBlock.setText("Block " + "(" + model.data.get(0).block_request_count + ")");
 
-            BadgeDrawable badgeDrawable1 = b.tlInbox.getTabAt(2).getOrCreateBadge();
-            badgeDrawable1.setNumber(Integer.parseInt(model.data.get(0).sent_request_count));
-           // badgeDrawable1.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
-           // badgeDrawable1.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-            badgeDrawable1.setBadgeGravity(BadgeDrawable.TOP_END);
-
-
-            BadgeDrawable badgeDrawable2 = b.tlInbox.getTabAt(3).getOrCreateBadge();
-            badgeDrawable2.setNumber(Integer.parseInt(model.data.get(0).deleted_request_count));
-           // badgeDrawable2.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
-           // badgeDrawable2.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-            badgeDrawable2.setBadgeGravity(BadgeDrawable.TOP_END);
-
-
-            BadgeDrawable badgeDrawable3 = b.tlInbox.getTabAt(4).getOrCreateBadge();
-            badgeDrawable3.setNumber(Integer.parseInt(model.data.get(0).block_request_count));
-//           badgeDrawable3.setBackgroundColor(R.color.colorPrimary);
-//            badgeDrawable3.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-            badgeDrawable3.setBadgeGravity(BadgeDrawable.TOP_END);
-
-
-            BadgeDrawable badgeDrawable4= b.tlInbox.getTabAt(0).getOrCreateBadge();
-            badgeDrawable4.setNumber(Integer.parseInt(model.data.get(0).invitations_count));
-           // badgeDrawable4.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
-           // badgeDrawable4.setBadgeTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-            badgeDrawable4.setBadgeGravity(BadgeDrawable.TOP_END);
-            badgeDrawable4.setVerticalOffsetWithText(10);
 
         }
     }
-
-    private void refresh(int millisecond) {
-
-        final Handler handler = new Handler();
-        final Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                getDataCount();
-            }
-        };
-
-        handler.postDelayed(runnable, millisecond);
-
-    }
-
 
 }

@@ -8,59 +8,196 @@
     tools:context=".MatchesFragment">
 
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tlMatch"
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:id="@+id/tlMatch"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:elevation="20dp"-->
+<!--        android:textAlignment="center"-->
+<!--        android:translationZ="20dp"-->
+<!--        app:tabBackground="@drawable/tab_selector"-->
+<!--        app:tabGravity="fill"-->
+<!--        app:tabTextAppearance="@style/TextAppearance.AppCompat.Caption"-->
+<!--        app:tabIndicator="@null"-->
+<!--        app:tabIndicatorColor="@android:color/transparent"-->
+<!--        app:tabIndicatorGravity="stretch"-->
+<!--        app:tabIndicatorHeight="0dp"-->
+<!--        app:tabMode="scrollable"-->
+<!--        app:tabPaddingEnd="20dp"-->
+<!--        app:tabSelectedTextColor="@color/white"-->
+<!--        app:tabTextColor="@color/black" >-->
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:layout_width="50dp"-->
+<!--            android:text="New Matches    "-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:layout_width="50dp"-->
+<!--            android:text="My Matches    "-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:layout_width="50dp"-->
+<!--            android:text="Today's Matches    "-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:layout_width="50dp"-->
+<!--            android:text="Premium Matches   "-->
+<!--            android:layout_height="wrap_content"/>-->
+
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:layout_width="50dp"-->
+<!--            android:text="ShortListed    "-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:layout_width="50dp"-->
+<!--            android:text="Search"-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:layout_width="50dp"-->
+<!--            android:text="Recent Visitors    "-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:layout_width="50dp"-->
+<!--            android:text="Recently Viewed    "-->
+<!--            android:layout_height="wrap_content"/>-->
+
+<!--    </com.google.android.material.tabs.TabLayout>-->
+
+    <HorizontalScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:elevation="20dp"
-        android:textAlignment="center"
-        android:translationZ="20dp"
-        app:tabBackground="@drawable/tab_selector"
-        app:tabGravity="fill"
-        app:tabTextAppearance="@style/TextAppearance.AppCompat.Caption"
-        app:tabIndicator="@null"
-        app:tabIndicatorColor="@android:color/transparent"
-        app:tabIndicatorGravity="stretch"
-        app:tabIndicatorHeight="0dp"
-        app:tabMode="scrollable"
-        app:tabPaddingEnd="20dp"
-        app:tabSelectedTextColor="@color/white"
-        app:tabTextColor="@color/black" >
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="50dp"
-            android:text="New Matches    "
-            android:layout_height="wrap_content"/>
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="50dp"
-            android:text="My Matches    "
-            android:layout_height="wrap_content"/>
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="50dp"
-            android:text="Today's Matches    "
-            android:layout_height="wrap_content"/>
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="50dp"
-            android:text="Premium Matches   "
-            android:layout_height="wrap_content"/>
+        android:scrollbars="none"
+        android:layout_height="wrap_content">
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:singleLine="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:selectionRequired="true"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        app:singleSelection="true">
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="50dp"
-            android:text="ShortListed    "
-            android:layout_height="wrap_content"/>
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="50dp"
-            android:text="Search"
-            android:layout_height="wrap_content"/>
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="50dp"
-            android:text="Recent Visitors    "
-            android:layout_height="wrap_content"/>
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="50dp"
-            android:text="Recently Viewed    "
-            android:layout_height="wrap_content"/>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipNewMatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:padding="12dp"
+            app:chipCornerRadius="2dp"
+            android:checkable="true"
+            style="@style/CustomChipChoiceStyle"
+            app:rippleColor="@color/colorPrimary"
+            app:checkedIconEnabled="false"
+            android:elevation="10dp"
+            android:textSelectHandle="@color/white"
+            android:translationZ="10dp"
+            android:text="New Matches" />
 
-    </com.google.android.material.tabs.TabLayout>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipMyMatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            android:layout_margin="4dp"
+            app:checkedIconEnabled="false"
+            style="@style/CustomChipChoiceStyle"
+            android:checkable="true"
+            android:padding="12dp"
+            android:text="My Matches" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipTodayMatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            app:checkedIconEnabled="false"
+            android:checkable="true"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            style="@style/CustomChipChoiceStyle"
+            android:padding="12dp"
+            android:text="Today Matches" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPremiumMatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:checkable="true"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            app:checkedIconEnabled="false"
+            style="@style/CustomChipChoiceStyle"
+            android:padding="12dp"
+            android:text="Premium Matches" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipShortListed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:checkable="true"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            app:checkedIconEnabled="false"
+            style="@style/CustomChipChoiceStyle"
+            android:padding="12dp"
+            android:text="Shortlisted" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            app:checkedIconEnabled="false"
+            android:checkable="true"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            style="@style/CustomChipChoiceStyle"
+            android:padding="12dp"
+            android:text="Search" />
+
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/chip7"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="4dp"-->
+<!--            android:checkable="true"-->
+<!--            android:elevation="10dp"-->
+<!--            android:translationZ="10dp"-->
+<!--            app:checkedIconEnabled="false"-->
+<!--            android:padding="12dp"-->
+<!--            style="@style/CustomChipChoiceStyle"-->
+<!--            android:text="Search" />-->
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipRecentView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:checkable="true"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            style="@style/CustomChipChoiceStyle"
+            app:checkedIconEnabled="false"
+            android:text="Recent Visitors"
+            android:padding="12dp"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipRecentlyView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:checkedIconEnabled="false"
+            android:checkable="true"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            style="@style/CustomChipChoiceStyle"
+            android:text="Recently Viewed" />
+    </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
 
     <com.ottego.saathidaar.SwipeDisabledPager
         android:id="@+id/vpMatch"
@@ -72,9 +209,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcvMatches"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

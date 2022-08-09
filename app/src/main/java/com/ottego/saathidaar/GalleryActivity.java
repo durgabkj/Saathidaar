@@ -136,11 +136,18 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         b.upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                int remaingImagesCount=2-imageCount;
+                if(remaingImagesCount>=countData)
+                {
                     for (int i = 0; i < imagePathList.size(); i++) {
                         uploadInThread(imagePathList.get(i));
-
                     }
+                }else
+                {
+                    Toast.makeText(context,"you can't upload more than "+remaingImagesCount+" image",Toast.LENGTH_SHORT).show();
+                }
+
+
             }
 
         });
@@ -214,16 +221,16 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                 imagePathList.clear();
                 if (data.getClipData() != null) {
                      countData = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
-                   if(countData >2) {
-                       Toast.makeText(context, "You can Only upload three Images", Toast.LENGTH_SHORT).show();
-                   }
-                   else {
+//                   if(countData>=2) {
+//                       Toast.makeText(context, "You can Only upload two Images", Toast.LENGTH_SHORT).show();
+//                   }
+//                   else {
                        for (int i = 0; i < countData; i++) {
                            Uri imageUri = data.getClipData().getItemAt(i).getUri();
                            pickiT.getPath(imageUri, Build.VERSION.SDK_INT);
-
+//
                        }
-                   }
+//                   }
                 } else if (data.getData() != null) {
                     Uri imagePath = data.getData();
                     pickiT.getPath(imagePath, Build.VERSION.SDK_INT);
@@ -301,7 +308,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             System.out.println("File not found : " + e.getMessage() + e);
         }
 
-        if(length<=205)
+        if(length<=105)
         {
             new Thread(new Runnable() {
                 @Override

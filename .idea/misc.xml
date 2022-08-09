@@ -282,10 +282,16 @@
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/menu_delete.xml" value="0.25" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/remove.xml" value="0.25" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/bg_edit_text.xml" value="0.1675" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/chip_selection.xml" value="0.159" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_email.xml" value="0.161" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_file.xml" value="0.171" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_kyc.xml" value="0.161" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_no_image__female_.xml" value="0.156" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/tab_background_selected.xml" value="0.159" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/tab_background_unselected.xml" value="0.159" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/tab_selector.xml" value="0.159" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/text_color_chip_state_list.xml" value="0.159" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/textview_selection.xml" value="0.159" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_family_profile.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_forget.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_gallery.xml" value="0.25" />
@@ -303,10 +309,12 @@
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_test.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/detail_layout.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/dropdown_item.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_account.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_dash_board.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_email_and_sms_alert.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_family_info.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_hide_delete_profile.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_home.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_horoscope.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_inbox.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_inbox_detail.xml" value="0.264" />

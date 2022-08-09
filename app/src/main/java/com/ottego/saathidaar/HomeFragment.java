@@ -1,18 +1,18 @@
 package com.ottego.saathidaar;
 
+import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.tabs.TabLayout;
-import com.ottego.saathidaar.Adapter.HomeTablayoutAdapter;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.chip.ChipGroup;
 import com.ottego.saathidaar.databinding.FragmentHomeBinding;
+
+import java.util.List;
 
 
 public class HomeFragment extends Fragment {
@@ -20,9 +20,7 @@ public class HomeFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     DashBoardFragment dashBoardFragment=new DashBoardFragment();
-    MyProfileFragment myProfileFragment=new MyProfileFragment();
-    HoroscopeFragment horoscopeFragment=new HoroscopeFragment();
-    PartnerPreferenceFragment partnerPreferenceFragment=new PartnerPreferenceFragment();
+  Context context;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -54,55 +52,61 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         b = FragmentHomeBinding.inflate(inflater, container, false);
+context=getContext();
+        getChildFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fcvHome, dashBoardFragment.newInstance("",""))
+                .commit();
+
+        b.chipGroupHome.check(b.chipGroupHome.getChildAt(0).getId());
 
 
+
+        listener();
         return b.getRoot();
 
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        setUpViewPager(b.vpHome);
-        b.tlHome.setupWithViewPager(b.vpHome);
-
-        b.tlHome.getTabAt(1).select();
-
- b.vpHome.setPagingEnable(false);
-
-        b.tlHome.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-
+    private void listener() {
+        b.chipGroupHome.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                b.vpHome.setCurrentItem(tab.getPosition());
+            public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
+                b.vpHome.setCurrentItem(group.getCheckedChipId());
+                Fragment fragment = null;
+                switch (group.getCheckedChipId()) {
+                    case R.id.chipDashBoard: {
+                        fragment = DashBoardFragment.newInstance("", "");
+                        break;
+                    }
+                    case R.id.chipProfile: {
+                        fragment = MyProfileFragment.newInstance("", "");
+                        break;
+                    }
+                    case R.id.chipPreference: {
+                        fragment = PartnerPreferenceFragment.newInstance("", "");
+                        break;
+                    }
+
+                    case R.id.chipHoroscope: {
+                        fragment = HoroscopeFragment.newInstance("", "");
+                        break;
+                    }
+                    default: {
+                        fragment = MyProfileFragment.newInstance("", "");
+                        break;
+                    }
+
+                }
+                getChildFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fcvHome, fragment)
+                        .commit();
+
+
             }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
         });
     }
-
-
-
-    private void setUpViewPager(ViewPager viewPager) {
-        HomeTablayoutAdapter adapter = new HomeTablayoutAdapter(getChildFragmentManager());
-        adapter.addFragment(new DashBoardFragment(), "DashBoard");
-        adapter.addFragment(new MyProfileFragment(), "Profile");
-        adapter.addFragment(new PartnerPreferenceFragment(), "Partner Preference");
-        adapter.addFragment(new HoroscopeFragment(), "Horoscope");
-        viewPager.setAdapter(adapter);
-
-
-    }
-
 
 
 }

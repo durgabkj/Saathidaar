@@ -2,36 +2,27 @@ package com.ottego.saathidaar;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TabWidget;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.android.material.badge.BadgeDrawable;
-import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.chip.ChipGroup;
 import com.google.gson.Gson;
-import com.ottego.saathidaar.Adapter.HomeTablayoutAdapter;
 import com.ottego.saathidaar.Model.DataModelDashboard;
 import com.ottego.saathidaar.databinding.FragmentMatchesBinding;
 
 import org.json.JSONObject;
 
-import java.util.Objects;
+import java.util.List;
 
 
 public class MatchesFragment extends Fragment {
@@ -77,96 +68,145 @@ public class MatchesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         b = FragmentMatchesBinding.inflate(inflater, container, false);
-
-context=getContext();
-sessionManager=new SessionManager(context);
-      /*  setUpViewPager(b.vpMatch);
-        b.tlMatch.setupWithViewPager(b.vpMatch);
-          Objects.requireNonNull(b.tlMatch.getTabAt(1)).select();
-
-        b.tlMatch.getTabAt(7).view.setVisibility(View.GONE);
-        b.vpMatch.setPagingEnable(false);*/
+        context = getContext();
+        sessionManager = new SessionManager(context);
         b.vpMatch.setPagingEnable(false);
-        Objects.requireNonNull(b.tlMatch.getTabAt(1)).select();
-
 
         getChildFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fcvMatches, myMatchFragment)
+                .replace(R.id.fcvMatches, MyMatchFragment.newInstance("",""))
                 .commit();
 
-
-        b.tlMatch.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-
-//                b.vpMatch.setCurrentItem(tab.getPosition());
-                Fragment fragment = null;
-
-                switch (tab.getPosition()){
-                    case 0:{
-                        fragment= NewMatchesFragment.newInstance("","");
-                        break;
-                    }
-                    case 1:{
-                        fragment= MyMatchFragment.newInstance("", "");
-                        break;
-                    }
-                    case 2:{
-                        fragment= TodayMatchFragment.newInstance("", "");
-                        break;
-                    }
-
-                    case 3:{
-                        fragment= PremiumMatchesFragment.newInstance("", "");
-                        break;
-                    }
-
-                    case 4:{
-                        fragment= ShortListFragment.newInstance("", "");
-                        break;
-                    }
-                    case 5:{
-                        fragment= SearchFragment.newInstance("", "");
-                        break;
-                    }
-                    case 6:{
-                        fragment= RecentViewFragment.newInstance("", "");
-                        break;
-                    }
-                    case 7:{
-                        fragment= RecentlyViewedFragment.newInstance("", "");
-                        break;
-                    }
-                }
-
-                getChildFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fcvMatches, fragment)
-                        .commit();
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
+        b.chipGroup.check(b.chipGroup.getChildAt(1).getId());
+//        b.tlMatch.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//
+////                b.vpMatch.setCurrentItem(tab.getPosition());
+//                Fragment fragment = null;
+//
+//                switch (tab.getPosition()){
+//                    case 0:{
+//                        fragment= NewMatchesFragment.newInstance("","");
+//                        break;
+//                    }
+//                    case 1:{
+//                        fragment= MyMatchFragment.newInstance("", "");
+//                        break;
+//                    }
+//                    case 2:{
+//                        fragment= TodayMatchFragment.newInstance("", "");
+//                        break;
+//                    }
+//
+//                    case 3:{
+//                        fragment= PremiumMatchesFragment.newInstance("", "");
+//                        break;
+//                    }
+//
+//                    case 4:{
+//                        fragment= ShortListFragment.newInstance("", "");
+//                        break;
+//                    }
+//                    case 5:{
+//                        fragment= SearchFragment.newInstance("", "");
+//                        break;
+//                    }
+//                    case 6:{
+//                        fragment= RecentViewFragment.newInstance("", "");
+//                        break;
+//                    }
+//                    case 7:{
+//                        fragment= RecentlyViewedFragment.newInstance("", "");
+//                        break;
+//                    }
+//                }
+//
+//                getChildFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.fcvMatches, fragment)
+//                        .commit();
+//
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
 
         getDataCount();
-
+        listener();
         return b.getRoot();
     }
 
+    private void listener() {
+        b.chipGroup.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
+            @Override
+            public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
+                b.vpMatch.setCurrentItem(group.getCheckedChipId());
+                Fragment fragment = null;
+                switch (group.getCheckedChipId()) {
+                    case R.id.chipNewMatch: {
+                        fragment = NewMatchesFragment.newInstance("", "");
+                        break;
+                    }
+                    case R.id.chipMyMatch: {
+                        fragment = MyMatchFragment.newInstance("", "");
+                        break;
+                    }
+                    case R.id.chipTodayMatch: {
+                        fragment = TodayMatchFragment.newInstance("", "");
+                        break;
+                    }
+
+                    case R.id.chipPremiumMatch: {
+                        fragment = PremiumMatchesFragment.newInstance("", "");
+                        break;
+                    }
+
+                    case R.id.chipShortListed:{
+                        fragment= ShortListFragment.newInstance("", "");
+                        break;
+                    }
+                    case R.id.chipSearch:{
+                        fragment= SearchFragment.newInstance("", "");
+                        break;
+                    }
+                    case R.id.chipRecentView:{
+                        fragment= RecentViewFragment.newInstance("", "");
+                        break;
+                    }
+                    case R.id.chipRecentlyView:{
+                        fragment= RecentlyViewedFragment.newInstance("", "");
+                        break;
+                    }
+                    default:{
+                        fragment= RecentlyViewedFragment.newInstance("", "");
+                        break;
+                    }
+
+                }
+                getChildFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fcvMatches,fragment)
+                        .commit();
+
+
+            }
+
+        });
+
+
+    }
 
     private void getDataCount() {
-        count++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
@@ -184,84 +224,21 @@ sessionManager=new SessionManager(context);
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-refresh(1000);
 
     }
 
     private void setData() {
-        if (model.data != null && model.data.size() > 0)  {
-
-
-
-            BadgeDrawable badgeDrawable = b.tlMatch.getTabAt(0).getOrCreateBadge();
-            badgeDrawable.setNumber(Integer.parseInt(model.data.get(0).new_matches_count));
-          //  badgeDrawable.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
-            badgeDrawable.setBadgeTextColor(ContextCompat.getColor(context, R.color.white));
-            badgeDrawable.setBadgeGravity(BadgeDrawable.TOP_END);
-
-
-            BadgeDrawable badgeDrawable1 = b.tlMatch.getTabAt(1).getOrCreateBadge();
-            badgeDrawable1.setNumber(Integer.parseInt(model.data.get(0).my_matches_count));
-          //  badgeDrawable1.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
-            badgeDrawable1.setBadgeTextColor(ContextCompat.getColor(context, R.color.white));
-            badgeDrawable1.setMaxCharacterCount(10);
-            badgeDrawable1.setBadgeGravity(BadgeDrawable.TOP_END);
-            badgeDrawable1.setVisible(true);
-
-
-            BadgeDrawable badgeDrawable2 = b.tlMatch.getTabAt(2).getOrCreateBadge();
-            badgeDrawable2.setNumber(Integer.parseInt(model.data.get(0).todays_matches_count));
-          //  badgeDrawable2.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
-            badgeDrawable2.setBadgeTextColor(ContextCompat.getColor(context, R.color.white));
-            badgeDrawable2.setBadgeGravity(BadgeDrawable.TOP_END);
-
-
-            BadgeDrawable badgeDrawable3 = b.tlMatch.getTabAt(4).getOrCreateBadge();
-            badgeDrawable3.setNumber(Integer.parseInt(model.data.get(0).shortlists_count));
-          //  badgeDrawable3.setBackgroundColor(getActivity().getColor(R.color.colorPrimary));
-            badgeDrawable3.setBadgeTextColor(ContextCompat.getColor(context, R.color.white));
-            badgeDrawable3.setBadgeGravity(BadgeDrawable.TOP_END);
+        if (model.data != null && model.data.size() > 0) {
+            b.chipNewMatch.setText("New Matches " + "(" + model.data.get(0).new_matches_count + ")");
+            b.chipMyMatch.setText("My Matches " + "(" + model.data.get(0).my_matches_count + ")");
+            b.chipTodayMatch.setText("Today's Matches " + "(" + model.data.get(0).todays_matches_count + ")");
+            // b.chip1.setText("Premium Matches "+"("+model.data.get(0).new_matches_count+")");
+            // b.chip1.setText("Search "+"("+model.data.get(0).new_matches_count+")");
+            b.chipRecentView.setText("Recent Visitors " + "(" + model.data.get(0).recent_visitors_count + ")");
 
         }
     }
 
 
-
-
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-         }
-
-    private void setUpViewPager(ViewPager viewPager) {
-        HomeTablayoutAdapter adapter = new HomeTablayoutAdapter(getChildFragmentManager());
-        adapter.addFragment(new NewMatchesFragment(), "New Matches");
-        adapter.addFragment(new MyMatchFragment(), "My Matches");
-        adapter.addFragment(new TodayMatchFragment(), "Today's Matches ");
-        adapter.addFragment(new ShortListFragment(), "Shortlisted");
-        adapter.addFragment(new SearchFragment(), "Search");
-        adapter.addFragment(new RecentViewFragment(), "Recent Visitors");
-        adapter.addFragment(new RecentlyViewedFragment(), "Recently Viewed");
-        adapter.addFragment(new MoreFragment(), "More");
-        viewPager.setAdapter(adapter);
-    }
-
-
-
-    private void refresh(int millisecond) {
-
-        final Handler handler = new Handler();
-        final Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                getDataCount();
-            }
-        };
-
-        handler.postDelayed(runnable, millisecond);
-
-    }
 }
 
