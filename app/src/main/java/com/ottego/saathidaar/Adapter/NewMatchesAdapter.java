@@ -149,7 +149,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         holder.llShortList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.shortList(context, item.member_id);
+                Utils.shortList(context, item.member_id,clickListener);
                 holder.llShortList.setVisibility(View.GONE);
                 holder.llShortListRemove.setVisibility(View.VISIBLE);
 

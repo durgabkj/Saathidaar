@@ -99,7 +99,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
             holder.llShortListRecentV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Utils.shortList(context, item.member_id);
+                    Utils.shortList(context, item.member_id,clickListener);
                     holder.llShortListRecentV.setVisibility(View.GONE);
                     holder.llShortListRemove.setVisibility(View.VISIBLE);
                 }

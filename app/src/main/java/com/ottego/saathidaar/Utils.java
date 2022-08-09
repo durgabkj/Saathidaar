@@ -195,7 +195,7 @@ public class Utils {
 
     }
 
-    public static void shortList(Context context, String member_id) {
+    public static void shortList(Context context, String member_id,ApiListener listener) {
       //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         String url = Utils.memberUrl + "add-to-shortlist";
         Map<String, String> params = new HashMap<String, String>();
@@ -212,8 +212,10 @@ public class Utils {
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
+                                listener.onSuccess(0);
                                 Toast.makeText(context,"Short Listed",Toast.LENGTH_LONG).show();
                             } else {
+                                listener.onFail(0);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {

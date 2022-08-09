@@ -2,32 +2,24 @@ package com.ottego.saathidaar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.provider.OpenableColumns;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -40,9 +32,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
-import com.ottego.saathidaar.Adapter.ImageAdapter;
 import com.ottego.saathidaar.Model.DataModelImage;
-import com.ottego.saathidaar.databinding.ActivityGalleryBinding;
+import com.ottego.saathidaar.Model.DataModelKyc;
 import com.ottego.saathidaar.databinding.ActivityKycactivityBinding;
 import com.ottego.saathidaar.viewmodel.GalleryViewModel;
 
@@ -56,7 +47,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,10 +58,10 @@ import java.util.Map;
 public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
     ActivityKycactivityBinding b;
     SessionManager sessionManager;
-    DataModelImage dataModelImage;
+    DataModelKyc model;
     String URL = "http://103.150.186.33:8080/saathidaar_backend/api/member/app/uploads/kyc/photo";
     ProgressDialog progressDialog;
-    String getImageURL = Utils.memberUrl + "app/get/photo/";
+    String getDocumentURL = Utils.memberUrl + "app/get/kyc/photo/";
     Context context;
     String document = "";
     List<String> imagePathList = new ArrayList<>();
@@ -90,11 +80,22 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
         viewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
         context = KYCActivity.this;
         sessionManager = new SessionManager(context);
+        getData();
         listener();
     }
 
     private void listener() {
 
+b.llDocument.setOnClickListener(new View.OnClickListener() {
+    @SuppressLint("SetJavaScriptEnabled")
+    @Override
+    public void onClick(View view) {
+        WebView mWebView=new WebView(KYCActivity.this);
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.loadUrl(model.data.get(0).document_path);
+        setContentView(mWebView);
+    }
+});
 
         b.rgDocumentType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -202,7 +203,6 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
                     }
                 } else if (data.getData() != null) {
                     Uri imagePath = data.getData();
-                    b.ivKyc.setImageURI(imagePath);
                     pickiT.getPath(imagePath, Build.VERSION.SDK_INT);
                 }
             }
@@ -401,5 +401,62 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
         }
     }
 
+
+    private void getData() {
+
+        //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                getDocumentURL + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                //   progressDialog.dismiss();
+                // Log.e("image response", String.valueOf(response));
+                Gson gson = new Gson();
+                model = gson.fromJson(String.valueOf(response), DataModelKyc.class);
+                if (model.results.equalsIgnoreCase("1")) {
+setData();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //progressDialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
     }
+
+    @SuppressLint("ResourceAsColor")
+    private void setData() {
+        if (model.data != null && model.data.size() > 0) {
+            b.tvImagePath.setText(model.data.get(0).document_name);
+            b.tvKycType.setText(model.data.get(0).document_type);
+            if(model.data.get(0).kyc_status.equalsIgnoreCase("0"))
+            {
+                b.tvKycStatus.setText("Pending");
+                b.tvKycStatus.setTextColor(Color.BLUE);
+            }else if(model.data.get(0).kyc_status.equalsIgnoreCase("1"))
+            {
+                b.tvKycStatus.setText("Accepted");
+                b.tvKycStatus.setTextColor(Color.GREEN);
+            }else {
+                b.tvKycStatus.setText("Rejected");
+                b.tvKycStatus.setTextColor(Color.RED);
+            }
+
+
+            if(model.data.get(0).kyc_status.equalsIgnoreCase("0"))
+            {
+               b.mcvUploadKyc.setVisibility(View.GONE);
+            }
+
+
+        }
+
+    }
+
+}
 

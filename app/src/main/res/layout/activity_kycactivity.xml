@@ -139,20 +139,88 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:padding="10dp"
             android:orientation="vertical"
             android:background="@drawable/edt_text_border"
             >
-            <ImageView
-                android:id="@+id/ivKyc"
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/uploadfile"
-                />
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Document Name:- "
+                    android:drawablePadding="4dp"
+                    android:textStyle="bold"
+                    android:textSize="12dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                 />
+           <TextView
+               android:id="@+id/tvImagePath"
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Documents KYC Status :- "
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    />
+
+                <TextView
+                    android:id="@+id/tvKycStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Document Type :- "
+                    android:drawablePadding="4dp"
+                    android:textStyle="bold"
+                    android:textSize="12dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                     />
+                <TextView
+                    android:id="@+id/tvKycType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="12dp"
+                    android:layout_weight="1"
+                    />
+
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -192,37 +260,28 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:orientation="horizontal">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Documents KYC Status :- "
-        android:drawablePadding="4dp"
-        android:textStyle="bold"
-        android:textSize="12dp"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:gravity="center" />
-    <TextView
-        android:id="@+id/tvKycId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pending"
-        android:drawablePadding="4dp"
-        android:textStyle="bold"
-        android:textSize="12dp"
-        android:layout_marginStart="10dp"
-        android:textColor="#FFC107"
-        android:textAlignment="center"
-        android:gravity="center" />
+        <LinearLayout
+            android:id="@+id/llDocument"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/uploadfile"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Document"/>
+        </LinearLayout>
 
 
-</LinearLayout>
+
 
 
     </LinearLayout>

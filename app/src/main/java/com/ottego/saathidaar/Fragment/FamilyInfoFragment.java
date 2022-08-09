@@ -208,13 +208,12 @@ FragmentFamilyInfoBinding b;
     }
 
     private void getMemberData() {
-       count++;
-        //final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-             //  progressDialog.dismiss();
+             progressDialog.dismiss();
                 b.srlRecycleViewFamilyDetails.setRefreshing(false);
               //  Log.e("response", String.valueOf(response));
                 try {
@@ -235,16 +234,13 @@ FragmentFamilyInfoBinding b;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                // progressDialog.dismiss();
+                progressDialog.dismiss();
                 b.srlRecycleViewFamilyDetails.setRefreshing(false);
                 error.printStackTrace();
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
-
-     refresh(3000);
     }
 
     private void setData() {

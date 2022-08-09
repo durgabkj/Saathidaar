@@ -30,8 +30,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:padding="12dp"
-                app:chipEndPadding="20dp"
-                app:chipStartPadding="20dp"
                 app:chipCornerRadius="2dp"
                 android:checkable="true"
                 style="@style/CustomChipChoiceStyle"
