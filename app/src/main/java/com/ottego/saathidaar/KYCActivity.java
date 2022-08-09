@@ -17,6 +17,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
@@ -90,10 +92,14 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     public void onClick(View view) {
-        WebView mWebView=new WebView(KYCActivity.this);
-        mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.loadUrl(model.data.get(0).document_path);
-        setContentView(mWebView);
+//        WebView mWebView=new WebView(KYCActivity.this);
+//        mWebView.getSettings().setJavaScriptEnabled(true);
+//        mWebView.loadUrl(model.data.get(0).document_path);
+//        setContentView(mWebView);
+
+        Intent intent = new Intent(context, WebViewActivity.class);
+        intent.putExtra("data",model.data.get(0).document_path);
+        context.startActivity(intent);
     }
 });
 
@@ -124,6 +130,13 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, PICK_FILE_REQUEST);
+                if (Build.VERSION.SDK_INT >= 30){
+                    if (!Environment.isExternalStorageManager()){
+                        Intent getPermission = new Intent();
+                        getPermission.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                        startActivity(getPermission);
+                    }
+                }
                     Intent intent = new Intent();
                 // set type
                 intent.setType("*/*");
@@ -132,8 +145,6 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
                 }
 
         });
-
-
 
         b.mcvUploadKyc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -222,7 +233,7 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
                 params.put("member_id", sessionManager.getMemberId());
                 params.put("document_type",document);
                 Log.e("durga", "upload start: "+path);
-                String result = multipartRequest(URL, params, path, "document", "application/*");
+                String result = multipartRequest(URL, params, path, "document", "application/pdf");
 
                 Log.e("durga",result);
             }
@@ -251,7 +262,6 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
         try {
             File file = new File(filepath);
             FileInputStream fileInputStream = new FileInputStream(file);
-            Log.e("file", String.valueOf(file));
             java.net.URL url = new URL(urlTo);
             connection = (HttpURLConnection) url.openConnection();
 
@@ -327,6 +337,7 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
 
             return result;
         } catch (Exception e) {
+            e.printStackTrace();
 //            logger.error(e);
 //            throw new CustomException(e)
         }
@@ -414,7 +425,7 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
                 Gson gson = new Gson();
                 model = gson.fromJson(String.valueOf(response), DataModelKyc.class);
                 if (model.results.equalsIgnoreCase("1")) {
-setData();
+                 setData();
                 }
             }
         }, new Response.ErrorListener() {
