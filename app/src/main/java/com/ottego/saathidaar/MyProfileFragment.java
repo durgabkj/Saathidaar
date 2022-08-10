@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -47,6 +48,7 @@ public class MyProfileFragment extends Fragment {
     AppCompatImageView ivClear;
     Context context;
     ScrollView MyProfileDetail;
+    SwipeRefreshLayout srlMyProfile;
 int count=0;
     public static String url = Utils.memberUrl + "my-profile/";
 
@@ -95,6 +97,7 @@ int count=0;
         tvUserName = view.findViewById(R.id.tvUserName);
         tabLayout = view.findViewById(R.id.tlProfile);
         viewPager = view.findViewById(R.id.vpMyProfile);
+        srlMyProfile=view.findViewById(R.id.srlMyProfile);
         tvUserDetailsReadMore=view.findViewById(R.id.tvUserDetailsReadMore);
         tvUserDetailsReadLess=view.findViewById(R.id.tvUserDetailsReadLess);
         tvAboutUs=view.findViewById(R.id.tvAboutUs);
@@ -107,6 +110,15 @@ int count=0;
     }
 
     private void listener() {
+
+        srlMyProfile.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getMemberData();
+                setPreLoadData();
+            }
+        });
+
 
         tvAboutUs.addTextChangedListener(new TextWatcher() {
             @Override

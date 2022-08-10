@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -86,12 +87,338 @@ public class PrivacyOptionFragment extends Fragment {
         getData();
         return b.getRoot();
     }
+    private void listener() {
+        b.srlPrivacy.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData();
+            }
+        });
+        b.tvEditPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                b.llshowPhonePrivacy.setVisibility(View.GONE);
+                b.llHidePhone.setVisibility(View.VISIBLE);
+                b.tvEditDOB.setVisibility(View.INVISIBLE);
+                b.tvEditEmail.setVisibility(View.INVISIBLE);
+                b.tvEditIncome.setVisibility(View.INVISIBLE);
+                b.tvEditPhoto.setVisibility(View.INVISIBLE);
+            }
+        });
+        b.tvCancelPhoneHideShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.llHidePhone.setVisibility(View.GONE);
+                b.llshowPhonePrivacy.setVisibility(View.VISIBLE);
+                b.tvEditDOB.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.VISIBLE);
+                b.tvEditIncome.setVisibility(View.VISIBLE);
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
+
+                getData();
+
+                if (model.data.size() > 0) {
+
+                    if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Visible to all Member")) {
+                        b.radioButtonPhoneShowOnlyPMember.setChecked(true);
+                    } else if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Visible to all Premium Members")) {
+                        b.radioButtonPhoneShowOnlyPMemberLike.setChecked(true);
+                    } else if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Keep this private")) {
+                        b.radioButtonPhoneShowNoOne.setChecked(true);
+                    }
+                }
+
+
+                       }
+        });
+        b.tvEditEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.llshowEmailPrivacy.setVisibility(View.GONE);
+                b.llHideEmail.setVisibility(View.VISIBLE);
+
+                b.tvEditPhone.setVisibility(View.INVISIBLE);
+                b.tvEditDOB.setVisibility(View.INVISIBLE);
+                b.tvEditIncome.setVisibility(View.INVISIBLE);
+                b.tvEditPhoto.setVisibility(View.INVISIBLE);
+            }
+        });
+        b.tvCancelEmailHideShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.llHideEmail.setVisibility(View.GONE);
+                b.llshowEmailPrivacy.setVisibility(View.VISIBLE);
+                b.tvEditDOB.setVisibility(View.VISIBLE);
+                b.tvEditPhone.setVisibility(View.VISIBLE);
+                b.tvEditIncome.setVisibility(View.VISIBLE);
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
+
+                getData();
+                if (model.data.size() > 0) {
+
+                    if (model.data.get(0).email != null && model.data.get(0).email.equalsIgnoreCase("Visible to all Member")) {
+                        b.radioButtonPhoneShowAllPremiumMembers.setChecked(true);
+                    } else if (model.data.get(0).email != null && model.data.get(0).email.equalsIgnoreCase("Visible to all Premium Members")) {
+                        b.radioButtonPhoneShowPremiumMembersYouWishToConnect.setChecked(true);
+                    } else if (model.data.get(0).email != null && model.data.get(0).email.equalsIgnoreCase("Keep this private")) {
+                        b.radioButtonHideEmailAddress.setChecked(true);
+                    }
+                }
+            }
+        });
+        b.tvEditPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.llshowPhotoPrivacy.setVisibility(View.GONE);
+                b.llHidePhoto.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.INVISIBLE);
+                b.tvEditDOB.setVisibility(View.INVISIBLE);
+                b.tvEditIncome.setVisibility(View.INVISIBLE);
+                b.tvEditPhoto.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        b.tvCancelPhotoHideShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.llHidePhoto.setVisibility(View.GONE);
+                b.llshowPhotoPrivacy.setVisibility(View.VISIBLE);
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
+                b.tvEditDOB.setVisibility(View.VISIBLE);
+                b.tvEditPhone.setVisibility(View.VISIBLE);
+                b.tvEditIncome.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.VISIBLE);
+
+
+                getData();
+                if (model.data.size() > 0) {
+
+                    if (model.data.get(0).photo != null && model.data.get(0).photo.equalsIgnoreCase("Visible to all Member")) {
+                        b.radioButtonPhotoShowAllMembers.setChecked(true);
+                    } else if (model.data.get(0).photo != null && model.data.get(0).photo.equalsIgnoreCase("Visible to all Premium Members")) {
+                        b.radioButtonPhotoShowPremiumMembersAndMemberILike.setChecked(true);
+                    } else if (model.data.get(0).photo != null && model.data.get(0).photo.equalsIgnoreCase("Keep this private")) {
+                        b.radioButtonVisiblePhotoOnlyMember.setChecked(true);
+                    }
+                }
+            }
+        });
+
+
+        b.tvEditDOB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.llshowDOBPrivacy.setVisibility(View.GONE);
+                b.llHideDOB.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.INVISIBLE);
+                b.tvEditPhone.setVisibility(View.INVISIBLE);
+                b.tvEditIncome.setVisibility(View.INVISIBLE);
+                b.tvEditPhoto.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        b.tvCancelDobHideShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.llHideDOB.setVisibility(View.GONE);
+                b.llshowDOBPrivacy.setVisibility(View.VISIBLE);
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
+                b.tvEditPhone.setVisibility(View.VISIBLE);
+                b.tvEditIncome.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.VISIBLE);
+                getData();
+                if (model.data.size() > 0) {
+
+                    if (model.data.get(0).dob != null && model.data.get(0).dob.equalsIgnoreCase("Visible to all Member")) {
+                        b.radioButtonDOBFullDOB.setChecked(true);
+                    } else if (model.data.get(0).dob != null && model.data.get(0).dob.equalsIgnoreCase("Visible to all Premium Members")) {
+                        b.radioButtonDOBPremium.setChecked(true);
+                    } else if (model.data.get(0).dob != null && model.data.get(0).dob.equalsIgnoreCase("Keep this private")) {
+                        b.radioButtonDOBMonthAndYear.setChecked(true);
+                    }
+                }
+            }
+        });
+
+
+        b.tvEditIncome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.llshowIncomePrivacy.setVisibility(View.GONE);
+                b.llHideIncome.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.INVISIBLE);
+                b.tvEditDOB.setVisibility(View.INVISIBLE);
+                b.tvEditPhone.setVisibility(View.INVISIBLE);
+                b.tvEditPhoto.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        b.tvCancelIncomeHideShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.llHideIncome.setVisibility(View.GONE);
+                b.llshowIncomePrivacy.setVisibility(View.VISIBLE);
+                b.tvEditDOB.setVisibility(View.VISIBLE);
+                b.tvEditPhone.setVisibility(View.VISIBLE);
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.VISIBLE);
+                getData();
+                if (model.data.size() > 0) {
+
+                    if (model.data.get(0).annual_income != null && model.data.get(0).annual_income.equalsIgnoreCase("Visible to all Member")) {
+                        b.radioButtonDOBFullIncome.setChecked(true);
+                    } else if (model.data.get(0).annual_income != null && model.data.get(0).annual_income.equalsIgnoreCase("Visible to all Premium Members")) {
+                        b.radioButtonIncomePremium.setChecked(true);
+                    } else if (model.data.get(0).annual_income != null && model.data.get(0).annual_income.equalsIgnoreCase("Keep this private")) {
+                        b.radioButtonIncomePrivate.setChecked(true);
+                    }
+
+                }
+
+            }
+        });
+
+        b.radioGroupPhone.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int id = group.getCheckedRadioButtonId();
+                RadioButton rb = b.radioGroupPhone.findViewById(id);
+//                OR
+//                RadioButton rb=(RadioButton) findViewById(checkedId);
+                radioText = rb.getText().toString();
+                b.tvPhoneShowText.setText(radioText);
+            }
+        });
+
+        b.radioGroupEmail.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int id = group.getCheckedRadioButtonId();
+                RadioButton rb = b.radioGroupEmail.findViewById(id);
+//                OR
+//                RadioButton rb=(RadioButton) findViewById(checkedId);
+
+                radioText1 = rb.getText().toString();
+                b.tvEmailShowText.setText(radioText1);
+            }
+        });
+
+
+        b.radioGroupPhoto.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int id = group.getCheckedRadioButtonId();
+                RadioButton rb = b.radioGroupPhoto.findViewById(id);
+                radioText2 = rb.getText().toString();
+                b.tvPhotoShowText.setText(radioText2);
+            }
+        });
+
+
+        b.radioGroupDOB.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int id = group.getCheckedRadioButtonId();
+                RadioButton rb = b.radioGroupDOB.findViewById(id);
+                radioText3 = rb.getText().toString();
+                b.tvDOBShowText.setText(radioText3);
+            }
+        });
+
+
+        b.radioGroupIncome.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int id = group.getCheckedRadioButtonId();
+                RadioButton rb = b.radioGroupIncome.findViewById(id);
+//                OR
+//                RadioButton rb=(RadioButton) findViewById(checkedId);
+
+                radioText4 = rb.getText().toString();
+                b.tvIncomeShowText.setText(radioText4);
+            }
+        });
+
+        b.tvSavePhoneHideShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submitPhoneForm();
+                b.llHidePhone.setVisibility(View.GONE);
+                b.llshowPhonePrivacy.setVisibility(View.VISIBLE);
+                b.tvEditDOB.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.VISIBLE);
+                b.tvEditIncome.setVisibility(View.VISIBLE);
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
+            }
+        });
+
+        b.tvSaveEmailHideShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submitEmailForm();
+                b.llHideEmail.setVisibility(View.GONE);
+                b.llshowEmailPrivacy.setVisibility(View.VISIBLE);
+
+                b.tvEditDOB.setVisibility(View.VISIBLE);
+                b.tvEditPhone.setVisibility(View.VISIBLE);
+                b.tvEditIncome.setVisibility(View.VISIBLE);
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        b.tvSavePhotoHideShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submitPhotoForm();
+                b.llHidePhoto.setVisibility(View.GONE);
+                b.llshowPhotoPrivacy.setVisibility(View.VISIBLE);
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
+                b.tvEditDOB.setVisibility(View.VISIBLE);
+                b.tvEditPhone.setVisibility(View.VISIBLE);
+                b.tvEditIncome.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        b.tvSaveDobHideShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submitDobForm();
+                b.llHideDOB.setVisibility(View.GONE);
+                b.llshowDOBPrivacy.setVisibility(View.VISIBLE);
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
+                b.tvEditPhone.setVisibility(View.VISIBLE);
+                b.tvEditIncome.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        b.tvSaveIncomeHideShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submitIncomeForm();
+                b.llHideIncome.setVisibility(View.GONE);
+                b.llshowIncomePrivacy.setVisibility(View.VISIBLE);
+                b.tvEditDOB.setVisibility(View.VISIBLE);
+                b.tvEditPhone.setVisibility(View.VISIBLE);
+                b.tvEditPhoto.setVisibility(View.VISIBLE);
+                b.tvEditEmail.setVisibility(View.VISIBLE);
+            }
+        });
+    }
     private void getData() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 getPrivacy + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                b.srlPrivacy.setRefreshing(false);
                 Log.e("response", String.valueOf((response)));
                 Gson gson = new Gson();
                 try {
@@ -107,6 +434,7 @@ public class PrivacyOptionFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                b.srlPrivacy.setRefreshing(false);
                 error.printStackTrace();
             }
         });
@@ -164,286 +492,6 @@ public class PrivacyOptionFragment extends Fragment {
                 b.radioButtonIncomePrivate.setChecked(true);
             }
         }
-
-
-
-    }
-
-    private void listener() {
-        b.tvEditPhone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                b.llshowPhonePrivacy.setVisibility(View.GONE);
-                b.llHidePhone.setVisibility(View.VISIBLE);
-                b.tvEditDOB.setVisibility(View.INVISIBLE);
-                b.tvEditEmail.setVisibility(View.INVISIBLE);
-                b.tvEditIncome.setVisibility(View.INVISIBLE);
-                b.tvEditPhoto.setVisibility(View.INVISIBLE);
-            }
-        });
-
-
-        b.tvCancelPhoneHideShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                b.llHidePhone.setVisibility(View.GONE);
-                b.llshowPhonePrivacy.setVisibility(View.VISIBLE);
-                b.tvEditDOB.setVisibility(View.VISIBLE);
-                b.tvEditEmail.setVisibility(View.VISIBLE);
-                b.tvEditIncome.setVisibility(View.VISIBLE);
-                b.tvEditPhoto.setVisibility(View.VISIBLE);
-            }
-        });
-        b.tvEditEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                b.llshowEmailPrivacy.setVisibility(View.GONE);
-                b.llHideEmail.setVisibility(View.VISIBLE);
-
-                b.tvEditPhone.setVisibility(View.INVISIBLE);
-                b.tvEditDOB.setVisibility(View.INVISIBLE);
-                b.tvEditIncome.setVisibility(View.INVISIBLE);
-                b.tvEditPhoto.setVisibility(View.INVISIBLE);
-            }
-        });
-
-        b.tvCancelEmailHideShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                b.llHideEmail.setVisibility(View.GONE);
-                b.llshowEmailPrivacy.setVisibility(View.VISIBLE);
-
-                b.tvEditDOB.setVisibility(View.VISIBLE);
-                b.tvEditPhone.setVisibility(View.VISIBLE);
-                b.tvEditIncome.setVisibility(View.VISIBLE);
-                b.tvEditPhoto.setVisibility(View.VISIBLE);
-            }
-        });
-
-
-        b.tvEditPhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                b.llshowPhotoPrivacy.setVisibility(View.GONE);
-                b.llHidePhoto.setVisibility(View.VISIBLE);
-
-                b.tvEditEmail.setVisibility(View.INVISIBLE);
-                b.tvEditDOB.setVisibility(View.INVISIBLE);
-                b.tvEditIncome.setVisibility(View.INVISIBLE);
-                b.tvEditPhoto.setVisibility(View.INVISIBLE);
-            }
-        });
-
-        b.tvCancelPhotoHideShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                b.llHidePhoto.setVisibility(View.GONE);
-                b.llshowPhotoPrivacy.setVisibility(View.VISIBLE);
-                b.tvEditPhoto.setVisibility(View.VISIBLE);
-
-                b.tvEditDOB.setVisibility(View.VISIBLE);
-                b.tvEditPhone.setVisibility(View.VISIBLE);
-                b.tvEditIncome.setVisibility(View.VISIBLE);
-                b.tvEditEmail.setVisibility(View.VISIBLE);
-            }
-        });
-
-
-        b.tvEditDOB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                b.llshowDOBPrivacy.setVisibility(View.GONE);
-                b.llHideDOB.setVisibility(View.VISIBLE);
-
-                b.tvEditEmail.setVisibility(View.INVISIBLE);
-                b.tvEditPhone.setVisibility(View.INVISIBLE);
-                b.tvEditIncome.setVisibility(View.INVISIBLE);
-                b.tvEditPhoto.setVisibility(View.INVISIBLE);
-            }
-        });
-
-        b.tvCancelDobHideShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                b.llHideDOB.setVisibility(View.GONE);
-                b.llshowDOBPrivacy.setVisibility(View.VISIBLE);
-
-                b.tvEditPhoto.setVisibility(View.VISIBLE);
-                b.tvEditPhone.setVisibility(View.VISIBLE);
-                b.tvEditIncome.setVisibility(View.VISIBLE);
-                b.tvEditEmail.setVisibility(View.VISIBLE);
-            }
-        });
-
-
-        b.tvEditIncome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                b.llshowIncomePrivacy.setVisibility(View.GONE);
-                b.llHideIncome.setVisibility(View.VISIBLE);
-                b.tvEditEmail.setVisibility(View.INVISIBLE);
-                b.tvEditDOB.setVisibility(View.INVISIBLE);
-                b.tvEditPhone.setVisibility(View.INVISIBLE);
-                b.tvEditPhoto.setVisibility(View.INVISIBLE);
-            }
-        });
-
-        b.tvCancelIncomeHideShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                b.llHideIncome.setVisibility(View.GONE);
-                b.llshowIncomePrivacy.setVisibility(View.VISIBLE);
-                b.tvEditDOB.setVisibility(View.VISIBLE);
-                b.tvEditPhone.setVisibility(View.VISIBLE);
-                b.tvEditPhoto.setVisibility(View.VISIBLE);
-                b.tvEditEmail.setVisibility(View.VISIBLE);
-
-
-            }
-        });
-
-        b.radioGroupPhone.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                int id = group.getCheckedRadioButtonId();
-                RadioButton rb = b.radioGroupPhone.findViewById(id);
-//                OR
-//                RadioButton rb=(RadioButton) findViewById(checkedId);
-                radioText = rb.getText().toString();
-                b.tvPhoneShowText.setText(radioText);
-            }
-        });
-
-        b.radioGroupEmail.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                int id = group.getCheckedRadioButtonId();
-                RadioButton rb = b.radioGroupEmail.findViewById(id);
-//                OR
-//                RadioButton rb=(RadioButton) findViewById(checkedId);
-
-                radioText1 = rb.getText().toString();
-                b.tvEmailShowText.setText(radioText1);
-            }
-        });
-
-
-        b.radioGroupPhoto.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                int id = group.getCheckedRadioButtonId();
-                RadioButton rb = b.radioGroupPhoto.findViewById(id);
-//                OR
-//                RadioButton rb=(RadioButton) findViewById(checkedId);
-
-                radioText2 = rb.getText().toString();
-                b.tvPhotoShowText.setText(radioText2);
-            }
-        });
-
-
-        b.radioGroupDOB.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                int id = group.getCheckedRadioButtonId();
-                RadioButton rb = b.radioGroupDOB.findViewById(id);
-//                OR
-//                RadioButton rb=(RadioButton) findViewById(checkedId);
-
-                radioText3 = rb.getText().toString();
-                b.tvDOBShowText.setText(radioText3);
-            }
-        });
-
-
-        b.radioGroupIncome.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                int id = group.getCheckedRadioButtonId();
-                RadioButton rb = b.radioGroupIncome.findViewById(id);
-//                OR
-//                RadioButton rb=(RadioButton) findViewById(checkedId);
-
-                radioText4 = rb.getText().toString();
-                b.tvIncomeShowText.setText(radioText4);
-            }
-        });
-
-        b.tvSavePhoneHideShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                submitPhoneForm();
-                b.llHidePhone.setVisibility(View.GONE);
-                b.llshowPhonePrivacy.setVisibility(View.VISIBLE);
-                b.tvEditDOB.setVisibility(View.VISIBLE);
-                b.tvEditEmail.setVisibility(View.VISIBLE);
-                b.tvEditIncome.setVisibility(View.VISIBLE);
-                b.tvEditPhoto.setVisibility(View.VISIBLE);
-            }
-        });
-
-        b.tvSaveEmailHideShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                submitEmailForm();
-                b.llHideEmail.setVisibility(View.GONE);
-                b.llshowEmailPrivacy.setVisibility(View.VISIBLE);
-
-                b.tvEditDOB.setVisibility(View.VISIBLE);
-                b.tvEditPhone.setVisibility(View.VISIBLE);
-                b.tvEditIncome.setVisibility(View.VISIBLE);
-                b.tvEditPhoto.setVisibility(View.VISIBLE);
-            }
-        });
-
-
-        b.tvSavePhotoHideShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                submitPhotoForm();
-                b.llHidePhoto.setVisibility(View.GONE);
-                b.llshowPhotoPrivacy.setVisibility(View.VISIBLE);
-                b.tvEditPhoto.setVisibility(View.VISIBLE);
-
-                b.tvEditDOB.setVisibility(View.VISIBLE);
-                b.tvEditPhone.setVisibility(View.VISIBLE);
-                b.tvEditIncome.setVisibility(View.VISIBLE);
-                b.tvEditEmail.setVisibility(View.VISIBLE);
-            }
-        });
-
-
-        b.tvSaveDobHideShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                submitDobForm();
-                b.llHideDOB.setVisibility(View.GONE);
-                b.llshowDOBPrivacy.setVisibility(View.VISIBLE);
-
-                b.tvEditPhoto.setVisibility(View.VISIBLE);
-                b.tvEditPhone.setVisibility(View.VISIBLE);
-                b.tvEditIncome.setVisibility(View.VISIBLE);
-                b.tvEditEmail.setVisibility(View.VISIBLE);
-            }
-        });
-
-
-        b.tvSaveIncomeHideShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                submitIncomeForm();
-                b.llHideIncome.setVisibility(View.GONE);
-                b.llshowIncomePrivacy.setVisibility(View.VISIBLE);
-                b.tvEditDOB.setVisibility(View.VISIBLE);
-                b.tvEditPhone.setVisibility(View.VISIBLE);
-                b.tvEditPhoto.setVisibility(View.VISIBLE);
-                b.tvEditEmail.setVisibility(View.VISIBLE);
-            }
-        });
     }
 
     private void submitIncomeForm() {
@@ -497,7 +545,8 @@ public class PrivacyOptionFragment extends Fragment {
 
                         try {
                             String code = response.getString("results");
-                            if (code.equalsIgnoreCase("1")) {
+                            if (model.results.equalsIgnoreCase("1")) {
+
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -610,7 +659,7 @@ public class PrivacyOptionFragment extends Fragment {
 
                         try {
                             String code = response.getString("results");
-                            if (code.equalsIgnoreCase("1")) {
+                            if (model.results.equalsIgnoreCase("1")) {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();

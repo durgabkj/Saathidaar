@@ -441,7 +441,7 @@
                             android:padding="8dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/italic"
-                            android:hint=" Enter your Corigin"
+                            android:hint=" Enter your Co-origin"
                             android:textColor="@color/black" />
 
                     </LinearLayout>
@@ -468,7 +468,7 @@
                             android:padding="8dp"
                             android:maxLength="6"
                             android:layout_weight="1"
-                            android:hint="Enter pine code"
+                            android:hint="Enter pin code"
                             android:inputType="number"
                             android:textColor="@color/black" />
 

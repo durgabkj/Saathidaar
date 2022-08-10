@@ -277,7 +277,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your Document"/>
+                android:textStyle="bold"
+                android:fontFamily="@font/italic"
+                android:layout_marginTop="8dp"
+                android:text="Click here to view your Document"/>
         </LinearLayout>
 
 

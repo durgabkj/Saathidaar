@@ -18,1229 +18,1238 @@
         android:textSize="16dp"
         android:textStyle="bold" />
 
-    <ScrollView
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
+        android:id="@+id/srlPrivacy"
+        android:layout_height="wrap_content"
+        >
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                android:id="@+id/llshowPhonePrivacy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
-                    android:text="Phone"
-
-                    />
-
-                <TextView
-                    android:id="@+id/tvPhoneShowText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#494747"
-                    android:fontFamily="@font/italic"
-                    android:text="Visible to all Member"
-                    android:textSize="16sp" />
-
-
-                <TextView
-                    android:id="@+id/tvEditPhone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:padding="3dp"
-                    android:text="Edit"
-                    android:fontFamily="@font/italic"
-                    android:textColor="@color/teal_700"
-                    android:textStyle="bold"
-
-                    />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:fontFamily="@font/italic"
-                    android:background="@color/gray_dark" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llHidePhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
-                    android:text="Phone"
-
-                    />
-
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:id="@+id/llshowPhonePrivacy"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <RadioGroup
-                        android:id="@+id/radioGroupPhone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
-                        android:checkedButton="@+id/radioButtonPhoneShowOnlyP_Member"
-                        android:weightSum="1">
-
-                        <RadioButton
-                            android:id="@+id/radioButtonPhoneShowOnlyP_Member"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/italic"
-                            android:text="Visible to all Member" />
-
-                        <RadioButton
-                            android:id="@+id/radioButtonPhoneShowOnlyP_MemberLike"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/italic"
-                            android:text="Visible to all Premium Members" />
-
-                        <RadioButton
-                            android:id="@+id/radioButtonPhoneShowNoOne"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:checked="false"
-                            android:fontFamily="@font/italic"
-                            android:text="Keep this private" />
-                    </RadioGroup>
-
-                    <LinearLayout
+                    <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/tvSavePhoneHideShow"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/gradient_button"
-                            android:fontFamily="@font/italic"
-                            android:padding="10dp"
-                            android:text="Save"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvCancelPhoneHideShow"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:background="@drawable/bg_gradient"
-                            android:fontFamily="@font/italic"
-                            android:padding="10dp"
-                            android:text="Cancel"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/llshowEmailPrivacy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
-                    android:text="Email"
-
-                    />
-
-                <TextView
-                    android:id="@+id/tvEmailShowText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#494747"
-                    android:fontFamily="@font/italic"
-                    android:text="Visible to all Member"
-                    android:textSize="16sp" />
-
-
-                <TextView
-                    android:id="@+id/tvEditEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:padding="3dp"
-                    android:text="Edit"
-                    android:fontFamily="@font/italic"
-                    android:textColor="@color/teal_700"
-                    android:textStyle="bold"
-
-                    />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/gray_dark" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llHideEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:fontFamily="@font/italic"
-                    android:layout_height="wrap_content"
-                    android:text="Email"
-
-                    />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <RadioGroup
-                        android:id="@+id/radioGroupEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
-                        android:checkedButton="@+id/radioButtonPhoneShowAllPremiumMembers"
-                        android:weightSum="1">
-
-                        <RadioButton
-                            android:id="@+id/radioButtonPhoneShowAllPremiumMembers"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:checked="false"
-                            android:fontFamily="@font/italic"
-                            android:text="Visible to all Member" />
-
-                        <RadioButton
-                            android:id="@+id/radioButtonPhoneShowPremiumMembersYouWishToConnect"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:checked="false"
-                            android:fontFamily="@font/italic"
-                            android:text="Visible to all Premium Members" />
-
-                        <RadioButton
-                            android:id="@+id/radioButtonHideEmailAddress"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/italic"
-                            android:checked="false"
-                            android:text="Keep this private" />
-
-                    </RadioGroup>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/tvSaveEmailHideShow"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/gradient_button"
-                            android:fontFamily="@font/italic"
-                            android:padding="10dp"
-                            android:text="Save"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
-
-
-                        <TextView
-                            android:id="@+id/tvCancelEmailHideShow"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:background="@drawable/bg_gradient"
-                            android:fontFamily="@font/italic"
-                            android:padding="10dp"
-                            android:text="Cancel"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llshowPhotoPrivacy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
-                    android:text="Photo"
-
-                    />
-
-                <TextView
-                    android:id="@+id/tvPhotoShowText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#494747"
-                    android:fontFamily="@font/italic"
-                    android:text="Visible to all Member"
-                    android:textSize="16sp" />
-
-
-                <TextView
-                    android:id="@+id/tvEditPhoto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:padding="3dp"
-                    android:text="Edit"
-                    android:fontFamily="@font/italic"
-                    android:textColor="@color/teal_700"
-                    android:textStyle="bold"
-
-                    />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/gray_dark" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llHidePhoto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-android:visibility="gone"
-                android:orientation="horizontal"
-              >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:fontFamily="@font/italic"
-                    android:layout_height="wrap_content"
-                    android:text="Photo"
-
-                    />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <RadioGroup
-                        android:id="@+id/radioGroupPhoto"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
-                        android:fontFamily="@font/italic"
-                        android:checkedButton="@id/radioButtonPhotoShowAllMembers"
-                        android:weightSum="1">
-
-                        <RadioButton
-                            android:id="@+id/radioButtonPhotoShowAllMembers"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:checked="false"
-                            android:fontFamily="@font/italic"
-                            android:text="Visible to all Member" />
-
-                        <RadioButton
-                            android:id="@+id/radioButtonPhotoShowPremiumMembersAndMemberILike"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:checked="false"
-                            android:fontFamily="@font/italic"
-                            android:text="Visible to all Premium Members" />
-
-                        <RadioButton
-                            android:id="@+id/radioButtonVisiblePhotoOnlyMember"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:checked="false"
-                            android:fontFamily="@font/italic"
-                            android:text="Keep this private" />
-
-
-                    </RadioGroup>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/tvSavePhotoHideShow"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/gradient_button"
-                            android:fontFamily="@font/italic"
-                            android:padding="10dp"
-                            android:text="Save"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
-
-
-                        <TextView
-                            android:id="@+id/tvCancelPhotoHideShow"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:background="@drawable/bg_gradient"
-                            android:fontFamily="@font/italic"
-                            android:padding="10dp"
-                            android:text="Cancel"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/llshowDOBPrivacy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Date Of Birth"
-                    android:fontFamily="@font/italic"
-
-                    />
-
-                <TextView
-                    android:id="@+id/tvDOBShowText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#494747"
-                    android:fontFamily="@font/italic"
-                    android:text="Visible to all Member"
-                    android:textSize="16sp" />
-
-
-                <TextView
-                    android:id="@+id/tvEditDOB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:padding="3dp"
-                    android:text="Edit"
-                    android:fontFamily="@font/italic"
-                    android:textColor="@color/teal_700"
-                    android:textStyle="bold"
-
-                    />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/gray_dark" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llHideDOB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:fontFamily="@font/italic"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
-                    android:text="Date of Birth"
-
-                    />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <RadioGroup
-                        android:id="@+id/radioGroupDOB"
-                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/italic"
-                        android:layout_marginTop="18dp"
-                        android:checkedButton="@id/radioButtonDOBFullDOB"
-                        android:weightSum="1">
+                        android:text="Phone"
 
-                        <RadioButton
-                            android:id="@+id/radioButtonDOBFullDOB"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/italic"
-                            android:checked="false"
-                            android:text="Visible to all Member" />
+                        />
 
-                        <RadioButton
-                            android:id="@+id/radioButtonDOBPremium"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:checked="false"
-                            android:text="Visible to all Premium Members" />
-
-                        <RadioButton
-                            android:id="@+id/radioButtonDOBMonthAndYear"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:checked="false"
-                            android:fontFamily="@font/italic"
-                            android:text="Keep this private" />
-
-
-                    </RadioGroup>
-
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/tvPhoneShowText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/tvSaveDobHideShow"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/gradient_button"
-                            android:fontFamily="@font/italic"
-                            android:padding="10dp"
-                            android:text="Save"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
+                        android:textColor="#494747"
+                        android:fontFamily="@font/italic"
+                        android:text="Visible to all Member"
+                        android:textSize="16sp" />
 
 
-                        <TextView
-                            android:id="@+id/tvCancelDobHideShow"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:background="@drawable/bg_gradient"
-                            android:fontFamily="@font/italic"
-                            android:padding="10dp"
-                            android:text="Cancel"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvEditPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:padding="3dp"
+                        android:text="Edit"
+                        android:fontFamily="@font/italic"
+                        android:textColor="@color/teal_700"
+                        android:textStyle="bold"
+
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:fontFamily="@font/italic"
+                        android:background="@color/gray_dark" />
                 </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llshowIncomePrivacy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
-                    android:text="Annual Income"
-
-                    />
-
-                <TextView
-                    android:id="@+id/tvIncomeShowText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#494747"
-                    android:fontFamily="@font/italic"
-                    android:text="Visible to all Member"
-                    android:textSize="16sp" />
-
-
-                <TextView
-                    android:id="@+id/tvEditIncome"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:padding="3dp"
-                    android:text="Edit"
-                    android:fontFamily="@font/italic"
-                    android:textColor="@color/teal_700"
-                    android:textStyle="bold"
-
-                    />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/gray_dark" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llHideIncome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
-                    android:text="Annual Income"
-
-                    />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:id="@+id/llHidePhone"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:visibility="gone"
+                    android:orientation="horizontal"
+                    >
 
-                    <RadioGroup
-                        android:id="@+id/radioGroupIncome"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
-                        android:checkedButton="@+id/radioButtonDOBFullIncome"
-                        android:weightSum="1">
+                        android:fontFamily="@font/italic"
+                        android:text="Phone"
 
-                        <RadioButton
-                            android:id="@+id/radioButtonDOBFullIncome"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:checked="false"
-                            android:fontFamily="@font/italic"
-                            android:text="Visible to all Members" />
-
-                        <RadioButton
-                            android:id="@+id/radioButtonIncomePremium"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/italic"
-                            android:checked="false"
-                            android:text="Visible to all Premium Members" />
-
-                        <RadioButton
-                            android:id="@+id/radioButtonIncomePrivate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:checked="false"
-                            android:fontFamily="@font/italic"
-                            android:text="Keep this private" />
-
-
-                    </RadioGroup>
+                        />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tvSaveIncomeHideShow"
-                            android:layout_width="100dp"
+                        <RadioGroup
+                            android:id="@+id/radioGroupPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:checkedButton="@+id/radioButtonPhoneShowOnlyP_Member"
+                            android:weightSum="1">
+
+                            <RadioButton
+                                android:id="@+id/radioButtonPhoneShowOnlyP_Member"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/italic"
+                                android:text="Visible to all Member" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonPhoneShowOnlyP_MemberLike"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/italic"
+                                android:text="Visible to all Premium Members" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonPhoneShowNoOne"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="false"
+                                android:fontFamily="@font/italic"
+                                android:text="Keep this private" />
+                        </RadioGroup>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:background="@drawable/gradient_button"
-                            android:fontFamily="@font/italic"
-                            android:padding="10dp"
-                            android:text="Save"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
 
+                            <TextView
+                                android:id="@+id/tvSavePhoneHideShow"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/gradient_button"
+                                android:fontFamily="@font/italic"
+                                android:padding="10dp"
+                                android:text="Save"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/tvCancelIncomeHideShow"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:background="@drawable/bg_gradient"
-                            android:fontFamily="@font/italic"
-                            android:padding="10dp"
-                            android:text="Cancel"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/tvCancelPhoneHideShow"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:background="@drawable/bg_gradient"
+                                android:fontFamily="@font/italic"
+                                android:padding="10dp"
+                                android:text="Cancel"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+                        </LinearLayout>
                     </LinearLayout>
+
+
                 </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llshowEmailPrivacy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/italic"
+                        android:text="Email"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tvEmailShowText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#494747"
+                        android:fontFamily="@font/italic"
+                        android:text="Visible to all Member"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvEditEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:padding="3dp"
+                        android:text="Edit"
+                        android:fontFamily="@font/italic"
+                        android:textColor="@color/teal_700"
+                        android:textStyle="bold"
+
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_dark" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llHideEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/italic"
+                        android:layout_height="wrap_content"
+                        android:text="Email"
+
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:checkedButton="@+id/radioButtonPhoneShowAllPremiumMembers"
+                            android:weightSum="1">
+
+                            <RadioButton
+                                android:id="@+id/radioButtonPhoneShowAllPremiumMembers"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="false"
+                                android:fontFamily="@font/italic"
+                                android:text="Visible to all Member" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonPhoneShowPremiumMembersYouWishToConnect"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="false"
+                                android:fontFamily="@font/italic"
+                                android:text="Visible to all Premium Members" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonHideEmailAddress"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/italic"
+                                android:checked="false"
+                                android:text="Keep this private" />
+
+                        </RadioGroup>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvSaveEmailHideShow"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/gradient_button"
+                                android:fontFamily="@font/italic"
+                                android:padding="10dp"
+                                android:text="Save"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/tvCancelEmailHideShow"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:background="@drawable/bg_gradient"
+                                android:fontFamily="@font/italic"
+                                android:padding="10dp"
+                                android:text="Cancel"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llshowPhotoPrivacy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/italic"
+                        android:text="Photo"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tvPhotoShowText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#494747"
+                        android:fontFamily="@font/italic"
+                        android:text="Visible to all Member"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvEditPhoto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:padding="3dp"
+                        android:text="Edit"
+                        android:fontFamily="@font/italic"
+                        android:textColor="@color/teal_700"
+                        android:textStyle="bold"
+
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_dark" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llHidePhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/italic"
+                        android:layout_height="wrap_content"
+                        android:text="Photo"
+
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupPhoto"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:fontFamily="@font/italic"
+                            android:checkedButton="@id/radioButtonPhotoShowAllMembers"
+                            android:weightSum="1">
+
+                            <RadioButton
+                                android:id="@+id/radioButtonPhotoShowAllMembers"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="false"
+                                android:fontFamily="@font/italic"
+                                android:text="Visible to all Member" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonPhotoShowPremiumMembersAndMemberILike"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="false"
+                                android:fontFamily="@font/italic"
+                                android:text="Visible to all Premium Members" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonVisiblePhotoOnlyMember"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="false"
+                                android:fontFamily="@font/italic"
+                                android:text="Keep this private" />
+
+
+                        </RadioGroup>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvSavePhotoHideShow"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/gradient_button"
+                                android:fontFamily="@font/italic"
+                                android:padding="10dp"
+                                android:text="Save"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/tvCancelPhotoHideShow"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:background="@drawable/bg_gradient"
+                                android:fontFamily="@font/italic"
+                                android:padding="10dp"
+                                android:text="Cancel"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llshowDOBPrivacy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date Of Birth"
+                        android:fontFamily="@font/italic"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tvDOBShowText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#494747"
+                        android:fontFamily="@font/italic"
+                        android:text="Visible to all Member"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvEditDOB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:padding="3dp"
+                        android:text="Edit"
+                        android:fontFamily="@font/italic"
+                        android:textColor="@color/teal_700"
+                        android:textStyle="bold"
+
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_dark" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llHideDOB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:fontFamily="@font/italic"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/italic"
+                        android:text="Date of Birth"
+
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupDOB"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/italic"
+                            android:layout_marginTop="18dp"
+                            android:checkedButton="@id/radioButtonDOBFullDOB"
+                            android:weightSum="1">
+
+                            <RadioButton
+                                android:id="@+id/radioButtonDOBFullDOB"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/italic"
+                                android:checked="false"
+                                android:text="Visible to all Member" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonDOBPremium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="false"
+                                android:text="Visible to all Premium Members" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonDOBMonthAndYear"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="false"
+                                android:fontFamily="@font/italic"
+                                android:text="Keep this private" />
+
+
+                        </RadioGroup>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvSaveDobHideShow"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/gradient_button"
+                                android:fontFamily="@font/italic"
+                                android:padding="10dp"
+                                android:text="Save"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/tvCancelDobHideShow"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:background="@drawable/bg_gradient"
+                                android:fontFamily="@font/italic"
+                                android:padding="10dp"
+                                android:text="Cancel"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llshowIncomePrivacy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/italic"
+                        android:text="Annual Income"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tvIncomeShowText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#494747"
+                        android:fontFamily="@font/italic"
+                        android:text="Visible to all Member"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvEditIncome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:padding="3dp"
+                        android:text="Edit"
+                        android:fontFamily="@font/italic"
+                        android:textColor="@color/teal_700"
+                        android:textStyle="bold"
+
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_dark" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llHideIncome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/italic"
+                        android:text="Annual Income"
+
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupIncome"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:checkedButton="@+id/radioButtonDOBFullIncome"
+                            android:weightSum="1">
+
+                            <RadioButton
+                                android:id="@+id/radioButtonDOBFullIncome"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="false"
+                                android:fontFamily="@font/italic"
+                                android:text="Visible to all Members" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonIncomePremium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/italic"
+                                android:checked="false"
+                                android:text="Visible to all Premium Members" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonIncomePrivate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="false"
+                                android:fontFamily="@font/italic"
+                                android:text="Keep this private" />
+
+
+                        </RadioGroup>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvSaveIncomeHideShow"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/gradient_button"
+                                android:fontFamily="@font/italic"
+                                android:padding="10dp"
+                                android:text="Save"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/tvCancelIncomeHideShow"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:background="@drawable/bg_gradient"
+                                android:fontFamily="@font/italic"
+                                android:padding="10dp"
+                                android:text="Cancel"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <!--            <LinearLayout-->
+                <!--                android:id="@+id/llshowHoroscopePrivacy"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:orientation="vertical">-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Horoscope"-->
+
+                <!--                    />-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Visible to all Members"-->
+                <!--                    android:textColor="#494747"-->
+                <!--                    android:textSize="16sp" />-->
+
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tvHoroscope"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:layout_gravity="end"-->
+                <!--                    android:padding="3dp"-->
+                <!--                    android:text="Edit"-->
+                <!--                    android:textColor="@color/teal_700"-->
+                <!--                    android:textStyle="bold"-->
+
+                <!--                    />-->
+                <!--                <View-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="1dp"-->
+                <!--                    android:background="@color/gray_dark" />-->
+                <!--            </LinearLayout>-->
+
+                <!--            <LinearLayout-->
+                <!--                android:id="@+id/llHideHoroscope"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:visibility="gone"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:orientation="horizontal">-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Horoscope"-->
+
+                <!--                    />-->
+
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:orientation="vertical">-->
+
+                <!--                    <RadioGroup-->
+                <!--                        android:id="@+id/radioGroupHoroscope"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="18dp"-->
+                <!--                        android:weightSum="1">-->
+
+                <!--                        <RadioButton-->
+                <!--                            android:id="@+id/radioButtonHoroscopeAll"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:checked="false"-->
+                <!--                            android:text="Visible to all Members" />-->
+
+                <!--                        <RadioButton-->
+                <!--                            android:id="@+id/radioButtonHoroscopeContactedAndAccepted"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:checked="false"-->
+                <!--                            android:text="Visible to contacted and accepted Members" />-->
+
+
+                <!--                        <RadioButton-->
+                <!--                            android:id="@+id/radioButtonHoroscopeHideAll"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:checked="false"-->
+                <!--                            android:text="Hide from all" />-->
+
+
+                <!--                    </RadioGroup>-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_gravity="center"-->
+                <!--                        android:layout_marginTop="20dp"-->
+                <!--                        android:orientation="horizontal">-->
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/tvSaveHoroscopeHideShow"-->
+                <!--                            android:layout_width="100dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:background="@drawable/gradient_button"-->
+                <!--                            android:fontFamily="@font/italic"-->
+                <!--                            android:padding="10dp"-->
+                <!--                            android:text="Save"-->
+                <!--                            android:textAlignment="center"-->
+                <!--                            android:textColor="@color/white"-->
+                <!--                            android:textStyle="bold" />-->
+
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/tvCancelHoroscopeHideShow"-->
+                <!--                            android:layout_width="100dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_marginStart="10dp"-->
+                <!--                            android:background="@drawable/bg_gradient"-->
+                <!--                            android:fontFamily="@font/italic"-->
+                <!--                            android:padding="10dp"-->
+                <!--                            android:text="Cancel"-->
+                <!--                            android:textAlignment="center"-->
+                <!--                            android:textColor="@color/white"-->
+                <!--                            android:textStyle="bold" />-->
+                <!--                    </LinearLayout>-->
+                <!--                </LinearLayout>-->
+
+
+                <!--            </LinearLayout>-->
+
+
+                <!--            <LinearLayout-->
+                <!--                android:id="@+id/llShowVisitorPrivacy"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:orientation="vertical">-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Visitors Setting"-->
+
+                <!--                    />-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Let other Members know that I have visited their Profile"-->
+                <!--                    android:textColor="#494747"-->
+                <!--                    android:textSize="16sp" />-->
+
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tvVisitors"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:layout_gravity="end"-->
+                <!--                    android:padding="3dp"-->
+                <!--                    android:text="Edit"-->
+                <!--                    android:textColor="@color/teal_700"-->
+                <!--                    android:textStyle="bold"-->
+
+                <!--                    />-->
+                <!--                <View-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="1dp"-->
+                <!--                    android:background="@color/gray_dark" />-->
+                <!--            </LinearLayout>-->
+
+                <!--            <LinearLayout-->
+                <!--                android:id="@+id/llHideVisitors"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:visibility="gone"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:orientation="horizontal">-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Horoscope"-->
+
+                <!--                    />-->
+
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:orientation="vertical">-->
+
+                <!--                    <RadioGroup-->
+                <!--                        android:id="@+id/radioGroupVisitors"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="18dp"-->
+                <!--                        android:weightSum="1">-->
+
+                <!--                        <RadioButton-->
+                <!--                            android:id="@+id/radioButtonShowVisitorsVisitTheirProfile"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:checked="false"-->
+                <!--                            android:text="Let other Members know that I have visited their Profile" />-->
+
+
+                <!--                        <RadioButton-->
+                <!--                            android:id="@+id/radioButtonVisitorsNotShow"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:checked="false"-->
+                <!--                            android:text="Do not let other Members know that I have visited their Profile" />-->
+
+
+                <!--                    </RadioGroup>-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_gravity="center"-->
+                <!--                        android:layout_marginTop="20dp"-->
+                <!--                        android:orientation="horizontal">-->
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/tvSaveVisitorsHideShow"-->
+                <!--                            android:layout_width="100dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:background="@drawable/gradient_button"-->
+                <!--                            android:fontFamily="@font/italic"-->
+                <!--                            android:padding="10dp"-->
+                <!--                            android:text="Save"-->
+                <!--                            android:textAlignment="center"-->
+                <!--                            android:textColor="@color/white"-->
+                <!--                            android:textStyle="bold" />-->
+
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/tvCancelVisitorsHideShow"-->
+                <!--                            android:layout_width="100dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_marginStart="10dp"-->
+                <!--                            android:background="@drawable/bg_gradient"-->
+                <!--                            android:fontFamily="@font/italic"-->
+                <!--                            android:padding="10dp"-->
+                <!--                            android:text="Cancel"-->
+                <!--                            android:textAlignment="center"-->
+                <!--                            android:textColor="@color/white"-->
+                <!--                            android:textStyle="bold" />-->
+                <!--                    </LinearLayout>-->
+                <!--                </LinearLayout>-->
+
+
+                <!--            </LinearLayout>-->
+
+
+                <!--            <LinearLayout-->
+                <!--                android:id="@+id/llShowShortListPrivacy"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:orientation="vertical">-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Shortlist Setting"-->
+
+                <!--                    />-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Let other Members know that I have shortlisted their Profile"-->
+                <!--                    android:textColor="#494747"-->
+                <!--                    android:textSize="16sp" />-->
+
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tvshortlisted"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:layout_gravity="end"-->
+                <!--                    android:padding="3dp"-->
+                <!--                    android:text="Edit"-->
+                <!--                    android:textColor="@color/teal_700"-->
+                <!--                    android:textStyle="bold"-->
+
+                <!--                    />-->
+                <!--                <View-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="1dp"-->
+                <!--                    android:background="@color/gray_dark" />-->
+                <!--            </LinearLayout>-->
+
+                <!--            <LinearLayout-->
+                <!--                android:id="@+id/llHideshortlisted"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:visibility="gone"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:orientation="horizontal">-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Shortlist Setting"-->
+
+                <!--                    />-->
+
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:orientation="vertical">-->
+
+                <!--                    <RadioGroup-->
+                <!--                        android:id="@+id/radioGroupShortlist"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="18dp"-->
+                <!--                        android:weightSum="1">-->
+
+                <!--                        <RadioButton-->
+                <!--                            android:id="@+id/radioButtonShowShortlistTheirProfile"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:checked="false"-->
+                <!--                            android:text="Let other Members know that I have Shortlist their Profile" />-->
+
+
+                <!--                        <RadioButton-->
+                <!--                            android:id="@+id/radioButtonShortlistNotShow"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:checked="false"-->
+                <!--                            android:text="Do not let other Members know that I have Shortlist their Profile" />-->
+
+
+                <!--                    </RadioGroup>-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_gravity="center"-->
+                <!--                        android:layout_marginTop="20dp"-->
+                <!--                        android:orientation="horizontal">-->
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/tvSaveShortlistHideShow"-->
+                <!--                            android:layout_width="100dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:background="@drawable/gradient_button"-->
+                <!--                            android:fontFamily="@font/italic"-->
+                <!--                            android:padding="10dp"-->
+                <!--                            android:text="Save"-->
+                <!--                            android:textAlignment="center"-->
+                <!--                            android:textColor="@color/white"-->
+                <!--                            android:textStyle="bold" />-->
+
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/tvCancelShortlistHideShow"-->
+                <!--                            android:layout_width="100dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_marginStart="10dp"-->
+                <!--                            android:background="@drawable/bg_gradient"-->
+                <!--                            android:fontFamily="@font/italic"-->
+                <!--                            android:padding="10dp"-->
+                <!--                            android:text="Cancel"-->
+                <!--                            android:textAlignment="center"-->
+                <!--                            android:textColor="@color/white"-->
+                <!--                            android:textStyle="bold" />-->
+                <!--                    </LinearLayout>-->
+                <!--                </LinearLayout>-->
+
+
+                <!--            </LinearLayout>-->
+
+
+                <!--            <LinearLayout-->
+                <!--                android:id="@+id/llShowDNDPrivacy"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:orientation="vertical">-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Do Not Disturb"-->
+
+                <!--                    />-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Shaathidaar.com can call me for Premium membership related offers"-->
+                <!--                    android:textColor="#494747"-->
+                <!--                    android:textSize="16sp" />-->
+
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tvDND"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:layout_gravity="end"-->
+                <!--                    android:padding="3dp"-->
+                <!--                    android:text="Edit"-->
+                <!--                    android:textColor="@color/teal_700"-->
+                <!--                    android:textStyle="bold"-->
+
+                <!--                    />-->
+                <!--                <View-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="1dp"-->
+                <!--                    android:background="@color/gray_dark" />-->
+                <!--            </LinearLayout>-->
+
+                <!--            <LinearLayout-->
+                <!--                android:id="@+id/llHideDND"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:visibility="gone"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:orientation="horizontal">-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Do Not Disturb"-->
+
+                <!--                    />-->
+
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:orientation="vertical">-->
+
+                <!--                    <RadioGroup-->
+                <!--                        android:id="@+id/radioGroupDND"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="18dp"-->
+                <!--                        android:weightSum="1">-->
+
+                <!--                        <RadioButton-->
+                <!--                            android:id="@+id/radioButtonCallMsgFromShaathidar"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:checked="false"-->
+                <!--                            android:text="Shaadi.com can call me for Premium membership related offers" />-->
+
+
+                <!--                    </RadioGroup>-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_gravity="center"-->
+                <!--                        android:layout_marginTop="20dp"-->
+                <!--                        android:orientation="horizontal">-->
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/tvSaveDNDHideShow"-->
+                <!--                            android:layout_width="100dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:background="@drawable/gradient_button"-->
+                <!--                            android:fontFamily="@font/italic"-->
+                <!--                            android:padding="10dp"-->
+                <!--                            android:text="Save"-->
+                <!--                            android:textAlignment="center"-->
+                <!--                            android:textColor="@color/white"-->
+                <!--                            android:textStyle="bold" />-->
+
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/tvCancelDNDHideShow"-->
+                <!--                            android:layout_width="100dp"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_marginStart="10dp"-->
+                <!--                            android:background="@drawable/bg_gradient"-->
+                <!--                            android:fontFamily="@font/italic"-->
+                <!--                            android:padding="10dp"-->
+                <!--                            android:text="Cancel"-->
+                <!--                            android:textAlignment="center"-->
+                <!--                            android:textColor="@color/white"-->
+                <!--                            android:textStyle="bold" />-->
+                <!--                    </LinearLayout>-->
+                <!--                </LinearLayout>-->
+
+
+                <!--            </LinearLayout>-->
 
 
             </LinearLayout>
 
 
-            <!--            <LinearLayout-->
-            <!--                android:id="@+id/llshowHoroscopePrivacy"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="vertical">-->
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Horoscope"-->
 
-            <!--                    />-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Visible to all Members"-->
-            <!--                    android:textColor="#494747"-->
-            <!--                    android:textSize="16sp" />-->
-
-
-            <!--                <TextView-->
-            <!--                    android:id="@+id/tvHoroscope"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="match_parent"-->
-            <!--                    android:layout_gravity="end"-->
-            <!--                    android:padding="3dp"-->
-            <!--                    android:text="Edit"-->
-            <!--                    android:textColor="@color/teal_700"-->
-            <!--                    android:textStyle="bold"-->
-
-            <!--                    />-->
-            <!--                <View-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="1dp"-->
-            <!--                    android:background="@color/gray_dark" />-->
-            <!--            </LinearLayout>-->
-
-            <!--            <LinearLayout-->
-            <!--                android:id="@+id/llHideHoroscope"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:visibility="gone"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="horizontal">-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Horoscope"-->
-
-            <!--                    />-->
-
-            <!--                <LinearLayout-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:orientation="vertical">-->
-
-            <!--                    <RadioGroup-->
-            <!--                        android:id="@+id/radioGroupHoroscope"-->
-            <!--                        android:layout_width="match_parent"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_marginTop="18dp"-->
-            <!--                        android:weightSum="1">-->
-
-            <!--                        <RadioButton-->
-            <!--                            android:id="@+id/radioButtonHoroscopeAll"-->
-            <!--                            android:layout_width="wrap_content"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_weight="1"-->
-            <!--                            android:checked="false"-->
-            <!--                            android:text="Visible to all Members" />-->
-
-            <!--                        <RadioButton-->
-            <!--                            android:id="@+id/radioButtonHoroscopeContactedAndAccepted"-->
-            <!--                            android:layout_width="wrap_content"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_weight="1"-->
-            <!--                            android:checked="false"-->
-            <!--                            android:text="Visible to contacted and accepted Members" />-->
-
-
-            <!--                        <RadioButton-->
-            <!--                            android:id="@+id/radioButtonHoroscopeHideAll"-->
-            <!--                            android:layout_width="wrap_content"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_weight="1"-->
-            <!--                            android:checked="false"-->
-            <!--                            android:text="Hide from all" />-->
-
-
-            <!--                    </RadioGroup>-->
-
-            <!--                    <LinearLayout-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_gravity="center"-->
-            <!--                        android:layout_marginTop="20dp"-->
-            <!--                        android:orientation="horizontal">-->
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/tvSaveHoroscopeHideShow"-->
-            <!--                            android:layout_width="100dp"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_gravity="center"-->
-            <!--                            android:background="@drawable/gradient_button"-->
-            <!--                            android:fontFamily="@font/italic"-->
-            <!--                            android:padding="10dp"-->
-            <!--                            android:text="Save"-->
-            <!--                            android:textAlignment="center"-->
-            <!--                            android:textColor="@color/white"-->
-            <!--                            android:textStyle="bold" />-->
-
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/tvCancelHoroscopeHideShow"-->
-            <!--                            android:layout_width="100dp"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_marginStart="10dp"-->
-            <!--                            android:background="@drawable/bg_gradient"-->
-            <!--                            android:fontFamily="@font/italic"-->
-            <!--                            android:padding="10dp"-->
-            <!--                            android:text="Cancel"-->
-            <!--                            android:textAlignment="center"-->
-            <!--                            android:textColor="@color/white"-->
-            <!--                            android:textStyle="bold" />-->
-            <!--                    </LinearLayout>-->
-            <!--                </LinearLayout>-->
-
-
-            <!--            </LinearLayout>-->
-
-
-            <!--            <LinearLayout-->
-            <!--                android:id="@+id/llShowVisitorPrivacy"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="vertical">-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Visitors Setting"-->
-
-            <!--                    />-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Let other Members know that I have visited their Profile"-->
-            <!--                    android:textColor="#494747"-->
-            <!--                    android:textSize="16sp" />-->
-
-
-            <!--                <TextView-->
-            <!--                    android:id="@+id/tvVisitors"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="match_parent"-->
-            <!--                    android:layout_gravity="end"-->
-            <!--                    android:padding="3dp"-->
-            <!--                    android:text="Edit"-->
-            <!--                    android:textColor="@color/teal_700"-->
-            <!--                    android:textStyle="bold"-->
-
-            <!--                    />-->
-            <!--                <View-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="1dp"-->
-            <!--                    android:background="@color/gray_dark" />-->
-            <!--            </LinearLayout>-->
-
-            <!--            <LinearLayout-->
-            <!--                android:id="@+id/llHideVisitors"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:visibility="gone"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="horizontal">-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Horoscope"-->
-
-            <!--                    />-->
-
-            <!--                <LinearLayout-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:orientation="vertical">-->
-
-            <!--                    <RadioGroup-->
-            <!--                        android:id="@+id/radioGroupVisitors"-->
-            <!--                        android:layout_width="match_parent"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_marginTop="18dp"-->
-            <!--                        android:weightSum="1">-->
-
-            <!--                        <RadioButton-->
-            <!--                            android:id="@+id/radioButtonShowVisitorsVisitTheirProfile"-->
-            <!--                            android:layout_width="wrap_content"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_weight="1"-->
-            <!--                            android:checked="false"-->
-            <!--                            android:text="Let other Members know that I have visited their Profile" />-->
-
-
-            <!--                        <RadioButton-->
-            <!--                            android:id="@+id/radioButtonVisitorsNotShow"-->
-            <!--                            android:layout_width="wrap_content"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_weight="1"-->
-            <!--                            android:checked="false"-->
-            <!--                            android:text="Do not let other Members know that I have visited their Profile" />-->
-
-
-            <!--                    </RadioGroup>-->
-
-            <!--                    <LinearLayout-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_gravity="center"-->
-            <!--                        android:layout_marginTop="20dp"-->
-            <!--                        android:orientation="horizontal">-->
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/tvSaveVisitorsHideShow"-->
-            <!--                            android:layout_width="100dp"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_gravity="center"-->
-            <!--                            android:background="@drawable/gradient_button"-->
-            <!--                            android:fontFamily="@font/italic"-->
-            <!--                            android:padding="10dp"-->
-            <!--                            android:text="Save"-->
-            <!--                            android:textAlignment="center"-->
-            <!--                            android:textColor="@color/white"-->
-            <!--                            android:textStyle="bold" />-->
-
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/tvCancelVisitorsHideShow"-->
-            <!--                            android:layout_width="100dp"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_marginStart="10dp"-->
-            <!--                            android:background="@drawable/bg_gradient"-->
-            <!--                            android:fontFamily="@font/italic"-->
-            <!--                            android:padding="10dp"-->
-            <!--                            android:text="Cancel"-->
-            <!--                            android:textAlignment="center"-->
-            <!--                            android:textColor="@color/white"-->
-            <!--                            android:textStyle="bold" />-->
-            <!--                    </LinearLayout>-->
-            <!--                </LinearLayout>-->
-
-
-            <!--            </LinearLayout>-->
-
-
-            <!--            <LinearLayout-->
-            <!--                android:id="@+id/llShowShortListPrivacy"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="vertical">-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Shortlist Setting"-->
-
-            <!--                    />-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Let other Members know that I have shortlisted their Profile"-->
-            <!--                    android:textColor="#494747"-->
-            <!--                    android:textSize="16sp" />-->
-
-
-            <!--                <TextView-->
-            <!--                    android:id="@+id/tvshortlisted"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="match_parent"-->
-            <!--                    android:layout_gravity="end"-->
-            <!--                    android:padding="3dp"-->
-            <!--                    android:text="Edit"-->
-            <!--                    android:textColor="@color/teal_700"-->
-            <!--                    android:textStyle="bold"-->
-
-            <!--                    />-->
-            <!--                <View-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="1dp"-->
-            <!--                    android:background="@color/gray_dark" />-->
-            <!--            </LinearLayout>-->
-
-            <!--            <LinearLayout-->
-            <!--                android:id="@+id/llHideshortlisted"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:visibility="gone"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="horizontal">-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Shortlist Setting"-->
-
-            <!--                    />-->
-
-            <!--                <LinearLayout-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:orientation="vertical">-->
-
-            <!--                    <RadioGroup-->
-            <!--                        android:id="@+id/radioGroupShortlist"-->
-            <!--                        android:layout_width="match_parent"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_marginTop="18dp"-->
-            <!--                        android:weightSum="1">-->
-
-            <!--                        <RadioButton-->
-            <!--                            android:id="@+id/radioButtonShowShortlistTheirProfile"-->
-            <!--                            android:layout_width="wrap_content"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_weight="1"-->
-            <!--                            android:checked="false"-->
-            <!--                            android:text="Let other Members know that I have Shortlist their Profile" />-->
-
-
-            <!--                        <RadioButton-->
-            <!--                            android:id="@+id/radioButtonShortlistNotShow"-->
-            <!--                            android:layout_width="wrap_content"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_weight="1"-->
-            <!--                            android:checked="false"-->
-            <!--                            android:text="Do not let other Members know that I have Shortlist their Profile" />-->
-
-
-            <!--                    </RadioGroup>-->
-
-            <!--                    <LinearLayout-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_gravity="center"-->
-            <!--                        android:layout_marginTop="20dp"-->
-            <!--                        android:orientation="horizontal">-->
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/tvSaveShortlistHideShow"-->
-            <!--                            android:layout_width="100dp"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_gravity="center"-->
-            <!--                            android:background="@drawable/gradient_button"-->
-            <!--                            android:fontFamily="@font/italic"-->
-            <!--                            android:padding="10dp"-->
-            <!--                            android:text="Save"-->
-            <!--                            android:textAlignment="center"-->
-            <!--                            android:textColor="@color/white"-->
-            <!--                            android:textStyle="bold" />-->
-
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/tvCancelShortlistHideShow"-->
-            <!--                            android:layout_width="100dp"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_marginStart="10dp"-->
-            <!--                            android:background="@drawable/bg_gradient"-->
-            <!--                            android:fontFamily="@font/italic"-->
-            <!--                            android:padding="10dp"-->
-            <!--                            android:text="Cancel"-->
-            <!--                            android:textAlignment="center"-->
-            <!--                            android:textColor="@color/white"-->
-            <!--                            android:textStyle="bold" />-->
-            <!--                    </LinearLayout>-->
-            <!--                </LinearLayout>-->
-
-
-            <!--            </LinearLayout>-->
-
-
-            <!--            <LinearLayout-->
-            <!--                android:id="@+id/llShowDNDPrivacy"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="vertical">-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Do Not Disturb"-->
-
-            <!--                    />-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Shaathidaar.com can call me for Premium membership related offers"-->
-            <!--                    android:textColor="#494747"-->
-            <!--                    android:textSize="16sp" />-->
-
-
-            <!--                <TextView-->
-            <!--                    android:id="@+id/tvDND"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="match_parent"-->
-            <!--                    android:layout_gravity="end"-->
-            <!--                    android:padding="3dp"-->
-            <!--                    android:text="Edit"-->
-            <!--                    android:textColor="@color/teal_700"-->
-            <!--                    android:textStyle="bold"-->
-
-            <!--                    />-->
-            <!--                <View-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="1dp"-->
-            <!--                    android:background="@color/gray_dark" />-->
-            <!--            </LinearLayout>-->
-
-            <!--            <LinearLayout-->
-            <!--                android:id="@+id/llHideDND"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:visibility="gone"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="horizontal">-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Do Not Disturb"-->
-
-            <!--                    />-->
-
-            <!--                <LinearLayout-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:orientation="vertical">-->
-
-            <!--                    <RadioGroup-->
-            <!--                        android:id="@+id/radioGroupDND"-->
-            <!--                        android:layout_width="match_parent"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_marginTop="18dp"-->
-            <!--                        android:weightSum="1">-->
-
-            <!--                        <RadioButton-->
-            <!--                            android:id="@+id/radioButtonCallMsgFromShaathidar"-->
-            <!--                            android:layout_width="wrap_content"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_weight="1"-->
-            <!--                            android:checked="false"-->
-            <!--                            android:text="Shaadi.com can call me for Premium membership related offers" />-->
-
-
-            <!--                    </RadioGroup>-->
-
-            <!--                    <LinearLayout-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_gravity="center"-->
-            <!--                        android:layout_marginTop="20dp"-->
-            <!--                        android:orientation="horizontal">-->
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/tvSaveDNDHideShow"-->
-            <!--                            android:layout_width="100dp"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_gravity="center"-->
-            <!--                            android:background="@drawable/gradient_button"-->
-            <!--                            android:fontFamily="@font/italic"-->
-            <!--                            android:padding="10dp"-->
-            <!--                            android:text="Save"-->
-            <!--                            android:textAlignment="center"-->
-            <!--                            android:textColor="@color/white"-->
-            <!--                            android:textStyle="bold" />-->
-
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/tvCancelDNDHideShow"-->
-            <!--                            android:layout_width="100dp"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_marginStart="10dp"-->
-            <!--                            android:background="@drawable/bg_gradient"-->
-            <!--                            android:fontFamily="@font/italic"-->
-            <!--                            android:padding="10dp"-->
-            <!--                            android:text="Cancel"-->
-            <!--                            android:textAlignment="center"-->
-            <!--                            android:textColor="@color/white"-->
-            <!--                            android:textStyle="bold" />-->
-            <!--                    </LinearLayout>-->
-            <!--                </LinearLayout>-->
-
-
-            <!--            </LinearLayout>-->
-
-
-        </LinearLayout>
-
-
-    </ScrollView>
 
 
 </LinearLayout>

@@ -73,8 +73,8 @@ public class NavigationActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                  viewPager.setCurrentItem(tab.getPosition());
-                  mp = MediaPlayer.create(NavigationActivity.this, R.raw.app);
-                  mp.start();
+//                  mp = MediaPlayer.create(NavigationActivity.this, R.raw.app);
+//                  mp.start();
 
 
             }
