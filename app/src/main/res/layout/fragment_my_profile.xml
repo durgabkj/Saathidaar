@@ -7,10 +7,6 @@
     android:orientation="vertical"
     tools:ignore="ExtraText">
 
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/srlMyProfile">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -151,7 +147,6 @@
 
         />
 
-
         <!--    </ScrollView>-->
 
         <androidx.viewpager.widget.ViewPager
@@ -160,9 +155,6 @@
             android:layout_height="match_parent"
             tools:ignore="NotSibling" />
     </LinearLayout>
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
 
 </LinearLayout>
 
