@@ -62,7 +62,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         NewMatchesModel item = list.get(position);
 //        Log.e(" New Matches model", new Gson().toJson(item));
         sessionManager = new SessionManager(context);
-        holder.tvNewMatchName.setText(Utils.nullToBlank(item.first_name) + " " + Utils.nullToBlank(item.last_name));
+        holder.tvNewMatchName.setText(Utils.nullToBlank(item.first_name) + " " + Utils.nullToBlank(item.last_name).charAt(0));
         holder.tvNewMatchAge.setText(Utils.nullToBlank(item.mage));
         holder.tvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
         holder.tvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));

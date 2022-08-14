@@ -64,11 +64,11 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
             Log.e(" New Matches model", new Gson().toJson(item));
             sessionManager=new SessionManager(context);
 
-            holder.tvBlockName.setText(item.first_name + " " + item.last_name);
-            holder.tvBlockAge.setText(item.mage+" yrs");
-            holder.tvNewBlockHeight.setText(item.religion);
-            holder.tvBlockCity.setText(item.maritalStatus);
-            holder.tvBlockWorkAs.setText(item.income);
+            holder.tvBlockName.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
+            holder.tvBlockAge.setText(Utils.nullToBlank(item.mage+" yrs"));
+            holder.tvNewBlockHeight.setText(Utils.nullToBlank(item.religion));
+            holder.tvBlockCity.setText(Utils.nullToBlank(item.maritalStatus));
+            holder.tvBlockWorkAs.setText(Utils.nullToBlank(item.income));
             holder.tvImageCountUnBlock.setText(item.images_count);
 
 

@@ -497,7 +497,7 @@ public class InboxDetailFragment extends Fragment {
 
     private void setData() {
         if (model != null) {
-            b.tvNewMatchName.setText(model.first_name + " " + model.last_name);
+            b.tvNewMatchName.setText(Utils.nullToBlank(model.first_name) + " " + Utils.nullToBlank(model.last_name).charAt(0));
 
             if (model.age.equalsIgnoreCase("") && model.age.equalsIgnoreCase(null)) {
 

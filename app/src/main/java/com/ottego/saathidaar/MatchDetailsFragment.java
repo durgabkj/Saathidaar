@@ -95,7 +95,6 @@ public class MatchDetailsFragment extends Fragment {
         return b.getRoot();
     }
 
-
     private void getHoroscopeData() {
         //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
@@ -130,7 +129,6 @@ public class MatchDetailsFragment extends Fragment {
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
     }
-
     private void setHoroData() {
         if((horoscopeModel.hours!=null && !horoscopeModel.hours.equals("")) && (horoscopeModel.minutes!=null && !horoscopeModel.minutes.equals("")) && (horoscopeModel.time!=null && !horoscopeModel.time.equals("")) && (horoscopeModel.country_of_birth!=null || !horoscopeModel.country_of_birth.equals("")) && (horoscopeModel.city_of_birth!=null || !horoscopeModel.city_of_birth.equals("")))
         {
@@ -139,7 +137,6 @@ public class MatchDetailsFragment extends Fragment {
 
              b.tvDetailManglik.setText(horoscopeModel.manglik);
     }
-
     private void getMemberPreferenceData() {
         Log.e("params", String.valueOf(mParam1));
         Log.e("prefParams", PreferenceDetailUrl + mParam1 + "/" + sessionManager.getMemberId());
@@ -478,8 +475,6 @@ if (memberPreferenceModel != null) {
 
 
     }
-
-
     private void getPartnerData() {
         Map<String, String> params = new HashMap<String, String>();
         Log.e("dataParams", memberDetail + mParam1);
@@ -514,7 +509,7 @@ if (memberPreferenceModel != null) {
     }
     private void setData() {
         if (model != null) {
-            b.tvNewMatchName.setText(model.first_name + " " + model.last_name);
+            b.tvNewMatchName.setText(Utils.nullToBlank((model.first_name)) + " " +Utils.nullToBlank(model.last_name).charAt(0));
 
             if (model.age.equalsIgnoreCase("") && model.age.equalsIgnoreCase(null)) {
 

@@ -58,12 +58,12 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         InboxModel item = list.get(position);
         Log.e(" Inbox model", new Gson().toJson(item));
         sessionManager = new SessionManager(context);
-        holder.tvInvNewMatchName.setText(Utils.nullToBlank(item.first_name) + " " + Utils.nullToBlank(item.last_name));
+        holder.tvInvNewMatchName.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
         holder.tvInvNewMatchAge.setText(Utils.nullToBlank(item.mage+" yrs"));
-        holder.tvInvNewMatchHeight.setText(item.religion);
-        holder.tvInvNewMatchCity.setText(item.maritalStatus);
-        holder.tvInvNewMatchWorkAs.setText(item.country);
-        holder.tvImageCountInvitation.setText(item.images_count);
+        holder.tvInvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
+        holder.tvInvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
+        holder.tvInvNewMatchWorkAs.setText(Utils.nullToBlank(item.country));
+        holder.tvImageCountInvitation.setText(Utils.nullToBlank(item.images_count));
 
 
 

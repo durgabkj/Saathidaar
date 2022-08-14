@@ -62,13 +62,13 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 
         sessionManager = new SessionManager(context);
 
-        holder.tvInvNewMatchName.setText(item.first_name + " " + item.last_name);
-        holder.tvInvNewMatchAge.setText(item.mage);
-        holder.tvInvNewMatchHeight.setText(item.religion);
-        holder.tvInvNewMatchCity.setText(item.maritalStatus);
-        holder.tvInvNewMatchWorkAsAccept.setText(item.country);
-        holder.tvInvitationAccetMessage.setText(item.request_message);
-        holder.tvImageCountAccept.setText(item.images_count);
+        holder.tvInvNewMatchName.setText(item.first_name + " " + Utils.nullToBlank(item.last_name).charAt(0));
+        holder.tvInvNewMatchAge.setText(Utils.nullToBlank(item.mage));
+        holder.tvInvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
+        holder.tvInvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
+        holder.tvInvNewMatchWorkAsAccept.setText(Utils.nullToBlank(item.country));
+        holder.tvInvitationAccetMessage.setText(Utils.nullToBlank(item.request_message));
+        holder.tvImageCountAccept.setText(Utils.nullToBlank(item.images_count));
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

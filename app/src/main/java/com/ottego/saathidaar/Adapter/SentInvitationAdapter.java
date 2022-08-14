@@ -61,12 +61,12 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
             InboxModel item = list.get(position);
             Log.e(" Inbox model", new Gson().toJson(item));
             sessionManager=new SessionManager(context);
-            holder.tvInvNewMatchName.setText(Utils.nullToBlank(item.first_name) + " " + Utils.nullToBlank(item.last_name));
+            holder.tvInvNewMatchName.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
             holder.tvInvNewMatchAge.setText(Utils.nullToBlank(item.mage+" yrs"));
             holder.tvInvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
             holder.tvInvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
-            holder.tvInvNewMatchWorkAs.setText(item.country);
-            holder.tvImageCountSent.setText(item.images_count);
+            holder.tvInvNewMatchWorkAs.setText(Utils.nullToBlank(item.country));
+            holder.tvImageCountSent.setText(Utils.nullToBlank(item.images_count));
 
 //            holder.llAccept.setOnClickListener(new View.OnClickListener() {
 //                @Override

@@ -77,12 +77,12 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
             }
 
 
-            holder.tvNewMatchName.setText(item.first_name + " " + item.last_name);
-            holder.tvNewMatchAge.setText(item.mage);
-            holder.tvNewMatchHeight.setText(item.religion);
-            holder.tvNewMatchCity.setText(item.maritalStatus);
-            holder.tvNewMatchWorkAs.setText(item.income);
-            holder.tvImageCountRecentView.setText(item.images_count);
+            holder.tvNewMatchName.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
+            holder.tvNewMatchAge.setText(Utils.nullToBlank(item.mage));
+            holder.tvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
+            holder.tvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
+            holder.tvNewMatchWorkAs.setText(Utils.nullToBlank(item.income));
+            holder.tvImageCountRecentView.setText(Utils.nullToBlank(item.images_count));
 
 
             holder.llShortBlockRecentV.setOnClickListener(new View.OnClickListener() {

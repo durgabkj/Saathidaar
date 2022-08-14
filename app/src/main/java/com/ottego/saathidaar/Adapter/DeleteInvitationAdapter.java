@@ -60,13 +60,13 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
         Log.e(" Inbox model", new Gson().toJson(item));
 
         sessionManager = new SessionManager(context);
-        holder.tvInvDeleteName.setText(item.first_name + " " + item.last_name);
-        holder.tvInvDeleteAge.setText(item.mage + "yrs");
-        holder.tvInvDeleteHeight.setText(item.religion);
-        holder.tvInvDeleteCity.setText(item.maritalStatus);
-        holder.tvInvDeleteWorkAs.setText(item.country);
-        holder.tvImageCountDelete.setText(item.images_count);
-        holder.tvInvitationDeleteMessageInbox.setText(item.request_message);
+        holder.tvInvDeleteName.setText(Utils.nullToBlank(item.first_name )+ " " +  Utils.nullToBlank(item.last_name).charAt(0));
+        holder.tvInvDeleteAge.setText(Utils.nullToBlank(item.mage) + "yrs");
+        holder.tvInvDeleteHeight.setText(Utils.nullToBlank(item.religion));
+        holder.tvInvDeleteCity.setText(Utils.nullToBlank(item.maritalStatus));
+        holder.tvInvDeleteWorkAs.setText(Utils.nullToBlank(item.country));
+        holder.tvImageCountDelete.setText((item.images_count));
+        holder.tvInvitationDeleteMessageInbox.setText(Utils.nullToBlank(item.request_message));
 
         holder.llBlockDelete.setOnClickListener(new View.OnClickListener() {
             @Override

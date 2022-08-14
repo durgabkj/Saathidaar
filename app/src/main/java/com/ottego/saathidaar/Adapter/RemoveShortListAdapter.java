@@ -57,11 +57,11 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         Log.e(" New Matches model", new Gson().toJson(item));
         sessionManager = new SessionManager(context);
 
-        holder.tvNewMatchNameRs.setText(item.first_name + " " + item.last_name);
-        holder.tvNewMatchAgeRs.setText(item.mage + " Yrs");
-        holder.tvNewMatchHeightRs.setText(item.religion);
-        holder.tvNewMatchCityRs.setText(item.maritalStatus);
-        holder.tvImageCountRemoveShortList.setText(item.images_count);
+        holder.tvNewMatchNameRs.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
+        holder.tvNewMatchAgeRs.setText(Utils.nullToBlank(item.mage )+ " Yrs");
+        holder.tvNewMatchHeightRs.setText(Utils.nullToBlank(item.religion));
+        holder.tvNewMatchCityRs.setText(Utils.nullToBlank(item.maritalStatus));
+        holder.tvImageCountRemoveShortList.setText(Utils.nullToBlank(item.images_count));
 
 
         if(item.request_status!=null && !item.request_status.isEmpty())
