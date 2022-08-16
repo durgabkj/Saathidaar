@@ -137,8 +137,8 @@
                     android:background="@drawable/gray_transparent_bg">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:padding="3dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_baseline_star_border_24" />
@@ -153,8 +153,8 @@
                     >
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:padding="5dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/block_menber" />
@@ -339,7 +339,23 @@
                         android:text="Mumbai"
                         android:textColor="@color/white"
                         android:fontFamily="@font/italic"
-                        android:textSize="15sp"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:shadowColor="#000000"
+                        android:shadowDx="1.5"
+                        android:fontFamily="@font/italic"
+                        android:shadowDy="1.3"
+                        android:maxLength="20"
+                        android:shadowRadius="1.6"
+                        android:text="Income: "
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -355,7 +371,7 @@
                         android:shadowRadius="1.6"
                         android:text="Junior software Developer"
                         android:textColor="@color/white"
-                        android:textSize="15sp"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>

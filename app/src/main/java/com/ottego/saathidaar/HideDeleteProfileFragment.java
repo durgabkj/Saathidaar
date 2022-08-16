@@ -44,20 +44,16 @@ public  String hideUrl=Utils.memberUrl+"hide/";
    ActivateModel model1;
    HideUnHideModel model;
    SessionManager sessionManager;
-String Activate_deactivate;
-    String hide;
+   String Activate_deactivate;
+   String hide;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     public HideDeleteProfileFragment() {
         // Required empty public constructor
     }
-
-
     public static HideDeleteProfileFragment newInstance(String param1, String param2) {
         HideDeleteProfileFragment fragment = new HideDeleteProfileFragment();
         Bundle args = new Bundle();
@@ -66,7 +62,6 @@ String Activate_deactivate;
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +70,6 @@ String Activate_deactivate;
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -90,7 +84,6 @@ String Activate_deactivate;
         getDataActivate();
        return b.getRoot();
     }
-
     private void getDataActivate() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 getActivate+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
@@ -119,7 +112,6 @@ String Activate_deactivate;
 
 
     }
-
     private void setData1() {
         if (model1.results!=null && model1.results.equals("1")){
             b.rbActivate.setChecked(true);
@@ -127,7 +119,6 @@ String Activate_deactivate;
             b.rbDeactivate.setChecked(true);
         }
     }
-
     private void getData() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 getHideUnhide+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
@@ -156,7 +147,6 @@ String Activate_deactivate;
 
 
     }
-
     private void setData() {
         if (model.months!=null && model.months.equals("1")){
             b.rbHideUnhideOneMonth.setChecked(true);
@@ -260,8 +250,6 @@ String Activate_deactivate;
                     case R.id.rbDeactivate:
                         Activate_deactivate = "0";
                         break;
-
-
                 }
             }
         });
@@ -272,8 +260,6 @@ String Activate_deactivate;
                 submitForm();
             }
         });
-
-
         b.tvSaveAcDe.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
             @Override
@@ -281,9 +267,7 @@ String Activate_deactivate;
                 submitFormActivate();
             }
         });
-
     }
-
     private void submitFormActivate() {
        // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         Map<String, String> params = new HashMap<String, String>();
@@ -298,9 +282,9 @@ String Activate_deactivate;
                         Log.e("response", String.valueOf((response)));
                         try {String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
-                                Toast.makeText(context, "Activated", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(context, "Your account id Deactivate", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -322,7 +306,6 @@ String Activate_deactivate;
         MySingleton.myGetMySingleton(context).myAddToRequest(request);
 
     }
-
     private void submitForm() {
      //   final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         Map<String, String> params = new HashMap<String, String>();

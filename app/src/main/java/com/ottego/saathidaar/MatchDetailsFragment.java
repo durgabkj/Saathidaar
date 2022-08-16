@@ -625,11 +625,11 @@ if (memberPreferenceModel != null) {
             }
 
 //show request sent status
-//            if(model.request_status!=null && !model.request_status.isEmpty())
-//            {
-//                b.ivDetailsMatchConnected.setVisibility(View.VISIBLE);
-//                b.ivDetailsMatchConnect.setVisibility(View.GONE);
-//            }
+            if(model.request_status!=null && !model.request_status.isEmpty())
+            {
+                b.ivDetailsMatchConnected.setVisibility(View.VISIBLE);
+                b.ivDetailsMatchConnect.setVisibility(View.GONE);
+            }
 
         }
 
