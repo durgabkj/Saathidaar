@@ -303,7 +303,6 @@ SwipeRefreshLayout srlUserPhoto;
 
         handler.postDelayed(runnable, millisecond);
     }
-
     public static boolean isValidContextForGlide(final Context context) {
         if (context == null) {
             return false;

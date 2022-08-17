@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -137,10 +138,17 @@ int count=0;
             }
 
         });
+
+        b.srlInbox.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getDataCount();
+            }
+        });
     }
 
-
     private void getDataCount() {
+        b.srlInbox.setRefreshing(false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
@@ -153,6 +161,7 @@ int count=0;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                b.srlInbox.setRefreshing(false);
                 error.printStackTrace();
             }
         });
@@ -177,6 +186,30 @@ int count=0;
 
 
         }
+    }
+
+    @Override
+    public void onStart() {
+        getDataCount();
+        super.onStart();
+    }
+
+    private void refresh(int millisecond) {
+        final Handler handler= new Handler();
+        final  Runnable runnable=new Runnable() {
+            @Override
+            public void run() {
+                getDataCount();
+            }
+        };
+
+        handler.postDelayed(runnable, millisecond);
+    }
+
+    @Override
+    public void onResume() {
+        getDataCount();
+        super.onResume();
     }
 
 }

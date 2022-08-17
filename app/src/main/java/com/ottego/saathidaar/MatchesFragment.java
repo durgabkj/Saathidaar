@@ -2,6 +2,7 @@ package com.ottego.saathidaar;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -205,9 +207,16 @@ public class MatchesFragment extends Fragment {
         });
 
 
+        b.srlMatches.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getDataCount();
+            }
+        });
     }
 
     private void getDataCount() {
+        b.srlMatches.setRefreshing(false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
@@ -220,12 +229,12 @@ public class MatchesFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                b.srlMatches.setRefreshing(false);
                 error.printStackTrace();
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
     }
 
     private void setData() {
@@ -236,7 +245,6 @@ public class MatchesFragment extends Fragment {
             // b.chip1.setText("Premium Matches "+"("+model.data.get(0).new_matches_count+")");
             // b.chip1.setText("Search "+"("+model.data.get(0).new_matches_count+")");
             b.chipRecentView.setText("Recent Visitors " + "(" + model.data.get(0).recent_visitors_count + ")");
-
         }
     }
 
@@ -246,11 +254,22 @@ public class MatchesFragment extends Fragment {
         super.onStart();
     }
 
+    private void refresh(int millisecond) {
+        final Handler handler= new Handler();
+        final  Runnable runnable=new Runnable() {
+            @Override
+            public void run() {
+                getDataCount();
+            }
+        };
+
+        handler.postDelayed(runnable, millisecond);
+    }
+
     @Override
     public void onResume() {
         getDataCount();
         super.onResume();
     }
-
 }
 

@@ -6,7 +6,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:id="@+id/srlInbox"
+        android:layout_height="45dp">
     <HorizontalScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
@@ -94,7 +97,7 @@
         </com.google.android.material.chip.ChipGroup>
 
     </HorizontalScrollView>
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     <com.ottego.saathidaar.SwipeDisabledPager
         android:layout_width="match_parent"
         tools:ignore="NotSibling"
@@ -102,7 +105,6 @@
         android:layout_height="match_parent"
         android:id="@+id/vpInbox"
         />
-
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcvInbox"
