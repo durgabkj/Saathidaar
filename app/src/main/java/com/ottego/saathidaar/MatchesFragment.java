@@ -252,10 +252,5 @@ public class MatchesFragment extends Fragment {
         super.onResume();
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        getDataCount();
-        super.onActivityCreated(savedInstanceState);
-    }
 }
 
