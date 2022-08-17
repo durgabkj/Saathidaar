@@ -321,8 +321,8 @@
                         >
                         <ImageView
                             android:id="@+id/ivAccept"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:background="@color/white"
                             android:padding="8dp"
                             android:scaleType="centerCrop"

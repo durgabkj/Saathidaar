@@ -106,8 +106,8 @@
     </string-array>
 
     <array name="gender">
-        <item>male</item>
-        <item>female</item>
+        <item>Male</item>
+        <item>Female</item>
     </array>
     <string-array name="AgeFrom">
         <item>    18   </item>
@@ -290,8 +290,8 @@
         <item>Sibling / Friend / Others</item>
     </string-array>
 
-    <string-array name="MaritalStatus">
-        <item>Open to all</item>
+
+    <string-array name="MaritalStatusProfileUser">
         <item>Never Married</item>
         <item>Divorced</item>
         <item>Widowed</item>

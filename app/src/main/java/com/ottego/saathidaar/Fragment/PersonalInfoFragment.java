@@ -328,7 +328,7 @@ public class PersonalInfoFragment extends Fragment {
             binding.tvHealthDetail.setText(model.health_info);
             binding.tvUserReligion.setText(model.religion_name);
             binding.tvUserCommunity.setText(model.caste);
-            binding.tvGender.setText(model.gender);
+            binding.tvGender.setText(new StringBuilder().append(model.gender.substring(0, 1).toUpperCase()).append(model.gender.substring(1)).toString());
             binding.tvUserSubCommunity.setText(model.sub_caste_name);
             binding.tvUserGotra.setText(model.gothra);
         }

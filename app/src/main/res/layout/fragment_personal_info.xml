@@ -55,8 +55,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginEnd="50dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
                     android:layout_marginBottom="10dp"
                     android:orientation="horizontal">
 
@@ -73,7 +73,7 @@
                         android:layout_weight="1"
                         android:textAlignment="center"
                         android:text="Pull down to refresh"
-                        android:textSize="10dp" />
+                        android:textSize="9sp" />
 
                     <View
                         android:layout_width="0dp"
@@ -218,10 +218,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:visibility="gone"
+                        android:capitalize="characters"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/black"
                         android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="Deprecated,TextViewEdits" />
 
 
                 </LinearLayout>

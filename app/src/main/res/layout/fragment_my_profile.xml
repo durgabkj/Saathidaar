@@ -18,43 +18,58 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <FrameLayout
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/srlUserPhoto"
+                android:layout_width="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
+                android:layout_height="90dp"
+                >
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle">
+                <FrameLayout
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginBottom="10dp">
 
-                    <ImageView
-                        android:id="@+id/profilePic"
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:src="@drawable/ic_baseline_perm_identity_24"
-                        android:background="@color/white"
-                        android:scaleType="centerCrop" />
-                </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|end"
-                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                    app:strokeColor="@color/white"
-                    app:strokeWidth="1dp">
+                        <ImageView
+                            android:id="@+id/profilePic"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:src="@drawable/ic_baseline_perm_identity_24"
+                            android:background="@color/white"
+                            android:scaleType="centerCrop" />
+                    </com.google.android.material.card.MaterialCardView>
 
-                    <ImageView
-                        android:id="@+id/iv_camera"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:padding="5dp"
-                        app:srcCompat="@drawable/ic_baseline_create_24" />
-                </com.google.android.material.card.MaterialCardView>
-            </FrameLayout>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginStart="25dp"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                        app:strokeColor="@color/white"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:id="@+id/iv_camera"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:padding="5dp"
+                            app:srcCompat="@drawable/ic_baseline_create_24" />
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </FrameLayout>
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
 
             <TextView
                 android:id="@+id/tvUserName"
@@ -64,6 +79,7 @@
                 android:inputType="textCapWords"
                 android:shadowColor="#000000"
                 android:shadowDx="2"
+                android:layout_marginTop="10dp"
                 android:shadowDy="2"
                 android:shadowRadius="1.6"
                 android:textColor="@color/white"
@@ -129,6 +145,8 @@
                 android:textStyle="bold"/>
 
         </LinearLayout>
+
+
     </ScrollView>
     <LinearLayout
         android:layout_width="match_parent"

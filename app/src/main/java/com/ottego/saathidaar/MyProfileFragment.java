@@ -49,6 +49,7 @@ public class MyProfileFragment extends Fragment {
     Context context;
     ScrollView MyProfileDetail;
 int count=0;
+SwipeRefreshLayout srlUserPhoto;
     public static String url = Utils.memberUrl + "my-profile/";
 
     MemberProfileModel model;
@@ -98,6 +99,7 @@ int count=0;
         viewPager = view.findViewById(R.id.vpMyProfile);
         tvUserDetailsReadMore=view.findViewById(R.id.tvUserDetailsReadMore);
         tvUserDetailsReadLess=view.findViewById(R.id.tvUserDetailsReadLess);
+        srlUserPhoto=view.findViewById(R.id.srlUserPhoto);
         tvAboutUs=view.findViewById(R.id.tvAboutUs);
         profilePic=view.findViewById(R.id.profilePic);
         listener();
@@ -109,13 +111,14 @@ int count=0;
 
     private void listener() {
 
-//        srlMyProfile.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                getMemberData();
-//                setPreLoadData();
-//            }
-//        });
+        srlUserPhoto.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getMemberData();
+                setPreLoadData();
+                refresh(1000);
+            }
+        });
 
 
         tvAboutUs.addTextChangedListener(new TextWatcher() {
@@ -212,6 +215,7 @@ int count=0;
     }
 
     private void setPreLoadData() {
+        srlUserPhoto.setRefreshing(false);
         tvUserName.setText(sessionManager.getName()+" "+sessionManager.getLastName());
         tvUserEmail.setText(sessionManager.getEmail());
         tvAboutUs.setText(sessionManager.getAbout_Description());
@@ -220,12 +224,11 @@ int count=0;
 
 
     private void getMemberData() {
-        count++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-               // binding.srlRecycleViewPersonalDetails.setRefreshing(false);
+                srlUserPhoto.setRefreshing(false);
             //    Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
@@ -246,13 +249,12 @@ int count=0;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-              //  binding.srlRecycleViewPersonalDetails.setRefreshing(false);
+                srlUserPhoto.setRefreshing(false);
                 error.printStackTrace();
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-refresh(1000);
     }
 
     private void setData() {
@@ -290,6 +292,7 @@ refresh(1000);
     }
 
     private void refresh(int millisecond) {
+        srlUserPhoto.setRefreshing(false);
         final Handler handler= new Handler();
         final  Runnable runnable=new Runnable() {
             @Override

@@ -193,7 +193,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             b.etHeight.setText(model.height);
             b.etBloodGroup.setText(model.blood_group);
             b.etDiet.setText(model.lifestyles);
-            b.etGender.setText(model.gender);
+            b.etGender.setText(new StringBuilder().append(model.gender.substring(0, 1).toUpperCase()).append(model.gender.substring(1)).toString());
             b.tvMotherTongue.setText(model.mother_tounge);
             b.tvUserSubCommunity.setText(model.subcaste);
             b.tvUserCommunity.setText(model.caste_name);
@@ -227,12 +227,10 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         //   b.tvEditMaritalStatus.setSelection(Integer.parseInt(model.marital_status));
 
     }
-
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
-
     private void dietList() {
 
         final int[] checkedItem = {-1};
@@ -400,8 +398,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
             }
         });
-
-
         b.mbDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -485,7 +481,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 }
             }
         });
-
         b.etMaritalStatus.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -530,7 +525,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
     private boolean checkForm() {
 //        name = b.etAddUserName.getText().toString().trim();
-       gender = b.etGender.getText().toString().trim();
+       gender = b.etGender.getText().toString().trim().toLowerCase();
         description = b.etAddUserDescription.getText().toString().trim();
         Dob = b.mbDatePicker.getText().toString().trim();
         Marital_status = b.etMaritalStatus.getText().toString().trim();
@@ -1165,7 +1160,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 // the user in the form of list
                 // so that user can select the item from
                 // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
-                String[] maritalstatus = getResources().getStringArray(R.array.MaritalStatus);
+                String[] maritalstatus = getResources().getStringArray(R.array.MaritalStatusProfileUser);
                 // the function setSingleChoiceItems is the function which builds
                 // the alert dialog with the single item selection
                 alertDialog.setSingleChoiceItems(maritalstatus, checkedItem[0], new DialogInterface.OnClickListener() {

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -211,7 +212,7 @@ public class MatchesFragment extends Fragment {
                 url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf((response)));
+                Log.e("response count inbox", String.valueOf((response)));
                 Gson gson = new Gson();
                 model = gson.fromJson(String.valueOf(response), DataModelDashboard.class);
                 setData();
@@ -239,6 +240,22 @@ public class MatchesFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onStart() {
+        getDataCount();
+        super.onStart();
+    }
 
+    @Override
+    public void onResume() {
+        getDataCount();
+        super.onResume();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        getDataCount();
+        super.onActivityCreated(savedInstanceState);
+    }
 }
 

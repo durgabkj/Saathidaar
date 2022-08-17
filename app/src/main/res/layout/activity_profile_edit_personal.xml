@@ -476,7 +476,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/transparent_edittext_border"
-                    tools:ignore="Deprecated" />
+                    tools:ignore="Deprecated,TextViewEdits" />
 
 
             </LinearLayout>

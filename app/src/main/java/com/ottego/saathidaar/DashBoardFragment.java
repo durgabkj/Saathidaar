@@ -104,6 +104,7 @@ public class DashBoardFragment extends Fragment {
         tvDashboardUpgrade = view.findViewById(R.id.tvDashboardpgrade);
         RequestAccept = view.findViewById(R.id.RequestAccept);
         Visitors = view.findViewById(R.id.Visitors);
+        srlDashboard=view.findViewById(R.id.srlDashboard);
         llMyMatch = view.findViewById(R.id.llMyMatch);
         tvDashBoardUserAccountType = view.findViewById(R.id.tvDashBoardUserAccountType);
         llPremium = view.findViewById(R.id.llPremium);
@@ -142,22 +143,28 @@ public class DashBoardFragment extends Fragment {
         //  setData();
         listener();
 
-
-
         return view;
 
     }
 
     private void setPreloadData() {
-        count++;
         tvDashBoardUserName.setText(sessionManager.getName());
         tvDashBoardUserId.setText("[" + sessionManager.getKey_profile_id() + "]");
         tvDashBoardUserAccountType.setText(sessionManager.getKEY_PROFILE_CreatedBy());
-
-        refresh(1000);
     }
 
     private void listener() {
+
+        srlDashboard.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getMemberData();
+                setPreloadData();
+                refresh(1000);
+            }
+        });
+
+
         tvDashBoardUploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -211,29 +218,16 @@ public class DashBoardFragment extends Fragment {
             }
         });
 
-        llPremiumMatch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://103.150.186.33:8080/account/help"));
-                try {
-                    startActivity(intent);
-                } catch (Exception e) {
-                    intent.setData(Uri.parse("http://103.150.186.33:8080/account/help"));
-                }
-            }
-        });
-
 
         llMyMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://103.150.186.33:8080/account/help"));
+                intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/account/help"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://103.150.186.33:8080/account/help"));
+                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/account/help"));
                 }
             }
         });
@@ -243,11 +237,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("https://103.150.186.33:8080/saathidaar/account/privacy-Policy"));
+                intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/account/privacy-policy"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("https://103.150.186.33:8080/saathidaar/account/privacy-Policy"));
+                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/account/privacy-policy"));
                 }
             }
         });
@@ -257,11 +251,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("https://103.150.186.33:8080/saathidaar/account/term-Condition"));
+                intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/account/term-condition"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("https://103.150.186.33:8080/saathidaar/account/term-Condition"));
+                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/account/term-condition"));
                 }
             }
         });
@@ -303,12 +297,12 @@ public class DashBoardFragment extends Fragment {
     }
 
     private void getData() {
-        count++;
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                //   srlDashboard.setRefreshing(false);
+                   srlDashboard.setRefreshing(false);
                 Log.e("response", String.valueOf((response)));
                 Gson gson = new Gson();
                 model = gson.fromJson(String.valueOf(response), DataModelDashboard.class);
@@ -317,13 +311,13 @@ public class DashBoardFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //  srlDashboard.setRefreshing(false);
+                  srlDashboard.setRefreshing(false);
                 error.printStackTrace();
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-        refresh(1000);
+
 
     }
 
@@ -360,12 +354,11 @@ public class DashBoardFragment extends Fragment {
 
 
     private void getMemberData() {
-        count++;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 Profile_url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                // binding.srlRecycleViewPersonalDetails.setRefreshing(false);
+               srlDashboard.setRefreshing(false);
                 //   Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
@@ -386,14 +379,13 @@ public class DashBoardFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //  binding.srlRecycleViewPersonalDetails.setRefreshing(false);
+                srlDashboard.setRefreshing(false);
                 error.printStackTrace();
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
-        refresh(1000);
     }
 
     private void setDataMember() {
@@ -427,12 +419,14 @@ public class DashBoardFragment extends Fragment {
 
 
     private void refresh(int millisecond) {
-
+srlDashboard.setRefreshing(false);
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 getMemberData();
+                setPreloadData();
+                getData();
             }
         };
 
