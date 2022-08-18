@@ -1,6 +1,8 @@
 package com.ottego.saathidaar;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -88,6 +90,10 @@ public class PrivacyOptionFragment extends Fragment {
         return b.getRoot();
     }
     private void listener() {
+
+
+
+
         b.srlPrivacy.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

@@ -109,6 +109,5 @@ public class UpgradeFragment extends Fragment {
         UpgradeAdapter adapter = new UpgradeAdapter(context, data.data);
         b.rvUpgrade.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
     }
 }

@@ -2,6 +2,7 @@ package com.ottego.saathidaar;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -87,6 +88,40 @@ public class AccountSettingFragment extends Fragment {
     }
 
     private void listener() {
+
+        b.llCallingPrivacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String call="7030600035";
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + call));
+                startActivity(intent);
+
+            }
+        });
+
+
+        b.llEmailPrivacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("message/rfc822");
+                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"info@saathidaar.com"});
+                i.putExtra(Intent.EXTRA_SUBJECT, "Subject:-");
+//                    i.putExtra(Intent.EXTRA_TEXT   , "body of email");
+                try {
+                    startActivity(Intent.createChooser(i, "Send mail..."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(context, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+
+
+
         b.tvEditPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

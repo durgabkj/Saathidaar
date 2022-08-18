@@ -10,6 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
         android:fontFamily="@font/italic"
         android:text="My Alerts Manager"
         android:textAlignment="center" />

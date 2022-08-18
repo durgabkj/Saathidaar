@@ -304,8 +304,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         AppCompatButton btnokSuccess =layout_dialog.findViewById(R.id.btnokSuccess);
         // show dialog
 
-
-
         AlertDialog dialog=builder.create();
         dialog.show();
         dialog.setCancelable(false);
@@ -525,7 +523,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
     private boolean checkForm() {
 //        name = b.etAddUserName.getText().toString().trim();
-       gender = b.etGender.getText().toString().trim().toLowerCase();
+
         description = b.etAddUserDescription.getText().toString().trim();
         Dob = b.mbDatePicker.getText().toString().trim();
         Marital_status = b.etMaritalStatus.getText().toString().trim();
@@ -535,6 +533,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         GrewUpIn = b.etAddUserGrewUpIn.getText().toString().trim();
         bloodGroup = b.etBloodGroup.getText().toString().toString();
         Diet = b.etDiet.getText().toString().trim();
+        gender = b.etGender.getText().toString().trim().toLowerCase();
         Location = b.etAddUserLocation.getText().toString().trim();
         MotherTongue = b.tvMotherTongue.getText().toString().trim();
         HealthDetail = b.etHealth.getText().toString().trim();

@@ -14,6 +14,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/italic"
+        android:textColor="@color/colorPrimary"
         android:text="Privacy Options"
         android:textSize="16dp"
         android:textStyle="bold" />
@@ -1241,6 +1242,9 @@
 
 
                 <!--            </LinearLayout>-->
+
+
+
 
 
             </LinearLayout>
