@@ -118,6 +118,17 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
             }
         });
 
+
+
+        b.mcvUploadKyc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkForm()) {
+                    submitForm();
+                }
+            }
+        });
+
         b.mtbKYC.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,18 +157,39 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
 
         });
 
-        b.mcvUploadKyc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for (int i = 0; i < imagePathList.size(); i++) {
-                    uploadInThread(imagePathList.get(i));
-
-                }
-            }
-
-        });
+//        b.mcvUploadKyc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                for (int i = 0; i < imagePathList.size(); i++) {
+//                    uploadInThread(imagePathList.get(i));
+//
+//                }
+//            }
+//
+//        });
 
     }
+
+    private void submitForm() {
+        for (int i = 0; i < imagePathList.size(); i++) {
+            uploadInThread(imagePathList.get(i));
+
+        }
+    }
+
+    private boolean checkForm() {
+        if (document.isEmpty()) {
+            Toast.makeText(context, "First  select your document type", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (imagePathList.isEmpty()) {
+            Toast.makeText(context, "Please choose document ", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return  true;
+    }
+
 
     // Function to check and request permission
     public boolean checkPermission(String permission, int requestCode)

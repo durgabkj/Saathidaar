@@ -245,6 +245,8 @@ public class MatchesFragment extends Fragment {
             // b.chip1.setText("Premium Matches "+"("+model.data.get(0).new_matches_count+")");
             // b.chip1.setText("Search "+"("+model.data.get(0).new_matches_count+")");
             b.chipRecentView.setText("Recent Visitors " + "(" + model.data.get(0).recent_visitors_count + ")");
+
+            b.chipShortListed.setText("ShortListed " + "(" + model.data.get(0).shortlists_count + ")");
         }
     }
 

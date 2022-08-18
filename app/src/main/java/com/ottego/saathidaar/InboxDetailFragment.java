@@ -508,7 +508,7 @@ public class InboxDetailFragment extends Fragment {
             b.tvNewMatchHeight.setText(Utils.nullToBlank(model.height));
             b.tvMatchCityDetail.setText(Utils.nullToBlank(model.city));
             b.tvNewMatchWorkAsDetail.setText(Utils.nullToBlank(model.working_as));
-            b.tvNameUserDetails.setText("About" + "  " + Utils.nullToBlank(model.first_name));
+            b.tvNameUserDetails.setText("About" + "  " + Utils.nullToBlank(model.first_name)+" "+Utils.nullToBlank(model.last_name));
             b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
             b.tvNameUserFamilyDetails.setText("About " + " Family");
             b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails));

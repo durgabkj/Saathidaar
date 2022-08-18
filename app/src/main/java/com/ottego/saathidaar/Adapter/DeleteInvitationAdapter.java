@@ -165,7 +165,7 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
         }
 
 
-        if(item.request_message.contains("declined"))
+        if(item.request_message.contains("declined") || item.request_message.contains("canceled") )
         {
             holder.llBlockAcceptButton.setVisibility(View.GONE);
         }

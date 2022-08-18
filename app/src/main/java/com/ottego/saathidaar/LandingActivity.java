@@ -83,6 +83,38 @@ public class LandingActivity extends AppCompatActivity {
         }
 
         private void listener() {
+
+            binding.llCalling.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String call="7030600035";
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + call));
+                    startActivity(intent);
+
+                }
+            });
+
+
+            binding.llEmail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(Intent.ACTION_SEND);
+                    i.setType("message/rfc822");
+                    i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"info@saathidaar.com"});
+                    i.putExtra(Intent.EXTRA_SUBJECT, "Subject:-");
+//                    i.putExtra(Intent.EXTRA_TEXT   , "body of email");
+                    try {
+                        startActivity(Intent.createChooser(i, "Send mail..."));
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        Toast.makeText(LandingActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });
+
+
+
             binding.btnRegister.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -97,11 +129,40 @@ public class LandingActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("http://192.168.1.38:9094/account/term-condition"));
+                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/term-mobile"));
                     try {
                         startActivity(intent);
                     } catch (Exception e) {
-                        intent.setData(Uri.parse("http://192.168.1.38:9094/account/term-condition"));
+                        intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/term-mobile"));
+                    }
+                }
+            });
+
+
+
+            binding.tvAboutUs.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("https://eshanagroup.com/eg/"));
+                    try {
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        intent.setData(Uri.parse("https://eshanagroup.com/eg/"));
+                    }
+                }
+            });
+
+
+            binding.tvPrivacy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/privacy-policy"));
+                    try {
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/privacy-policy"));
                     }
                 }
             });
@@ -117,24 +178,24 @@ public class LandingActivity extends AppCompatActivity {
             });
 
 
-            binding.tvLandingMemberLogin.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent=new Intent(context,LoginActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                }
-            });
-
-
-            binding.tvLandingMemberSignUp.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent=new Intent(context,LandingActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                }
-            });
+//            binding.tvLandingMemberLogin.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent=new Intent(context,LoginActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    startActivity(intent);
+//                }
+//            });
+//
+//
+//            binding.tvLandingMemberSignUp.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent=new Intent(context,LandingActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    startActivity(intent);
+//                }
+//            });
 
 
             binding.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

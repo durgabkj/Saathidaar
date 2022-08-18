@@ -223,11 +223,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/account/help"));
+                intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/help-mobile"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/account/help"));
+                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/help-mobile"));
                 }
             }
         });
@@ -237,11 +237,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/account/privacy-policy"));
+                intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/privacy-policy"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/account/privacy-policy"));
+                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/privacy-policy"));
                 }
             }
         });
@@ -251,11 +251,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/account/term-condition"));
+                intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/term-mobile"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/account/term-condition"));
+                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/term-mobile"));
                 }
             }
         });
