@@ -87,72 +87,537 @@
 
         </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="9dp"
-            android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_play"
-            android:layout_marginTop="10dp"
-            android:textStyle="bold"
-            android:fontFamily="@font/italic"
-            android:textColor="@color/black"
-            android:text="Dedicated Relationship Manager"/>
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textStyle="bold"
-            android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_play"
-            android:fontFamily="@font/italic"
-            android:textColor="@color/black"
-            android:text="Discreet and Confidential service"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#F3CDDC"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_play"
-            android:textStyle="bold"
-            android:fontFamily="@font/italic"
-            android:textColor="@color/black"
-            android:text="You are the part of Elite Matrimony till you get married"/>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="10dp"
+                    android:translationZ="5dp"
+                    app:cardBackgroundColor="#F3CDDC">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textStyle="bold"
-            android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_play"
-            android:fontFamily="@font/italic"
-            android:textColor="@color/black"
-            android:text="Relationship Manager confirms the prospect's interest to save your valuable"/>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvClearFeature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="4dp"
+                        android:visibility="gone"
+                        app:cardBackgroundColor="@color/white"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                        app:strokeColor="@color/gray_dark"
+                        app:strokeWidth="1dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textStyle="bold"
-            android:fontFamily="@font/italic"
-            android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_play"
-            android:textColor="@color/black"
-            android:text="Our Relationship Managers go the extra me to source profiles from different avenues"/>
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            app:srcCompat="@drawable/close" />
+                    </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_play"
-            android:textStyle="bold"
-            android:fontFamily="@font/italic"
-            android:textColor="@color/black"
-            android:text="A Senior Relationship Manager with extensive experience will look for the perfect much for you"/>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvCheckFeature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="4dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                        app:strokeColor="@color/gray_dark"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            app:srcCompat="@drawable/ic_check_black_24dp" />
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                    <TextView
+                        android:id="@+id/tvPlanFearure"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="30dp"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/italic"
+                        android:gravity="center_vertical"
+                        android:padding="5dp"
+                        android:text="Send unlimited messages"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="12dp" />
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:elevation="10dp"
+                android:translationZ="5dp"
+                app:cardBackgroundColor="#F3CDDC">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvClearFeature1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/close" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvCheckFeature1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+
+                    app:cardBackgroundColor="@color/white"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_check_black_24dp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/tvPlanFearure1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="30dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/italic"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="View upto 600 contact numbers"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:elevation="10dp"
+                android:translationZ="5dp"
+                app:cardBackgroundColor="#F3CDDC">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvClearFeature2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/close" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvCheckFeature2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_check_black_24dp" />
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <TextView
+                    android:id="@+id/tvPlanFearure2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="30dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/italic"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="Standout from other profile"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:elevation="10dp"
+                android:translationZ="5dp"
+                app:cardBackgroundColor="#F3CDDC">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvClearFeature3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/close" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvCheckFeature3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_check_black_24dp" />
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <TextView
+                    android:id="@+id/tvPlanFearure3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="30dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/italic"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="Lets Matches contact you directly "
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:elevation="10dp"
+                android:translationZ="5dp"
+                app:cardBackgroundColor="#F3CDDC">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvClearFeature4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/close" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvCheckFeature4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_check_black_24dp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/tvPlanFearure4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="30dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/italic"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="Lets Matches contact you directly "
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:elevation="10dp"
+                android:translationZ="5dp"
+                app:cardBackgroundColor="#F3CDDC">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvClearFeature5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/close" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvCheckFeature5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_check_black_24dp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/tvPlanFearure5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="30dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/italic"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="Lets Matches contact you directly "
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:elevation="10dp"
+                android:translationZ="5dp"
+                app:cardBackgroundColor="#F3CDDC">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvClearFeature6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/close" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvCheckFeature6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_check_black_24dp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/tvPlanFearure6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="30dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/italic"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="Lets Matches contact you directly "
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:elevation="10dp"
+                android:translationZ="5dp"
+                app:cardBackgroundColor="#F3CDDC">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvClearFeature7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/close" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvCheckFeature7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="4dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                    app:strokeColor="@color/gray_dark"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_check_black_24dp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/tvPlanFearure7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="30dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/italic"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="Lets Matches contact you directly "
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
 
         <View

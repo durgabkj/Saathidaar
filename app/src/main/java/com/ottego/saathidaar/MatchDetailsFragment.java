@@ -545,6 +545,9 @@ if (memberPreferenceModel != null) {
             b.tvImageCountDetail.setText(Utils.nullToBlank(model.images_count));
             b.tvDetailHQualification.setText(Utils.nullToBlank(model.highest_qualification));
 
+            //Login member photo......
+
+
             if (model.my_profile_photo != null && !model.my_profile_photo.isEmpty()) {
                 Glide.with(context)
                         .load(Utils.imageUrl + model.my_profile_photo)
@@ -625,11 +628,13 @@ if (memberPreferenceModel != null) {
             }
 
 //show request sent status
-            if(model.request_status!=null && !model.request_status.isEmpty())
+            if((model.request_status!=null) && (!model.request_status.isEmpty()) && (!model.request_status.equals("")))
             {
                 b.ivDetailsMatchConnected.setVisibility(View.VISIBLE);
                 b.ivDetailsMatchConnect.setVisibility(View.GONE);
             }
+
+
 
         }
 

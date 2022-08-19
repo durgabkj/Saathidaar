@@ -13,7 +13,7 @@
         android:padding="5dp"
         android:text="My Account"
         android:fontFamily="@font/italic"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/colorPrimary"
         android:translationZ="20dp" />
@@ -23,7 +23,9 @@
         android:layout_height="wrap_content"
         android:elevation="20dp"
         app:cardCornerRadius="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="20dp"
         android:translationZ="20dp">
 
 
@@ -47,9 +49,20 @@
                 android:padding="8dp"
                 android:gravity="center_vertical"
                 android:textStyle="bold"
-                android:background="#FBEBF1"
+                android:background="#31918F8F"
                 android:fontFamily="@font/italic"
                 style="@style/PersonalDataTextView"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="We'll never share your email with anyone else."
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/italic"/>
+
+
 
 
             <LinearLayout
@@ -158,7 +171,27 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
+        </LinearLayout>
 
+    </androidx.cardview.widget.CardView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="20dp"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        android:layout_marginTop="20dp"
+        android:translationZ="20dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
             <TextView
                 android:id="@+id/tvLandingCustomerSupport"
                 android:layout_width="wrap_content"
@@ -166,10 +199,10 @@
                 android:fontFamily="@font/italic"
                 android:textStyle="bold"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:text=" Customer Support"
                 android:textColor="@color/colorPrimary"
-                android:textSize="20dp" />
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -177,7 +210,7 @@
                 android:background="@color/white"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 >
 
@@ -279,8 +312,7 @@
 
 
             </LinearLayout>
+
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
-
 </LinearLayout>

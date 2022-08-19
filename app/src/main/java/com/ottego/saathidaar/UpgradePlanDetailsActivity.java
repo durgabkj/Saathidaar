@@ -121,8 +121,89 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
 
 
     private void setData() {
-        b.tvMembershipPlan.setText(model.plan_price);
-        b.tvMembershipPlan1.setText(model.plan_price);
+        if(model!=null)
+        {
+            b.tvMembershipPlan.setText(model.plan_price);
+            b.tvMembershipPlan1.setText(model.plan_price);
+            b.tvPlanFearure.setText(model.features.get(0).features_name);
+            b.tvPlanFearure1.setText(model.features.get(1).features_name);
+            b.tvPlanFearure2.setText(model.features.get(2).features_name);
+            b.tvPlanFearure3.setText(model.features.get(3).features_name);
+            b.tvPlanFearure4.setText(model.features.get(4).features_name);
+            b.tvPlanFearure5.setText(model.features.get(5).features_name);
+            b.tvPlanFearure6.setText(model.features.get(6).features_name);
+            b.tvPlanFearure7.setText(model.features.get(7).features_name);
+
+
+            if (model.features.get(0).features_valid.equalsIgnoreCase("1"))
+            {
+                b.cvCheckFeature.setVisibility(View.VISIBLE);
+            }else
+            {
+                b.cvClearFeature.setVisibility(View.VISIBLE);
+            }
+
+            if (model.features.get(1).features_valid.equalsIgnoreCase("1"))
+            {
+                b.cvCheckFeature1.setVisibility(View.VISIBLE);
+            }else
+            {
+                b.cvClearFeature1.setVisibility(View.VISIBLE);
+            }
+
+            if (model.features.get(2).features_valid.equalsIgnoreCase("1"))
+            {
+                b.cvCheckFeature2.setVisibility(View.VISIBLE);
+            }else
+            {
+                b.cvClearFeature2.setVisibility(View.VISIBLE);
+            }
+
+            if (model.features.get(3).features_valid.equalsIgnoreCase("1"))
+            {
+                b.cvCheckFeature3.setVisibility(View.VISIBLE);
+            }else
+            {
+                b.cvClearFeature3.setVisibility(View.VISIBLE);
+            }
+
+            if (model.features.get(4).features_valid.equalsIgnoreCase("1"))
+            {
+                b.cvCheckFeature4.setVisibility(View.VISIBLE);
+            }else
+            {
+                b.cvClearFeature4.setVisibility(View.VISIBLE);
+            }
+
+            if (model.features.get(5).features_valid.equalsIgnoreCase("1"))
+            {
+                b.cvCheckFeature5.setVisibility(View.VISIBLE);
+            }else
+            {
+                b.cvClearFeature5.setVisibility(View.VISIBLE);
+            }
+
+            if (model.features.get(6).features_valid.equalsIgnoreCase("1"))
+            {
+                b.cvCheckFeature6.setVisibility(View.VISIBLE);
+            }else
+            {
+                b.cvClearFeature6.setVisibility(View.VISIBLE);
+            }
+
+            if (model.features.get(7).features_valid.equalsIgnoreCase("1"))
+            {
+                b.cvCheckFeature7.setVisibility(View.VISIBLE);
+            }else
+            {
+                b.cvClearFeature7.setVisibility(View.VISIBLE);
+            }
+
+        }
+
+
+
+
     }
 
     public void startPayment() {

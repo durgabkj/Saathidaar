@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
@@ -54,6 +55,16 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
         holder.tvMonths.setText(item.plan_validity);
         holder.tvPriceUpgrade.setText(item.plan_price);
 
+        holder.tvPlanFeature.setText(item.features.get(0).features_name);
+        holder.tvPlanFeature1.setText(item.features.get(1).features_name);
+        holder.tvPlanFeature2.setText(item.features.get(2).features_name);
+        holder.tvPlanFeature3.setText(item.features.get(3).features_name);
+        holder.tvPlanFeature4.setText(item.features.get(4).features_name);
+        holder.tvPlanFeature5.setText(item.features.get(5).features_name);
+        holder.tvPlanFeature6.setText(item.features.get(6).features_name);
+        holder.tvPlanFeature7.setText(item.features.get(7).features_name);
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +72,7 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
                         Pair.create(holder.tvPriceUpgrade, "tnMembershipPlan"));
                 Intent intent = new Intent(v.getContext(), UpgradePlanDetailsActivity.class);
                 intent.putExtra("data", new Gson().toJson(item));
-               v.getContext().startActivity(intent, options.toBundle());
+                v.getContext().startActivity(intent, options.toBundle());
             }
         });
 
@@ -118,6 +129,70 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
             }
         });
 
+        if (item.features.get(0).features_valid.equalsIgnoreCase("1"))
+        {
+            holder.cvCheckFeature.setVisibility(View.VISIBLE);
+        }else
+        {
+            holder.cvClearFeature.setVisibility(View.VISIBLE);
+        }
+
+        if (item.features.get(1).features_valid.equalsIgnoreCase("1"))
+        {
+            holder.cvCheckFeature1.setVisibility(View.VISIBLE);
+        }else
+        {
+            holder.cvClearFeature1.setVisibility(View.VISIBLE);
+        }
+
+        if (item.features.get(2).features_valid.equalsIgnoreCase("1"))
+        {
+            holder.cvCheckFeature2.setVisibility(View.VISIBLE);
+        }else
+        {
+            holder.cvClearFeature2.setVisibility(View.VISIBLE);
+        }
+
+        if (item.features.get(3).features_valid.equalsIgnoreCase("1"))
+        {
+            holder.cvCheckFeature3.setVisibility(View.VISIBLE);
+        }else
+        {
+            holder.cvClearFeature3.setVisibility(View.VISIBLE);
+        }
+
+        if (item.features.get(4).features_valid.equalsIgnoreCase("1"))
+        {
+            holder.cvCheckFeature4.setVisibility(View.VISIBLE);
+        }else
+        {
+            holder.cvClearFeature4.setVisibility(View.VISIBLE);
+        }
+
+        if (item.features.get(5).features_valid.equalsIgnoreCase("1"))
+        {
+            holder.cvCheckFeature5.setVisibility(View.VISIBLE);
+        }else
+        {
+            holder.cvClearFeature5.setVisibility(View.VISIBLE);
+        }
+
+        if (item.features.get(6).features_valid.equalsIgnoreCase("1"))
+        {
+            holder.cvCheckFeature6.setVisibility(View.VISIBLE);
+        }else
+        {
+            holder.cvClearFeature6.setVisibility(View.VISIBLE);
+        }
+
+        if (item.features.get(7).features_valid.equalsIgnoreCase("1"))
+        {
+            holder.cvCheckFeature7.setVisibility(View.VISIBLE);
+        }else
+        {
+            holder.cvClearFeature7.setVisibility(View.VISIBLE);
+        }
+
     }
 
 
@@ -127,8 +202,10 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvCardName,tvPriceUpgrade,tvMonths,tvName,tvPeriod,tvPrice,tvTotal,tvPriceTotal;
-TextView btnDashboard;
+        TextView tvCardName, tvPriceUpgrade, tvMonths, tvName, tvPeriod, tvPrice, tvTotal, tvPriceTotal, tvPlanFeature, tvPlanFeature1, tvPlanFeature2, tvPlanFeature3, tvPlanFeature4, tvPlanFeature5, tvPlanFeature6, tvPlanFeature7;
+        TextView btnDashboard;
+        CardView cvCheckFeature, cvClearFeature, cvCheckFeature1, cvClearFeature1, cvCheckFeature2, cvClearFeature2, cvCheckFeature3, cvClearFeature3, cvCheckFeature4, cvClearFeature4, cvCheckFeature5, cvClearFeature5, cvCheckFeature6, cvClearFeature6, cvCheckFeature7, cvClearFeature7;
+
 
         public ViewHolder(@NonNull View itemView) {
 
@@ -136,7 +213,40 @@ TextView btnDashboard;
             tvCardName = itemView.findViewById(R.id.tvCardName);
             tvPriceUpgrade = itemView.findViewById(R.id.tvPriceUpgrade);
             tvMonths = itemView.findViewById(R.id.tvMonths);
-            btnDashboard=itemView.findViewById(R.id.btnDashboard);
+            btnDashboard = itemView.findViewById(R.id.btnDashboard);
+            tvPlanFeature = itemView.findViewById(R.id.tvPlanFearure);
+            tvPlanFeature1 = itemView.findViewById(R.id.tvPlanFearure1);
+            tvPlanFeature2 = itemView.findViewById(R.id.tvPlanFearure2);
+            tvPlanFeature3 = itemView.findViewById(R.id.tvPlanFearure3);
+            tvPlanFeature4 = itemView.findViewById(R.id.tvPlanFearure4);
+            tvPlanFeature5 = itemView.findViewById(R.id.tvPlanFearure5);
+            tvPlanFeature6 = itemView.findViewById(R.id.tvPlanFearure6);
+            tvPlanFeature7 = itemView.findViewById(R.id.tvPlanFearure7);
+
+
+            cvCheckFeature = itemView.findViewById(R.id.cvCheckFeature);
+            cvClearFeature = itemView.findViewById(R.id.cvClearFeature);
+
+            cvCheckFeature1 = itemView.findViewById(R.id.cvCheckFeature1);
+            cvClearFeature1 = itemView.findViewById(R.id.cvClearFeature1);
+
+            cvCheckFeature2 = itemView.findViewById(R.id.cvCheckFeature2);
+            cvClearFeature2 = itemView.findViewById(R.id.cvClearFeature2);
+
+            cvCheckFeature3 = itemView.findViewById(R.id.cvCheckFeature3);
+            cvClearFeature3 = itemView.findViewById(R.id.cvClearFeature3);
+
+            cvCheckFeature4 = itemView.findViewById(R.id.cvCheckFeature4);
+            cvClearFeature4 = itemView.findViewById(R.id.cvClearFeature4);
+
+            cvCheckFeature5 = itemView.findViewById(R.id.cvCheckFeature5);
+            cvClearFeature5 = itemView.findViewById(R.id.cvClearFeature5);
+
+            cvCheckFeature6 = itemView.findViewById(R.id.cvCheckFeature6);
+            cvClearFeature6 = itemView.findViewById(R.id.cvClearFeature6);
+
+            cvCheckFeature7 = itemView.findViewById(R.id.cvCheckFeature7);
+            cvClearFeature7 = itemView.findViewById(R.id.cvClearFeature7);
 
 
         }

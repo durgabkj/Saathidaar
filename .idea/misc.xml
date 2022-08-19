@@ -281,6 +281,7 @@
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/menu_add.xml" value="0.25" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/menu_delete.xml" value="0.25" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/remove.xml" value="0.25" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable-v24/ic_baseline_email_24.xml" value="0.2215" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/bg_edit_text.xml" value="0.1675" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/chip_selection.xml" value="0.159" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_baseline_call_24.xml" value="0.179" />
@@ -309,6 +310,7 @@
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_profile_visitors.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_request_accept.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_test.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/activity_upgrade_plan_details.xml" value="0.23435897435897435" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_web_view.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/detail_layout.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/dropdown_item.xml" value="0.23802083333333332" />
@@ -349,7 +351,7 @@
         <entry key="..\:/saathidaar/app/src/main/res/layout/layout_religion_item.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/layout_remove_shortlist.xml" value="0.22826086956521738" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/layout_sent_item.xml" value="0.264" />
-        <entry key="..\:/saathidaar/app/src/main/res/layout/layout_upgrade_page.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/layout_upgrade_page.xml" value="0.264" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/recentlyview.xml" value="0.25" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/un_block_layout.xml" value="0.25" />
         <entry key="..\:/saathidaar/app/src/main/res/menu/menu_delete.xml" value="0.23802083333333332" />
