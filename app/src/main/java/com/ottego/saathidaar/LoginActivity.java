@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -16,7 +17,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.SessionModel;
 import com.ottego.saathidaar.databinding.ActivityLoginBinding;
@@ -34,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     SessionManager sessionManager;
     String email;
     String password;
+    String token="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +60,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void listener() {
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("TAG", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                         token = task.getResult();
+
+
+                    }
+                });
         b.mtbLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -55,6 +55,7 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
         holder.tvMonths.setText(item.plan_validity);
         holder.tvPriceUpgrade.setText(item.plan_price);
 
+
         holder.tvPlanFeature.setText(item.features.get(0).features_name);
         holder.tvPlanFeature1.setText(item.features.get(1).features_name);
         holder.tvPlanFeature2.setText(item.features.get(2).features_name);

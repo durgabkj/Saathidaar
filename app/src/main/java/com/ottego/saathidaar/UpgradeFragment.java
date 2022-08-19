@@ -39,7 +39,6 @@ public class UpgradeFragment extends Fragment {
     public UpgradeFragment() {
         // Required empty public constructor
     }
-
     public static UpgradeFragment newInstance(String param1, String param2) {
         UpgradeFragment fragment = new UpgradeFragment();
         Bundle args = new Bundle();
@@ -48,7 +47,6 @@ public class UpgradeFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +55,6 @@ public class UpgradeFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -85,7 +82,6 @@ public class UpgradeFragment extends Fragment {
                 // model = new Gson().fromJson(String.valueOf(response), new TypeToken<List<UpgradeModel>>() {}.getType());
                 Log.e("response", String.valueOf(response));
                setRecyclerView();
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -98,7 +94,6 @@ public class UpgradeFragment extends Fragment {
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
     }
-
 
     @SuppressLint("NotifyDataSetChanged")
     private void setRecyclerView() {
