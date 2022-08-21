@@ -35,7 +35,7 @@ public class InvitationFragment extends Fragment implements ApiListener {
     String member_Id;
     String id = "";
     SessionManager sessionManager;
-    public String InvitationUrl = "http://103.150.186.33:8080/saathidaar_backend/api/request/invitations/get/all/";
+    public String InvitationUrl = "http://103.174.102.195:8080/saathidaar_backend/api/request/invitations/get/all/";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 

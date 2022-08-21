@@ -138,8 +138,6 @@ public class LandingActivity extends AppCompatActivity {
                 }
             });
 
-
-
             binding.tvAboutUs.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -50,7 +50,7 @@ public class PrivacyOptionFragment extends Fragment {
     public String dobPrivacy = Utils.privacy + "dob";
     public String incomePrivacy = Utils.privacy + "annual-income";
 
-    public String getPrivacy = "http://103.150.186.33:8080/saathidaar_backend/api/privacy/get/all/";
+    public String getPrivacy = "http://103.174.102.195:8080/saathidaar_backend/api/privacy/get/all/";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;

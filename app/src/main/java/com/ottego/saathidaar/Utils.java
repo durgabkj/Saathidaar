@@ -2,6 +2,7 @@ package com.ottego.saathidaar;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -30,12 +31,12 @@ import java.util.Objects;
 
 public class Utils {
     public static int SERVER_TIMEOUT = 30000;
-    public static String userUrl = "http://103.150.186.33:8080/saathidaar_backend/api/users/";
-    public static String memberUrl = "http://103.150.186.33:8080/saathidaar_backend/api/member/";
-    public static String location = "http://103.150.186.33:8080/saathidaar_backend/api/get/";
-    public static String privacy = "http://103.150.186.33:8080/saathidaar_backend/api/privacy/update/";
-    public static String alert = "http://103.150.186.33:8080/saathidaar_backend/api/alert/";
-    public static String imageUrl = "http://103.150.186.33:8080/";
+    public static String userUrl = "http://103.174.102.195:8080/saathidaar_backend/api/users/";
+    public static String memberUrl = "http://103.174.102.195:8080/saathidaar_backend/api/member/";
+    public static String location = "http://103.174.102.195:8080/saathidaar_backend/api/get/";
+    public static String privacy = "http://103.174.102.195:8080/saathidaar_backend/api/privacy/update/";
+    public static String alert = "http://103.174.102.195:8080/saathidaar_backend/api/alert/";
+    public static String imageUrl = "http://103.174.102.195:8080/";
     public static String role_user = "USER";
 
 
@@ -57,22 +58,7 @@ public class Utils {
     }
 
 
-//    public static boolean isValidEmail(String email) {
-//        if (email == null) {
-//            return false;
-//        }else
-//        {
-//
-//            // Regex to check valid domain name.
-//            String regex = "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
-//                    + "(abc\\.com|abc\\.co|abc\\.nz|abc\\.org)$";
-//
-//            // Compile the ReGex
-//            boolean matcher = regex.matches(email);
-//            return matcher;
-//        }
-//
-//    }
+
 
     public static String utfString(String string) {
         try {
@@ -129,42 +115,45 @@ public class Utils {
 
 
 
-    public static void deleteImage(Context context,String photo_id) {
-        String DeleteUrl = Utils.memberUrl + "delete/photo/";
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("id", photo_id);
-        Log.e("params image id", String.valueOf(params));
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, DeleteUrl, new JSONObject(params),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.e(" delete image response", String.valueOf((response)));
-                        try {
-                            String code = response.getString("results");
-                            if (code.equalsIgnoreCase("1")) {
-                                Toast.makeText(context, "Image Deleted Successfully,Refresh Gallery", Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(context, "Try Again....", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        if (null != error.networkResponse) {
-                            Log.e("Error response", String.valueOf(error));
-                        }
-                    }
-                });
-
-        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(request);
-
-    }
+//    public static void deleteImage(Context context,String photo_id) {
+//        String DeleteUrl = Utils.memberUrl + "delete/photo/";
+//        Map<String, String> params = new HashMap<String, String>();
+//        params.put("id", photo_id);
+//        Log.e("params image id", String.valueOf(params));
+//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, DeleteUrl, new JSONObject(params),
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        Log.e(" delete image response", String.valueOf((response)));
+//                        try {
+//                            String code = response.getString("results");
+//                            if (code.equalsIgnoreCase("1")) {
+//                                Toast.makeText(context, "Image Deleted Successfully,Refresh Gallery", Toast.LENGTH_LONG).show();
+////                                Intent intent=new Intent(context,GalleryActivity.class);
+////                                intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+////                                context.startActivity(intent);
+//                            } else {
+//                                Toast.makeText(context, "Try Again....", Toast.LENGTH_SHORT).show();
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        if (null != error.networkResponse) {
+//                            Log.e("Error response", String.valueOf(error));
+//                        }
+//                    }
+//                });
+//
+//        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+//        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+//
+//    }
 
     public static void removeShortList(Context context, String member_id,ApiListener apiListener) {
        // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);

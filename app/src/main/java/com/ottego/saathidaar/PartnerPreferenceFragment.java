@@ -69,11 +69,11 @@ public class PartnerPreferenceFragment extends Fragment {
     ArrayList<Integer> MaritalStatusList = new ArrayList<>();
     String[] MaritalStatusArray = {"Open to all","Never Married", "Divorce", "Widowed", "Awaiting Divorce", "Married"};
     public String getPreference=Utils.memberUrl+"preference/get/";
-    public String ReligionUrl = "http://103.150.186.33:8080/saathidaar_backend/api/get/religion-name";
-    public String countryUrl = "http://103.150.186.33:8080/saathidaar_backend/api/get/country";
-    public String castUrl = "http://103.150.186.33:8080/saathidaar_backend/api/get/all/cast";
-    public String stateUrl = "http://103.150.186.33:8080/saathidaar_backend/api/get/state";
-    public String cityUrl = "http://103.150.186.33:8080/saathidaar_backend/api/get/all/city";
+    public String ReligionUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/religion-name";
+    public String countryUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/country";
+    public String castUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/all/cast";
+    public String stateUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/state";
+    public String cityUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/all/city";
 public String updatePreference=Utils.memberUrl+"preference/update/";
     // Initialize variables
     Spinner spMin, spMax, spFromHeight, spToHeight, UserAnnualIncome, tvEditDietPreference, tvEditProfile;
@@ -317,7 +317,6 @@ PartnerPreferenceModel model;
         });
             }
 
-
     private void incomeSelection() {
         final int[] checkedItem = {-1};
         etIncomePartnerPreference.setOnClickListener(new View.OnClickListener() {
@@ -382,11 +381,6 @@ PartnerPreferenceModel model;
 
     }
     private void profileCreatedBy() {
-//        String[] ProfileCreatedGroup = getResources().getStringArray(R.array.ProfileCreated);
-//        ArrayAdapter ProfileCreatedAdapter = new ArrayAdapter(context, R.layout.dropdown_item, ProfileCreatedGroup);
-//        //Setting the ArrayAdapter data on the Spinner
-//        tvEditProfile.setAdapter(ProfileCreatedAdapter);
-
         final int[] checkedItem = {-1};
         etProfilePreference.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -633,7 +627,7 @@ city=tvMultipleCity.getText().toString().toString();
 
 
         params.put("member_id", sessionManager.getMemberId());
-        Log.e("params", String.valueOf(params));
+        Log.e("params","Preferences"+ String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, updatePreference + sessionManager.getMemberId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -680,11 +674,15 @@ city=tvMultipleCity.getText().toString().toString();
             @Override
             public void onResponse(JSONObject response) {
               //  Log.e("response", String.valueOf((response)));
-                if(response!=null)
-                {
-                    Gson gson = new Gson();
-                    model = gson.fromJson(String.valueOf(response), PartnerPreferenceModel.class);
-                    setData();
+                try {
+                    if(response!=null && response.getInt("result")==1)
+                    {
+                        Gson gson = new Gson();
+                        model = gson.fromJson(String.valueOf(response), PartnerPreferenceModel.class);
+                        setData();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
             }
@@ -706,7 +704,6 @@ city=tvMultipleCity.getText().toString().toString();
             tvMultipleMaritalStatus.setText(Utils.nullToBlank(model.partner_marital_status));
             etFromAgePartnerPreference.setText(Utils.nullToBlank(model.partner_from_age));
             etToAgePartnerPreference.setText(Utils.nullToBlank(model.partner_to_age));
-            // tvMultipleCity.setText(model.partner_city);
             multi_SelectionState.setText(model.partner_state);
             etfromHeightPartnerPreference.setText(Utils.nullToBlank(model.partner_from_height));
             tvMultipleCity.setText(model.partner_city);
@@ -717,10 +714,6 @@ city=tvMultipleCity.getText().toString().toString();
             multi_SelectionProfessionArea.setText(Utils.nullToBlank(model.partner_professional_area));
             etIncomePartnerPreference.setText(Utils.nullToBlank(model.partner_annual_income));
             etDietPreference.setText(Utils.nullToBlank(model.partner_lifestyles));
-            //  tvMultipleCity.setText(model.partner_city);
-            //  etfromHeightPartnerPreference.setText(model.partner_to_height);
-            //  multi_SelectionCountry.setText(model.partner_country);
-            // multi_SelectionMotherTongue.setText(model.partner_mother_tongue);
             multi_SelectionWorkingWith.setText(Utils.nullToBlank(model.partner_working_with));
             multi_SelectionQualification.setText(Utils.nullToBlank(model.partner_qualification));
             tvMultipleCast.setText(model.partner_cast);
@@ -747,7 +740,6 @@ city=tvMultipleCity.getText().toString().toString();
             @Override
             public void onItemSelected(View view, boolean isSelected, int position) {
 //                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
@@ -863,7 +855,6 @@ city=tvMultipleCity.getText().toString().toString();
         });
 
     }
-
     // dropDown With Search
     private List getCityItems() {
         ArrayList<String> cityList = new ArrayList<>();
@@ -901,7 +892,6 @@ city=tvMultipleCity.getText().toString().toString();
         return cityList;
     }
 
-
     private void multipleCastSelectionCheckBox() {
         tvMultipleCast.setItems(getCastItems());
         tvMultipleCast.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
@@ -917,7 +907,6 @@ city=tvMultipleCity.getText().toString().toString();
             }
         });
     }
-
     // dropDown With Search
     private List getCastItems() {
         ArrayList<String> castList = new ArrayList<>();
@@ -954,7 +943,6 @@ city=tvMultipleCity.getText().toString().toString();
 //            alphabetsList.add(Character.toString(i));
         return castList;
     }
-
     private void multipleReligionSelectionCheckBox() {
         tvMultipleReligion.setItems(getReligionItems());
         tvMultipleReligion.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
@@ -970,7 +958,6 @@ city=tvMultipleCity.getText().toString().toString();
             }
         });
     }
-
     // dropDown With Search
     private List getReligionItems() {
         ArrayList<String> religionList = new ArrayList<>();
@@ -1008,9 +995,6 @@ city=tvMultipleCity.getText().toString().toString();
 //            alphabetsList.add(Character.toString(i));
         return religionList;
     }
-
-
-
 
     private void multi_SelectionmultiProfessionArea() {
         multi_SelectionProfessionArea.setItems(getProfessionAreaItems());

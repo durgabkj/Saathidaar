@@ -139,8 +139,6 @@ public class ForgetActivity extends AppCompatActivity {
         MySingleton.myGetMySingleton(context).myAddToRequest(request);
 
     }
-
-
     private boolean checkFormotp() {
         otp = b.etOTP.getText().toString().trim();
         if (otp.length() < 4) {

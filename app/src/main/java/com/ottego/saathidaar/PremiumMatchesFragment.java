@@ -35,7 +35,7 @@ public class PremiumMatchesFragment extends Fragment implements ApiListener {
     SessionManager sessionManager;
     DataModelNewMatches data;
     NewMatchViewModel viewModel;
-    public String PremiumMatchUrl = "http://103.150.186.33:8080/saathidaar_backend/api/new/premium/matches/dashboard/";
+    public String PremiumMatchUrl = "http://103.174.102.195:8080/saathidaar_backend/api/new/premium/matches/dashboard/";
 
     AlertDialog dialog;
     // TODO: Rename parameter arguments, choose names that match

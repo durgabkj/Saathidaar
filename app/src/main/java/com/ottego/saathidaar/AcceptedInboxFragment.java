@@ -30,7 +30,7 @@ import org.json.JSONObject;
 public class AcceptedInboxFragment extends Fragment implements ApiListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    public String InvitationAcceptUrl = "http://103.150.186.33:8080/saathidaar_backend/api/request/accepted/get/all/";
+    public String InvitationAcceptUrl = "http://103.174.102.195:8080/saathidaar_backend/api/request/accepted/get/all/";
     Context context;
     InboxViewModel viewModel;
     SessionManager sessionManager;

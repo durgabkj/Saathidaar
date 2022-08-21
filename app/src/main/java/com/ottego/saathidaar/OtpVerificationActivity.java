@@ -86,7 +86,6 @@ public class OtpVerificationActivity extends AppCompatActivity {
 
         request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(request);
-
     }
 
     private void listener() {
@@ -124,10 +123,6 @@ public class OtpVerificationActivity extends AppCompatActivity {
     }
 
     private void submitFormOtp() {
-//        Map<String, String> params = new HashMap<String, String>();
-//        params.put("phone", phone);
-//        params.put("otp", otp);
-//        Log.e("VerifyOtp", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, OtpVerifyUrl + otp + "/" + phone, new JSONObject(),
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -137,7 +132,6 @@ public class OtpVerificationActivity extends AppCompatActivity {
                         try {
                             String code = response.getString("message");
                             if (code.equalsIgnoreCase("OTP verified success")) {
-
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
 //                                startActivity(intent);
                                 Intent intent = new Intent(context, LoginActivity.class);

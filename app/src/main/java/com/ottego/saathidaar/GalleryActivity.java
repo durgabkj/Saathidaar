@@ -67,7 +67,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     ActivityGalleryBinding b;
     SessionManager sessionManager;
     DataModelImage dataModelImage;
-    String URL = "http://103.150.186.33:8080/saathidaar_backend/api/member/uploads/photo";
+    String URL = "http://103.174.102.195:8080/saathidaar_backend/api/member/uploads/photo";
     ProgressDialog progressDialog;
     String getImageURL = Utils.memberUrl + "app/get/photo/";
     Context context;
@@ -154,6 +154,8 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         b.mcvImageGuidLinesGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 AlertDialog.Builder builder=new AlertDialog.Builder(context);
                 View layout_dialog1= LayoutInflater.from(context).inflate(R.layout.layout_image_guid_lines,null);
                 builder.setView(layout_dialog1);
@@ -501,7 +503,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     }
 
     private void getData() {
-        count++;
+//        count++;
         //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 getImageURL + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
@@ -537,7 +539,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-refresh(1000);
+//refresh(1000);
     }
     private void setRecyclerView() {
         GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);

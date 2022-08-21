@@ -8,65 +8,11 @@
     tools:context=".MatchesFragment">
 
 
-<!--    <com.google.android.material.tabs.TabLayout-->
-<!--        android:id="@+id/tlMatch"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:elevation="20dp"-->
-<!--        android:textAlignment="center"-->
-<!--        android:translationZ="20dp"-->
-<!--        app:tabBackground="@drawable/tab_selector"-->
-<!--        app:tabGravity="fill"-->
-<!--        app:tabTextAppearance="@style/TextAppearance.AppCompat.Caption"-->
-<!--        app:tabIndicator="@null"-->
-<!--        app:tabIndicatorColor="@android:color/transparent"-->
-<!--        app:tabIndicatorGravity="stretch"-->
-<!--        app:tabIndicatorHeight="0dp"-->
-<!--        app:tabMode="scrollable"-->
-<!--        app:tabPaddingEnd="20dp"-->
-<!--        app:tabSelectedTextColor="@color/white"-->
-<!--        app:tabTextColor="@color/black" >-->
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="50dp"-->
-<!--            android:text="New Matches    "-->
-<!--            android:layout_height="wrap_content"/>-->
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="50dp"-->
-<!--            android:text="My Matches    "-->
-<!--            android:layout_height="wrap_content"/>-->
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="50dp"-->
-<!--            android:text="Today's Matches    "-->
-<!--            android:layout_height="wrap_content"/>-->
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="50dp"-->
-<!--            android:text="Premium Matches   "-->
-<!--            android:layout_height="wrap_content"/>-->
-
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="50dp"-->
-<!--            android:text="ShortListed    "-->
-<!--            android:layout_height="wrap_content"/>-->
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="50dp"-->
-<!--            android:text="Search"-->
-<!--            android:layout_height="wrap_content"/>-->
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="50dp"-->
-<!--            android:text="Recent Visitors    "-->
-<!--            android:layout_height="wrap_content"/>-->
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="50dp"-->
-<!--            android:text="Recently Viewed    "-->
-<!--            android:layout_height="wrap_content"/>-->
-
-<!--    </com.google.android.material.tabs.TabLayout>-->
-
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:id="@+id/srlMatches"
-        android:layout_height="45dp">
+        android:layout_height="50dp">
         <HorizontalScrollView
             android:id="@+id/scroll_view"
             android:layout_width="match_parent"

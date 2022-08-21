@@ -56,16 +56,18 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
         holder.tvPriceUpgrade.setText(item.plan_price);
 
 
-        holder.tvPlanFeature.setText(item.features.get(0).features_name);
-        holder.tvPlanFeature1.setText(item.features.get(1).features_name);
-        holder.tvPlanFeature2.setText(item.features.get(2).features_name);
-        holder.tvPlanFeature3.setText(item.features.get(3).features_name);
-        holder.tvPlanFeature4.setText(item.features.get(4).features_name);
-        holder.tvPlanFeature5.setText(item.features.get(5).features_name);
-        holder.tvPlanFeature6.setText(item.features.get(6).features_name);
-        holder.tvPlanFeature7.setText(item.features.get(7).features_name);
+        if (item.features != null && item.features.size() > 0) {
 
+            holder.tvPlanFeature.setText(item.features.get(0).features_name);
+            holder.tvPlanFeature1.setText(item.features.get(1).features_name);
+            holder.tvPlanFeature2.setText(item.features.get(2).features_name);
+            holder.tvPlanFeature3.setText(item.features.get(3).features_name);
+            holder.tvPlanFeature4.setText(item.features.get(4).features_name);
+            holder.tvPlanFeature5.setText(item.features.get(5).features_name);
+            holder.tvPlanFeature6.setText(item.features.get(6).features_name);
+            holder.tvPlanFeature7.setText(item.features.get(7).features_name);
 
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +78,6 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
                 v.getContext().startActivity(intent, options.toBundle());
             }
         });
-
         holder.btnDashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,7 +130,6 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
 
             }
         });
-
         if (item.features.get(0).features_valid.equalsIgnoreCase("1"))
         {
             holder.cvCheckFeature.setVisibility(View.VISIBLE);

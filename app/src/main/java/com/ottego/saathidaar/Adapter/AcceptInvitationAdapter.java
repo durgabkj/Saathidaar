@@ -61,14 +61,17 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         Log.e(" New Matches model", new Gson().toJson(item));
 
         sessionManager = new SessionManager(context);
+if(item!=null)
+{
+    holder.tvInvNewMatchName.setText(item.first_name + " " + Utils.nullToBlank(item.last_name).charAt(0));
+    holder.tvInvNewMatchAge.setText(Utils.nullToBlank(item.mage));
+    holder.tvInvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
+    holder.tvInvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
+    holder.tvInvNewMatchWorkAsAccept.setText(Utils.nullToBlank(item.country));
+    holder.tvInvitationAccetMessage.setText(Utils.nullToBlank(item.request_message));
+    holder.tvImageCountAccept.setText(Utils.nullToBlank(item.images_count));
 
-        holder.tvInvNewMatchName.setText(item.first_name + " " + Utils.nullToBlank(item.last_name).charAt(0));
-        holder.tvInvNewMatchAge.setText(Utils.nullToBlank(item.mage));
-        holder.tvInvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
-        holder.tvInvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
-        holder.tvInvNewMatchWorkAsAccept.setText(Utils.nullToBlank(item.country));
-        holder.tvInvitationAccetMessage.setText(Utils.nullToBlank(item.request_message));
-        holder.tvImageCountAccept.setText(Utils.nullToBlank(item.images_count));
+}
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -117,64 +120,65 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 //                .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
 //                .into(holder.ivProfileAcceptInvi);
 
+if(item!=null){
+    if (item.photo_privacy.equalsIgnoreCase("1")) {
+        holder.llPhotoAccept.setEnabled(true);
+        //  holder.flPremiumAccept.setVisibility(View.GONE);
+        holder.llPremiumMsgAccept.setVisibility(View.GONE);
+        //  holder.tvLevelPremiumAccept.setVisibility(View.GONE);
+
+        Glide.with(context)
+                .load(Utils.imageUrl + item.profile_photo)
+                .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                .into(holder.ivProfileAcceptInvi);
+
+    } else if (item.photo_privacy.equalsIgnoreCase("3")) {
+        holder.llPhotoAccept.setEnabled(false);
+        //   holder.flPremiumAccept.setVisibility(View.VISIBLE);
+        holder.llPremiumMsgAccept.setVisibility(View.VISIBLE);
+        // holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
+        Glide.with(context)
+                .load(Utils.imageUrl + item.profile_photo)
+                .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                .transform(new BlurTransformation(20, 8))
+                .into(holder.ivProfileAcceptInvi);
+    } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
+        //  holder.flPremiumAccept.setVisibility(View.GONE);
+        holder.llPremiumMsgAccept.setVisibility(View.GONE);
+        holder.llPhotoAccept.setEnabled(true);
+        //  holder.tvLevelPremiumAccept.setVisibility(View.GONE);
+        Glide.with(context)
+                .load(Utils.imageUrl + item.profile_photo)
+                .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                .into(holder.ivProfileAcceptInvi);
+    } else {
+        holder.llPhotoAccept.setEnabled(false);
+        //  holder.flPremiumAccept.setVisibility(View.VISIBLE);
+        holder.llPremiumMsgAccept.setVisibility(View.VISIBLE);
+        // holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
+        Glide.with(context)
+                .load(Utils.imageUrl + item.profile_photo)
+                .transform(new BlurTransformation(20, 8))
+                .into(holder.ivProfileAcceptInvi);
+    }
+
+    if (item.premium_status.equalsIgnoreCase("1")) {
+        holder.flPremiumAccept.setVisibility(View.VISIBLE);
+        holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
+
+    }
 
 
-        if (item.photo_privacy.equalsIgnoreCase("1")) {
-            holder.llPhotoAccept.setEnabled(true);
-          //  holder.flPremiumAccept.setVisibility(View.GONE);
-            holder.llPremiumMsgAccept.setVisibility(View.GONE);
-          //  holder.tvLevelPremiumAccept.setVisibility(View.GONE);
+    if (item.request_message != null && !item.request_message.isEmpty()) {
+        holder.tvInvitationAccetMessage.setText(item.request_message);
+        // holder.tvInvitationDateInbox.setText(item.request_status_date);
 
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
-                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-                    .into(holder.ivProfileAcceptInvi);
+    } else {
+        holder.llMessageAccept.setVisibility(View.GONE);
+    }
 
-        } else if (item.photo_privacy.equalsIgnoreCase("3")) {
-            holder.llPhotoAccept.setEnabled(false);
-         //   holder.flPremiumAccept.setVisibility(View.VISIBLE);
-            holder.llPremiumMsgAccept.setVisibility(View.VISIBLE);
-           // holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
-                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    .transform(new BlurTransformation(20, 8))
-                    .into(holder.ivProfileAcceptInvi);
-        } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
-          //  holder.flPremiumAccept.setVisibility(View.GONE);
-            holder.llPremiumMsgAccept.setVisibility(View.GONE);
-            holder.llPhotoAccept.setEnabled(true);
-          //  holder.tvLevelPremiumAccept.setVisibility(View.GONE);
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
-                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    .into(holder.ivProfileAcceptInvi);
-        } else {
-            holder.llPhotoAccept.setEnabled(false);
-          //  holder.flPremiumAccept.setVisibility(View.VISIBLE);
-            holder.llPremiumMsgAccept.setVisibility(View.VISIBLE);
-           // holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
-                    .transform(new BlurTransformation(20, 8))
-                    .into(holder.ivProfileAcceptInvi);
-        }
-
-        if (item.premium_status.equalsIgnoreCase("1")) {
-            holder.flPremiumAccept.setVisibility(View.VISIBLE);
-            holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
-
-        }
-
-
-        if (item.request_message != null && !item.request_message.isEmpty()) {
-            holder.tvInvitationAccetMessage.setText(item.request_message);
-            // holder.tvInvitationDateInbox.setText(item.request_status_date);
-
-        } else {
-            holder.llMessageAccept.setVisibility(View.GONE);
-        }
+}
 
     }
 

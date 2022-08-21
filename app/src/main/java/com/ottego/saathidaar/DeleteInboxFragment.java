@@ -34,7 +34,7 @@ public class DeleteInboxFragment extends Fragment implements ApiListener {
     DataModelInbox data;
     String member_id;
     InboxViewModel viewModel;
-    public String InvitationDeleteUrl ="http://103.150.186.33:8080/saathidaar_backend/api/request/rejected/get/all/";
+    public String InvitationDeleteUrl ="http://103.174.102.195:8080/saathidaar_backend/api/request/rejected/get/all/";
     FragmentDeleteInboxBinding b;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";

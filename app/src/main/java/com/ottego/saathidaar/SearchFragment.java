@@ -56,11 +56,11 @@ public class SearchFragment extends Fragment {
     TextView tvMultipleMaritalStatusSearch;
     public String SearchUrl = Utils.memberUrl + "search/update/";
     public String getSearchDetailUrl = Utils.memberUrl + "search/get/";
-    public String ReligionUrl = "http://103.150.186.33:8080/saathidaar_backend/api/get/religion-name";
-    public String countryUrl = "http://103.150.186.33:8080/saathidaar_backend/api/get/country";
-    public String castUrl = "http://103.150.186.33:8080/saathidaar_backend/api/get/all/cast";
-    public String stateUrl = "http://103.150.186.33:8080/saathidaar_backend/api/get/state";
-    public String cityUrl = "http://103.150.186.33:8080/saathidaar_backend/api/get/all/city";
+    public String ReligionUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/religion-name";
+    public String countryUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/country";
+    public String castUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/all/cast";
+    public String stateUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/state";
+    public String cityUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/all/city";
 
 
     ArrayList<String> AgeListSearch = new ArrayList<>();

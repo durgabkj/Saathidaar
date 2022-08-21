@@ -31,7 +31,7 @@
             android:fontFamily="@font/italic"
             android:text="Upgrade now &amp; Get Premium benefits"
             android:textColor="#aeaeae"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
 
         <androidx.cardview.widget.CardView

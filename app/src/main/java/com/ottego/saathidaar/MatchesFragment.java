@@ -1,6 +1,9 @@
 package com.ottego.saathidaar;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -18,6 +21,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver;
 import com.google.android.material.chip.ChipGroup;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.DataModelDashboard;
@@ -25,6 +29,7 @@ import com.ottego.saathidaar.databinding.FragmentMatchesBinding;
 
 import org.json.JSONObject;
 
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -81,73 +86,14 @@ public class MatchesFragment extends Fragment {
                 .commit();
 
         b.chipGroup.check(b.chipGroup.getChildAt(1).getId());
-//        b.tlMatch.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//
-////                b.vpMatch.setCurrentItem(tab.getPosition());
-//                Fragment fragment = null;
-//
-//                switch (tab.getPosition()){
-//                    case 0:{
-//                        fragment= NewMatchesFragment.newInstance("","");
-//                        break;
-//                    }
-//                    case 1:{
-//                        fragment= MyMatchFragment.newInstance("", "");
-//                        break;
-//                    }
-//                    case 2:{
-//                        fragment= TodayMatchFragment.newInstance("", "");
-//                        break;
-//                    }
-//
-//                    case 3:{
-//                        fragment= PremiumMatchesFragment.newInstance("", "");
-//                        break;
-//                    }
-//
-//                    case 4:{
-//                        fragment= ShortListFragment.newInstance("", "");
-//                        break;
-//                    }
-//                    case 5:{
-//                        fragment= SearchFragment.newInstance("", "");
-//                        break;
-//                    }
-//                    case 6:{
-//                        fragment= RecentViewFragment.newInstance("", "");
-//                        break;
-//                    }
-//                    case 7:{
-//                        fragment= RecentlyViewedFragment.newInstance("", "");
-//                        break;
-//                    }
-//                }
-//
-//                getChildFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.fcvMatches, fragment)
-//                        .commit();
-//
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//            }
-//        });
 
         getDataCount();
         listener();
         return b.getRoot();
+
     }
+
+
 
     private void listener() {
         b.chipGroup.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
@@ -250,11 +196,11 @@ public class MatchesFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onStart() {
-        getDataCount();
-        super.onStart();
-    }
+//    @Override
+//    public void onStart() {
+//        getDataCount();
+//        super.onStart();
+//    }
 
     private void refresh(int millisecond) {
         final Handler handler= new Handler();
@@ -268,10 +214,10 @@ public class MatchesFragment extends Fragment {
         handler.postDelayed(runnable, millisecond);
     }
 
-    @Override
-    public void onResume() {
-        getDataCount();
-        super.onResume();
-    }
+//    @Override
+//    public void onResume() {
+//        getDataCount();
+//        super.onResume();
+//    }
 }
 

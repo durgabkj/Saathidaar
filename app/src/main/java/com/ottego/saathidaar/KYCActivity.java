@@ -1,11 +1,5 @@
 package com.ottego.saathidaar;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -21,9 +15,14 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -34,7 +33,6 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.hbisoft.pickit.PickiT;
 import com.hbisoft.pickit.PickiTCallbacks;
-import com.ottego.saathidaar.Model.DataModelImage;
 import com.ottego.saathidaar.Model.DataModelKyc;
 import com.ottego.saathidaar.databinding.ActivityKycactivityBinding;
 import com.ottego.saathidaar.viewmodel.GalleryViewModel;
@@ -61,7 +59,7 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
     ActivityKycactivityBinding b;
     SessionManager sessionManager;
     DataModelKyc model;
-    String URL = "http://103.150.186.33:8080/saathidaar_backend/api/member/app/uploads/kyc/photo";
+    String URL = "http://103.174.102.195:8080/saathidaar_backend/api/member/app/uploads/kyc/photo";
     ProgressDialog progressDialog;
     String getDocumentURL = Utils.memberUrl + "app/get/kyc/photo/";
     Context context;
@@ -98,8 +96,10 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
 //        setContentView(mWebView);
 
         Intent intent = new Intent(context, WebViewActivity.class);
-        intent.putExtra("data",model.data.get(0).document_path);
-        context.startActivity(intent);
+        if (model.data != null && model.data.size() > 0) {
+            intent.putExtra("data", model.data.get(0).document_path);
+            context.startActivity(intent);
+        }
     }
 });
 

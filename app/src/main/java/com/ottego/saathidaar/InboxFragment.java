@@ -35,7 +35,7 @@ import java.util.List;
 
 
 public class InboxFragment extends Fragment {
-    public String url = "http://103.150.186.33:8080/saathidaar_backend/api/request/count/accept-request/";
+    public String url = "http://103.174.102.195:8080/saathidaar_backend/api/request/count/accept-request/";
     FragmentInboxBinding b;
     DataModelDashboard model;
     Context context;

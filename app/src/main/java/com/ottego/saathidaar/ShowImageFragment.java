@@ -21,9 +21,9 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
-import com.google.android.material.snackbar.Snackbar;
 import com.ottego.saathidaar.Model.ImageModel;
 import com.ottego.saathidaar.databinding.FragmentShowImageBinding;
 
@@ -43,7 +43,7 @@ FragmentShowImageBinding b;
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
-String member_id;
+    String member_id;
     public ShowImageFragment() {
         // Required empty public constructor
     }
@@ -81,19 +81,16 @@ String member_id;
         return b.getRoot();
     }
     private void listener() {
-
         b.mtbImage.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.menu_top_add) {
-                   Utils.deleteImage(context,mParam2);
-
+//                   Utils.deleteImage(context,mParam2);
+                    deletePhoto();
                 }
                 return false;
             }
         });
-
-
         b.tvMakeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,10 +122,47 @@ String member_id;
                 });
             }
         });
-
-
     }
 
+    private void deletePhoto() {
+            String DeleteUrl = Utils.memberUrl + "delete/photo/";
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("id", mParam2);
+            Log.e("params image id", String.valueOf(params));
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, DeleteUrl, new JSONObject(params),
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.e(" delete image response", String.valueOf((response)));
+                            try {
+                                String code = response.getString("results");
+                                if (code.equalsIgnoreCase("1")) {
+                                    Toast.makeText(context, "Image Deleted Successfully,Refresh Gallery", Toast.LENGTH_LONG).show();
+                                Intent intent=new Intent(context,GalleryActivity.class);
+                                intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                context.startActivity(intent);
+                                } else {
+                                    Toast.makeText(context, "Try Again....", Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            if (null != error.networkResponse) {
+                                Log.e("Error response", String.valueOf(error));
+                            }
+                        }
+                    });
+
+            request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            MySingleton.myGetMySingleton(context).myAddToRequest(request);
+
+        }
     private void setProfile() {
         String ProfileSetUrl = Utils.memberUrl + "profile/photo/";
         //   final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
@@ -173,7 +207,6 @@ String member_id;
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(stringRequest);
     }
-
     private void setData() {
         Glide.with(getActivity())
                 .load(Utils.imageUrl + mParam1)

@@ -35,7 +35,7 @@ public class ShortListFragment extends Fragment  implements ApiListener {
     SessionManager sessionManager;
     DataModelNewMatches data;
     String member_id;
-    public String ShortListUrl ="http://103.150.186.33:8080/saathidaar_backend/api/shortlist/get/all/";
+    public String ShortListUrl ="http://103.174.102.195:8080/saathidaar_backend/api/shortlist/get/all/";
     FragmentShortListBinding b;
     NewMatchViewModel viewModel;
     private static final String ARG_PARAM1 = "param1";

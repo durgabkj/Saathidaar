@@ -84,7 +84,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 // Permissions for accessing the storage
     private static final int SELECT_PICTURE = 100;
     private static final String TAG = "SelectImageActivity";
-    public String ReligionUrl = "http://103.150.186.33:8080/saathidaar_backend/api/get/religion-name";
+    public String ReligionUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/religion-name";
     public String Updateurl = Utils.memberUrl + "app/basic-lifestyles/update/";
     SessionManager sessionManager;
     ActivityProfileEditPersonalBinding b;
@@ -691,7 +691,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
     private void communityData() {
         String selectedCommunity = b.tvUserReligion.getText().toString().trim();
-        String url = "http://103.150.186.33:8080/saathidaar_backend/api/get/cast-name/by/religion_name/" + selectedCommunity;
+        String url = "http://103.174.102.195:8080/saathidaar_backend/api/get/cast-name/by/religion_name/" + selectedCommunity;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url, null, new Response.Listener<JSONObject>() {
