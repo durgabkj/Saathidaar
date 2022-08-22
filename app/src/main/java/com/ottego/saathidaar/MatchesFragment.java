@@ -38,7 +38,7 @@ public class MatchesFragment extends Fragment {
     SessionManager sessionManager;
     Context context;
     DataModelDashboard model;
-    public String url = "http://103.150.186.33:8080/saathidaar_backend/api/request/count/accept-request/";
+    public String url = "http://103.174.102.195:8080/saathidaar_backend/api/request/count/accept-request/";
      int count=0;
     MyMatchFragment myMatchFragment=new MyMatchFragment();
     private static final String ARG_PARAM1 = "param1";

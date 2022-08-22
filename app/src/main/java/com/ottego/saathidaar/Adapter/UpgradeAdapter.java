@@ -68,6 +68,13 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
             holder.tvPlanFeature7.setText(item.features.get(7).features_name);
 
         }
+
+
+        if(item.plan_name.equalsIgnoreCase("free"))
+        {
+            holder.btnDashboard.setVisibility(View.GONE);
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

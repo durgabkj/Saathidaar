@@ -144,7 +144,9 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                     }
                 }else
                 {
+                    imagePathList.clear();
                     Toast.makeText(context,"you can't upload more than "+remaingImagesCount+" image",Toast.LENGTH_SHORT).show();
+
                 }
 
 
@@ -472,6 +474,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     @Override
     public void PickiTonCompleteListener(String path, boolean wasDriveFile, boolean wasUnknownProvider, boolean wasSuccessful, String Reason) {
         Log.e("durga", "path single: " + path);
+        imagePathList.clear();
         imagePathList.add(path);
 
     }

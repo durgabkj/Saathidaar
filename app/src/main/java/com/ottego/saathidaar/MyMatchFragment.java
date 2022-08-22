@@ -98,69 +98,12 @@ static  final int ALARM_REQ_CODE=100;
         viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
         getData("");
         listener();
-       // addNotification();
-
-
-       // setNotification();
         return b.getRoot();
     }
 
 
 
 
-    private void setNotification() {
-//        AlarmManager objAlarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-//        Calendar objCalendar = Calendar.getInstance();
-//        objCalendar.setTimeInMillis(System.currentTimeMillis());
-//        //objCalendar.set(Calendar.YEAR, objCalendar.get(Calendar.YEAR));
-//        objCalendar.set(Calendar.HOUR_OF_DAY, 23);
-//        objCalendar.set(Calendar.MINUTE, 7);
-//        objCalendar.set(Calendar.SECOND, 0);
-//        objCalendar.set(Calendar.MILLISECOND, 0);
-//        objCalendar.set(Calendar.AM_PM, Calendar.PM);
-//
-//        Intent alamShowIntent = new Intent(context,AlarmReceiver.class);
-//        PendingIntent alarmPendingIntent = PendingIntent.getActivity(context, 0,alamShowIntent,0 );
-//
-//        objAlarmManager.set(AlarmManager.RTC_WAKEUP,objCalendar.getTimeInMillis(), alarmPendingIntent);
-//            Log.e("TAG","hello:-"+objCalendar.getTimeInMillis());
-
-//        Intent intent=new Intent(getContext(),MainActivity.class);
-//        String CHANNEL_ID="MYCHANNEL";
-//        NotificationChannel notificationChannel= null;
-//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-//            notificationChannel = new NotificationChannel(CHANNEL_ID,"name", NotificationManager.IMPORTANCE_LOW);
-//        }
-//        PendingIntent pendingIntent=PendingIntent.getActivity(getContext(),1,intent,0);
-//        Notification notification= null;
-//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-//            notification = new Notification.Builder(getContext(),CHANNEL_ID)
-//                    .setContentText("Heading")
-//                    .setContentTitle("subheading")
-//                    .setContentIntent(pendingIntent)
-//                    .addAction(android.R.drawable.sym_action_chat,"Title",pendingIntent)
-//                    .setChannelId(CHANNEL_ID)
-//                    .setSmallIcon(android.R.drawable.sym_action_chat)
-//                    .build();
-//        }
-//
-//        NotificationManager notificationManager=(NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-//        notificationManager.createNotificationChannel(notificationChannel);
-//        notificationManager.notify(1,notification);
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 23);
-        calendar.set(Calendar.MINUTE, 54);
-        calendar.set(Calendar.SECOND, 0);
-        if (calendar.getTime().compareTo(new Date()) < 0) calendar.add(Calendar.HOUR_OF_DAY, 0);
-        Intent intent = new Intent(getContext(), AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        if (alarmManager != null) {
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-        }
-
-    }
     void listener() {
         b.srlRecycleViewMyMatches.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

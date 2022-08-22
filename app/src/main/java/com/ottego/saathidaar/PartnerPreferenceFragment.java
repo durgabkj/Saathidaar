@@ -674,15 +674,11 @@ city=tvMultipleCity.getText().toString().toString();
             @Override
             public void onResponse(JSONObject response) {
               //  Log.e("response", String.valueOf((response)));
-                try {
-                    if(response!=null && response.getInt("result")==1)
-                    {
-                        Gson gson = new Gson();
-                        model = gson.fromJson(String.valueOf(response), PartnerPreferenceModel.class);
-                        setData();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                if(response!=null)
+                {
+                    Gson gson = new Gson();
+                    model = gson.fromJson(String.valueOf(response), PartnerPreferenceModel.class);
+                    setData();
                 }
 
             }
@@ -699,8 +695,6 @@ city=tvMultipleCity.getText().toString().toString();
     }
 
     private void setData() {
-        if(model!=null)
-        {
             tvMultipleMaritalStatus.setText(Utils.nullToBlank(model.partner_marital_status));
             etFromAgePartnerPreference.setText(Utils.nullToBlank(model.partner_from_age));
             etToAgePartnerPreference.setText(Utils.nullToBlank(model.partner_to_age));
@@ -730,9 +724,6 @@ city=tvMultipleCity.getText().toString().toString();
                 mrbDontNoManglik.setChecked(true);
             }
         }
-
-
-    }
 
     private void multipleCountrySelectionCheckBox() {
         multi_SelectionCountry.setItems(getCountryItems());

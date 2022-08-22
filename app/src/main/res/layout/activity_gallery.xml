@@ -29,22 +29,60 @@
         android:layout_gravity="bottom"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="0dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         >
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:marqueeRepeatLimit="marquee_forever"
-            android:padding="10dp"
-
+            android:padding="5dp"
             android:text="Note: You can upload 2 photos to your profile. Each photos must be less than 100kb and in jpg, gif, png,  format. All photos uploaded are screened as per Photo Guidelines and 98% of those get activated within 2 hours"
             android:maxLines="6"
+            android:textSize="10sp"
             android:textColor="@color/black"
             android:textStyle="bold"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:orientation="horizontal">
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:background="@color/gray_dark"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:text="Pull down to refresh"
+                android:textSize="9dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/gray_dark"/>
+        </LinearLayout>
     </LinearLayout>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srlRecycleViewGallery"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
         <LinearLayout
             android:id="@+id/llNoDataImage"
             android:layout_width="match_parent"
@@ -61,7 +99,6 @@
                 android:background="@drawable/ic_no_data" />
 
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/llCard"
             android:layout_width="match_parent"
@@ -70,20 +107,20 @@
             android:visibility="gone"
             android:orientation="vertical">
 
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/srlRecycleViewGallery"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvMyImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="vertical"
-                />
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvMyImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    />
+
         </LinearLayout>
+    </LinearLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

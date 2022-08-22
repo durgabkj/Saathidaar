@@ -8,6 +8,8 @@ import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
@@ -15,6 +17,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 public class AlarmReceiver extends BroadcastReceiver {
     private static final String CHANNEL_ID = "this.is.my.channelId";//you can add any id you want
+    PendingIntent pendingIntent;
     @Override
     public void onReceive(Context context, Intent intent) {
         Intent notificationIntent = new Intent(context, MyMatchesShowActivity.class);//on tap this activity will open
@@ -23,15 +26,26 @@ public class AlarmReceiver extends BroadcastReceiver {
         stackBuilder.addParentStack(MyMatchesShowActivity.class);
         stackBuilder.addNextIntent(notificationIntent);
 
-        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);//getting the pendingIntent
+        PendingIntent pendingIntent;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        }else {
+            pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        }
+       // PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_MUTABLE);//getting the pendingIntent
 
         Notification.Builder builder = new Notification.Builder(context);//building the notification
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         Notification notification = builder.setContentTitle("Saathidaar")
-                .setContentText("Your Match of the day")
-                .setTicker("New Message Alert!")
+                .setContentText("Your Match of the day").setSound(alarmSound)
+                .setTicker("New Matches Alert!")
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setAutoCancel(true)
+                .setWhen(System.currentTimeMillis())
+                .setDefaults(Notification.DEFAULT_ALL)
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
                 .setContentIntent(pendingIntent).build();
 

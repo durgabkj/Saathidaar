@@ -599,7 +599,7 @@
                         android:layout_marginStart="15dp"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
 
 

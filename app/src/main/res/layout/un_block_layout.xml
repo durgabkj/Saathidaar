@@ -220,7 +220,7 @@
                             android:shadowRadius="1.6"
                             android:text="Durga singh"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -235,7 +235,7 @@
                             android:shadowRadius="1.6"
                             android:text="22 years"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -251,7 +251,7 @@
                             android:shadowRadius="1.6"
                             android:text="5'1"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
