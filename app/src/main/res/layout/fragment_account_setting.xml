@@ -129,9 +129,9 @@
                     android:id="@+id/llSavePasswordbutton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     android:layout_marginTop="10dp"
                     android:layout_gravity="center"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
@@ -147,6 +147,48 @@
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         android:translationZ="20dp" />
+
+<!--                    <com.google.android.material.card.MaterialCardView-->
+<!--                        android:id="@+id/upload1"-->
+<!--                        android:layout_width="250dp"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        app:cardBackgroundColor="@color/colorPrimary"-->
+<!--                        android:elevation="20dp"-->
+<!--                        android:focusable="true">-->
+
+
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            >-->
+
+<!--                            <ProgressBar-->
+<!--                                android:id="@+id/progress_bar"-->
+<!--                                android:layout_width="25dp"-->
+<!--                                android:layout_height="25dp"-->
+<!--                                android:visibility="gone"-->
+<!--                                android:layout_centerVertical="true"-->
+<!--                                android:layout_toLeftOf="@id/btnSave"-->
+<!--                                android:indeterminate="false"-->
+<!--                                android:indeterminateTint="@color/white"-->
+<!--                                android:progressDrawable="@drawable/progress_bar_states">-->
+
+
+<!--                            </ProgressBar>-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/btnSave"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_centerInParent="true"-->
+<!--                                android:elevation="20dp"-->
+<!--                                android:padding="10dp"-->
+<!--                                android:text="Edit Details"-->
+<!--                                android:textColor="@color/black" />-->
+
+<!--                        </RelativeLayout>-->
+<!--                    </com.google.android.material.card.MaterialCardView>-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -264,7 +306,49 @@
                             android:textColor="@color/black"
                             android:textSize="10dp" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/llWhatsAppPrivacy"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="0dp"
+                            android:text="WhatsApp:-"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:gravity="center_horizontal"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+                        <TextView
+                            android:id="@+id/tvNumberWhatsApp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="7030600035"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:gravity="center_horizontal"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+
+                        <!--    android:text="7030600035"-->
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:drawablePadding="8dp"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:gravity="center_horizontal"
+                            android:drawableTint="@color/Green"
+                            android:drawableStart="@drawable/whatsapp1"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+                    </LinearLayout>
                     <LinearLayout
                         android:id="@+id/llEmailPrivacy"
                         android:layout_width="wrap_content"

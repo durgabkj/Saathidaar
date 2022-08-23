@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/italic"
-            android:text="2.You can upload 3 photos to your profile. Each photo must be less than 50KB and in jpg, gif, png format."
+            android:text="2.You can upload 2 photos to your profile. Each photo must be less than 100KB and in jpg format."
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

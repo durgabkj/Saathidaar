@@ -273,7 +273,7 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:text="Mather Status"
+                    android:text="Mother Status"
                     android:fontFamily="@font/italic"
                     android:textSize="14dp"
                     android:textStyle="bold" />

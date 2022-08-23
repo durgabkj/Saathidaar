@@ -312,8 +312,8 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             System.out.println("File not found : " + e.getMessage() + e);
         }
 
-        if(length<=105)
-        {
+//        if(length<=105)
+//        {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -324,10 +324,10 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                     Log.e("durga",result);
                 }
             }).start();
-        }else
-        {
-            Toast.makeText(context,"Only 100 Kb image Accepted ",Toast.LENGTH_SHORT).show();
-        }
+//        }else
+//        {
+//            Toast.makeText(context,"Only 100 Kb image Accepted ",Toast.LENGTH_SHORT).show();
+//        }
 
     }
 

@@ -248,7 +248,7 @@
                 android:inputType="textCapWords"
                 android:fontFamily="@font/italic"
                 android:shadowRadius="7.6"
-                android:text="Image show only to premium member"
+                android:text="Image show to premium member only"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold" />

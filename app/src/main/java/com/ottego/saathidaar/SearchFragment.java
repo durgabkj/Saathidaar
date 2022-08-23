@@ -8,20 +8,24 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -30,7 +34,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.multipleselectionspinner.MultipleSelection;
+import com.ottego.saathidaar.Model.DataModelNewMatches;
+import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.Model.SearchModel;
+import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,13 +50,15 @@ import java.util.List;
 import java.util.Map;
 
 
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment  {
     MultipleSelection multi_SelectionMotherTongueSearch, multi_SelectionCountrySearch, tvMultipleReligionSearch, tvMultipleCastSearch, tvMultipleStateSearch, tvMultipleCitySearch;
     Context context;
     SearchModel model;
-    TextView tvSearchMatchBtn;
+    TextView tvSearchMatchBtn,tvSearchButton;
     SessionManager sessionManager;
     String member_id;
+    EditText etProfileSearch;
+    LinearLayout llNoDataMatch;
     TextView etFromAgeSearch, etToAgeSearch, etfromHeightSearch, etToHeightSearch;
     // Initialize variables
     Spinner spMinSearch, spMaxSearch, spFromHeightSearch, spToHeightSearch;
@@ -62,7 +71,7 @@ public class SearchFragment extends Fragment {
     public String stateUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/state";
     public String cityUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/all/city";
 
-
+    String id;
     ArrayList<String> AgeListSearch = new ArrayList<>();
     ArrayList<String> minListSearch = new ArrayList<>();
     ArrayList<String> maxListSearch = new ArrayList<>();
@@ -86,6 +95,10 @@ public class SearchFragment extends Fragment {
     String country = "";
     String state = "";
     String city = "";
+
+    MemberProfileModel data;
+    public String ProfileSearch = "http://103.174.102.195:8080/saathidaar_backend/api/member/get-details-by-member-id/";
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -138,6 +151,9 @@ public class SearchFragment extends Fragment {
         etToAgeSearch = view.findViewById(R.id.etToAgeSearch);
         etfromHeightSearch = view.findViewById(R.id.etfromHeightSearch);
         etToHeightSearch = view.findViewById(R.id.etToHeightSearch);
+        etProfileSearch = view.findViewById(R.id.etProfileSearch);
+        tvSearchButton = view.findViewById(R.id.tvSearchButton);
+
 
 
         Height();
@@ -206,6 +222,42 @@ public class SearchFragment extends Fragment {
     }
 
     private void listener() {
+
+        tvSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (checkForm()) {
+                    getSearchProfileData();
+                }
+            }
+        });
+
+
+
+        etProfileSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(etProfileSearch.getText().toString().trim().equalsIgnoreCase(""))
+                {
+                    tvSearchButton.setVisibility(View.GONE);
+                }else
+                {
+                    tvSearchButton.setVisibility(View.VISIBLE);
+                    tvSearchMatchBtn.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
 
         tvSearchMatchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -277,9 +329,21 @@ public class SearchFragment extends Fragment {
 
     }
 
+    private boolean checkForm() {
+    id=etProfileSearch.getText().toString().trim();
+
+        if (id.isEmpty()) {
+            etProfileSearch.setError("Please enter Email");
+            etProfileSearch.setFocusableInTouchMode(true);
+            etProfileSearch.requestFocus();
+            return false;
+        }  else {
+            etProfileSearch.setError(null);
+        }
+        return true;
+    }
 
     private void Height() {
-
         final int[] checkedItem = {-1};
         final int[] checkedItem1 = {-1};
         etfromHeightSearch.setOnClickListener(new View.OnClickListener() {
@@ -1001,5 +1065,36 @@ public class SearchFragment extends Fragment {
         request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(request);
     }
+
+
+
+    public void getSearchProfileData() {
+        etProfileSearch.setText(" ");
+        //final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Data Loading...", false, false);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                ProfileSearch + id, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf((response)));
+                // progressDialog.dismiss();
+                Log.e("Search  response", String.valueOf(response));
+                Gson gson = new Gson();
+                if (response!=null) {
+                    data = gson.fromJson(String.valueOf(response), MemberProfileModel.class);
+                    ProfileSearchFragment.newInstance((data.member_id), "").show(((FragmentActivity) context).getSupportFragmentManager(), "Profile_search_fragment");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //  progressDialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+    }
+
+
 
 }

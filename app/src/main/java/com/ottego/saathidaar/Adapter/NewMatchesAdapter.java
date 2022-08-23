@@ -175,12 +175,8 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             public void onClick(View view) {
                 Log.e("position", String.valueOf(position));
                 MatchPagerFragment.newInstance(String.valueOf(position), String.valueOf(position)).show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
-
-
             }
         });
-
-
         holder.tvPremiumContactMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -5,11 +5,15 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -59,8 +63,7 @@ public class LandingActivity extends AppCompatActivity {
             context = LandingActivity.this;
 
             listener();
-
-            String[] items = new String[]{"Profile created By","Self", "Sibling", "Parents", "Relatives", "Friends", "Saathidaar.com", "Franchies"};
+            String[] items = new String[]{"Profile Created by","Self", "Sibling", "Parents", "Relatives", "Friends", "Saathidaar.com", "Franchies"};
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.dropdown_item, items);
             binding.spinner1.setAdapter(adapter);
 
@@ -84,6 +87,28 @@ public class LandingActivity extends AppCompatActivity {
 
         private void listener() {
 
+            binding.spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+                @Override
+                public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                           int arg2, long arg3) {
+                    String createdBy=binding.spinner1.getSelectedItem().toString();
+
+                    if(createdBy.equalsIgnoreCase("Franchies"))
+                    {
+                        binding.txtFrenciseCode.setVisibility(View.VISIBLE);
+                    }else{
+                        binding.txtFrenciseCode.setVisibility(View.GONE);
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> arg0) {
+                    // TODO Auto-generated method stub
+
+                }
+            });
+
             binding.llCalling.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -94,8 +119,6 @@ public class LandingActivity extends AppCompatActivity {
 
                 }
             });
-
-
             binding.llEmail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -112,9 +135,6 @@ public class LandingActivity extends AppCompatActivity {
 
                 }
             });
-
-
-
             binding.btnRegister.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -175,7 +195,20 @@ public class LandingActivity extends AppCompatActivity {
                 }
             });
 
-
+binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        String num = "9835635191";
+        //NOTE : please use with country code first 2digits without plus signed
+        try {
+            String mobile = "7781027704";
+            String msg = "Its Working";
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + mobile + "&text=" + msg)));
+        }catch (Exception e){
+            //whatsapp app not install
+        }
+    }
+});
 //            binding.tvLandingMemberLogin.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View view) {
@@ -364,4 +397,7 @@ public class LandingActivity extends AppCompatActivity {
             MySingleton.myGetMySingleton(context).myAddToRequest(request);
         }
 
+
     }
+
+

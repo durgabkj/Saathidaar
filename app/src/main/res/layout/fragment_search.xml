@@ -18,7 +18,7 @@
             android:layout_marginStart="8dp"
             android:padding="5dp"
             android:fontFamily="@font/italic"
-            android:text="Basic Search"
+            android:text="Search By Profile ID"
             android:textColor="@color/white"
             android:textSize="16sp" />
     </LinearLayout>
@@ -38,16 +38,63 @@
             android:layout_marginBottom="30dp"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                >
+                <EditText
+                    android:id="@+id/etProfileSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/search_bg"
+                    android:padding="5dp"
+                    android:layout_weight="1"
+                    android:textSize="13sp"
+                    android:capitalize="characters"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/colorPrimary"
+                    android:drawableStart="@drawable/ic_baseline_search_24"
+                    android:hint=" Ex:-MSD121"
+                    />
 
+                <TextView
+                    android:id="@+id/tvSearchButton"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:text="Go"
+                    android:visibility="gone"
+                    android:background="@drawable/button_bg"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/gradient_button">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:padding="5dp"
+                    android:fontFamily="@font/italic"
+                    android:text="Basic Search"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:fontFamily="@font/italic"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:text="Age" />
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -276,15 +323,12 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/italic"
                 android:text="Religion" />
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/textInputLayoutStyle"
                 android:layout_width="match_parent"
@@ -305,16 +349,12 @@
                     android:fontFamily="@font/italic"
                     app:sort="true" />
             </com.google.android.material.textfield.TextInputLayout>
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/italic"
                 android:text="Caste" />
-
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/textInputLayoutStyle"
                 android:layout_width="match_parent"
@@ -337,7 +377,6 @@
                     app:sort="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -349,13 +388,12 @@
                     android:layout_height="30dp"
                     android:layout_marginStart="8dp"
                     android:padding="3dp"
+                    android:gravity="center_vertical"
                     android:fontFamily="@font/italic"
                     android:text="Location Details"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </LinearLayout>
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

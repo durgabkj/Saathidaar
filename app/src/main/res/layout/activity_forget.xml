@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            app:title="Forget password"
+            app:title="Forgot password"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
             app:navigationIconTint="@color/black"
             app:titleTextColor="@color/black" />
@@ -120,7 +120,6 @@
         android:gravity="center"
         android:padding="10dp"
         android:layout_marginTop="30dp"
-        android:fontFamily="@font/italic"
         android:background="@drawable/button_hover"
         android:textAlignment="center"
         android:text="Submit"

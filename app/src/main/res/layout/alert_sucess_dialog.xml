@@ -38,7 +38,7 @@ android:orientation="vertical"
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Well done!  your have successfully \n Updated yor data"
+                android:text="your Data has been successfully \nUpdated"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 android:textSize="14dp"

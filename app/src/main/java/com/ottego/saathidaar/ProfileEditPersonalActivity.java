@@ -1,6 +1,5 @@
 package com.ottego.saathidaar;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -8,10 +7,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -31,12 +28,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -44,15 +38,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bumptech.glide.Glide;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.hbisoft.pickit.PickiT;
-import com.hbisoft.pickit.PickiTCallbacks;
-import com.ottego.saathidaar.Fragment.PersonalInfoFragment;
 import com.ottego.saathidaar.Model.DataModelReligion;
 import com.ottego.saathidaar.Model.MemberProfileModel;
-import com.ottego.saathidaar.Model.SessionModel;
-import com.ottego.saathidaar.Model.SessionProfileDetailModel;
 import com.ottego.saathidaar.Model.UserModel;
 import com.ottego.saathidaar.databinding.ActivityProfileEditPersonalBinding;
 
@@ -60,23 +49,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 public class ProfileEditPersonalActivity extends AppCompatActivity {
@@ -199,6 +177,9 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             b.tvUserCommunity.setText(model.caste_name);
             b.etAddUserNoOfChild.setText(model.no_of_children);
             b.tvUserReligion.setText(model.religion_name);
+
+           // b.tvUserOtherHealthDetails.setText(model.health_info);
+
             b.etHealth.setText(model.health_info);
             b.tvUserGotra.setText(model.gothra);
             b.tvUserSubCommunity.setText(model.sub_caste_name);
@@ -386,6 +367,33 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     }
 
     private void listener() {
+
+        b.etHealth.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String health = b.etHealth.getText().toString().trim();
+                if (health.equalsIgnoreCase("Other")) {
+                    b.tvUserOtherHealthDetails.setVisibility(View.VISIBLE);
+                    // b.etHealth.setText(b.tvUserOtherHealthDetails.getText().toString().trim());
+                } else {
+                    b.tvUserOtherHealthDetails.setVisibility(View.GONE);
+                }
+                //
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
         b.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -536,7 +544,15 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         gender = b.etGender.getText().toString().trim().toLowerCase();
         Location = b.etAddUserLocation.getText().toString().trim();
         MotherTongue = b.tvMotherTongue.getText().toString().trim();
-        HealthDetail = b.etHealth.getText().toString().trim();
+
+        if(b.etHealth.getText().toString().trim().equalsIgnoreCase("other"))
+        {
+            HealthDetail=b.tvUserOtherHealthDetails.getText().toString().trim();
+        }else
+        {
+            HealthDetail = b.etHealth.getText().toString().trim();
+        }
+
         Religion = b.tvUserReligion.getText().toString().trim();
         cast = b.tvUserCommunity.getText().toString().trim();
         subCast = b.tvUserSubCommunity.getText().toString().trim();

@@ -1,9 +1,13 @@
 package com.ottego.saathidaar;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -99,7 +103,20 @@ public class AccountSettingFragment extends Fragment {
 
             }
         });
-
+        b.llWhatsAppPrivacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String num = "9835635191";
+                //NOTE : please use with country code first 2digits without plus signed
+                try {
+                    String mobile = "7781027704";
+                    String msg = "Its Working";
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + mobile + "&text=" + msg)));
+                }catch (Exception e){
+                    //whatsapp app not install
+                }
+            }
+        });
 
         b.llEmailPrivacy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,6 +178,7 @@ public class AccountSettingFragment extends Fragment {
     }
 
     private void submitFormPass() {
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
         Map<String, String> params = new HashMap<String, String>();
         params.put("username",sessionManager.getEmail());
         params.put("oldPassword", oldPass);
@@ -170,6 +188,7 @@ public class AccountSettingFragment extends Fragment {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        progressDialog.dismiss();
                         Log.e("response", String.valueOf((response)));
                         try {
                             String code = response.getString("results");
@@ -195,6 +214,7 @@ public class AccountSettingFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error response", String.valueOf(error));
                         }
@@ -241,4 +261,20 @@ public class AccountSettingFragment extends Fragment {
 
         return true;
     }
+
+
+//
+//    private void buttonProgress() {
+//        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+//            @SuppressLint("ResourceAsColor")
+//            @Override
+//            public void run() {
+//                b.btnSave.setText("Done");
+//                b.progressBar.setVisibility(View.VISIBLE);
+//                b.btnSave.setTextColor((R.color.Green));
+//                requireActivity().finish();
+//
+//            }
+//        },4000);
+//    }
 }

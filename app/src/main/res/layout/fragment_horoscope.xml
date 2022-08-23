@@ -81,6 +81,31 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/italic"
+                            android:text="Date of Birth"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvDateofBirth"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/italic"
+                            android:hint="Add Details"
+                            android:textColorHint="@color/colorPrimary" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/italic"
                             android:text="City of Birth"
                             android:textStyle="bold" />
 
@@ -142,8 +167,6 @@
                             android:fontFamily="@font/italic"
                             android:hint="Add Details"
                             android:textColorHint="@color/colorPrimary" />
-
-
                     </LinearLayout>
 
 
@@ -182,8 +205,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_margin="10dp"
-                android:elevation="3dp"
                 android:visibility="gone"
+                android:elevation="3dp"
                 android:translationZ="10dp">
 
                 <LinearLayout
@@ -246,6 +269,25 @@
                         android:layout_height="40dp"
                         android:fontFamily="@font/italic"
                         android:hint="Enter city of birth" />
+
+
+                    <TextView
+                        android:id="@+id/tvcDOB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/italic"
+                        android:inputType="none"
+                        android:text="Date of Birth" />
+
+                    <TextView
+                        android:id="@+id/etHoroscopeBirthDOB"
+                        style="@style/PersonalDataTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"
+                        android:fontFamily="@font/italic"
+                        android:hint="Enter Date of birth" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -432,7 +474,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginStart="10dp"
-                                android:layout_weight="1"
+                                android:layout_weight="1.3"
                                 android:fontFamily="@font/italic"
                                 android:text="Don't Know" />
 

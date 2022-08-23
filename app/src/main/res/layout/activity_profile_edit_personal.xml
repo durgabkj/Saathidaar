@@ -556,10 +556,17 @@
                     android:hint="Health Details"
                     tools:ignore="Deprecated,Suspicious0dp" />
 
-
-
             </LinearLayout>
 
+                            <EditText
+                                android:id="@+id/tvUserOtherHealthDetails"
+                                style="@style/PersonalDataTextView"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:visibility="gone"
+                                android:fontFamily="@font/italic"
+                                android:layout_height="40dp"
+                                android:hint="write Health issue" />
 
             <LinearLayout
                 android:layout_width="match_parent"

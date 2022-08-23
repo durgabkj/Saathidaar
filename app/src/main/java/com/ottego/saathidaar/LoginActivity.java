@@ -1,9 +1,12 @@
 package com.ottego.saathidaar;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -122,12 +125,25 @@ public class LoginActivity extends AppCompatActivity {
            @Override
            public void onClick(View view) {
                Intent intent=new Intent(context,ForgetActivity.class);
-               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+             //  intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                startActivity(intent);
            }
        });
 
     }
+//    private void buttonProgress() {
+//        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+//            @SuppressLint("ResourceAsColor")
+//            @Override
+//            public void run() {
+//                b.btnSaveDetails.setText("Done");
+//                b.progressBar.setVisibility(View.INVISIBLE);
+//                b.btnSaveDetails.setTextColor((R.color.Green));
+//                requireActivity().finish();
+//
+//            }
+//        },4000);
+//    }
 
     private void submitForm() {
       final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);

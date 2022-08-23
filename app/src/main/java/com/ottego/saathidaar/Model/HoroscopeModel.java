@@ -8,5 +8,6 @@ public class HoroscopeModel {
     public  String time;
     public  String time_status;
     public  String city_of_birth;
+    public  String date_of_birth;
 
 }

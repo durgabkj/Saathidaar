@@ -76,6 +76,7 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:4.0.0'
     implementation 'com.github.HBiSoft:PickiT:2.0.5'
 
+    implementation 'com.github.yatindeokar:MyLoadingButton:v1.0.1'
 
     implementation 'com.google.firebase:firebase-core:21.1.0'
     implementation 'com.google.firebase:firebase-iid:21.1.0'

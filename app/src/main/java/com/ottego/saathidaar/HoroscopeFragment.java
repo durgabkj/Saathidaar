@@ -1,13 +1,18 @@
 package com.ottego.saathidaar;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +20,8 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -34,9 +41,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -53,11 +63,14 @@ public class HoroscopeFragment extends Fragment {
     String hour;
     String minutes;
     String time;
+    ProgressBar progressBar;
+    String DOB;
     String timeStatus;
+    DatePickerDialog datePickerDialog;
     String manglik = "";
     public String url = Utils.memberUrl + "horoscope/update/";
     public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
-
+    final Calendar myCalendar= Calendar.getInstance();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -168,6 +181,29 @@ public class HoroscopeFragment extends Fragment {
     }
 
     private void listener() {
+        DatePickerDialog.OnDateSetListener date =new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH,month);
+                myCalendar.set(Calendar.DAY_OF_MONTH,day);
+                updateLabel();
+            }
+
+        };
+
+        b.etHoroscopeBirthDOB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               datePickerDialog= new DatePickerDialog(context,date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH));
+                       datePickerDialog.show();
+                datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+
+                datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+
+            }
+        });
+
         b.btnEditDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -226,9 +262,19 @@ public class HoroscopeFragment extends Fragment {
 
     }
 
+
+
+    private void updateLabel() {
+        String myFormat="MM/dd/yyyy";
+        SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
+        b.etHoroscopeBirthDOB.setText(dateFormat.format(myCalendar.getTime()));
+
+    }
+
     private boolean checkForm() {
         countryName = b.acvCountry.getText().toString().trim();
         cityName = b.etHoroscopeBirthCity.getText().toString().trim();
+        DOB = b.etHoroscopeBirthDOB.getText().toString().trim();
         hour = b.acvHour.getText().toString().trim();
         minutes = b.acvMinutes.getText().toString().trim();
         time = b.actvampm.getText().toString().trim();
@@ -261,18 +307,19 @@ public class HoroscopeFragment extends Fragment {
         Map<String, String> params = new HashMap<String, String>();
         params.put("country_of_birth", countryName);
         params.put("city_of_birth", cityName);
+        params.put("date_of_birth", DOB);
         params.put("time", time);
         params.put("time_status", timeStatus);
         params.put("hours", hour);
         params.put("minutes", minutes);
         params.put("manglik", manglik);
         Log.e("params", String.valueOf(params));
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+      //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url + sessionManager.getMemberId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        progressDialog.dismiss();
+                       // progressDialog.dismiss();
                         Log.e("response", String.valueOf((response)));
                         try {
                             if (response != null) {
@@ -293,11 +340,12 @@ public class HoroscopeFragment extends Fragment {
                             Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
                         }
                     }
+
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
+                      //  progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error response", String.valueOf(error));
                         }
@@ -619,6 +667,7 @@ public class HoroscopeFragment extends Fragment {
         if (model != null && !model.equals("")) {
             b.tvCountryOfBirth.setText(model.country_of_birth);
             b.tvCityofBirth.setText(model.city_of_birth);
+            b.tvDateofBirth.setText(model.date_of_birth);
 
             if((model.hours!=null && !model.hours.equals("")) && (model.minutes!=null && !model.minutes.equals("")) && (model.time!=null && !model.time.equals("")) && (model.time_status!=null || !model.time_status.equals("")))
             {
@@ -627,4 +676,6 @@ public class HoroscopeFragment extends Fragment {
             b.tvManglik.setText(model.manglik);
         }
     }
-}
+
+    }
+
