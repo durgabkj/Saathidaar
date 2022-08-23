@@ -7,27 +7,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".SearchFragment">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@drawable/gradient_button">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
-            android:padding="5dp"
-            android:fontFamily="@font/italic"
-            android:text="Search By Profile ID"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:background="@color/white"
         android:overScrollMode="ifContentScrolls"
         android:layout_height="wrap_content">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,10 +26,28 @@
             android:layout_marginBottom="30dp"
             android:orientation="vertical">
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/gradient_button">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:padding="5dp"
+                    android:fontFamily="@font/italic"
+                    android:text="Search By Profile ID"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 >
                 <EditText
@@ -502,6 +508,7 @@
                 android:layout_marginBottom="20dp"
                 android:textStyle="bold"
                 android:textAlignment="center"
+                android:fontFamily="@font/pt_serif_bold"
                 android:background="@drawable/gradient_button"
                 android:textColor="@color/white"/>
 

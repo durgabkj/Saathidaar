@@ -426,7 +426,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/button_hover"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/pt_serif_bold"
                 android:gravity="center"
                 android:text="save"
                 android:textAlignment="center"

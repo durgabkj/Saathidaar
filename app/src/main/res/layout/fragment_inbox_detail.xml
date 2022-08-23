@@ -121,7 +121,7 @@
                             android:inputType="textCapWords"
                             android:fontFamily="@font/italic"
                             android:shadowRadius="7.6"
-                            android:text="Image show only to premium member"
+                            android:text="Image Shown to Premium Member's Only"
                             android:textColor="@color/white"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -878,7 +878,7 @@
 
                         <TextView
                             android:id="@+id/tvPremiumBirth"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
@@ -886,7 +886,7 @@
                             android:elevation="20dp"
                             android:fontFamily="@font/italic"
                             android:padding="10dp"
-                            android:text="Go Upgrade Now"
+                            android:text="Upgrade your membership"
                             android:textAlignment="center"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
@@ -1048,7 +1048,7 @@
 
                         <TextView
                             android:id="@+id/tvPremiumContact"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
@@ -1056,7 +1056,7 @@
                             android:elevation="20dp"
                             android:fontFamily="@font/italic"
                             android:padding="10dp"
-                            android:text="Go Upgrade Now"
+                            android:text="Upgrade your membership"
                             android:textAlignment="center"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"

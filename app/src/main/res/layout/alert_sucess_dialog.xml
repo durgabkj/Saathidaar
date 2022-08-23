@@ -54,8 +54,7 @@ android:orientation="vertical"
                 android:layout_height="wrap_content"
                 android:text="ok"
                 android:layout_margin="20dp"
-                android:textStyle="bold"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/pt_serif_bold"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/colorPrimary"/>
 

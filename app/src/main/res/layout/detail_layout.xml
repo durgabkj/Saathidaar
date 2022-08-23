@@ -111,6 +111,7 @@
             android:id="@+id/btnProceed"
             android:layout_marginTop="8dp"
             android:layout_gravity="center"
+            android:fontFamily="@font/pt_serif_bold"
             android:textColor="@color/white"
             android:backgroundTint="@color/colorPrimary"/>
 

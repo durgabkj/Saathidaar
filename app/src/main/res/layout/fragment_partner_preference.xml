@@ -852,6 +852,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/pt_serif_bold"
                     android:background="@drawable/button_hover"
                     android:textColor="@color/white"/>
 

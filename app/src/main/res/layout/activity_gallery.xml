@@ -172,6 +172,7 @@
             android:textStyle="bold"
             android:layout_weight="1"
             android:gravity="center"
+            android:fontFamily="@font/pt_serif_bold"
             android:background="@drawable/button_hover"
             android:text="Upload Images"
             android:id="@+id/upload"/>

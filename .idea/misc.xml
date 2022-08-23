@@ -299,6 +299,7 @@
         <entry key="..\:/saathidaar/app/src/main/res/drawable/tab_selector.xml" value="0.159" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/text_color_chip_state_list.xml" value="0.159" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/textview_selection.xml" value="0.159" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/activity_family_detail_show.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_family_profile.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_forget.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_gallery.xml" value="0.25" />
@@ -306,6 +307,7 @@
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_landing.xml" value="0.264" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/activity_member_gallery.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_more.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_my_matches_show.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_navigation.xml" value="0.234375" />
@@ -315,26 +317,37 @@
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_professional_detais_show.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_profile_edit_personal.xml" value="0.20025188916876574" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_profile_visitors.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/activity_recent_view.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_request_accept.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_test.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/activity_upgrade_on_button.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_upgrade_plan_details.xml" value="0.23435897435897435" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_web_view.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/alert_sucess_dialog.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/detail_layout.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/dropdown_item.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_accepted_inbox.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_account.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_account_setting.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_block_member.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_dash_board.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_delete_inbox.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_email_and_sms_alert.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_family_info.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_gallery_pager.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_hide_delete_profile.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_home.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_horoscope.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_inbox.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_inbox_detail.xml" value="0.264" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_inbox_pager.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_invitation.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_kyc.xml" value="0.264" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_match_details.xml" value="0.2" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_match_pager.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_matches.xml" value="0.264" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_member_gallery_pager.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_member_gallery_show.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_more.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_my_match.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_my_profile.xml" value="0.23802083333333332" />
@@ -346,8 +359,13 @@
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_privacy_option.xml" value="0.264" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_professional_info.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_profile_search.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_recent_view.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_recently_viewed.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_search.xml" value="0.264" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_sent_inbox.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_short_list.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_show_image.xml" value="0.264" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_today_match.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_upgrade.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/internetconnection.xml" value="0.25" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/layout_accepted.xml" value="0.22826086956521738" />
@@ -362,6 +380,7 @@
         <entry key="..\:/saathidaar/app/src/main/res/layout/layout_sent_item.xml" value="0.264" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/layout_upgrade_page.xml" value="0.264" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/recentlyview.xml" value="0.25" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/searchable_dropdown_item.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/un_block_layout.xml" value="0.25" />
         <entry key="..\:/saathidaar/app/src/main/res/menu/menu_delete.xml" value="0.23802083333333332" />
       </map>

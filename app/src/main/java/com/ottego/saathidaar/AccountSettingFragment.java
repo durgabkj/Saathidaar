@@ -106,10 +106,9 @@ public class AccountSettingFragment extends Fragment {
         b.llWhatsAppPrivacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String num = "9835635191";
                 //NOTE : please use with country code first 2digits without plus signed
                 try {
-                    String mobile = "7781027704";
+                    String mobile = "7030600035";
                     String msg = "Its Working";
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + mobile + "&text=" + msg)));
                 }catch (Exception e){

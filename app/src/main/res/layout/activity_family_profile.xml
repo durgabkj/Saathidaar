@@ -679,7 +679,7 @@
                         android:text="Update"
                         android:padding="10dp"
                         android:textStyle="bold"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/pt_serif_bold"
                         android:layout_gravity="center"
                         android:textColor="@color/white"
                         android:textAlignment="center"/>

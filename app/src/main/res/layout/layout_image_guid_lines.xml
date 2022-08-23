@@ -47,21 +47,14 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="1.You are the focus of your profile. Do not add group photos."
-            android:textAlignment="center"
-            android:fontFamily="@font/italic"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/italic"
-            android:text="2.Sideways or upside-down photos are likely to be rejected."
+            android:text="1.Sideways or upside-down photos are likely to be rejected."
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -70,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/italic"
-            android:text="3.Watermarked, digitally enhanced, morphed photos or photos with your personal information will be rejected."
+            android:text="2.Watermarked, digitally enhanced, morphed photos or photos with your personal information will be rejected."
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         <Button
