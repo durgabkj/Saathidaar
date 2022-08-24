@@ -215,11 +215,6 @@
 
     <string-array name="Health">
         <item>No Health Problems</item>
-        <item>HIV Positive</item>
-        <item>Diabetes</item>
-        <item>Low BP</item>
-        <item>High BP</item>
-        <item>Heart Aliments</item>
         <item>Other</item>
     </string-array>
 

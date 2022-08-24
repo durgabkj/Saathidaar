@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = MainActivity.this;
         sessionManager = new SessionManager(context);
-        setNotification();
+        //setNotification();
         start();
     }
 

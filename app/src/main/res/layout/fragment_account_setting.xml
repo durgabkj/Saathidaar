@@ -52,15 +52,15 @@
                 android:background="#31918F8F"
                 android:fontFamily="@font/italic"
                 style="@style/PersonalDataTextView"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="We'll never share your email with anyone else."
-                android:gravity="center_vertical"
-                android:textStyle="bold"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/italic"/>
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:text="We'll never share your email with anyone else."-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:fontFamily="@font/italic"/>-->
 
 
 

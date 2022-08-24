@@ -120,7 +120,7 @@ if(item!=null)
 //                .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
 //                .into(holder.ivProfileAcceptInvi);
 
-if(item!=null){
+
     if (item.photo_privacy.equalsIgnoreCase("1")) {
         holder.llPhotoAccept.setEnabled(true);
         //  holder.flPremiumAccept.setVisibility(View.GONE);
@@ -180,7 +180,7 @@ if(item!=null){
 
 }
 
-    }
+
 
 
     @Override
