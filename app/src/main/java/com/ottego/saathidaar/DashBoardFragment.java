@@ -40,7 +40,7 @@ import org.json.JSONObject;
 public class DashBoardFragment extends Fragment {
     SessionManager sessionManager;
     ImageView ivPremiumImage, profilePicDashBoard;
-    TextView tvPremiumText, RequestAccept,tvPremiumButton, tvDashBoardUserId, tvDashBoardUserAccountType, tvDashBoardUploadImage, Visitors, RequestSent, tvDashboardUpgrade, tvDashBoardUserName;
+    TextView tvPremiumText, RequestAccept,tvDashBoardfranchiseCode,tvPremiumButton, tvDashBoardUserId, tvDashBoardUserAccountType, tvDashBoardUploadImage, Visitors, RequestSent, tvDashboardUpgrade, tvDashBoardUserName;
     int position = 0;
     DataModelDashboard model;
     LinearLayout llPremiumMatch, llMyMatch, llPremium, llshare, tvLogout, llRequestSent, llProfileVisi, llAcceptRequest;
@@ -116,6 +116,7 @@ public class DashBoardFragment extends Fragment {
         tvDashBoardUserName = view.findViewById(R.id.tvDashBoardUserName);
         llAcceptRequest = view.findViewById(R.id.llAcceptRequest);
         llProfileVisi = view.findViewById(R.id.llProfileVisi);
+        tvDashBoardfranchiseCode = view.findViewById(R.id.tvDashBoardfranchiseCode);
         getMemberData();
         set();
         Log.e("hey_member", sessionManager.getMemberId());
@@ -151,6 +152,7 @@ public class DashBoardFragment extends Fragment {
         tvDashBoardUserName.setText(sessionManager.getName());
         tvDashBoardUserId.setText("[" + sessionManager.getKey_profile_id() + "]");
         tvDashBoardUserAccountType.setText(sessionManager.getKEY_PROFILE_CreatedBy());
+        tvDashBoardfranchiseCode.setText(Utils.nullToBlank(sessionManager.getKey_franchise()));
     }
 
     private void listener() {

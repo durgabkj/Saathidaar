@@ -17,6 +17,7 @@ public class SessionManager {
     public static final String KEY_USERID = "username";
     public static final String KEY_GENDER = "gender";
     public static final String KEY_PROFILE_ID_Log = "profile_id";
+    public static final String KEY_FRANCHISE_CODE = "franchise_code";
     public static final String KEY_PROFILE_CreatedBy = "profile_created_by";
 
 //user data
@@ -47,6 +48,7 @@ public class SessionManager {
         editor.putString(KEY_USERID, model.username);
         editor.putString(KEY_GENDER, model.gender);
         editor.putString(KEY_PROFILE_ID_Log, model.profile_id);
+        editor.putString(KEY_FRANCHISE_CODE,model.franchise_code);
         editor.putString(KEY_PROFILE_CreatedBy, model.profile_created_by);
 
         editor.commit();
@@ -77,6 +79,10 @@ public class SessionManager {
     }
     public String getKey_profile_id() {
         return pref.getString(KEY_PROFILE_ID_Log, "");
+    }
+
+    public String getKey_franchise() {
+        return pref.getString(KEY_FRANCHISE_CODE, "");
     }
     public String getKEY_PROFILE_CreatedBy() {
         return pref.getString(KEY_PROFILE_CreatedBy, "");

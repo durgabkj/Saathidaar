@@ -137,6 +137,14 @@
                                 android:fontFamily="@font/italic"
                                 android:textColor="@color/white" />
 
+                            <TextView
+                                android:id="@+id/tvDashBoardfranchiseCode"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:fontFamily="@font/italic"
+                                android:textColor="@color/white" />
+
                         </LinearLayout>
 
 
