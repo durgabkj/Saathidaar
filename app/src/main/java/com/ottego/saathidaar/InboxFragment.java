@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
@@ -28,6 +30,8 @@ import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.HomeTablayoutAdapter;
 import com.ottego.saathidaar.Model.DataModelDashboard;
 import com.ottego.saathidaar.databinding.FragmentInboxBinding;
+import com.ottego.saathidaar.viewmodel.InboxViewModel;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONObject;
 
@@ -40,6 +44,7 @@ public class InboxFragment extends Fragment {
     DataModelDashboard model;
     Context context;
     SessionManager sessionManager;
+    InboxViewModel viewModel;
     InvitationFragment invitationFragment = new InvitationFragment();
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -77,6 +82,7 @@ int count=0;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         b = FragmentInboxBinding.inflate(inflater, container, false);
+        viewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
         context = getContext();
         sessionManager = new SessionManager(context);
 
@@ -90,11 +96,21 @@ int count=0;
         b.chipGroupInbox.check(b.chipGroupInbox.getChildAt(0).getId());
 
         listener();
-        getDataCount();
+       // getDataCount();
+        viewModel.getDataCount();
         return b.getRoot();
     }
 
     private void listener() {
+
+        viewModel.count.observe(getViewLifecycleOwner(), new Observer<DataModelDashboard>() {
+            @Override
+            public void onChanged(DataModelDashboard dataModelDashboard) {
+                model=dataModelDashboard;
+                setData();
+            }
+        });
+
         b.chipGroupInbox.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
@@ -139,16 +155,10 @@ int count=0;
 
         });
 
-        b.srlInbox.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                getDataCount();
-            }
-        });
+
     }
 
     private void getDataCount() {
-        b.srlInbox.setRefreshing(false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
@@ -161,7 +171,7 @@ int count=0;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                b.srlInbox.setRefreshing(false);
+
                 error.printStackTrace();
             }
         });
@@ -188,11 +198,7 @@ int count=0;
         }
     }
 
-    @Override
-    public void onStart() {
-        getDataCount();
-        super.onStart();
-    }
+
 
     private void refresh(int millisecond) {
         final Handler handler= new Handler();
@@ -206,10 +212,6 @@ int count=0;
         handler.postDelayed(runnable, millisecond);
     }
 
-    @Override
-    public void onResume() {
-        getDataCount();
-        super.onResume();
-    }
+
 
 }

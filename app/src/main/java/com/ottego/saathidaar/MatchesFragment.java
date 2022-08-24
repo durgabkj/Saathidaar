@@ -15,6 +15,8 @@ import android.widget.HorizontalScrollView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -27,6 +29,7 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.DataModelDashboard;
 import com.ottego.saathidaar.databinding.FragmentMatchesBinding;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONObject;
 
@@ -36,6 +39,8 @@ import java.util.List;
 
 public class MatchesFragment extends Fragment {
     FragmentMatchesBinding b;
+
+    MatchViewModel viewModel;
     SessionManager sessionManager;
     Context context;
     DataModelDashboard model;
@@ -77,6 +82,7 @@ public class MatchesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         b = FragmentMatchesBinding.inflate(inflater, container, false);
+        viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
         context = getContext();
         sessionManager = new SessionManager(context);
         b.vpMatch.setPagingEnable(false);
@@ -88,7 +94,8 @@ public class MatchesFragment extends Fragment {
 
         b.chipGroup.check(b.chipGroup.getChildAt(1).getId());
 
-        getDataCount();
+//        getDataCount();
+        viewModel.getDataCount();
         listener();
         return b.getRoot();
 
@@ -97,8 +104,13 @@ public class MatchesFragment extends Fragment {
 
 
     private void listener() {
-
-
+        viewModel.count.observe(getViewLifecycleOwner(), new Observer<DataModelDashboard>() {
+            @Override
+            public void onChanged(DataModelDashboard dataModelDashboard) {
+                model=dataModelDashboard;
+                setData();
+            }
+        });
         b.chipGroup.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
@@ -155,17 +167,9 @@ public class MatchesFragment extends Fragment {
 
         });
 
-
-        b.srlMatches.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                getDataCount();
-            }
-        });
     }
 
     private void getDataCount() {
-        b.srlMatches.setRefreshing(false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
@@ -178,7 +182,6 @@ public class MatchesFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                b.srlMatches.setRefreshing(false);
                 error.printStackTrace();
             }
         });
@@ -199,11 +202,6 @@ public class MatchesFragment extends Fragment {
         }
     }
 
-//    @Override
-//    public void onStart() {
-//        getDataCount();
-//        super.onStart();
-//    }
 
     private void refresh(int millisecond) {
         final Handler handler= new Handler();
@@ -217,10 +215,6 @@ public class MatchesFragment extends Fragment {
         handler.postDelayed(runnable, millisecond);
     }
 
-//    @Override
-//    public void onResume() {
-//        getDataCount();
-//        super.onResume();
-//    }
+
 }
 

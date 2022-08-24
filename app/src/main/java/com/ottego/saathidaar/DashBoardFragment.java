@@ -152,7 +152,7 @@ public class DashBoardFragment extends Fragment {
         tvDashBoardUserName.setText(sessionManager.getName());
         tvDashBoardUserId.setText("[" + sessionManager.getKey_profile_id() + "]");
         tvDashBoardUserAccountType.setText(sessionManager.getKEY_PROFILE_CreatedBy());
-        tvDashBoardfranchiseCode.setText(Utils.nullToBlank(sessionManager.getKey_franchise()));
+        tvDashBoardfranchiseCode.setText(Utils.nullToBlank("["+sessionManager.getKey_franchise())+"]");
     }
 
     private void listener() {

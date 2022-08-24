@@ -20,10 +20,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.RecentVisitorAdapter;
-import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentRecentlyViewedBinding;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +32,7 @@ FragmentRecentlyViewedBinding b;
     SessionManager sessionManager;
     Context context;
     DataModelNewMatches data;
-    NewMatchViewModel viewModel;
+    MatchViewModel viewModel;
     public String recentlyViewed = Utils.memberUrl + "view-to/";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -70,7 +69,7 @@ FragmentRecentlyViewedBinding b;
         // Inflate the layout for this fragment
         b=FragmentRecentlyViewedBinding.inflate(inflater,container,false);
         context = getContext();
-        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
 
         sessionManager = new SessionManager(context);
         getData();
@@ -140,6 +139,7 @@ FragmentRecentlyViewedBinding b;
     @Override
     public void onSuccess(int position) {
         getData();
+        viewModel.getDataCount();
     }
 
     @Override

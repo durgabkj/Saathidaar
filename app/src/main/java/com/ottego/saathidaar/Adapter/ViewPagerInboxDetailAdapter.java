@@ -8,9 +8,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.ottego.saathidaar.InboxDetailFragment;
-import com.ottego.saathidaar.MatchDetailsFragment;
 import com.ottego.saathidaar.viewmodel.InboxViewModel;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 public class ViewPagerInboxDetailAdapter  extends FragmentStateAdapter{
         InboxViewModel viewModel;

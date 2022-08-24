@@ -12,7 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.ottego.saathidaar.Adapter.ViewPagerMatchDetailAdapter;
 import com.ottego.saathidaar.databinding.FragmentMatchPagerBinding;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import java.util.Objects;
 
@@ -24,7 +24,7 @@ public class MatchPagerFragment extends DialogFragment {
     private String mParam1;
     private String mParam2;
     //    model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
-    NewMatchViewModel viewModel;
+    MatchViewModel viewModel;
 
     public MatchPagerFragment() {
         // Required empty public constructor
@@ -60,7 +60,7 @@ public class MatchPagerFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         b = FragmentMatchPagerBinding.inflate(inflater, container, false);
-        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
 
 
         // of ViewPager2Adapter

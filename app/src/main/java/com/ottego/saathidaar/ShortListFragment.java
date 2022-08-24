@@ -21,10 +21,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.RemoveShortListAdapter;
-import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentShortListBinding;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,7 +36,7 @@ public class ShortListFragment extends Fragment  implements ApiListener {
     String member_id;
     public String ShortListUrl ="http://103.174.102.195:8080/saathidaar_backend/api/shortlist/get/all/";
     FragmentShortListBinding b;
-    NewMatchViewModel viewModel;
+    MatchViewModel viewModel;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 int count=0;
@@ -74,7 +73,7 @@ int count=0;
        b=FragmentShortListBinding.inflate(getLayoutInflater());
        context=getContext();
        sessionManager=new SessionManager(context);
-        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
         getData();
         listener();
        return  b.getRoot();
@@ -159,6 +158,7 @@ int count=0;
     @Override
     public void onSuccess(int position) {
         getData();
+        viewModel.getDataCount();
     }
 
     @Override

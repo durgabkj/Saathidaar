@@ -132,7 +132,9 @@ public class MatchDetailsFragment extends Fragment {
     private void setHoroData() {
         if((horoscopeModel.hours!=null && !horoscopeModel.hours.equals("")) && (horoscopeModel.minutes!=null && !horoscopeModel.minutes.equals("")) && (horoscopeModel.time!=null && !horoscopeModel.time.equals("")) && (horoscopeModel.country_of_birth!=null || !horoscopeModel.country_of_birth.equals("")) && (horoscopeModel.city_of_birth!=null || !horoscopeModel.city_of_birth.equals("")))
         {
-            b.tvDetailPlaceOfBirth.setText(horoscopeModel.country_of_birth + " ," + horoscopeModel.city_of_birth + " ," + horoscopeModel.hours + " :" + horoscopeModel.minutes);
+            b.tvDetailPlaceOfBirth.setText(horoscopeModel.country_of_birth + " ," + horoscopeModel.city_of_birth );
+            b.tvMatchDetailTime.setText(horoscopeModel.hours + " :" +horoscopeModel.minutes + ","+horoscopeModel.time+","+ horoscopeModel.time_status);
+
         }
 
              b.tvDetailManglik.setText(horoscopeModel.manglik);
@@ -621,6 +623,8 @@ if (memberPreferenceModel != null) {
         if (model.premium_status.equalsIgnoreCase("1")) {
             b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
             b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
+//            b.tvPremiumBirth.setVisibility(View.GONE);
+//            b.tvPremiumCollegeAndCompany.setVisibility(View.GONE);
         }
 
             if (model.images_count.equalsIgnoreCase("0")) {

@@ -8,11 +8,6 @@
     tools:context=".MatchesFragment">
 
 
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:layout_width="match_parent"
-        android:id="@+id/srlMatches"
-        android:layout_height="50dp">
         <HorizontalScrollView
             android:id="@+id/scroll_view"
             android:layout_width="match_parent"
@@ -149,7 +144,6 @@
             </com.google.android.material.chip.ChipGroup>
 
         </HorizontalScrollView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcvMatches"

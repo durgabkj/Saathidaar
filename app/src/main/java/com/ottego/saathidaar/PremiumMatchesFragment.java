@@ -22,9 +22,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
-import com.ottego.saathidaar.databinding.FragmentMyMatchBinding;
 import com.ottego.saathidaar.databinding.FragmentPremiumMatchesBinding;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,7 +33,7 @@ public class PremiumMatchesFragment extends Fragment implements ApiListener {
     FragmentPremiumMatchesBinding b;
     SessionManager sessionManager;
     DataModelNewMatches data;
-    NewMatchViewModel viewModel;
+    MatchViewModel viewModel;
     public String PremiumMatchUrl = "http://103.174.102.195:8080/saathidaar_backend/api/new/premium/matches/dashboard/";
 
     AlertDialog dialog;
@@ -79,7 +78,7 @@ public class PremiumMatchesFragment extends Fragment implements ApiListener {
         b = FragmentPremiumMatchesBinding.inflate(getLayoutInflater());
         context = getContext();
         sessionManager = new SessionManager(context);
-        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
         getData();
         listener();
         return b.getRoot();
@@ -148,6 +147,7 @@ public class PremiumMatchesFragment extends Fragment implements ApiListener {
     @Override
     public void onSuccess(int position) {
         getData();
+        viewModel.getDataCount();
     }
 
     @Override

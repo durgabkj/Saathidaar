@@ -141,6 +141,7 @@ public class SentInboxFragment extends Fragment  implements ApiListener {
     @Override
     public void onSuccess(int position) {
         getData();
+        viewModel.getDataCount();
     }
 
     @Override

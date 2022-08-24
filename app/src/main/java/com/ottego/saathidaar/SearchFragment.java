@@ -25,7 +25,6 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -34,10 +33,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.multipleselectionspinner.MultipleSelection;
-import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.Model.SearchModel;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -151,8 +148,8 @@ public class SearchFragment extends Fragment  {
         etToAgeSearch = view.findViewById(R.id.etToAgeSearch);
         etfromHeightSearch = view.findViewById(R.id.etfromHeightSearch);
         etToHeightSearch = view.findViewById(R.id.etToHeightSearch);
-        etProfileSearch = view.findViewById(R.id.etProfileSearch);
-        tvSearchButton = view.findViewById(R.id.tvSearchButton);
+//        etProfileSearch = view.findViewById(R.id.etProfileSearch);
+//        tvSearchButton = view.findViewById(R.id.tvSearchButton);
 
 
 
@@ -223,14 +220,15 @@ public class SearchFragment extends Fragment  {
 
     private void listener() {
 
-        tvSearchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (checkForm()) {
-                    getSearchProfileData();
-                }
-            }
-        });
+        // search by id
+//        tvSearchButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (checkForm()) {
+//                    getSearchProfileData();
+//                }
+//            }
+//        });
 
 
 

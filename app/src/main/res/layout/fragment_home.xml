@@ -38,7 +38,7 @@
                 android:elevation="10dp"
                 android:textSelectHandle="@color/white"
                 android:translationZ="10dp"
-                android:text="DashBoard" />
+                android:text="Dashboard" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipProfile"
@@ -64,7 +64,7 @@
                 android:translationZ="10dp"
                 style="@style/CustomChipChoiceStyle"
                 android:padding="12dp"
-                android:text="Partner Preference" />
+                android:text="Partner Preference (Search)" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipHoroscope"

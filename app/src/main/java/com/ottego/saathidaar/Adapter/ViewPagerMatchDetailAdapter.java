@@ -8,11 +8,11 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.ottego.saathidaar.MatchDetailsFragment;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 public class ViewPagerMatchDetailAdapter extends FragmentStateAdapter {
-    NewMatchViewModel viewModel;
-    public ViewPagerMatchDetailAdapter(@NonNull FragmentActivity fragmentActivity, NewMatchViewModel viewModel) {
+    MatchViewModel viewModel;
+    public ViewPagerMatchDetailAdapter(@NonNull FragmentActivity fragmentActivity, MatchViewModel viewModel) {
         super(fragmentActivity);
         this.viewModel = viewModel;
     }

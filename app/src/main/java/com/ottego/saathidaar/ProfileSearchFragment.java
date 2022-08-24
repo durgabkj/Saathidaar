@@ -89,11 +89,11 @@ FragmentProfileSearchBinding b;
         context = getContext();
         sessionManager = new SessionManager(context);
 
-        listener();
-        getPartnerData();
-        getHoroscopeData();
-        setData();
-        getMemberPreferenceData();
+//        listener();
+//        getPartnerData();
+//        getHoroscopeData();
+//        setData();
+//        getMemberPreferenceData();
         //getLoginMemberData();
         return b.getRoot();
     }

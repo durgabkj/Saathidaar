@@ -127,7 +127,8 @@ public class InboxDetailFragment extends Fragment {
 
     private void setHoroData() {
         if ((horoscopeModel.hours != null && !horoscopeModel.hours.equals("")) && (horoscopeModel.minutes != null && !horoscopeModel.minutes.equals("")) && (horoscopeModel.time != null && !horoscopeModel.time.equals("")) && (horoscopeModel.country_of_birth != null || !horoscopeModel.country_of_birth.equals("")) && (horoscopeModel.city_of_birth != null || !horoscopeModel.city_of_birth.equals(""))) {
-            b.tvInvboxDetailPlaceOfBirth.setText(horoscopeModel.country_of_birth + " ," + horoscopeModel.city_of_birth + " ," + horoscopeModel.hours + " :" + horoscopeModel.minutes);
+            b.tvInvboxDetailPlaceOfBirth.setText(horoscopeModel.country_of_birth + " ," + horoscopeModel.city_of_birth );
+            b.tvInboxDetailTime.setText(horoscopeModel.hours + " :" +horoscopeModel.minutes + ","+horoscopeModel.time+","+ horoscopeModel.time_status);
         }
 
         b.tvInboxDetailManglik.setText(horoscopeModel.manglik);
@@ -607,6 +608,7 @@ public class InboxDetailFragment extends Fragment {
             if (model.premium_status.equalsIgnoreCase("1")) {
                 b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
                 b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
+
             }
 
 

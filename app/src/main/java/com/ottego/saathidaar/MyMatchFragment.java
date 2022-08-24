@@ -1,25 +1,13 @@
 package com.ottego.saathidaar;
 
-import android.annotation.SuppressLint;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,17 +20,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
-import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentMyMatchBinding;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 
 public class MyMatchFragment extends Fragment implements ApiListener {
@@ -50,7 +33,7 @@ public class MyMatchFragment extends Fragment implements ApiListener {
     FragmentMyMatchBinding b;
     SessionManager sessionManager;
     DataModelNewMatches data;
-    NewMatchViewModel viewModel;
+    MatchViewModel viewModel;
     public String MyMatchUrl = Utils.memberUrl + "my/matches/";
 static  final int ALARM_REQ_CODE=100;
     AlertDialog dialog;
@@ -95,7 +78,7 @@ static  final int ALARM_REQ_CODE=100;
         b = FragmentMyMatchBinding.inflate(getLayoutInflater());
         context = getContext();
         sessionManager = new SessionManager(context);
-        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
         getData("");
         listener();
         return b.getRoot();
@@ -165,6 +148,7 @@ static  final int ALARM_REQ_CODE=100;
     @Override
     public void onSuccess(int position) {
         getData("");
+        viewModel.getDataCount();
     }
 
     @Override

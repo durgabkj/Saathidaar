@@ -21,10 +21,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
-import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentTodayMatchBinding;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,7 +35,7 @@ public class TodayMatchFragment extends Fragment implements ApiListener {
     SessionManager sessionManager;
     DataModelNewMatches data;
     FragmentTodayMatchBinding b;
-    NewMatchViewModel viewModel;
+    MatchViewModel viewModel;
     int count=0;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,7 +77,7 @@ public class TodayMatchFragment extends Fragment implements ApiListener {
        b=FragmentTodayMatchBinding.inflate(getLayoutInflater());
         context = getContext();
 sessionManager=new SessionManager(context);
-        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
         getData();
         listener();
         return b.getRoot();
@@ -161,6 +160,7 @@ sessionManager=new SessionManager(context);
     @Override
     public void onSuccess(int position) {
         getData();
+        viewModel.getDataCount();
     }
 
     @Override

@@ -93,7 +93,7 @@ public class NavigationActivity extends AppCompatActivity {
 
         });
 
-        Objects.requireNonNull(tabLayout.getTabAt(1)).select();
+        Objects.requireNonNull(tabLayout.getTabAt(0)).select();
     }
 
     @Override

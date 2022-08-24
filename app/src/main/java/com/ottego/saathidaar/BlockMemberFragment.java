@@ -1,7 +1,6 @@
 
 package com.ottego.saathidaar;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -22,12 +21,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.BlockMemberAdapter;
-import com.ottego.saathidaar.Adapter.RecentVisitorAdapter;
-import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentBlockMemberBinding;
-import com.ottego.saathidaar.databinding.FragmentRecentViewBinding;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
+import com.ottego.saathidaar.viewmodel.InboxViewModel;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,7 +34,8 @@ public class BlockMemberFragment extends Fragment implements ApiListener{
 FragmentBlockMemberBinding b;
     SessionManager sessionManager;
     Context context;
-    NewMatchViewModel viewModel;
+    MatchViewModel viewModel;
+    InboxViewModel inboxViewModel;
     DataModelNewMatches data;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -75,7 +73,8 @@ FragmentBlockMemberBinding b;
         context = getContext();
         sessionManager = new SessionManager(context);
 
-        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
+        inboxViewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
         getData();
         listener();
         return b.getRoot();
@@ -143,6 +142,7 @@ FragmentBlockMemberBinding b;
 
     @Override
     public void onSuccess(int position) {
+        inboxViewModel.getDataCount();
         getData();
     }
 

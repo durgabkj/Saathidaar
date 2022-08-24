@@ -21,7 +21,7 @@ import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentMoreBinding;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONObject;
 
@@ -31,7 +31,7 @@ FragmentMoreBinding b;
     Context context;
     SessionManager sessionManager;
     DataModelNewMatches data;
-    NewMatchViewModel viewModel;
+    MatchViewModel viewModel;
     private String searchedUrl=Utils.memberUrl+"search/more/";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -69,7 +69,7 @@ FragmentMoreBinding b;
         // Inflate the layout for this fragment
        b=FragmentMoreBinding.inflate(inflater, container, false);
 
-        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
         context=getContext();
         sessionManager=new SessionManager(context);
         getData();
@@ -124,6 +124,7 @@ FragmentMoreBinding b;
     @Override
     public void onSuccess(int position) {
         getData();
+        viewModel.getDataCount();
     }
 
     @Override

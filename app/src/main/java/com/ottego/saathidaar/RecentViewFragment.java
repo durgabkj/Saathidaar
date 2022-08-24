@@ -19,10 +19,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.RecentVisitorAdapter;
-import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentRecentViewBinding;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,7 +31,7 @@ public class RecentViewFragment extends Fragment implements ApiListener {
     FragmentRecentViewBinding b;
     SessionManager sessionManager;
     Context context;
-    NewMatchViewModel viewModel;
+    MatchViewModel viewModel;
     DataModelNewMatches data;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -71,7 +70,7 @@ public class RecentViewFragment extends Fragment implements ApiListener {
         context = getContext();
         sessionManager = new SessionManager(context);
 
-        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
         getData();
         listener();
         return b.getRoot();
@@ -138,6 +137,7 @@ public class RecentViewFragment extends Fragment implements ApiListener {
     @Override
     public void onSuccess(int position) {
         getData();
+        viewModel.getDataCount();
     }
 
     @Override

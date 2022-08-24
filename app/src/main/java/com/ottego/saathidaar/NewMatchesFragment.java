@@ -20,10 +20,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
-import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentNewMatchesBinding;
-import com.ottego.saathidaar.viewmodel.NewMatchViewModel;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,7 +41,7 @@ public class NewMatchesFragment extends Fragment implements ApiListener {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    NewMatchViewModel viewModel;
+    MatchViewModel viewModel;
 
     public NewMatchesFragment() {
         // Required empty public constructor
@@ -73,7 +72,7 @@ public class NewMatchesFragment extends Fragment implements ApiListener {
         // Inflate the layout for this fragment
         b = FragmentNewMatchesBinding.inflate(inflater,container,false);
         context = getContext();
-        viewModel = new ViewModelProvider(requireActivity()).get(NewMatchViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
 
         sessionManager=new SessionManager(context);
 //        animation = AnimationUtils.loadAnimation(context, R.anim.move);
@@ -146,6 +145,7 @@ public class NewMatchesFragment extends Fragment implements ApiListener {
     @Override
     public void onSuccess(int position) {
         getData("");
+        viewModel.getDataCount();
     }
 
     @Override
