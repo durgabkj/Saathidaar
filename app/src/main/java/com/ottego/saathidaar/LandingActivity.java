@@ -53,6 +53,7 @@ public class LandingActivity extends AppCompatActivity {
     String phone = "";
     String password = "";
     String profilecreatedby = "";
+    String franciseCode="";
     SessionManager sessionManager;
 
     @Override
@@ -63,7 +64,7 @@ public class LandingActivity extends AppCompatActivity {
             context = LandingActivity.this;
 
             listener();
-            String[] items = new String[]{"Profile Created by","Self", "Sibling", "Parents", "Relatives", "Friends", "Saathidaar.com", "Franchies"};
+            String[] items = new String[]{"Profile Created by","Self", "Sibling", "Parents", "Relatives", "Friends", "Saathidaar.com", "franchise"};
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.dropdown_item, items);
             binding.spinner1.setAdapter(adapter);
 
@@ -94,7 +95,7 @@ public class LandingActivity extends AppCompatActivity {
                                            int arg2, long arg3) {
                     String createdBy=binding.spinner1.getSelectedItem().toString();
 
-                    if(createdBy.equalsIgnoreCase("Franchies"))
+                    if(createdBy.equalsIgnoreCase("Franchise"))
                     {
                         binding.txtFrenciseCode.setVisibility(View.VISIBLE);
                     }else{
@@ -344,6 +345,21 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
                 Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
             }
 
+            if(binding.spinner1.getSelectedItem().toString().trim().equalsIgnoreCase("Franchise")) {
+                   franciseCode=binding.txtFrenciseCode.getText().toString().trim();
+
+                if (franciseCode.isEmpty()) {
+                    binding.txtFrenciseCode.setError("Please enter Franchise code");
+                    binding.txtFrenciseCode.setFocusableInTouchMode(true);
+                    binding.txtFrenciseCode.requestFocus();
+                return false;
+            }else {
+                    binding.txtFrenciseCode.setError(null);
+                }
+
+            }
+
+
             return true;
         }
 
@@ -355,8 +371,8 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
             params.put("email", email);
             params.put("gender", gender);
             params.put("phone", phone);
+            params.put("franchise_code", franciseCode);
             params.put("role", Utils.role_user);
-           // params.put("password", password);
             params.put("profilecreatedby", profilecreatedby);
             Log.e("params", String.valueOf(params));
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, registerurl, new JSONObject(params),
