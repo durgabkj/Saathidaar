@@ -120,10 +120,10 @@ public class UpgradeFragment extends Fragment {
         b.btnPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (layoutManager.findLastCompletelyVisibleItemPosition() < (adapter.getItemCount() - 1)) {
-//                    layoutManager.scrollToPosition(layoutManager.findLastCompletelyVisibleItemPosition() + 1);
-                    b.rvUpgrade.smoothScrollToPosition(0);
-               // }
+                if (layoutManager.findLastCompletelyVisibleItemPosition() < (adapter.getItemCount() +1)) {
+                    layoutManager.scrollToPosition(layoutManager.findLastCompletelyVisibleItemPosition() - 1);
+                   // b.rvUpgrade.smoothScrollToPosition(0);
+                }
             }
         });
     }

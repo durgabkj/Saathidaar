@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -52,6 +53,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -249,6 +251,7 @@ public class HoroscopeFragment extends Fragment {
             b.acvMinutes.setText(model.minutes);
             b.actvampm.setText(model.time);
             b.actvapprox.setText(model.time_status);
+            b.etHoroscopeBirthDOB.setText(model.date_of_birth);
 
             if (model.manglik != null && model.manglik.equalsIgnoreCase("Yes")) {
                 b.radioButton1.setChecked(true);
@@ -304,10 +307,24 @@ public class HoroscopeFragment extends Fragment {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH,month);
                 myCalendar.set(Calendar.DAY_OF_MONTH,day);
+                Calendar minAdultAge = new GregorianCalendar();
+                minAdultAge.add(Calendar.YEAR, -18);
+                minAdultAge.add(Calendar.YEAR, -18);
+                SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy");
+                fmt.setCalendar(myCalendar);
+                String dateFormatted = fmt.format(myCalendar.getTime());
+
+                if (minAdultAge.before(myCalendar)) {
+                    Toast.makeText(context, "Please Select valid date", Toast.LENGTH_LONG).show();
+                } else {
+                  datePickerDialog.setText(dateFormatted);
+                }
                 updateLabel();
             }
 
         };
+
+
 
         b.etHoroscopeBirthDOB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -429,12 +446,12 @@ public class HoroscopeFragment extends Fragment {
         params.put("minutes", minutes);
         params.put("manglik", manglik);
         Log.e("params", String.valueOf(params));
-      //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url + sessionManager.getMemberId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                       // progressDialog.dismiss();
+                        progressDialog.dismiss();
                         Log.e("response", String.valueOf((response)));
                         try {
                             if (response != null) {
@@ -460,7 +477,7 @@ public class HoroscopeFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                      //  progressDialog.dismiss();
+                        progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error response", String.valueOf(error));
                         }

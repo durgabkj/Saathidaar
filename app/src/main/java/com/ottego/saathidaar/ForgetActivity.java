@@ -1,13 +1,21 @@
 package com.ottego.saathidaar;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -33,6 +41,8 @@ public class ForgetActivity extends AppCompatActivity {
     String phone;
     String otp;
 
+    @SuppressLint("ResourceAsColor")
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,11 +52,43 @@ public class ForgetActivity extends AppCompatActivity {
         sessionManager = new SessionManager(context);
         b.etForgetPhone.setText(sessionManager.getPhone1());
 
+
+        SpannableStringBuilder builder = new SpannableStringBuilder();
+
+        SpannableString str1= new SpannableString("OTP will be sent to E-mail ID.\nIncase of any issue in Password Reset drop a mail on ");
+        str1.setSpan(new ForegroundColorSpan(Color.BLACK), 0, str1.length(), 0);
+        builder.append(str1);
+
+        SpannableString str2= new SpannableString("admin@saathidaar.com");
+        str2.setSpan(new ForegroundColorSpan(Color.BLUE), 0, str2.length(), 0);
+        builder.append(str2);
+
+
+        b.tvEnterPhoneToForget.setText( builder, TextView.BufferType.SPANNABLE);
+
         listener();
 
     }
 
     private void listener() {
+
+
+        b.tvEnterPhoneToForget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("message/rfc822");
+                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"admin@saathidaar.com"});
+              //  i.putExtra(Intent.EXTRA_SUBJECT, "Subject:-");
+//                    i.putExtra(Intent.EXTRA_TEXT   , "body of email");
+                try {
+                    startActivity(Intent.createChooser(i, "Send mail..."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(ForgetActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
         b.forgetPass.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

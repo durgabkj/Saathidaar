@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:text="1 Month"
                 android:layout_marginStart="10dp"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/pt_serif_bold"
                 android:textStyle="bold"
                 android:textAllCaps="true"/>
         </LinearLayout>
@@ -105,7 +105,7 @@
             android:layout_gravity="center"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="15dp"
+            android:textSize="14dp"
             android:layout_marginTop="10dp"
             android:textAllCaps="true"/>
 

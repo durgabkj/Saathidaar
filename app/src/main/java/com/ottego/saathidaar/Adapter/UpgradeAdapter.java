@@ -72,7 +72,7 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
 
         if(item.plan_name.equalsIgnoreCase("free"))
         {
-            holder.btnDashboard.setVisibility(View.GONE);
+            holder.btnDashboard.setVisibility(View.INVISIBLE);
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
