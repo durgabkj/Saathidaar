@@ -389,7 +389,7 @@ if (memberPreferenceModel != null) {
                 Utils.sentRequest(context, mParam1);
                 b.ivDetailsMatchConnect.setVisibility(View.GONE);
                 b.ivDetailsMatchConnected.setVisibility(View.VISIBLE);
-                Toast.makeText(context, "Now,you connected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Request Sent To "+model.first_name, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -513,10 +513,10 @@ if (memberPreferenceModel != null) {
         if (model != null) {
             b.tvNewMatchName.setText(Utils.nullToBlank((model.first_name)) + " " +Utils.nullToBlank(model.last_name).charAt(0));
 
-            if (model.age.equalsIgnoreCase("") && model.age.equalsIgnoreCase(null)) {
-
-            } else {
+            if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
                 b.tvNewMatchAge.setText(Utils.nullToBlank(model.age) + " " + "yrs");
+            } else {
+                b.tvNewMatchAge.setText(" Age-Not Specify");
             }
 
             b.tvNewMatchHeight.setText(Utils.nullToBlank(model.height));
@@ -526,13 +526,24 @@ if (memberPreferenceModel != null) {
             b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
             b.tvNameUserFamilyDetailsHeading.setText("About " + " Family");
             b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails));
-            b.tvCreatedBy.setText("Profile CreateBy" + " " + Utils.nullToBlank(model.profilecreatedby));
+            b.tvCreatedBy.setText("Profile Create by" + " " + Utils.nullToBlank(model.profilecreatedby));
             b.tvProfileID.setText("Profile ID" + " " + Utils.nullToBlank(model.profile_id));
-            b.tvDetailAge.setText(Utils.nullToBlank(model.age) + " yrs old");
+            if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
+                b.tvDetailAge.setText(Utils.nullToBlank(model.age) + " yrs old");
+            } else {
+                b.tvDetailAge.setText(" Age-Not Specify");
+            }
             b.tvDetailHeight.setText("Height - " + Utils.nullToBlank(model.height));
 
-            b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
+            if (!model.date_of_birth.equalsIgnoreCase("") && !model.date_of_birth.equalsIgnoreCase(null) && !model.date_of_birth.isEmpty() ) {
+
+                b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
+            } else {
+                b.tvDetailDob.setText("DOB-Not Specify");
+            }
             b.tvDetailMaritalS.setText(Utils.nullToBlank(model.marital_status));
+
+
             b.tvDetailLiveIn.setText(Utils.nullToBlank(model.city) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.country_name));
             b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + " " +Utils.nullToBlank(model.mother_tounge) );
             b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + " " + Utils.nullToBlank(model.sub_caste_name));
@@ -636,9 +647,10 @@ if (memberPreferenceModel != null) {
             {
                 b.ivDetailsMatchConnected.setVisibility(View.VISIBLE);
                 b.ivDetailsMatchConnect.setVisibility(View.GONE);
+                b.tvRequestSent.setVisibility(View.VISIBLE);
+                b.tvRequestSend.setVisibility(View.GONE);
+
             }
-
-
 
         }
 

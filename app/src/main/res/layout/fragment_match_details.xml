@@ -496,10 +496,10 @@
 
                             <TextView
                                 android:id="@+id/tvCreatedBy"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/italic"
-                                android:textSize="12dp"
+                                android:textSize="11dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/edt_text_border"
                                 android:padding="5dp" />
@@ -507,10 +507,10 @@
 
                             <TextView
                                 android:id="@+id/tvProfileID"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:textSize="12dp"
+                                android:textSize="11dp"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/italic"
                                 android:background="@drawable/edt_text_border"
@@ -527,9 +527,9 @@
 
                             <TextView
                                 android:id="@+id/tvDetailAge"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp"
+                                android:textSize="12sp"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/italic"
                                 android:background="@drawable/edt_text_border"
@@ -538,11 +538,11 @@
 
                             <TextView
                                 android:id="@+id/tvDetailHeight"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:fontFamily="@font/italic"
-                                android:textSize="13sp"
+                                android:textSize="12sp"
                                 android:layout_weight="1"
                                 android:background="@drawable/edt_text_border"
                                 android:padding="5dp" />
@@ -2980,6 +2980,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvRequestSend"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -2988,6 +2989,24 @@
                     android:padding="6dp"
                     android:shadowColor="#000000"
                     android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="1.6"
+                    android:text="Send Request"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvRequestSent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/italic"
+                    android:padding="6dp"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:visibility="gone"
                     android:shadowDy="2"
                     android:shadowRadius="1.6"
                     android:text="Request Sent"
@@ -3007,7 +3026,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@color/white"
-                        android:padding="6dp"
+                        android:padding="8dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_check_black_24dp" />
                 </androidx.cardview.widget.CardView>

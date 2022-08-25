@@ -284,7 +284,7 @@
                         android:textColor="@color/white"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/button_hover"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
 
 
@@ -297,6 +297,7 @@
                 android:layout_gravity="center"
                 android:background="@color/white"
                 android:elevation="4dp"
+                android:visibility="gone"
                 android:orientation="vertical"
                 android:padding="20dp">
 
@@ -305,6 +306,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/italic"
                     android:gravity="center"
+                    android:visibility="gone"
                     android:text="Why Choose Saathidaar"
                     android:textColor="@color/black"
                     android:textSize="20dp" />
@@ -312,6 +314,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_gravity="center_horizontal">
 
                     <TextView
@@ -423,19 +426,33 @@
                 </RelativeLayout>
             </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:textColor="@color/white"
+                android:text="Success Stories"
+                android:textSize="18sp" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
-                    android:layout_height="200dp">
+                    android:layout_height="200dp"
+                    android:background="@drawable/bg_edit_text"
+                    android:orientation="vertical">
+
 
                     <ViewFlipper
                         android:id="@+id/flipper"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:padding="8dp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </RelativeLayout>
 
@@ -529,21 +546,19 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginStart="0dp"
                             android:text="Call:-"
-                            android:layout_weight="1"
                             android:textAlignment="center"
                             android:gravity="center_horizontal"
                             android:textColor="@color/black"
                             android:textSize="10dp" />
                         <TextView
                             android:id="@+id/tvNumber"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="7030600035"
-                            android:layout_weight="1"
                             android:textAlignment="center"
                            android:gravity="center_horizontal"
                             android:textColor="@color/black"
@@ -552,11 +567,11 @@
 <!--    android:text="7030600035"-->
                         <TextView
                             android:id="@+id/tvLandingCustomerSupportCall"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:drawablePadding="8dp"
-                            android:layout_weight="1"
                             android:textAlignment="center"
+                            android:layout_marginStart="8dp"
                             android:gravity="center_horizontal"
                             android:drawableTint="@color/Green"
                             android:drawableStart="@drawable/ic_baseline_call_24"
@@ -572,54 +587,45 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginStart="0dp"
                             android:text="WhatsApp:-"
-                            android:layout_weight="1"
                             android:textAlignment="center"
                             android:gravity="center_horizontal"
                             android:textColor="@color/black"
                             android:textSize="10dp" />
                         <TextView
                             android:id="@+id/tvNumberWhatsApp"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="7030600035"
-                            android:layout_weight="1"
                             android:textAlignment="center"
                             android:gravity="center_horizontal"
                             android:textColor="@color/black"
                             android:textSize="10dp" />
 
                         <!--    android:text="7030600035"-->
-                        <TextView
-                            android:id="@+id/tvLandingCustomerSupportWhatsAppCall"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="10dp"
-                            android:drawablePadding="8dp"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:gravity="center_horizontal"
-                            android:drawableTint="@color/Green"
-                            android:drawableStart="@drawable/whatsapp1"
-                            android:textColor="@color/black"
-                            android:textSize="10dp" />
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="8dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/whatsapp1"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/llEmail"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="0dp"
                             android:text="Email:-"
-                            android:layout_weight="1"
                             android:textAlignment="center"
                             android:gravity="center_horizontal"
                             android:textColor="@color/black"
@@ -628,12 +634,11 @@
 
                         <TextView
                             android:id="@+id/tvEmail"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
                             android:text="info@saathidaar.com"
                             android:textAlignment="center"
-                            android:layout_weight="1"
 
                             android:gravity="center_horizontal"
                             android:textColor="@color/black"
@@ -641,11 +646,10 @@
 
                         <TextView
                             android:id="@+id/tvLandingCustomerEmail"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:textAlignment="center"
-                            android:layout_weight="1"
                             android:gravity="center_horizontal"
                             android:drawableTint="@color/Red"
                             android:drawableStart="@drawable/ic_baseline_email_24"
@@ -664,6 +668,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -689,6 +694,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <RelativeLayout

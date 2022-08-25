@@ -26,58 +26,7 @@
             android:layout_marginBottom="30dp"
             android:orientation="vertical">
 
-//Search by id
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:background="@drawable/gradient_button">-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    android:layout_marginStart="8dp"-->
-<!--                    android:padding="5dp"-->
-<!--                    android:fontFamily="@font/italic"-->
-<!--                    android:text="Search By Profile ID"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:textSize="16sp" />-->
-<!--            </LinearLayout>-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:orientation="horizontal"-->
-<!--                >-->
-<!--                <EditText-->
-<!--                    android:id="@+id/etProfileSearch"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="@drawable/search_bg"-->
-<!--                    android:padding="5dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:textSize="13sp"-->
-<!--                    android:capitalize="characters"-->
-<!--                    android:drawablePadding="8dp"-->
-<!--                    android:drawableTint="@color/colorPrimary"-->
-<!--                    android:drawableStart="@drawable/ic_baseline_search_24"-->
-<!--                    android:hint=" Ex:-MSD121"-->
-<!--                    />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/tvSearchButton"-->
-<!--                    android:layout_width="50dp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:text="Go"-->
-<!--                    android:visibility="gone"-->
-<!--                    android:background="@drawable/button_bg"-->
-<!--                    android:textAlignment="center"-->
-<!--                    android:gravity="center"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textColor="@color/white"/>-->
-
-<!--            </LinearLayout>-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"

@@ -8,6 +8,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -26,6 +28,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -36,6 +39,7 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.gson.Gson;
 import com.ottego.multipleselectionspinner.MultipleSelection;
+import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.Model.PartnerPreferenceModel;
 
 import org.json.JSONArray;
@@ -54,15 +58,15 @@ public class PartnerPreferenceFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     MultipleSelection tvMultipleCast, tvMultipleReligion, multi_SelectionProfessionArea, multi_SelectionCountry, multi_SelectionState, multi_SelectionMotherTongue, tvMultipleCity, multi_SelectionQualification, multi_SelectionWorkingWith;
-    TextView etFromAgePartnerPreference, etToAgePartnerPreference, tvMultipleMaritalStatus, tvPartnerPreferencesBtn, etIncomePartnerPreference, etProfilePreference, etDietPreference, tvProfileCreated;
-    EditText etfromHeightPartnerPreference, etToHeightPartnerPreference;
+    TextView etFromAgePartnerPreference, tvSearchButton,etToAgePartnerPreference, tvMultipleMaritalStatus, tvPartnerPreferencesBtn, etIncomePartnerPreference, etProfilePreference, etDietPreference, tvProfileCreated;
+    EditText etfromHeightPartnerPreference, etToHeightPartnerPreference,etProfileSearch;
     boolean[] selectedLanguage;
     SessionManager sessionManager;
     ChipGroup cpChild;
     RadioGroup rgManglikType;
     MaterialRadioButton mrbNoManglik, mrbOpenToAll, mrbOnlyManglik, mrbDontNoManglik;
-
-
+    String id;
+    MemberProfileModel data;
     Context context;
     //For MaritalStatus....
     boolean[] selectedMaritalStatus;
@@ -166,6 +170,8 @@ PartnerPreferenceModel model;
         mrbOnlyManglik = view.findViewById(R.id.mrbOnlyManglik);
         mrbNoManglik =view.findViewById(R.id.mrbNoManglik);
         mrbDontNoManglik=view.findViewById(R.id.mrbDontNoManglik);
+        etProfileSearch = view.findViewById(R.id.etProfileSearch);
+        tvSearchButton = view.findViewById(R.id.tvSearchButton);
 
   //tvSelectedItemPreview=view.findViewById(R.id.selectedItemPreview);
 
@@ -526,6 +532,40 @@ PartnerPreferenceModel model;
     }
 
     private void listener() {
+        etProfileSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(etProfileSearch.getText().toString().trim().equalsIgnoreCase(""))
+                {
+                    tvSearchButton.setVisibility(View.GONE);
+                    tvPartnerPreferencesBtn.setVisibility(View.VISIBLE);
+                }else
+                {
+                    tvSearchButton.setVisibility(View.VISIBLE);
+                    tvPartnerPreferencesBtn.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        // search by id
+        tvSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (checkForm()) {
+                    getSearchProfileData();
+                }
+            }
+        });
 
         rgManglikType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -559,6 +599,48 @@ PartnerPreferenceModel model;
             }
         });
     }
+
+    private boolean checkForm() {
+        id=etProfileSearch.getText().toString().trim();
+
+        if (id.isEmpty()) {
+            etProfileSearch.setError("Please enter Email");
+            etProfileSearch.setFocusableInTouchMode(true);
+            etProfileSearch.requestFocus();
+            return false;
+        }  else {
+            etProfileSearch.setError(null);
+        }
+        return true;
+    }
+    public void getSearchProfileData() {
+        String ProfileSearch = "http://103.174.102.195:8080/saathidaar_backend/api/member/get-details-by-member-id/";
+        etProfileSearch.setText(" ");
+        //final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Data Loading...", false, false);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                ProfileSearch + id, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf((response)));
+                // progressDialog.dismiss();
+                Log.e("Search  response", String.valueOf(response));
+                Gson gson = new Gson();
+                if (response!=null) {
+                    data = gson.fromJson(String.valueOf(response), MemberProfileModel.class);
+                    ProfileSearchFragment.newInstance((data.member_id), "").show(((FragmentActivity) context).getSupportFragmentManager(), "Profile_search_fragment");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //  progressDialog.dismiss();
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+    }
+
     public void successDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View layout_dialog = LayoutInflater.from(context).inflate(R.layout.alert_sucess_dialog, null);

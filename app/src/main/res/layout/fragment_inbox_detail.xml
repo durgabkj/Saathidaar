@@ -493,7 +493,7 @@
 
                             <TextView
                                 android:id="@+id/tvCreatedBy"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/italic"
                                 android:textSize="12sp"
@@ -504,7 +504,7 @@
 
                             <TextView
                                 android:id="@+id/tvProfileID"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:fontFamily="@font/italic"
@@ -525,7 +525,7 @@
 
                             <TextView
                                 android:id="@+id/tvDetailAge"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/italic"
                                 android:textSize="12sp"
@@ -536,7 +536,7 @@
 
                             <TextView
                                 android:id="@+id/tvDetailHeight"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/italic"
                                 android:textSize="12sp"

@@ -335,19 +335,11 @@
                             android:textSize="10dp" />
 
                         <!--    android:text="7030600035"-->
-                        <TextView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="10dp"
-                            android:drawablePadding="8dp"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:gravity="center_horizontal"
-                            android:drawableTint="@color/Green"
-                            android:drawableStart="@drawable/whatsapp1"
-                            android:textColor="@color/black"
-                            android:textSize="10dp" />
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/whatsapp1"/>
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/llEmailPrivacy"

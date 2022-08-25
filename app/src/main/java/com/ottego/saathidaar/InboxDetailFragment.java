@@ -500,10 +500,10 @@ public class InboxDetailFragment extends Fragment {
         if (model != null) {
             b.tvNewMatchName.setText(Utils.nullToBlank(model.first_name) + " " + Utils.nullToBlank(model.last_name).charAt(0));
 
-            if (model.age.equalsIgnoreCase("") && model.age.equalsIgnoreCase(null)) {
-
-            } else {
+            if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
                 b.tvNewMatchAge.setText(Utils.nullToBlank(model.age) + " " + "yrs");
+            } else {
+               b.tvNewMatchAge.setText("Not Specify");
             }
 
             b.tvNewMatchHeight.setText(Utils.nullToBlank(model.height));
@@ -513,14 +513,31 @@ public class InboxDetailFragment extends Fragment {
             b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
             b.tvNameUserFamilyDetails.setText("About " + " Family");
             b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails));
-            b.tvCreatedBy.setText("Profile CreateBy" + " " + Utils.nullToBlank(model.profilecreatedby));
+            b.tvCreatedBy.setText("Profile Create by" + " " + Utils.nullToBlank(model.profilecreatedby));
             b.tvProfileID.setText("Profile ID" + " " + Utils.nullToBlank(model.profile_id));
-            b.tvDetailAge.setText(Utils.nullToBlank(model.age) + " yrs old");
+
+            b.tvNewMatchName.setText(Utils.nullToBlank(model.first_name).toUpperCase() + " " + Utils.nullToBlank(model.last_name).toUpperCase().charAt(0));
+
+            if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
+                b.tvDetailAge.setText(Utils.nullToBlank(model.age) + " yrs old");
+            } else {
+                b.tvDetailAge.setText("Age-Not Specify");
+            }
+
+
+
             b.tvDetailHeight.setText("Height - " + Utils.nullToBlank(model.height));
 
-            b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
+            if (!model.date_of_birth.equalsIgnoreCase("") && !model.date_of_birth.equalsIgnoreCase(null) && !model.date_of_birth.isEmpty() ) {
+
+                b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
+            } else {
+                b.tvDetailDob.setText("Not Specify");
+            }
+
+
             b.tvDetailMaritalS.setText(Utils.nullToBlank(model.marital_status));
-            b.tvDetailLiveIn.setText("Live in" + " " + Utils.nullToBlank(model.city) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.country_name));
+            b.tvDetailLiveIn.setText(Utils.nullToBlank(model.city) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.country_name));
 
             b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + " " + Utils.nullToBlank(model.mother_tounge));
             b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + "  " + Utils.nullToBlank(model.sub_caste_name));
@@ -619,66 +636,4 @@ public class InboxDetailFragment extends Fragment {
         }
         }
 
-
-
-//
-//
-//    private void getLoginMemberData() {
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-//                DashBoardFragment.Profile_url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                // binding.srlRecycleViewPersonalDetails.setRefreshing(false);
-//                Log.e("response", String.valueOf(response));
-//                try {
-//                    String code = response.getString("results");
-//                    if (code.equalsIgnoreCase("1")) {
-//                        Gson gson = new Gson();
-//                        model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
-//                        setDataMember();
-//                    } else {
-//
-//                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                    Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                //  binding.srlRecycleViewPersonalDetails.setRefreshing(false);
-//                error.printStackTrace();
-//            }
-//        });
-//        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-//
-//    }
-//
-//    private void setDataMember() {
-////        Glide.with(context)
-////                .load(Utils.imageUrl + model.profile_photo)
-////                .into(b.profileDetailPic);
-//
-//        if (model.profile_photo != null && !model.profile_photo.isEmpty()) {
-//            Glide.with(context)
-//                    .load(Utils.imageUrl + model.profile_photo)
-//                    .into(b.profileDetailPic);
-//        } else {
-//            if (sessionManager.getKeyGender().equalsIgnoreCase("male")) {
-//                Glide.with(context)
-//                        .load(R.drawable.ic_no_image__male_)
-//                        .into(b.profileDetailPic);
-//
-//            } else {
-//                Glide.with(context)
-//                        .load(R.drawable.ic_no_image__female_)
-//                        .into(b.profileDetailPic);
-//
-//            }
-//        }
-//    }
 }

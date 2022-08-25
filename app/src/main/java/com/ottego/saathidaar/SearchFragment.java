@@ -68,7 +68,7 @@ public class SearchFragment extends Fragment  {
     public String stateUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/state";
     public String cityUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/all/city";
 
-    String id;
+
     ArrayList<String> AgeListSearch = new ArrayList<>();
     ArrayList<String> minListSearch = new ArrayList<>();
     ArrayList<String> maxListSearch = new ArrayList<>();
@@ -93,8 +93,7 @@ public class SearchFragment extends Fragment  {
     String state = "";
     String city = "";
 
-    MemberProfileModel data;
-    public String ProfileSearch = "http://103.174.102.195:8080/saathidaar_backend/api/member/get-details-by-member-id/";
+
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -220,18 +219,6 @@ public class SearchFragment extends Fragment  {
 
     private void listener() {
 
-        // search by id
-//        tvSearchButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (checkForm()) {
-//                    getSearchProfileData();
-//                }
-//            }
-//        });
-
-
-
         etProfileSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -327,19 +314,6 @@ public class SearchFragment extends Fragment  {
 
     }
 
-    private boolean checkForm() {
-    id=etProfileSearch.getText().toString().trim();
-
-        if (id.isEmpty()) {
-            etProfileSearch.setError("Please enter Email");
-            etProfileSearch.setFocusableInTouchMode(true);
-            etProfileSearch.requestFocus();
-            return false;
-        }  else {
-            etProfileSearch.setError(null);
-        }
-        return true;
-    }
 
     private void Height() {
         final int[] checkedItem = {-1};
@@ -1066,32 +1040,7 @@ public class SearchFragment extends Fragment  {
 
 
 
-    public void getSearchProfileData() {
-        etProfileSearch.setText(" ");
-        //final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Data Loading...", false, false);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                ProfileSearch + id, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf((response)));
-                // progressDialog.dismiss();
-                Log.e("Search  response", String.valueOf(response));
-                Gson gson = new Gson();
-                if (response!=null) {
-                    data = gson.fromJson(String.valueOf(response), MemberProfileModel.class);
-                    ProfileSearchFragment.newInstance((data.member_id), "").show(((FragmentActivity) context).getSupportFragmentManager(), "Profile_search_fragment");
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //  progressDialog.dismiss();
-                error.printStackTrace();
-            }
-        });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-    }
+
 
 
 

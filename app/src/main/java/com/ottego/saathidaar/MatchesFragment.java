@@ -139,10 +139,10 @@ public class MatchesFragment extends Fragment {
                         fragment= ShortListFragment.newInstance("", "");
                         break;
                     }
-                    case R.id.chipSearch:{
-                        fragment= SearchFragment.newInstance("", "");
-                        break;
-                    }
+//                    case R.id.chipSearch:{
+//                        fragment= SearchFragment.newInstance("", "");
+//                        break;
+//                    }
                     case R.id.chipRecentView:{
                         fragment= RecentViewFragment.newInstance("", "");
                         break;

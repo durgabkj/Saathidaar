@@ -58,6 +58,7 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
         }
 
 
+        @SuppressLint("SetTextI18n")
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
             NewMatchesModel item = list.get(position);
@@ -65,7 +66,15 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
             sessionManager=new SessionManager(context);
 
             holder.tvBlockName.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
-            holder.tvBlockAge.setText(Utils.nullToBlank(item.mage+" yrs"));
+
+            if ((!item.mage.isEmpty()) && (item.mage!=null) && (!item.mage.equalsIgnoreCase(""))){
+
+                holder.tvBlockAge.setText(Utils.nullToBlank(item.mage)+" yrs");
+            } else {
+                holder.tvBlockAge.setText("Not Specify");
+            }
+
+
             holder.tvNewBlockHeight.setText(Utils.nullToBlank(item.religion));
             holder.tvBlockCity.setText(Utils.nullToBlank(item.maritalStatus));
             holder.tvBlockWorkAs.setText(Utils.nullToBlank(item.income));

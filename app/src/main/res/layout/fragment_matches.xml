@@ -92,18 +92,18 @@
                     android:padding="12dp"
                     android:text="Shortlisted" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipSearch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    app:checkedIconEnabled="false"
-                    android:checkable="true"
-                    android:elevation="10dp"
-                    android:translationZ="10dp"
-                    style="@style/CustomChipChoiceStyle"
-                    android:padding="12dp"
-                    android:text="Search" />
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/chipSearch"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="4dp"-->
+<!--                    app:checkedIconEnabled="false"-->
+<!--                    android:checkable="true"-->
+<!--                    android:elevation="10dp"-->
+<!--                    android:translationZ="10dp"-->
+<!--                    style="@style/CustomChipChoiceStyle"-->
+<!--                    android:padding="12dp"-->
+<!--                    android:text="Search" />-->
 
                 <!--        <com.google.android.material.chip.Chip-->
                 <!--            android:id="@+id/chip7"-->

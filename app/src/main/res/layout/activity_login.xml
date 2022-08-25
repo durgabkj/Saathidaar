@@ -39,7 +39,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="420dp"
+            android:layout_height="wrap_content"
             android:elevation="20dp"
             android:translationZ="30dp"
             app:cardBackgroundColor="@color/white"
@@ -52,54 +52,108 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:orientation="vertical"
                 android:padding="10dp"
 
                 >
 
-                <EditText
-                    android:id="@+id/etLoginUserName"
-                    style="@style/PersonalDataTextView"
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
+                <!--                <EditText-->
+                <!--              -->
+                <!--                    style="@style/PersonalDataTextView"-->
+                <!--                    android:layout_width="300dp"-->
+                <!--                    android:layout_height="50dp"-->
+                <!--                    android:layout_gravity="center"-->
+                <!--                    android:layout_marginTop="30dp"-->
+                <!--                    android:textSize="14dp"-->
+                <!--                    android:textColorHint="@color/colorPrimary"-->
+                <!--                    android:background="@drawable/edt_text_border"-->
+                <!--                    android:drawableStart="@drawable/ic_baseline_email_24"-->
+                <!--                    android:fontFamily="@font/italic"-->
+                <!--                    android:hint="User name"-->
+                <!--                    android:inputType="text" />-->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
-                    android:textSize="14dp"
-                    android:textColorHint="@color/colorPrimary"
-                    android:background="@drawable/edt_text_border"
-                    android:drawableStart="@drawable/ic_baseline_email_24"
-                    android:fontFamily="@font/italic"
+                    android:layout_marginTop="40dp"
                     android:hint="User name"
-                    android:inputType="text" />
+                    android:outlineAmbientShadowColor="@color/colorPrimary"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="1dp"
+                    app:hintTextColor="@color/colorPrimary"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.LargeComponent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etLoginUserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_email"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/italic" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="Password"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="1dp"
                     app:endIconMode="password_toggle"
                     app:endIconTint="@color/black"
-                    app:hintEnabled="false"
-                    app:startIconDrawable="@drawable/ic_baseline_key_24"
-                    app:startIconTint="@color/black">
+                    app:hintTextColor="@color/colorPrimary"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.LargeComponent">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etLoginPassword"
-                        android:layout_width="300dp"
-                        android:layout_height="50dp"
-                        android:textColorHint="@color/colorPrimary"
-                        android:layout_gravity="center"
-                        android:background="@drawable/edt_text_border"
-                        android:hint="Passwords"
-                        android:textSize="13dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:drawableStart="@drawable/ic_baseline_key_24"
                         android:fontFamily="@font/italic"
-                        android:cursorVisible="true"
-                        android:inputType="textPassword"
-                        android:textColor="@color/black" />
+                        android:drawablePadding="8dp"
+                        android:drawableTint="@color/black" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--                <com.google.android.material.textfield.TextInputLayout-->
+                <!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_gravity="center"-->
+                <!--                    android:layout_marginTop="10dp"-->
+                <!--                    app:endIconMode="password_toggle"-->
+                <!--                    app:endIconTint="@color/black"-->
+                <!--                    app:hintEnabled="false"-->
+                <!--                    app:startIconDrawable="@drawable/ic_baseline_key_24"-->
+                <!--                    app:startIconTint="@color/black">-->
+
+                <!--                    <com.google.android.material.textfield.TextInputEditText-->
+                <!--                        android:id="@+id/etLoginPassword"-->
+                <!--                        android:layout_width="300dp"-->
+                <!--                        android:layout_height="50dp"-->
+                <!--                        android:textColorHint="@color/colorPrimary"-->
+                <!--                        android:layout_gravity="center"-->
+                <!--                        android:background="@drawable/edt_text_border"-->
+                <!--                        android:hint="Passwords"-->
+                <!--                        android:textSize="13dp"-->
+                <!--                        android:fontFamily="@font/italic"-->
+                <!--                        android:cursorVisible="true"-->
+                <!--                        android:inputType="textPassword"-->
+                <!--                        android:textColor="@color/black" />-->
+
+                <!--                </com.google.android.material.textfield.TextInputLayout>-->
 
                 <!--                <EditText-->
                 <!--                    android:id="@+id/etLoginPassword"-->
