@@ -12,7 +12,7 @@
         android:layout_gravity="center"
         android:padding="5dp"
         android:text="My Account"
-        android:fontFamily="@font/italic"
+        android:fontFamily="@font/pt_serif_bold"
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/colorPrimary"
@@ -63,7 +63,15 @@
 <!--                android:fontFamily="@font/italic"/>-->
 
 
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Change Password"
+    android:textColor="@color/colorPrimary"
+    android:textSize="16sp"
+    android:layout_gravity="center"
+    android:fontFamily="@font/pt_serif_bold"
+    android:layout_marginTop="20dp"/>
 
             <LinearLayout
                 android:id="@+id/llShowpass"
@@ -142,7 +150,7 @@
                         android:padding="5dp"
                         android:text="Save"
                         android:gravity="center"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/nunito_semi_bold"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold"
@@ -200,16 +208,30 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvCancelPass"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:text="Cancel"-->
+<!--                        android:gravity="center"-->
+<!--                        android:fontFamily="@font/italic"-->
+<!--                        android:textAlignment="center"-->
+<!--                        android:textColor="#00BFA5"-->
+<!--                        android:textStyle="bold" />-->
+
+
                     <TextView
                         android:id="@+id/tvCancelPass"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:text="cancel"
-                        android:gravity="center"
-                        android:fontFamily="@font/italic"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/bg_gradient"
+                        android:fontFamily="@font/pt_serif_bold"
+                        android:padding="10dp"
+                        android:text="Cancel"
                         android:textAlignment="center"
-                        android:textColor="#00BFA5"
+                        android:textColor="@color/black"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -260,8 +282,9 @@
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:layout_marginStart="20dp"
                     android:orientation="vertical">
 
@@ -278,7 +301,6 @@
                             android:layout_marginStart="0dp"
                             android:text="Call:-"
                             android:textAlignment="center"
-                            android:gravity="center_horizontal"
                             android:textColor="@color/black"
                             android:textSize="10dp" />
                         <TextView
@@ -300,47 +322,14 @@
                             android:layout_marginStart="10dp"
                             android:drawablePadding="8dp"
                             android:textAlignment="center"
+                            android:text="                "
                             android:gravity="center_horizontal"
                             android:drawableTint="@color/Green"
                             android:drawableStart="@drawable/ic_baseline_call_24"
                             android:textColor="@color/black"
                             android:textSize="10dp" />
                     </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/llWhatsAppPrivacy"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="0dp"
-                            android:text="WhatsApp:-"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:gravity="center_horizontal"
-                            android:textColor="@color/black"
-                            android:textSize="10dp" />
-                        <TextView
-                            android:id="@+id/tvNumberWhatsApp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="7030600035"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:gravity="center_horizontal"
-                            android:textColor="@color/black"
-                            android:textSize="10dp" />
-
-                        <!--    android:text="7030600035"-->
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/whatsapp1"/>
-                    </LinearLayout>
                     <LinearLayout
                         android:id="@+id/llEmailPrivacy"
                         android:layout_width="wrap_content"
@@ -380,6 +369,42 @@
                             android:drawableStart="@drawable/ic_baseline_email_24"
                             android:drawablePadding="8dp" />
 
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llWhatsAppPrivacy"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="WhatsApp:-     "
+                            android:textAlignment="center"
+                            android:gravity="center_horizontal"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+                        <TextView
+                            android:id="@+id/tvNumberWhatsApp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="7030600035"
+                            android:layout_marginStart="10dp"
+                            android:textAlignment="center"
+                            android:gravity="center_horizontal"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+
+                        <!--    android:text="7030600035"-->
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="10dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/whatsapp1"/>
                     </LinearLayout>
                 </LinearLayout>
 

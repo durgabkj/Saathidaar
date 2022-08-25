@@ -199,6 +199,8 @@ public class MatchesFragment extends Fragment {
             b.chipRecentView.setText("Recent Visitors " + "(" + model.data.get(0).recent_visitors_count + ")");
 
             b.chipShortListed.setText("ShortListed " + "(" + model.data.get(0).shortlists_count + ")");
+            b.chipPremiumMatch.setText("Premium Matches " + "(" + model.data.get(0).premium_matches_count + ")");
+            b.chipRecentlyView.setText("Recently Viewed " + "(" + model.data.get(0).recent_view_to + ")");
         }
     }
 

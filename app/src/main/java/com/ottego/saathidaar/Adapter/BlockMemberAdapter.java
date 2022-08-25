@@ -67,12 +67,14 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
 
             holder.tvBlockName.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
 
-            if ((!item.mage.isEmpty()) && (item.mage!=null) && (!item.mage.equalsIgnoreCase(""))){
-
-                holder.tvBlockAge.setText(Utils.nullToBlank(item.mage)+" yrs");
-            } else {
-                holder.tvBlockAge.setText("Not Specify");
+            if (item.mage.equalsIgnoreCase("null") && !item.mage.equalsIgnoreCase("")) {
+                holder.tvBlockAge.setText("Age-Not Specify");
+            }else
+            {
+                holder.tvBlockAge.setText(Utils.nullToBlank(item.mage) + " yrs");
             }
+
+
 
 
             holder.tvNewBlockHeight.setText(Utils.nullToBlank(item.religion));

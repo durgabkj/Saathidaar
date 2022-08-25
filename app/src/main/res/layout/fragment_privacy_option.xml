@@ -13,11 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/italic"
         android:textColor="@color/colorPrimary"
         android:text="Privacy Options"
-        android:textSize="16dp"
-        android:textStyle="bold" />
+        android:fontFamily="@font/pt_serif_bold"
+        android:textStyle="bold"
+        android:textSize="16sp" />
 
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

@@ -142,7 +142,9 @@ FragmentBlockMemberBinding b;
 
     @Override
     public void onSuccess(int position) {
+        viewModel.getDataCount();
         inboxViewModel.getDataCount();
+
         getData();
     }
 

@@ -14,7 +14,7 @@
         android:padding="8dp"
         android:fontFamily="@font/pt_serif_bold"
         android:textStyle="bold"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textColor="@color/colorPrimary"
         android:text="Profile Setting"
         android:textAlignment="center" />
@@ -49,7 +49,7 @@
                     android:padding="5dp"
                     android:textAlignment="center"
                     android:gravity="center"
-                    android:text="Hide/Un-Hide Profile"
+                    android:text="Hide/UnHide Profile"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
@@ -139,11 +139,10 @@
                         android:id="@+id/tvSaveHideUnhide"
                         android:layout_width="100dp"
                         android:layout_height="30dp"
-
                         android:background="@drawable/gradient_button"
                         android:fontFamily="@font/pt_serif_bold"
                         android:gravity="center"
-                        android:text="save"
+                        android:text="Save"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="17sp"
@@ -156,7 +155,7 @@
                         android:layout_width="100dp"
                         android:layout_height="30dp"
                         android:layout_marginBottom="20dp"
-                        android:background="@color/gray_dark"
+                        android:background="@drawable/bg_gradient"
                         android:fontFamily="@font/pt_serif_bold"
                         android:gravity="center"
                         android:text="Cancel"
@@ -249,7 +248,7 @@
                     android:background="@drawable/gradient_button"
                     android:fontFamily="@font/pt_serif_bold"
                     android:gravity="center"
-                    android:text="save"
+                    android:text="Save"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="17sp"

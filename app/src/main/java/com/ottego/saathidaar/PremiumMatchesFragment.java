@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentPremiumMatchesBinding;
+import com.ottego.saathidaar.viewmodel.InboxViewModel;
 import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONException;
@@ -34,6 +35,7 @@ public class PremiumMatchesFragment extends Fragment implements ApiListener {
     SessionManager sessionManager;
     DataModelNewMatches data;
     MatchViewModel viewModel;
+    InboxViewModel inboxViewModel;
     public String PremiumMatchUrl = "http://103.174.102.195:8080/saathidaar_backend/api/new/premium/matches/dashboard/";
 
     AlertDialog dialog;
@@ -79,6 +81,7 @@ public class PremiumMatchesFragment extends Fragment implements ApiListener {
         context = getContext();
         sessionManager = new SessionManager(context);
         viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
+        inboxViewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
         getData();
         listener();
         return b.getRoot();
@@ -148,6 +151,7 @@ public class PremiumMatchesFragment extends Fragment implements ApiListener {
     public void onSuccess(int position) {
         getData();
         viewModel.getDataCount();
+        inboxViewModel.getDataCount();
     }
 
     @Override

@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentTodayMatchBinding;
+import com.ottego.saathidaar.viewmodel.InboxViewModel;
 import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONException;
@@ -36,6 +37,7 @@ public class TodayMatchFragment extends Fragment implements ApiListener {
     DataModelNewMatches data;
     FragmentTodayMatchBinding b;
     MatchViewModel viewModel;
+    InboxViewModel inboxViewModel;
     int count=0;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,6 +80,7 @@ public class TodayMatchFragment extends Fragment implements ApiListener {
         context = getContext();
 sessionManager=new SessionManager(context);
         viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
+        inboxViewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
         getData();
         listener();
         return b.getRoot();
@@ -161,6 +164,7 @@ sessionManager=new SessionManager(context);
     public void onSuccess(int position) {
         getData();
         viewModel.getDataCount();
+        inboxViewModel.getDataCount();
     }
 
     @Override

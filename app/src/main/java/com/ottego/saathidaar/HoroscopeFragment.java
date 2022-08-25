@@ -1,18 +1,19 @@
 package com.ottego.saathidaar;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,9 @@ import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -32,6 +36,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
 import com.ottego.multipleselectionspinner.MultipleSelection;
 import com.ottego.saathidaar.Model.HoroscopeModel;
@@ -41,6 +48,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -51,6 +59,7 @@ import java.util.Map;
 
 
 public class HoroscopeFragment extends Fragment {
+    private static final String TAG = "horoscope";
     public String countryUrl = Utils.location + "country";
     ArrayList<String> countryList = new ArrayList<>();
     ArrayAdapter<String> countryAdapter;
@@ -63,6 +72,8 @@ public class HoroscopeFragment extends Fragment {
     String hour;
     String minutes;
     String time;
+
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     ProgressBar progressBar;
     String DOB;
     String timeStatus;
@@ -72,6 +83,11 @@ public class HoroscopeFragment extends Fragment {
     public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
     final Calendar myCalendar= Calendar.getInstance();
 
+    String location="patna";
+    String inputLine = "";
+    String result = "";
+   // location=location.replaceAll(" ", "%20");
+    String myUrl="http://maps.google.com/maps/geo?q="+location+"&output=csv";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -115,8 +131,109 @@ public class HoroscopeFragment extends Fragment {
         setDropDownData();
         listener();
         getCountry();
+       // checkPermissions();
         getData();
+
         return b.getRoot();
+    }
+
+    @SuppressLint("ResourceAsColor")
+    public boolean checkLocationPermission() {
+        if (ContextCompat.checkSelfPermission(context,
+                Manifest.permission. ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),
+                    Manifest.permission. ACCESS_FINE_LOCATION)) {
+
+                AlertDialog.Builder builder
+                        = new AlertDialog
+                        .Builder(context);
+                builder.setTitle(R.string.title_location_permission);
+                builder.setMessage(R.string.text_location_permission);
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //Prompt the user once explanation has been shown
+                                ActivityCompat.requestPermissions(requireActivity(),
+                                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                                        REQUEST_CODE_ASK_PERMISSIONS);
+                            }
+                        });
+                AlertDialog alertDialog = builder.create();
+//                        .create();
+                alertDialog.show();
+                Button buttonbackground1 = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+                buttonbackground1.setTextColor(R.color.colorPrimary);
+
+
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(requireActivity(),
+                        new String[]{Manifest.permission. ACCESS_FINE_LOCATION},
+                        REQUEST_CODE_ASK_PERMISSIONS);
+            }
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_ASK_PERMISSIONS: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // location-related task you need to do.
+                    if (ContextCompat.checkSelfPermission(context,
+                            Manifest.permission. ACCESS_FINE_LOCATION)
+                            == PackageManager.PERMISSION_GRANTED) {
+
+
+                        // do your stuff here
+                    }
+
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+
+                }
+                return;
+            }
+
+        }
+    }
+
+
+
+
+    public  LatLng getCityLatitude(Context context, String city) {
+        Geocoder geocoder = new Geocoder(context,context.getResources().getConfiguration().locale);
+        List<Address> addresses = null;
+        LatLng latLng = null;
+        try {
+            addresses = geocoder.getFromLocationName(city, 1);
+            Address address = addresses.get(0);
+            latLng = new LatLng(address.getLatitude(), address.getLongitude());
+            Log.e("jsds","dev"+address.getLatitude());
+            DecimalFormat df = new DecimalFormat("###.#####");
+            String formatted = df.format((address.getLatitude()));
+            String formatted1 = df.format((address.getLongitude()));
+            b.tvCoordinate.setText(String.valueOf("Latitude "+formatted)+"° N");
+            b.tvCoordinateLong.setText(String.valueOf("Longitude "+formatted1)+"° E");
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return latLng;
+
     }
 
     public void hideKeyboard(View view) {
@@ -261,8 +378,6 @@ public class HoroscopeFragment extends Fragment {
 
 
     }
-
-
 
     private void updateLabel() {
         String myFormat="MM/dd/yyyy";
@@ -674,8 +789,28 @@ public class HoroscopeFragment extends Fragment {
                 b.tvTimeofBirth.setText(model.hours +":"+model.minutes + " "+model.time + ", "+model.time_status);
             }
             b.tvManglik.setText(model.manglik);
+
+
+            if (checkLocationPermission()) {
+                if (ContextCompat.checkSelfPermission(context,
+                        Manifest.permission. ACCESS_FINE_LOCATION)
+                        == PackageManager.PERMISSION_GRANTED) {
+                    // do your stuff here
+                    getCityLatitude(context,model.city_of_birth);
+                }
+            }
         }
     }
 
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
     }
+
+    }
+
+
 

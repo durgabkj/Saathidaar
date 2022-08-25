@@ -10,10 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/colorPrimary"
-        android:fontFamily="@font/italic"
+        android:fontFamily="@font/pt_serif_bold"
+
         android:text="My Alerts Manager"
         android:textAlignment="center" />
 
@@ -421,14 +422,14 @@
 
             <TextView
                 android:id="@+id/tvSaveAlert"
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/button_hover"
                 android:fontFamily="@font/pt_serif_bold"
                 android:gravity="center"
-                android:text="save"
+                android:text="Save"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="17sp"

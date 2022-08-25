@@ -104,5 +104,27 @@ public class UpgradeFragment extends Fragment {
         UpgradeAdapter adapter = new UpgradeAdapter(context, data.data);
         b.rvUpgrade.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+
+
+        b.btnDashboardNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (layoutManager.findLastCompletelyVisibleItemPosition() < (adapter.getItemCount() - 1)) {
+                    layoutManager.scrollToPosition(layoutManager.findLastCompletelyVisibleItemPosition() + 1);
+                }
+            }
+        });
+
+
+        b.btnPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                if (layoutManager.findLastCompletelyVisibleItemPosition() < (adapter.getItemCount() - 1)) {
+//                    layoutManager.scrollToPosition(layoutManager.findLastCompletelyVisibleItemPosition() + 1);
+                    b.rvUpgrade.smoothScrollToPosition(0);
+               // }
+            }
+        });
     }
 }

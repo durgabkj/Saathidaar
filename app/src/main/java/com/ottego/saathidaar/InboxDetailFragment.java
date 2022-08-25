@@ -171,7 +171,7 @@ public class InboxDetailFragment extends Fragment {
     private void setMemberPrefData() {
         if (memberPreferenceModel != null) {
 
-            b.matchPreferenceCount.setText("You Match " + Utils.nullToBlank(memberPreferenceModel.match_count) + "/" + Utils.nullToBlank(memberPreferenceModel.total_preference) + " of " + " " + Utils.nullToBlank(memberPreferenceModel.gender_preference));
+            b.matchPreferenceCount.setText("You Match " + Utils.nullToBlank(memberPreferenceModel.match_count) + "/" + Utils.nullToBlank(memberPreferenceModel.app_total_preference) + " of " + " " + Utils.nullToBlank(memberPreferenceModel.gender_preference));
             b.tvDetailAgeMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_age));
             b.tvDetailHeightMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_height));
             b.tvDetailMaritalStatusMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_marital_status));

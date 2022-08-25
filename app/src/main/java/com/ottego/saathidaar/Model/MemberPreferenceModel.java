@@ -11,7 +11,7 @@ public class MemberPreferenceModel {
     public String partner_age;
     public String partner_height;
     public String partner_qualification;
-    public String total_preference;
+    public String app_total_preference;
     public String partner_city;
     public String premium_status;
     public String partner_country;

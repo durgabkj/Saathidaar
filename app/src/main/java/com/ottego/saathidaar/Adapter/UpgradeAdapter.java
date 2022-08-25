@@ -201,6 +201,19 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
             holder.cvClearFeature7.setVisibility(View.VISIBLE);
         }
 
+
+
+//        holder.btnPrevious.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                int firstVisibleItemIndex = mLayoutManager.findFirstCompletelyVisibleItemPosition();
+//                if (firstVisibleItemIndex > 0) {
+//                    mLayoutManager.smoothScrollToPosition(recyclerView,null,firstVisibleItemIndex-1);
+//                }
+//            }
+//        });
+
+
     }
 
 
@@ -211,7 +224,7 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvCardName, tvPriceUpgrade, tvMonths, tvName, tvPeriod, tvPrice, tvTotal, tvPriceTotal, tvPlanFeature, tvPlanFeature1, tvPlanFeature2, tvPlanFeature3, tvPlanFeature4, tvPlanFeature5, tvPlanFeature6, tvPlanFeature7;
-        TextView btnDashboard;
+        TextView btnDashboard,btnDashboardNext,btnPrevious;
         CardView cvCheckFeature, cvClearFeature, cvCheckFeature1, cvClearFeature1, cvCheckFeature2, cvClearFeature2, cvCheckFeature3, cvClearFeature3, cvCheckFeature4, cvClearFeature4, cvCheckFeature5, cvClearFeature5, cvCheckFeature6, cvClearFeature6, cvCheckFeature7, cvClearFeature7;
 
 
@@ -255,6 +268,10 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
 
             cvCheckFeature7 = itemView.findViewById(R.id.cvCheckFeature7);
             cvClearFeature7 = itemView.findViewById(R.id.cvClearFeature7);
+
+
+            btnDashboardNext = itemView.findViewById(R.id.btnDashboardNext);
+            btnPrevious = itemView.findViewById(R.id.btnPrevious);
 
 
         }

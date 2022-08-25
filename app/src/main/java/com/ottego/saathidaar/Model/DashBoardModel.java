@@ -12,6 +12,8 @@ public class DashBoardModel {
     public  String new_matches_count;
     public  String invitations_count;
     public  String shortlists_count;
+    public  String premium_matches_count;
+    public  String recent_view_to;
 
 
 }

@@ -168,6 +168,51 @@
                             android:hint="Add Details"
                             android:textColorHint="@color/colorPrimary" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/italic"
+                            android:text="Co-ordinate of city"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvCoordinate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/italic"
+                            android:hint="Add Details"
+                            android:textColorHint="@color/colorPrimary" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:visibility="invisible"
+                            android:fontFamily="@font/italic"
+                            android:text="Co-ordinate of city"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvCoordinateLong"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/italic"
+                            android:hint="Add Details"
+                            android:textColorHint="@color/colorPrimary" />
+                    </LinearLayout>
 
 
                     <androidx.cardview.widget.CardView
@@ -204,8 +249,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_margin="10dp"
                 android:visibility="gone"
+                android:layout_margin="10dp"
                 android:elevation="3dp"
                 android:translationZ="10dp">
 
@@ -490,12 +535,13 @@
 
                         <TextView
                             android:id="@+id/btnSaveDetails"
-                            android:layout_width="wrap_content"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:background="@drawable/button_hover"
                             android:padding="10dp"
-                            android:text="Save Details"
+                            android:text="Save"
+                            android:textAlignment="center"
                             android:textColor="@color/white"
                             android:textStyle="bold" />
 
@@ -508,15 +554,28 @@
                             android:fontFamily="@font/italic"
                             android:text="or" />
 
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvCancel"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_margin="5dp"-->
+<!--                            android:fontFamily="@font/italic"-->
+<!--                            android:text="Cancel"-->
+<!--                            android:textColor="@color/teal_700" />-->
+
                         <TextView
                             android:id="@+id/tvCancel"
-                            android:layout_width="wrap_content"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_margin="5dp"
-                            android:fontFamily="@font/italic"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bg_gradient"
+                            android:fontFamily="@font/pt_serif_bold"
+                            android:padding="10dp"
                             android:text="Cancel"
-                            android:textColor="@color/teal_700" />
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                 </LinearLayout>
