@@ -223,7 +223,7 @@ DataModelSmsAlert model;
                         Log.e("response", String.valueOf((response)));
                         try {
                             if (response!=null) {
-                                Toast.makeText(context, "Email-SMS Alert Updated", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Email Alert Updated", Toast.LENGTH_SHORT).show();
 
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();

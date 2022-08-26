@@ -131,12 +131,14 @@ SwipeRefreshLayout srlUserPhoto;
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
 
-                String status = tvAboutUs.getText().toString().trim();
-                if (status.equalsIgnoreCase("")) {
+                int status = tvAboutUs.getText().toString().length();
+                if (status<=50) {
                     tvUserDetailsReadMore.setVisibility(View.GONE);
+                    tvUserDetailsReadLess.setVisibility(View.GONE);
                 }
                 else {
                     tvUserDetailsReadMore.setVisibility(View.VISIBLE);
+                    tvUserDetailsReadLess.setVisibility(View.GONE);
                 }
 
 
@@ -162,7 +164,7 @@ SwipeRefreshLayout srlUserPhoto;
         tvUserDetailsReadLess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvAboutUs.setMaxLines(6);
+                tvAboutUs.setMaxLines(2);
                 tvUserDetailsReadMore.setVisibility(View.VISIBLE);
                 tvUserDetailsReadLess.setVisibility(View.GONE);
             }

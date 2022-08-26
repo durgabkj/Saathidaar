@@ -87,13 +87,7 @@
 
 
                     </FrameLayout>
-                    <LinearLayout
-                        android:id="@+id/llNo_imageFemale"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="gone"
-                        android:background="@drawable/line_gradient"
-                        android:orientation="horizontal" />
+
 
                     <LinearLayout
                         android:id="@+id/llPremiumMsgInboxDetails"
@@ -158,7 +152,6 @@
                             android:id="@+id/llShowMemberImageInbox"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:visibility="gone"
                             android:layout_margin="8dp"
                             android:orientation="horizontal"
                             >
@@ -187,7 +180,6 @@
                                     android:shadowDx="1.5"
                                     android:shadowDy="1.3"
                                     android:shadowRadius="1.6"
-                                    android:text="2"
                                     android:textColor="@color/white"
                                     android:textSize="14sp" />
 
@@ -362,7 +354,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:maxLines="4"
+                            android:maxLines="2"
                             android:fontFamily="@font/italic"
                             android:textColor="@color/black" />
 
@@ -426,7 +418,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:maxLines="4"
+                            android:maxLines="2"
                             android:fontFamily="@font/italic"
                             android:textColor="@color/black" />
 

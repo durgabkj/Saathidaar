@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -152,7 +154,13 @@ public class DashBoardFragment extends Fragment {
         tvDashBoardUserName.setText(sessionManager.getName());
         tvDashBoardUserId.setText("[" + sessionManager.getKey_profile_id() + "]");
         tvDashBoardUserAccountType.setText(sessionManager.getKEY_PROFILE_CreatedBy());
-        tvDashBoardfranchiseCode.setText(Utils.nullToBlank("["+sessionManager.getKey_franchise())+"]");
+
+        if(sessionManager.getKEY_PROFILE_CreatedBy().equalsIgnoreCase("franchise"))
+        {
+            tvDashBoardfranchiseCode.setText(Utils.nullToBlank("["+sessionManager.getKey_franchise())+"]");
+        }
+
+
     }
 
     private void listener() {
@@ -225,11 +233,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/help-mobile"));
+                intent.setData(Uri.parse("http://103.174.102.195:8080/saathidaar/#/help-mobile"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/help-mobile"));
+                    intent.setData(Uri.parse("http://103.174.102.195:8080/saathidaar/#/help-mobile"));
                 }
             }
         });
@@ -239,11 +247,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/privacy-policy"));
+                intent.setData(Uri.parse("http://103.174.102.195:8080/saathidaar/#/privacy-policy"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/privacy-policy"));
+                    intent.setData(Uri.parse("http://103.174.102.195:8080/saathidaar/#/privacy-policy"));
                 }
             }
         });
@@ -253,11 +261,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/term-mobile"));
+                intent.setData(Uri.parse("http://103.174.102.195:8080/saathidaar/#/term-mobile"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/term-mobile"));
+                    intent.setData(Uri.parse("http://103.174.102.195.33:8080/saathidaar/#/term-mobile"));
                 }
             }
         });

@@ -55,6 +55,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
+                        android:visibility="gone"
                         android:fontFamily="@font/italic"
                         android:text="Alert you receive every time someone contacts you receive a response to a contact initiated by you Get" />
 

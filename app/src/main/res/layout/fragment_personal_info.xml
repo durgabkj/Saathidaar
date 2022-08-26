@@ -124,7 +124,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="Age"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -163,7 +163,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="Date of Birth"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -200,7 +200,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="Gender"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -240,7 +240,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="Marital Status "
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -279,7 +279,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="No of Child "
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -317,7 +317,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="Height"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -393,7 +393,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="BloodGroup"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -430,7 +430,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="Diet"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -468,7 +468,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="Mother Tongue"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -506,7 +506,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="Health Details"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -543,7 +543,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="Place of Birth"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -580,7 +580,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="Time of Birth"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -635,7 +635,7 @@
                             android:layout_marginStart="5dp"
                             android:fontFamily="@font/italic"
                             android:text="Religion"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -674,7 +674,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="Caste"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -712,7 +712,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="Sub-Caste"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView

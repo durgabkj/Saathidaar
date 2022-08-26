@@ -309,17 +309,13 @@ public class HoroscopeFragment extends Fragment {
                 myCalendar.set(Calendar.DAY_OF_MONTH,day);
                 Calendar minAdultAge = new GregorianCalendar();
                 minAdultAge.add(Calendar.YEAR, -18);
-                minAdultAge.add(Calendar.YEAR, -18);
-                SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy");
-                fmt.setCalendar(myCalendar);
-                String dateFormatted = fmt.format(myCalendar.getTime());
 
                 if (minAdultAge.before(myCalendar)) {
                     Toast.makeText(context, "Please Select valid date", Toast.LENGTH_LONG).show();
                 } else {
-                  datePickerDialog.setText(dateFormatted);
+                    updateLabel();
                 }
-                updateLabel();
+
             }
 
         };
@@ -397,7 +393,7 @@ public class HoroscopeFragment extends Fragment {
     }
 
     private void updateLabel() {
-        String myFormat="MM/dd/yyyy";
+        String myFormat="dd/mm/yyyy";
         SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
         b.etHoroscopeBirthDOB.setText(dateFormat.format(myCalendar.getTime()));
 

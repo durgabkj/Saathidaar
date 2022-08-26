@@ -138,8 +138,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_gravity="center"
                     android:visibility="gone"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center"
                     android:orientation="horizontal">
 
                     <TextView
@@ -150,7 +151,7 @@
                         android:padding="5dp"
                         android:text="Save"
                         android:gravity="center"
-                        android:fontFamily="@font/nunito_semi_bold"
+                        android:fontFamily="@font/pt_serif_bold"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold"
@@ -199,10 +200,12 @@
 <!--                    </com.google.android.material.card.MaterialCardView>-->
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
                         android:text="or"
+                        android:gravity="center"
+                        android:layout_gravity="center"
                         android:fontFamily="@font/italic"
                         android:textAlignment="center"
                         android:textColor="@color/black"
@@ -228,7 +231,7 @@
                         android:layout_marginStart="10dp"
                         android:background="@drawable/bg_gradient"
                         android:fontFamily="@font/pt_serif_bold"
-                        android:padding="10dp"
+                        android:padding="5dp"
                         android:text="Cancel"
                         android:textAlignment="center"
                         android:textColor="@color/black"

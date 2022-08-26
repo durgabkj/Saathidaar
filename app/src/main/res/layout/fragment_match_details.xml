@@ -86,38 +86,6 @@
                     </FrameLayout>
 
                     <LinearLayout
-                        android:id="@+id/llNo_imageFemale"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="gone"
-                        android:background="@drawable/line_gradient"
-                        android:orientation="horizontal" />
-
-                    <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start">
-
-                        <LinearLayout
-                            android:id="@+id/llBack"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_margin="8dp"
-                            android:visibility="gone"
-                            android:background="@drawable/oval_bg"
-                            android:orientation="horizontal"
-                            android:padding="10dp">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_baseline_arrow_back_24" />
-
-                        </LinearLayout>
-
-                    </FrameLayout>
-
-                    <LinearLayout
                         android:id="@+id/llPremiumMsgMatchesDetails"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -365,7 +333,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:maxLines="4"
+                            android:maxLines="2"
                             android:fontFamily="@font/italic"
                              android:textColor="@color/black" />
 
@@ -430,6 +398,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:maxLines="2"
                             android:fontFamily="@font/italic"
                              android:textColor="@color/black" />
 

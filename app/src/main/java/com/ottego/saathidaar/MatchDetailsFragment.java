@@ -350,6 +350,15 @@ if (memberPreferenceModel != null) {
                 {
                     b.mcvFamilyDetail.setVisibility(View.VISIBLE);
                 }
+
+                int detailsCount =  b.tvAboutUserFamilyDetails.getText().toString().length();
+                if (detailsCount<=50) {
+                    b.tvViewMoreFamily.setVisibility(View.GONE);
+                }else
+                {
+                    b.tvViewMoreFamily.setVisibility(View.VISIBLE);
+                }
+
             }
 
             @Override
@@ -373,6 +382,15 @@ if (memberPreferenceModel != null) {
                 }else
                 {
                     b.mcvAboutDetail.setVisibility(View.VISIBLE);
+                }
+
+
+                int AboutDetailsCount =  b.tvAboutUserDetails.getText().toString().length();
+                if (AboutDetailsCount<=50) {
+                    b.tvViewMore.setVisibility(View.GONE);
+                }else
+                {
+                    b.tvViewMore.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -430,11 +448,6 @@ if (memberPreferenceModel != null) {
         });
 
 
-        b.llBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
         b.tvViewMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -459,7 +472,7 @@ if (memberPreferenceModel != null) {
         b.tvViewLessFamily.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                b.tvAboutUserFamilyDetails.setMaxLines(4);
+                b.tvAboutUserFamilyDetails.setMaxLines(2);
                 b.tvViewLessFamily.setVisibility(View.GONE);
                 b.tvViewMoreFamily.setVisibility(View.VISIBLE);
             }
@@ -469,7 +482,7 @@ if (memberPreferenceModel != null) {
         b.tvViewLess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                b.tvAboutUserDetails.setMaxLines(4);
+                b.tvAboutUserDetails.setMaxLines(2);
                 b.tvViewLess.setVisibility(View.GONE);
                 b.tvViewMore.setVisibility(View.VISIBLE);
             }

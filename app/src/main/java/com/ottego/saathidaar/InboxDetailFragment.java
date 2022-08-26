@@ -396,7 +396,7 @@ public class InboxDetailFragment extends Fragment {
         b.tvViewLessFamily.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                b.tvAboutUserFamilyDetails.setMaxLines(4);
+                b.tvAboutUserFamilyDetails.setMaxLines(2);
                 b.tvViewLessFamily.setVisibility(View.GONE);
                 b.tvViewMoreFamily.setVisibility(View.VISIBLE);
             }
@@ -405,7 +405,7 @@ public class InboxDetailFragment extends Fragment {
         b.tvViewLess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                b.tvAboutUserDetails.setMaxLines(4);
+                b.tvAboutUserDetails.setMaxLines(2);
                 b.tvViewLess.setVisibility(View.GONE);
                 b.tvViewMore.setVisibility(View.VISIBLE);
             }
@@ -425,6 +425,15 @@ public class InboxDetailFragment extends Fragment {
                     b.mcvFamilyDetailInbox.setVisibility(View.GONE);
                 } else {
                     b.mcvFamilyDetailInbox.setVisibility(View.VISIBLE);
+                }
+
+
+                int detailsCount =  b.tvAboutUserFamilyDetails.getText().toString().length();
+                if (detailsCount<=50) {
+                    b.tvViewMoreFamily.setVisibility(View.GONE);
+                }else
+                {
+                    b.tvViewMoreFamily.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -452,6 +461,14 @@ public class InboxDetailFragment extends Fragment {
                     b.mcvAboutUsDetailInbox.setVisibility(View.VISIBLE);
                 }
 
+                int AboutDetailsCount =  b.tvAboutUserDetails.getText().toString().length();
+                if (AboutDetailsCount<=50) {
+                    b.tvViewMore.setVisibility(View.GONE);
+                }else
+                {
+                    b.tvViewMore.setVisibility(View.VISIBLE);
+                }
+
 
             }
 
@@ -466,7 +483,7 @@ public class InboxDetailFragment extends Fragment {
 
     private void getData() {
         Map<String, String> params = new HashMap<String, String>();
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, memberDetail + mParam1, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, memberDetail + mParam1+ "/" + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf(response));
@@ -629,9 +646,7 @@ public class InboxDetailFragment extends Fragment {
             }
 
 
-            if (model.images_count.equalsIgnoreCase("0")) {
-                b.llPremiumMsgInboxDetails.setVisibility(View.GONE);
-            }
+
 
         }
         }

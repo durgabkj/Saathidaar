@@ -260,7 +260,7 @@
                     android:elevation="20dp"
                     android:fontFamily="@font/italic"
                     android:padding="10dp"
-                    android:text="Go Upgrade Now"
+                    android:text="Upgrade Your Membership"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textStyle="bold"

@@ -558,7 +558,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                     viewModel._list.postValue(dataModelImage.data);
 
                     imageCount=dataModelImage.data.size();
-                    if(imageCount==2){
+                    if(imageCount==2 || imageCount>=2){
                         //hide
                         b.upload.setVisibility(View.INVISIBLE);
                     }else{

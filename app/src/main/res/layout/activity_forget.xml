@@ -79,7 +79,7 @@
         android:drawableStart="@drawable/ic_email"
         android:fontFamily="@font/italic"
         android:hint="Enter Email Id"
-        android:inputType="number" />
+        android:inputType="text" />
 
 
 
