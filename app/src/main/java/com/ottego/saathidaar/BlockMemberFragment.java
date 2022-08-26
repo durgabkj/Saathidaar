@@ -121,8 +121,6 @@ FragmentBlockMemberBinding b;
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
     }
-
-
     private void setRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         b.rvBlock.setLayoutManager(layoutManager);
@@ -143,8 +141,7 @@ FragmentBlockMemberBinding b;
     @Override
     public void onSuccess(int position) {
         viewModel.getDataCount();
-        inboxViewModel.getDataCount();
-
+       // inboxViewModel.getDataCount();
         getData();
     }
 

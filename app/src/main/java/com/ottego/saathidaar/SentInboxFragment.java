@@ -23,6 +23,7 @@ import com.ottego.saathidaar.Adapter.SentInvitationAdapter;
 import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.databinding.FragmentSentInboxBinding;
 import com.ottego.saathidaar.viewmodel.InboxViewModel;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +36,7 @@ public class SentInboxFragment extends Fragment  implements ApiListener {
     DataModelInbox data;
     String member_id;
     InboxViewModel viewModel;
+    MatchViewModel matchViewModel;
     public String InvitationSentUrl ="http://103.174.102.195:8080/saathidaar_backend/api/request/sent/get/all/";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -74,6 +76,7 @@ public class SentInboxFragment extends Fragment  implements ApiListener {
         sessionManager=new SessionManager(context);
         member_id=sessionManager.getMemberId();
         viewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
+        matchViewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
         getData();
         listener();
        return b.getRoot();
@@ -142,6 +145,7 @@ public class SentInboxFragment extends Fragment  implements ApiListener {
     public void onSuccess(int position) {
         getData();
         viewModel.getDataCount();
+        matchViewModel.getDataCount();
     }
 
     @Override

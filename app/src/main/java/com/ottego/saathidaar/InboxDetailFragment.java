@@ -515,7 +515,7 @@ public class InboxDetailFragment extends Fragment {
 
     private void setData() {
         if (model != null) {
-            b.tvNewMatchName.setText(Utils.nullToBlank(model.first_name) + " " + Utils.nullToBlank(model.last_name).charAt(0));
+            b.tvNewMatchName.setText(Utils.nullToBlank(model.first_name).substring(0, 1).toUpperCase() + " " + Utils.nullToBlank(model.last_name).charAt(0));
 
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
                 b.tvNewMatchAge.setText(Utils.nullToBlank(model.age) + " " + "yrs");
@@ -533,10 +533,10 @@ public class InboxDetailFragment extends Fragment {
             b.tvCreatedBy.setText("Profile Create by" + " " + Utils.nullToBlank(model.profilecreatedby));
             b.tvProfileID.setText("Profile ID" + " " + Utils.nullToBlank(model.profile_id));
 
-            b.tvNewMatchName.setText(Utils.nullToBlank(model.first_name).toUpperCase() + " " + Utils.nullToBlank(model.last_name).toUpperCase().charAt(0));
+          //  b.tvNewMatchName.setText(Utils.nullToBlank(model.first_name).toUpperCase() + " " + Utils.nullToBlank(model.last_name).toUpperCase().charAt(0));
 
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
-                b.tvDetailAge.setText(Utils.nullToBlank(model.age) + " yrs old");
+                b.tvDetailAge.setText("Age:-"+Utils.nullToBlank(model.age) + " yrs old");
             } else {
                 b.tvDetailAge.setText("Age-Not Specify");
             }
@@ -564,8 +564,8 @@ public class InboxDetailFragment extends Fragment {
             b.tvDetailAnnualIncome.setText(Utils.nullToBlank(model.annual_income));
             b.tvDetailEducationField.setText(Utils.nullToBlank(model.education));
             b.tvDetailCollege.setText(Utils.nullToBlank(model.college_attended));
-            b.tvDetailEmailID.setText(Utils.nullToBlank(model.profile_email_id));
-            b.tvDetailCall.setText(Utils.nullToBlank(model.profile_contact_number));
+            b.tvDetailEmailID.setText(Utils.nullToBlank(model.email_id));
+            b.tvDetailCall.setText(Utils.nullToBlank(model.contact_number));
             b.tvImageCountInbox.setText(Utils.nullToBlank(model.images_count));
             b.tvDetailHQualification.setText(Utils.nullToBlank(model.highest_qualification));
 
@@ -641,7 +641,11 @@ public class InboxDetailFragment extends Fragment {
 
             if (model.premium_status.equalsIgnoreCase("1")) {
                 b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
+                b.tvPremiumBirth.setVisibility(View.VISIBLE);
+              b.  tvPremiumContact.setVisibility(View.VISIBLE);
                 b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
+                b.tvbirth.setVisibility(View.VISIBLE);
+                b.tvcontacts.setVisibility(View.VISIBLE);
 
             }
 

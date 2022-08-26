@@ -718,16 +718,11 @@ city=tvMultipleCity.getText().toString().toString();
                         try {
                             String code = response.getString("message");
                             if (!code.equalsIgnoreCase("") && code != null) {
-//                                    Gson gson = new Gson();
-//                                    UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);
-//                                   // sessionManager.createSUserDetails(sessionModel);
-                               // successDialog();
-                                Toast.makeText(context, code, Toast.LENGTH_SHORT).show();
-                                startActivity(requireActivity().getIntent());
-                               requireActivity().finish();
-                                // sessionManager.createSessionLogin(userId);
-                                //Intent intent = new Intent(context, OtpVerificationActivity.class);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//
+                                successDialog();
+                                //    Toast.makeText(context, code, Toast.LENGTH_SHORT).show();
+                               // startActivity(requireActivity().getIntent());
+                              // requireActivity().finish();
                                 // startActivity(intent);
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();

@@ -28,6 +28,7 @@ import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.ApiListener;
 import com.ottego.saathidaar.SessionManager;
+import com.ottego.saathidaar.UpgradeOnButtonActivity;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
@@ -198,7 +199,13 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 holder.tvLevelPremiumRecent.setVisibility(View.VISIBLE);
 
             }
-
+            holder.tvPremiumrecentlyViewMatch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                    context.startActivity(intent);
+                }
+            });
         }
 
 
@@ -208,13 +215,13 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
         }
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            ImageView ivRecentViewImage,ivNoImageMaleFemaleRecentView;
-            TextView tvNewMatchName, tvNewMatchAge,tvLevelPremiumRecent, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs,tvImageCountRecentView;
+            ImageView ivRecentViewImage,ivNoImageMaleFemaleRecentView,tvPremiumShortlistMatch;
+            TextView tvNewMatchName,tvPremiumrecentlyViewMatch, tvNewMatchAge,tvLevelPremiumRecent, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs,tvImageCountRecentView;
             LinearLayout llPhotoRecentV,llShortBlockRecentV,llConnectShortList,llShortListRecent,llBlockedRecentV,llPremiumMsgRecentlyView,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove,llNo_imageFemaleListRecentView,llConnectedRecently;
             FrameLayout flNoImageMaleFemaleListRecentView,flPremiumRecentView;
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
-
+                tvPremiumrecentlyViewMatch=itemView.findViewById(R.id.tvPremiumrecentlyViewMatch);
                 llConnectShortList=itemView.findViewById(R.id.llConnectShortList);
                 llShortListRecent=itemView.findViewById(R.id.llShortListRecent);
                 tvNewMatchAge = itemView.findViewById(R.id.tvRecentViewAgeRs);
@@ -225,6 +232,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 llPhotoRecentV = itemView.findViewById(R.id.llPhotoRecentV);
                 llShortBlockRecentV=itemView.findViewById(R.id.llShortBlockRecentV);
                 llBlockedRecentV=itemView.findViewById(R.id.llBlockedRecentV);
+                tvPremiumShortlistMatch=itemView.findViewById(R.id.tvPremiumShortlistMatch);
                 ivLikeRecentVisitors=itemView.findViewById(R.id.ivLikeRecentVisitors);
                 llShortListRecentV=itemView.findViewById(R.id.llShortListRecentV);
                 llShortListRemove=itemView.findViewById(R.id.llShortListRemove);

@@ -5,6 +5,14 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
+
+
+    <LinearLayout
+        android:id="@+id/llItemAnimationAccept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -253,6 +261,22 @@
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tvPremiumAcceptMatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/gradient_button"
+                android:elevation="20dp"
+                android:fontFamily="@font/pt_serif_bold"
+                android:padding="10dp"
+                android:text="Upgrade Your Membership"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                />
         </LinearLayout>
 
 
@@ -428,6 +452,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:padding="4dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -482,6 +507,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:padding="4dp"
                 android:layout_gravity="center"
                 android:orientation="horizontal">
 
@@ -579,4 +605,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/line_gradient"/>
 
+
+
+    </LinearLayout>
 </LinearLayout>

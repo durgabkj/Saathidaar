@@ -96,7 +96,7 @@
                         android:layout_marginStart="8dp"
                         android:padding="5dp"
                         android:fontFamily="@font/italic"
-                        android:text=" Your Preference"
+                        android:text=" Your Preferences"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -407,6 +407,7 @@
                             android:layout_width="match_parent"
                             android:fontFamily="@font/italic"
                             android:layout_weight="1"
+                            android:textSize="15sp"
                             android:layout_height="wrap_content"
                             android:text="Only manglik" />
 
@@ -790,7 +791,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/italic"
                     android:layout_marginTop="10dp"
-                    android:text="ProfessionArea" />
+                    android:text="Profession" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

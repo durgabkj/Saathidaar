@@ -22,6 +22,7 @@ import com.ottego.saathidaar.Adapter.AcceptInvitationAdapter;
 import com.ottego.saathidaar.Model.DataModelInbox;
 import com.ottego.saathidaar.databinding.FragmentAcceptedInboxBinding;
 import com.ottego.saathidaar.viewmodel.InboxViewModel;
+import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +34,7 @@ public class AcceptedInboxFragment extends Fragment implements ApiListener {
     public String InvitationAcceptUrl = "http://103.174.102.195:8080/saathidaar_backend/api/request/accepted/get/all/";
     Context context;
     InboxViewModel viewModel;
+    MatchViewModel matchViewModel;
     SessionManager sessionManager;
     DataModelInbox data;
     String member_id;
@@ -72,6 +74,7 @@ public class AcceptedInboxFragment extends Fragment implements ApiListener {
         context = getContext();
         sessionManager = new SessionManager(context);
         viewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
+        matchViewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
         member_id = sessionManager.getMemberId();
         getData();
          listener();
@@ -83,11 +86,11 @@ public class AcceptedInboxFragment extends Fragment implements ApiListener {
         b.srlRecycleViewAccept.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                //matchViewModel.getDataCount();
                 getData();
             }
         });
     }
-
     private void getData() {
        // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
@@ -140,6 +143,7 @@ public class AcceptedInboxFragment extends Fragment implements ApiListener {
     @Override
     public void onSuccess(int position) {
         getData();
+        matchViewModel.getDataCount();
     }
 
     @Override

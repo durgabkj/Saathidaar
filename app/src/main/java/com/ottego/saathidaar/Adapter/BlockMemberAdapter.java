@@ -31,6 +31,7 @@ import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.SessionManager;
+import com.ottego.saathidaar.UpgradeOnButtonActivity;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
@@ -177,6 +178,16 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
                 holder.tvLevelPremiumBlock.setVisibility(View.VISIBLE);
                 holder.flPremiumBlock.setVisibility(View.VISIBLE);
             }
+
+
+
+            holder.tvPremiumBlockMatch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                    context.startActivity(intent);
+                }
+            });
         }
 
         @Override
@@ -186,7 +197,7 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivBlockProfileImage,ivNoImageMaleFemaleBlock;
-            TextView tvBlockName, tvBlockAge, tvLevelPremiumBlock,tvNewBlockHeight, tvBlockCity, tvBlockWorkAs,tvImageCountUnBlock;
+            TextView tvBlockName, tvBlockAge, tvLevelPremiumBlock,tvPremiumBlockMatch,tvNewBlockHeight, tvBlockCity, tvBlockWorkAs,tvImageCountUnBlock;
             LinearLayout llPhotoBlock,ivUnblock,llConnectBlock,llNo_imageFemaleListBlock,llUnBlockAnimation,llPremiumMsgUnBlock;
             FrameLayout flNoImageMaleFemaleListBlock,flPremiumBlock;
 
@@ -201,6 +212,7 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
                 tvBlockWorkAs = itemView.findViewById(R.id.tvBlockWorkAs);
                 llPhotoBlock = itemView.findViewById(R.id.llPhotoBlock);
                 ivUnblock=itemView.findViewById(R.id.ivUnblock);
+                tvPremiumBlockMatch=itemView.findViewById(R.id.tvPremiumBlockMatch);
                 llConnectBlock=itemView.findViewById(R.id.llConnectBlock);
                 tvImageCountUnBlock=itemView.findViewById(R.id.tvImageCountUnBlock);
                 llUnBlockAnimation=itemView.findViewById(R.id.llUnBlockAnimation);

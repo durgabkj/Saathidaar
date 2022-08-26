@@ -28,6 +28,7 @@ import com.ottego.saathidaar.Model.InboxModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.ApiListener;
 import com.ottego.saathidaar.SessionManager;
+import com.ottego.saathidaar.UpgradeOnButtonActivity;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
@@ -170,6 +171,13 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
             holder.llBlockAcceptButton.setVisibility(View.GONE);
         }
 
+        holder.tvPremiumDeleteMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -181,7 +189,7 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvInvDeleteWorkAs, tvInvDeleteCity,tvLevelPremiumDelete, tvImageCountDelete, tvInvDeleteHeight, tvInvDeleteName, tvInvDeleteAge, tvInvitationDeleteMessageInbox;
+        TextView tvInvDeleteWorkAs, tvInvDeleteCity,tvLevelPremiumDelete, tvPremiumDeleteMatch,tvImageCountDelete, tvInvDeleteHeight, tvInvDeleteName, tvInvDeleteAge, tvInvitationDeleteMessageInbox;
         LinearLayout llBlocked,llBlockDelete, llDeletedInvitation,llBlockAcceptButton,llPremiumMsgDelete, llDelete1, llPhotoDelete, llNo_imageFemaleListDeleteInvi;
         ImageView ivDeleteInvitation, ivNoImageMaleFemaleDeleteInvi;
         FrameLayout flNoImageMaleFemaleListDeleteInvi,flPremiumDelete;
@@ -197,6 +205,7 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
             tvInvDeleteCity = itemView.findViewById(R.id.tvInvDeleteCity);
             tvInvDeleteWorkAs = itemView.findViewById(R.id.tvInvDeleteWorkAs);
             llBlocked = itemView.findViewById(R.id.llBlocked);
+            tvPremiumDeleteMatch=itemView.findViewById(R.id.tvPremiumDeleteMatch);
             llBlockDelete = itemView.findViewById(R.id.llBlockDelete);
             llDelete1 = itemView.findViewById(R.id.llDelete1);
             llDeletedInvitation = itemView.findViewById(R.id.llDeletedInvitation);

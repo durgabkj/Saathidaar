@@ -3,8 +3,6 @@ package com.ottego.saathidaar.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,15 +18,14 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.ApiListener;
 import com.ottego.saathidaar.InboxPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.InboxModel;
 import com.ottego.saathidaar.R;
-import com.ottego.saathidaar.ApiListener;
 import com.ottego.saathidaar.SessionManager;
+import com.ottego.saathidaar.UpgradeOnButtonActivity;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
@@ -41,7 +38,7 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
         private AdapterView.OnItemClickListener onItemClickListener;
         Context context;
         List<InboxModel> list;
-    ApiListener clickListener;
+        ApiListener clickListener;
         public SentInvitationAdapter(Context context, List<InboxModel> list,    ApiListener clickListener) {
             this.context = context;
             this.list = list;
@@ -127,13 +124,11 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
 //                    .into(holder.ivSentInvitation);
 
 
-
-
             if (item.photo_privacy.equalsIgnoreCase("1")) {
                 holder.llPhotoSent.setEnabled(true);
-              //  holder.flPremiumSent.setVisibility(View.GONE);
+                //  holder.flPremiumSent.setVisibility(View.GONE);
                 holder.llPremiumMsgSent.setVisibility(View.GONE);
-              //  holder.tvLevelPremiumSent.setVisibility(View.GONE);
+                //  holder.tvLevelPremiumSent.setVisibility(View.GONE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
@@ -142,9 +137,9 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
 
             } else if (item.photo_privacy.equalsIgnoreCase("3")) {
                 holder.llPhotoSent.setEnabled(false);
-               // holder.flPremiumSent.setVisibility(View.VISIBLE);
+                // holder.flPremiumSent.setVisibility(View.VISIBLE);
                 holder.llPremiumMsgSent.setVisibility(View.VISIBLE);
-             //   holder.tvLevelPremiumSent.setVisibility(View.VISIBLE);
+                //   holder.tvLevelPremiumSent.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
@@ -152,19 +147,19 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
                         .into(holder.ivSentInvitation);
 
             } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
-              //  holder.flPremiumSent.setVisibility(View.GONE);
+                //  holder.flPremiumSent.setVisibility(View.GONE);
                 holder.llPremiumMsgSent.setVisibility(View.GONE);
                 holder.llPhotoSent.setEnabled(true);
-               // holder.tvLevelPremiumSent.setVisibility(View.GONE);
+                // holder.tvLevelPremiumSent.setVisibility(View.GONE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         .into(holder.ivSentInvitation);
             } else {
                 holder.llPhotoSent.setEnabled(false);
-               // holder.flPremiumSent.setVisibility(View.VISIBLE);
+                // holder.flPremiumSent.setVisibility(View.VISIBLE);
                 holder.llPremiumMsgSent.setVisibility(View.VISIBLE);
-               // holder.tvLevelPremiumSent.setVisibility(View.VISIBLE);
+                // holder.tvLevelPremiumSent.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
                         .transform(new BlurTransformation(20, 8))
@@ -174,10 +169,7 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
             }
 
 
-
-
-            if((item.request_message!= null  && !item.request_message.isEmpty()))
-            {
+            if((item.request_message!= null  && !item.request_message.isEmpty())) {
                 holder.tvInvitationMessageSent.setText(item.request_message);
                 // holder.tvInvitationDateInbox.setText(item.request_status_date);
 
@@ -185,42 +177,51 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
                 holder.llMsgDateSent.setVisibility(View.GONE);
             }
 
-            if ((item.premium_status.equalsIgnoreCase("1")))
-            {
+            if ((item.premium_status.equalsIgnoreCase("1"))) {
                 holder.tvLevelPremiumSent.setVisibility(View.VISIBLE);
                 holder.flPremiumSent.setVisibility(View.VISIBLE);
             }
 
-            }
 
+            holder.tvPremiumSentMatch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                    context.startActivity(intent);
+                }
+            });
 
-        @Override
-        public int getItemCount() {
-            return list.size();
         }
 
 
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
 
-        public static class ViewHolder extends RecyclerView.ViewHolder {
-            TextView tvInvNewMatchName, tvInvNewMatchAge, tvInvNewMatchHeight,tvLevelPremiumSent, tvInvNewMatchCity, tvInvNewMatchWorkAs,tvInvitationMessageSent,tvImageCountSent;
-            LinearLayout llAccept,llDelete,llAccepted,llDeleted,llPremiumMsgSent,llPhotoSent,llBlockSent,llBlockedSent,llNo_imageFemaleSentInvitation,llMsgDateSent;
-            ImageView ivNoImageMaleFemaleSentInvitation,ivSentInvitation;
-            FrameLayout flNoImageMaleFemaleSentInvitation,flPremiumSent;
-            public ViewHolder(@NonNull View itemView) {
 
-                super(itemView);
-                tvLevelPremiumSent=itemView.findViewById(R.id.tvLevelPremiumSent);
-                flPremiumSent=itemView.findViewById(R.id.flPremiumSent);
-                llPremiumMsgSent=itemView.findViewById(R.id.llPremiumMsgSent);
-                tvInvNewMatchAge = itemView.findViewById(R.id.tvInvNewMatchAge);
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView tvInvNewMatchName, tvPremiumSentMatch, tvInvNewMatchAge, tvInvNewMatchHeight, tvLevelPremiumSent, tvInvNewMatchCity, tvInvNewMatchWorkAs, tvInvitationMessageSent, tvImageCountSent;
+        LinearLayout llAccept, llDelete, llAccepted, llDeleted, llPremiumMsgSent, llPhotoSent, llBlockSent, llBlockedSent, llNo_imageFemaleSentInvitation, llMsgDateSent;
+        ImageView ivNoImageMaleFemaleSentInvitation, ivSentInvitation;
+        FrameLayout flNoImageMaleFemaleSentInvitation, flPremiumSent;
+
+        public ViewHolder(@NonNull View itemView) {
+
+            super(itemView);
+            tvLevelPremiumSent = itemView.findViewById(R.id.tvLevelPremiumSent);
+            flPremiumSent = itemView.findViewById(R.id.flPremiumSent);
+            llPremiumMsgSent = itemView.findViewById(R.id.llPremiumMsgSent);
+            tvInvNewMatchAge = itemView.findViewById(R.id.tvInvNewMatchAge);
                 tvInvNewMatchName = itemView.findViewById(R.id.tvInvNewMatchName);
                 tvInvNewMatchHeight = itemView.findViewById(R.id.tvInvNewMatchHeight);
                 tvInvNewMatchCity = itemView.findViewById(R.id.tvInvNewMatchCity);
                 tvInvNewMatchWorkAs = itemView.findViewById(R.id.tvInvNewMatchWorkAs);
                 llAccepted = itemView.findViewById(R.id.llAccepted);
                 llAccept = itemView.findViewById(R.id.llAccept);
-                llDelete = itemView.findViewById(R.id.llDelete);
-                llDeleted = itemView.findViewById(R.id.llDeleted);
+            llDelete = itemView.findViewById(R.id.llDelete);
+            tvPremiumSentMatch = itemView.findViewById(R.id.tvPremiumSentMatch);
+            llDeleted = itemView.findViewById(R.id.llDeleted);
                 llPhotoSent=itemView.findViewById(R.id.llPhotoSent);
                 llBlockSent=itemView.findViewById(R.id.llBlockSent);
                 llBlockedSent=itemView.findViewById(R.id.llBlockedSent);

@@ -615,7 +615,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                                 sessionManager.createSessionDescription(description);
                                 sessionManager.createSessionGender(gender);
                                 successDialog();
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                                 // sessionManager.createSessionLogin(userId);
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();

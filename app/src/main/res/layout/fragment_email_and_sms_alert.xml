@@ -61,11 +61,12 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="wrap_content"
                         android:background="@color/gray_dark"
                         android:fontFamily="@font/italic"
                         android:padding="5dp"
-                        android:text="Alert"
+                        android:singleLine="false"
+                        android:text="Alerts you receive every time a premium match contact you or you receive a response to a premium contact initiated by you."
                         android:textStyle="bold" />
 
                     <RadioGroup
@@ -137,11 +138,11 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="wrap_content"
                         android:background="@color/gray_dark"
                         android:fontFamily="@font/italic"
                         android:padding="5dp"
-                        android:text="Alert"
+                        android:text="People who have visited your profile will be displayed through this email alert."
                         android:textStyle="bold" />
 
                     <RadioGroup
@@ -212,10 +213,10 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="wrap_content"
                         android:background="@color/gray_dark"
                         android:padding="5dp"
-                        android:text="Alert"
+                        android:text="Today's matches will be sent through this email alert."
                         android:fontFamily="@font/italic"
                         android:textStyle="bold" />
 

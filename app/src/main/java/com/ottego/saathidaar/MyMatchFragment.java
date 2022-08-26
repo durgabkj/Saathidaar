@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.NewMatchesAdapter;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentMyMatchBinding;
+import com.ottego.saathidaar.viewmodel.InboxViewModel;
 import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONException;
@@ -34,6 +35,7 @@ public class MyMatchFragment extends Fragment implements ApiListener {
     SessionManager sessionManager;
     DataModelNewMatches data;
     MatchViewModel viewModel;
+    InboxViewModel inboxViewModel;
     public String MyMatchUrl = Utils.memberUrl + "my/matches/";
 static  final int ALARM_REQ_CODE=100;
     AlertDialog dialog;
@@ -79,6 +81,7 @@ static  final int ALARM_REQ_CODE=100;
         context = getContext();
         sessionManager = new SessionManager(context);
         viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
+        inboxViewModel=new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
         getData("");
         listener();
         return b.getRoot();
@@ -149,6 +152,7 @@ static  final int ALARM_REQ_CODE=100;
     public void onSuccess(int position) {
         getData("");
         viewModel.getDataCount();
+        inboxViewModel.getDataCount();
     }
 
     @Override

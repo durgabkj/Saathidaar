@@ -24,6 +24,7 @@ import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.ApiListener;
 import com.ottego.saathidaar.SessionManager;
+import com.ottego.saathidaar.UpgradeOnButtonActivity;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
@@ -58,7 +59,14 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         sessionManager = new SessionManager(context);
 
         holder.tvNewMatchNameRs.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
-        holder.tvNewMatchAgeRs.setText(Utils.nullToBlank(item.mage )+ " Yrs");
+       if(item.mage.equalsIgnoreCase("null"))
+       {
+           holder.tvNewMatchAgeRs.setText("");
+       }else
+       {
+           holder.tvNewMatchAgeRs.setText(Utils.nullToBlank(item.mage )+ " Yrs");
+       }
+
         holder.tvNewMatchHeightRs.setText(Utils.nullToBlank(item.religion));
         holder.tvNewMatchCityRs.setText(Utils.nullToBlank(item.maritalStatus));
         holder.tvImageCountRemoveShortList.setText(Utils.nullToBlank(item.images_count));
@@ -174,6 +182,15 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         }
 
 
+        holder.tvPremiumShortlistMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
@@ -184,7 +201,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivRemoveShortList, ivNoImageMaleFemaleRemoveShortList;
-        TextView tvNewMatchNameRs,tvLevelPremiumRemoveShortList, tvNewMatchAgeRs, tvNewMatchHeightRs, tvNewMatchCityRs, tvNewMatchWorkAsRs, tvImageCountRemoveShortList;
+        TextView tvNewMatchNameRs,tvPremiumShortlistMatch,tvLevelPremiumRemoveShortList, tvNewMatchAgeRs, tvNewMatchHeightRs, tvNewMatchCityRs, tvNewMatchWorkAsRs, tvImageCountRemoveShortList;
         LinearLayout llMess, llShortListRemove1, llShortList1, llPhotoShortList, llNo_imageFemaleRemoveShortList;
         LinearLayout ivLikeShortList, llBlockShortList, llPremiumMsgRemoveShortlist,llBlockedShortList, llConnectShortList;
         FrameLayout flNoImageMaleFemaleRemoveShortList,flPremiumRemove_shortList;
@@ -199,6 +216,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
             tvNewMatchNameRs = itemView.findViewById(R.id.tvNewMatchNameRs);
             tvNewMatchHeightRs = itemView.findViewById(R.id.tvNewMatchHeightRs);
             tvNewMatchCityRs = itemView.findViewById(R.id.tvNewMatchCityRs);
+            tvPremiumShortlistMatch=itemView.findViewById(R.id.tvPremiumShortlistMatch);
             tvNewMatchWorkAsRs = itemView.findViewById(R.id.tvNewMatchWorkAsRs);
             ivLikeShortList = itemView.findViewById(R.id.ivLikeShortList);
             llPhotoShortList = itemView.findViewById(R.id.llPhotoShortList);

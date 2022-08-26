@@ -539,14 +539,14 @@ if (memberPreferenceModel != null) {
             b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
             b.tvNameUserFamilyDetailsHeading.setText("About " + " Family");
             b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails));
-            b.tvCreatedBy.setText("Profile Create by" + " " + Utils.nullToBlank(model.profilecreatedby));
-            b.tvProfileID.setText("Profile ID" + " " + Utils.nullToBlank(model.profile_id));
+            b.tvCreatedBy.setText("Profile Create by:-" + " " + Utils.nullToBlank(model.profilecreatedby));
+            b.tvProfileID.setText("Profile ID:-" + " " + Utils.nullToBlank(model.profile_id));
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
                 b.tvDetailAge.setText(Utils.nullToBlank(model.age) + " yrs old");
             } else {
                 b.tvDetailAge.setText(" Age-Not Specify");
             }
-            b.tvDetailHeight.setText("Height - " + Utils.nullToBlank(model.height));
+            b.tvDetailHeight.setText("Height:- " + Utils.nullToBlank(model.height));
 
             if (!model.date_of_birth.equalsIgnoreCase("") && !model.date_of_birth.equalsIgnoreCase(null) && !model.date_of_birth.isEmpty() ) {
 
@@ -566,8 +566,8 @@ if (memberPreferenceModel != null) {
             b.tvDetailAnnualIncome.setText(Utils.nullToBlank(model.annual_income));
             b.tvDetailEducationField.setText(Utils.nullToBlank(model.education));
             b.tvDetailCollege.setText(Utils.nullToBlank(model.college_attended));
-            b.tvDetailEmailID.setText(Utils.nullToBlank(model.profile_email_id));
-            b.tvDetailCall.setText(Utils.nullToBlank(model.profile_contact_number));
+            b.tvDetailEmailID.setText(Utils.nullToBlank(model.email_id));
+            b.tvDetailCall.setText(Utils.nullToBlank(model.contact_number));
             b.tvImageCountDetail.setText(Utils.nullToBlank(model.images_count));
             b.tvDetailHQualification.setText(Utils.nullToBlank(model.highest_qualification));
 
@@ -647,6 +647,10 @@ if (memberPreferenceModel != null) {
         if (model.premium_status.equalsIgnoreCase("1")) {
             b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
             b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
+            b.tvPremiumCollegeAndCompany.setVisibility(View.VISIBLE);
+            b.  tvPremiumBirth.setVisibility(View.VISIBLE);
+            b.tvbirth.setVisibility(View.VISIBLE);
+            b.tvcontacts.setVisibility(View.VISIBLE);
 //            b.tvPremiumBirth.setVisibility(View.GONE);
 //            b.tvPremiumCollegeAndCompany.setVisibility(View.GONE);
         }

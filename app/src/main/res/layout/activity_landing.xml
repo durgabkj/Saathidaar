@@ -145,6 +145,7 @@
                         android:background="@drawable/edt_text_border"
                         android:drawableStart="@drawable/ic_baseline_user_24"
                         android:drawablePadding="8dp"
+                        android:singleLine="true"
                         android:drawableTint="@color/black"
                         android:fontFamily="@font/italic"
                         android:hint="Firstname"
@@ -168,6 +169,7 @@
                         android:drawableTint="@color/black"
                         android:fontFamily="@font/italic"
                         android:hint="Lastname"
+                        android:singleLine="true"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
                         android:padding="8dp"
                         android:textColor="@color/black" />
@@ -197,6 +199,7 @@
                     android:background="@drawable/edt_text_border"
                     android:drawableStart="@drawable/ic_baseline_email_24"
                     android:drawablePadding="8dp"
+                    android:singleLine="true"
                     android:drawableTint="@color/black"
                     android:fontFamily="@font/italic"
                     android:hint="EmailID"

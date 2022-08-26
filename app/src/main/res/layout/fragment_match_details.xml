@@ -711,7 +711,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/italic"
-                                    android:text="Religion &amp; MotherTongue"
+                                    android:text="Religion &amp; Mother Tongue"
                                     android:textSize="14sp"
 
                                     />
@@ -842,6 +842,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
+                            android:id="@+id/tvbirth"
+                            android:visibility="gone"
                             android:fontFamily="@font/italic"
                             android:text="To unlock Birth date"
                             android:textColor="@color/black" />
@@ -857,6 +859,7 @@
                             android:elevation="20dp"
                             android:fontFamily="@font/italic"
                             android:padding="10dp"
+                            android:visibility="gone"
                             android:text="Upgrade your membership"
                             android:textAlignment="center"
                             android:textColor="@color/colorPrimary"
@@ -1012,6 +1015,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
+                            android:id="@+id/tvcontacts"
+                            android:visibility="gone"
                             android:fontFamily="@font/italic"
                             android:text="To unlock Contact &amp; Email ID"
                             android:textColor="@color/black" />
@@ -1025,6 +1030,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@drawable/edt_text_border"
                             android:elevation="20dp"
+                            android:visibility="gone"
                             android:fontFamily="@font/italic"
                             android:padding="10dp"
                             android:text="Upgrade your membership"

@@ -409,7 +409,7 @@
                                         android:maxLength="2"
                                         android:textAlignment="center"
                                         android:layout_gravity="center"
-                                        android:text="0"/>
+                                     />
 
                                     <TextView
                                         android:id="@+id/tvTodayMatchTeamName1"
@@ -457,7 +457,7 @@
                                         android:maxLength="2"
                                         android:textAlignment="center"
                                         android:layout_gravity="center"
-                                        android:text="0"/>
+                                        />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -499,7 +499,7 @@
                                         android:layout_height="25dp"
                                         android:layout_gravity="center"
                                         android:layout_weight="1"
-                                        android:text="0"
+
                                         android:maxLength="2"
                                         android:textAlignment="center" />
 
@@ -546,7 +546,7 @@
                                         android:layout_height="25dp"
                                         android:layout_gravity="center"
                                         android:layout_weight="1"
-                                        android:text="0"
+
                                         android:maxLength="2"
                                         android:textAlignment="center" />
 

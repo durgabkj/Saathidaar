@@ -220,17 +220,18 @@
             android:id="@+id/llPremiumMsgRecentlyView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:padding="3dp"
             android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
             android:orientation="vertical"
-            android:gravity="center"
             >
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:translationX="10dp"
                 android:elevation="20dp"
+                android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 android:src="@drawable/hideimage"/>
             <TextView
@@ -246,6 +247,22 @@
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tvPremiumrecentlyViewMatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/gradient_button"
+                android:elevation="20dp"
+                android:fontFamily="@font/pt_serif_bold"
+                android:padding="10dp"
+                android:text="Upgrade Your Membership"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
         </LinearLayout>
 
 

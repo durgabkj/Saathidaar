@@ -151,42 +151,7 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/llBlockShortList"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="vertical">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        app:cardCornerRadius="100dp"
-                        >
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:background="@color/white"
-                            android:padding="3dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/block_menber" />
-                    </androidx.cardview.widget.CardView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:shadowColor="#000000"
-                        android:shadowDx="2"
-                        android:shadowDy="2"
-                        android:layout_marginTop="3dp"
-                        android:fontFamily="@font/italic"
-                        android:shadowRadius="1.6"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:text="Block Member"/>
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/llShortListRemove1"
@@ -225,7 +190,42 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/llBlockShortList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
 
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:cardCornerRadius="100dp"
+                        >
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@color/white"
+                            android:padding="3dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/block_menber" />
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:shadowColor="#000000"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/italic"
+                        android:shadowRadius="1.6"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:text="Block Member"/>
+
+                </LinearLayout>
                 <LinearLayout
                     android:id="@+id/llPhotoShortList"
                     android:layout_width="60dp"
@@ -297,6 +297,23 @@
                 android:text="Image show to premium member only"
                 android:textColor="@color/white"
                 android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+
+            <TextView
+                android:id="@+id/tvPremiumShortlistMatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/gradient_button"
+                android:elevation="20dp"
+                android:fontFamily="@font/pt_serif_bold"
+                android:padding="10dp"
+                android:text="Upgrade Your Membership"
+                android:textAlignment="center"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -467,8 +484,8 @@
                     >
                     <ImageView
                         android:id="@+id/ivAccept"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:background="@color/white"
                         android:padding="8dp"
                         android:scaleType="centerCrop"

@@ -94,6 +94,9 @@
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_email"
                         android:drawablePadding="8dp"
+                        android:singleLine="true"
+                        android:textCursorDrawable="@color/colorPrimary"
+                        android:textAlignment="textStart"
                         android:fontFamily="@font/italic" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -119,6 +122,9 @@
                         android:id="@+id/etLoginPassword"
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
+                        android:textAlignment="textStart"
+                        android:singleLine="true"
+                        android:textCursorDrawable="@color/colorPrimary"
                         android:drawableStart="@drawable/ic_baseline_key_24"
                         android:fontFamily="@font/italic"
                         android:drawablePadding="8dp"
