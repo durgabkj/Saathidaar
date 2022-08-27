@@ -25,6 +25,7 @@ import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.HoroscopeModel;
 import com.ottego.saathidaar.Model.MemberPreferenceModel;
 import com.ottego.saathidaar.Model.MemberProfileModel;
+import com.ottego.saathidaar.Model.SessionModel;
 import com.ottego.saathidaar.databinding.FragmentMatchDetailsBinding;
 
 import org.json.JSONException;
@@ -502,7 +503,10 @@ if (memberPreferenceModel != null) {
                     if (code.equalsIgnoreCase("1")) {
                         Gson gson = new Gson();
                         model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
+                        sessionManager.createSessionPremiumStatus(model.my_premium_status);
                         setData();
+
+
                     } else {
                         Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }

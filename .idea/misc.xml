@@ -281,6 +281,7 @@
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/menu_add.xml" value="0.25" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/menu_delete.xml" value="0.25" />
         <entry key="..\:/Users/ideapad Gaming/AndroidStudioProjects/saathidar-android/app/src/main/res/menu/remove.xml" value="0.25" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable-v24/edt_text_border.xml" value="0.1755" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable-v24/ic_baseline_email_24.xml" value="0.2215" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/bg_edit_text.xml" value="0.1675" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/bg_gradient.xml" value="0.163" />
@@ -302,6 +303,8 @@
         <entry key="..\:/saathidaar/app/src/main/res/drawable/tab_selector.xml" value="0.159" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/text_color_chip_state_list.xml" value="0.159" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/textview_selection.xml" value="0.159" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/white_bg.xml" value="0.1755" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/activity_details_registration.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_family_detail_show.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_family_profile.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/activity_forget.xml" value="0.23802083333333332" />

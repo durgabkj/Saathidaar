@@ -310,7 +310,7 @@
 
                             <TextView
                                 android:id="@+id/tvPremiumButton"
-                                android:layout_width="200dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:background="@drawable/white_button_bg"

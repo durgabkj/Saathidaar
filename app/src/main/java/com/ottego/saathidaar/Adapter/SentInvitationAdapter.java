@@ -74,7 +74,7 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
 //                    holder.llDelete.setVisibility(View.GONE);
 //                }
 //            });
-
+holder.llPrivateSentPhoto.setVisibility(View.GONE);
 
             holder.llDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -134,6 +134,22 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
                         .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                         //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                         .into(holder.ivSentInvitation);
+
+            }
+            else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
+                holder.llPhotoSent.setEnabled(false);
+                // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+                holder.llPremiumMsgSent.setVisibility(View.GONE);
+                holder.llPrivateSentPhoto.setVisibility(View.VISIBLE);
+                // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+                Glide.with(context)
+                        .load(Utils.imageUrl + item.profile_photo)
+                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(holder.ivSentInvitation);
+
+
+
 
             } else if (item.photo_privacy.equalsIgnoreCase("3")) {
                 holder.llPhotoSent.setEnabled(false);
@@ -202,13 +218,14 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvInvNewMatchName, tvPremiumSentMatch, tvInvNewMatchAge, tvInvNewMatchHeight, tvLevelPremiumSent, tvInvNewMatchCity, tvInvNewMatchWorkAs, tvInvitationMessageSent, tvImageCountSent;
-        LinearLayout llAccept, llDelete, llAccepted, llDeleted, llPremiumMsgSent, llPhotoSent, llBlockSent, llBlockedSent, llNo_imageFemaleSentInvitation, llMsgDateSent;
+        LinearLayout llAccept, llDelete, llAccepted, llPrivateSentPhoto, llDeleted, llPremiumMsgSent, llPhotoSent, llBlockSent, llBlockedSent, llNo_imageFemaleSentInvitation, llMsgDateSent;
         ImageView ivNoImageMaleFemaleSentInvitation, ivSentInvitation;
         FrameLayout flNoImageMaleFemaleSentInvitation, flPremiumSent;
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
+            llPrivateSentPhoto = itemView.findViewById(R.id.llPrivateSentPhoto);
             tvLevelPremiumSent = itemView.findViewById(R.id.tvLevelPremiumSent);
             flPremiumSent = itemView.findViewById(R.id.flPremiumSent);
             llPremiumMsgSent = itemView.findViewById(R.id.llPremiumMsgSent);

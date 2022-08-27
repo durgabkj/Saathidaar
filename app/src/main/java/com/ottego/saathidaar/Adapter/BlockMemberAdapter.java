@@ -59,7 +59,6 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
         }
 
 
-        @SuppressLint("SetTextI18n")
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
             NewMatchesModel item = list.get(position);
@@ -76,7 +75,7 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
             }
 
 
-
+            holder.llPrivateBlockPhoto.setVisibility(View.GONE);
 
             holder.tvNewBlockHeight.setText(Utils.nullToBlank(item.religion));
             holder.tvBlockCity.setText(Utils.nullToBlank(item.maritalStatus));
@@ -140,6 +139,22 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
                         //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                         .into(holder.ivBlockProfileImage);
 
+
+            }
+            else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
+                holder.llPhotoBlock.setEnabled(false);
+                // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+                holder.llPremiumMsgUnBlock.setVisibility(View.GONE);
+                holder.llPrivateBlockPhoto.setVisibility(View.VISIBLE);
+                // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+                Glide.with(context)
+                        .load(Utils.imageUrl + item.profile_photo)
+                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(holder.ivBlockProfileImage);
+
+
+
             } else if (item.photo_privacy.equalsIgnoreCase("3")) {
                 holder.llPhotoBlock.setEnabled(false);
               //  holder.flPremiumBlock.setVisibility(View.VISIBLE);
@@ -198,11 +213,12 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivBlockProfileImage,ivNoImageMaleFemaleBlock;
             TextView tvBlockName, tvBlockAge, tvLevelPremiumBlock,tvPremiumBlockMatch,tvNewBlockHeight, tvBlockCity, tvBlockWorkAs,tvImageCountUnBlock;
-            LinearLayout llPhotoBlock,ivUnblock,llConnectBlock,llNo_imageFemaleListBlock,llUnBlockAnimation,llPremiumMsgUnBlock;
+            LinearLayout llPhotoBlock,ivUnblock,llPrivateBlockPhoto,llConnectBlock,llNo_imageFemaleListBlock,llUnBlockAnimation,llPremiumMsgUnBlock;
             FrameLayout flNoImageMaleFemaleListBlock,flPremiumBlock;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
+                llPrivateBlockPhoto=itemView.findViewById(R.id.llPrivateBlockPhoto);
                 tvLevelPremiumBlock=itemView.findViewById(R.id.tvLevelPremiumBlock);
                 llPremiumMsgUnBlock=itemView.findViewById(R.id.llPremiumMsgUnBlock);
                 tvBlockAge = itemView.findViewById(R.id.tvBlockAge);

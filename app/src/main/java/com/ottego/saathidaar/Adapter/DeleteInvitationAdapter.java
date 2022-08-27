@@ -69,6 +69,9 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
         holder.tvImageCountDelete.setText((item.images_count));
         holder.tvInvitationDeleteMessageInbox.setText(Utils.nullToBlank(item.request_message));
 
+
+        holder.llPrivateDeletePhoto.setVisibility(View.GONE);
+
         holder.llBlockDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,6 +129,22 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(holder.ivDeleteInvitation);
+
+
+        }
+        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
+            holder.llPhotoDelete.setEnabled(false);
+            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgDelete.setVisibility(View.GONE);
+            holder.llPrivateDeletePhoto.setVisibility(View.VISIBLE);
+            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivDeleteInvitation);
+
+
 
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {
             holder.llPhotoDelete.setEnabled(false);
@@ -190,13 +209,14 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvInvDeleteWorkAs, tvInvDeleteCity,tvLevelPremiumDelete, tvPremiumDeleteMatch,tvImageCountDelete, tvInvDeleteHeight, tvInvDeleteName, tvInvDeleteAge, tvInvitationDeleteMessageInbox;
-        LinearLayout llBlocked,llBlockDelete, llDeletedInvitation,llBlockAcceptButton,llPremiumMsgDelete, llDelete1, llPhotoDelete, llNo_imageFemaleListDeleteInvi;
+        LinearLayout llBlocked,llBlockDelete, llPrivateDeletePhoto,llDeletedInvitation,llBlockAcceptButton,llPremiumMsgDelete, llDelete1, llPhotoDelete, llNo_imageFemaleListDeleteInvi;
         ImageView ivDeleteInvitation, ivNoImageMaleFemaleDeleteInvi;
         FrameLayout flNoImageMaleFemaleListDeleteInvi,flPremiumDelete;
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
+            llPrivateDeletePhoto=itemView.findViewById(R.id.llPrivateDeletePhoto);
             llBlockAcceptButton=itemView.findViewById(R.id.llBlockAcceptButton);
             llPremiumMsgDelete=itemView.findViewById(R.id.llPremiumMsgDelete);
             tvInvDeleteAge = itemView.findViewById(R.id.tvInvDeleteAge);

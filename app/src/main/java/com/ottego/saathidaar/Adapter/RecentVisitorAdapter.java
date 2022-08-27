@@ -102,7 +102,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 public void onClick(View view) {
                     Utils.shortList(context, item.member_id,clickListener);
                     holder.llShortListRecentV.setVisibility(View.GONE);
-                    holder.llShortListRemove.setVisibility(View.VISIBLE);
+                    holder.llShortListRecent.setVisibility(View.VISIBLE);
                 }
             });
 
@@ -151,6 +151,18 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                         //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                         .into(holder.ivRecentViewImage);
 
+            }
+            else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
+                holder.llPhotoRecentV.setEnabled(false);
+                // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+                holder.llPremiumMsgRecentlyView.setVisibility(View.GONE);
+                holder.llPrivateRecentlyViewPhoto.setVisibility(View.VISIBLE);
+                // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+                Glide.with(context)
+                        .load(Utils.imageUrl + item.profile_photo)
+                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(holder.ivRecentViewImage);
 
             } else if (item.photo_privacy.equalsIgnoreCase("3")) {
                 holder.llPhotoRecentV.setEnabled(false);
@@ -217,13 +229,14 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivRecentViewImage,ivNoImageMaleFemaleRecentView,tvPremiumShortlistMatch;
             TextView tvNewMatchName,tvPremiumrecentlyViewMatch, tvNewMatchAge,tvLevelPremiumRecent, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs,tvImageCountRecentView;
-            LinearLayout llPhotoRecentV,llShortBlockRecentV,llConnectShortList,llShortListRecent,llBlockedRecentV,llPremiumMsgRecentlyView,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove,llNo_imageFemaleListRecentView,llConnectedRecently;
+            LinearLayout llPhotoRecentV,llShortBlockRecentV,llPrivateRecentlyViewPhoto,llConnectShortList,llShortListRecent,llBlockedRecentV,llPremiumMsgRecentlyView,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove,llNo_imageFemaleListRecentView,llConnectedRecently;
             FrameLayout flNoImageMaleFemaleListRecentView,flPremiumRecentView;
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
+                llPrivateRecentlyViewPhoto=itemView.findViewById(R.id.llPrivateRecentlyViewPhoto);
                 tvPremiumrecentlyViewMatch=itemView.findViewById(R.id.tvPremiumrecentlyViewMatch);
                 llConnectShortList=itemView.findViewById(R.id.llConnectShortList);
-                llShortListRecent=itemView.findViewById(R.id.llShortListRecent);
+               // llShortListRecent=itemView.findViewById(R.id.llShortListRecent);
                 tvNewMatchAge = itemView.findViewById(R.id.tvRecentViewAgeRs);
                 tvNewMatchName = itemView.findViewById(R.id.ivRecentViewNameRs);
                 tvNewMatchHeight = itemView.findViewById(R.id.tvRecentViewHeightRs);
@@ -235,7 +248,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 tvPremiumShortlistMatch=itemView.findViewById(R.id.tvPremiumShortlistMatch);
                 ivLikeRecentVisitors=itemView.findViewById(R.id.ivLikeRecentVisitors);
                 llShortListRecentV=itemView.findViewById(R.id.llShortListRecentV);
-                llShortListRemove=itemView.findViewById(R.id.llShortListRemove);
+                llShortListRecent=itemView.findViewById(R.id.llShortListRecent);
                 llConnectedRecently=itemView.findViewById(R.id.llConnectedRecently);
                 flNoImageMaleFemaleListRecentView=itemView.findViewById(R.id.flNoImageMaleFemaleListRecentView);
                 ivRecentViewImage=itemView.findViewById(R.id.ivRecentViewImage);

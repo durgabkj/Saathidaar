@@ -469,7 +469,6 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
     }
 
     @SuppressLint("ResourceAsColor")

@@ -1,15 +1,9 @@
 package com.ottego.saathidaar;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -21,23 +15,22 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
-import com.ottego.saathidaar.Model.UserModel;
 import com.ottego.saathidaar.databinding.ActivityLandingBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class LandingActivity extends AppCompatActivity {
     public static ViewPager viewPager;
@@ -61,9 +54,9 @@ public class LandingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityLandingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-            context = LandingActivity.this;
-
-            listener();
+        context = LandingActivity.this;
+        sessionManager = new SessionManager(context);
+        listener();
             String[] items = new String[]{"Profile Created by","Self", "Sibling", "Parents", "Relatives", "Friends", "Saathidaar.com", "franchise"};
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.dropdown_item, items);
             binding.spinner1.setAdapter(adapter);
@@ -383,12 +376,13 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
                             try {
                                 String code = response.getString("result");
                                 if (code.equalsIgnoreCase("1")) {
-//                                    Gson gson = new Gson();
-//                                    UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);
-//                                   // sessionManager.createSUserDetails(sessionModel);
-                                     // Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
-                                    Intent intent = new Intent(context, OtpVerificationActivity.class);
-                                    intent.putExtra("mobile", phone);
+                                    Gson gson = new Gson();
+                                    //  UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);
+                                    sessionManager.createSUserMemberId(response.getString("member_id"));
+                                    // Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+                                    //  Intent intent = new Intent(context, OtpVerificationActivity.class);
+                                    Intent intent = new Intent(context, DetailsRegistrationActivity.class);
+                                    // intent.putExtra("mobile", phone);
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
                                 } else {

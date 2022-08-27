@@ -218,7 +218,40 @@
                 </LinearLayout>
 
             </FrameLayout>
+            <LinearLayout
+                android:id="@+id/llPrivateMatchesPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                >
 
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:translationX="10dp"
+                    android:elevation="20dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/hideimage"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="#000000"
+                    android:shadowDx="4"
+                    android:shadowDy="4"
+                    android:inputType="textCapWords"
+                    android:fontFamily="@font/italic"
+                    android:shadowRadius="7.8"
+                    android:layout_gravity="center"
+                    android:text=" This Profile Picture is Private"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/llPremiumMsgMatches"
                 android:layout_width="wrap_content"

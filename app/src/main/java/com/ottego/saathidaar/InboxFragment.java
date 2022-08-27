@@ -1,6 +1,5 @@
 package com.ottego.saathidaar;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,28 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.viewpager.widget.ViewPager;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.chip.ChipGroup;
-import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
-import com.ottego.saathidaar.Adapter.HomeTablayoutAdapter;
 import com.ottego.saathidaar.Model.DataModelDashboard;
 import com.ottego.saathidaar.databinding.FragmentInboxBinding;
 import com.ottego.saathidaar.viewmodel.InboxViewModel;
-import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONObject;
 
@@ -181,7 +172,6 @@ int count=0;
 
     }
 
-    @SuppressLint("ResourceAsColor")
     private void setData() {
 //        RequestAccept.setText(model.data.get(0).accept_request_count);
 //        RequestSent.setText(model.data.get(0).sent_request_count);

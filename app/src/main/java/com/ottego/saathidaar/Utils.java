@@ -284,11 +284,12 @@ public class Utils {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                     progressDialog.dismiss();
+                        apiListener.onSuccess(0);
+                        progressDialog.dismiss();
                         Log.e(" request delete response", String.valueOf((response)));
                         try {
-                            String code = response.getString("message");
-                            if (code.equalsIgnoreCase("request are Rejected..")) {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
                                 apiListener.onSuccess(0);
                                 Toast.makeText(context,"Request Rejected",Toast.LENGTH_LONG).show();
                             } else {

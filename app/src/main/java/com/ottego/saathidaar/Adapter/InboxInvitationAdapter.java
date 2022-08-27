@@ -68,7 +68,7 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         holder.tvInvNewMatchWorkAs.setText(Utils.nullToBlank(item.country));
         holder.tvImageCountInvitation.setText(Utils.nullToBlank(item.images_count));
 
-
+holder.llPrivateInvitationPhoto.setVisibility(View.GONE);
 
         holder.llAccept.setOnClickListener(new View.OnClickListener()  {
             @Override
@@ -79,19 +79,16 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
                 holder.llDelete.setVisibility(View.GONE);
             }
         });
-
-
-        holder.llDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Utils.deleteRequest(context, item.member_id,clickListener);
-                holder.llAccept.setVisibility(View.GONE);
-                holder.llDelete.setVisibility(View.GONE);
-                holder.llDeleted.setVisibility(View.VISIBLE);
-
-            }
-        });
+//        holder.llDelete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Utils.deleteRequest(context, item.member_id,clickListener);
+//                holder.llAccept.setVisibility(View.GONE);
+//                holder.llDelete.setVisibility(View.GONE);
+//                holder.llDeleted.setVisibility(View.VISIBLE);
+//
+//            }
+//        });
 
 
         holder.llBlockInvitation.setOnClickListener(new View.OnClickListener() {
@@ -144,6 +141,20 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(holder.ivReceivedInvitation);
+
+        }
+        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
+            holder.llPhotoInvitation.setEnabled(false);
+            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgInvitation.setVisibility(View.GONE);
+            holder.llPrivateInvitationPhoto.setVisibility(View.VISIBLE);
+            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivReceivedInvitation);
+
 
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {
             holder.llPhotoInvitation.setEnabled(false);
@@ -218,12 +229,12 @@ public class InboxInvitationAdapter extends RecyclerView.Adapter<InboxInvitation
         FrameLayout flNoImageMaleFemaleListReceivedInvitation,flPremiumInvitation;
         ImageView ivNoImageMaleFemaleReceivedInvitation, ivReceivedInvitation;
         TextView tvInvNewMatchName,tvImageCountInvitation,tvPremiumInvitationMatch, tvLevelPremiumInvitation,tvInvNewMatchAge, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAs, tvInvitationMessageInbox, tvInvitationDateInbox;
-        LinearLayout llNo_imageFemaleListReceivedInvitation, llItemAnimationAccept,llPremiumMsgInvitation,llAccept, llDelete, llAccepted, llDeleted, llPhotoInvitation, llBlockInvitation, llBlockedInvitation, llAcceptDelete,llMsgDate;
+        LinearLayout llNo_imageFemaleListReceivedInvitation,llPrivateInvitationPhoto, llItemAnimationAccept,llPremiumMsgInvitation,llAccept, llDelete, llAccepted, llDeleted, llPhotoInvitation, llBlockInvitation, llBlockedInvitation, llAcceptDelete,llMsgDate;
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
-
+            llPrivateInvitationPhoto=itemView.findViewById(R.id.llPrivateInvitationPhoto);
             tvInvNewMatchAge = itemView.findViewById(R.id.tvInvNewMatchAge);
             flPremiumInvitation = itemView.findViewById(R.id.flPremiumInvitation);
             tvInvNewMatchName = itemView.findViewById(R.id.tvInvNewMatchName);

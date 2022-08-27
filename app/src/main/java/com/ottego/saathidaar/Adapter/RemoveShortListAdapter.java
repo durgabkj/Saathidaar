@@ -71,6 +71,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         holder.tvNewMatchCityRs.setText(Utils.nullToBlank(item.maritalStatus));
         holder.tvImageCountRemoveShortList.setText(Utils.nullToBlank(item.images_count));
 
+        holder.llPrivateRemoveShortListPhoto.setVisibility(View.GONE);
 
         if(item.request_status!=null && !item.request_status.isEmpty())
         {
@@ -141,6 +142,21 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
                     //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(holder.ivRemoveShortList);
 
+        }
+        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
+            holder.llPhotoShortList.setEnabled(false);
+            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
+            holder.llPrivateRemoveShortListPhoto.setVisibility(View.VISIBLE);
+            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivRemoveShortList);
+
+
+
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {
             holder.llPhotoShortList.setEnabled(false);
           //  holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
@@ -203,12 +219,13 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         ImageView ivRemoveShortList, ivNoImageMaleFemaleRemoveShortList;
         TextView tvNewMatchNameRs,tvPremiumShortlistMatch,tvLevelPremiumRemoveShortList, tvNewMatchAgeRs, tvNewMatchHeightRs, tvNewMatchCityRs, tvNewMatchWorkAsRs, tvImageCountRemoveShortList;
         LinearLayout llMess, llShortListRemove1, llShortList1, llPhotoShortList, llNo_imageFemaleRemoveShortList;
-        LinearLayout ivLikeShortList, llBlockShortList, llPremiumMsgRemoveShortlist,llBlockedShortList, llConnectShortList;
+        LinearLayout ivLikeShortList, llBlockShortList,llPrivateRemoveShortListPhoto, llPremiumMsgRemoveShortlist,llBlockedShortList, llConnectShortList;
         FrameLayout flNoImageMaleFemaleRemoveShortList,flPremiumRemove_shortList;
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
+            llPrivateRemoveShortListPhoto=itemView.findViewById(R.id.llPrivateRemoveShortListPhoto);
             tvLevelPremiumRemoveShortList = itemView.findViewById(R.id.tvLevelPremiumRemoveShortList);
             flPremiumRemove_shortList = itemView.findViewById(R.id.flPremiumRemove_shortList);
             llPremiumMsgRemoveShortlist=itemView.findViewById(R.id.llPremiumMsgRemoveShortlist);

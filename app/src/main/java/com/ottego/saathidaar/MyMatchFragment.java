@@ -37,7 +37,7 @@ public class MyMatchFragment extends Fragment implements ApiListener {
     MatchViewModel viewModel;
     InboxViewModel inboxViewModel;
     public String MyMatchUrl = Utils.memberUrl + "my/matches/";
-static  final int ALARM_REQ_CODE=100;
+    static  final int ALARM_REQ_CODE=100;
     AlertDialog dialog;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

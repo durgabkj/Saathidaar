@@ -86,7 +86,6 @@ public class AcceptedInboxFragment extends Fragment implements ApiListener {
         b.srlRecycleViewAccept.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                //matchViewModel.getDataCount();
                 getData();
             }
         });
@@ -94,7 +93,7 @@ public class AcceptedInboxFragment extends Fragment implements ApiListener {
     private void getData() {
        // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                InvitationAcceptUrl+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                InvitationAcceptUrl+member_id, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                b.srlRecycleViewAccept.setRefreshing(false);
@@ -144,6 +143,7 @@ public class AcceptedInboxFragment extends Fragment implements ApiListener {
     public void onSuccess(int position) {
         getData();
         matchViewModel.getDataCount();
+        viewModel.getDataCount();
     }
 
     @Override

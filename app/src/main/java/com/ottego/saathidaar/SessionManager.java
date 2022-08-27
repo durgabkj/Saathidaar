@@ -18,6 +18,7 @@ public class SessionManager {
     public static final String KEY_GENDER = "gender";
     public static final String KEY_PROFILE_ID_Log = "profile_id";
     public static final String KEY_FRANCHISE_CODE = "franchise_code";
+    public static final String KEY_PREMIUM = "my_premium_status";
     public static final String KEY_PROFILE_CreatedBy = "profile_created_by";
 
 //user data
@@ -26,6 +27,9 @@ public class SessionManager {
 
     private static final String PREF_NAME = "userData";
     private static final String IS_LOGIN = "isLogin";
+    private static final String KEY_PREMIUM_STATUS = "my_premium_status";
+    private static final String KEY_REG_ID = "member_id";
+    private static final String KEY_SHORT_REG = "results";
     private static SharedPreferences pref;
     SharedPreferences.Editor editor;
     Context _context;
@@ -50,7 +54,7 @@ public class SessionManager {
         editor.putString(KEY_PROFILE_ID_Log, model.profile_id);
         editor.putString(KEY_FRANCHISE_CODE,model.franchise_code);
         editor.putString(KEY_PROFILE_CreatedBy, model.profile_created_by);
-
+        editor.putString(KEY_PREMIUM, model.my_premium_status);
         editor.commit();
     }
 
@@ -83,6 +87,9 @@ public class SessionManager {
 
     public String getKey_franchise() {
         return pref.getString(KEY_FRANCHISE_CODE, "");
+    }
+    public String getKey_Premium() {
+        return pref.getString(KEY_PREMIUM, "");
     }
     public String getKEY_PROFILE_CreatedBy() {
         return pref.getString(KEY_PROFILE_CreatedBy, "");
@@ -123,6 +130,34 @@ public class SessionManager {
 
     public String getAbout_Description() {
         return pref.getString(KEY_about_ourself, "");
+    }
+
+    public void createSessionPremiumStatus(String my_premium_status) {
+        editor.putString(KEY_PREMIUM_STATUS, my_premium_status);
+        editor.commit();
+    }
+
+    public String getUserPremiumStatus() {
+        return pref.getString(KEY_PREMIUM_STATUS, "");
+    }
+
+    public void createSUserMemberId(String member_id) {
+        editor.putString(KEY_REG_ID, member_id);
+        editor.commit();
+    }
+
+
+    public String getUserMemberRegId() {
+        return pref.getString(KEY_REG_ID, "");
+    }
+
+    public void createShortReg(String results) {
+        editor.putString(KEY_SHORT_REG, results);
+        editor.commit();
+    }
+
+    public String get_Key_ShortReg() {
+        return pref.getString(KEY_SHORT_REG, "");
     }
 }
 

@@ -258,7 +258,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
                             android:fontFamily="@font/italic"
-                            android:text="Country live in" />
+                            android:text="Country living in" />
 
                         <LinearLayout
                             android:layout_width="0dp"

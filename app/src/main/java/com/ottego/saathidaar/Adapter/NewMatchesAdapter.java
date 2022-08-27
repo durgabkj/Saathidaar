@@ -68,6 +68,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         holder.tvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
         holder.tvImageCount.setText(item.images_count);
 
+        holder.llPrivateMatchesPhoto.setVisibility(View.GONE);
 
         if (item.photo_privacy.equalsIgnoreCase("1")) {
             holder.llPhotoMyMatches.setEnabled(true);
@@ -81,16 +82,34 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
                     //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(holder.ivUserMatch);
 
-        } else if (item.photo_privacy.equalsIgnoreCase("3")) {
+        }
+        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
             holder.llPhotoMyMatches.setEnabled(false);
-           // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-            holder.llPremiumMsgMatches.setVisibility(View.VISIBLE);
-           // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgMatches.setVisibility(View.GONE);
+            holder.llPrivateMatchesPhoto.setVisibility(View.VISIBLE);
+            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     .transform(new BlurTransformation(20, 8))
                     .into(holder.ivUserMatch);
+
+
+
+        } else if (item.photo_privacy.equalsIgnoreCase("3")) {
+            holder.llPhotoMyMatches.setEnabled(false);
+            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgMatches.setVisibility(View.VISIBLE);
+            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivUserMatch);
+
+
+
         } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
            // holder.flPremiumMatch.setVisibility(View.GONE);
             holder.llPremiumMsgMatches.setVisibility(View.GONE);
@@ -195,6 +214,8 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         }
 
 
+
+
     }
 
     @Override
@@ -205,13 +226,14 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivUserMatch, ivNoImageMaleFemaleMatch;
         TextView tvNewMatchName, tvNewMatchAge, tvPremiumContactMatch, tvLevelPremiumMatch, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs, tvImageCount;
-        LinearLayout llMess, llShortListRemove, llShortList, llPhotoMyMatches, llShortBlock, llBlocked, llItemAnimation;
+        LinearLayout llMess, llShortListRemove,llPrivateMatchesPhoto, llShortList, llPhotoMyMatches, llShortBlock, llBlocked, llItemAnimation;
         LinearLayout ivLike, llConnect, llNo_imageFemaleList, llPremiumMsgMatches;
         FrameLayout flNoImageMaleFemaleList, flPremiumMatch;
         Spinner SpMenu;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            llPrivateMatchesPhoto=itemView.findViewById(R.id.llPrivateMatchesPhoto);
             tvPremiumContactMatch = itemView.findViewById(R.id.tvPremiumContactMatch);
             tvNewMatchAge = itemView.findViewById(R.id.tvNewMatchAge);
             tvNewMatchName = itemView.findViewById(R.id.tvNewMatchName);

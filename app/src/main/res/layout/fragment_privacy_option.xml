@@ -114,6 +114,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:visibility="gone"
                                 android:fontFamily="@font/italic"
                                 android:text="Visible to all Member" />
 
@@ -254,6 +255,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:checked="false"
+                                android:visibility="gone"
                                 android:fontFamily="@font/italic"
                                 android:text="Visible to all Member" />
 
@@ -396,6 +398,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:checked="false"
+                                android:visibility="gone"
                                 android:fontFamily="@font/italic"
                                 android:text="Visible to all Member" />
 
@@ -540,6 +543,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:visibility="gone"
                                 android:fontFamily="@font/italic"
                                 android:checked="false"
                                 android:text="Visible to all Member" />
@@ -681,6 +685,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:visibility="gone"
                                 android:checked="false"
                                 android:fontFamily="@font/italic"
                                 android:text="Visible to all Members" />

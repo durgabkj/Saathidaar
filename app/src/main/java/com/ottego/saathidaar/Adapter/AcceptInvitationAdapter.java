@@ -3,14 +3,10 @@ package com.ottego.saathidaar.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,14 +17,12 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.ApiListener;
 import com.ottego.saathidaar.InboxPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.InboxModel;
 import com.ottego.saathidaar.R;
-import com.ottego.saathidaar.ApiListener;
 import com.ottego.saathidaar.SessionManager;
 import com.ottego.saathidaar.UpgradeOnButtonActivity;
 import com.ottego.saathidaar.Utils;
@@ -75,7 +69,7 @@ if(item!=null)
     holder.tvImageCountAccept.setText(Utils.nullToBlank(item.images_count));
 
 }
-
+        holder.llPrivatePhoto.setVisibility(View.GONE);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,8 +93,6 @@ if(item!=null)
         holder.llDeleteAccet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Animation animation = AnimationUtils.loadAnimation(context, R.anim.move);
-                holder.llItemAnimationAccept.startAnimation(animation);
                 Utils.deleteRequest(context, item.member_id,clickListener);
                 holder.llDeleteAccet.setVisibility(View.GONE);
                 holder.llDeletedAccept.setVisibility(View.VISIBLE);
@@ -148,6 +140,21 @@ if(item!=null)
                 .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                 .transform(new BlurTransformation(20, 8))
                 .into(holder.ivProfileAcceptInvi);
+
+    }
+         else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
+            holder.llPhotoAccept.setEnabled(false);
+            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgAccept.setVisibility(View.GONE);
+            holder.llPrivatePhoto.setVisibility(View.VISIBLE);
+            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivProfileAcceptInvi);
+
+
     } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
         //  holder.flPremiumAccept.setVisibility(View.GONE);
         holder.llPremiumMsgAccept.setVisibility(View.GONE);
@@ -204,7 +211,7 @@ if(item!=null)
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvInvNewMatchName, tvPremiumAcceptMatch,tvInvNewMatchAge,tvPremiumDeleteMatch, tvInvitationAccetMessage, tvLevelPremiumAccept, tvImageCountAccept, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAsAccept, tvInvitationDate;
-        LinearLayout llCAll, llWhatsApp,llItemAnimationAccept, llPhotoAccept, llMessageAccept, llBlockAccept, llBlockedAccept, llAcceptCallMsgDecline, llNo_imageFemaleListAccept, llDeleteAccet, llDeletedAccept, llPremiumMsgAccept;
+        LinearLayout llCAll, llWhatsApp,llItemAnimationAccept, llPhotoAccept,llPrivatePhoto, llMessageAccept, llBlockAccept, llBlockedAccept, llAcceptCallMsgDecline, llNo_imageFemaleListAccept, llDeleteAccet, llDeletedAccept, llPremiumMsgAccept;
         FrameLayout flNoImageMaleFemaleListAccept, flPremiumAccept;
         ImageView ivNoImageMaleFemaleAccept, ivProfileAcceptInvi;
 
@@ -238,6 +245,7 @@ if(item!=null)
             llDeleteAccet = itemView.findViewById(R.id.llDeleteAccet);
             llDeletedAccept = itemView.findViewById(R.id.llDeletedAccept);
             llPremiumMsgAccept = itemView.findViewById(R.id.llPremiumMsgAccept);
+            llPrivatePhoto=itemView.findViewById(R.id.llPrivateAcceptPhoto);
             tvLevelPremiumAccept = itemView.findViewById(R.id.tvLevelPremiumAccept);
 
 

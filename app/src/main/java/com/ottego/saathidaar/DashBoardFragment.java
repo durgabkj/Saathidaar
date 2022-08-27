@@ -146,6 +146,13 @@ public class DashBoardFragment extends Fragment {
         //  setData();
         listener();
 
+        Log.e("hello","there"+sessionManager.getKey_Premium());
+
+        if(sessionManager.getKey_Premium().equalsIgnoreCase("2"))
+        {
+            tvPremiumButton.setText("Your Profile is Premium");
+        }
+
         return view;
 
     }
