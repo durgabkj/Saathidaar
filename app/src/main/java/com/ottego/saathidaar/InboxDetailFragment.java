@@ -36,21 +36,21 @@ import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public class InboxDetailFragment extends Fragment {
 
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    public String memberDetail = Utils.memberUrl + "get-details/";
+    public String PreferenceDetailUrl = Utils.memberUrl + "match/preference/";
+    public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
     FragmentInboxDetailBinding b;
     Animation animation;
     // NewMatchesModel model;
     MemberPreferenceModel memberPreferenceModel;
     SessionManager sessionManager;
     MemberProfileModel model;
-    public String memberDetail = Utils.memberUrl + "get-details/";
-    public String PreferenceDetailUrl = Utils.memberUrl + "match/preference/";
     Context context;
-    public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    HoroscopeModel horoscopeModel;
     private String mParam1;
     private String mParam2;
-    HoroscopeModel horoscopeModel;
     public InboxDetailFragment() {
         // Required empty public constructor
     }
@@ -515,7 +515,7 @@ public class InboxDetailFragment extends Fragment {
 
     private void setData() {
         if (model != null) {
-            b.tvNewMatchName.setText(Utils.nullToBlank(model.first_name).substring(0, 1).toUpperCase() + " " + Utils.nullToBlank(model.last_name).charAt(0));
+            b.tvNewMatchName.setText(Utils.nullToBlank(model.first_name) + " " + Utils.nullToBlank(model.last_name).charAt(0));
 
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
                 b.tvNewMatchAge.setText(Utils.nullToBlank(model.age) + " " + "yrs");
@@ -649,9 +649,9 @@ public class InboxDetailFragment extends Fragment {
 
             }
 
-
-
-
+            if (model.images_count.equalsIgnoreCase("0")) {
+                b.tvLevelPremiumInboxDetails.setVisibility(View.GONE);
+            }
         }
         }
 

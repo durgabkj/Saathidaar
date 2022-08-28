@@ -206,7 +206,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
+                            android:layout_gravity="center_horizontal"
                             android:orientation="horizontal">
 
                             <TextView
@@ -217,47 +217,76 @@
                                 android:maxLength="15"
                                 android:shadowColor="#000000"
                                 android:shadowDx="2"
+                                android:text="Durga"
+                                android:padding="2dp"
                                 android:shadowDy="2"
                                 android:shadowRadius="1.6"
                                 android:textColor="@color/white"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
 
+                            <ImageView
+                                android:layout_width="6dp"
+                                android:layout_height="6dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:alpha="0.6"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/circle_blue_fil" />
+
                             <TextView
                                 android:id="@+id/tvNewMatchAge"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
+
                                 android:fontFamily="@font/italic"
                                 android:shadowColor="#000000"
                                 android:shadowDx="1.5"
                                 android:shadowDy="1.3"
+                                android:padding="2dp"
                                 android:shadowRadius="1.6"
+                                android:text="22yrs"
                                 android:textColor="@color/white"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
+
+                            <ImageView
+                                android:layout_width="6dp"
+                                android:layout_height="6dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:alpha="0.6"
+                                android:layout_gravity="center_vertical"
+
+                                android:src="@drawable/circle_blue_fil" />
 
                             <TextView
                                 android:id="@+id/tvNewMatchHeight"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
+
                                 android:fontFamily="@font/italic"
                                 android:maxLength="15"
                                 android:shadowColor="#000000"
                                 android:shadowDx="1.5"
+                                android:text="5ft-152cm"
+                                android:padding="2dp"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
-
                                 android:textColor="@color/white"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:padding="2dp"
+                            android:background="@color/gray_dark"/>
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:layout_gravity="center"
                             android:orientation="horizontal">
 
@@ -270,23 +299,35 @@
                                 android:maxLength="10"
                                 android:shadowColor="#000000"
                                 android:shadowDx="1.5"
-                                android:layout_marginEnd="8dp"
+                                android:padding="2dp"
+                                android:text="Akrund"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
                                 android:textColor="@color/white"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
 
+
+                            <ImageView
+                                android:layout_width="6dp"
+                                android:layout_height="6dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:alpha="0.6"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/circle_blue_fil" />
+
                             <TextView
                                 android:id="@+id/tvNewMatchWorkAsDetail"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
                                 android:fontFamily="@font/italic"
                                 android:maxLength="25"
                                 android:shadowColor="#000000"
                                 android:shadowDx="1.5"
+                                android:text="Android developer"
                                 android:shadowDy="1.3"
+                                android:padding="2dp"
                                 android:shadowRadius="1.6"
                                 android:textColor="@color/white"
                                 android:textSize="13sp"

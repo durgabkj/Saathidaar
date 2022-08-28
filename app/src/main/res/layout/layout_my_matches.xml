@@ -336,12 +336,19 @@
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             android:textStyle="bold" />
-
+                        <ImageView
+                            android:id="@+id/ivMatchDot"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:alpha="0.6"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/circle_blue_fil" />
                         <TextView
                             android:id="@+id/tvNewMatchAge"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/italic"
                             android:shadowColor="#000000"
                             android:shadowDx="1.5"
@@ -350,12 +357,19 @@
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             android:textStyle="bold" />
-
+                        <ImageView
+                            android:id="@+id/ivMatchDot1"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:alpha="0.6"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/circle_blue_fil" />
                         <TextView
                             android:id="@+id/tvNewMatchHeight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/italic"
                             android:maxLength="10"
                             android:shadowColor="#000000"
@@ -366,7 +380,11 @@
                             android:textSize="16sp"
                             android:textStyle="bold" />
                     </LinearLayout>
-
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="100dp"
+                        android:background="@color/gray_dark"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -389,12 +407,19 @@
                             android:textColor="@color/white"
                             android:textSize="12sp"
                             android:textStyle="bold" />
-
+                        <ImageView
+                            android:id="@+id/ivMatchDot2"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:alpha="0.6"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/circle_blue_fil" />
                         <TextView
                             android:id="@+id/tvNewMatchWorkAs"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/italic"
                             android:maxLength="20"
                             android:shadowColor="#000000"

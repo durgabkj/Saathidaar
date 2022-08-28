@@ -664,7 +664,7 @@ if (memberPreferenceModel != null) {
             }
 
 //show request sent status
-            if((model.request_status!=null) && (!model.request_status.isEmpty()) && (!model.request_status.equals("")))
+            if((model.request_status!=null) && (!model.request_status.isEmpty()) && (!model.request_status.equals("")) && (!model.request_status.equalsIgnoreCase("null")))
             {
                 b.ivDetailsMatchConnected.setVisibility(View.VISIBLE);
                 b.ivDetailsMatchConnect.setVisibility(View.GONE);

@@ -59,7 +59,14 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
             Log.e(" Inbox model", new Gson().toJson(item));
             sessionManager=new SessionManager(context);
             holder.tvInvNewMatchName.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
-            holder.tvInvNewMatchAge.setText(Utils.nullToBlank(item.mage+" yrs"));
+            if((item.mage.equalsIgnoreCase(""))  || (item.mage.equalsIgnoreCase("null")))
+            {   holder.tvInvNewMatchAge.setText("Age Not Specify");
+
+            }else{
+                holder.tvInvNewMatchAge.setText(Utils.nullToBlank(item.mage)+"yrs");
+            }
+
+
             holder.tvInvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
             holder.tvInvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
             holder.tvInvNewMatchWorkAs.setText(Utils.nullToBlank(item.country));

@@ -315,6 +315,8 @@
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="10dp">
 
+
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -327,6 +329,7 @@
                         android:layout_height="wrap_content"
                         android:shadowColor="#000000"
                         android:shadowDx="2"
+                        android:padding="3dp"
                         android:shadowDy="2"
                         android:shadowRadius="1.6"
                         android:fontFamily="@font/italic"
@@ -335,39 +338,59 @@
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:alpha="0.6"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/circle_blue_fil" />
 
                     <TextView
                         android:id="@+id/tvRecentViewAgeRs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
                         android:fontFamily="@font/italic"
                         android:shadowDy="1.3"
+                        android:padding="3dp"
                         android:shadowRadius="1.6"
                         android:text="22 years"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:alpha="0.6"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/circle_blue_fil" />
 
                     <TextView
                         android:id="@+id/tvRecentViewHeightRs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
                         android:shadowDy="1.3"
                         android:shadowRadius="1.6"
                         android:text="5'1"
+                        android:padding="3dp"
                         android:maxLength="10"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginEnd="90dp"
+                    android:background="@color/gray_dark"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -387,37 +410,53 @@
                         android:shadowRadius="1.6"
                         android:maxLength="22"
                         android:text="Mumbai"
+                        android:padding="3dp"
                         android:textColor="@color/white"
                         android:fontFamily="@font/italic"
                         android:textSize="13sp"
                         android:textStyle="bold" />
 
+                    <ImageView
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:alpha="0.6"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/circle_blue_fil" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
                         android:fontFamily="@font/italic"
                         android:shadowDy="1.3"
                         android:maxLength="20"
+                        android:padding="3dp"
                         android:shadowRadius="1.6"
                         android:text="Income: "
                         android:textColor="@color/white"
                         android:textSize="13sp"
                         android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:alpha="0.6"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/circle_blue_fil" />
 
                     <TextView
                         android:id="@+id/tvRecentViewWorkAsRs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
                         android:fontFamily="@font/italic"
                         android:shadowDy="1.3"
-                        android:maxLength="20"
+                        android:maxLength="18"
                         android:shadowRadius="1.6"
                         android:text="Junior software Developer"
                         android:textColor="@color/white"
@@ -437,7 +476,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
                 android:visibility="gone"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="10dp"
                 android:orientation="vertical">
 
@@ -475,9 +514,9 @@
                 android:id="@+id/ivLikeRecentVisitors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="10dp"
                 android:layout_gravity="end|bottom"
-                android:layout_marginVertical="20dp"
+                android:layout_marginVertical="10dp"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
@@ -506,7 +545,7 @@
                     android:textSize="14sp"
                     android:fontFamily="@font/italic"
                     android:textStyle="bold"
-                    android:text="Connect Now"/>
+                    android:text="Send Request"/>
 
             </LinearLayout>
         </FrameLayout>

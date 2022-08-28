@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
 
 
@@ -25,19 +25,19 @@
             android:id="@+id/mcv_All_Played_Match"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:layout_margin="3dp"
             app:cardBackgroundColor="@color/white"
-            app:cardElevation="2dp"
             app:cardCornerRadius="10dp"
+            app:cardElevation="2dp"
             app:cardMaxElevation="4dp"
-            app:cardPreventCornerOverlap="true"
-            android:layout_margin="3dp">
+            app:cardPreventCornerOverlap="true">
 
             <!--            android:alpha="0.2"-->
             <ImageView
                 android:id="@+id/ivBlockProfileImage"
                 android:layout_width="match_parent"
-                android:scaleType="centerCrop"
                 android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 />
 
 
@@ -46,16 +46,16 @@
                 android:id="@+id/llNo_imageFemaleListBlock"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="gone"
                 android:background="@drawable/line_gradient"
-                android:orientation="horizontal" />
+                android:orientation="horizontal"
+                android:visibility="gone" />
 
             <FrameLayout
                 android:id="@+id/flNoImageMaleFemaleListBlock"
                 android:layout_width="120dp"
-                android:visibility="gone"
                 android:layout_height="120dp"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:visibility="gone">
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="wrap_content"
@@ -80,8 +80,8 @@
                 android:id="@+id/flPremiumBlock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_gravity="end">
+                android:layout_gravity="end"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -102,11 +102,11 @@
                 android:id="@+id/tvLevelPremiumBlock"
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
+                android:background="@color/colorPrimary"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="2dp"
-                android:visibility="gone"
-                android:background="@color/colorPrimary"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone" />
 
             <FrameLayout
                 android:layout_width="wrap_content"
@@ -116,8 +116,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
                     android:orientation="vertical"
+                    android:padding="10dp"
                     >
 
                     <LinearLayout
@@ -125,30 +125,30 @@
                         android:layout_width="60dp"
                         android:layout_height="30dp"
                         android:layout_marginStart="10dp"
-                        android:orientation="horizontal"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/oval_bg"
+                        android:orientation="horizontal"
                         >
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:padding="8dp"
                             android:layout_marginStart="8dp"
+                            android:padding="8dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_camera" />
 
                         <TextView
+                            android:id="@+id/tvImageCountUnBlock"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/tvImageCountUnBlock"
+                            android:layout_gravity="center"
                             android:shadowColor="#000000"
                             android:shadowDx="1.5"
                             android:shadowDy="1.3"
                             android:shadowRadius="1.6"
-                            android:textSize="14sp"
-                            android:layout_gravity="center"
-                            android:textColor="@color/white"/>
+                            android:textColor="@color/white"
+                            android:textSize="14sp"/>
 
                     </LinearLayout>
 
@@ -161,29 +161,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:visibility="gone"
-                android:orientation="vertical"
                 android:layout_margin="20dp"
                 android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
                 >
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:translationX="10dp"
                     android:elevation="20dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/hideimage"/>
+                    android:src="@drawable/hideimage"
+                    android:translationX="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/italic"
+                    android:inputType="textCapWords"
                     android:shadowColor="#000000"
                     android:shadowDx="4"
                     android:shadowDy="4"
-                    android:inputType="textCapWords"
-                    android:fontFamily="@font/italic"
                     android:shadowRadius="7.8"
-                    android:layout_gravity="center"
                     android:text=" This Profile Picture is Private"
                     android:textColor="@color/white"
                     android:textSize="12sp"
@@ -195,28 +195,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
                 android:padding="3dp"
                 android:visibility="gone"
-                android:orientation="vertical"
 
                 >
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:translationX="10dp"
-                    android:elevation="20dp"
-                    android:layout_marginTop="10dp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:elevation="20dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/hideimage"/>
+                    android:src="@drawable/hideimage"
+                    android:translationX="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/italic"
+                    android:inputType="textCapWords"
                     android:shadowColor="#000000"
                     android:shadowDx="2"
                     android:shadowDy="2"
-                    android:inputType="textCapWords"
-                    android:fontFamily="@font/italic"
                     android:shadowRadius="1.6"
                     android:text="Image show to premium member only"
                     android:textColor="@color/white"
@@ -258,6 +258,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -274,11 +275,20 @@
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
+                        <ImageView
+                            android:id="@+id/ivDot"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:alpha="0.6"
+                            android:src="@drawable/circle_blue_fil" />
+
                         <TextView
                             android:id="@+id/tvBlockAge"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/italic"
                             android:shadowColor="#000000"
                             android:shadowDx="1.5"
@@ -287,12 +297,20 @@
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             android:textStyle="bold" />
+                        <ImageView
+                            android:id="@+id/ivDot1"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:alpha="0.6"
+                            android:src="@drawable/circle_blue_fil" />
 
                         <TextView
                             android:id="@+id/tvNewBlockHeight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/italic"
                             android:maxLength="10"
                             android:shadowColor="#000000"
@@ -303,11 +321,15 @@
                             android:textSize="16sp"
                             android:textStyle="bold" />
                     </LinearLayout>
-
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="100dp"
+                        android:background="@color/gray_dark"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
                         android:orientation="horizontal">
 
 
@@ -316,27 +338,35 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/italic"
+                            android:inputType="textCapWords"
                             android:maxLength="20"
                             android:shadowColor="#000000"
                             android:shadowDx="1.5"
                             android:shadowDy="1.3"
                             android:shadowRadius="1.6"
-                            android:inputType="textCapWords"
                             android:textColor="@color/white"
                             android:textSize="13sp"
                             android:textStyle="bold" />
+                        <ImageView
+                            android:id="@+id/ivDot2"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:alpha="0.6"
+                            android:src="@drawable/circle_blue_fil" />
 
                         <TextView
                             android:id="@+id/tvBlockWorkAs"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/italic"
+                            android:inputType="textCapWords"
                             android:maxLength="20"
                             android:shadowColor="#000000"
                             android:shadowDx="1.5"
                             android:shadowDy="1.3"
-                            android:inputType="textCapWords"
                             android:shadowRadius="1.6"
                             android:textColor="@color/white"
                             android:textSize="12sp"
@@ -355,10 +385,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|bottom"
-                    android:visibility="gone"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginVertical="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
@@ -378,14 +408,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/italic"
                         android:shadowDx="2"
                         android:shadowDy="2"
-                        android:fontFamily="@font/italic"
                         android:shadowRadius="1.6"
+                        android:text="Un-Blocked"
                         android:textColor="@color/white"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:text="Un-Blocked"/>
+                        android:textStyle="bold"/>
 
                 </LinearLayout>
 

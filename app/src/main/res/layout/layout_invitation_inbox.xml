@@ -508,12 +508,18 @@
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
-
+                    <ImageView
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:alpha="0.6"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/circle_blue_fil" />
                     <TextView
                         android:id="@+id/tvInvNewMatchAge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
                         android:shadowDy="1.3"
@@ -522,7 +528,14 @@
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
-
+                    <ImageView
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:alpha="0.6"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/circle_blue_fil" />
                     <TextView
                         android:id="@+id/tvInvNewMatchHeight"
                         android:layout_width="wrap_content"
@@ -562,7 +575,14 @@
                         android:textColor="@color/white"
                         android:textSize="13sp"
                         android:textStyle="bold" />
-
+                    <ImageView
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:alpha="0.6"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/circle_blue_fil" />
                     <TextView
                         android:id="@+id/tvInvNewMatchWorkAs"
                         android:layout_width="wrap_content"

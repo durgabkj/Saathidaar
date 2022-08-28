@@ -3,8 +3,6 @@ package com.ottego.saathidaar.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,11 +19,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.ApiListener;
-import com.ottego.saathidaar.GalleryActivity;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.NewMatchesModel;
@@ -74,7 +69,9 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
                 holder.tvBlockAge.setText(Utils.nullToBlank(item.mage) + " yrs");
             }
 
-
+            holder.ivBlockDot1.setVisibility(View.VISIBLE);
+            holder.ivBlockDot.setVisibility(View.VISIBLE);
+            holder.ivBlockDot2.setVisibility(View.VISIBLE);
             holder.llPrivateBlockPhoto.setVisibility(View.GONE);
 
             holder.tvNewBlockHeight.setText(Utils.nullToBlank(item.religion));
@@ -203,6 +200,21 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
                     context.startActivity(intent);
                 }
             });
+
+            if(item.first_name.equals("")&& item.last_name.equalsIgnoreCase(""))
+            {
+                holder.ivBlockDot.setVisibility(View.GONE);
+            }
+            if(item.mage.equals(""))
+            {
+                holder.ivBlockDot1.setVisibility(View.GONE);
+
+            }
+            if(item.maritalStatus.equals(""))
+            {
+                holder.ivBlockDot2.setVisibility(View.GONE);
+            }
+
         }
 
         @Override
@@ -211,7 +223,7 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
         }
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            ImageView ivBlockProfileImage,ivNoImageMaleFemaleBlock;
+            ImageView ivBlockProfileImage,ivNoImageMaleFemaleBlock, ivBlockDot, ivBlockDot1, ivBlockDot2;
             TextView tvBlockName, tvBlockAge, tvLevelPremiumBlock,tvPremiumBlockMatch,tvNewBlockHeight, tvBlockCity, tvBlockWorkAs,tvImageCountUnBlock;
             LinearLayout llPhotoBlock,ivUnblock,llPrivateBlockPhoto,llConnectBlock,llNo_imageFemaleListBlock,llUnBlockAnimation,llPremiumMsgUnBlock;
             FrameLayout flNoImageMaleFemaleListBlock,flPremiumBlock;
@@ -221,6 +233,12 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
                 llPrivateBlockPhoto=itemView.findViewById(R.id.llPrivateBlockPhoto);
                 tvLevelPremiumBlock=itemView.findViewById(R.id.tvLevelPremiumBlock);
                 llPremiumMsgUnBlock=itemView.findViewById(R.id.llPremiumMsgUnBlock);
+
+
+                ivBlockDot =itemView.findViewById(R.id.ivDot);
+                ivBlockDot1 =itemView.findViewById(R.id.ivDot1);
+                ivBlockDot2 =itemView.findViewById(R.id.ivDot2);
+
                 tvBlockAge = itemView.findViewById(R.id.tvBlockAge);
                 tvBlockName = itemView.findViewById(R.id.tvNewBlockName);
                 tvNewBlockHeight = itemView.findViewById(R.id.tvNewBlockHeight);

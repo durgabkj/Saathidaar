@@ -79,16 +79,16 @@ holder.llPrivateInvitationPhoto.setVisibility(View.GONE);
                 holder.llDelete.setVisibility(View.GONE);
             }
         });
-//        holder.llDelete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Utils.deleteRequest(context, item.member_id,clickListener);
-//                holder.llAccept.setVisibility(View.GONE);
-//                holder.llDelete.setVisibility(View.GONE);
-//                holder.llDeleted.setVisibility(View.VISIBLE);
-//
-//            }
-//        });
+        holder.llDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.deleteRequest(context, item.member_id,clickListener);
+                holder.llAccept.setVisibility(View.GONE);
+                holder.llDelete.setVisibility(View.GONE);
+                holder.llDeleted.setVisibility(View.VISIBLE);
+
+            }
+        });
 
 
         holder.llBlockInvitation.setOnClickListener(new View.OnClickListener() {

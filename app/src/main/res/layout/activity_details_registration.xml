@@ -17,7 +17,7 @@
             style="@style/CustomMaterialToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient_button"
+            android:background="@drawable/gradient_for_app"
             app:title="Personal Data"
             app:titleTextColor="@color/white"
             app:titleCentered="true" />
@@ -145,7 +145,7 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:fontFamily="@font/pt_serif_bold"
-                android:background="@color/white"
+                android:background="@drawable/white_bg"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:drawableTint="@color/colorPrimary"

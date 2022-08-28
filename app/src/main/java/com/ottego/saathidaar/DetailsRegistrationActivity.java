@@ -395,7 +395,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
 
 
         if (country.isEmpty()) {
-            b.etCountry.setError("Please select Diet");
+            b.etCountry.setError("Please Select Country");
             b.etCountry.setFocusableInTouchMode(true);
             b.etCountry.requestFocus();
             return false;
@@ -406,7 +406,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
 
 
                 if (Marital_status.isEmpty()) {
-            b.etMaritalStatus.setError("Please select Caste");
+            b.etMaritalStatus.setError("Please Select Marital Status");
             b.etMaritalStatus.setFocusableInTouchMode(true);
             b.etMaritalStatus.requestFocus();
             return false;
@@ -432,7 +432,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
         }
 
         if (Religion.isEmpty()) {
-            b.tvUserReligion.setError("Please select Diet");
+            b.tvUserReligion.setError("Please Select Religion");
             b.tvUserReligion.setFocusableInTouchMode(true);
             b.tvUserReligion.requestFocus();
             return false;

@@ -288,6 +288,7 @@
         <entry key="..\:/saathidaar/app/src/main/res/drawable/button_bg.xml" value="0.243" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/button_hover.xml" value="0.151" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/chip_selection.xml" value="0.159" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/circle_blue_fil.xml" value="0.1615" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/gradient_button.xml" value="0.151" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_baseline_call_24.xml" value="0.179" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_email.xml" value="0.161" />
@@ -349,7 +350,7 @@
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_inbox_pager.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_invitation.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_kyc.xml" value="0.264" />
-        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_match_details.xml" value="0.2" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_match_details.xml" value="0.264" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_match_pager.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_matches.xml" value="0.264" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_member_gallery_pager.xml" value="0.23802083333333332" />
