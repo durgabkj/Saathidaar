@@ -240,12 +240,13 @@ public class Utils {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        apiListener.onSuccess(0);
                       //  progressDialog.dismiss();
                         Log.e(" request sent response", String.valueOf((response)));
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
-                                apiListener.onSuccess(0);
+                               // apiListener.onSuccess(0);
                                 Toast.makeText(context,"You accepted Request ",Toast.LENGTH_LONG).show();
                             } else {
                                 apiListener.onFail(0);
@@ -290,7 +291,7 @@ public class Utils {
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
-                                apiListener.onSuccess(0);
+
                                 Toast.makeText(context,"Request Rejected",Toast.LENGTH_LONG).show();
                             } else {
                                 apiListener.onFail(0);
@@ -317,7 +318,7 @@ public class Utils {
 
     }
 
-    public static void sentRequest(Context context, String member_id) {
+    public static void sentRequest(Context context, String member_id, ApiListener apiListener) {
       //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
         String url = Utils.memberUrl + "send-request";
         Map<String, String> params = new HashMap<String, String>();
@@ -329,6 +330,7 @@ public class Utils {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        apiListener.onSuccess(0);
                      //   progressDialog.dismiss();
                         Log.e(" request sent response", String.valueOf((response)));
                         try {
@@ -336,6 +338,7 @@ public class Utils {
                             if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(context,"Request Send Successfully",Toast.LENGTH_LONG).show();
                             } else {
+                                apiListener.onFail(0);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {

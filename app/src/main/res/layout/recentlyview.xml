@@ -339,6 +339,7 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
                     <ImageView
+                        android:id="@+id/ivRecentDot"
                         android:layout_width="6dp"
                         android:layout_height="6dp"
                         android:layout_marginLeft="5dp"
@@ -416,30 +417,10 @@
                         android:textSize="13sp"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:layout_width="6dp"
-                        android:layout_height="6dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:alpha="0.6"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/circle_blue_fil" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:shadowColor="#000000"
-                        android:shadowDx="1.5"
-                        android:fontFamily="@font/italic"
-                        android:shadowDy="1.3"
-                        android:maxLength="20"
-                        android:padding="3dp"
-                        android:shadowRadius="1.6"
-                        android:text="Income: "
-                        android:textColor="@color/white"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
+
                     <ImageView
+                        android:id="@+id/ivRecentDot1"
                         android:layout_width="6dp"
                         android:layout_height="6dp"
                         android:layout_marginLeft="5dp"

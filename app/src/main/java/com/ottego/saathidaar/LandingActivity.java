@@ -75,9 +75,12 @@ public class LandingActivity extends AppCompatActivity {
             flipper.setAutoStart(true);
             flipper.setFlipInterval(5000);
 
-           // flipper.setInAnimation(this, android.R.anim.slide_out_right);
+            // flipper.setInAnimation(this, android.R.anim.slide_out_right);
             flipper.setInAnimation(this, android.R.anim.slide_in_left);
+
         }
+
+
 
         private void listener() {
 

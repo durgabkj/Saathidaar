@@ -61,7 +61,14 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 if(item!=null)
 {
     holder.tvInvNewMatchName.setText(item.first_name + " " + Utils.nullToBlank(item.last_name).charAt(0));
-    holder.tvInvNewMatchAge.setText(Utils.nullToBlank(item.mage));
+
+    if (item.mage.equalsIgnoreCase("null") && !item.mage.equalsIgnoreCase("")) {
+        holder.tvInvNewMatchAge.setText("Age-Not Specified");
+    }else
+    {
+        holder.tvInvNewMatchAge.setText(Utils.nullToBlank(item.mage) +"yrs");
+    }
+
     holder.tvInvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
     holder.tvInvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
     holder.tvInvNewMatchWorkAsAccept.setText(Utils.nullToBlank(item.country));
@@ -130,16 +137,6 @@ if(item!=null)
                 //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                 .into(holder.ivProfileAcceptInvi);
 
-    } else if (item.photo_privacy.equalsIgnoreCase("3")) {
-        holder.llPhotoAccept.setEnabled(false);
-        //   holder.flPremiumAccept.setVisibility(View.VISIBLE);
-        holder.llPremiumMsgAccept.setVisibility(View.VISIBLE);
-        // holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
-        Glide.with(context)
-                .load(Utils.imageUrl + item.profile_photo)
-                .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                .transform(new BlurTransformation(20, 8))
-                .into(holder.ivProfileAcceptInvi);
 
     }
          else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
@@ -166,6 +163,19 @@ if(item!=null)
                 .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                 .transform(new BlurTransformation(20, 8))
                 .into(holder.ivProfileAcceptInvi);
+
+    } else if (item.photo_privacy.equalsIgnoreCase("3")) {
+        holder.llPhotoAccept.setEnabled(false);
+        //   holder.flPremiumAccept.setVisibility(View.VISIBLE);
+        holder.llPremiumMsgAccept.setVisibility(View.VISIBLE);
+        // holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
+        Glide.with(context)
+                .load(Utils.imageUrl + item.profile_photo)
+                .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                .transform(new BlurTransformation(20, 8))
+                .into(holder.ivProfileAcceptInvi);
+
+
 
     } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
         //  holder.flPremiumAccept.setVisibility(View.GONE);

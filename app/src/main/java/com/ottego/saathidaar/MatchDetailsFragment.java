@@ -37,7 +37,7 @@ import java.util.Map;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
 
-public class MatchDetailsFragment extends Fragment {
+public class MatchDetailsFragment extends Fragment implements ApiListener {
     FragmentMatchDetailsBinding b;
     Animation animation;
     // NewMatchesModel model;
@@ -51,7 +51,7 @@ public class MatchDetailsFragment extends Fragment {
     public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    ApiListener clickListener;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -405,7 +405,7 @@ if (memberPreferenceModel != null) {
         b.ivDetailsMatchConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.sentRequest(context, mParam1);
+                Utils.sentRequest(context, mParam1,clickListener);
                 b.ivDetailsMatchConnect.setVisibility(View.GONE);
                 b.ivDetailsMatchConnected.setVisibility(View.VISIBLE);
                 Toast.makeText(context, "Request Sent To "+model.first_name, Toast.LENGTH_SHORT).show();
@@ -528,6 +528,10 @@ if (memberPreferenceModel != null) {
     }
     private void setData() {
         if (model != null) {
+            b.ivMatchDot.setVisibility(View.VISIBLE);
+            b.ivMatchDot2.setVisibility(View.VISIBLE);
+            b.llPrivateMatchesDetailPhoto.setVisibility(View.GONE);
+
             b.tvNewMatchName.setText(Utils.nullToBlank((model.first_name)) + " " +Utils.nullToBlank(model.last_name).charAt(0));
 
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
@@ -612,7 +616,8 @@ if (memberPreferenceModel != null) {
             } else if (model.photo_privacy.equalsIgnoreCase("3")) {
                 b.llShowMemberImage.setEnabled(false);
               //  b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
-                b.llPremiumMsgMatchesDetails.setVisibility(View.VISIBLE);
+                b.llPrivateMatchesDetailPhoto.setVisibility(View.VISIBLE);
+                b.llPremiumMsgMatchesDetails.setVisibility(View.GONE);
               //  b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
@@ -673,7 +678,33 @@ if (memberPreferenceModel != null) {
 
             }
 
+
+            if((model.age.equalsIgnoreCase(""))  || (model.age.equalsIgnoreCase("null")))
+            {
+                b.ivMatchDot.setVisibility(View.GONE);
+            }
+
+            if((model.city.equalsIgnoreCase(""))  || (model.city.equalsIgnoreCase("null")))
+            {
+                b.ivMatchDot2.setVisibility(View.GONE);
+            }
+
+            if((model.working_as.equalsIgnoreCase(""))  || (model.working_as.equalsIgnoreCase("null")))
+            {
+                b.ivMatchDot2.setVisibility(View.GONE);
+            }
+
         }
+
+    }
+
+    @Override
+    public void onSuccess(int position) {
+
+    }
+
+    @Override
+    public void onFail(int position) {
 
     }
 }

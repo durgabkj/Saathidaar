@@ -157,7 +157,7 @@ public class SessionManager {
     }
 
     public String get_Key_ShortReg() {
-        return pref.getString(KEY_SHORT_REG, "1");
+        return pref.getString(KEY_SHORT_REG, "");
     }
 }
 

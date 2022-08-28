@@ -36,7 +36,7 @@ import java.util.Map;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
 
-public class ProfileSearchFragment extends DialogFragment {
+public class ProfileSearchFragment extends DialogFragment implements ApiListener {
 
 FragmentProfileSearchBinding b;
     MemberPreferenceModel memberPreferenceModel;
@@ -49,7 +49,7 @@ FragmentProfileSearchBinding b;
     public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+ApiListener apiListener;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -384,7 +384,7 @@ FragmentProfileSearchBinding b;
         b.ivDetailsMatchConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.sentRequest(context, mParam1);
+                Utils.sentRequest(context, mParam1,apiListener);
                 b.ivDetailsMatchConnect.setVisibility(View.GONE);
                 b.ivDetailsMatchConnected.setVisibility(View.VISIBLE);
                 Toast.makeText(context, "Now,you connected", Toast.LENGTH_SHORT).show();
@@ -633,6 +633,16 @@ FragmentProfileSearchBinding b;
 
 
         }
+
+    }
+
+    @Override
+    public void onSuccess(int position) {
+
+    }
+
+    @Override
+    public void onFail(int position) {
 
     }
 }

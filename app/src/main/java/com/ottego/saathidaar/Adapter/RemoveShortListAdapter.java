@@ -59,11 +59,11 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         sessionManager = new SessionManager(context);
 
         holder.tvNewMatchNameRs.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
-       if(item.mage.equalsIgnoreCase("null"))
-       {
-           holder.tvNewMatchAgeRs.setText("");
-       }else
-       {
+        if((item.mage.equalsIgnoreCase(""))  || (item.mage.equalsIgnoreCase("null")))
+        {   holder.tvNewMatchAgeRs.setText("Age Not Specified");
+
+        }else{
+
            holder.tvNewMatchAgeRs.setText(Utils.nullToBlank(item.mage )+ " Yrs");
        }
 
@@ -83,7 +83,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         holder.ivLikeShortList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.sentRequest(context, item.member_id);
+                Utils.sentRequest(context, item.member_id,clickListener);
                 holder.ivLikeShortList.setVisibility(View.GONE);
                 holder.llConnectShortList.setVisibility(View.VISIBLE);
 

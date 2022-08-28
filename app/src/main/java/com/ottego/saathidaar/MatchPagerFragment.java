@@ -97,8 +97,6 @@ public class MatchPagerFragment extends DialogFragment {
                 } else {
                     b.llNext.setVisibility(View.INVISIBLE);
                 }
-
-
             }
             // triggered when there is
             // scroll state will be changed
@@ -109,16 +107,12 @@ public class MatchPagerFragment extends DialogFragment {
             }
         });
 
-
-
         b.vp2Details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 b.vp2Details.setCurrentItem(Integer.parseInt(mParam1));
             }
         });
-
-
         b.llNext.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -128,13 +122,11 @@ public class MatchPagerFragment extends DialogFragment {
         });
 
         b.llPrevious.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 b.vp2Details.setCurrentItem(b.vp2Details.getCurrentItem()-1, true);
             }
         });
-
 
         return b.getRoot();
     }

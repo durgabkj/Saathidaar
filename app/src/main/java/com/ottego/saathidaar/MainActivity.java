@@ -49,11 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 if (sessionManager.isLoggedIn()) {
                     startActivity(new Intent(context, NavigationActivity.class));
                 } else {
-                    if(sessionManager.get_Key_ShortReg().equalsIgnoreCase("0")) {
-                        startActivity(new Intent(context, DetailsRegistrationActivity.class));
-                } else {
                     startActivity(new Intent(context, LandingActivity.class));
-                }
+
 }
               finish();
 

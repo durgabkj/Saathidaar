@@ -171,6 +171,8 @@ public class InboxDetailFragment extends Fragment {
     private void setMemberPrefData() {
         if (memberPreferenceModel != null) {
 
+
+
             b.matchPreferenceCount.setText("You Match " + Utils.nullToBlank(memberPreferenceModel.match_count) + "/" + Utils.nullToBlank(memberPreferenceModel.app_total_preference) + " of " + " " + Utils.nullToBlank(memberPreferenceModel.gender_preference));
             b.tvDetailAgeMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_age));
             b.tvDetailHeightMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_height));
@@ -359,14 +361,14 @@ public class InboxDetailFragment extends Fragment {
             }
         });
 
-        b.ivConnectInbox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Utils.sentRequest(context,mParam1);
-                b.ivConnectInbox.setVisibility(View.GONE);
-                b.ivDetailsConnectedInbox.setVisibility(View.VISIBLE);
-            }
-        });
+//        b.ivConnectInbox.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Utils.sentRequest(context,mParam1);
+//                b.ivConnectInbox.setVisibility(View.GONE);
+//                b.ivDetailsConnectedInbox.setVisibility(View.VISIBLE);
+//            }
+//        });
         b.llBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -515,6 +517,10 @@ public class InboxDetailFragment extends Fragment {
 
     private void setData() {
         if (model != null) {
+            b.llPrivateMatchesDetailPhoto.setVisibility(View.GONE);
+            b.ivInboxDot.setVisibility(View.VISIBLE);
+            b.ivInboxDot2.setVisibility(View.VISIBLE);
+
             b.tvNewMatchName.setText(Utils.nullToBlank(model.first_name) + " " + Utils.nullToBlank(model.last_name).charAt(0));
 
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
@@ -536,7 +542,8 @@ public class InboxDetailFragment extends Fragment {
           //  b.tvNewMatchName.setText(Utils.nullToBlank(model.first_name).toUpperCase() + " " + Utils.nullToBlank(model.last_name).toUpperCase().charAt(0));
 
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
-                b.tvDetailAge.setText("Age:-"+Utils.nullToBlank(model.age) + " yrs old");
+
+                b.tvDetailAge.setText(new StringBuilder().append("Age:-").append(Utils.nullToBlank(model.age)).append("yrs old").toString());
             } else {
                 b.tvDetailAge.setText("Age-Not Specify");
             }
@@ -603,7 +610,8 @@ public class InboxDetailFragment extends Fragment {
             } else if (model.photo_privacy.equalsIgnoreCase("3")) {
                 b.llShowMemberImageInbox.setEnabled(false);
                // b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
-                b.llPremiumMsgInboxDetails.setVisibility(View.VISIBLE);
+                b.llPremiumMsgInboxDetails.setVisibility(View.GONE);
+                b.llPrivateMatchesDetailPhoto.setVisibility(View.VISIBLE);
                // b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
@@ -652,6 +660,22 @@ public class InboxDetailFragment extends Fragment {
             if (model.images_count.equalsIgnoreCase("0")) {
                 b.tvLevelPremiumInboxDetails.setVisibility(View.GONE);
             }
+
+            if((model.age.equalsIgnoreCase(""))  || (model.age.equalsIgnoreCase("null")))
+            {
+                 b.ivInboxDot.setVisibility(View.GONE);
+            }
+
+            if((model.city.equalsIgnoreCase(""))  || (model.city.equalsIgnoreCase("null")))
+            {
+                b.ivInboxDot2.setVisibility(View.GONE);
+            }
+
+            if((model.working_as.equalsIgnoreCase(""))  || (model.working_as.equalsIgnoreCase("null")))
+            {
+                b.ivInboxDot2.setVisibility(View.GONE);
+            }
+
         }
         }
 

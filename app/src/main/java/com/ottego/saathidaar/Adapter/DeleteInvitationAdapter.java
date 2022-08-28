@@ -62,7 +62,14 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
 
         sessionManager = new SessionManager(context);
         holder.tvInvDeleteName.setText(Utils.nullToBlank(item.first_name )+ " " +  Utils.nullToBlank(item.last_name).charAt(0));
-        holder.tvInvDeleteAge.setText(Utils.nullToBlank(item.mage) + "yrs");
+
+        if((item.mage.equalsIgnoreCase(""))  || (item.mage.equalsIgnoreCase("null")))
+        {   holder.tvInvDeleteAge.setText("Age Not Specified");
+
+        }else{
+            holder.tvInvDeleteAge.setText(Utils.nullToBlank(item.mage) + "yrs");
+        }
+
         holder.tvInvDeleteHeight.setText(Utils.nullToBlank(item.religion));
         holder.tvInvDeleteCity.setText(Utils.nullToBlank(item.maritalStatus));
         holder.tvInvDeleteWorkAs.setText(Utils.nullToBlank(item.country));

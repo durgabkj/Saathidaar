@@ -62,12 +62,6 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
 
             holder.tvBlockName.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
 
-            if (item.mage.equalsIgnoreCase("null") && !item.mage.equalsIgnoreCase("")) {
-                holder.tvBlockAge.setText("Age-Not Specify");
-            }else
-            {
-                holder.tvBlockAge.setText(Utils.nullToBlank(item.mage) + " yrs");
-            }
 
             holder.ivBlockDot1.setVisibility(View.VISIBLE);
             holder.ivBlockDot.setVisibility(View.VISIBLE);
@@ -212,14 +206,13 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
                 }
             });
 
-            if(item.first_name.equals("")&& item.last_name.equalsIgnoreCase(""))
+            if(item.first_name.equals("") && item.last_name.equalsIgnoreCase(""))
             {
                 holder.ivBlockDot.setVisibility(View.GONE);
             }
             if(item.mage.equals(""))
             {
                 holder.ivBlockDot1.setVisibility(View.GONE);
-
             }
             if(item.maritalStatus.equals(""))
             {

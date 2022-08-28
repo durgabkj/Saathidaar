@@ -63,7 +63,9 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
             Log.e(" New Matches model", new Gson().toJson(item));
 
             sessionManager = new SessionManager(context);
-
+            holder.ivRecentDot.setVisibility(View.VISIBLE);
+            holder.ivRecentDot1.setVisibility(View.VISIBLE);
+            holder.llPrivateRecentlyViewPhoto.setVisibility(View.GONE);
 
             if(item.shortlist_status.equalsIgnoreCase("1") && item.shortlist_status!=null && !item.shortlist_status.isEmpty())
             {
@@ -79,7 +81,14 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
 
 
             holder.tvNewMatchName.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
-            holder.tvNewMatchAge.setText(Utils.nullToBlank(item.mage));
+
+            if((item.mage.equalsIgnoreCase(""))  || (item.mage.equalsIgnoreCase("null")))
+            {   holder.tvNewMatchAge.setText("Age Not Specified");
+
+            }else{
+                holder.tvNewMatchAge.setText(Utils.nullToBlank(item.mage));
+            }
+
             holder.tvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
             holder.tvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
             holder.tvNewMatchWorkAs.setText(Utils.nullToBlank(item.income));
@@ -151,36 +160,37 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                         //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                         .into(holder.ivRecentViewImage);
 
-            }
-            else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
-                holder.llPhotoRecentV.setEnabled(false);
-                // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-                holder.llPremiumMsgRecentlyView.setVisibility(View.GONE);
-                holder.llPrivateRecentlyViewPhoto.setVisibility(View.VISIBLE);
-                // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-                Glide.with(context)
-                        .load(Utils.imageUrl + item.profile_photo)
-                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                        .transform(new BlurTransformation(20, 8))
-                        .into(holder.ivRecentViewImage);
-
-            }
-            else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("2"))) {
-                holder.llPhotoRecentV.setEnabled(false);
-                // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-                holder.llPremiumMsgRecentlyView.setVisibility(View.GONE);
-                holder.llPrivateRecentlyViewPhoto.setVisibility(View.VISIBLE);
-                // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-                Glide.with(context)
-                        .load(Utils.imageUrl + item.profile_photo)
-                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                        .transform(new BlurTransformation(20, 8))
-                        .into(holder.ivRecentViewImage);
+//            }
+//            else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
+//                holder.llPhotoRecentV.setEnabled(false);
+//                // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+//                holder.llPremiumMsgRecentlyView.setVisibility(View.GONE);
+//                holder.llPrivateRecentlyViewPhoto.setVisibility(View.VISIBLE);
+//                // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+//                Glide.with(context)
+//                        .load(Utils.imageUrl + item.profile_photo)
+//                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+//                        .transform(new BlurTransformation(20, 8))
+//                        .into(holder.ivRecentViewImage);
+//
+//            }
+//            else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("2"))) {
+//                holder.llPhotoRecentV.setEnabled(false);
+//                // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+//                holder.llPremiumMsgRecentlyView.setVisibility(View.GONE);
+//                holder.llPrivateRecentlyViewPhoto.setVisibility(View.VISIBLE);
+//                // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+//                Glide.with(context)
+//                        .load(Utils.imageUrl + item.profile_photo)
+//                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+//                        .transform(new BlurTransformation(20, 8))
+//                        .into(holder.ivRecentViewImage);
 
             } else if (item.photo_privacy.equalsIgnoreCase("3")) {
                 holder.llPhotoRecentV.setEnabled(false);
              //   holder.flPremiumRecentView.setVisibility(View.VISIBLE);
-                holder.llPremiumMsgRecentlyView.setVisibility(View.VISIBLE);
+                holder.llPremiumMsgRecentlyView.setVisibility(View.GONE);
+                holder.llPrivateRecentlyViewPhoto.setVisibility(View.VISIBLE);
               //  holder.tvLevelPremiumRecent.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + item.profile_photo)
@@ -213,7 +223,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
             holder.ivLikeRecentVisitors.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Utils.sentRequest(context,item.member_id);
+                    Utils.sentRequest(context,item.member_id,clickListener);
                     holder.ivLikeRecentVisitors.setVisibility(View.GONE);
                     holder.llConnectedRecently.setVisibility(View.VISIBLE);
                 }
@@ -231,6 +241,16 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                     context.startActivity(intent);
                 }
             });
+
+            if(item.mage.equalsIgnoreCase("") || item.mage.equalsIgnoreCase("null") || item.mage.isEmpty())
+            {
+                holder.ivRecentDot.setVisibility(View.GONE);
+            }
+
+            if(item.income.equalsIgnoreCase("") || item.income.equalsIgnoreCase("null") || item.income.isEmpty())
+            {
+                holder.ivRecentDot1.setVisibility(View.GONE);
+            }
         }
 
 
@@ -240,7 +260,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
         }
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            ImageView ivRecentViewImage,ivNoImageMaleFemaleRecentView,tvPremiumShortlistMatch;
+            ImageView ivRecentViewImage,ivNoImageMaleFemaleRecentView,tvPremiumShortlistMatch,ivRecentDot,ivRecentDot1;
             TextView tvNewMatchName,tvPremiumrecentlyViewMatch, tvNewMatchAge,tvLevelPremiumRecent, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs,tvImageCountRecentView;
             LinearLayout llPhotoRecentV,llShortBlockRecentV,llPrivateRecentlyViewPhoto,llConnectShortList,llShortListRecent,llBlockedRecentV,llPremiumMsgRecentlyView,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove,llNo_imageFemaleListRecentView,llConnectedRecently;
             FrameLayout flNoImageMaleFemaleListRecentView,flPremiumRecentView;
@@ -249,7 +269,9 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 llPrivateRecentlyViewPhoto=itemView.findViewById(R.id.llPrivateRecentlyViewPhoto);
                 tvPremiumrecentlyViewMatch=itemView.findViewById(R.id.tvPremiumrecentlyViewMatch);
                 llConnectShortList=itemView.findViewById(R.id.llConnectShortList);
-               // llShortListRecent=itemView.findViewById(R.id.llShortListRecent);
+               ivRecentDot=itemView.findViewById(R.id.ivRecentDot);
+                ivRecentDot1=itemView.findViewById(R.id.ivRecentDot1);
+
                 tvNewMatchAge = itemView.findViewById(R.id.tvRecentViewAgeRs);
                 tvNewMatchName = itemView.findViewById(R.id.ivRecentViewNameRs);
                 tvNewMatchHeight = itemView.findViewById(R.id.tvRecentViewHeightRs);
