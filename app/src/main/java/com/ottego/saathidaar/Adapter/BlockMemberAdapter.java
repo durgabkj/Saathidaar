@@ -59,18 +59,17 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
             NewMatchesModel item = list.get(position);
             Log.e(" New Matches model", new Gson().toJson(item));
             sessionManager=new SessionManager(context);
-            holder.llPrivateBlockPhoto.setVisibility(View.GONE);
-            holder.tvBlockName.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
-
-
             holder.ivBlockDot1.setVisibility(View.VISIBLE);
             holder.ivBlockDot.setVisibility(View.VISIBLE);
             holder.ivBlockDot2.setVisibility(View.VISIBLE);
             holder.llPrivateBlockPhoto.setVisibility(View.GONE);
 
-            holder.tvNewBlockHeight.setText(Utils.nullToBlank(item.religion));
-            holder.tvBlockCity.setText(Utils.nullToBlank(item.maritalStatus));
+            holder.tvBlockName.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
+            holder.tvBlockAge.setText(Utils.nullToBlank(item.mage));
+            holder.tvNewBlockHeight.setText(Utils.nullToBlank(item.maritalStatus));
+            holder.tvBlockCity.setText(Utils.nullToBlank(item.religion));
             holder.tvBlockWorkAs.setText(Utils.nullToBlank(item.income));
+
             holder.tvImageCountUnBlock.setText(item.images_count);
 
 
@@ -211,11 +210,16 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
             {
                 holder.ivBlockDot.setVisibility(View.GONE);
             }
-            if(item.mage.equals(""))
+            if(item.mage.equals("") || item.mage.equalsIgnoreCase("null"))
             {
                 holder.ivBlockDot1.setVisibility(View.GONE);
             }
-            if(item.maritalStatus.equals(""))
+            if(item.income.equals("") || item.income.equalsIgnoreCase("null"))
+            {
+                holder.ivBlockDot2.setVisibility(View.GONE);
+            }
+
+            if(item.religion.equals(""))
             {
                 holder.ivBlockDot2.setVisibility(View.GONE);
             }

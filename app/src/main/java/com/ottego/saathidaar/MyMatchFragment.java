@@ -105,7 +105,6 @@ public class MyMatchFragment extends Fragment implements ApiListener {
                 MyMatchUrl + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf((response)));
                 // progressDialog.dismiss();
                 b.srlRecycleViewMyMatches.setRefreshing(false);
                 Log.e("My Matches response", String.valueOf(response));

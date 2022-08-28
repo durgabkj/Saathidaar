@@ -512,6 +512,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <ImageView
+                    android:id="@+id/ivSentDot"
                     android:layout_width="6dp"
                     android:layout_height="6dp"
                     android:layout_marginLeft="5dp"
@@ -533,6 +534,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <ImageView
+                    android:id="@+id/ivSentDot1"
                     android:layout_width="6dp"
                     android:layout_height="6dp"
                     android:layout_marginLeft="5dp"
@@ -584,6 +586,7 @@
                     android:textSize="15sp"
                     android:textStyle="bold" />
                 <ImageView
+                    android:id="@+id/ivSentDot2"
                     android:layout_width="6dp"
                     android:layout_height="6dp"
                     android:layout_marginLeft="5dp"

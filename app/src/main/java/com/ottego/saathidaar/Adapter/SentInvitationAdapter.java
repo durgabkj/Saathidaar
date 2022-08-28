@@ -58,6 +58,10 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
             InboxModel item = list.get(position);
             Log.e(" Inbox model", new Gson().toJson(item));
             sessionManager=new SessionManager(context);
+            holder.ivSentDot.setVisibility(View.VISIBLE);
+            holder.ivSentDot1.setVisibility(View.VISIBLE);
+            holder.ivSentDot2.setVisibility(View.VISIBLE);
+
 
             holder.tvInvNewMatchName.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
             if((item.mage.equalsIgnoreCase(""))  || (item.mage.equalsIgnoreCase("null")))
@@ -227,6 +231,29 @@ holder.llPrivateSentPhoto.setVisibility(View.GONE);
                 }
             });
 
+
+
+            if(item.first_name.equals("") && item.last_name.equalsIgnoreCase(""))
+            {
+                holder.ivSentDot.setVisibility(View.GONE);
+            }
+
+            if(item.height.equals("") || item.height.equalsIgnoreCase("null"))
+            {
+                holder.ivSentDot2.setVisibility(View.GONE);
+            }
+
+            if(item.maritalStatus.equals(""))
+            {
+                holder.ivSentDot2.setVisibility(View.GONE);
+            }
+
+            if(item.country.equals(""))
+            {
+                holder.ivSentDot2.setVisibility(View.GONE);
+            }
+
+
         }
 
 
@@ -239,12 +266,17 @@ holder.llPrivateSentPhoto.setVisibility(View.GONE);
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvInvNewMatchName, tvPremiumSentMatch, tvInvNewMatchAge, tvInvNewMatchHeight, tvLevelPremiumSent, tvInvNewMatchCity, tvInvNewMatchWorkAs, tvInvitationMessageSent, tvImageCountSent;
         LinearLayout llAccept, llDelete, llAccepted, llPrivateSentPhoto, llDeleted, llPremiumMsgSent, llPhotoSent, llBlockSent, llBlockedSent, llNo_imageFemaleSentInvitation, llMsgDateSent;
-        ImageView ivNoImageMaleFemaleSentInvitation, ivSentInvitation;
+        ImageView ivNoImageMaleFemaleSentInvitation, ivSentInvitation,ivSentDot,ivSentDot1,ivSentDot2;
         FrameLayout flNoImageMaleFemaleSentInvitation, flPremiumSent;
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
+
+            ivSentDot = itemView.findViewById(R.id.ivSentDot);
+            ivSentDot1 = itemView.findViewById(R.id.ivSentDot1);
+            ivSentDot2 = itemView.findViewById(R.id.ivSentDot2);
+
             llPrivateSentPhoto = itemView.findViewById(R.id.llPrivateSentPhoto);
             tvLevelPremiumSent = itemView.findViewById(R.id.tvLevelPremiumSent);
             flPremiumSent = itemView.findViewById(R.id.flPremiumSent);
