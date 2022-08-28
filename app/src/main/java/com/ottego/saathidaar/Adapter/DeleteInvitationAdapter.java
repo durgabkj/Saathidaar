@@ -59,7 +59,7 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
     public void onBindViewHolder(@NonNull DeleteInvitationAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         InboxModel item = list.get(position);
         Log.e(" Inbox model", new Gson().toJson(item));
-
+        holder.llPrivateDeletePhoto.setVisibility(View.GONE);
         sessionManager = new SessionManager(context);
         holder.tvInvDeleteName.setText(Utils.nullToBlank(item.first_name )+ " " +  Utils.nullToBlank(item.last_name).charAt(0));
 
@@ -138,37 +138,38 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
                     .into(holder.ivDeleteInvitation);
 
 
-        }
-        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
-            holder.llPhotoDelete.setEnabled(false);
-            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-            holder.llPremiumMsgDelete.setVisibility(View.GONE);
-            holder.llPrivateDeletePhoto.setVisibility(View.VISIBLE);
-            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
-                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    .transform(new BlurTransformation(20, 8))
-                    .into(holder.ivDeleteInvitation);
-
-        }
-        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("2"))) {
-            holder.llPhotoDelete.setEnabled(false);
-            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-            holder.llPremiumMsgDelete.setVisibility(View.GONE);
-            holder.llPrivateDeletePhoto.setVisibility(View.VISIBLE);
-            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
-                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    .transform(new BlurTransformation(20, 8))
-                    .into(holder.ivDeleteInvitation);
+//        }
+//        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
+//            holder.llPhotoDelete.setEnabled(false);
+//            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+//            holder.llPremiumMsgDelete.setVisibility(View.GONE);
+//            holder.llPrivateDeletePhoto.setVisibility(View.VISIBLE);
+//            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+//            Glide.with(context)
+//                    .load(Utils.imageUrl + item.profile_photo)
+//                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+//                    .transform(new BlurTransformation(20, 8))
+//                    .into(holder.ivDeleteInvitation);
+//
+//        }
+//        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("2"))) {
+//            holder.llPhotoDelete.setEnabled(false);
+//            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+//            holder.llPremiumMsgDelete.setVisibility(View.GONE);
+//            holder.llPrivateDeletePhoto.setVisibility(View.VISIBLE);
+//            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+//            Glide.with(context)
+//                    .load(Utils.imageUrl + item.profile_photo)
+//                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+//                    .transform(new BlurTransformation(20, 8))
+//                    .into(holder.ivDeleteInvitation);
 
 
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {
             holder.llPhotoDelete.setEnabled(false);
           //  holder.flPremiumDelete.setVisibility(View.VISIBLE);
-            holder.llPremiumMsgDelete.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgDelete.setVisibility(View.GONE);
+            holder.llPrivateDeletePhoto.setVisibility(View.VISIBLE);
            // holder.tvLevelPremiumDelete.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)

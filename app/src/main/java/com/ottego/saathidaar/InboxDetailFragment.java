@@ -646,21 +646,30 @@ public class InboxDetailFragment extends Fragment {
                     .transform(!model.photo_privacy.equals("2")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(b.profileDetailPic1Partner);
 
+            //upgrade premium plans condition
 
-            if (model.premium_status.equalsIgnoreCase("1")) {
+            if (model.premium_status.equalsIgnoreCase("1") && model.my_premium_status.equalsIgnoreCase("2")) {
+                b.flPremiumInboxDetails.setVisibility(View.GONE);
+                b.tvLevelPremiumInboxDetails.setVisibility(View.GONE);
+                b.  tvPremiumBirth.setVisibility(View.GONE);
+                b.tvbirth.setVisibility(View.GONE);
+                b.tvcontacts.setVisibility(View.GONE);
+//            b.tvPremiumBirth.setVisibility(View.GONE);
+//            b.tvPremiumCollegeAndCompany.setVisibility(View.GONE);
+            }else if(model.premium_status.equalsIgnoreCase("1") && model.my_premium_status.equalsIgnoreCase("0")){
                 b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
-                b.tvPremiumBirth.setVisibility(View.VISIBLE);
-              b.  tvPremiumContact.setVisibility(View.VISIBLE);
                 b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
+                b.  tvPremiumBirth.setVisibility(View.VISIBLE);
                 b.tvbirth.setVisibility(View.VISIBLE);
                 b.tvcontacts.setVisibility(View.VISIBLE);
-
             }
-
+//image count condition
             if (model.images_count.equalsIgnoreCase("0")) {
                 b.tvLevelPremiumInboxDetails.setVisibility(View.GONE);
             }
 
+
+            //dots show condition
             if((model.age.equalsIgnoreCase(""))  || (model.age.equalsIgnoreCase("null")))
             {
                  b.ivInboxDot.setVisibility(View.GONE);
@@ -674,6 +683,15 @@ public class InboxDetailFragment extends Fragment {
             if((model.working_as.equalsIgnoreCase(""))  || (model.working_as.equalsIgnoreCase("null")))
             {
                 b.ivInboxDot2.setVisibility(View.GONE);
+            }
+
+
+            //show badge of premium
+
+            if (model.premium_status.equalsIgnoreCase("1")) {
+                b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
+                b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
+
             }
 
         }

@@ -57,7 +57,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         NewMatchesModel item = list.get(position);
         Log.e(" New Matches model", new Gson().toJson(item));
         sessionManager = new SessionManager(context);
-
+        holder.llPrivateRemoveShortListPhoto.setVisibility(View.GONE);
         holder.tvNewMatchNameRs.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
         if((item.mage.equalsIgnoreCase(""))  || (item.mage.equalsIgnoreCase("null")))
         {   holder.tvNewMatchAgeRs.setText("Age Not Specified");
@@ -142,40 +142,41 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
                     //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(holder.ivRemoveShortList);
 
-        }
-        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
-            holder.llPhotoShortList.setEnabled(false);
-            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-            holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
-            holder.llPrivateRemoveShortListPhoto.setVisibility(View.VISIBLE);
-            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
-                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    .transform(new BlurTransformation(20, 8))
-                    .into(holder.ivRemoveShortList);
-
-        }
-        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("2"))) {
-            holder.llPhotoShortList.setEnabled(false);
-            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-            holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
-            holder.llPrivateRemoveShortListPhoto.setVisibility(View.VISIBLE);
-            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
-                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    .transform(new BlurTransformation(20, 8))
-                    .into(holder.ivRemoveShortList);
-
-
+//        }
+//        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
+//            holder.llPhotoShortList.setEnabled(false);
+//            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+//            holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
+//            holder.llPrivateRemoveShortListPhoto.setVisibility(View.VISIBLE);
+//            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+//            Glide.with(context)
+//                    .load(Utils.imageUrl + item.profile_photo)
+//                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+//                    .transform(new BlurTransformation(20, 8))
+//                    .into(holder.ivRemoveShortList);
+//
+//        }
+//        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("2"))) {
+//            holder.llPhotoShortList.setEnabled(false);
+//            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+//            holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
+//            holder.llPrivateRemoveShortListPhoto.setVisibility(View.VISIBLE);
+//            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+//            Glide.with(context)
+//                    .load(Utils.imageUrl + item.profile_photo)
+//                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+//                    .transform(new BlurTransformation(20, 8))
+//                    .into(holder.ivRemoveShortList);
+//
+//
 
 
 
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {
             holder.llPhotoShortList.setEnabled(false);
           //  holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
-            holder.llPremiumMsgRemoveShortlist.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
+            holder.llPrivateRemoveShortListPhoto.setVisibility(View.VISIBLE);
            // holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)

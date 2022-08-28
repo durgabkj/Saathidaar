@@ -64,7 +64,7 @@ public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageG
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return Math.min(list.size(), 2);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

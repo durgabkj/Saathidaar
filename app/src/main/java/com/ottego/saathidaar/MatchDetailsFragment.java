@@ -653,16 +653,28 @@ if (memberPreferenceModel != null) {
                     .into(b.profileDetailPic1Partner);
 
 
-        if (model.premium_status.equalsIgnoreCase("1")) {
+        if (model.premium_status.equalsIgnoreCase("1") && model.my_premium_status.equalsIgnoreCase("2")) {
+            b.flPremiumMatchDetails.setVisibility(View.GONE);
+            b.tvLevelPremiumMatchDetails.setVisibility(View.GONE);
+            b.tvPremiumCollegeAndCompany.setVisibility(View.GONE);
+            b.  tvPremiumBirth.setVisibility(View.GONE);
+            b.tvbirth.setVisibility(View.GONE);
+            b.tvcontacts.setVisibility(View.GONE);
+//            b.tvPremiumBirth.setVisibility(View.GONE);
+//            b.tvPremiumCollegeAndCompany.setVisibility(View.GONE);
+        }else if(model.premium_status.equalsIgnoreCase("1") && model.my_premium_status.equalsIgnoreCase("0")){
             b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
             b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
             b.tvPremiumCollegeAndCompany.setVisibility(View.VISIBLE);
             b.  tvPremiumBirth.setVisibility(View.VISIBLE);
             b.tvbirth.setVisibility(View.VISIBLE);
             b.tvcontacts.setVisibility(View.VISIBLE);
-//            b.tvPremiumBirth.setVisibility(View.GONE);
-//            b.tvPremiumCollegeAndCompany.setVisibility(View.GONE);
         }
+
+
+
+
+
 
             if (model.images_count.equalsIgnoreCase("0")) {
                 b.llPremiumMsgMatchesDetails.setVisibility(View.GONE);
@@ -694,6 +706,14 @@ if (memberPreferenceModel != null) {
                 b.ivMatchDot2.setVisibility(View.GONE);
             }
 
+
+            //show badge of premium
+
+            if (model.premium_status.equalsIgnoreCase("1")) {
+                b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
+                b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
+
+            }
         }
 
     }

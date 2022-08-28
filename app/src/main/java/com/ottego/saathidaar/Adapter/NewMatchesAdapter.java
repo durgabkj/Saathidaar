@@ -231,7 +231,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             holder.flPremiumMatch.setVisibility(View.VISIBLE);
             holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
         }
-
+// hide premium msg on the basis of image count
         if (item.images_count.equalsIgnoreCase("0")) {
             holder.llPremiumMsgMatches.setVisibility(View.GONE);
         }
