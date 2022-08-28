@@ -156,6 +156,19 @@ holder.llPrivateInvitationPhoto.setVisibility(View.GONE);
                     .into(holder.ivReceivedInvitation);
 
 
+        }
+        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("2"))) {
+            holder.llPhotoInvitation.setEnabled(false);
+            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgInvitation.setVisibility(View.GONE);
+            holder.llPrivateInvitationPhoto.setVisibility(View.VISIBLE);
+            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivReceivedInvitation);
+
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {
             holder.llPhotoInvitation.setEnabled(false);
           //  holder.flPremiumInvitation.setVisibility(View.VISIBLE);

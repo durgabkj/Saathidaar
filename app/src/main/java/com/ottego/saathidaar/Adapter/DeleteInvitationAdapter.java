@@ -144,6 +144,18 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
                     .transform(new BlurTransformation(20, 8))
                     .into(holder.ivDeleteInvitation);
 
+        }
+        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("2"))) {
+            holder.llPhotoDelete.setEnabled(false);
+            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgDelete.setVisibility(View.GONE);
+            holder.llPrivateDeletePhoto.setVisibility(View.VISIBLE);
+            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivDeleteInvitation);
 
 
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {

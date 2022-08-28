@@ -143,17 +143,29 @@ if(item!=null)
 
     }
          else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
-            holder.llPhotoAccept.setEnabled(false);
-            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-            holder.llPremiumMsgAccept.setVisibility(View.GONE);
-            holder.llPrivatePhoto.setVisibility(View.VISIBLE);
-            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.profile_photo)
-                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    .transform(new BlurTransformation(20, 8))
-                    .into(holder.ivProfileAcceptInvi);
+        holder.llPhotoAccept.setEnabled(false);
+        // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+        holder.llPremiumMsgAccept.setVisibility(View.GONE);
+        holder.llPrivatePhoto.setVisibility(View.VISIBLE);
+        // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+        Glide.with(context)
+                .load(Utils.imageUrl + item.profile_photo)
+                .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                .transform(new BlurTransformation(20, 8))
+                .into(holder.ivProfileAcceptInvi);
 
+    }
+         else if (item.photo_privacy.equalsIgnoreCase("3") && (item.my_premium_status.equalsIgnoreCase("2"))) {
+        holder.llPhotoAccept.setEnabled(false);
+        // holder.flPremiumMatch.setVisibility(View.VISIBLE);
+        holder.llPremiumMsgAccept.setVisibility(View.GONE);
+        holder.llPrivatePhoto.setVisibility(View.VISIBLE);
+        // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+        Glide.with(context)
+                .load(Utils.imageUrl + item.profile_photo)
+                .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                .transform(new BlurTransformation(20, 8))
+                .into(holder.ivProfileAcceptInvi);
 
     } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
         //  holder.flPremiumAccept.setVisibility(View.GONE);
