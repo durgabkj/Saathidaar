@@ -182,7 +182,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
                         if (null != error.networkResponse) {
-                            Toast.makeText(context,"Try again......",Toast.LENGTH_LONG).show();
+                            Toast.makeText(context,"Something went wrong, try again",Toast.LENGTH_LONG).show();
                             Log.e("Error response", String.valueOf(error));
                         }
                     }

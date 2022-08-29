@@ -29,7 +29,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
     ImageButton user_profile_photo;
     Context context;
     String phone;
-    String otpSentUrl = Utils.memberUrl + "otp";
+    String otpSentUrl = Utils.memberUrl + "send-sms";
     String otp = "";
     String OtpVerifyUrl = Utils.memberUrl + "verify/otp/";
 
@@ -45,13 +45,13 @@ public class OtpVerificationActivity extends AppCompatActivity {
         otp = mEdit.getText().toString().trim();
 
         binding.tvmobileNo.setText(phone);
-        receiveOtp();
+       // receiveOtp();
         listener();
     }
 
     private void receiveOtp() {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("phone", phone);
+        params.put("phone_number", phone);
         Log.e("params", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, otpSentUrl, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
@@ -121,7 +121,6 @@ public class OtpVerificationActivity extends AppCompatActivity {
         }
         return true;
     }
-
     private void submitFormOtp() {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, OtpVerifyUrl + otp + "/" + phone, new JSONObject(),
                 new Response.Listener<JSONObject>() {
@@ -130,8 +129,8 @@ public class OtpVerificationActivity extends AppCompatActivity {
                         Log.e(" otp verify response", String.valueOf(response));
 
                         try {
-                            String code = response.getString("message");
-                            if (code.equalsIgnoreCase("OTP verified success")) {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
 //                                startActivity(intent);
                                 Intent intent = new Intent(context, LoginActivity.class);

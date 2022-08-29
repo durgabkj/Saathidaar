@@ -101,38 +101,6 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         b.marqueeText.setSelected(true);
         getData();
         listener();
-        setNotification();
-    }
-
-
-
-
-    private void setNotification() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 10);
-        calendar.set(Calendar.MINUTE, 38);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.AM_PM, Calendar.AM);
-
-        int currentDay=calendar.get(Calendar.DAY_OF_MONTH);
-        SharedPreferences setting =getSharedPreferences("PREFS",0);
-        int lastDay=setting.getInt("day",0);
-
-        if(lastDay!= currentDay){
-            SharedPreferences.Editor editor=setting.edit();
-            editor.putInt("day",currentDay);
-            editor.commit();
-
-            Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_MUTABLE);
-            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-            if (alarmManager != null) {
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-
-            }
-        }
-
     }
 
     private void listener() {

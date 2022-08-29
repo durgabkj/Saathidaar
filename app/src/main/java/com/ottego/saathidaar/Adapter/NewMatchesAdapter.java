@@ -3,8 +3,6 @@ package com.ottego.saathidaar.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,13 +20,11 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.ottego.saathidaar.ApiListener;
 import com.ottego.saathidaar.MatchPagerFragment;
 import com.ottego.saathidaar.MemberGalleryActivity;
 import com.ottego.saathidaar.Model.NewMatchesModel;
 import com.ottego.saathidaar.R;
-import com.ottego.saathidaar.ApiListener;
 import com.ottego.saathidaar.SessionManager;
 import com.ottego.saathidaar.UpgradeOnButtonActivity;
 import com.ottego.saathidaar.Utils;
@@ -62,12 +58,22 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         NewMatchesModel item = list.get(position);
 //        Log.e(" New Matches model", new Gson().toJson(item));
         sessionManager = new SessionManager(context);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("position", String.valueOf(position));
+                MatchPagerFragment.newInstance(String.valueOf(position), String.valueOf(position)).show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
+            }
+        });
+
+
+
         holder.tvNewMatchName.setText(Utils.nullToBlank(item.first_name) + " " + Utils.nullToBlank(item.last_name).charAt(0));
 
         if (item.mage.equalsIgnoreCase("null") && !item.mage.equalsIgnoreCase("")) {
             holder.tvNewMatchAge.setText("Age-Not Specified");
-        }else
-        {
+        } else {
             holder.tvNewMatchAge.setText(Utils.nullToBlank(item.mage));
         }
 
@@ -83,7 +89,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
 
         if (item.photo_privacy.equalsIgnoreCase("1")) {
             holder.llPhotoMyMatches.setEnabled(true);
-           // holder.flPremiumMatch.setVisibility(View.GONE);
+            // holder.flPremiumMatch.setVisibility(View.GONE);
             holder.llPremiumMsgMatches.setVisibility(View.GONE);
 //            holder.tvLevelPremiumMatch.setVisibility(View.GONE);
 
@@ -120,7 +126,6 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
 //                    .into(holder.ivUserMatch);
 
 
-
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {
             holder.llPhotoMyMatches.setEnabled(false);
             // holder.flPremiumMatch.setVisibility(View.VISIBLE);
@@ -134,19 +139,19 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
                     .into(holder.ivUserMatch);
 
         } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
-           // holder.flPremiumMatch.setVisibility(View.GONE);
+            // holder.flPremiumMatch.setVisibility(View.GONE);
             holder.llPremiumMsgMatches.setVisibility(View.GONE);
             holder.llPhotoMyMatches.setEnabled(true);
-          //  holder.tvLevelPremiumMatch.setVisibility(View.GONE);
+            //  holder.tvLevelPremiumMatch.setVisibility(View.GONE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     .into(holder.ivUserMatch);
         } else {
-          //  holder.flPremiumMatch.setVisibility(View.VISIBLE);
+            //  holder.flPremiumMatch.setVisibility(View.VISIBLE);
             holder.llPremiumMsgMatches.setVisibility(View.VISIBLE);
             holder.llPhotoMyMatches.setEnabled(false);
-          //  holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
+            //  holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
@@ -155,17 +160,18 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         }
 
 
-        if(item.shortlist_status.equalsIgnoreCase("1") && item.shortlist_status!=null && !item.shortlist_status.isEmpty())
-        {
+        if (item.shortlist_status.equalsIgnoreCase("1") && item.shortlist_status != null && !item.shortlist_status.isEmpty()) {
             holder.llShortListRemove.setVisibility(View.VISIBLE);
             holder.llShortList.setVisibility(View.GONE);
         }
 
-
-        if(item.request_status!=null && !item.request_status.isEmpty() && !item.request_status.equalsIgnoreCase("null"))
-        {
+//show request sent status
+        if ((item.request_status != null) && (!item.request_status.isEmpty()) && (!item.request_status.equalsIgnoreCase("")) && (!item.request_status.equalsIgnoreCase("null"))) {
             holder.llConnect.setVisibility(View.VISIBLE);
             holder.ivLike.setVisibility(View.GONE);
+        } else {
+            holder.llConnect.setVisibility(View.GONE);
+            holder.ivLike.setVisibility(View.VISIBLE);
         }
 
         holder.llPhotoMyMatches.setOnClickListener(new View.OnClickListener() {
@@ -181,7 +187,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         holder.ivLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.sentRequest(context, item.member_id,clickListener);
+                Utils.sentRequest(context, item.member_id, clickListener);
                 holder.ivLike.setVisibility(View.GONE);
                 holder.llConnect.setVisibility(View.VISIBLE);
 
@@ -191,7 +197,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         holder.llShortList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.shortList(context, item.member_id,clickListener);
+                Utils.shortList(context, item.member_id, clickListener);
                 holder.llShortList.setVisibility(View.GONE);
                 holder.llShortListRemove.setVisibility(View.VISIBLE);
 
@@ -212,13 +218,6 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             }
         });
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e("position", String.valueOf(position));
-                MatchPagerFragment.newInstance(String.valueOf(position), String.valueOf(position)).show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
-            }
-        });
         holder.tvPremiumContactMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -236,20 +235,15 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             holder.llPremiumMsgMatches.setVisibility(View.GONE);
         }
 
-        if(item.first_name.equals("") && item.last_name.equalsIgnoreCase(""))
-        {
+        if (item.first_name.equals("") && item.last_name.equalsIgnoreCase("")) {
             holder.ivMatchDot.setVisibility(View.GONE);
         }
-        if(item.mage.equals(""))
-        {
+        if (item.mage.equals("")) {
             holder.ivMatchDot1.setVisibility(View.GONE);
         }
-        if(item.income.equalsIgnoreCase(""))
-        {
+        if (item.income.equalsIgnoreCase("")) {
             holder.ivMatchDot2.setVisibility(View.GONE);
         }
-
-
 
 
     }
@@ -260,9 +254,9 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView ivUserMatch, ivNoImageMaleFemaleMatch,ivMatchDot,ivMatchDot1,ivMatchDot2;
+        ImageView ivUserMatch, ivNoImageMaleFemaleMatch, ivMatchDot, ivMatchDot1, ivMatchDot2;
         TextView tvNewMatchName, tvNewMatchAge, tvPremiumContactMatch, tvLevelPremiumMatch, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs, tvImageCount;
-        LinearLayout llMess, llShortListRemove,llPrivateMatchesPhoto, llShortList, llPhotoMyMatches, llShortBlock, llBlocked, llItemAnimation;
+        LinearLayout llMess, llShortListRemove, llPrivateMatchesPhoto, llShortList, llPhotoMyMatches, llShortBlock, llBlocked, llItemAnimation;
         LinearLayout ivLike, llConnect, llNo_imageFemaleList, llPremiumMsgMatches;
         FrameLayout flNoImageMaleFemaleList, flPremiumMatch;
         Spinner SpMenu;
@@ -270,11 +264,11 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ivMatchDot=itemView.findViewById(R.id.ivMatchDot);
+            ivMatchDot = itemView.findViewById(R.id.ivMatchDot);
             ivMatchDot1 = itemView.findViewById(R.id.ivMatchDot1);
             ivMatchDot2 = itemView.findViewById(R.id.ivMatchDot2);
 
-            llPrivateMatchesPhoto=itemView.findViewById(R.id.llPrivateMatchesPhoto);
+            llPrivateMatchesPhoto = itemView.findViewById(R.id.llPrivateMatchesPhoto);
             tvPremiumContactMatch = itemView.findViewById(R.id.tvPremiumContactMatch);
             tvNewMatchAge = itemView.findViewById(R.id.tvNewMatchAge);
             tvNewMatchName = itemView.findViewById(R.id.tvNewMatchName);

@@ -57,6 +57,11 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         NewMatchesModel item = list.get(position);
         Log.e(" New Matches model", new Gson().toJson(item));
         sessionManager = new SessionManager(context);
+
+        holder.ivShortlistDot.setVisibility(View.VISIBLE);
+        holder.ivShortlistDot1.setVisibility(View.VISIBLE);
+        holder.ivShortlistDot2.setVisibility(View.VISIBLE);
+
         holder.llPrivateRemoveShortListPhoto.setVisibility(View.GONE);
         holder.tvNewMatchNameRs.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
         if((item.mage.equalsIgnoreCase(""))  || (item.mage.equalsIgnoreCase("null")))
@@ -69,6 +74,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
 
         holder.tvNewMatchHeightRs.setText(Utils.nullToBlank(item.religion));
         holder.tvNewMatchCityRs.setText(Utils.nullToBlank(item.maritalStatus));
+        holder.tvNewMatchWorkAsRs.setText(Utils.nullToBlank(item.income));
         holder.tvImageCountRemoveShortList.setText(Utils.nullToBlank(item.images_count));
 
         holder.llPrivateRemoveShortListPhoto.setVisibility(View.GONE);
@@ -223,6 +229,31 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         });
 
 
+        if(item.first_name.equals("") && item.last_name.equalsIgnoreCase(""))
+        {
+            holder.ivShortlistDot.setVisibility(View.GONE);
+        }
+
+        if(item.mage.equals("") || item.mage.equalsIgnoreCase("null"))
+        {
+            holder.ivShortlistDot1.setVisibility(View.GONE);
+        }
+
+        if(item.religion.equals(""))
+        {
+            holder.ivShortlistDot1.setVisibility(View.GONE);
+        }
+
+        if(item.maritalStatus.equals(""))
+        {
+            holder.ivShortlistDot2.setVisibility(View.GONE);
+        }
+        if(item.income.equals("") || item.income.equalsIgnoreCase("null"))
+        {
+            holder.ivShortlistDot2.setVisibility(View.GONE);
+        }
+
+
     }
 
     @Override
@@ -232,7 +263,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView ivRemoveShortList, ivNoImageMaleFemaleRemoveShortList;
+        ImageView ivRemoveShortList, ivNoImageMaleFemaleRemoveShortList,ivShortlistDot,ivShortlistDot1,ivShortlistDot2;
         TextView tvNewMatchNameRs,tvPremiumShortlistMatch,tvLevelPremiumRemoveShortList, tvNewMatchAgeRs, tvNewMatchHeightRs, tvNewMatchCityRs, tvNewMatchWorkAsRs, tvImageCountRemoveShortList;
         LinearLayout llMess, llShortListRemove1, llShortList1, llPhotoShortList, llNo_imageFemaleRemoveShortList;
         LinearLayout ivLikeShortList, llBlockShortList,llPrivateRemoveShortListPhoto, llPremiumMsgRemoveShortlist,llBlockedShortList, llConnectShortList;
@@ -244,6 +275,11 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
             llPrivateRemoveShortListPhoto=itemView.findViewById(R.id.llPrivateRemoveShortListPhoto);
             tvLevelPremiumRemoveShortList = itemView.findViewById(R.id.tvLevelPremiumRemoveShortList);
             flPremiumRemove_shortList = itemView.findViewById(R.id.flPremiumRemove_shortList);
+
+            ivShortlistDot=itemView.findViewById(R.id.ivShortlistDot);
+            ivShortlistDot1 = itemView.findViewById(R.id.ivShortlistDot1);
+            ivShortlistDot2 = itemView.findViewById(R.id.ivShortlistDot2);
+
             llPremiumMsgRemoveShortlist=itemView.findViewById(R.id.llPremiumMsgRemoveShortlist);
             tvNewMatchAgeRs = itemView.findViewById(R.id.tvNewMatchAgeRs);
             tvNewMatchNameRs = itemView.findViewById(R.id.tvNewMatchNameRs);

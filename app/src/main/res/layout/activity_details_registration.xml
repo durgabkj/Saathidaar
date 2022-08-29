@@ -326,19 +326,15 @@
 
 
 
-            <TextView
-                android:id="@+id/btnSave"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="40sp"
-                android:background="@drawable/white_bg"
-                android:text="Save"
-                android:padding="10dp"
-                android:fontFamily="@font/pt_serif_bold"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="@color/colorPrimary" />
+           <com.google.android.material.button.MaterialButton
+               android:layout_width="150dp"
+               android:layout_height="wrap_content"
+               android:text="Save"
+               android:layout_gravity="center"
+               android:layout_marginTop="30dp"
+               android:fontFamily="@font/pt_serif_bold"
+               android:textColor="@color/colorPrimary"
+               android:id="@+id/btnSaveReg"/>
 
             <TextView
                 android:layout_width="wrap_content"

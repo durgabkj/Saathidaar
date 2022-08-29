@@ -398,7 +398,7 @@
                         android:shadowDy="2"
                         android:shadowRadius="1.6"
                         android:fontFamily="@font/italic"
-                        android:text="WhatApp"
+                        android:text="WhatsApp"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold" />

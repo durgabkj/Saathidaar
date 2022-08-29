@@ -4,8 +4,12 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +18,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     Context context;
+    ImageView ivSplash;
     SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,26 +26,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = MainActivity.this;
         sessionManager = new SessionManager(context);
-        //setNotification();
+
+        ivSplash=findViewById(R.id.ivSplash);
+
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.zoom);
+        ivSplash.startAnimation(animation);
         start();
-    }
 
-    private void setNotification() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 11);
-        calendar.set(Calendar.MINUTE, 55);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.AM_PM, Calendar.AM);
-        if (calendar.getTime().compareTo(new Date()) < 0)
-            calendar.add(Calendar.HOUR_OF_DAY, 0);
-        Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_MUTABLE);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-        if (alarmManager != null) {
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-
-        }
     }
     private void start() {
         new Handler().postDelayed(new Runnable() {
@@ -54,10 +47,8 @@ public class MainActivity extends AppCompatActivity {
 }
               finish();
 
-//                Intent intent=new Intent(MainActivity.this,NavigationActivity.class);
-//                startActivity(intent);
             }
 
-        }, 1000);
+        }, 3000);
     }
     }

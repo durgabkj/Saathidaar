@@ -386,6 +386,7 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
                     <ImageView
+                        android:id="@+id/ivShortlistDot"
                         android:layout_width="6dp"
                         android:layout_height="6dp"
                         android:layout_marginLeft="5dp"
@@ -401,11 +402,13 @@
                         android:shadowDx="1.5"
                         android:fontFamily="@font/italic"
                         android:shadowDy="1.3"
+                        android:inputType="textCapWords"
                         android:shadowRadius="1.6"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                     <ImageView
+                        android:id="@+id/ivShortlistDot1"
                         android:layout_width="6dp"
                         android:layout_height="6dp"
                         android:layout_marginLeft="5dp"
@@ -420,6 +423,7 @@
                         android:shadowColor="#000000"
                         android:shadowDx="1.5"
                         android:shadowDy="1.3"
+                        android:inputType="textCapWords"
                         android:shadowRadius="1.6"
                         android:maxLength="10"
                         android:fontFamily="@font/italic"
@@ -455,6 +459,7 @@
                         android:textSize="12sp"
                         android:textStyle="bold" />
                     <ImageView
+                        android:id="@+id/ivShortlistDot2"
                         android:layout_width="6dp"
                         android:layout_height="6dp"
                         android:layout_marginLeft="5dp"

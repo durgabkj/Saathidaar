@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -93,6 +94,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
     String myMaritalS;
     MemberProfileModel model;
     String memberId;
+    String phone;
     String country = "";
     private String format = "";
     private DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -104,13 +106,12 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
         setContentView(b.getRoot());
         context = DetailsRegistrationActivity.this;
         sessionManager = new SessionManager(context);
-//        Bundle bundle = getIntent().getExtras();
-//        String data = bundle.getString("data");
-//        model = new Gson().fromJson(data, MemberProfileModel.class);
+
+        phone = getIntent().getStringExtra("mobile");
         memberId = sessionManager.getUserMemberRegId();
-
-        Log.e("personal data", memberId);
-
+//
+        Log.e("registered memberId", memberId);
+        Log.e("user mobile",phone);
 
         // Initialize dialog
         dialog = new Dialog(context);
@@ -262,7 +263,6 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
 
     private void listener() {
 
-
         b.tvUserReligion.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -282,8 +282,6 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
 
             }
         });
-
-
         b.etCountry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -341,12 +339,12 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
 
             }
         });
-        b.btnSave.setOnClickListener(new View.OnClickListener() {
+        b.btnSaveReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hideKeyboard(v);
                 if (checkForm()) {
                     submitForm();
-                    hideKeyboard(v);
                 }
 
             }
@@ -391,8 +389,6 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
         Height = b.etHeight.getText().toString().trim();
         Diet = b.etDiet.getText().toString().trim();
         Religion = b.tvUserReligion.getText().toString().trim();
-
-
 
         if (country.isEmpty()) {
             b.etCountry.setError("Please Select Country");
@@ -461,22 +457,24 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
         params.put("country_name", country);
         params.put("lifestyles", Diet);
         Log.e("params", String.valueOf(params));
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "please wait....", false, false);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Updateurl +sessionManager.getUserMemberRegId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.e(" update personal detail response", String.valueOf((response)));
+                        progressDialog.dismiss();
+                        Log.e(" short registration response", String.valueOf((response)));
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
-                                successDialog();
-                                // Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                                 sessionManager.createShortReg(response.getString("results"));
-
+                                Intent intent=new Intent(context,OtpVerificationActivity.class);
+                                intent.putExtra("mobile", phone);
+                                startActivity(intent);
                             } else {
                               //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
+
                             e.printStackTrace();
                             Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
                         }
@@ -485,6 +483,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error response", String.valueOf(error));
                         }

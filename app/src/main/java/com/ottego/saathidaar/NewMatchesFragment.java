@@ -39,7 +39,6 @@ public class NewMatchesFragment extends Fragment implements ApiListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     MatchViewModel viewModel;
@@ -78,13 +77,10 @@ public class NewMatchesFragment extends Fragment implements ApiListener {
         inboxViewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
 
         sessionManager=new SessionManager(context);
-//        animation = AnimationUtils.loadAnimation(context, R.anim.move);
-//        b.llCard.startAnimation(animation);
+
         getData("");
         listener();
 
-
-        //   adapter.notifyDataSetChanged();
         return b.getRoot();
     }
 

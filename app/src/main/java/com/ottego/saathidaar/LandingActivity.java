@@ -206,24 +206,6 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
         }
     }
 });
-//            binding.tvLandingMemberLogin.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent=new Intent(context,LoginActivity.class);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    startActivity(intent);
-//                }
-//            });
-//
-//
-//            binding.tvLandingMemberSignUp.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent=new Intent(context,LandingActivity.class);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    startActivity(intent);
-//                }
-//            });
 
 
             binding.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -323,19 +305,7 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
                 binding.txtemail.setError(null);
             }
 
-//            if (password.isEmpty()) {
-//                binding.txtpassword.setError("Please enter your password");
-//                binding.txtpassword.setFocusableInTouchMode(true);
-//                binding.txtpassword.requestFocus();
-//                return false;
-//            } else if (password.length() < 6) {
-//                binding.txtpassword.setError("password must be at least 6 character long");
-//                binding.txtpassword.setFocusableInTouchMode(true);
-//                binding.txtpassword.requestFocus();
-//                return false;
-//            } else {
-//                binding.txtpassword.setError(null);
-//            }
+
 
             if (binding.spinner1.getSelectedItem().toString().trim().contains("Profile created By")) {
                 Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
@@ -377,15 +347,15 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
                         public void onResponse(JSONObject response) {
                             Log.e("response", String.valueOf((response)));
                             try {
-                                String code = response.getString("result");
+                                String code = response.getString("results");
                                 if (code.equalsIgnoreCase("1")) {
                                     Gson gson = new Gson();
                                     //  UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);
-                                    sessionManager.createSUserMemberId(response.getString("member_id"));
+                                    sessionManager.createSUserMemberId(response.getString("user_id"));
                                     // Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
-                                    //  Intent intent = new Intent(context, OtpVerificationActivity.class);
+                                      //Intent intent = new Intent(context, OtpVerificationActivity.class);
                                     Intent intent = new Intent(context, DetailsRegistrationActivity.class);
-                                    // intent.putExtra("mobile", phone);
+                                    intent.putExtra("mobile", phone);
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
                                 } else {

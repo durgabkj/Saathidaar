@@ -1,64 +1,42 @@
 package com.ottego.saathidaar;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver;
 import com.google.android.material.chip.ChipGroup;
-import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.DataModelDashboard;
 import com.ottego.saathidaar.databinding.FragmentMatchesBinding;
 import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
-import org.json.JSONObject;
-
-import java.util.Calendar;
 import java.util.List;
 
 
 public class MatchesFragment extends Fragment {
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    public String url = "http://103.174.102.195:8080/saathidaar_backend/api/request/count/accept-request/";
     FragmentMatchesBinding b;
-
     MatchViewModel viewModel;
     SessionManager sessionManager;
     Context context;
     DataModelDashboard model;
-    public String url = "http://103.174.102.195:8080/saathidaar_backend/api/request/count/accept-request/";
-     int count=0;
-    MyMatchFragment myMatchFragment=new MyMatchFragment();
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
+    int count = 0;
+    MyMatchFragment myMatchFragment = new MyMatchFragment();
     private String mParam1;
     private String mParam2;
 
     public MatchesFragment() {
-        // Required empty public constructor
+
     }
 
-    // TODO: Rename and change types and number of parameters
     public static MatchesFragment newInstance(String param1, String param2) {
         MatchesFragment fragment = new MatchesFragment();
         Bundle args = new Bundle();
@@ -80,19 +58,16 @@ public class MatchesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         b = FragmentMatchesBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
         context = getContext();
         sessionManager = new SessionManager(context);
-        b.vpMatch.setPagingEnable(false);
 
         getChildFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fcvMatches, MyMatchFragment.newInstance("",""))
+                .replace(R.id.fcvMatches, MyMatchFragment.newInstance("", ""))
                 .commit();
 
-        b.chipGroup.check(b.chipGroup.getChildAt(1).getId());
 
 //        getDataCount();
         viewModel.getDataCount();
@@ -102,19 +77,17 @@ public class MatchesFragment extends Fragment {
     }
 
 
-
     private void listener() {
         viewModel.count.observe(getViewLifecycleOwner(), new Observer<DataModelDashboard>() {
             @Override
             public void onChanged(DataModelDashboard dataModelDashboard) {
-                model=dataModelDashboard;
+                model = dataModelDashboard;
                 setData();
             }
         });
         b.chipGroup.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
-                b.vpMatch.setCurrentItem(group.getCheckedChipId());
                 Fragment fragment = null;
                 switch (group.getCheckedChipId()) {
                     case R.id.chipNewMatch: {
@@ -135,58 +108,39 @@ public class MatchesFragment extends Fragment {
                         break;
                     }
 
-                    case R.id.chipShortListed:{
-                        fragment= ShortListFragment.newInstance("", "");
+                    case R.id.chipShortListed: {
+                        fragment = ShortListFragment.newInstance("", "");
                         break;
                     }
 //                    case R.id.chipSearch:{
 //                        fragment= SearchFragment.newInstance("", "");
 //                        break;
 //                    }
-                    case R.id.chipRecentView:{
-                        fragment= RecentViewFragment.newInstance("", "");
+                    case R.id.chipRecentView: {
+                        fragment = RecentViewFragment.newInstance("", "");
                         break;
                     }
-                    case R.id.chipRecentlyView:{
-                        fragment= RecentlyViewedFragment.newInstance("", "");
+                    case R.id.chipRecentlyView: {
+                        fragment = RecentlyViewedFragment.newInstance("", "");
                         break;
                     }
-                    default:{
-                        fragment= RecentlyViewedFragment.newInstance("", "");
+                    default: {
+                        fragment = RecentlyViewedFragment.newInstance("", "");
                         break;
                     }
 
                 }
                 getChildFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.fcvMatches,fragment)
+                        .replace(R.id.fcvMatches, fragment)
                         .commit();
 
 
             }
 
         });
+        b.chipGroup.check(b.chipGroup.getChildAt(1).getId());
 
-    }
-
-    private void getDataCount() {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.e("response count inbox", String.valueOf((response)));
-                Gson gson = new Gson();
-                model = gson.fromJson(String.valueOf(response), DataModelDashboard.class);
-                setData();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
     }
 
     private void setData() {
@@ -202,19 +156,6 @@ public class MatchesFragment extends Fragment {
             b.chipPremiumMatch.setText("Premium Matches " + "(" + model.data.get(0).premium_matches_count + ")");
             b.chipRecentlyView.setText("Recently Viewed " + "(" + model.data.get(0).recent_view_to + ")");
         }
-    }
-
-
-    private void refresh(int millisecond) {
-        final Handler handler= new Handler();
-        final  Runnable runnable=new Runnable() {
-            @Override
-            public void run() {
-                getDataCount();
-            }
-        };
-
-        handler.postDelayed(runnable, millisecond);
     }
 
 

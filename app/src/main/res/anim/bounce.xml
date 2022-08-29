@@ -5,7 +5,7 @@
  android:fillBefore="true"
     android:interpolator="@android:anim/bounce_interpolator">
     <scale
-        android:duration="7000"
+        android:duration="5000"
         android:fromXScale="0.3"
         android:toXScale="1.0"
         android:fromYScale="0.3"

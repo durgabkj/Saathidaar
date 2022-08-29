@@ -87,12 +87,14 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
         b = FragmentMatchDetailsBinding.inflate(inflater, container, false);
         context = getContext();
         sessionManager = new SessionManager(context);
+
+        Log.e("tab member id",mParam1);
+
         listener();
         getPartnerData();
         getHoroscopeData();
         setData();
         getMemberPreferenceData();
-        //getLoginMemberData();
         return b.getRoot();
     }
 

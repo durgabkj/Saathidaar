@@ -426,7 +426,7 @@
                                     android:fontFamily="@font/pt_serif_bold" android:drawablePadding="8dp"
                                     android:drawableStart="@drawable/ic_baseline_privacy_tip_24"
                                     android:text="Privacy Policy"
-                                    android:textSize="14dp"
+                                    android:textSize="15sp"
                                     android:layout_gravity="center_vertical"
                                     android:textStyle="bold"
                                     android:textColor="@color/colorPrimary" />
@@ -482,6 +482,7 @@
                                     android:layout_gravity="center_vertical"
                                     android:drawableStart="@drawable/ic_baseline_live_help_24"
                                     android:textStyle="bold"
+                                    android:textSize="15sp"
                                     android:textColor="@color/colorPrimary" />
 
 
@@ -536,6 +537,7 @@
                                     android:drawableTint="@color/colorPrimary"
                                     android:drawableStart="@drawable/ic_baseline_library_books_24"
                                     android:textStyle="bold"
+                                    android:textSize="15sp"
                                     android:layout_gravity="center_vertical"
                                     android:textColor="@color/colorPrimary" />
 
@@ -598,6 +600,7 @@
                                     android:layout_gravity="center_vertical"
                                     android:fontFamily="@font/pt_serif_bold" android:textColor="@color/colorPrimary"
                                     android:textStyle="bold"
+                                    android:textSize="15sp"
                                     android:text="Rate Us"
 
                                     />
@@ -647,6 +650,7 @@
                                     android:drawableStart="@drawable/ic_baseline_power_settings_new_24"
                                     android:drawablePadding="8dp"
                                     android:text="Logout"
+                                    android:textSize="15sp"
                                     android:textStyle="bold"
                                     android:layout_gravity="center_vertical"
                                     android:fontFamily="@font/pt_serif_bold"

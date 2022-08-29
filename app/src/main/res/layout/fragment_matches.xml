@@ -149,12 +149,7 @@
         android:id="@+id/fcvMatches"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    <com.ottego.saathidaar.SwipeDisabledPager
-        android:id="@+id/vpMatch"
-        tools:ignore="NotSibling"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
 
 
 

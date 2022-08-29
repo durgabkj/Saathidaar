@@ -87,12 +87,6 @@
         android:id="@+id/fcvHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    <com.ottego.saathidaar.SwipeDisabledPager
-        android:id="@+id/vpHome"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/tlMatch"
-        tools:ignore="NotSibling" />
 
 
 

@@ -16,20 +16,18 @@ import java.util.List;
 
 
 public class HomeFragment extends Fragment {
-    FragmentHomeBinding b;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    DashBoardFragment dashBoardFragment=new DashBoardFragment();
-  Context context;
-    // TODO: Rename and change types of parameters
+    FragmentHomeBinding b;
+    DashBoardFragment dashBoardFragment = new DashBoardFragment();
+    Context context;
     private String mParam1;
     private String mParam2;
 
     public HomeFragment() {
-        // Required empty public constructor
+
     }
 
-    // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
@@ -52,15 +50,11 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         b = FragmentHomeBinding.inflate(inflater, container, false);
-context=getContext();
+        context = getContext();
         getChildFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fcvHome, dashBoardFragment.newInstance("",""))
+                .replace(R.id.fcvHome, DashBoardFragment.newInstance("", ""))
                 .commit();
-
-        b.chipGroupHome.check(b.chipGroupHome.getChildAt(0).getId());
-
-
 
         listener();
         return b.getRoot();
@@ -71,7 +65,6 @@ context=getContext();
         b.chipGroupHome.setOnCheckedStateChangeListener(new ChipGroup.OnCheckedStateChangeListener() {
             @Override
             public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
-                b.vpHome.setCurrentItem(group.getCheckedChipId());
                 Fragment fragment = null;
                 switch (group.getCheckedChipId()) {
                     case R.id.chipDashBoard: {
@@ -106,6 +99,9 @@ context=getContext();
             }
 
         });
+
+        b.chipGroupHome.check(b.chipGroupHome.getChildAt(0).getId());
+
     }
 
 

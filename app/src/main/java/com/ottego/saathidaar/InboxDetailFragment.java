@@ -536,8 +536,8 @@ public class InboxDetailFragment extends Fragment {
             b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
             b.tvNameUserFamilyDetails.setText("About " + " Family");
             b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails));
-            b.tvCreatedBy.setText("Profile Create by" + " " + Utils.nullToBlank(model.profilecreatedby));
-            b.tvProfileID.setText("Profile ID" + " " + Utils.nullToBlank(model.profile_id));
+            b.tvCreatedBy.setText("Profile Create by:-" + " " + Utils.nullToBlank(model.profilecreatedby));
+            b.tvProfileID.setText("Profile ID:-" + " " + Utils.nullToBlank(model.profile_id));
 
           //  b.tvNewMatchName.setText(Utils.nullToBlank(model.first_name).toUpperCase() + " " + Utils.nullToBlank(model.last_name).toUpperCase().charAt(0));
 
@@ -550,7 +550,7 @@ public class InboxDetailFragment extends Fragment {
 
 
 
-            b.tvDetailHeight.setText("Height - " + Utils.nullToBlank(model.height));
+            b.tvDetailHeight.setText("Height:- " + Utils.nullToBlank(model.height));
 
             if (!model.date_of_birth.equalsIgnoreCase("") && !model.date_of_birth.equalsIgnoreCase(null) && !model.date_of_birth.isEmpty() ) {
 

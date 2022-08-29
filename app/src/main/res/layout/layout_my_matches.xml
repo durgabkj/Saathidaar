@@ -333,7 +333,6 @@
                             android:shadowDy="2"
                             android:inputType = "textCapWords"
                             android:shadowRadius="1.6"
-                            android:text="Durga singh"
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -404,7 +403,6 @@
                             android:shadowDx="1.5"
                             android:shadowDy="1.3"
                             android:shadowRadius="1.6"
-                            android:text="Mumbai"
                             android:inputType = "textCapWords"
                             android:textColor="@color/white"
                             android:textSize="12sp"
