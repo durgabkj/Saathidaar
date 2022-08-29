@@ -38,8 +38,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="424dp"
-            android:layout_height="172dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:elevation="20dp"
             android:gravity="center"
             android:orientation="vertical"
@@ -53,7 +53,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/pt_serif_bold"
                 android:gravity="center"
-                android:text="Your OTP  Is Verified And Confirmation Link  Is Sent \non Your Registered Email Id"
+                android:text="Your OTP  Is Verified And Confirmation Link  Is \nSent on Your Registered Email Id"
                 android:textColor="@color/colorPrimary"
                 android:textSize="12dp"
                 android:textStyle="bold" />
