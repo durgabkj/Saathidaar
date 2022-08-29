@@ -71,7 +71,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        android:layout_marginStart="8dp"
                         android:layout_weight="1"
                         android:textColorHint="@color/black"
                         android:background="@drawable/transparent_edittext_border"
@@ -109,7 +108,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:hint="Select  Marital Status"
+                    android:hint="Select Marital Status"
                     android:textColorHint="@color/black"
                     android:layout_marginStart="8dp"
                     android:editable="true"
@@ -176,8 +175,6 @@
                 android:background="@drawable/white_bg"
                 android:orientation="horizontal"
                 tools:ignore="UselessParent">
-
-
                 <TextView
                     android:id="@+id/etHeight"
                     android:layout_width="0dp"
@@ -188,7 +185,7 @@
                     android:gravity="center_vertical"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                     android:layout_marginEnd="10dp"
-                    android:hint="Select  your Height"
+                    android:hint="Select Your Height"
                     android:textColorHint="@color/black"
                     android:textColor="@color/black"
                     android:layout_marginStart="8dp"
@@ -259,7 +256,7 @@
                     android:textColorHint="@color/black"
                     android:textColor="@color/black"
                     android:gravity="center_vertical"
-                    android:hint="Select your Diet"
+                    android:hint="Select Your Diet"
                     android:editable="false"
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="8dp"

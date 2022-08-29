@@ -1,15 +1,19 @@
 package com.ottego.saathidaar;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -121,6 +125,35 @@ public class OtpVerificationActivity extends AppCompatActivity {
         }
         return true;
     }
+
+
+    public void successDialog()
+    {
+        AlertDialog.Builder builder=new AlertDialog.Builder(context);
+        View layout_dialog= LayoutInflater.from(context).inflate(R.layout.otp_verification_layout,null);
+        builder.setView(layout_dialog);
+
+        AppCompatButton btnokSuccess =layout_dialog.findViewById(R.id.btnokSuccess);
+        // show dialog
+
+        AlertDialog dialog=builder.create();
+        dialog.show();
+        dialog.setCancelable(false);
+
+        dialog.getWindow().setGravity(Gravity.CENTER);
+
+        btnokSuccess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                Intent intent = new Intent(context, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
+            }
+        });
+    }
+
     private void submitFormOtp() {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, OtpVerifyUrl + otp + "/" + phone, new JSONObject(),
                 new Response.Listener<JSONObject>() {
@@ -133,9 +166,8 @@ public class OtpVerificationActivity extends AppCompatActivity {
                             if (code.equalsIgnoreCase("1")) {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
 //                                startActivity(intent);
-                                Intent intent = new Intent(context, LoginActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
+                                successDialog();
+
                             } else {
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
