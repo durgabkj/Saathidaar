@@ -1,9 +1,11 @@
 package com.ottego.saathidaar;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -27,10 +29,10 @@ public class MatchPagerFragment extends DialogFragment {
     MatchViewModel viewModel;
 
     int position=0;
+    int Size_Of_list=0;
     public MatchPagerFragment() {
         // Required empty public constructor
     }
-
 
     public static MatchPagerFragment newInstance(String param1, String param2) {
         MatchPagerFragment fragment = new MatchPagerFragment();
@@ -38,7 +40,6 @@ public class MatchPagerFragment extends DialogFragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
-
         return fragment;
     }
 
@@ -54,6 +55,7 @@ public class MatchPagerFragment extends DialogFragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
             position=Integer.parseInt(mParam1);
+            Size_Of_list=Integer.parseInt(mParam2);
         }
     }
 
@@ -63,23 +65,39 @@ public class MatchPagerFragment extends DialogFragment {
         // Inflate the layout for this fragment
         b = FragmentMatchPagerBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
+
+        Log.e("position",mParam1);
+        Log.e("size of list",mParam2);
+
         getChildFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fcvDetailsShow, MatchDetailsFragment.newInstance(viewModel.list.getValue().get(position).member_id, ""))
                 .commit();
 
-        // of ViewPager2Adapter
-        ViewPagerMatchDetailAdapter viewPager2Adapter = new ViewPagerMatchDetailAdapter(requireActivity(), viewModel);
+//Previous button
+        if (position == 0) {
+            b.llPrevious.setVisibility(View.INVISIBLE);
+        }
+
+// Next button...
+        if (Size_Of_list-1==position) {
+            b.llNext.setVisibility(View.INVISIBLE);
+        }
 
         b.llNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                position=  position+1;
-                if (position == 0) {
-                    b.llPrevious.setVisibility(View.INVISIBLE);
+              //  position=  position+1;
+                Log.e("next", String.valueOf(position));
+                if (Size_Of_list-1==position) {
+                    b.llNext.setVisibility(View.INVISIBLE);
+                    Toast.makeText(requireActivity(), "This Is Your Last Matches", Toast.LENGTH_SHORT).show();
                 } else {
+                    ++position;
                     b.llPrevious.setVisibility(View.VISIBLE);
+                    b.llNext.setVisibility(View.VISIBLE);
                 }
+
 
                 getChildFragmentManager()
                         .beginTransaction()
@@ -91,11 +109,15 @@ public class MatchPagerFragment extends DialogFragment {
         b.llPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                position=  position-1;
-                if (position < Objects.requireNonNull(position - 1)) {
-                    b.llNext.setVisibility(View.VISIBLE);
+               // position=  position-1;
+                Log.e("position", String.valueOf(position));
+                if (position == 0) {
+                    Toast.makeText(requireActivity(), "This Is Your First Matches", Toast.LENGTH_SHORT).show();
+                    b.llPrevious.setVisibility(View.INVISIBLE);
                 } else {
-                    b.llNext.setVisibility(View.INVISIBLE);
+                    --position;
+                    b.llPrevious.setVisibility(View.VISIBLE);
+                    b.llNext.setVisibility(View.VISIBLE);
                 }
                 getChildFragmentManager()
                         .beginTransaction()
@@ -103,90 +125,6 @@ public class MatchPagerFragment extends DialogFragment {
                         .commit();
             }
         });
-
-
-
-
-
-
-        // adding the adapter to viewPager2
-        // to show the views in recyclerview
-
-        // To get swipe event of viewpager2
-
-//        b.vp2Details.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-//            @Override
-//            // This method is triggered when there is any scrolling activity for the current page
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-//
-//            }
-//
-//            // triggered when you select a new page
-//            @Override
-//            public void onPageSelected(int position) {
-//                super.onPageSelected(position);
-//
-//
-//                if (position == 0) {
-//                    b.llPrevious.setVisibility(View.INVISIBLE);
-//                } else {
-//                    b.llPrevious.setVisibility(View.VISIBLE);
-//                }
-//                if (position < Objects.requireNonNull(b.vp2Details.getAdapter()).getItemCount() - 1) {
-//                    b.llNext.setVisibility(View.VISIBLE);
-//                } else {
-//                    b.llNext.setVisibility(View.INVISIBLE);
-//                }
-//            }
-//            // triggered when there is
-//            // scroll state will be changed
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//                super.onPageScrollStateChanged(state);
-//
-//            }
-//        });
-//
-//        b.vp2Details.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                b.vp2Details.setCurrentItem(Integer.parseInt(mParam1));
-//            }
-//        });
-//        b.llNext.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                b.vp2Details.setCurrentItem(b.vp2Details.getCurrentItem()+1, true);
-//            }
-//        });
-//
-//        b.llPrevious.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                b.vp2Details.setCurrentItem(b.vp2Details.getCurrentItem()-1, true);
-//            }
-//        });
-
-        b.fcvDetailsShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (position == 0) {
-                    b.llPrevious.setVisibility(View.INVISIBLE);
-                } else {
-                    b.llPrevious.setVisibility(View.VISIBLE);
-                }
-                if (position < Objects.requireNonNull(position - 1)) {
-                    b.llNext.setVisibility(View.VISIBLE);
-                } else {
-                    b.llNext.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-
-
         return b.getRoot();
     }
 }

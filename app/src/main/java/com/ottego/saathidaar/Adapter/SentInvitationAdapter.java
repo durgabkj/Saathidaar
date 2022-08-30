@@ -114,7 +114,7 @@ holder.llPrivateSentPhoto.setVisibility(View.GONE);
                 @Override
                 public void onClick(View view) {
                     Log.e("position  sent Inbox", String.valueOf(position));
-                    InboxPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "Inbox_pager_fragment");
+                    InboxPagerFragment.newInstance(String.valueOf(position), String.valueOf(list.size())).show(((FragmentActivity) context).getSupportFragmentManager(), "Inbox_pager_fragment");
 
                 }
             });

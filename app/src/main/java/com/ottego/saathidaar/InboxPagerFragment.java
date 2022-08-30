@@ -1,16 +1,16 @@
 package com.ottego.saathidaar;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.ottego.saathidaar.Adapter.ViewPagerInboxDetailAdapter;
-import com.ottego.saathidaar.Adapter.ViewPagerMatchDetailAdapter;
 import com.ottego.saathidaar.databinding.FragmentInboxPagerBinding;
 import com.ottego.saathidaar.viewmodel.InboxViewModel;
 import com.ottego.saathidaar.viewmodel.MatchViewModel;
@@ -26,6 +26,7 @@ public class InboxPagerFragment extends DialogFragment {
 
     InboxViewModel viewModel;
     int position=0;
+    int Size_Of_list=0;
     public InboxPagerFragment() {
         // Required empty public constructor
     }
@@ -51,6 +52,8 @@ public class InboxPagerFragment extends DialogFragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            position=Integer.parseInt(mParam1);
+            Size_Of_list=Integer.parseInt(mParam2);
         }
     }
 
@@ -66,18 +69,32 @@ public class InboxPagerFragment extends DialogFragment {
                 .commit();
 
 
+        //Previous button
+        if (position == 0) {
+            b.llPreviousInbox.setVisibility(View.INVISIBLE);
+        }
+
+// Next button...
+        if (Size_Of_list-1==position) {
+            b.llNextInbox.setVisibility(View.INVISIBLE);
+        }
+
         b.llNextInbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                position=  position+1;
-                if (position == 0) {
-                    b.llPreviousInbox.setVisibility(View.INVISIBLE);
+               // position=  position+1;
+                Log.e("next", String.valueOf(position));
+                if (Size_Of_list-1==position) {
+                    b.llNextInbox.setVisibility(View.INVISIBLE);
+                    Toast.makeText(requireActivity(), "This Is Your Last Matches", Toast.LENGTH_SHORT).show();
                 } else {
+                    ++position;
                     b.llPreviousInbox.setVisibility(View.VISIBLE);
+                    b.llNextInbox.setVisibility(View.VISIBLE);
                 }
                 getChildFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.fcvDetailsShow, MatchDetailsFragment.newInstance(viewModel.list1.getValue().get(position).member_id, ""))
+                        .replace(R.id.fcvInboxDetailsShow, MatchDetailsFragment.newInstance(viewModel.list1.getValue().get(position).member_id, ""))
                         .commit();
 
             }
@@ -85,21 +102,22 @@ public class InboxPagerFragment extends DialogFragment {
         b.llPreviousInbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                position=  position-1;
-                if (position < Objects.requireNonNull(position - 1)) {
-                    b.llNextInbox.setVisibility(View.VISIBLE);
+               // position=  position-1;
+                Log.e("position", String.valueOf(position));
+                if (position == 0) {
+                    Toast.makeText(requireActivity(), "This Is Your First Matches", Toast.LENGTH_SHORT).show();
+                    b.llPreviousInbox.setVisibility(View.INVISIBLE);
                 } else {
-                    b.llNextInbox.setVisibility(View.INVISIBLE);
+                   --position;
+                    b.llPreviousInbox.setVisibility(View.VISIBLE);
+                    b.llNextInbox.setVisibility(View.VISIBLE);
                 }
                 getChildFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.fcvDetailsShow, MatchDetailsFragment.newInstance(viewModel.list1.getValue().get(position).member_id, ""))
+                        .replace(R.id.fcvInboxDetailsShow, MatchDetailsFragment.newInstance(viewModel.list1.getValue().get(position).member_id, ""))
                         .commit();
             }
         });
-
-
-
         return b.getRoot();
     }
 }

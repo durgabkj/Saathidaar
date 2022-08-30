@@ -149,6 +149,7 @@
                         android:drawableTint="@color/black"
                         android:fontFamily="@font/italic"
                         android:hint="Firstname"
+                        android:inputType="textCapWords"
                         android:padding="8dp"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
                         android:textColor="@color/black" />
@@ -169,6 +170,7 @@
                         android:drawableTint="@color/black"
                         android:fontFamily="@font/italic"
                         android:hint="Lastname"
+                        android:inputType="textCapWords"
                         android:singleLine="true"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
                         android:padding="8dp"

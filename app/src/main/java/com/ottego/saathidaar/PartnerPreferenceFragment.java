@@ -59,7 +59,7 @@ public class PartnerPreferenceFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     MultipleSelection tvMultipleCast, tvMultipleReligion, multi_SelectionProfessionArea, multi_SelectionCountry, multi_SelectionState, multi_SelectionMotherTongue, tvMultipleCity, multi_SelectionQualification, multi_SelectionWorkingWith;
     TextView etFromAgePartnerPreference, tvSearchButton,etToAgePartnerPreference, tvMultipleMaritalStatus, tvPartnerPreferencesBtn, etIncomePartnerPreference, etProfilePreference, etDietPreference, tvProfileCreated;
-    EditText etfromHeightPartnerPreference, etToHeightPartnerPreference,etProfileSearch;
+    EditText etfromHeightPartnerPreference, etToHeightPartnerPreference,etProfileSearch,etPreferenceCountry,etPreferenceState,etPreferenceCity;
     boolean[] selectedLanguage;
     SessionManager sessionManager;
     ChipGroup cpChild;
@@ -172,6 +172,11 @@ PartnerPreferenceModel model;
         mrbDontNoManglik=view.findViewById(R.id.mrbDontNoManglik);
         etProfileSearch = view.findViewById(R.id.etProfileSearch);
         tvSearchButton = view.findViewById(R.id.tvSearchButton);
+
+
+        etPreferenceCountry=view.findViewById(R.id.etPreferenceCountry);
+        etPreferenceState = view.findViewById(R.id.etPreferenceState);
+        etPreferenceCity = view.findViewById(R.id.etPreferenceCity);
 
   //tvSelectedItemPreview=view.findViewById(R.id.selectedItemPreview);
 
@@ -532,6 +537,78 @@ PartnerPreferenceModel model;
     }
 
     private void listener() {
+        multi_SelectionCountry.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(multi_SelectionCountry.getText().toString().trim().equalsIgnoreCase("other"))
+                {
+                    etPreferenceCountry.setVisibility(View.VISIBLE);
+                }else
+                {
+                    etPreferenceCountry.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+        multi_SelectionState.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(multi_SelectionState.getText().toString().trim().equalsIgnoreCase("other"))
+                {
+                    etPreferenceState.setVisibility(View.VISIBLE);
+                }else
+                {
+                    etPreferenceState.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+
+
+        tvMultipleCity.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(tvMultipleCity.getText().toString().trim().equalsIgnoreCase("other"))
+                {
+                    etPreferenceCity.setVisibility(View.VISIBLE);
+                }else
+                {
+                    etPreferenceCity.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         etProfileSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -676,15 +753,36 @@ PartnerPreferenceModel model;
         motherTongue = multi_SelectionMotherTongue.getText().toString().trim();
         religion = tvMultipleReligion.getText().toString().trim();
         cast = tvMultipleCast.getText().toString().trim();
-        country = multi_SelectionCountry.getText().toString().trim();
-        state = multi_SelectionState.getText().toString().trim();
+
+        if(multi_SelectionCountry.getText().toString().trim().equalsIgnoreCase("other"))
+        {
+            country = etPreferenceCountry.getText().toString().trim();
+        }else{
+            country = multi_SelectionCountry.getText().toString().trim();
+        }
+
+
+        if(multi_SelectionState.getText().toString().trim().equalsIgnoreCase("other"))
+        {
+            state = etPreferenceState.getText().toString().trim();
+        }else{
+            state = multi_SelectionState.getText().toString().trim();
+        }
+
+        if(tvMultipleCity.getText().toString().trim().equalsIgnoreCase("other"))
+        {
+            city = etPreferenceCity.getText().toString().trim();
+        }else{
+            city=tvMultipleCity.getText().toString().toString();
+        }
+
         qualification = multi_SelectionQualification.getText().toString().trim();
         workingWith = multi_SelectionWorkingWith.getText().toString().trim();
         professionalArea = multi_SelectionProfessionArea.getText().toString().trim();
         createdBy = etProfilePreference.getText().toString().trim();
         String diet1 = etDietPreference.getText().toString().trim();
       diet= diet1.replace(",", "");
-city=tvMultipleCity.getText().toString().toString();
+
         income=etIncomePartnerPreference.getText().toString().toString();
         Map<String, String> params = new HashMap<String, String>();
         params.put("partner_from_age", fromAge);

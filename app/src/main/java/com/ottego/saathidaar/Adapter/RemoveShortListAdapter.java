@@ -121,7 +121,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
             @Override
             public void onClick(View view) {
                 Log.e("position", String.valueOf(position));
-                MatchPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
+                MatchPagerFragment.newInstance(String.valueOf(position), String.valueOf(list.size())).show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
 
             }
         });

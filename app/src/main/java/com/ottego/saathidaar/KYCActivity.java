@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -56,6 +57,8 @@ import java.util.Map;
 
 
 public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
+    private static final int REQUEST_STORAGE_PERMISSION = 100;
+    private static final int PICK_FILE_REQUEST = 1;
     ActivityKycactivityBinding b;
     SessionManager sessionManager;
     DataModelKyc model;
@@ -66,11 +69,9 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
     String document = "";
     List<String> imagePathList = new ArrayList<>();
     GalleryViewModel viewModel;
-    int count=0;
-    private static final int REQUEST_STORAGE_PERMISSION = 100;
-    private static final int PICK_FILE_REQUEST = 1;
-
+    int count = 0;
     PickiT pickiT;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,23 +86,29 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
     }
 
     private void listener() {
-
-b.llDocument.setOnClickListener(new View.OnClickListener() {
-    @SuppressLint("SetJavaScriptEnabled")
+b.srlKyc.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
     @Override
-    public void onClick(View view) {
+    public void onRefresh() {
+        getData();
+    }
+});
+
+        b.llDocument.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetJavaScriptEnabled")
+            @Override
+            public void onClick(View view) {
 //        WebView mWebView=new WebView(KYCActivity.this);
 //        mWebView.getSettings().setJavaScriptEnabled(true);
 //        mWebView.loadUrl(model.data.get(0).document_path);
 //        setContentView(mWebView);
 
-        Intent intent = new Intent(context, WebViewActivity.class);
-        if (model.data != null && model.data.size() > 0) {
-            intent.putExtra("data", model.data.get(0).document_path);
-            context.startActivity(intent);
-        }
-    }
-});
+                Intent intent = new Intent(context, WebViewActivity.class);
+                if (model.data != null && model.data.size() > 0) {
+                    intent.putExtra("data", model.data.get(0).document_path);
+                    context.startActivity(intent);
+                }
+            }
+        });
 
         b.rgDocumentType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -117,7 +124,6 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
                 }
             }
         });
-
 
 
         b.mcvUploadKyc.setOnClickListener(new View.OnClickListener() {
@@ -141,19 +147,19 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, PICK_FILE_REQUEST);
-                if (Build.VERSION.SDK_INT >= 30){
-                    if (!Environment.isExternalStorageManager()){
+                if (Build.VERSION.SDK_INT >= 30) {
+                    if (!Environment.isExternalStorageManager()) {
                         Intent getPermission = new Intent();
                         getPermission.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
                         startActivity(getPermission);
                     }
                 }
-                    Intent intent = new Intent();
+                Intent intent = new Intent();
                 // set type
                 intent.setType("*/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_FILE_REQUEST);
-                }
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_FILE_REQUEST);
+            }
 
         });
 
@@ -187,18 +193,16 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
             Toast.makeText(context, "Please choose document ", Toast.LENGTH_SHORT).show();
             return false;
         }
-        return  true;
+        return true;
     }
 
 
     // Function to check and request permission
-    public boolean checkPermission(String permission, int requestCode)
-    {
+    public boolean checkPermission(String permission, int requestCode) {
         // Checking if permission is not granted
         if (ContextCompat.checkSelfPermission(KYCActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
-            ActivityCompat.requestPermissions(KYCActivity.this, new String[] { permission }, requestCode);
-        }
-        else {
+            ActivityCompat.requestPermissions(KYCActivity.this, new String[]{permission}, requestCode);
+        } else {
             Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Permission already granted", Snackbar.LENGTH_LONG);
             snackbar.show();
         }
@@ -208,8 +212,7 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions,
-                                           @NonNull int[] grantResults)
-    {
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         // Checking whether user granted the permission or not.
@@ -217,8 +220,7 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(KYCActivity.this, "Storage Permission Granted", Toast.LENGTH_SHORT).show();
-            }
-            else {
+            } else {
                 Toast.makeText(KYCActivity.this, "Storage Permission Denied", Toast.LENGTH_SHORT).show();
 
             }
@@ -234,10 +236,9 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
                 imagePathList.clear();
                 if (data.getClipData() != null) {
                     int count = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
-                    if(count >3) {
+                    if (count > 3) {
                         Toast.makeText(context, "You can Only upload three Images", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
+                    } else {
                         for (int i = 0; i < count; i++) {
                             Uri imageUri = data.getClipData().getItemAt(i).getUri();
                             pickiT.getPath(imageUri, Build.VERSION.SDK_INT);
@@ -249,8 +250,7 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
                     pickiT.getPath(imagePath, Build.VERSION.SDK_INT);
                 }
             }
-        }else
-        {
+        } else {
             Toast.makeText(context, "You haven't pick any image", Toast.LENGTH_SHORT).show();
         }
     }
@@ -263,14 +263,15 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
 //
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("member_id", sessionManager.getMemberId());
-                params.put("document_type",document);
-                Log.e("durga", "upload start: "+path);
+                params.put("document_type", document);
+                Log.e("durga", "upload start: " + path);
                 String result = multipartRequest(URL, params, path, "document", "application/pdf");
 
-                Log.e("durga",result);
+                Log.e("durga", result);
             }
         }).start();
     }
+
     public String multipartRequest(String urlTo, Map<String, String> parmas, String filepath, String filefield, String fileMimeType) {
         Log.e("params", String.valueOf(parmas));
         Log.e("params1", filepath);
@@ -279,7 +280,7 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
         InputStream inputStream = null;
 
         String twoHyphens = "--";
-        String boundary = "*****" + Long.toString(System.currentTimeMillis()) + "*****";
+        String boundary = "*****" + System.currentTimeMillis() + "*****";
         String lineEnd = "\r\n";
 
         String result = "";
@@ -375,6 +376,7 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
         }
         return "error";
     }
+
     private String convertStreamToString(InputStream is) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
@@ -452,17 +454,19 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
                 getDocumentURL + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                b.srlKyc.setRefreshing(false);
                 //   progressDialog.dismiss();
                 // Log.e("image response", String.valueOf(response));
                 Gson gson = new Gson();
                 model = gson.fromJson(String.valueOf(response), DataModelKyc.class);
                 if (model.results.equalsIgnoreCase("1")) {
-                 setData();
+                    setData();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                b.srlKyc.setRefreshing(false);
                 //progressDialog.dismiss();
                 error.printStackTrace();
             }
@@ -476,23 +480,24 @@ b.llDocument.setOnClickListener(new View.OnClickListener() {
         if (model.data != null && model.data.size() > 0) {
             b.tvImagePath.setText(model.data.get(0).document_name);
             b.tvKycType.setText(model.data.get(0).document_type);
-            if(model.data.get(0).kyc_status.equalsIgnoreCase("0"))
-            {
+            if (model.data.get(0).kyc_status.equalsIgnoreCase("0")) {
                 b.tvKycStatus.setText("Pending");
                 b.tvKycStatus.setTextColor(Color.BLUE);
-            }else if(model.data.get(0).kyc_status.equalsIgnoreCase("1"))
-            {
+            } else if (model.data.get(0).kyc_status.equalsIgnoreCase("1")) {
                 b.tvKycStatus.setText("Accepted");
                 b.tvKycStatus.setTextColor(Color.GREEN);
-            }else {
+            } else {
                 b.tvKycStatus.setText("Rejected");
                 b.tvKycStatus.setTextColor(Color.RED);
             }
 
 
-            if(model.data.get(0).kyc_status.equalsIgnoreCase("0"))
-            {
-               b.mcvUploadKyc.setVisibility(View.GONE);
+            if (model.data.get(0).kyc_status.equalsIgnoreCase("0") || model.data.get(0).kyc_status.equalsIgnoreCase("1")) {
+                b.mcvUploadKyc.setVisibility(View.GONE);
+                b.mcvChooseKyc.setVisibility(View.GONE);
+            } else {
+                b.mcvUploadKyc.setVisibility(View.VISIBLE);
+                b.mcvChooseKyc.setVisibility(View.VISIBLE);
             }
 
 

@@ -587,7 +587,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:context=".MainActivity">
+                    android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/textInputLayoutStyle"
@@ -612,7 +612,20 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <EditText
+                        android:id="@+id/etPreferenceCountry"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/white_bg"
+                       android:drawablePadding="8dp"
+                        android:visibility="gone"
+                        android:drawableTint="@color/black"
+                        android:fontFamily="@font/italic"
+                        android:hint="Enter Your Country"
 
+                        android:padding="8dp"
+                        android:textColor="@color/black" />
                 </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"
@@ -623,7 +636,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:context=".MainActivity">
+                    android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/textInputLayoutStyle"
@@ -646,6 +659,19 @@
                             app:sort="true" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <EditText
+                        android:id="@+id/etPreferenceState"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/white_bg"
+                        android:fontFamily="@font/italic"
+                        android:visibility="gone"
+                        android:hint="Enter Your State"
+                        android:padding="8dp"
+                        android:textColor="@color/black" />
                 </LinearLayout>
 
                 <TextView
@@ -678,7 +704,18 @@
                         app:sort="true" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-
+                <EditText
+                    android:id="@+id/etPreferenceCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/white_bg"
+                    android:drawableTint="@color/black"
+                    android:fontFamily="@font/italic"
+                    android:padding="8dp"
+                    android:visibility="gone"
+                    android:hint="Enter Your City"
+                    android:textColor="@color/black" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp"

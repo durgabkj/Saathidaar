@@ -200,12 +200,12 @@ public class ForgetActivity extends AppCompatActivity {
         phone = b.etForgetPhone.getText().toString().trim();
 
         if (phone.isEmpty()) {
-            b.etForgetPhone.setError("Please enter mobile number");
+            b.etForgetPhone.setError("Please Enter email id");
             b.etForgetPhone.setFocusableInTouchMode(true);
             b.etForgetPhone.requestFocus();
             return false;
-        } else if (!Utils.isValidMobile(phone)) {
-            b.etForgetPhone.setError("Invalid mobile number");
+        } else if (!Utils.isValidEmail(phone)) {
+            b.etForgetPhone.setError("Invalid email.");
             b.etForgetPhone.setFocusableInTouchMode(true);
             b.etForgetPhone.requestFocus();
             return false;

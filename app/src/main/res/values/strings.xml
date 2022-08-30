@@ -281,6 +281,16 @@
     </string-array>
 
 
+    <string-array name="DietGroupPersonal">
+        <item>Veg</item>
+        <item>Non-Veg</item>
+        <item>Jain</item>
+        <item>Vegan</item>
+        <item>Eggetarian</item>
+        <item>Occasionally Non-Veg</item>
+    </string-array>
+
+
     <string-array name="ProfileCreated">
         <item>Open to all</item>
         <item>Self</item>

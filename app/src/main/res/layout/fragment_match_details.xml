@@ -265,6 +265,7 @@
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
+                                android:visibility="gone"
                                 android:layout_gravity="center_vertical"
                                 android:src="@drawable/circle_blue_fil" />
 
@@ -290,6 +291,7 @@
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
+                                android:visibility="gone"
                                 android:layout_gravity="center_vertical"
 
                                 android:src="@drawable/circle_blue_fil" />
@@ -348,6 +350,7 @@
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
                                 android:alpha="0.6"
+                                android:visibility="gone"
                                 android:layout_gravity="center_vertical"
                                 android:src="@drawable/circle_blue_fil" />
 

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -337,6 +338,8 @@ if (memberPreferenceModel != null) {
     }
 
     private void listener() {
+
+
 
         b.tvAboutUserFamilyDetails.addTextChangedListener(new TextWatcher() {
             @Override

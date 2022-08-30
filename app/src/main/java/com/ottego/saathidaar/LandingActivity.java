@@ -292,7 +292,7 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
             }
 
             if (email.isEmpty()) {
-                binding.txtemail.setError("Please email id");
+                binding.txtemail.setError("Please Enter email id");
                 binding.txtemail.setFocusableInTouchMode(true);
                 binding.txtemail.requestFocus();
                 return false;

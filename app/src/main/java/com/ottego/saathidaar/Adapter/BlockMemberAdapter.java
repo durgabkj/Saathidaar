@@ -94,7 +94,7 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
 //                intent.putExtra("data", new Gson().toJson(item));
 //                view.getContext().startActivity(intent, options.toBundle());*/
 
-                    MatchPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
+                    MatchPagerFragment.newInstance(String.valueOf(position), String.valueOf(list.size())).show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
 
                 }
             });

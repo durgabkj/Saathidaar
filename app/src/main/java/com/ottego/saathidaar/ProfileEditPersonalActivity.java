@@ -232,7 +232,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 // the user in the form of list
                 // so that user can select the item from
                 // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
-                String[] dietGroup = getResources().getStringArray(R.array.DietGroup);
+                String[] dietGroup = getResources().getStringArray(R.array.DietGroupPersonal);
                 // the function setSingleChoiceItems is the function which builds
                 // the alert dialog with the single item selection
                 alertDialog.setSingleChoiceItems(dietGroup, checkedItem[0], new DialogInterface.OnClickListener() {

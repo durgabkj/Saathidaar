@@ -82,6 +82,21 @@
 
                 </LinearLayout>
 
+                <EditText
+                    android:id="@+id/etCountryNameShortReg"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/white_bg"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/black"
+                    android:fontFamily="@font/italic"
+                    android:hint="Enter Your Country"
+                    android:padding="8dp"
+                    android:textColorHint="@color/black"
+                    android:textSize="14sp"
+                    android:textColor="@color/black" />
+
             </LinearLayout>
 
             <TextView
@@ -223,7 +238,7 @@
                 android:background="@drawable/white_bg"
                 android:fontFamily="@font/italic"
                 android:textColorHint="@color/black"
-                android:hint="Select Mother Tongue"
+                android:hint="Select Your Religion"
                 android:padding="10dp"
                 />
 

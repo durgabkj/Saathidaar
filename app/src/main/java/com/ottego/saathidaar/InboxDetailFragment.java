@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -35,7 +36,6 @@ import java.util.Map;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public class InboxDetailFragment extends Fragment {
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     public String memberDetail = Utils.memberUrl + "get-details/";
@@ -87,6 +87,10 @@ public class InboxDetailFragment extends Fragment {
          getMemberPreferenceData();
          getHoroscopeData();
 
+
+        b.ivInboxDot.setVisibility(View.VISIBLE);
+        b.ivInboxDot1.setVisibility(View.VISIBLE);
+        b.ivInboxDot2.setVisibility(View.VISIBLE);
         return b.getRoot();
     }
 
@@ -334,6 +338,9 @@ public class InboxDetailFragment extends Fragment {
     }
 
     private void listener() {
+
+
+
 
         b.tvPremiumContact.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -674,6 +681,11 @@ public class InboxDetailFragment extends Fragment {
             {
                  b.ivInboxDot.setVisibility(View.GONE);
             }
+
+//            if((model.height.equalsIgnoreCase(""))  || (model.height.equalsIgnoreCase("null")))
+//            {
+//                b.ivInboxDot1.setVisibility(View.GONE);
+//            }
 
             if((model.city.equalsIgnoreCase(""))  || (model.city.equalsIgnoreCase("null")))
             {

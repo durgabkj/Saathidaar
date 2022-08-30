@@ -191,7 +191,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
                 // the user in the form of list
                 // so that user can select the item from
                 // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
-                String[] dietGroup = getResources().getStringArray(R.array.DietGroup);
+                String[] dietGroup = getResources().getStringArray(R.array.DietGroupPersonal);
                 // the function setSingleChoiceItems is the function which builds
                 // the alert dialog with the single item selection
                 alertDialog.setSingleChoiceItems(dietGroup, checkedItem[0], new DialogInterface.OnClickListener() {
@@ -262,6 +262,27 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
     }
 
     private void listener() {
+
+
+        b.etCountry.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")){
+    b.etCountryNameShortReg.setVisibility(View.VISIBLE);
+}
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
 
         b.tvUserReligion.addTextChangedListener(new TextWatcher() {
             @Override
@@ -383,7 +404,11 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
     }
 
     private boolean checkForm() {
-        country=  b.etCountry.getText().toString().trim();
+        if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")){
+            country=  b.etCountryNameShortReg.getText().toString().trim();
+        }else{
+            country=  b.etCountry.getText().toString().trim();
+        }
        Dob = b.mbDatePicker.getText().toString().trim();
         Marital_status = b.etMaritalStatus.getText().toString().trim();
         Height = b.etHeight.getText().toString().trim();
