@@ -395,7 +395,7 @@ if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")){
                 String dateFormatted = fmt.format(userAge.getTime());
 
                 if (minAdultAge.before(userAge)) {
-                    Toast.makeText(context, "Please Select valid date", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Please Select Valid Date Of Birth", Toast.LENGTH_LONG).show();
                 } else {
                     b.mbDatePicker.setText(dateFormatted);
                 }

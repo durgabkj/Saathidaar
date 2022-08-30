@@ -15,6 +15,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,7 +75,7 @@ public class HoroscopeFragment extends Fragment {
     String hour;
     String minutes;
     String time;
-
+    Address address;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     ProgressBar progressBar;
     String DOB;
@@ -135,7 +136,6 @@ public class HoroscopeFragment extends Fragment {
         getCountry();
        // checkPermissions();
         getData();
-
         return b.getRoot();
     }
 
@@ -222,9 +222,11 @@ public class HoroscopeFragment extends Fragment {
         LatLng latLng = null;
         try {
             addresses = geocoder.getFromLocationName(city, 1);
-            Address address = addresses.get(0);
+            if (addresses != null && addresses.size() > 0) {
+                address = addresses.get(0);
+            }
             latLng = new LatLng(address.getLatitude(), address.getLongitude());
-            Log.e("jsds","dev"+address.getLatitude());
+            Log.e("co-ordinates","dev"+address.getLatitude());
             DecimalFormat df = new DecimalFormat("###.#####");
             String formatted = df.format((address.getLatitude()));
             String formatted1 = df.format((address.getLongitude()));
@@ -299,6 +301,9 @@ public class HoroscopeFragment extends Fragment {
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
     }
+
+
+
 
     private void listener() {
         DatePickerDialog.OnDateSetListener date =new DatePickerDialog.OnDateSetListener() {
@@ -823,7 +828,8 @@ public class HoroscopeFragment extends Fragment {
 
     }
 
-    }
+
+}
 
 
 
