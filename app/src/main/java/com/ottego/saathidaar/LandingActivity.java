@@ -347,12 +347,12 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
                         public void onResponse(JSONObject response) {
                             Log.e("response", String.valueOf((response)));
                             try {
-                                String code = response.getString("results");
+                                String code = response.getString("result");
                                 if (code.equalsIgnoreCase("1")) {
                                     Gson gson = new Gson();
                                     //  UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);
                                     sessionManager.createSUserMemberId(response.getString("user_id"));
-                                    // Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+                                     Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                                       //Intent intent = new Intent(context, OtpVerificationActivity.class);
                                     Intent intent = new Intent(context, DetailsRegistrationActivity.class);
                                     intent.putExtra("mobile", phone);

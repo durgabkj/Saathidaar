@@ -89,6 +89,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/white_bg"
                     android:drawablePadding="8dp"
+                    android:visibility="gone"
                     android:drawableTint="@color/black"
                     android:fontFamily="@font/italic"
                     android:hint="Enter Your Country"

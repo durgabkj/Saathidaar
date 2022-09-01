@@ -1,7 +1,6 @@
 package com.ottego.saathidaar;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -37,8 +36,8 @@ public class ForgetActivity extends AppCompatActivity {
     Context context;
     public String receiveOtp = Utils.memberUrl + "forgot/password/otp";
     public String updatepass = Utils.memberUrl + "forgot/password/update";
-    String OtpVerifyUrl = Utils.memberUrl + "verify/otp/";
-    String phone;
+    String OtpVerifyUrl = Utils.memberUrl + "verify/otp/email/";
+    String email;
     String otp;
 
     @SuppressLint("ResourceAsColor")
@@ -62,7 +61,6 @@ public class ForgetActivity extends AppCompatActivity {
         SpannableString str2= new SpannableString("admin@saathidaar.com");
         str2.setSpan(new ForegroundColorSpan(Color.BLUE), 0, str2.length(), 0);
         builder.append(str2);
-
 
         b.tvEnterPhoneToForget.setText( builder, TextView.BufferType.SPANNABLE);
 
@@ -120,15 +118,15 @@ public class ForgetActivity extends AppCompatActivity {
     }
 
     private void verify() {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, OtpVerifyUrl + otp + "/" + phone, new JSONObject(),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, OtpVerifyUrl + otp + "/" + email, new JSONObject(),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.e("response", String.valueOf(response));
 
                         try {
-                            String code = response.getString("message");
-                            if (code.equalsIgnoreCase("OTP verified success")) {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
                                 update();
                                 Toast.makeText(context, "your password has been Updated on registered Email", Toast.LENGTH_SHORT).show();
 //                                startActivity(intent);
@@ -159,7 +157,7 @@ public class ForgetActivity extends AppCompatActivity {
     }
     private void update() {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("phone", phone);
+        params.put("phone", email);
         Log.e("params", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,updatepass, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
@@ -197,14 +195,14 @@ public class ForgetActivity extends AppCompatActivity {
 
     private boolean checkForm() {
 
-        phone = b.etForgetPhone.getText().toString().trim();
+        email = b.etForgetPhone.getText().toString().trim();
 
-        if (phone.isEmpty()) {
+        if (email.isEmpty()) {
             b.etForgetPhone.setError("Please Enter email id");
             b.etForgetPhone.setFocusableInTouchMode(true);
             b.etForgetPhone.requestFocus();
             return false;
-        } else if (!Utils.isValidEmail(phone)) {
+        } else if (!Utils.isValidEmail(email)) {
             b.etForgetPhone.setError("Invalid email.");
             b.etForgetPhone.setFocusableInTouchMode(true);
             b.etForgetPhone.requestFocus();
@@ -218,7 +216,7 @@ public class ForgetActivity extends AppCompatActivity {
     private void submit() {
       //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "please wait....", false, false);
         Map<String, String> params = new HashMap<String, String>();
-        params.put("phone", phone);
+        params.put("email", email);
         Log.e("params", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, receiveOtp, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
@@ -227,8 +225,8 @@ public class ForgetActivity extends AppCompatActivity {
                        // progressDialog.dismiss();
                         Log.e("response", String.valueOf((response)));
                         try {
-                            String code = response.getString("result");
-                            if (code.equalsIgnoreCase("1")) {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase(String.valueOf("1"))) {
                                 b.etForgetPhone.setVisibility(View.GONE);
                                 b.btnForgetPassResend.setVisibility(View.GONE);
                                 b.btnForgetPass.setVisibility(View.GONE);

@@ -552,7 +552,7 @@ public class InboxDetailFragment extends Fragment {
 
                 b.tvDetailAge.setText(new StringBuilder().append("Age:-").append(Utils.nullToBlank(model.age)).append("yrs old").toString());
             } else {
-                b.tvDetailAge.setText("Age-Not Specify");
+                b.tvDetailAge.setText("Age-Not Specified");
             }
 
 
@@ -563,7 +563,7 @@ public class InboxDetailFragment extends Fragment {
 
                 b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
             } else {
-                b.tvDetailDob.setText("Not Specify");
+                b.tvDetailDob.setText("Not Specified");
             }
 
 
@@ -677,10 +677,10 @@ public class InboxDetailFragment extends Fragment {
 
 
             //dots show condition
-            if((model.age.equalsIgnoreCase(""))  || (model.age.equalsIgnoreCase("null")))
-            {
-                 b.ivInboxDot.setVisibility(View.GONE);
-            }
+//            if((model.age.equalsIgnoreCase(""))  || (model.age.equalsIgnoreCase("null")))
+//            {
+//                 b.ivInboxDot.setVisibility(View.GONE);
+//            }
 
 //            if((model.height.equalsIgnoreCase(""))  || (model.height.equalsIgnoreCase("null")))
 //            {
@@ -705,7 +705,6 @@ public class InboxDetailFragment extends Fragment {
                 b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
 
             }
-
         }
         }
 

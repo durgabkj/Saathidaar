@@ -534,6 +534,7 @@ if (memberPreferenceModel != null) {
     private void setData() {
         if (model != null) {
             b.ivMatchDot.setVisibility(View.VISIBLE);
+            b.ivMatchDot1.setVisibility(View.VISIBLE);
             b.ivMatchDot2.setVisibility(View.VISIBLE);
             b.llPrivateMatchesDetailPhoto.setVisibility(View.GONE);
 
@@ -542,7 +543,7 @@ if (memberPreferenceModel != null) {
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
                 b.tvNewMatchAge.setText(Utils.nullToBlank(model.age) + " " + "yrs");
             } else {
-                b.tvNewMatchAge.setText(" Age-Not Specify");
+                b.tvNewMatchAge.setText(" Age-Not Specified");
             }
 
             b.tvNewMatchHeight.setText(Utils.nullToBlank(model.height));
@@ -696,9 +697,15 @@ if (memberPreferenceModel != null) {
             }
 
 
-            if((model.age.equalsIgnoreCase(""))  || (model.age.equalsIgnoreCase("null")))
+//            if((model.age.equalsIgnoreCase(""))  || (model.age.equalsIgnoreCase("null")))
+//            {
+//                b.ivMatchDot.setVisibility(View.GONE);
+//            }
+
+
+            if((model.height.equalsIgnoreCase(""))  || (model.height.equalsIgnoreCase("null")))
             {
-                b.ivMatchDot.setVisibility(View.GONE);
+                b.ivMatchDot1.setVisibility(View.GONE);
             }
 
             if((model.city.equalsIgnoreCase(""))  || (model.city.equalsIgnoreCase("null")))

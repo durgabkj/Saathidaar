@@ -234,16 +234,18 @@ if(item!=null)
             holder.llDeleteAccet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
-                    holder.llDeleteAccet.setEnabled(false);
+                    Toast.makeText(context, "Upgrade Your Profile To Decline Request", Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(view.getContext(),UpgradeOnButtonActivity.class);
+                    context.startActivity(intent);
                 }
             });
 
             holder.llBlockAccept.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
-                    holder.llBlockAccept.setEnabled(false);
+                    Toast.makeText(context, "Upgrade Your Profile To Add This Profile In BlockList", Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(view.getContext(),UpgradeOnButtonActivity.class);
+                    context.startActivity(intent);
                 }
             });
         }

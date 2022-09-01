@@ -222,26 +222,25 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
 
         //For free user...Apply Conditions
 
-        if(item.my_premium_status.equalsIgnoreCase("0"))
-        {
-            holder.llBlockDelete.setEnabled(false);
-            holder.llDelete1.setEnabled(false);
+        if(item.my_premium_status.equalsIgnoreCase("0")) {
+            holder.llBlockDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Upgrade Your Profile To Add This Profile In BlockList", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                    context.startActivity(intent);
+                }
+            });
+
+            holder.llDelete1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Upgrade your profile To Delete Invitation", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                    context.startActivity(intent);
+                }
+            });
         }
-
-
-        holder.llBlockDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        holder.llDelete1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 

@@ -64,14 +64,14 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         holder.ivShortlistDot2.setVisibility(View.VISIBLE);
 
         holder.llPrivateRemoveShortListPhoto.setVisibility(View.GONE);
-        holder.tvNewMatchNameRs.setText(Utils.nullToBlank(item.first_name) + " " +  Utils.nullToBlank(item.last_name).charAt(0));
-        if((item.mage.equalsIgnoreCase(""))  || (item.mage.equalsIgnoreCase("null")))
-        {   holder.tvNewMatchAgeRs.setText("Age Not Specified");
+        holder.tvNewMatchNameRs.setText(Utils.nullToBlank(item.first_name) + " " + Utils.nullToBlank(item.last_name).charAt(0));
+        if ((item.mage.equalsIgnoreCase("")) || (item.mage.equalsIgnoreCase("null"))) {
+            holder.tvNewMatchAgeRs.setText("Age Not Specified");
 
-        }else{
+        } else {
 
-           holder.tvNewMatchAgeRs.setText(Utils.nullToBlank(item.mage )+ " Yrs");
-       }
+            holder.tvNewMatchAgeRs.setText(Utils.nullToBlank(item.mage) + " Yrs");
+        }
 
         holder.tvNewMatchHeightRs.setText(Utils.nullToBlank(item.religion));
         holder.tvNewMatchCityRs.setText(Utils.nullToBlank(item.maritalStatus));
@@ -80,8 +80,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
 
         holder.llPrivateRemoveShortListPhoto.setVisibility(View.GONE);
 
-        if(item.request_status!=null && !item.request_status.isEmpty())
-        {
+        if (item.request_status != null && !item.request_status.isEmpty()) {
             holder.llConnectShortList.setVisibility(View.VISIBLE);
             holder.ivLikeShortList.setVisibility(View.GONE);
         }
@@ -90,7 +89,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         holder.ivLikeShortList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.sentRequest(context, item.member_id,clickListener);
+                Utils.sentRequest(context, item.member_id, clickListener);
                 holder.ivLikeShortList.setVisibility(View.GONE);
                 holder.llConnectShortList.setVisibility(View.VISIBLE);
 
@@ -138,9 +137,9 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
 
         if (item.photo_privacy.equalsIgnoreCase("1")) {
             holder.llPhotoShortList.setEnabled(true);
-         //   holder.flPremiumRemove_shortList.setVisibility(View.GONE);
+            //   holder.flPremiumRemove_shortList.setVisibility(View.GONE);
             holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
-           // holder.tvLevelPremiumRemoveShortList.setVisibility(View.GONE);
+            // holder.tvLevelPremiumRemoveShortList.setVisibility(View.GONE);
 
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
@@ -178,13 +177,12 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
 //
 
 
-
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {
             holder.llPhotoShortList.setEnabled(false);
-          //  holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
+            //  holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
             holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
             holder.llPrivateRemoveShortListPhoto.setVisibility(View.VISIBLE);
-           // holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
+            // holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .centerCrop()
@@ -192,10 +190,10 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
                     .transform(new BlurTransformation(20, 8))
                     .into(holder.ivRemoveShortList);
         } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
-           // holder.flPremiumRemove_shortList.setVisibility(View.GONE);
+            // holder.flPremiumRemove_shortList.setVisibility(View.GONE);
             holder.llPhotoShortList.setEnabled(true);
             holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
-          //  holder.tvLevelPremiumRemoveShortList.setVisibility(View.GONE);
+            //  holder.tvLevelPremiumRemoveShortList.setVisibility(View.GONE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .centerCrop()
@@ -203,9 +201,9 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
                     .into(holder.ivRemoveShortList);
         } else {
             holder.llPhotoShortList.setEnabled(false);
-         //   holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
+            //   holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
             holder.llPremiumMsgRemoveShortlist.setVisibility(View.VISIBLE);
-          //  holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
+            //  holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(Utils.imageUrl + item.profile_photo)
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
@@ -214,13 +212,15 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         }
 
 
-        if(item.premium_status.equalsIgnoreCase("1"))
-        {
+        if (item.premium_status.equalsIgnoreCase("1")) {
             holder.flPremiumRemove_shortList.setVisibility(View.VISIBLE);
             holder.tvLevelPremiumRemoveShortList.setVisibility(View.VISIBLE);
         }
 
-
+// hide premium msg on the basis of image count
+        if (item.images_count.equalsIgnoreCase("0")) {
+            holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
+        }
         holder.tvPremiumShortlistMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -230,58 +230,54 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         });
 
 
-        if(item.first_name.equals("") && item.last_name.equalsIgnoreCase(""))
-        {
+        if (item.first_name.equals("") && item.last_name.equalsIgnoreCase("")) {
             holder.ivShortlistDot.setVisibility(View.GONE);
         }
 
-        if(item.mage.equals("") || item.mage.equalsIgnoreCase("null"))
-        {
+//        if (item.mage.equals("") || item.mage.equalsIgnoreCase("null")) {
+//            holder.ivShortlistDot1.setVisibility(View.GONE);
+//        }
+
+        if (item.religion.equals("")) {
             holder.ivShortlistDot1.setVisibility(View.GONE);
         }
 
-        if(item.religion.equals(""))
-        {
-            holder.ivShortlistDot1.setVisibility(View.GONE);
-        }
-
-        if(item.maritalStatus.equals(""))
-        {
+        if (item.maritalStatus.equals("")) {
             holder.ivShortlistDot2.setVisibility(View.GONE);
         }
-        if(item.income.equals("") || item.income.equalsIgnoreCase("null"))
-        {
+        if (item.income.equals("") || item.income.equalsIgnoreCase("null")) {
             holder.ivShortlistDot2.setVisibility(View.GONE);
         }
 
         //For free user...Apply Conditions
-        if(item.my_premium_status.equalsIgnoreCase("0"))
-        {
-            holder.llShortListRemove1.setEnabled(false);
-            holder.llBlockShortList.setEnabled(false);
-            holder.ivLikeShortList.setEnabled(false);
-        }
-
+        if (item.my_premium_status.equalsIgnoreCase("0")) {
         holder.llShortListRemove1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Upgrade Your Profile To Add This Profile In ShortList", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                context.startActivity(intent);
             }
         });
 
         holder.llBlockShortList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Upgrade your profile To Add This Profile In BlockList", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                context.startActivity(intent);
             }
         });
 
         holder.ivLikeShortList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Upgrade To Premium If You Want To Connect", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                context.startActivity(intent);
             }
         });
+    }
 
 
     }

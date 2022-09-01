@@ -229,18 +229,17 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
 
             //For free user...Apply Conditions
 
-            if(item.my_premium_status.equalsIgnoreCase("0"))
-            {
-                holder.ivUnblock.setEnabled(false);
+            if(item.my_premium_status.equalsIgnoreCase("0")) {
+
+                holder.ivUnblock.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(context, "Upgrade your Profile To Unblock This Profile", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                        context.startActivity(intent);
+                    }
+                });
             }
-
-            holder.ivUnblock.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
-                }
-            });
-
 
 
         }

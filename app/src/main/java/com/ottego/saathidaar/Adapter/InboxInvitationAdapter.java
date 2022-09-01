@@ -242,34 +242,36 @@ holder.llPrivateInvitationPhoto.setVisibility(View.GONE);
 
         //For free user...Apply Conditions
 
-        if(item.my_premium_status.equalsIgnoreCase("0"))
-        {
-            holder.llAccept.setEnabled(false);
-            holder.llDelete.setEnabled(false);
-            holder.llBlockInvitation.setEnabled(false);
+        if(item.my_premium_status.equalsIgnoreCase("0")) {
+
+
+            holder.llAccept.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Upgrade Your Profile To Accept Request", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                    context.startActivity(intent);
+                }
+            });
+
+            holder.llDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Upgrade your profile To Decline Request", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                    context.startActivity(intent);
+                }
+            });
+
+            holder.llBlockInvitation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Upgrade Your Profile To Add This Profile In BlockList", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                    context.startActivity(intent);
+                }
+            });
         }
-
-
-        holder.llAccept.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        holder.llDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        holder.llBlockInvitation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 

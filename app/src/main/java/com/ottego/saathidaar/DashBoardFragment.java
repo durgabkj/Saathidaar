@@ -148,10 +148,7 @@ public class DashBoardFragment extends Fragment {
 
         Log.e("hello","there"+sessionManager.getKey_Premium());
 
-        if(sessionManager.getKey_Premium().equalsIgnoreCase("1"))
-        {
-            tvPremiumButton.setText("Your Profile is Premium");
-        }
+
 
         return view;
 
@@ -343,6 +340,12 @@ public class DashBoardFragment extends Fragment {
             RequestAccept.setText(model.data.get(0).accept_request_count);
             RequestSent.setText(model.data.get(0).sent_request_count);
             Visitors.setText(model.data.get(0).recent_visitors_count);
+
+
+            if(model.data.get(0).my_premium_status.equalsIgnoreCase("2"))
+            {
+                tvPremiumButton.setText("Your Profile is Premium");
+            }
         }
     }
     private void set() {

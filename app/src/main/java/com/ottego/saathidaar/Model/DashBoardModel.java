@@ -11,6 +11,7 @@ public class DashBoardModel {
     public  String deleted_request_count;
     public  String new_matches_count;
     public  String invitations_count;
+    public  String my_premium_status;
     public  String shortlists_count;
     public  String premium_matches_count;
     public  String recent_view_to;

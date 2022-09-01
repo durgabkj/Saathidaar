@@ -243,10 +243,10 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 }
             });
 
-            if(item.mage.equalsIgnoreCase(""))
-            {
-                holder.ivRecentDot.setVisibility(View.GONE);
-            }
+//            if(item.mage.equalsIgnoreCase(""))
+//            {
+//                holder.ivRecentDot.setVisibility(View.GONE);
+//            }
 
             if(item.income.equalsIgnoreCase(""))
             {
@@ -259,24 +259,27 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 holder.llShortListRecentV.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
-                        holder.llShortListRecentV.setEnabled(false);
+                        Toast.makeText(context, "Upgrade Your Profile To Add This Profile In ShortList", Toast.LENGTH_LONG).show();
+                        Intent intent=new Intent(view.getContext(),UpgradeOnButtonActivity.class);
+                        context.startActivity(intent);
                     }
                 });
 
                 holder.llShortBlockRecentV.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
-                        holder.llShortBlockRecentV.setEnabled(false);
+                        Toast.makeText(context, "Upgrade Your Profile To Add This Profile In BlockList", Toast.LENGTH_LONG).show();
+                        Intent intent=new Intent(view.getContext(),UpgradeOnButtonActivity.class);
+                        context.startActivity(intent);
                     }
                 });
 
                 holder.ivLikeRecentVisitors.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
-                        holder.ivLikeRecentVisitors.setEnabled(false);
+                        Toast.makeText(context, "Upgrade To Premium If You Want To Connect", Toast.LENGTH_LONG).show();
+                        Intent intent=new Intent(view.getContext(),UpgradeOnButtonActivity.class);
+                        context.startActivity(intent);
                     }
                 });
             }

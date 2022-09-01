@@ -256,21 +256,27 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             holder.llShortList.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Upgrade Your Profile To Add This Profile In ShortList", Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(view.getContext(),UpgradeOnButtonActivity.class);
+                    context.startActivity(intent);
                 }
             });
 
             holder.llShortBlock.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Upgrade Your Profile To Add This Profile In BlockList", Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(view.getContext(),UpgradeOnButtonActivity.class);
+                    context.startActivity(intent);
                 }
             });
 
             holder.ivLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Upgrade To Premium If You Want To Connect", Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(view.getContext(),UpgradeOnButtonActivity.class);
+                    context.startActivity(intent);
                 }
             });
         }
