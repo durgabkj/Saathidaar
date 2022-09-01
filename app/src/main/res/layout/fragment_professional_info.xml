@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
@@ -66,6 +67,14 @@
         android:textStyle="bold"
         android:textColor="@color/colorPrimary"
         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="end"
+        android:layout_marginEnd="20dp"
+        android:layout_gravity="end"
+        android:layout_height="wrap_content"
+        >
     <ImageView
         android:id="@+id/iv_cameraEducationInfo"
         android:layout_width="30dp"
@@ -73,6 +82,8 @@
         android:layout_marginStart="100dp"
         android:padding="5dp"
         app:srcCompat="@drawable/ic_baseline_create_24" />
+
+    </LinearLayout>
 </LinearLayout>
 
 

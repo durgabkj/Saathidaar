@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -215,6 +216,30 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
                 context.startActivity(intent);
+            }
+        });
+
+
+        //For free user...Apply Conditions
+
+        if(item.my_premium_status.equalsIgnoreCase("0"))
+        {
+            holder.llBlockDelete.setEnabled(false);
+            holder.llDelete1.setEnabled(false);
+        }
+
+
+        holder.llBlockDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.llDelete1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
             }
         });
 

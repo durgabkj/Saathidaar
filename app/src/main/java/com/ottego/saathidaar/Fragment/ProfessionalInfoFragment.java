@@ -2,6 +2,7 @@ package com.ottego.saathidaar.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -37,7 +38,6 @@ public class ProfessionalInfoFragment extends Fragment {
     SessionManager sessionManager;
     MemberProfileModel model;
     String memberId;
-    int count=0;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -81,9 +81,11 @@ public class ProfessionalInfoFragment extends Fragment {
         if(sessionManager.getUserGender().equalsIgnoreCase("male"))
         {
             b.tvLocatonOfPartner.setText("Location of Bride");
+            b.tvLocatonOfPartner.setPaintFlags( b.tvLocatonOfPartner.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         }else
         {
             b.tvLocatonOfPartner.setText("Location of Groom");
+            b.tvLocatonOfPartner.setPaintFlags( b.tvLocatonOfPartner.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         }
 
         return b.getRoot();
@@ -136,15 +138,12 @@ public class ProfessionalInfoFragment extends Fragment {
     }
 
     private void listener() {
-
         b.srlRecycleViewProfessionalDetails.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 getMemberData();
             }
         });
-
-
         b.ivCameraEducationInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,20 +152,6 @@ public class ProfessionalInfoFragment extends Fragment {
                 startActivity(intent);
             }
         });
-    }
-
-    private void refresh(int millisecond) {
-
-        final Handler handler = new Handler();
-        final Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                getMemberData();
-            }
-        };
-
-        handler.postDelayed(runnable, millisecond);
-
     }
 
 }

@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -245,6 +246,34 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             holder.ivMatchDot2.setVisibility(View.GONE);
         }
 
+        //For free user...Apply Conditions
+        if(item.my_premium_status.equalsIgnoreCase("0"))
+        {
+//            holder.llShortList.setEnabled(false);
+//            holder.llShortBlock.setEnabled(false);
+//            holder.ivLike.setEnabled(false);
+
+            holder.llShortList.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            holder.llShortBlock.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            holder.ivLike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
     }
 
@@ -263,11 +292,9 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             ivMatchDot = itemView.findViewById(R.id.ivMatchDot);
             ivMatchDot1 = itemView.findViewById(R.id.ivMatchDot1);
             ivMatchDot2 = itemView.findViewById(R.id.ivMatchDot2);
-
             llPrivateMatchesPhoto = itemView.findViewById(R.id.llPrivateMatchesPhoto);
             tvPremiumContactMatch = itemView.findViewById(R.id.tvPremiumContactMatch);
             tvNewMatchAge = itemView.findViewById(R.id.tvNewMatchAge);

@@ -639,6 +639,7 @@ PartnerPreferenceModel model;
             @Override
             public void onClick(View view) {
                 if (checkForm()) {
+                    hideKeyboard(view);
                     getSearchProfileData();
                 }
             }
@@ -702,9 +703,12 @@ PartnerPreferenceModel model;
                 // progressDialog.dismiss();
                 Log.e("Search  response", String.valueOf(response));
                 Gson gson = new Gson();
+
                 if (response!=null) {
                     data = gson.fromJson(String.valueOf(response), MemberProfileModel.class);
                     ProfileSearchFragment.newInstance((data.member_id), "").show(((FragmentActivity) context).getSupportFragmentManager(), "Profile_search_fragment");
+                }else{
+                    Toast.makeText(context, "Profile Not Found", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {

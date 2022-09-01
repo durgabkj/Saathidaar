@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -223,6 +224,24 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
             {
                 holder.ivBlockDot2.setVisibility(View.GONE);
             }
+
+
+
+            //For free user...Apply Conditions
+
+            if(item.my_premium_status.equalsIgnoreCase("0"))
+            {
+                holder.ivUnblock.setEnabled(false);
+            }
+
+            holder.ivUnblock.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
 
         }
 

@@ -136,22 +136,22 @@
             <EditText
                 android:id="@+id/etAddUserDescription"
                 style="@style/PersonalDataTextView"
-                android:textSize="15dp"
-                android:textColor="@color/black"
-                android:hint="Enter New Note"
-                android:maxLines="40"
-                android:lines="5"
-                android:scrollbars="vertical"
-                android:maxLength="2000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:gravity="left"
-                android:imeOptions="actionDone"
                 android:layout_marginTop="8dp"
-                android:contentDescription="Enter Input Here"
                 android:layout_marginBottom="8dp"
-                />
+                android:capitalize="words"
+                android:contentDescription="Enter Input Here"
+                android:gravity="left"
+                android:hint="Enter New Note"
+                android:imeOptions="actionDone"
+                android:lines="5"
+                android:maxLength="2000"
+                android:maxLines="40"
+                android:scrollbars="vertical"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -230,6 +230,7 @@
                     android:layout_weight="1"
                     android:enabled="true"
                     android:padding="8dp"
+                    android:capitalize="words"
                     android:layout_marginEnd="10dp"
                     android:gravity="center_vertical"
                     android:textColor="@color/black"
@@ -271,6 +272,7 @@
                     android:hint="Select  Marital Status"
                     android:layout_marginStart="8dp"
                     android:editable="true"
+                    android:capitalize="words"
                     android:textColor="@color/black"
                     android:layout_marginEnd="10dp"
                     android:enabled="true"
@@ -606,6 +608,7 @@
                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                 android:gravity="center_vertical"
                 android:fontFamily="@font/italic"
+                android:capitalize="words"
                 android:hint="Select Mother Tongue"
                 android:padding="10dp"
                 />
@@ -633,6 +636,7 @@
                     android:layout_width="match_parent"
                     android:fontFamily="@font/italic"
                     android:layout_height="wrap_content"
+                    android:capitalize="words"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                     android:gravity="center_vertical"
                     android:hint="Select your cast"
@@ -661,6 +665,7 @@
                 style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
                 android:fontFamily="@font/italic"
+                android:capitalize="words"
                 android:layout_height="40dp"
                 android:hint="Sub Cast" />
 
@@ -687,6 +692,7 @@
                 style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:capitalize="words"
                 android:fontFamily="@font/italic"
                 android:hint="Enter your Gotra" />
         </LinearLayout>

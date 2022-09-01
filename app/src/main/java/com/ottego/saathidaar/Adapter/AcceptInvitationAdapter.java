@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -224,6 +225,32 @@ if(item!=null)
                 context.startActivity(intent);
             }
         });
+
+
+    //For free user...Apply Conditions
+
+        if(item.my_premium_status.equalsIgnoreCase("0"))
+        {
+            holder.llDeleteAccet.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                    holder.llDeleteAccet.setEnabled(false);
+                }
+            });
+
+            holder.llBlockAccept.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                    holder.llBlockAccept.setEnabled(false);
+                }
+            });
+        }
+
+
+
+
 
 }
 

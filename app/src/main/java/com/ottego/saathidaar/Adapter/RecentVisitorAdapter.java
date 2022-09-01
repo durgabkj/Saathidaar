@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -242,14 +243,42 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 }
             });
 
-            if(item.mage.equalsIgnoreCase("") || item.mage.equalsIgnoreCase("null") || item.mage.isEmpty())
+            if(item.mage.equalsIgnoreCase(""))
             {
                 holder.ivRecentDot.setVisibility(View.GONE);
             }
 
-            if(item.income.equalsIgnoreCase("") || item.income.equalsIgnoreCase("null") || item.income.isEmpty())
+            if(item.income.equalsIgnoreCase(""))
             {
                 holder.ivRecentDot1.setVisibility(View.GONE);
+            }
+
+            //For free user...Apply Conditions
+            if(item.my_premium_status.equalsIgnoreCase("0"))
+            {
+                holder.llShortListRecentV.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                        holder.llShortListRecentV.setEnabled(false);
+                    }
+                });
+
+                holder.llShortBlockRecentV.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                        holder.llShortBlockRecentV.setEnabled(false);
+                    }
+                });
+
+                holder.ivLikeRecentVisitors.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+                        holder.ivLikeRecentVisitors.setEnabled(false);
+                    }
+                });
             }
         }
 

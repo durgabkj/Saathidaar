@@ -75,6 +75,7 @@
                                 android:layout_height="30dp"
                                 android:fontFamily="@font/italic"
                                 android:layout_weight="1"
+                                android:inputType="textCapWords"
                                 android:editable="false"
                                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                                 android:gravity="center_vertical"
@@ -112,6 +113,7 @@
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
+                            android:inputType="textCapWords"
                             android:id="@+id/etFatherCompanyName"
                             style="@style/PersonalDataTextView"
                             android:hint="Enter Company Name"/>
@@ -137,6 +139,7 @@
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="30dp"
+                            android:inputType="textCapWords"
                             android:layout_weight="1"
                             android:id="@+id/etFatherDesignation"
                             style="@style/PersonalDataTextView"
@@ -165,6 +168,7 @@
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
+                            android:inputType="textCapWords"
                             android:id="@+id/etFatherNatureBusiness"
                             style="@style/PersonalDataTextView"
                             android:hint="Nature of Business"/>
@@ -241,6 +245,7 @@
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
+                            android:inputType="textCapWords"
                             android:id="@+id/etMotherCompanyName"
                             style="@style/PersonalDataTextView"
                             android:hint="Enter Company Name"/>
@@ -266,6 +271,7 @@
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
+                            android:inputType="textCapWords"
                             android:id="@+id/etMotherNatureBusiness"
                             style="@style/PersonalDataTextView"
                             android:hint="Nature of Business"/>
@@ -292,6 +298,7 @@
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
+                            android:inputType="textCapWords"
                             android:id="@+id/etMotherDesignation"
                             style="@style/PersonalDataTextView"
                             android:hint="Enter Designation"/>
@@ -317,6 +324,7 @@
                             android:layout_width="0dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
+                            android:inputType="textCapWords"
                             android:fontFamily="@font/italic"
                             android:id="@+id/etAddUserFamilyLocation"
                             style="@style/PersonalDataTextView"
@@ -344,7 +352,7 @@
                             android:layout_height="30dp"
                             android:layout_weight="1"
                             android:id="@+id/etNativePalace"
-
+                            android:inputType="textCapWords"
                             android:fontFamily="@font/italic"
                             style="@style/PersonalDataTextView"
                             android:hint="Enter native place"/>
@@ -407,6 +415,7 @@
                                         android:id="@+id/etAddUserBrotherNotMarried"
                                         style="@style/PersonalDataTextView"
                                         android:maxLength="2"
+                                        android:inputType="textCapWords"
                                         android:textAlignment="center"
                                         android:layout_gravity="center"
                                      />

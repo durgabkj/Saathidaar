@@ -557,7 +557,7 @@ if (memberPreferenceModel != null) {
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
                 b.tvDetailAge.setText(Utils.nullToBlank(model.age) + " yrs old");
             } else {
-                b.tvDetailAge.setText(" Age-Not Specify");
+                b.tvDetailAge.setText(" Age-Not Specified");
             }
             b.tvDetailHeight.setText("Height:- " + Utils.nullToBlank(model.height));
 
@@ -565,7 +565,7 @@ if (memberPreferenceModel != null) {
 
                 b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
             } else {
-                b.tvDetailDob.setText("DOB-Not Specify");
+                b.tvDetailDob.setText("DOB-Not Specified");
             }
             b.tvDetailMaritalS.setText(Utils.nullToBlank(model.marital_status));
 

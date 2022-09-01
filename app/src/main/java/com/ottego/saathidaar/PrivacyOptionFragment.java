@@ -1,8 +1,6 @@
 package com.ottego.saathidaar;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +20,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.DataModelPrivacyOption;
-import com.ottego.saathidaar.Model.DataModelSmsAlert;
 import com.ottego.saathidaar.databinding.FragmentPrivacyOptionBinding;
 
 import org.json.JSONException;
@@ -33,6 +30,14 @@ import java.util.Map;
 
 
 public class PrivacyOptionFragment extends Fragment {
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    public String phonePrivacy = Utils.privacy + "phone";
+    public String emailPrivacy = Utils.privacy + "email";
+    public String photoPrivacy = Utils.privacy + "photo";
+    public String dobPrivacy = Utils.privacy + "dob";
+    public String incomePrivacy = Utils.privacy + "annual-income";
+    public String getPrivacy = "http://103.174.102.195:8080/saathidaar_backend/api/privacy/get/all/";
     SessionManager sessionManager;
     Context context;
     FragmentPrivacyOptionBinding b;
@@ -42,15 +47,6 @@ public class PrivacyOptionFragment extends Fragment {
     DataModelPrivacyOption model;
     String radioText3;
     String radioText4;
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    public String phonePrivacy = Utils.privacy + "phone";
-    public String emailPrivacy = Utils.privacy + "email";
-    public String photoPrivacy = Utils.privacy + "photo";
-    public String dobPrivacy = Utils.privacy + "dob";
-    public String incomePrivacy = Utils.privacy + "annual-income";
-
-    public String getPrivacy = "http://103.174.102.195:8080/saathidaar_backend/api/privacy/get/all/";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -82,17 +78,24 @@ public class PrivacyOptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        b = FragmentPrivacyOptionBinding.inflate(inflater,container,false);
+        b = FragmentPrivacyOptionBinding.inflate(inflater, container, false);
         context = getContext();
         sessionManager = new SessionManager(context);
         listener();
         getData();
+
+
+        //condition for non premium member
+        if (sessionManager.getUserPremiumStatus().equalsIgnoreCase("0")) {
+            b.llshowEmailPrivacy.setVisibility(View.GONE);
+            b.llshowIncomePrivacy.setVisibility(View.GONE);
+            b.llshowDOBPrivacy.setVisibility(View.GONE);
+        }
+
         return b.getRoot();
     }
+
     private void listener() {
-
-
-
 
         b.srlPrivacy.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -136,7 +139,7 @@ public class PrivacyOptionFragment extends Fragment {
                 }
 
 
-                       }
+            }
         });
         b.tvEditEmail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -419,6 +422,7 @@ public class PrivacyOptionFragment extends Fragment {
             }
         });
     }
+
     private void getData() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 getPrivacy + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
@@ -428,7 +432,7 @@ public class PrivacyOptionFragment extends Fragment {
                 Log.e("response", String.valueOf((response)));
                 Gson gson = new Gson();
                 try {
-                    if (response.getInt("results")==1) {
+                    if (response.getInt("results") == 1) {
                         model = gson.fromJson(String.valueOf(response), DataModelPrivacyOption.class);
                         setData();
                     }
@@ -451,8 +455,7 @@ public class PrivacyOptionFragment extends Fragment {
 
     private void setData() {
 
-        if (model.data.size() > 0)
-        {
+        if (model.data.size() > 0) {
 
             if (model.data.get(0).phone != null && model.data.get(0).phone.equalsIgnoreCase("Visible to all Member")) {
                 b.radioButtonPhoneShowOnlyPMember.setChecked(true);
@@ -478,7 +481,6 @@ public class PrivacyOptionFragment extends Fragment {
             } else if (model.data.get(0).photo != null && model.data.get(0).photo.equalsIgnoreCase("Keep this private")) {
                 b.radioButtonVisiblePhotoOnlyMember.setChecked(true);
             }
-
 
 
             if (model.data.get(0).dob != null && model.data.get(0).dob.equalsIgnoreCase("Visible to all Member")) {

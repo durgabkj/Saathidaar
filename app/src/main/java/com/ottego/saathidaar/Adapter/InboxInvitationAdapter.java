@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -236,6 +237,37 @@ holder.llPrivateInvitationPhoto.setVisibility(View.GONE);
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
                 context.startActivity(intent);
+            }
+        });
+
+        //For free user...Apply Conditions
+
+        if(item.my_premium_status.equalsIgnoreCase("0"))
+        {
+            holder.llAccept.setEnabled(false);
+            holder.llDelete.setEnabled(false);
+            holder.llBlockInvitation.setEnabled(false);
+        }
+
+
+        holder.llAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.llDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.llBlockInvitation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Upgrade your profile", Toast.LENGTH_SHORT).show();
             }
         });
 
