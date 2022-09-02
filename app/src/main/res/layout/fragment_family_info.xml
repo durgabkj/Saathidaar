@@ -106,7 +106,7 @@
                         android:layout_marginStart="5dp"
                         android:text="Father Status"
                         android:fontFamily="@font/italic"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -153,7 +153,7 @@
                         android:layout_marginStart="5dp"
                         android:text="Company Name"
                         android:fontFamily="@font/italic"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -198,7 +198,7 @@
                         android:layout_marginStart="5dp"
                         android:text="Designation"
                         android:fontFamily="@font/italic"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -243,7 +243,7 @@
                         android:layout_marginStart="5dp"
                         android:text="Nature of Business"
                         android:fontFamily="@font/italic"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -285,7 +285,7 @@
                     android:layout_marginStart="5dp"
                     android:text="Mother Status"
                     android:fontFamily="@font/italic"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -329,7 +329,7 @@
                         android:layout_marginStart="5dp"
                         android:text="Company Name"
                         android:fontFamily="@font/italic"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -375,7 +375,7 @@
                         android:layout_marginStart="5dp"
                         android:text="Designation"
                         android:fontFamily="@font/italic"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -420,7 +420,7 @@
                         android:layout_marginStart="5dp"
                         android:text="Nature of Business"
                         android:fontFamily="@font/italic"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -461,7 +461,7 @@
                     android:layout_marginStart="5dp"
                     android:text="Family Location"
                     android:fontFamily="@font/italic"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -500,7 +500,7 @@
                     android:layout_marginStart="5dp"
                     android:fontFamily="@font/italic"
                     android:text="Native Place"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -542,7 +542,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:text="No. Of Brothers"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:fontFamily="@font/italic"
                         android:textStyle="bold" />
 
@@ -594,7 +594,7 @@
                     android:layout_marginStart="5dp"
                     android:text="No. Of Sisters"
                     android:fontFamily="@font/italic"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -644,7 +644,7 @@
                     android:layout_marginStart="5dp"
                     android:text="Family Type"
                     android:fontFamily="@font/italic"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -681,7 +681,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="Family Affluence"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:fontFamily="@font/italic"
                     android:textStyle="bold" />
 
