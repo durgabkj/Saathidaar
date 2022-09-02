@@ -24,16 +24,15 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:cardMaxElevation="20dp"
-        android:layout_margin="10dp"
         app:cardCornerRadius="8dp"
         android:translationZ="20dp">
         <fragment
             android:id="@+id/fragment1"
             android:name="com.ottego.saathidaar.Fragment.PersonalInfoFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:layout_weight="1"
             />

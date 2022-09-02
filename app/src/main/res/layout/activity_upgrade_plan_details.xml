@@ -643,7 +643,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/italic"
                 android:textColor="@color/white"
-                android:text="total Amount Payable"/>
+                android:text="Total Amount Payable"/>
 
 
             <TextView
@@ -677,7 +677,7 @@ android:id="@+id/tvPayAmountUpgrade"
             android:layout_gravity="end"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/gradient_button"
+            android:background="@drawable/button_hover"
             tools:ignore="RtlCompat" />
 
 

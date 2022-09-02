@@ -23,7 +23,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/italic"
                 android:padding="10dp"
-                android:text="Education &amp; carrier"
+                android:text="Education &amp; career"
                 android:textSize="18sp" />
 
             <com.google.android.material.card.MaterialCardView
@@ -262,7 +262,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
                             android:fontFamily="@font/italic"
-                            android:text="Country living in" />
+                            android:text="Country Living In" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -321,7 +321,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
                             android:fontFamily="@font/italic"
-                            android:text="State live in" />
+                            android:text="State Live In" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -380,7 +380,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
                             android:fontFamily="@font/italic"
-                            android:text="City live in(Nearest)" />
+                            android:text="City Live In(Nearest)" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -449,7 +449,7 @@
                             android:capitalize="words"
                             android:layout_weight="1"
                             android:fontFamily="@font/italic"
-                            android:hint=" Enter your Co-origin"
+                            android:hint=" Enter Your Co-origin"
                             android:textColor="@color/black" />
 
                     </LinearLayout>
@@ -477,7 +477,7 @@
                             android:maxLength="6"
                             android:layout_weight="1"
                             android:capitalize="words"
-                            android:hint="Enter pin code"
+                            android:hint="Enter Pin Code"
                             android:inputType="number"
                             android:textColor="@color/black" />
 
@@ -488,16 +488,22 @@
                         android:id="@+id/btnSaveData"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="12sp"
-                        android:background="@drawable/button_hover"
-                        android:padding="10dp"
-                        android:text="save"
+                        android:padding="8dp"
+                        android:gravity="center"
+                        android:layout_marginTop="30dp"
+                        android:text="Save"
+                        android:textSize="16sp"
                         android:fontFamily="@font/pt_serif_bold"
-                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        android:shadowColor="#000000"
+                        android:shadowDx="1.5"
+                        android:shadowDy="1.3"
+                        android:textStyle="bold"
+                        android:shadowRadius="0.1"
+                        android:background="@drawable/button_hover"
                         android:textColor="@color/white"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
+                        android:elevation="4dp"
+                        android:button="@android:color/transparent" />
 
                 </LinearLayout>
 

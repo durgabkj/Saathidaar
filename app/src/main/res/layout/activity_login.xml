@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/italic"
-            android:text="Welcome To Saathidaar"
+            android:text="Welcome to Saathidaar"
             android:textColor="#aeaeae"
             android:textSize="24sp" />
 
@@ -65,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="40dp"
-                    android:hint="User name"
+                    android:hint="User Name"
                     app:boxBackgroundColor="@color/white"
                     app:boxBackgroundMode="outline"
                     app:boxStrokeColor="@color/colorPrimary"

@@ -267,7 +267,7 @@
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text=" Customer Support"
+                android:text="Customer Support"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 

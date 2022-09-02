@@ -6,7 +6,7 @@
     <string name="basic_lifestyle"><u>Basic &amp; Lifestyles</u></string>
 
     <string name="Education_background"><u>Education &amp; Career</u></string>
-    <string name="religious_background"><u>Religious_background</u></string>
+    <string name="religious_background"><u>Religious background</u></string>
     <string name="location"><u>Location Of Groom</u></string>
     <string name="mycontact"><u>My Contact Details</u></string>
     <string name="Family_details"><u>Family Details</u></string>
@@ -15,7 +15,7 @@
 
     <string name="razorpay_key_id">rzp_test_QHOsVAlUo7NNwl</string>
     <string name="razorpay_secret_key">kilJp0Ez5I45gXHraysPxKUW</string>
-    <string name="text_location_permission">Allow locaton permission</string>
+    <string name="text_location_permission">Allow location permission</string>
     <string name="title_location_permission" />
     <string name="ok">ok</string>
 
@@ -235,7 +235,7 @@
         <item>INR 50 Lakh to 75 Lakh</item>
         <item>INR 75 Lakh to 1 Crore</item>
         <item>INR 1 Crore above</item>
-        <item>Not applicable</item>
+        <item>Don\'t want to specify</item>
     </string-array>
 
 
@@ -251,7 +251,7 @@
         <item>Employed</item>
         <item>Business</item>
         <item>Not Employed</item>
-        <item>House Wife</item>
+        <item>Home Maker</item>
         <item>Passed Away</item>
         <item>Retired</item>
     </string-array>
@@ -309,7 +309,6 @@
 
 
     <string-array name="workingAs">
-
         <item>Banking Professional</item>
         <item>Chartered Accountant</item>
         <item>Company Secretary</item>
@@ -412,8 +411,6 @@
         <item>Student</item>
         <item>Retired</item>
         <item>Not working</item>
-
-
     </string-array>
 
 
@@ -423,7 +420,6 @@
         <item>Defense / Civil Services</item>
         <item>Business / Self Employed</item>
         <item>Not Working</item>
-        <item>Engineering Diploma"</item>
     </string-array>
 
     <string-array name="menu">

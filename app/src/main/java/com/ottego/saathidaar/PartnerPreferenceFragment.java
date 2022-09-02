@@ -71,7 +71,7 @@ public class PartnerPreferenceFragment extends Fragment {
     //For MaritalStatus....
     boolean[] selectedMaritalStatus;
     ArrayList<Integer> MaritalStatusList = new ArrayList<>();
-    String[] MaritalStatusArray = {"Open to all","Never Married", "Divorce", "Widowed", "Awaiting Divorce", "Married"};
+    String[] MaritalStatusArray = {"Open to all","Never Married", "Divorce", "Widowed", "Awaiting Divorce"};
     public String getPreference=Utils.memberUrl+"preference/get/";
     public String ReligionUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/religion-name";
     public String countryUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/country";

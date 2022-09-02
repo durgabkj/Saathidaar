@@ -39,7 +39,7 @@
                                     android:layout_marginStart="8dp"
                                     android:padding="5dp"
                                     android:fontFamily="@font/italic"
-                                    android:text="Search By Profile ID"
+                                    android:text="Search by Profile ID"
                                     android:textColor="@color/white"
                                     android:textSize="16sp" />
                             </LinearLayout>
@@ -427,6 +427,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:fontFamily="@font/italic"
                             android:textSize="15sp"
                             android:text="No manglik" />
 

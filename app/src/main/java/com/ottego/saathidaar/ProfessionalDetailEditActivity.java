@@ -63,7 +63,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     public String stateUrl = Utils.location + "state-name/by/country-name/";
     public String cityUrl = Utils.location + "city-name/by/state-name/";
     ArrayList<String> countryList = new ArrayList<>();
-String memberId;
+    String memberId;
     String[] stringArray =new String[0];
     String[] stringArray1 =new String[0];
     String[] stringArray2 =new String[0];

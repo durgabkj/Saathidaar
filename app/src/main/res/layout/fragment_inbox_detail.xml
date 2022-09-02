@@ -960,7 +960,7 @@
                             android:elevation="20dp"
                             android:fontFamily="@font/italic"
                             android:padding="10dp"
-                            android:text="Upgrade your membership"
+                            android:text="Upgrade Your Membership"
                             android:textAlignment="center"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
@@ -1118,7 +1118,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/italic"
-                            android:text="To unlock Contact &amp; Email ID"
+                            android:text="To Unlock Contact &amp; Email ID"
                             android:textColor="@color/black"
                             android:visibility="gone" />
 
@@ -1133,7 +1133,7 @@
                             android:elevation="20dp"
                             android:fontFamily="@font/italic"
                             android:padding="10dp"
-                            android:text="Upgrade your membership"
+                            android:text="Upgrade Your Membership"
                             android:textAlignment="center"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
@@ -1745,7 +1745,6 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="20dp"
-                            android:text="You Match 9/12 of her Preferences"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textStyle="bold" />

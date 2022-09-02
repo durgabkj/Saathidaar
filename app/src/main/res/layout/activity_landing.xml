@@ -23,8 +23,6 @@
             android:src="@drawable/logo" />
 
 
-
-
     </LinearLayout>
     <!--     </com.google.android.material.appbar.AppBarLayout> -->
     <ScrollView
@@ -149,7 +147,7 @@
                         android:capitalize="words"
                         android:drawableTint="@color/black"
                         android:fontFamily="@font/italic"
-                        android:hint="Firstname"
+                        android:hint="First Name"
                         android:inputType="textCapWords"
                         android:padding="8dp"
                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -170,7 +168,7 @@
                         android:drawablePadding="8dp"
                         android:drawableTint="@color/black"
                         android:fontFamily="@font/italic"
-                        android:hint="Lastname"
+                        android:hint="Last Name"
                         android:capitalize="words"
                         android:inputType="textCapWords"
                         android:singleLine="true"
@@ -206,7 +204,7 @@
                     android:singleLine="true"
                     android:drawableTint="@color/black"
                     android:fontFamily="@font/italic"
-                    android:hint="Email"
+                    android:hint="Email Id"
                     android:padding="8dp"
                     android:textColor="@color/black" />
 
@@ -257,7 +255,7 @@
                     android:visibility="gone"
                     android:drawableTint="@color/black"
                     android:fontFamily="@font/italic"
-                    android:hint="Franchies Code"
+                    android:hint="Franchise Code"
                     android:maxLength="10"
                     android:inputType="number"
                     android:padding="8dp"

@@ -548,6 +548,14 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         if(b.etHealth.getText().toString().trim().equalsIgnoreCase("other"))
         {
             HealthDetail=b.tvUserOtherHealthDetails.getText().toString().trim();
+            if (HealthDetail.isEmpty()) {
+                b.tvUserOtherHealthDetails.setError("Write Health Issue");
+                b.tvUserOtherHealthDetails.setFocusableInTouchMode(true);
+                b.tvUserOtherHealthDetails.requestFocus();
+                return false;
+            } else {
+                b.tvUserOtherHealthDetails.setError(null);
+            }
         }else
         {
             HealthDetail = b.etHealth.getText().toString().trim();
@@ -570,7 +578,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
 
         if (Dob.isEmpty()) {
-            b.mbDatePicker.setError("Please select Date of Birth");
+            b.mbDatePicker.setError("Please Select Date of Birth");
             b.mbDatePicker.setFocusableInTouchMode(true);
             b.mbDatePicker.requestFocus();
             return false;

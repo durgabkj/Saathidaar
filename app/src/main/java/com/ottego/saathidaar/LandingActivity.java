@@ -57,7 +57,7 @@ public class LandingActivity extends AppCompatActivity {
         context = LandingActivity.this;
         sessionManager = new SessionManager(context);
         listener();
-            String[] items = new String[]{"Profile Created by","Self", "Sibling", "Parents", "Relatives", "Friends", "Saathidaar.com", "franchise"};
+            String[] items = new String[]{"Profile Created by","Self", "Sibling", "Parents", "Relatives", "Friends", "Saathidaar.com", "Franchise"};
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.dropdown_item, items);
             binding.spinner1.setAdapter(adapter);
 

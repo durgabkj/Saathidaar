@@ -32,8 +32,6 @@ import java.util.Comparator;
 import java.util.List;
 
 public class MultipleSelection extends TextInputEditText {
-
-
         private final String TAG = getClass().getSimpleName();
         private static final long POPUP_DISMISS_DELAY = 200;
 
@@ -47,7 +45,6 @@ public class MultipleSelection extends TextInputEditText {
         private int labelAlignment = LABEL_ALIGN_CENTER;
 
         private boolean showSearch = false;
-
 
         private PopupWindow popupWindow = null;
         private float SCALE_RATIO = 1.0f;

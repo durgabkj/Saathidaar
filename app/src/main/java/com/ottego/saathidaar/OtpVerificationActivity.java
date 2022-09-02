@@ -64,7 +64,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
                         Log.e(" otp receive response", String.valueOf(response));
 
                         try {
-                            String code = response.getString("result");
+                            String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
 
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();

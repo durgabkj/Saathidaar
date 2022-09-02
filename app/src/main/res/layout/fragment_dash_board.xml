@@ -316,7 +316,7 @@
                                 android:layout_gravity="center"
                                 android:background="@drawable/white_button_bg"
                                 android:padding="5dp"
-                                android:text="Become a premium Member"
+                                android:text="Become a Premium Member"
                                 android:textAlignment="center"
                                 android:fontFamily="@font/pt_serif_bold"
                                 android:textColor="@color/colorPrimary"

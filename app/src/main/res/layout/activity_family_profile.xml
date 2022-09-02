@@ -76,11 +76,12 @@
                                 android:fontFamily="@font/italic"
                                 android:layout_weight="1"
                                 android:inputType="textCapWords"
+                                android:textColor="@color/black"
                                 android:editable="false"
                                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                                 android:gravity="center_vertical"
                                 android:textSize="12sp"
-                                android:hint="select Father Status"
+                                android:hint="Select Father Status"
                                 android:layout_marginStart="8dp"
                                 android:background="@drawable/transparent_edittext_border"
                                 tools:ignore="Deprecated" />
@@ -209,11 +210,12 @@
                                 android:layout_height="30dp"
                                 android:fontFamily="@font/italic"
                                 android:layout_weight="1"
+                                android:textColor="@color/black"
                                 android:editable="false"
                                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                                 android:gravity="center_vertical"
                                 android:textSize="12sp"
-                                android:hint="select Father Status"
+                                android:hint="Select Father Status"
                                 android:layout_marginStart="8dp"
                                 android:background="@drawable/transparent_edittext_border"
                                 tools:ignore="Deprecated" />
@@ -427,7 +429,7 @@
                                         android:textSize="8dp"
                                         android:fontFamily="@font/italic"
                                         android:layout_gravity="center"
-                                        android:text="Not married"
+                                        android:text="Not Married"
 
 
                                         />
@@ -516,7 +518,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center"
-                                        android:text="Not married"
+                                        android:text="Not Married"
                                         android:fontFamily="@font/italic"
                                         android:textSize="9sp"
 
@@ -612,11 +614,12 @@
                                 android:layout_height="30dp"
                                 android:fontFamily="@font/italic"
                                 android:layout_weight="1"
+                                android:textColor="@color/black"
                                 android:editable="false"
                                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                                 android:gravity="center_vertical"
                                 android:textSize="12sp"
-                                android:hint="select Father Status"
+                                android:hint="Select Father Status"
                                 android:layout_marginStart="8dp"
                                 android:background="@drawable/transparent_edittext_border"
                                 tools:ignore="Deprecated" />
@@ -662,11 +665,12 @@
                                 android:layout_height="30dp"
                                 android:fontFamily="@font/italic"
                                 android:layout_weight="1"
+                                android:textColor="@color/black"
                                 android:editable="false"
                                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                                 android:gravity="center_vertical"
                                 android:textSize="12sp"
-                                android:hint="select Father Status"
+                                android:hint="Select Father Status"
                                 android:layout_marginStart="8dp"
                                 android:background="@drawable/transparent_edittext_border"
                                 tools:ignore="Deprecated"/>
@@ -677,8 +681,6 @@
 
 
                     </LinearLayout>
-
-
                     <TextView
                         android:id="@+id/btnFsave"
                         android:layout_width="100dp"
