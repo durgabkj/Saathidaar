@@ -476,7 +476,7 @@
                         android:textColor="@color/white"
                         android:textSize="13sp"
                         android:textStyle="bold"
-                        android:text="Connected"/>
+                        android:text="Request Sent"/>
 
                 </LinearLayout>
 
@@ -512,7 +512,7 @@
                         android:shadowDx="2"
                         android:shadowDy="2"
                         android:shadowRadius="1.6"
-                        android:text="Connect Now"
+                        android:text="Send Request"
                         android:textColor="@color/white"
                         android:textSize="13sp"
                         android:textStyle="bold" />

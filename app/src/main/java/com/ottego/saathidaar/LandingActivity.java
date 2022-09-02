@@ -146,11 +146,11 @@ public class LandingActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/term-mobile"));
+                    intent.setData(Uri.parse("http://103.174.102.195:8080/saathidaar/#/term-mobile"));
                     try {
                         startActivity(intent);
                     } catch (Exception e) {
-                        intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/term-mobile"));
+                        intent.setData(Uri.parse("103.174.102.195:8080/saathidaar/#/term-mobile"));
                     }
                 }
             });
@@ -173,11 +173,11 @@ public class LandingActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/privacy-policy"));
+                    intent.setData(Uri.parse("http://103.174.102.195:8080/saathidaar/#/privacy-policy"));
                     try {
                         startActivity(intent);
                     } catch (Exception e) {
-                        intent.setData(Uri.parse("http://103.150.186.33:8080/saathidaar/#/privacy-policy"));
+                        intent.setData(Uri.parse("http://103.174.102.195:8080/saathidaar/#/privacy-policy"));
                     }
                 }
             });
@@ -198,9 +198,8 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
         String num = "9835635191";
         //NOTE : please use with country code first 2digits without plus signed
         try {
-            String mobile = "7781027704";
-            String msg = "Its Working";
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + mobile + "&text=" + msg)));
+            String mobile = "7030600035";
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + mobile)));
         }catch (Exception e){
             //whatsapp app not install
         }
@@ -347,7 +346,7 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
                         public void onResponse(JSONObject response) {
                             Log.e("response", String.valueOf((response)));
                             try {
-                                String code = response.getString("result");
+                                String code = response.getString("results");
                                 if (code.equalsIgnoreCase("1")) {
                                     Gson gson = new Gson();
                                     //  UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);

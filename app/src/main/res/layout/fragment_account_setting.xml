@@ -385,7 +385,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="WhatsApp:-     "
+                            android:text="WhatsApp:-"
                             android:textAlignment="center"
                             android:gravity="center_horizontal"
                             android:textColor="@color/black"
@@ -395,7 +395,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="7030600035"
-                            android:layout_marginStart="10dp"
+                            android:layout_marginStart="2dp"
                             android:textAlignment="center"
                             android:gravity="center_horizontal"
                             android:textColor="@color/black"

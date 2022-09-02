@@ -157,7 +157,7 @@ public class ForgetActivity extends AppCompatActivity {
     }
     private void update() {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("phone", email);
+        params.put("email", email);
         Log.e("params", String.valueOf(params));
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,updatepass, new JSONObject(params),
                 new Response.Listener<JSONObject>() {

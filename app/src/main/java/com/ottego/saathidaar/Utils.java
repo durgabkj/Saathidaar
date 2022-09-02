@@ -113,8 +113,6 @@ public class Utils {
         new SendDeviceId().execute();
     }
 
-
-
 //    public static void deleteImage(Context context,String photo_id) {
 //        String DeleteUrl = Utils.memberUrl + "delete/photo/";
 //        Map<String, String> params = new HashMap<String, String>();
@@ -307,6 +305,51 @@ public class Utils {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                        progressDialog.dismiss();
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
+
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+
+    }
+
+    public static void cancelRequest(Context context, String member_id, ApiListener apiListener) {
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        String url = Utils.memberUrl + "request-accept-reject";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("request_from_id",new SessionManager(context).getMemberId());
+        params.put("request_to_id",member_id);
+        params.put("request_status","Canceled");
+        Log.e("params request delete", String.valueOf(params));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        apiListener.onSuccess(0);
+                        progressDialog.dismiss();
+                        Log.e("Canceled Invitation", String.valueOf((response)));
+                        try {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+
+                                Toast.makeText(context,"You Canceled Your Invitation",Toast.LENGTH_LONG).show();
+                            } else {
+                                apiListener.onFail(0);
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error response", String.valueOf(error));
                         }

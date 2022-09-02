@@ -90,6 +90,12 @@ FragmentFamilyInfoBinding b;
         listener();
         sessionManager=new SessionManager(context);
         getMemberData();
+
+        b.tvUserSistersMarried.setVisibility(View.VISIBLE);
+        b.tvUserSistersUMarried.setVisibility(View.VISIBLE);
+        b.tvUserBrothersMarried.setVisibility(View.VISIBLE);
+        b.tvUserBrothersUMarried.setVisibility(View.VISIBLE);
+
         return b.getRoot();
     }
 
@@ -300,17 +306,4 @@ FragmentFamilyInfoBinding b;
 
     }
 
-    private void refresh(int millisecond) {
-
-        final Handler handler = new Handler();
-        final Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                getMemberData();
-            }
-        };
-
-        handler.postDelayed(runnable, millisecond);
-
-    }
 }

@@ -220,6 +220,10 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                         .into(holder.ivRecentViewImage);
             }
 
+// hide premium msg on the basis of image count
+            if (item.images_count.equalsIgnoreCase("0")) {
+                holder.llPremiumMsgRecentlyView.setVisibility(View.GONE);
+            }
 
             holder.ivLikeRecentVisitors.setOnClickListener(new View.OnClickListener() {
                 @Override

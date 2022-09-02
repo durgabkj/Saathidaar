@@ -60,6 +60,11 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
     public void onBindViewHolder(@NonNull DeleteInvitationAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         InboxModel item = list.get(position);
         Log.e(" Inbox model", new Gson().toJson(item));
+
+        holder.tvLevelPremiumDelete.setVisibility(View.GONE);
+        holder.flPremiumDelete.setVisibility(View.GONE);
+
+
         holder.llPrivateDeletePhoto.setVisibility(View.GONE);
         sessionManager = new SessionManager(context);
         holder.tvInvDeleteName.setText(Utils.nullToBlank(item.first_name )+ " " +  Utils.nullToBlank(item.last_name).charAt(0));

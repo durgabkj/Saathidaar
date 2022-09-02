@@ -91,7 +91,7 @@ holder.llPrivateSentPhoto.setVisibility(View.GONE);
             holder.llDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Utils.deleteRequest(context, item.member_id,clickListener);
+                    Utils.cancelRequest(context, item.member_id,clickListener);
                     holder.llDelete.setVisibility(View.GONE);
                     holder.llDeleted.setVisibility(View.VISIBLE);
 

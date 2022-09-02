@@ -556,7 +556,7 @@ if (memberPreferenceModel != null) {
             b.tvCreatedBy.setText("Profile Create by:-" + " " + Utils.nullToBlank(model.profilecreatedby));
             b.tvProfileID.setText("Profile ID:-" + " " + Utils.nullToBlank(model.profile_id));
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
-                b.tvDetailAge.setText(Utils.nullToBlank(model.age) + " yrs old");
+                b.tvDetailAge.setText("Age:-"+Utils.nullToBlank(model.age) + " yrs old");
             } else {
                 b.tvDetailAge.setText(" Age-Not Specified");
             }
@@ -569,8 +569,7 @@ if (memberPreferenceModel != null) {
                 b.tvDetailDob.setText("DOB-Not Specified");
             }
             b.tvDetailMaritalS.setText(Utils.nullToBlank(model.marital_status));
-
-
+            
             b.tvDetailLiveIn.setText(Utils.nullToBlank(model.city) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.country_name));
             b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + " " +Utils.nullToBlank(model.mother_tounge) );
             b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + " " + Utils.nullToBlank(model.sub_caste_name));
@@ -727,6 +726,16 @@ if (memberPreferenceModel != null) {
 
             }
         }
+
+
+        b.ivDetailsMatchConnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Upgrade To Premium If You Want To Connect", Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(view.getContext(),UpgradeOnButtonActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
     }
 

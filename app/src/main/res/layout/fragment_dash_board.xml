@@ -99,6 +99,7 @@
                                 android:layout_marginStart="20dp"
                                 android:fontFamily="@font/italic"
                                 android:text="Durga Singh"
+                                android:capitalize="words"
                                 android:textColor="@color/white" />
 
                             <TextView

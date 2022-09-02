@@ -156,7 +156,6 @@ public class PersonalInfoFragment extends Fragment {
             }
         });
 
-
         binding.ivCameraEditPersonalInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -335,17 +334,4 @@ public class PersonalInfoFragment extends Fragment {
 
     }
 
-    private void refresh(int millisecond) {
-
-        final Handler handler = new Handler();
-        final Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-               // getMemberData();
-            }
-        };
-
-        handler.postDelayed(runnable, millisecond);
-
-    }
 }

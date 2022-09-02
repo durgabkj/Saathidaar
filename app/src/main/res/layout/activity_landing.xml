@@ -206,7 +206,7 @@
                     android:singleLine="true"
                     android:drawableTint="@color/black"
                     android:fontFamily="@font/italic"
-                    android:hint="EmailID"
+                    android:hint="Email"
                     android:padding="8dp"
                     android:textColor="@color/black" />
 
@@ -236,7 +236,7 @@
                     <Spinner
                         android:id="@+id/spinner1"
                         android:layout_width="match_parent"
-                        android:layout_height="35dp"
+                        android:layout_height="40dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:focusableInTouchMode="false"

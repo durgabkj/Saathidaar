@@ -492,6 +492,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
+                        android:capitalize="words"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/black"
                         android:textSize="14sp"
@@ -759,7 +760,7 @@
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/italic"
                         android:text="Gotra/Gotram"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -775,7 +776,7 @@
                         android:id="@+id/tvUserGotra"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="15sp"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/black"
                         android:textSize="14sp"
