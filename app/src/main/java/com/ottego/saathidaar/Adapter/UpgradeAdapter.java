@@ -6,6 +6,7 @@ import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,13 +14,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
@@ -50,6 +54,7 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
     @Override
     public void onBindViewHolder(@NonNull UpgradeAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         UpgradeModel item = list.get(position);
+
 
         holder.tvCardName.setText(item.plan_name);
         holder.tvMonths.setText(item.plan_validity);
@@ -214,6 +219,9 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
 //        });
 
 
+
+
+
     }
 
 
@@ -226,11 +234,15 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
         TextView tvCardName, tvPriceUpgrade, tvMonths, tvName, tvPeriod, tvPrice, tvTotal, tvPriceTotal, tvPlanFeature, tvPlanFeature1, tvPlanFeature2, tvPlanFeature3, tvPlanFeature4, tvPlanFeature5, tvPlanFeature6, tvPlanFeature7;
         TextView btnDashboard,btnDashboardNext,btnPrevious;
         CardView cvCheckFeature, cvClearFeature, cvCheckFeature1, cvClearFeature1, cvCheckFeature2, cvClearFeature2, cvCheckFeature3, cvClearFeature3, cvCheckFeature4, cvClearFeature4, cvCheckFeature5, cvClearFeature5, cvCheckFeature6, cvClearFeature6, cvCheckFeature7, cvClearFeature7;
-
+LinearLayout llNext,llPrevious;
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
+
+            llNext = itemView.findViewById(R.id.llNext);
+            llPrevious = itemView.findViewById(R.id.llPrevious);
+
             tvCardName = itemView.findViewById(R.id.tvCardName);
             tvPriceUpgrade = itemView.findViewById(R.id.tvPriceUpgrade);
             tvMonths = itemView.findViewById(R.id.tvMonths);
