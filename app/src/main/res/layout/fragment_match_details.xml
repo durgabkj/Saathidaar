@@ -250,7 +250,6 @@
                                 android:maxLength="15"
                                 android:shadowColor="#000000"
                                 android:shadowDx="2"
-                                android:inputType="textCapWords"
                                 android:padding="2dp"
                                 android:shadowDy="2"
                                 android:shadowRadius="1.6"
@@ -273,7 +272,6 @@
                                 android:id="@+id/tvNewMatchAge"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
                                 android:fontFamily="@font/italic"
                                 android:shadowColor="#000000"
                                 android:shadowDx="1.5"
@@ -293,14 +291,12 @@
                                 android:alpha="0.6"
                                 android:visibility="gone"
                                 android:layout_gravity="center_vertical"
-
                                 android:src="@drawable/circle_blue_fil" />
 
                             <TextView
                                 android:id="@+id/tvNewMatchHeight"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
                                 android:fontFamily="@font/italic"
                                 android:maxLength="15"
                                 android:shadowColor="#000000"

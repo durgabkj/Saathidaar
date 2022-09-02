@@ -36,7 +36,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.gson.Gson;
 import com.ottego.saathidaar.Model.DataModelReligion;
 import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.Model.UserModel;
@@ -111,7 +110,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
         memberId = sessionManager.getUserMemberRegId();
 //
         Log.e("registered memberId", memberId);
-        Log.e("user mobile",phone);
+        Log.e("user mobile", phone);
 
         // Initialize dialog
         dialog = new Dialog(context);
@@ -254,7 +253,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                Intent intent=new Intent(context,NavigationActivity.class);
+                Intent intent = new Intent(context, NavigationActivity.class);
                 startActivity(intent);
 
             }
@@ -262,8 +261,6 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
     }
 
     private void listener() {
-
-
         b.etCountry.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -272,9 +269,9 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")){
-    b.etCountryNameShortReg.setVisibility(View.VISIBLE);
-}
+                if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")) {
+                    b.etCountryNameShortReg.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -292,8 +289,7 @@ if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")){
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(b.tvUserReligion.getText().toString().trim().equalsIgnoreCase("christian"))
-                {
+                if (b.tvUserReligion.getText().toString().trim().equalsIgnoreCase("christian")) {
                     b.tvUserCommunity.setText("Empty");
                 }
             }
@@ -404,12 +400,12 @@ if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")){
     }
 
     private boolean checkForm() {
-        if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")){
-            country=  b.etCountryNameShortReg.getText().toString().trim();
-        }else{
-            country=  b.etCountry.getText().toString().trim();
+        if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")) {
+            country = b.etCountryNameShortReg.getText().toString().trim();
+        } else {
+            country = b.etCountry.getText().toString().trim();
         }
-       Dob = b.mbDatePicker.getText().toString().trim();
+        Dob = b.mbDatePicker.getText().toString().trim();
         Marital_status = b.etMaritalStatus.getText().toString().trim();
         Height = b.etHeight.getText().toString().trim();
         Diet = b.etDiet.getText().toString().trim();
@@ -426,7 +422,7 @@ if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")){
         }
 
 
-                if (Marital_status.isEmpty()) {
+        if (Marital_status.isEmpty()) {
             b.etMaritalStatus.setError("Please Select Marital Status");
             b.etMaritalStatus.setFocusableInTouchMode(true);
             b.etMaritalStatus.requestFocus();
@@ -483,7 +479,7 @@ if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")){
         params.put("lifestyles", Diet);
         Log.e("params", String.valueOf(params));
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "please wait....", false, false);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Updateurl +sessionManager.getUserMemberRegId(), new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Updateurl + sessionManager.getUserMemberRegId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -492,11 +488,11 @@ if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")){
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
-                                Intent intent=new Intent(context,OtpVerificationActivity.class);
+                                Intent intent = new Intent(context, OtpVerificationActivity.class);
                                 intent.putExtra("mobile", phone);
                                 startActivity(intent);
                             } else {
-                              //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                                //  Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
 
@@ -523,7 +519,7 @@ if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")){
         b.tvUserReligion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                religionList.clear();
                 getReligionList(ReligionUrl);
 
                 // Initialize dialog
@@ -574,7 +570,7 @@ if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")){
                         Log.e("position", religionAdapter.getItem((int) id));
                         religionList.clear();
 
-                        communityData();
+                       // communityData();
 
                         // Dismiss dialog
                         dialog.dismiss();

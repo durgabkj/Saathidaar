@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/gradient_button"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_button"
     android:orientation="vertical"
     tools:context=".ProfileEditPersonalActivity">
 
@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/gradient_for_app"
             app:title="Personal Data"
-            app:titleTextColor="@color/white"
-            app:titleCentered="true" />
+            app:titleCentered="true"
+            app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
@@ -34,17 +34,11 @@
             android:padding="30dp">
 
 
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_marginTop="10dp"
-                >
-
-
-
+                android:orientation="vertical">
 
 
                 <TextView
@@ -52,9 +46,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="0.8"
-                    android:textColor="@color/white"
                     android:fontFamily="@font/italic"
-                    android:text="Country living in" />
+                    android:text="Country living in"
+                    android:textColor="@color/white" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -70,15 +64,15 @@
                         android:id="@+id/etCountry"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
                         android:layout_weight="1"
-                        android:textColorHint="@color/black"
                         android:background="@drawable/transparent_edittext_border"
                         android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                         android:fontFamily="@font/italic"
                         android:gravity="center_vertical"
-                        android:hint="Country"
-                        android:textColor="@color/black" />
+                        android:hint="Select Your Country"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black" />
 
                 </LinearLayout>
 
@@ -89,14 +83,14 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/white_bg"
                     android:drawablePadding="8dp"
-                    android:visibility="gone"
                     android:drawableTint="@color/black"
                     android:fontFamily="@font/italic"
                     android:hint="Enter Your Country"
                     android:padding="8dp"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:textSize="14sp"
-                    android:textColor="@color/black" />
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -106,8 +100,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/italic"
-                android:textColor="@color/white"
-                android:text="Marital Status" />
+                android:text="Marital Status"
+                android:textColor="@color/white" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -122,30 +116,30 @@
                 <TextView
                     android:id="@+id/etMaritalStatus"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Select Marital Status"
-                    android:textColorHint="@color/black"
-                    android:layout_marginStart="8dp"
-                    android:editable="true"
-                    android:textColor="@color/black"
-                    android:layout_marginEnd="10dp"
-                    android:enabled="true"
-                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-
-                    android:gravity="center_vertical"
-                    android:fontFamily="@font/italic"
                     android:background="@drawable/transparent_edittext_border"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:editable="true"
+                    android:enabled="true"
+                    android:fontFamily="@font/italic"
+                    android:gravity="center_vertical"
+                    android:hint="Select Marital Status"
+
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     tools:ignore="Deprecated,Suspicious0dp" />
 
 
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date Of Birth"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/italic"
+                android:text="Date Of Birth"
 
                 android:textColor="@color/white"
 
@@ -155,31 +149,31 @@
                 android:id="@+id/mbDatePicker"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:fontFamily="@font/pt_serif_bold"
                 android:background="@drawable/white_bg"
+                android:drawableEnd="@drawable/ic_outline_date_range_24"
+                android:drawableTint="@color/colorPrimary"
+                android:fontFamily="@font/pt_serif_bold"
+                android:gravity="center"
+                android:hint="Select D.O.B"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:drawableTint="@color/colorPrimary"
-                android:padding="8dp"
-                android:hint="Select D.O.B"
-                android:textColorHint="@color/black"
-                android:textColor="@color/black"
                 app:cornerRadius="5dp"
-                android:drawableEnd="@drawable/ic_outline_date_range_24"
                 app:iconGravity="end" />
 
             <TextView
                 android:id="@+id/tvHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/italic"
-                android:textColor="@color/white"
                 android:layout_marginTop="10dp"
-                android:text="Height" />
+                android:fontFamily="@font/italic"
+                android:text="Height"
+                android:textColor="@color/white" />
 
 
             <LinearLayout
@@ -191,66 +185,66 @@
                 android:background="@drawable/white_bg"
                 android:orientation="horizontal"
                 tools:ignore="UselessParent">
+
                 <TextView
                     android:id="@+id/etHeight"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/italic"
-                    android:editable="true"
-                    android:gravity="center_vertical"
-                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                    android:layout_marginEnd="10dp"
-                    android:hint="Select Your Height"
-                    android:textColorHint="@color/black"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="8dp"
                     android:background="@drawable/transparent_edittext_border"
+                    android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:editable="true"
+                    android:fontFamily="@font/italic"
+                    android:gravity="center_vertical"
+                    android:hint="Select Your Height"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     tools:ignore="Deprecated" />
 
 
-
             </LinearLayout>
-
-
-
-
-
-
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Religion"
                 android:fontFamily="@font/italic"
+                android:text="Religion"
                 android:textColor="@color/white"
 
                 />
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/white_bg"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
             <TextView
                 android:id="@+id/tvUserReligion"
-                style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/transparent_edittext_border"
                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                android:gravity="center_vertical"
-                android:background="@drawable/white_bg"
                 android:fontFamily="@font/italic"
-                android:textColorHint="@color/black"
+                android:gravity="center_vertical"
                 android:hint="Select Your Religion"
                 android:padding="10dp"
-                />
-
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+        </LinearLayout>
             <TextView
                 android:id="@+id/tvDiet"
                 android:layout_width="match_parent"
-                android:fontFamily="@font/italic"
-                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Diet" />
+                android:fontFamily="@font/italic"
+                android:text="Diet"
+                android:textColor="@color/white" />
 
 
             <LinearLayout
@@ -261,27 +255,26 @@
                 android:background="@drawable/white_bg"
                 android:orientation="horizontal"
                 tools:ignore="UselessParent">
+
                 <TextView
                     android:id="@+id/etDiet"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/italic"
+                    android:background="@drawable/transparent_edittext_border"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:editable="false"
                     android:enabled="true"
-                    android:textColorHint="@color/black"
-                    android:textColor="@color/black"
+                    android:fontFamily="@font/italic"
                     android:gravity="center_vertical"
                     android:hint="Select Your Diet"
-                    android:editable="false"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/transparent_edittext_border"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     tools:ignore="Deprecated" />
 
 
             </LinearLayout>
-
 
 
             <TextView
@@ -289,35 +282,33 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Location"
-                android:visibility="gone"
                 android:textColor="@color/colorPrimary"
+                android:visibility="gone"
 
                 />
 
             <EditText
                 android:id="@+id/etAddUserLocation"
                 style="@style/PersonalDataTextView"
-                android:hint="Type your Location..."
-                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
-
-
+                android:layout_height="40dp"
+                android:hint="Type your Location..."
+                android:visibility="gone" />
 
 
             <LinearLayout
                 android:id="@+id/llCast"
                 android:layout_width="match_parent"
-                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                >
+                android:visibility="gone">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Caste"
                     android:fontFamily="@font/italic"
+                    android:text="Caste"
                     android:textColor="@color/colorPrimary"
 
                     />
@@ -326,43 +317,39 @@
                     android:id="@+id/tvUserCommunity"
                     style="@style/PersonalDataTextView"
                     android:layout_width="match_parent"
-                    android:fontFamily="@font/italic"
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                    android:fontFamily="@font/italic"
                     android:gravity="center_vertical"
                     android:hint="Select your cast"
-                    android:padding="10dp"
-                    />
+                    android:padding="10dp" />
             </LinearLayout>
 
 
-
-
-
-           <com.google.android.material.button.MaterialButton
-               android:layout_width="150dp"
-               android:layout_height="wrap_content"
-               android:text="Save"
-               android:layout_gravity="center"
-               android:layout_marginTop="30dp"
-               android:fontFamily="@font/pt_serif_bold"
-               android:textColor="@color/colorPrimary"
-               android:id="@+id/btnSaveReg"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveReg"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/pt_serif_bold"
+                android:text="Save"
+                android:textColor="@color/colorPrimary" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="0.8"
                 android:layout_marginTop="20dp"
-                android:drawablePadding="10dp"
-                android:textSize="14sp"
-                android:gravity="center_vertical"
-                android:drawableTint="@color/white"
+                android:layout_weight="0.8"
                 android:drawableStart="@drawable/ic_baseline_star_rate_24"
-                android:textColor="@color/white"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/white"
                 android:fontFamily="@font/italic"
-                android:text="All Fields are mandatory. " />
+                android:gravity="center_vertical"
+                android:text="All Fields are mandatory. "
+                android:textColor="@color/white"
+                android:textSize="14sp" />
         </LinearLayout>
     </ScrollView>
 

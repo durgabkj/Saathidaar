@@ -488,7 +488,7 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:text="Connected"/>
+                    android:text="Request Sent"/>
 
             </LinearLayout>
             <LinearLayout

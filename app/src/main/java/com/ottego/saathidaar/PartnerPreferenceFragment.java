@@ -545,7 +545,7 @@ PartnerPreferenceModel model;
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(multi_SelectionCountry.getText().toString().trim().equalsIgnoreCase("other"))
+                if(multi_SelectionCountry.getText().toString().trim().contains("Other"))
                 {
                     etPreferenceCountry.setVisibility(View.VISIBLE);
                 }else
@@ -569,7 +569,7 @@ PartnerPreferenceModel model;
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(multi_SelectionState.getText().toString().trim().equalsIgnoreCase("other"))
+                if(multi_SelectionState.getText().toString().trim().contains("Other"))
                 {
                     etPreferenceState.setVisibility(View.VISIBLE);
                 }else
@@ -595,7 +595,7 @@ PartnerPreferenceModel model;
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(tvMultipleCity.getText().toString().trim().equalsIgnoreCase("other"))
+                if(tvMultipleCity.getText().toString().trim().contains("Other"))
                 {
                     etPreferenceCity.setVisibility(View.VISIBLE);
                 }else
@@ -758,7 +758,7 @@ PartnerPreferenceModel model;
         religion = tvMultipleReligion.getText().toString().trim();
         cast = tvMultipleCast.getText().toString().trim();
 
-        if(multi_SelectionCountry.getText().toString().trim().equalsIgnoreCase("other"))
+        if(multi_SelectionCountry.getText().toString().trim().contains("Other"))
         {
             country = etPreferenceCountry.getText().toString().trim();
         }else{
@@ -766,14 +766,14 @@ PartnerPreferenceModel model;
         }
 
 
-        if(multi_SelectionState.getText().toString().trim().equalsIgnoreCase("other"))
+        if(multi_SelectionState.getText().toString().trim().contains("Other"))
         {
             state = etPreferenceState.getText().toString().trim();
         }else{
             state = multi_SelectionState.getText().toString().trim();
         }
 
-        if(tvMultipleCity.getText().toString().trim().equalsIgnoreCase("other"))
+        if(tvMultipleCity.getText().toString().trim().contains("Other"))
         {
             city = etPreferenceCity.getText().toString().trim();
         }else{
@@ -807,8 +807,6 @@ PartnerPreferenceModel model;
         params.put("partner_annual_income", income);
         params.put("partner_profile_created", createdBy);
         params.put("partner_lifestyles", diet);
-
-
 
         params.put("member_id", sessionManager.getMemberId());
         Log.e("params","Preferences"+ String.valueOf(params));
@@ -855,6 +853,7 @@ PartnerPreferenceModel model;
               //  Log.e("response", String.valueOf((response)));
                 if(response!=null)
                 {
+                    Log.e("preference", String.valueOf(response));
                     Gson gson = new Gson();
                     model = gson.fromJson(String.valueOf(response), PartnerPreferenceModel.class);
                     setData();
@@ -872,7 +871,6 @@ PartnerPreferenceModel model;
 
 
     }
-
     private void setData() {
             tvMultipleMaritalStatus.setText(Utils.nullToBlank(model.partner_marital_status));
             etFromAgePartnerPreference.setText(Utils.nullToBlank(model.partner_from_age));
@@ -903,7 +901,6 @@ PartnerPreferenceModel model;
                 mrbDontNoManglik.setChecked(true);
             }
         }
-
     private void multipleCountrySelectionCheckBox() {
         multi_SelectionCountry.setItems(getCountryItems());
         multi_SelectionCountry.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
@@ -918,7 +915,6 @@ PartnerPreferenceModel model;
             }
         });
     }
-
     // dropDown With Search
     private List getCountryItems() {
         ArrayList<String> countryList = new ArrayList<>();
@@ -971,7 +967,6 @@ PartnerPreferenceModel model;
             }
         });
     }
-
     // dropDown With Search
     private List getStateItems() {
         ArrayList<String> stateList = new ArrayList<>();

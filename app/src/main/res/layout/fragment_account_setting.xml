@@ -293,7 +293,7 @@
 
                     <LinearLayout
                         android:id="@+id/llCallingPrivacy"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="horizontal">
@@ -301,8 +301,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="0dp"
                             android:text="Call:-"
+                            android:fontFamily="@font/italic"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="10dp" />
@@ -325,59 +325,16 @@
                             android:layout_marginStart="10dp"
                             android:drawablePadding="8dp"
                             android:textAlignment="center"
-                            android:text="                "
+                            android:text=""
                             android:gravity="center_horizontal"
                             android:drawableTint="@color/Green"
                             android:drawableStart="@drawable/ic_baseline_call_24"
                             android:textColor="@color/black"
                             android:textSize="10dp" />
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/llEmailPrivacy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="0dp"
-                            android:text="Email:-"
-                            android:textAlignment="center"
-                            android:gravity="center_horizontal"
-                            android:textColor="@color/black"
-                            android:textSize="10dp" />
-
-
-                        <TextView
-                            android:id="@+id/tvEmail"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:text="info@saathidaar.com"
-                            android:textAlignment="center"
-                            android:gravity="center_horizontal"
-                            android:textColor="@color/black"
-                            android:textSize="10dp" />
-
-                        <TextView
-                            android:id="@+id/tvLandingCustomerEmail"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:textAlignment="center"
-                            android:gravity="center_horizontal"
-                            android:drawableTint="@color/Red"
-                            android:drawableStart="@drawable/ic_baseline_email_24"
-                            android:drawablePadding="8dp" />
-
-                    </LinearLayout>
-
                     <LinearLayout
                         android:id="@+id/llWhatsAppPrivacy"
-                        android:layout_width="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="horizontal">
@@ -386,6 +343,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="WhatsApp:-"
+                            android:fontFamily="@font/italic"
                             android:textAlignment="center"
                             android:gravity="center_horizontal"
                             android:textColor="@color/black"
@@ -408,6 +366,49 @@
                             android:layout_marginStart="10dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/whatsapp1"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/llEmailPrivacy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:text="Email:-"
+                            android:fontFamily="@font/italic"
+                            android:textAlignment="center"
+                            android:gravity="center_horizontal"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+
+
+                        <TextView
+                            android:id="@+id/tvEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="info@saathidaar.com"
+                            android:textAlignment="center"
+                            android:fontFamily="@font/italic"
+                            android:gravity="center_horizontal"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+
+                        <TextView
+                            android:id="@+id/tvLandingCustomerEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:textAlignment="center"
+                            android:gravity="center_horizontal"
+                            android:drawableTint="@color/Red"
+                            android:drawableStart="@drawable/ic_baseline_email_24"
+                            android:drawablePadding="8dp" />
+
                     </LinearLayout>
                 </LinearLayout>
 

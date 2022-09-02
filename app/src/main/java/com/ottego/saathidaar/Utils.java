@@ -373,12 +373,12 @@ public class Utils {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        apiListener.onSuccess(0);
                      //   progressDialog.dismiss();
                         Log.e(" request sent response", String.valueOf((response)));
                         try {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
+                                apiListener.onSuccess(0);
                                 Toast.makeText(context,"Request Send Successfully",Toast.LENGTH_LONG).show();
                             } else {
                                 apiListener.onFail(0);

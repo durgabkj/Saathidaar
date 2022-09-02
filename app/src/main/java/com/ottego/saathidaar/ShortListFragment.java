@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import com.ottego.saathidaar.Adapter.RemoveShortListAdapter;
 import com.ottego.saathidaar.Model.DataModelNewMatches;
 import com.ottego.saathidaar.databinding.FragmentShortListBinding;
+import com.ottego.saathidaar.viewmodel.InboxViewModel;
 import com.ottego.saathidaar.viewmodel.MatchViewModel;
 
 import org.json.JSONException;
@@ -37,6 +38,7 @@ public class ShortListFragment extends Fragment  implements ApiListener {
     public String ShortListUrl ="http://103.174.102.195:8080/saathidaar_backend/api/shortlist/get/all/";
     FragmentShortListBinding b;
     MatchViewModel viewModel;
+    InboxViewModel inboxViewModel;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 int count=0;
@@ -74,6 +76,7 @@ int count=0;
        context=getContext();
        sessionManager=new SessionManager(context);
         viewModel = new ViewModelProvider(requireActivity()).get(MatchViewModel.class);
+        inboxViewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
         getData();
         listener();
        return  b.getRoot();
@@ -159,6 +162,7 @@ int count=0;
     public void onSuccess(int position) {
         getData();
         viewModel.getDataCount();
+        inboxViewModel.getDataCount();
     }
 
     @Override

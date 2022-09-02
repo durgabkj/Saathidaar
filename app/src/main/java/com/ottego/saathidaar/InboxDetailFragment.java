@@ -647,11 +647,32 @@ public class InboxDetailFragment extends Fragment {
             }
 
 
-            Glide.with(context)
-                    .load(Utils.imageUrl + model.profile_photo)
-                    .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    .transform(!model.photo_privacy.equals("2")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-                    .into(b.profileDetailPic1Partner);
+            //preference image set...
+            if (model.photo_privacy.equalsIgnoreCase("1")) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+//                        .transform(!model.profile_photo.equals("")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                        .into(b.profileDetailPic1Partner);
+
+            } else if (model.photo_privacy.equalsIgnoreCase("3")) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(b.profileDetailPic1Partner);
+            } else if (model.photo_privacy.equalsIgnoreCase(model.my_premium_status)) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                        .into(b.profileDetailPic1Partner);
+            } else {
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(b.profileDetailPic1Partner);
+            }
 
             //upgrade premium plans condition
 

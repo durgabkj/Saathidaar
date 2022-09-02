@@ -481,6 +481,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
                         android:text=" Home  |  "
+                        android:fontFamily="@font/italic"
                         android:textColor="@color/black"
                         android:textSize="10dp" />
 
@@ -492,6 +493,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
                     android:text=" About Us |  "
+                    android:fontFamily="@font/italic"
                     android:textColor="@color/black"
                     android:textSize="10dp" />
 
@@ -500,6 +502,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
+                        android:fontFamily="@font/italic"
                         android:text=" Terms and Conditions |   "
                         android:textColor="@color/black"
                         android:textSize="10dp" />
@@ -509,6 +512,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
+                        android:fontFamily="@font/italic"
                         android:text="Privacy Policy    "
                         android:textColor="@color/black"
                         android:textSize="10dp" />
@@ -557,6 +561,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginStart="0dp"
                             android:text="Call:-"
+                            android:fontFamily="@font/italic"
                             android:textAlignment="center"
                             android:gravity="center_horizontal"
                             android:textColor="@color/black"
@@ -598,6 +603,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginStart="0dp"
                             android:text="WhatsApp:-"
+                            android:fontFamily="@font/italic"
                             android:textAlignment="center"
                             android:gravity="center_horizontal"
                             android:textColor="@color/black"
@@ -634,6 +640,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="0dp"
                             android:text="Email:-"
+                            android:fontFamily="@font/italic"
                             android:textAlignment="center"
                             android:gravity="center_horizontal"
                             android:textColor="@color/black"
