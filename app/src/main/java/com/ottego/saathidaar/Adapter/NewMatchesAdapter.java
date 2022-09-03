@@ -80,7 +80,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
 
         holder.tvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
         holder.tvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
-        holder.tvNewMatchWorkAs.setText(Utils.nullToBlank(item.income));
+        holder.tvNewMatchWorkAs.setText(Utils.nullToBlank(item.city));
         holder.tvImageCount.setText(item.images_count);
 
         holder.llPrivateMatchesPhoto.setVisibility(View.GONE);
@@ -242,7 +242,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         if (item.mage.equals("")) {
             holder.ivMatchDot1.setVisibility(View.GONE);
         }
-        if (item.income.equalsIgnoreCase("")) {
+        if (item.city.equalsIgnoreCase("")) {
             holder.ivMatchDot2.setVisibility(View.GONE);
         }
 
@@ -256,7 +256,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             holder.llShortList.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Upgrade Your Profile To Add This Profile In ShortList", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Upgrade your profile to add this profile in shortList", Toast.LENGTH_LONG).show();
                     Intent intent=new Intent(view.getContext(),UpgradeOnButtonActivity.class);
                     context.startActivity(intent);
                 }
@@ -265,7 +265,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             holder.llShortBlock.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Upgrade Your Profile To Add This Profile In BlockList", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Upgrade your profile to add this profile in blockList", Toast.LENGTH_LONG).show();
                     Intent intent=new Intent(view.getContext(),UpgradeOnButtonActivity.class);
                     context.startActivity(intent);
                 }
@@ -274,7 +274,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             holder.ivLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Upgrade To Premium If You Want To Connect", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Upgrade to premium if you want to connect", Toast.LENGTH_LONG).show();
                     Intent intent=new Intent(view.getContext(),UpgradeOnButtonActivity.class);
                     context.startActivity(intent);
                 }

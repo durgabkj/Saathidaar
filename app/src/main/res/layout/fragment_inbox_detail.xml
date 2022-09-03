@@ -570,7 +570,7 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/edt_text_border"
                                 android:fontFamily="@font/italic"
-                                android:padding="7dp"
+                                android:padding="10dp"
                                 android:textSize="12sp" />
 
 
@@ -582,7 +582,7 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/edt_text_border"
                                 android:fontFamily="@font/italic"
-                                android:padding="7dp"
+                                android:padding="10dp"
                                 android:textSize="12sp" />
 
                         </LinearLayout>
@@ -601,7 +601,7 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/edt_text_border"
                                 android:fontFamily="@font/italic"
-                                android:padding="7dp"
+                                android:padding="10dp"
                                 android:text="Age Not Specified"
                                 android:textSize="12sp" />
 
@@ -614,7 +614,7 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/edt_text_border"
                                 android:fontFamily="@font/italic"
-                                android:padding="7dp"
+                                android:padding="10dp"
                                 android:textSize="12sp" />
 
                         </LinearLayout>
@@ -969,8 +969,6 @@
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
-
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1142,7 +1140,6 @@
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1171,7 +1168,6 @@
                             android:text="Horoscope Details"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
-
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -1324,7 +1320,6 @@
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1375,7 +1370,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_call_24" />
+                                    app:srcCompat="@drawable/ic_baseline_work_24" />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1426,7 +1421,8 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_baseline_corporate_fare_24" />
+                                />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1479,7 +1475,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_baseline_currency_rupee_24" />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1531,7 +1527,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_baseline_import_contacts_24" />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1582,7 +1578,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_internet_education_graduation_svgrepo_com" />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1633,7 +1629,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_college" />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1667,8 +1663,6 @@
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
-
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -2208,6 +2202,100 @@
 
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/cvClear5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llCityMatch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/italic"
+                                    android:text="City Living In"
+                                    android:textSize="14sp"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/tvDetailcityMatch"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/italic"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_check" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear13"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -2897,101 +2985,7 @@
                         </LinearLayout>
 
 
-                        <LinearLayout
-                            android:id="@+id/llCityMatch"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:orientation="horizontal">
 
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
-                                    android:text="City"
-                                    android:textSize="14sp"
-
-                                    />
-
-
-                                <TextView
-                                    android:id="@+id/tvDetailcityMatch"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
-                                    android:text=""
-                                    android:textColor="@color/black"
-                                    android:textSize="14sp" />
-                            </LinearLayout>
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/cvcheck13"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:visibility="gone"
-                                app:cardBackgroundColor="@color/white"
-                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                                app:strokeColor="@color/gray_dark"
-                                app:strokeWidth="1dp">
-
-                                <ImageView
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"
-                                    android:layout_gravity="center"
-                                    android:padding="5dp"
-                                    app:srcCompat="@drawable/ic_check" />
-                            </com.google.android.material.card.MaterialCardView>
-
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/cvDot13"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:visibility="gone"
-                                app:cardBackgroundColor="@color/white"
-                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                                app:strokeColor="@color/gray_dark"
-                                app:strokeWidth="1dp">
-
-                                <ImageView
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"
-                                    android:layout_gravity="center"
-                                    android:padding="5dp"
-                                    app:srcCompat="@drawable/ic_dots" />
-                            </com.google.android.material.card.MaterialCardView>
-
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/cvClear13"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:visibility="gone"
-                                app:cardBackgroundColor="@color/white"
-                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                                app:strokeColor="@color/gray_dark"
-                                app:strokeWidth="1dp">
-
-                                <ImageView
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"
-                                    android:layout_gravity="center"
-                                    android:padding="5dp"
-                                    app:srcCompat="@drawable/close" />
-                            </com.google.android.material.card.MaterialCardView>
-
-                        </LinearLayout>
 
 
                     </LinearLayout>

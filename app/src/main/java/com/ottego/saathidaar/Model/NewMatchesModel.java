@@ -11,6 +11,7 @@ public class NewMatchesModel {
     public String mage;
     public String gender;
     public String block_status;
+    public String city;
     public String premium_status;
     public String my_premium_status;
     public String profile_photo;

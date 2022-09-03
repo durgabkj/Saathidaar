@@ -61,24 +61,22 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         Log.e(" New Matches model", new Gson().toJson(item));
 
         sessionManager = new SessionManager(context);
-if(item!=null)
-{
-    holder.tvInvNewMatchName.setText(item.first_name + " " + Utils.nullToBlank(item.last_name).charAt(0));
+        if (item != null) {
+            holder.tvInvNewMatchName.setText(item.first_name + " " + Utils.nullToBlank(item.last_name).charAt(0));
 
-    if (item.mage.equalsIgnoreCase("null") && !item.mage.equalsIgnoreCase("")) {
-        holder.tvInvNewMatchAge.setText("Age-Not Specified");
-    }else
-    {
-        holder.tvInvNewMatchAge.setText(Utils.nullToBlank(item.mage) +"yrs");
-    }
+            if (item.mage.equalsIgnoreCase("null") && !item.mage.equalsIgnoreCase("")) {
+                holder.tvInvNewMatchAge.setText("Age-Not Specified");
+            } else {
+                holder.tvInvNewMatchAge.setText(Utils.nullToBlank(item.mage) + "yrs");
+            }
 
-    holder.tvInvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
-    holder.tvInvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
-    holder.tvInvNewMatchWorkAsAccept.setText(Utils.nullToBlank(item.country));
-    holder.tvInvitationAccetMessage.setText(Utils.nullToBlank(item.request_message));
-    holder.tvImageCountAccept.setText(Utils.nullToBlank(item.images_count));
+            holder.tvInvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
+            holder.tvInvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
+            holder.tvInvNewMatchWorkAsAccept.setText(Utils.nullToBlank(item.country));
+            holder.tvInvitationAccetMessage.setText(Utils.nullToBlank(item.request_message));
+            holder.tvImageCountAccept.setText(Utils.nullToBlank(item.images_count));
 
-}
+        }
         holder.llPrivatePhoto.setVisibility(View.GONE);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +101,7 @@ if(item!=null)
         holder.llDeleteAccet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.deleteRequest(context, item.member_id,clickListener);
+                Utils.deleteRequest(context, item.member_id, clickListener);
                 holder.llDeleteAccet.setVisibility(View.GONE);
                 holder.llDeletedAccept.setVisibility(View.VISIBLE);
             }
@@ -128,17 +126,17 @@ if(item!=null)
 //                .into(holder.ivProfileAcceptInvi);
 
 
-    if (item.photo_privacy.equalsIgnoreCase("1")) {
-        holder.llPhotoAccept.setEnabled(true);
-        //  holder.flPremiumAccept.setVisibility(View.GONE);
-        holder.llPremiumMsgAccept.setVisibility(View.GONE);
-        //  holder.tvLevelPremiumAccept.setVisibility(View.GONE);
+        if (item.photo_privacy.equalsIgnoreCase("1")) {
+            holder.llPhotoAccept.setEnabled(true);
+            //  holder.flPremiumAccept.setVisibility(View.GONE);
+            holder.llPremiumMsgAccept.setVisibility(View.GONE);
+            //  holder.tvLevelPremiumAccept.setVisibility(View.GONE);
 
-        Glide.with(context)
-                .load(Utils.imageUrl + item.profile_photo)
-                .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-                .into(holder.ivProfileAcceptInvi);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                    .into(holder.ivProfileAcceptInvi);
 
 //
 //    }
@@ -167,55 +165,53 @@ if(item!=null)
 //                .transform(new BlurTransformation(20, 8))
 //                .into(holder.ivProfileAcceptInvi);
 
-    } else if (item.photo_privacy.equalsIgnoreCase("3")) {
-        holder.llPhotoAccept.setEnabled(false);
-        //   holder.flPremiumAccept.setVisibility(View.VISIBLE);
-        holder.llPremiumMsgAccept.setVisibility(View.GONE);
-        holder.llPrivatePhoto.setVisibility(View.VISIBLE);
-        // holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
-        Glide.with(context)
-                .load(Utils.imageUrl + item.profile_photo)
-                .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                .transform(new BlurTransformation(20, 8))
-                .into(holder.ivProfileAcceptInvi);
+        } else if (item.photo_privacy.equalsIgnoreCase("3")) {
+            holder.llPhotoAccept.setEnabled(false);
+            //   holder.flPremiumAccept.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgAccept.setVisibility(View.GONE);
+            holder.llPrivatePhoto.setVisibility(View.VISIBLE);
+            // holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivProfileAcceptInvi);
 
 
+        } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
+            //  holder.flPremiumAccept.setVisibility(View.GONE);
+            holder.llPremiumMsgAccept.setVisibility(View.GONE);
+            holder.llPhotoAccept.setEnabled(true);
+            //  holder.tvLevelPremiumAccept.setVisibility(View.GONE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                    .into(holder.ivProfileAcceptInvi);
+        } else {
+            holder.llPhotoAccept.setEnabled(false);
+            //  holder.flPremiumAccept.setVisibility(View.VISIBLE);
+            holder.llPremiumMsgAccept.setVisibility(View.VISIBLE);
+            // holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.profile_photo)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivProfileAcceptInvi);
+        }
 
-    } else if (item.photo_privacy.equalsIgnoreCase(item.my_premium_status)) {
-        //  holder.flPremiumAccept.setVisibility(View.GONE);
-        holder.llPremiumMsgAccept.setVisibility(View.GONE);
-        holder.llPhotoAccept.setEnabled(true);
-        //  holder.tvLevelPremiumAccept.setVisibility(View.GONE);
-        Glide.with(context)
-                .load(Utils.imageUrl + item.profile_photo)
-                .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                .into(holder.ivProfileAcceptInvi);
-    } else {
-        holder.llPhotoAccept.setEnabled(false);
-        //  holder.flPremiumAccept.setVisibility(View.VISIBLE);
-        holder.llPremiumMsgAccept.setVisibility(View.VISIBLE);
-        // holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
-        Glide.with(context)
-                .load(Utils.imageUrl + item.profile_photo)
-                .transform(new BlurTransformation(20, 8))
-                .into(holder.ivProfileAcceptInvi);
-    }
+        if (item.premium_status.equalsIgnoreCase("1")) {
+            holder.flPremiumAccept.setVisibility(View.VISIBLE);
+            holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
 
-    if (item.premium_status.equalsIgnoreCase("1")) {
-        holder.flPremiumAccept.setVisibility(View.VISIBLE);
-        holder.tvLevelPremiumAccept.setVisibility(View.VISIBLE);
-
-    }
+        }
 
 
-    if (item.request_message != null && !item.request_message.isEmpty()) {
-        holder.tvInvitationAccetMessage.setText(item.request_message);
-        // holder.tvInvitationDateInbox.setText(item.request_status_date);
+        if (item.request_message != null && !item.request_message.isEmpty()) {
+            holder.tvInvitationAccetMessage.setText(item.request_message);
+            // holder.tvInvitationDateInbox.setText(item.request_status_date);
 
-    } else {
-        holder.llMessageAccept.setVisibility(View.GONE);
-    }
-
+        } else {
+            holder.llMessageAccept.setVisibility(View.GONE);
+        }
 
 
         holder.tvPremiumAcceptMatch.setOnClickListener(new View.OnClickListener() {
@@ -227,15 +223,13 @@ if(item!=null)
         });
 
 
-    //For free user...Apply Conditions
-
-        if(item.my_premium_status.equalsIgnoreCase("0"))
-        {
+        //For free user...Apply Conditions
+        if (item.my_premium_status.equalsIgnoreCase("0")) {
             holder.llDeleteAccet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Upgrade Your Profile To Decline Request", Toast.LENGTH_LONG).show();
-                    Intent intent=new Intent(view.getContext(),UpgradeOnButtonActivity.class);
+                    Toast.makeText(context, "Upgrade your profile to decline request", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
                     context.startActivity(intent);
                 }
             });
@@ -243,21 +237,17 @@ if(item!=null)
             holder.llBlockAccept.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Upgrade Your Profile To Add This Profile In BlockList", Toast.LENGTH_LONG).show();
-                    Intent intent=new Intent(view.getContext(),UpgradeOnButtonActivity.class);
+                    Toast.makeText(context, "Upgrade your profile to add this profile in blockList", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
                     context.startActivity(intent);
                 }
             });
         }
 
-
-
-
-
-}
-
-
-
+        if(item.request_sent_from.equals("1")){
+            holder.llDeleteAccet.setVisibility(View.GONE);
+        }
+    }
 
     @Override
     public int getItemCount() {
@@ -301,7 +291,6 @@ if(item!=null)
             llPremiumMsgAccept = itemView.findViewById(R.id.llPremiumMsgAccept);
             llPrivatePhoto=itemView.findViewById(R.id.llPrivateAcceptPhoto);
             tvLevelPremiumAccept = itemView.findViewById(R.id.tvLevelPremiumAccept);
-
 
         }
     }

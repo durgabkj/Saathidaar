@@ -73,6 +73,7 @@
                 android:layout_margin="4dp"
                 android:checkable="true"
                 android:elevation="10dp"
+                android:visibility="gone"
                 android:translationZ="10dp"
                 app:checkedIconEnabled="false"
                 style="@style/CustomChipChoiceStyle"

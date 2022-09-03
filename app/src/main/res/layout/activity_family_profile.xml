@@ -19,8 +19,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Family"
-                android:fontFamily="@font/italic"
+                android:text="Family Info"
+                android:fontFamily="@font/app_font"
                 android:textSize="18sp"
                 android:padding="10dp"
                 android:layout_gravity="center"/>
@@ -55,7 +55,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.8"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:layout_gravity="center"
                             android:text="Father's Status" />
 
@@ -73,7 +73,7 @@
                                 android:id="@+id/etFStatus"
                                 android:layout_width="0dp"
                                 android:layout_height="30dp"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:layout_weight="1"
                                 android:inputType="textCapWords"
                                 android:textColor="@color/black"
@@ -189,7 +189,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.8"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:layout_gravity="center"
                             android:text="Mother's Status" />
 
@@ -208,14 +208,14 @@
                                 android:id="@+id/etMStatus"
                                 android:layout_width="0dp"
                                 android:layout_height="30dp"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:layout_weight="1"
                                 android:textColor="@color/black"
                                 android:editable="false"
                                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                                 android:gravity="center_vertical"
                                 android:textSize="12sp"
-                                android:hint="Select Father Status"
+                                android:hint="Select Mother Status"
                                 android:layout_marginStart="8dp"
                                 android:background="@drawable/transparent_edittext_border"
                                 tools:ignore="Deprecated" />
@@ -318,7 +318,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.8"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:layout_gravity="center"
                             android:text="Family Location" />
 
@@ -327,7 +327,7 @@
                             android:layout_height="30dp"
                             android:layout_weight="1"
                             android:inputType="textCapWords"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:id="@+id/etAddUserFamilyLocation"
                             style="@style/PersonalDataTextView"
                             android:hint="Example,Mumbai,India"/>
@@ -346,6 +346,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.8"
+                            android:fontFamily="@font/app_font"
                             android:layout_gravity="center"
                             android:text="Native place" />
 
@@ -355,7 +356,7 @@
                             android:layout_weight="1"
                             android:id="@+id/etNativePalace"
                             android:inputType="textCapWords"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             style="@style/PersonalDataTextView"
                             android:hint="Enter native place"/>
 
@@ -374,7 +375,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.8"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:layout_gravity="start"
                             android:text="No. of Sibling" />
 
@@ -393,7 +394,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="No.of Brother (s)"
                                 android:layout_marginTop="10dp"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:layout_gravity="center"/>
 
                             <LinearLayout
@@ -426,8 +427,8 @@
                                         android:id="@+id/tvTodayMatchTeamName1"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="8dp"
-                                        android:fontFamily="@font/italic"
+                                        android:textSize="8sp"
+                                        android:fontFamily="@font/app_font"
                                         android:layout_gravity="center"
                                         android:text="Not Married"
 
@@ -473,8 +474,8 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="9sp"
-                                        android:fontFamily="@font/italic"
+                                        android:textSize="8sp"
+                                        android:fontFamily="@font/app_font"
                                         android:layout_gravity="center"
                                         android:text="Married"
                                         />
@@ -485,6 +486,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="No.of Sister (s)"
+                                android:fontFamily="@font/app_font"
                                 android:layout_marginTop="20dp"
                                 android:layout_gravity="center"/>
 
@@ -519,8 +521,8 @@
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center"
                                         android:text="Not Married"
-                                        android:fontFamily="@font/italic"
-                                        android:textSize="9sp"
+                                        android:fontFamily="@font/app_font"
+                                        android:textSize="8sp"
 
 
                                         />
@@ -566,8 +568,8 @@
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center"
                                         android:text="Married"
-                                        android:fontFamily="@font/italic"
-                                        android:textSize="9sp"
+                                        android:fontFamily="@font/app_font"
+                                        android:textSize="8sp"
 
 
                                         />
@@ -592,7 +594,7 @@
                         <TextView
                             android:id="@+id/tvft"
                             android:layout_width="0dp"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.8"
                             android:layout_gravity="center"
@@ -612,14 +614,14 @@
                                 android:id="@+id/etF_Type"
                                 android:layout_width="0dp"
                                 android:layout_height="30dp"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:layout_weight="1"
                                 android:textColor="@color/black"
                                 android:editable="false"
                                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                                 android:gravity="center_vertical"
                                 android:textSize="12sp"
-                                android:hint="Select Father Status"
+                                android:hint="Select Family Type"
                                 android:layout_marginStart="8dp"
                                 android:background="@drawable/transparent_edittext_border"
                                 tools:ignore="Deprecated" />
@@ -644,7 +646,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.8"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:layout_gravity="center"
                             android:text="Family Affluence" />
 
@@ -663,14 +665,14 @@
                                 android:id="@+id/etF_Affluence"
                                 android:layout_width="0dp"
                                 android:layout_height="30dp"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:layout_weight="1"
                                 android:textColor="@color/black"
                                 android:editable="false"
                                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                                 android:gravity="center_vertical"
                                 android:textSize="12sp"
-                                android:hint="Select Father Status"
+                                android:hint="Select Family Affluence"
                                 android:layout_marginStart="8dp"
                                 android:background="@drawable/transparent_edittext_border"
                                 tools:ignore="Deprecated"/>
@@ -688,6 +690,7 @@
                     android:background="@drawable/button_hover"
                    android:layout_marginTop="20dp"
                         android:text="Update"
+                        android:gravity="center_horizontal"
                         android:padding="10dp"
                         android:textStyle="bold"
                         android:fontFamily="@font/pt_serif_bold"

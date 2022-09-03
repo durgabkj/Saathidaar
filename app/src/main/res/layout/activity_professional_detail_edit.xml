@@ -23,7 +23,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/italic"
                 android:padding="10dp"
-                android:text="Education &amp; career"
+                android:text="Professional Info"
                 android:textSize="18sp" />
 
             <com.google.android.material.card.MaterialCardView
@@ -56,16 +56,43 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
                             android:fontFamily="@font/italic"
-                            android:text="Higher Education" />
+                            android:text="PG Education" />
 
                         <EditText
-                            android:id="@+id/etAddUserEducation"
+                            android:id="@+id/etAddUserPGEducation"
                             style="@style/PersonalDataTextView"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:capitalize="words"
-                            android:hint="Higher Education"
+                            android:hint="PG Education"
+                            android:padding="8dp"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.8"
+                            android:fontFamily="@font/italic"
+                            android:text="UG Education" />
+
+                        <EditText
+                            android:id="@+id/etAddUserUGEducation"
+                            style="@style/PersonalDataTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:capitalize="words"
+                            android:hint="UG Education"
                             android:padding="8dp"
                             android:textColor="@color/black" />
 
@@ -204,7 +231,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
                             android:fontFamily="@font/italic"
-                            android:text="WorkingAs" />
+                            android:text="Working As" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -237,251 +264,6 @@
 
                     </LinearLayout>
 
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/italic"
-                        android:text="@string/location"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="16dp"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.8"
-                            android:fontFamily="@font/italic"
-                            android:text="Country Living In" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_edit_text"
-                            android:orientation="horizontal"
-                            tools:ignore="UselessParent">
-
-                            <TextView
-                                android:id="@+id/etCountry"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_weight="1"
-                                android:capitalize="words"
-                                android:background="@drawable/transparent_edittext_border"
-                                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                                android:fontFamily="@font/italic"
-                                android:gravity="center_vertical"
-                                android:hint="Country"
-                                android:textColor="@color/black" />
-
-
-                            <!--                            <Spinner-->
-                            <!--                                android:id="@+id/etAddUserCurrentResidence"-->
-                            <!--                                android:layout_width="0dp"-->
-                            <!--                                android:layout_weight=".2"-->
-                            <!--                                android:layout_height="30dp"-->
-                            <!--                                android:clickable="true"-->
-                            <!--                                android:focusable="true"-->
-                            <!--                                android:focusableInTouchMode="false"-->
-                            <!--                                android:importantForAutofill="no"-->
-                            <!--                                android:maxLines="1"-->
-                            <!--                                app:showSearch="true"-->
-                            <!--                                app:sort="true" />-->
-
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.8"
-                            android:fontFamily="@font/italic"
-                            android:text="State Live In" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_edit_text"
-                            android:orientation="horizontal"
-                            tools:ignore="UselessParent">
-
-                            <TextView
-                                android:id="@+id/etState"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_weight="1"
-                                android:capitalize="words"
-                                android:background="@drawable/transparent_edittext_border"
-                                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                                android:fontFamily="@font/italic"
-                                android:gravity="center_vertical"
-                                android:hint="State"
-                                android:textColor="@color/black"
-                                 />
-
-                            <!--                            <Spinner-->
-                            <!--                                android:id="@+id/etAddUserStateOfResidence"-->
-                            <!--                                android:layout_width="0dp"-->
-                            <!--                                android:layout_height="30dp"-->
-                            <!--                                android:layout_weight=".2"-->
-                            <!--                                android:clickable="true"-->
-                            <!--                                android:focusable="true"-->
-                            <!--                                android:focusableInTouchMode="false"-->
-                            <!--                                android:importantForAutofill="no"-->
-                            <!--                                android:maxLines="1"-->
-                            <!--                                app:showSearch="true"-->
-                            <!--                                app:sort="true" />-->
-
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.8"
-                            android:fontFamily="@font/italic"
-                            android:text="City Live In(Nearest)" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_edit_text"
-                            android:fontFamily="@font/italic"
-                            android:orientation="horizontal"
-                            tools:ignore="UselessParent">
-
-                            <TextView
-                                android:id="@+id/etCity"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_weight="1"
-                                android:capitalize="words"
-                                android:background="@drawable/transparent_edittext_border"
-                                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                                android:fontFamily="@font/italic"
-                                android:gravity="center_vertical"
-                                android:hint="City"
-                                android:textColor="@color/black" />
-
-                            <!--                            <Spinner-->
-                            <!--                                android:id="@+id/etAddUserResidenceStatus"-->
-                            <!--                                android:layout_width="0dp"-->
-                            <!--                                android:layout_height="30dp"-->
-                            <!--                                android:clickable="true"-->
-                            <!--                                android:layout_weight=".2"-->
-                            <!--                                android:focusable="true"-->
-                            <!--                                android:focusableInTouchMode="false"-->
-                            <!--                                android:importantForAutofill="no"-->
-                            <!--                                android:maxLines="1"-->
-                            <!--                                app:showSearch="true"-->
-                            <!--                                app:sort="true" />-->
-
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.8"
-                            android:fontFamily="@font/italic"
-                            android:text="Co-origin " />
-
-                        <EditText
-                            android:id="@+id/etAddUserCorigin"
-                            style="@style/PersonalDataTextView"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:padding="8dp"
-                            android:capitalize="words"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/italic"
-                            android:hint=" Enter Your Co-origin"
-                            android:textColor="@color/black" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.8"
-                            android:fontFamily="@font/italic"
-                            android:text="Zip/PinCode" />
-
-                        <EditText
-                            android:id="@+id/etAddUserZipPinCode"
-                            style="@style/PersonalDataTextView"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:padding="8dp"
-                            android:maxLength="6"
-                            android:layout_weight="1"
-                            android:capitalize="words"
-                            android:hint="Enter Pin Code"
-                            android:inputType="number"
-                            android:textColor="@color/black" />
-
-                    </LinearLayout>
 
 
                     <TextView

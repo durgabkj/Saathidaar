@@ -467,8 +467,6 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
 
         return true;
     }
-
-
     private void submitForm() {
         Map<String, String> params = new HashMap<String, String>();
         params.put("date_of_birth", Dob);
@@ -656,7 +654,6 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
 
         // listView.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) context);
     }
-
     private void communityList() {
         b.tvUserCommunity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -721,8 +718,6 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
         });
 
     }
-
-
     private void userHeight() {
         final int[] checkedItem = {-1};
         b.etHeight.setOnClickListener(new View.OnClickListener() {
@@ -784,7 +779,6 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
             }
         });
     }
-
     private void maritalStatus() {
 
         final int[] checkedItem = {-1};

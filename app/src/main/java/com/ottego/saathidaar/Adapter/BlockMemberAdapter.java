@@ -234,7 +234,7 @@ public class BlockMemberAdapter extends RecyclerView.Adapter<BlockMemberAdapter.
                 holder.ivUnblock.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(context, "Upgrade your Profile To Unblock This Profile", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Upgrade your profile to unblock this profile", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
                         context.startActivity(intent);
                     }

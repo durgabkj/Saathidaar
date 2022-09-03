@@ -254,7 +254,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         holder.llShortListRemove1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Upgrade Your Profile To Add This Profile In ShortList", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Upgrade your profile to add this profile in shortList", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
                 context.startActivity(intent);
             }
@@ -263,7 +263,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         holder.llBlockShortList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Upgrade your profile To Add This Profile In BlockList", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Upgrade your profile to add this profile in blockList", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
                 context.startActivity(intent);
             }
@@ -272,7 +272,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         holder.ivLikeShortList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Upgrade To Premium If You Want To Connect", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Upgrade to premium if you want to connect", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
                 context.startActivity(intent);
             }

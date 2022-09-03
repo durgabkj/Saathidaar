@@ -79,14 +79,8 @@ public class PartnerPreferenceFragment extends Fragment {
     public String stateUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/state";
     public String cityUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/all/city";
 public String updatePreference=Utils.memberUrl+"preference/update/";
-    // Initialize variables
-    Spinner spMin, spMax, spFromHeight, spToHeight, UserAnnualIncome, tvEditDietPreference, tvEditProfile;
 
-    ArrayList<String> AgeList = new ArrayList<>();
-    ArrayList<String> minList = new ArrayList<>();
-    ArrayList<String> maxList = new ArrayList<>();
-    ArrayAdapter<String> minAdapter, maxAdapter;
-PartnerPreferenceModel model;
+    PartnerPreferenceModel model;
 
     String fromAge = "";
     String toAge = "";
@@ -196,11 +190,19 @@ PartnerPreferenceModel model;
         dietList();
         profileCreatedBy();
         listener();
-        getData();
 
+        if(sessionManager.getUserGender().equalsIgnoreCase("male"))
+        {
+            etProfileSearch.setHint("E.g:-FSD001");
+        }
+        else {
+            etProfileSearch.setHint("E.g:-MSD001");
+        }
+
+
+        getData();
         return view;
     }
-
 
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -327,7 +329,6 @@ PartnerPreferenceModel model;
             }
         });
             }
-
     private void incomeSelection() {
         final int[] checkedItem = {-1};
         etIncomePartnerPreference.setOnClickListener(new View.OnClickListener() {
@@ -453,7 +454,6 @@ PartnerPreferenceModel model;
             }
         });
     }
-
     private void dietList() {
         final int[] checkedItem = {-1};
         String[] dietGroup = getResources().getStringArray(R.array.DietGroup);
@@ -526,89 +526,96 @@ PartnerPreferenceModel model;
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
                 Button buttonbackground1 = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-                buttonbackground1.setTextColor(R.color.colorPrimary);
+                buttonbackground1.setBackgroundColor(Color.BLACK);
                 Button buttonbackground3 = alertDialog.getButton(DialogInterface.BUTTON_NEUTRAL);
-                buttonbackground3.setTextColor(R.color.colorPrimary);
+                buttonbackground3.setBackgroundColor(Color.BLACK);
 
 
             }
 
         });
     }
-
     private void listener() {
-        multi_SelectionCountry.addTextChangedListener(new TextWatcher() {
+        tvPartnerPreferencesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(multi_SelectionCountry.getText().toString().trim().contains("Other"))
-                {
-                    etPreferenceCountry.setVisibility(View.VISIBLE);
-                }else
-                {
-                    etPreferenceCountry.setVisibility(View.GONE);
+            public void onClick(View v) {
+                if (checkFormPreference()) {
+                    submitFormPreference();
+                    hideKeyboard(v);
                 }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-
-        multi_SelectionState.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(multi_SelectionState.getText().toString().trim().contains("Other"))
-                {
-                    etPreferenceState.setVisibility(View.VISIBLE);
-                }else
-                {
-                    etPreferenceState.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
 
             }
         });
 
 
 
+//        multi_SelectionCountry.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                if(multi_SelectionCountry.getText().toString().trim().contains("Other"))
+//                {
+//                    etPreferenceCountry.setVisibility(View.VISIBLE);
+//                }else
+//                {
+//                    etPreferenceCountry.setVisibility(View.GONE);
+//                }
+//            }
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//            }
+//        });
 
-        tvMultipleCity.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
+//        multi_SelectionState.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                if(multi_SelectionState.getText().toString().trim().contains("Other"))
+//                {
+//                    etPreferenceState.setVisibility(View.VISIBLE);
+//                }else
+//                {
+//                    etPreferenceState.setVisibility(View.GONE);
+//                }
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//            }
+//        });
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(tvMultipleCity.getText().toString().trim().contains("Other"))
-                {
-                    etPreferenceCity.setVisibility(View.VISIBLE);
-                }else
-                {
-                    etPreferenceCity.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+//        tvMultipleCity.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                if(tvMultipleCity.getText().toString().trim().contains("Other"))
+//                {
+//                    etPreferenceCity.setVisibility(View.VISIBLE);
+//                }else
+//                {
+//                    etPreferenceCity.setVisibility(View.GONE);
+//                }
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//            }
+//        });
         etProfileSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -626,6 +633,7 @@ PartnerPreferenceModel model;
                     tvSearchButton.setVisibility(View.VISIBLE);
                     tvPartnerPreferencesBtn.setVisibility(View.GONE);
                 }
+
             }
 
             @Override
@@ -664,25 +672,36 @@ PartnerPreferenceModel model;
                 }
             }
         });
-
-
-
-        tvPartnerPreferencesBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Animation bounce = AnimationUtils.loadAnimation(context, R.anim.bounce);
-                tvPartnerPreferencesBtn.startAnimation(bounce);
-                submitForm();
-                hideKeyboard(view);
-            }
-        });
     }
+    private boolean checkFormPreference() {
+        fromAge = etFromAgePartnerPreference.getText().toString().trim();
+        toAge = etToAgePartnerPreference.getText().toString().trim();
+        fromHeight = etfromHeightPartnerPreference.getText().toString().trim();
+        toHeight = etToHeightPartnerPreference.getText().toString().trim();
+        maritalStatus = tvMultipleMaritalStatus.getText().toString().trim();
+        motherTongue = multi_SelectionMotherTongue.getText().toString().trim();
+        religion = tvMultipleReligion.getText().toString().trim();
+        cast = tvMultipleCast.getText().toString().trim();
 
+        qualification = multi_SelectionQualification.getText().toString().trim();
+        workingWith = multi_SelectionWorkingWith.getText().toString().trim();
+        professionalArea = multi_SelectionProfessionArea.getText().toString().trim();
+        createdBy = etProfilePreference.getText().toString().trim();
+        String diet1 = etDietPreference.getText().toString().trim();
+        diet= diet1.replace(",", "");
+
+        income=etIncomePartnerPreference.getText().toString().toString();
+            country = multi_SelectionCountry.getText().toString().trim();
+            state = multi_SelectionState.getText().toString().trim();
+            city=tvMultipleCity.getText().toString().toString();
+
+
+      return true;
+    }
     private boolean checkForm() {
         id=etProfileSearch.getText().toString().trim();
-
         if (id.isEmpty()) {
-            etProfileSearch.setError("Please enter Email");
+            etProfileSearch.setError("Please enter email");
             etProfileSearch.setFocusableInTouchMode(true);
             etProfileSearch.requestFocus();
             return false;
@@ -721,13 +740,12 @@ PartnerPreferenceModel model;
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
     }
-
     public void successDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View layout_dialog = LayoutInflater.from(context).inflate(R.layout.alert_sucess_dialog, null);
         builder.setView(layout_dialog);
 
-        AppCompatButton btnokSuccess = layout_dialog.findViewById(R.id.btnokSuccess);
+        TextView btnokSuccess = layout_dialog.findViewById(R.id.btnokSuccess);
         // show dialog
 
 
@@ -747,47 +765,7 @@ PartnerPreferenceModel model;
             }
         });
     }
-
-    private void submitForm() {
-        fromAge = etFromAgePartnerPreference.getText().toString().trim();
-        toAge = etToAgePartnerPreference.getText().toString().trim();
-        fromHeight = etfromHeightPartnerPreference.getText().toString().trim();
-        toHeight = etToHeightPartnerPreference.getText().toString().trim();
-        maritalStatus = tvMultipleMaritalStatus.getText().toString().trim();
-        motherTongue = multi_SelectionMotherTongue.getText().toString().trim();
-        religion = tvMultipleReligion.getText().toString().trim();
-        cast = tvMultipleCast.getText().toString().trim();
-
-        if(multi_SelectionCountry.getText().toString().trim().contains("Other"))
-        {
-            country = etPreferenceCountry.getText().toString().trim();
-        }else{
-            country = multi_SelectionCountry.getText().toString().trim();
-        }
-
-
-        if(multi_SelectionState.getText().toString().trim().contains("Other"))
-        {
-            state = etPreferenceState.getText().toString().trim();
-        }else{
-            state = multi_SelectionState.getText().toString().trim();
-        }
-
-        if(tvMultipleCity.getText().toString().trim().contains("Other"))
-        {
-            city = etPreferenceCity.getText().toString().trim();
-        }else{
-            city=tvMultipleCity.getText().toString().toString();
-        }
-
-        qualification = multi_SelectionQualification.getText().toString().trim();
-        workingWith = multi_SelectionWorkingWith.getText().toString().trim();
-        professionalArea = multi_SelectionProfessionArea.getText().toString().trim();
-        createdBy = etProfilePreference.getText().toString().trim();
-        String diet1 = etDietPreference.getText().toString().trim();
-      diet= diet1.replace(",", "");
-
-        income=etIncomePartnerPreference.getText().toString().toString();
+    private void submitFormPreference() {
         Map<String, String> params = new HashMap<String, String>();
         params.put("partner_from_age", fromAge);
         params.put("partner_to_age", toAge);
@@ -858,7 +836,6 @@ PartnerPreferenceModel model;
                     model = gson.fromJson(String.valueOf(response), PartnerPreferenceModel.class);
                     setData();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -901,12 +878,15 @@ PartnerPreferenceModel model;
                 mrbDontNoManglik.setChecked(true);
             }
         }
+
     private void multipleCountrySelectionCheckBox() {
         multi_SelectionCountry.setItems(getCountryItems());
         multi_SelectionCountry.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
             @Override
             public void onItemSelected(View view, boolean isSelected, int position) {
-//                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
+             //  Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
+
+                country=multi_SelectionCountry.getText().toString().trim();
             }
 
             @Override
@@ -951,7 +931,6 @@ PartnerPreferenceModel model;
 //            alphabetsList.add(Character.toString(i));
         return countryList;
     }
-
     private void multipleStateSelectionCheckBox() {
         multi_SelectionState.setItems(getStateItems());
         multi_SelectionState.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
@@ -1003,7 +982,6 @@ PartnerPreferenceModel model;
 //            alphabetsList.add(Character.toString(i));
         return stateList;
     }
-
     private void multipleCityCheckBox() {
         tvMultipleCity.setItems(getCityItems());
         tvMultipleCity.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {

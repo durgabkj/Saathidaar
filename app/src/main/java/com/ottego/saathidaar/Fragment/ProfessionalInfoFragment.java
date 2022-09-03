@@ -78,15 +78,7 @@ public class ProfessionalInfoFragment extends Fragment {
         listener();
         getMemberData();
 
-        if(sessionManager.getUserGender().equalsIgnoreCase("male"))
-        {
-            b.tvLocatonOfPartner.setText("Location of Bride");
-            b.tvLocatonOfPartner.setPaintFlags( b.tvLocatonOfPartner.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        }else
-        {
-            b.tvLocatonOfPartner.setText("Location of Groom");
-            b.tvLocatonOfPartner.setPaintFlags( b.tvLocatonOfPartner.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        }
+
 
         return b.getRoot();
     }
@@ -130,10 +122,7 @@ public class ProfessionalInfoFragment extends Fragment {
             b.tvUserIncome.setText(model.annual_income);
             b.tvUserWorkingWitht.setText(model.working_with);
             b.tvWorkingAs.setText(model.working_as);
-            b.tvUserCurrentResi.setText(model.country_name);
-            b.tvUserStateOfResidence.setText(model.state);
-            b.tvUserResidenceStatus.setText(model.city);
-            b.tvUserPinCode.setText(model.pincode);
+            b.tvUserHigherEduUG.setText(model.ug_education);
         }
     }
 

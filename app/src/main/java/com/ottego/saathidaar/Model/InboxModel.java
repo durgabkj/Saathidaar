@@ -8,6 +8,7 @@ public class InboxModel {
     public String request_status;
     public String mage;
     public String block_status;
+    public String request_sent_from;
     public String last_name;
     public String images_count;
     public String first_name;

@@ -3,10 +3,18 @@ package com.ottego.saathidaar.Model;
 import java.util.List;
 
 public class MemberProfileModel {
+
+
+    public String country_of_birth;
+    public String hours;
+    public String minutes;
+    public String time;
+
     public String height;
     public String weight;
     public String lifestyles;
     public String about_ourself;
+    public String ug_education;
     public String known_languages;
     public String education;
     public String job;

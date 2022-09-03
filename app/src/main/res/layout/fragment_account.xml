@@ -65,7 +65,7 @@
                 android:translationZ="10dp"
                 style="@style/CustomChipChoiceStyle"
                 android:padding="12dp"
-                android:text="Privacy Option" />
+                android:text="Privacy Options" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipHideUnHide"
@@ -78,7 +78,7 @@
                 app:checkedIconEnabled="false"
                 style="@style/CustomChipChoiceStyle"
                 android:padding="12dp"
-                android:text="Hide Un-Hide Profile" />
+                android:text="Hide / Unhide Profile" />
 
 
 

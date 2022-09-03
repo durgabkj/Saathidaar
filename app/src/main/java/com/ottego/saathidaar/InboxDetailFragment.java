@@ -130,12 +130,20 @@ public class InboxDetailFragment extends Fragment {
     }
 
     private void setHoroData() {
-        if ((horoscopeModel.hours != null && !horoscopeModel.hours.equals("")) && (horoscopeModel.minutes != null && !horoscopeModel.minutes.equals("")) && (horoscopeModel.time != null && !horoscopeModel.time.equals("")) && (horoscopeModel.country_of_birth != null || !horoscopeModel.country_of_birth.equals("")) && (horoscopeModel.city_of_birth != null || !horoscopeModel.city_of_birth.equals(""))) {
-            b.tvInvboxDetailPlaceOfBirth.setText(horoscopeModel.country_of_birth + " ," + horoscopeModel.city_of_birth );
-            b.tvInboxDetailTime.setText(horoscopeModel.hours + " :" +horoscopeModel.minutes + ","+horoscopeModel.time+","+ horoscopeModel.time_status);
-        }
+        if(horoscopeModel!=null){
+            if ((horoscopeModel.hours != null && !horoscopeModel.hours.equals("")) && (horoscopeModel.minutes != null && !horoscopeModel.minutes.equals("")) && (horoscopeModel.time != null && !horoscopeModel.time.equals("")) && (horoscopeModel.country_of_birth != null || !horoscopeModel.country_of_birth.equals("")) && (horoscopeModel.city_of_birth != null || !horoscopeModel.city_of_birth.equals(""))) {
+                b.tvInvboxDetailPlaceOfBirth.setText(horoscopeModel.country_of_birth + " ," + horoscopeModel.city_of_birth);
+                b.tvInboxDetailTime.setText(horoscopeModel.hours + " :" + horoscopeModel.minutes + "," + horoscopeModel.time + "," + horoscopeModel.time_status);
 
-        b.tvInboxDetailManglik.setText(horoscopeModel.manglik);
+            }
+
+            if (!horoscopeModel.manglik.equalsIgnoreCase("") && !horoscopeModel.manglik.equalsIgnoreCase(null) && !horoscopeModel.manglik.isEmpty()) {
+
+                b.tvInboxDetailManglik.setText(horoscopeModel.manglik);
+            } else {
+                b.tvInboxDetailManglik.setText("Not Specified");
+            }
+        }
     }
 
     private void getMemberPreferenceData() {
@@ -174,8 +182,6 @@ public class InboxDetailFragment extends Fragment {
 
     private void setMemberPrefData() {
         if (memberPreferenceModel != null) {
-
-
 
             b.matchPreferenceCount.setText("You Match " + Utils.nullToBlank(memberPreferenceModel.match_count) + "/" + Utils.nullToBlank(memberPreferenceModel.app_total_preference) + " of " + " " + Utils.nullToBlank(memberPreferenceModel.gender_preference));
             b.tvDetailAgeMatch.setText(Utils.nullToBlank(memberPreferenceModel.partner_age));
@@ -528,60 +534,105 @@ public class InboxDetailFragment extends Fragment {
             b.ivInboxDot.setVisibility(View.VISIBLE);
             b.ivInboxDot2.setVisibility(View.VISIBLE);
 
-            b.tvNewMatchName.setText(Utils.nullToBlank(model.first_name) + " " + Utils.nullToBlank(model.last_name).charAt(0));
+            b.tvNewMatchName.setText(Utils.nullToBlank((model.first_name).substring(0, 1).toUpperCase() + model.first_name.substring(1)) + " " + Utils.nullToBlank(model.last_name).substring(0, 1).toUpperCase().charAt(0));
 
-            if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
+            if ( model.age!=null && !model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty()) {
                 b.tvNewMatchAge.setText(Utils.nullToBlank(model.age) + " " + "yrs");
             } else {
-               b.tvNewMatchAge.setText("Not Specify");
+                b.tvNewMatchAge.setText("Age:-Not Specified");
             }
 
+            if ( model.city!=null && !model.city.equalsIgnoreCase("") && !model.city.equalsIgnoreCase(null) && !model.city.isEmpty()) {
+                b.tvMatchCityDetail.setText(Utils.nullToBlank(model.city));
+            } else {
+                b.tvMatchCityDetail.setText("Not Specified");
+            }
+
+
             b.tvNewMatchHeight.setText(Utils.nullToBlank(model.height));
-            b.tvMatchCityDetail.setText(Utils.nullToBlank(model.city));
+
             b.tvNewMatchWorkAsDetail.setText(Utils.nullToBlank(model.working_as));
-            b.tvNameUserDetails.setText("About" + "  " + Utils.nullToBlank(model.first_name)+" "+Utils.nullToBlank(model.last_name));
+            b.tvNameUserDetails.setText("About" + "  " + Utils.nullToBlank(model.first_name) + " " + Utils.nullToBlank(model.last_name));
             b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
             b.tvNameUserFamilyDetails.setText("About " + " Family");
             b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails));
             b.tvCreatedBy.setText("Profile Create by:-" + " " + Utils.nullToBlank(model.profilecreatedby));
             b.tvProfileID.setText("Profile ID:-" + " " + Utils.nullToBlank(model.profile_id));
 
-          //  b.tvNewMatchName.setText(Utils.nullToBlank(model.first_name).toUpperCase() + " " + Utils.nullToBlank(model.last_name).toUpperCase().charAt(0));
-
-            if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty() ) {
-
-                b.tvDetailAge.setText(new StringBuilder().append("Age:-").append(Utils.nullToBlank(model.age)).append("yrs old").toString());
-            } else {
-                b.tvDetailAge.setText("Age-Not Specified");
-            }
-
-
-
             b.tvDetailHeight.setText("Height:- " + Utils.nullToBlank(model.height));
 
-            if (!model.date_of_birth.equalsIgnoreCase("") && !model.date_of_birth.equalsIgnoreCase(null) && !model.date_of_birth.isEmpty() ) {
+            if ( model.date_of_birth!=null && !model.date_of_birth.equalsIgnoreCase("") && !model.date_of_birth.equalsIgnoreCase(null) && !model.date_of_birth.isEmpty()) {
 
                 b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
             } else {
-                b.tvDetailDob.setText("Not Specified");
+                b.tvDetailDob.setText("DOB-Not Specified");
             }
 
 
-            b.tvDetailMaritalS.setText(Utils.nullToBlank(model.marital_status));
-            b.tvDetailLiveIn.setText(Utils.nullToBlank(model.city) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.country_name));
+            if ( model.marital_status!=null && !model.marital_status.equalsIgnoreCase("") && !model.marital_status.equalsIgnoreCase(null) && !model.marital_status.isEmpty()) {
+                b.tvDetailMaritalS.setText(Utils.nullToBlank(model.marital_status));
+            } else {
+                b.tvDetailMaritalS.setText("Not Specified");
+            }
 
+            b.tvDetailLiveIn.setText(Utils.nullToBlank(model.city) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.country_name));
             b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + " " + Utils.nullToBlank(model.mother_tounge));
-            b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + "  " + Utils.nullToBlank(model.sub_caste_name));
-            b.tvDetailDiet.setText(Utils.nullToBlank(model.lifestyles));
-            b.tvDetailProfession.setText(Utils.nullToBlank(model.working_as));
-            b.tvDetailCompanyName.setText(Utils.nullToBlank(model.working_with));
-            b.tvDetailAnnualIncome.setText(Utils.nullToBlank(model.annual_income));
-            b.tvDetailEducationField.setText(Utils.nullToBlank(model.education));
-            b.tvDetailCollege.setText(Utils.nullToBlank(model.college_attended));
+
+
+            if (model.caste_name!=null &&!model.caste_name.equalsIgnoreCase("") && !model.caste_name.equalsIgnoreCase(null) && !model.caste_name.isEmpty()) {
+                b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + " " + Utils.nullToBlank(model.sub_caste_name));
+            } else {
+                b.tvDetailCommunity.setText("Not Specified");
+            }
+
+
+            // b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + " " + Utils.nullToBlank(model.sub_caste_name));
+
+            if (model.lifestyles!=null && !model.lifestyles.equalsIgnoreCase("") && !model.lifestyles.equalsIgnoreCase(null) && !model.lifestyles.isEmpty()) {
+                b.tvDetailDiet.setText(Utils.nullToBlank(model.lifestyles));
+            } else {
+                b.tvDetailDiet.setText("Not Specified");
+            }
+
+
+            if (model.working_as!=null && !model.working_as.equalsIgnoreCase("") && !model.working_as.equalsIgnoreCase(null) && !model.working_as.isEmpty()) {
+                b.tvDetailProfession.setText(Utils.nullToBlank(model.working_as));
+            } else {
+                b.tvDetailProfession.setText("Not Specified");
+            }
+
+            if ( model.working_with!=null && !model.working_with.equalsIgnoreCase("") && !model.working_with.equalsIgnoreCase(null) && !model.working_with.isEmpty()) {
+                b.tvDetailCompanyName.setText(Utils.nullToBlank(model.working_with));
+            } else {
+                b.tvDetailCompanyName.setText("Not Specified");
+            }
+
+            if ( model.annual_income!=null && !model.annual_income.equalsIgnoreCase("") && !model.annual_income.equalsIgnoreCase(null) && !model.annual_income.isEmpty()) {
+                b.tvDetailAnnualIncome.setText(Utils.nullToBlank(model.annual_income));
+            } else {
+                b.tvDetailAnnualIncome.setText("Not Specified");
+            }
+
+            if ( model.education!=null && !model.education.equalsIgnoreCase("") && !model.education.equalsIgnoreCase(null) && !model.education.isEmpty()) {
+                b.tvDetailEducationField.setText(Utils.nullToBlank(model.education));
+            } else {
+                b.tvDetailEducationField.setText("Not Specified");
+            }
+
+            if ( model.college_attended!=null && !model.college_attended.equalsIgnoreCase("") && !model.college_attended.equalsIgnoreCase(null) && !model.college_attended.isEmpty()) {
+                b.tvDetailCollege.setText(Utils.nullToBlank(model.college_attended));
+            } else {
+                b.tvDetailCollege.setText("Not Specified");
+            }
+
+            if ( model.highest_qualification!=null && !model.highest_qualification.equalsIgnoreCase("") && !model.highest_qualification.equalsIgnoreCase(null) && !model.highest_qualification.isEmpty()) {
+                b.tvDetailHQualification.setText(Utils.nullToBlank(model.highest_qualification));
+            } else {
+                b.tvDetailHQualification.setText("Not Specified");
+            }
             b.tvDetailEmailID.setText(Utils.nullToBlank(model.email_id));
             b.tvDetailCall.setText(Utils.nullToBlank(model.contact_number));
             b.tvImageCountInbox.setText(Utils.nullToBlank(model.images_count));
-            b.tvDetailHQualification.setText(Utils.nullToBlank(model.highest_qualification));
 
             if (model.my_profile_photo != null && !model.my_profile_photo.isEmpty()) {
                 Glide.with(context)

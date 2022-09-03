@@ -80,10 +80,10 @@ public class HomeFragment extends Fragment {
                         break;
                     }
 
-                    case R.id.chipHoroscope: {
-                        fragment = HoroscopeFragment.newInstance("", "");
-                        break;
-                    }
+//                    case R.id.chipHoroscope: {
+//                        fragment = HoroscopeFragment.newInstance("", "");
+//                        break;
+//                    }
                     default: {
                         fragment = MyProfileFragment.newInstance("", "");
                         break;

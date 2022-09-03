@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="0.8"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:text="Country living in"
                     android:textColor="@color/white" />
 
@@ -67,7 +67,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/transparent_edittext_border"
                         android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:gravity="center_vertical"
                         android:hint="Select Your Country"
                         android:padding="10dp"
@@ -99,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:text="Marital Status"
                 android:textColor="@color/white" />
 
@@ -122,7 +122,7 @@
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                     android:editable="true"
                     android:enabled="true"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:gravity="center_vertical"
                     android:hint="Select Marital Status"
 
@@ -138,7 +138,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:text="Date Of Birth"
 
                 android:textColor="@color/white"
@@ -171,7 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:text="Height"
                 android:textColor="@color/white" />
 
@@ -194,7 +194,7 @@
                     android:background="@drawable/transparent_edittext_border"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                     android:editable="true"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:gravity="center_vertical"
                     android:hint="Select Your Height"
                     android:padding="10dp"
@@ -210,7 +210,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:text="Religion"
                 android:textColor="@color/white"
 
@@ -230,7 +230,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/transparent_edittext_border"
                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:gravity="center_vertical"
                 android:hint="Select Your Religion"
                 android:padding="10dp"
@@ -242,7 +242,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:text="Diet"
                 android:textColor="@color/white" />
 
@@ -265,7 +265,7 @@
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                     android:editable="false"
                     android:enabled="true"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:gravity="center_vertical"
                     android:hint="Select Your Diet"
                     android:padding="10dp"
@@ -332,7 +332,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                android:fontFamily="@font/pt_serif_bold"
+                android:fontFamily="@font/app_font"
                 android:text="Save"
                 android:textColor="@color/colorPrimary" />
 

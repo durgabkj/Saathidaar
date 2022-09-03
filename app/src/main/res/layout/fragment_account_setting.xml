@@ -138,8 +138,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:visibility="gone"
                     android:layout_marginBottom="10dp"
+                    android:visibility="gone"
                     android:layout_gravity="center"
                     android:orientation="horizontal">
 
@@ -202,7 +202,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="5dp"
+                        android:padding="10dp"
                         android:text="or"
                         android:gravity="center"
                         android:layout_gravity="center"
@@ -228,13 +228,12 @@
                         android:id="@+id/tvCancelPass"
                         android:layout_width="100dp"
                         android:layout_height="30dp"
-                        android:layout_marginStart="10dp"
                         android:background="@drawable/bg_gradient"
                         android:fontFamily="@font/pt_serif_bold"
                         android:padding="5dp"
                         android:text="Cancel"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -301,7 +300,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="Call:-"
+                            android:text="Call :-"
                             android:fontFamily="@font/italic"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -342,7 +341,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="WhatsApp:-"
+                            android:text="WhatsApp :- "
                             android:fontFamily="@font/italic"
                             android:textAlignment="center"
                             android:gravity="center_horizontal"
@@ -378,7 +377,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="0dp"
-                            android:text="Email:-"
+                            android:text="Email :- "
                             android:fontFamily="@font/italic"
                             android:textAlignment="center"
                             android:gravity="center_horizontal"

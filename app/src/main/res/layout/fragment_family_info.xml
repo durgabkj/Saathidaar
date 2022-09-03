@@ -564,7 +564,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -574,7 +574,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/italic"
                         android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -614,7 +614,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/italic"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="13sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -624,7 +624,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/italic"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="13sp"
                     android:textStyle="bold" />
 
 
