@@ -513,16 +513,13 @@ public class PrivacyOptionFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         Log.e(" IncomePrivacy response", String.valueOf((response)));
                         String code = null;
-                        try {
-                            code = response.getString("results");
-                            if (code.equalsIgnoreCase("1")) {
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        if (model.results.equals("1")) {
+
+                            Toast.makeText(context, "Phone Privacy Updated", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, model.message, Toast.LENGTH_SHORT).show();
                         }
+                       // Toast.makeText(context, "Something went wrong try again", Toast.LENGTH_SHORT).show();
 
                     }
                 },
@@ -551,18 +548,13 @@ public class PrivacyOptionFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         Log.e(" dobPrivacy response", String.valueOf((response)));
 
-                        try {
-                            String code = response.getString("results");
-                            if (model.results.equalsIgnoreCase("1")) {
+                        if (model.results.equals("1")) {
 
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                            }
-                            Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                            Toast.makeText(context, "Phone Privacy Updated", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, model.message, Toast.LENGTH_SHORT).show();
                         }
+                       // Toast.makeText(context, "Something went wrong try again", Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -590,17 +582,13 @@ public class PrivacyOptionFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         Log.e(" PhotoPrivacy response", String.valueOf((response)));
 
-                        try {
-                            String code = response.getString("results");
-                            if (code.equalsIgnoreCase("1")) {
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                            }
-                            Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        if (model.results.equals("1")) {
+
+                            Toast.makeText(context, "Phone Privacy Updated", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, model.message, Toast.LENGTH_SHORT).show();
                         }
+                        //Toast.makeText(context, "Something went wrong try again", Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -627,17 +615,14 @@ public class PrivacyOptionFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.e(" emailPrivacy response", String.valueOf((response)));
-                        try {
-                            String code = response.getString("results");
-                            if (code.equalsIgnoreCase("1")) {
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                            }
-                            Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        if (model.results.equals("1")) {
+
+                            Toast.makeText(context, "Phone Privacy Updated", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, model.message, Toast.LENGTH_SHORT).show();
                         }
+                       // Toast.makeText(context, "Something went wrong try again", Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -665,16 +650,11 @@ public class PrivacyOptionFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         Log.e(" phonePrivacy response", String.valueOf((response)));
 
-                        try {
-                            String code = response.getString("results");
-                            if (model.results.equalsIgnoreCase("1")) {
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                            }
-                            Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        if (model.results.equals("1")) {
+
+                            Toast.makeText(context, "Phone Privacy Updated", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, model.message, Toast.LENGTH_SHORT).show();
                         }
                     }
                 },

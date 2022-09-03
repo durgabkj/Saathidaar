@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -86,6 +87,17 @@ public class PersonalInfoFragment extends Fragment {
         listener();
         getMemberData();
         getData();
+
+        if(sessionManager.getUserGender().equalsIgnoreCase("male"))
+        {
+            binding.tvLocatonOfPartner.setText("Location of Groom");
+            binding.tvLocatonOfPartner.setPaintFlags( binding.tvLocatonOfPartner.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        }else
+        {
+            binding.tvLocatonOfPartner.setText("Location of Bride");
+            binding.tvLocatonOfPartner.setPaintFlags( binding.tvLocatonOfPartner.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        }
+
         return binding.getRoot();
     }
 
@@ -330,6 +342,13 @@ public class PersonalInfoFragment extends Fragment {
             binding.tvGender.setText(new StringBuilder().append(model.gender.substring(0, 1).toUpperCase()).append(model.gender.substring(1)).toString());
             binding.tvUserSubCommunity.setText(model.sub_caste_name);
             binding.tvUserGotra.setText(model.gothra);
+
+
+            binding.tvUserCurrentResi.setText(model.country_name);
+            binding.tvUserStateOfResidence.setText(model.state);
+            binding.tvUserResidenceStatus.setText(model.city);
+            binding.tvUserPinCode.setText(model.pincode);
+            binding.tvUserorigin.setText(model.ethnic_corigin);
         }
 
     }

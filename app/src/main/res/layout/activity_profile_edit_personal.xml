@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-            app:title="Personal Data"
+            app:title="Personal Info"
             app:titleCentered="true" />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -225,10 +225,9 @@
                 <TextView
                     android:id="@+id/etAge"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:enabled="true"
-                    android:padding="8dp"
                     android:capitalize="words"
                     android:layout_marginEnd="10dp"
                     android:gravity="center_vertical"
@@ -276,7 +275,6 @@
                     android:layout_marginEnd="10dp"
                     android:enabled="true"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-
                     android:gravity="center_vertical"
                     android:fontFamily="@font/italic"
                     android:background="@drawable/transparent_edittext_border"
@@ -518,7 +516,6 @@
                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                 android:fontFamily="@font/italic"
                 android:gravity="center_vertical"
-                android:textColor="@color/black"
                 android:hint="Select Mother Tongue"
                 android:padding="10dp" />
             // android:background="@android:drawable/editbox_background"
@@ -601,14 +598,16 @@
                 android:id="@+id/tvUserReligion"
                 style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                 android:gravity="center_vertical"
                 android:fontFamily="@font/italic"
                 android:capitalize="words"
                 android:hint="Select Religion"
-                android:padding="10dp"
+
                 />
+
+
 
             <LinearLayout
                 android:id="@+id/llCast"
@@ -695,7 +694,253 @@
         </LinearLayout>
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:fontFamily="@font/italic"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/gradient_button"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:fontFamily="@font/italic"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:text="Location"/>
+            </LinearLayout>
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/italic"
+                    android:text="Country Living In" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bg_edit_text"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:id="@+id/etCountry"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:capitalize="words"
+                        android:background="@drawable/transparent_edittext_border"
+                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:fontFamily="@font/italic"
+                        android:gravity="center_vertical"
+                        android:hint="Country"
+                        android:textColor="@color/black" />
+
+
+                    <!--                            <Spinner-->
+                    <!--                                android:id="@+id/etAddUserCurrentResidence"-->
+                    <!--                                android:layout_width="0dp"-->
+                    <!--                                android:layout_weight=".2"-->
+                    <!--                                android:layout_height="30dp"-->
+                    <!--                                android:clickable="true"-->
+                    <!--                                android:focusable="true"-->
+                    <!--                                android:focusableInTouchMode="false"-->
+                    <!--                                android:importantForAutofill="no"-->
+                    <!--                                android:maxLines="1"-->
+                    <!--                                app:showSearch="true"-->
+                    <!--                                app:sort="true" />-->
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/italic"
+                    android:text="State Living In" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bg_edit_text"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:id="@+id/etState"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:capitalize="words"
+                        android:background="@drawable/transparent_edittext_border"
+                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:fontFamily="@font/italic"
+                        android:gravity="center_vertical"
+                        android:hint="State"
+                        android:textColor="@color/black" />
+
+                    <!--                            <Spinner-->
+                    <!--                                android:id="@+id/etAddUserStateOfResidence"-->
+                    <!--                                android:layout_width="0dp"-->
+                    <!--                                android:layout_height="30dp"-->
+                    <!--                                android:layout_weight=".2"-->
+                    <!--                                android:clickable="true"-->
+                    <!--                                android:focusable="true"-->
+                    <!--                                android:focusableInTouchMode="false"-->
+                    <!--                                android:importantForAutofill="no"-->
+                    <!--                                android:maxLines="1"-->
+                    <!--                                app:showSearch="true"-->
+                    <!--                                app:sort="true" />-->
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+              >
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/italic"
+                    android:text="City Living In" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bg_edit_text"
+                    android:fontFamily="@font/italic"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:id="@+id/etCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginStart="8dp"
+                        android:capitalize="words"
+                        android:background="@drawable/transparent_edittext_border"
+                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:fontFamily="@font/italic"
+                        android:gravity="center_vertical"
+                        android:hint="City"
+                        android:textColor="@color/black" />
+
+                    <!--                            <Spinner-->
+                    <!--                                android:id="@+id/etAddUserResidenceStatus"-->
+                    <!--                                android:layout_width="0dp"-->
+                    <!--                                android:layout_height="30dp"-->
+                    <!--                                android:clickable="true"-->
+                    <!--                                android:layout_weight=".2"-->
+                    <!--                                android:focusable="true"-->
+                    <!--                                android:focusableInTouchMode="false"-->
+                    <!--                                android:importantForAutofill="no"-->
+                    <!--                                android:maxLines="1"-->
+                    <!--                                app:showSearch="true"-->
+                    <!--                                app:sort="true" />-->
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/italic"
+                    android:text="Co-origin " />
+
+                <EditText
+                    android:id="@+id/etAddUserCorigin"
+                    style="@style/PersonalDataTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:capitalize="words"
+                    android:fontFamily="@font/italic"
+                    android:hint=" Enter Your Co-origin"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/italic"
+                    android:text="Zip/PinCode" />
+
+                <EditText
+                    android:id="@+id/etAddUserZipPinCode"
+                    style="@style/PersonalDataTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:maxLength="6"
+                    android:capitalize="words"
+                    android:hint="Enter Pin Code"
+                    android:inputType="number"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/btnSave"

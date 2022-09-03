@@ -16,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            app:title="Professional Details"
+            app:title="Professional Info"
+            app:titleCentered="true"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
             app:navigationIconTint="@color/black"
             app:titleTextColor="@color/black" />

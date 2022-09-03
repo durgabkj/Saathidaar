@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/italic"
+            android:layout_marginTop="10dp"
             android:text="Upgrade now &amp; Get Premium benefits"
             android:textColor="#aeaeae"
             android:textSize="14sp" />

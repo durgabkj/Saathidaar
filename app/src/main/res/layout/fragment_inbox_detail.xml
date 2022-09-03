@@ -1375,7 +1375,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_call_24" />
+                                    app:srcCompat="@drawable/ic_baseline_work_24" />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1426,7 +1426,8 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_baseline_corporate_fare_24" />
+                                />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1479,7 +1480,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_baseline_currency_rupee_24" />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1531,7 +1532,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_baseline_import_contacts_24" />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1582,7 +1583,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_internet_education_graduation_svgrepo_com" />
                             </com.google.android.material.card.MaterialCardView>
 
 
@@ -1633,7 +1634,7 @@
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
                                     android:padding="10dp"
-                                    app:srcCompat="@drawable/ic_baseline_email_24" />
+                                    app:srcCompat="@drawable/ic_college" />
                             </com.google.android.material.card.MaterialCardView>
 
 

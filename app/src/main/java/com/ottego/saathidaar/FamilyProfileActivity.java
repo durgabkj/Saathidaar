@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -111,7 +112,7 @@ public class FamilyProfileActivity extends AppCompatActivity {
                 alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Family Type");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -177,7 +178,7 @@ public class FamilyProfileActivity extends AppCompatActivity {
                 alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Father Affluence");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -243,7 +244,7 @@ public class FamilyProfileActivity extends AppCompatActivity {
                 alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Father Status");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -302,7 +303,7 @@ public class FamilyProfileActivity extends AppCompatActivity {
                 alertDialog.setIcon(R.drawable.ic_baseline_supervisor_account_24);
 
                 // title of the alert dialog
-                alertDialog.setTitle("Choose an Item");
+                alertDialog.setTitle("Choose Mother Status");
 
                 // list of the items to be displayed to
                 // the user in the form of list
@@ -563,7 +564,7 @@ public class FamilyProfileActivity extends AppCompatActivity {
         View layout_dialog = LayoutInflater.from(context).inflate(R.layout.alert_sucess_dialog, null);
         builder.setView(layout_dialog);
 
-        AppCompatButton btnokSuccess = layout_dialog.findViewById(R.id.btnokSuccess);
+        TextView btnokSuccess = layout_dialog.findViewById(R.id.btnokSuccess);
         // show dialog
 
 

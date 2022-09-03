@@ -19,7 +19,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Family"
+                android:text="Family Info"
                 android:fontFamily="@font/italic"
                 android:textSize="18sp"
                 android:padding="10dp"
@@ -215,7 +215,7 @@
                                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                                 android:gravity="center_vertical"
                                 android:textSize="12sp"
-                                android:hint="Select Father Status"
+                                android:hint="Select Mother Status"
                                 android:layout_marginStart="8dp"
                                 android:background="@drawable/transparent_edittext_border"
                                 tools:ignore="Deprecated" />
@@ -346,6 +346,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.8"
+                            android:fontFamily="@font/italic"
                             android:layout_gravity="center"
                             android:text="Native place" />
 
@@ -485,6 +486,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="No.of Sister (s)"
+                                android:fontFamily="@font/italic"
                                 android:layout_marginTop="20dp"
                                 android:layout_gravity="center"/>
 
@@ -619,7 +621,7 @@
                                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                                 android:gravity="center_vertical"
                                 android:textSize="12sp"
-                                android:hint="Select Father Status"
+                                android:hint="Select Family Type"
                                 android:layout_marginStart="8dp"
                                 android:background="@drawable/transparent_edittext_border"
                                 tools:ignore="Deprecated" />
@@ -670,7 +672,7 @@
                                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                                 android:gravity="center_vertical"
                                 android:textSize="12sp"
-                                android:hint="Select Father Status"
+                                android:hint="Select Family Affluence"
                                 android:layout_marginStart="8dp"
                                 android:background="@drawable/transparent_edittext_border"
                                 tools:ignore="Deprecated"/>

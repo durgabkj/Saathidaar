@@ -5,30 +5,33 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -39,10 +42,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
-import com.ottego.multipleselectionspinner.MultipleSelection;
 import com.ottego.saathidaar.Model.HoroscopeModel;
 import com.ottego.saathidaar.databinding.FragmentHoroscopeBinding;
 
@@ -63,39 +63,39 @@ import java.util.Map;
 
 public class HoroscopeFragment extends Fragment {
     private static final String TAG = "horoscope";
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    final Calendar myCalendar = Calendar.getInstance();
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     public String countryUrl = Utils.location + "country";
+    public String url = Utils.memberUrl + "horoscope/update/";
+    public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
     ArrayList<String> countryList = new ArrayList<>();
     ArrayAdapter<String> countryAdapter;
     FragmentHoroscopeBinding b;
     Context context;
     HoroscopeModel model;
+    String[] stringArray = new String[0];
     SessionManager sessionManager;
     String countryName;
     String cityName;
     String hour;
     String minutes;
+    Dialog dialog;
     String time;
     Address address;
-    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     ProgressBar progressBar;
     String DOB;
     String timeStatus;
     DatePickerDialog datePickerDialog;
     String manglik = "";
-    public String url = Utils.memberUrl + "horoscope/update/";
-    public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
-    final Calendar myCalendar= Calendar.getInstance();
-
-    String location="patna";
+    String location = "patna";
     String inputLine = "";
     String result = "";
-   // location=location.replaceAll(" ", "%20");
-    String myUrl="http://maps.google.com/maps/geo?q="+location+"&output=csv";
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
+    // location=location.replaceAll(" ", "%20");
+    String myUrl = "http://maps.google.com/maps/geo?q=" + location + "&output=csv";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -128,13 +128,15 @@ public class HoroscopeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        b = FragmentHoroscopeBinding.inflate(inflater,container,false);
+        b = FragmentHoroscopeBinding.inflate(inflater, container, false);
         context = getContext();
         sessionManager = new SessionManager(context);
         setDropDownData();
+        // Initialize dialog
+        dialog = new Dialog(context);
         listener();
-        getCountry();
-       // checkPermissions();
+        getCountry(countryUrl);
+        // checkPermissions();
         getData();
         return b.getRoot();
     }
@@ -142,12 +144,12 @@ public class HoroscopeFragment extends Fragment {
     @SuppressLint("ResourceAsColor")
     public boolean checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(context,
-                Manifest.permission. ACCESS_FINE_LOCATION)
+                Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
 
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),
-                    Manifest.permission. ACCESS_FINE_LOCATION)) {
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
 
                 AlertDialog.Builder builder
                         = new AlertDialog
@@ -155,14 +157,14 @@ public class HoroscopeFragment extends Fragment {
                 builder.setTitle(R.string.title_location_permission);
                 builder.setMessage(R.string.text_location_permission);
                 builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                //Prompt the user once explanation has been shown
-                                ActivityCompat.requestPermissions(requireActivity(),
-                                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                                        REQUEST_CODE_ASK_PERMISSIONS);
-                            }
-                        });
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //Prompt the user once explanation has been shown
+                        ActivityCompat.requestPermissions(requireActivity(),
+                                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                                REQUEST_CODE_ASK_PERMISSIONS);
+                    }
+                });
                 AlertDialog alertDialog = builder.create();
 //                        .create();
                 alertDialog.show();
@@ -173,7 +175,7 @@ public class HoroscopeFragment extends Fragment {
             } else {
                 // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(requireActivity(),
-                        new String[]{Manifest.permission. ACCESS_FINE_LOCATION},
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         REQUEST_CODE_ASK_PERMISSIONS);
             }
             return false;
@@ -194,7 +196,7 @@ public class HoroscopeFragment extends Fragment {
                     // permission was granted, yay! Do the
                     // location-related task you need to do.
                     if (ContextCompat.checkSelfPermission(context,
-                            Manifest.permission. ACCESS_FINE_LOCATION)
+                            Manifest.permission.ACCESS_FINE_LOCATION)
                             == PackageManager.PERMISSION_GRANTED) {
 
 
@@ -214,10 +216,8 @@ public class HoroscopeFragment extends Fragment {
     }
 
 
-
-
-    public  LatLng getCityLatitude(Context context, String city) {
-        Geocoder geocoder = new Geocoder(context,context.getResources().getConfiguration().locale);
+    public LatLng getCityLatitude(Context context, String city) {
+        Geocoder geocoder = new Geocoder(context, context.getResources().getConfiguration().locale);
         List<Address> addresses = null;
         LatLng latLng = null;
         try {
@@ -226,12 +226,12 @@ public class HoroscopeFragment extends Fragment {
                 address = addresses.get(0);
             }
             latLng = new LatLng(address.getLatitude(), address.getLongitude());
-            Log.e("co-ordinates","dev"+address.getLatitude());
+            Log.e("co-ordinates", "dev" + address.getLatitude());
             DecimalFormat df = new DecimalFormat("###.#####");
             String formatted = df.format((address.getLatitude()));
             String formatted1 = df.format((address.getLongitude()));
-            b.tvCoordinate.setText(String.valueOf("Latitude "+formatted)+"° N");
-            b.tvCoordinateLong.setText(String.valueOf("Longitude "+formatted1)+"° E");
+            b.tvCoordinate.setText(String.valueOf("Latitude " + formatted) + "° N");
+            b.tvCoordinateLong.setText(String.valueOf("Longitude " + formatted1) + "° E");
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -244,6 +244,7 @@ public class HoroscopeFragment extends Fragment {
         InputMethodManager inputMethodManager = (InputMethodManager) requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
+
     private void setData1() {
         if (model != null) {
 
@@ -267,12 +268,12 @@ public class HoroscopeFragment extends Fragment {
     }
 
     private void getData() {
-       // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        // final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 urlGetHoroscope + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-              //  progressDialog.dismiss();
+                //  progressDialog.dismiss();
                 Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
@@ -294,7 +295,7 @@ public class HoroscopeFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-               // progressDialog.dismiss();
+                // progressDialog.dismiss();
                 error.printStackTrace();
             }
         });
@@ -303,20 +304,77 @@ public class HoroscopeFragment extends Fragment {
     }
 
 
-
-
     private void listener() {
-        DatePickerDialog.OnDateSetListener date =new DatePickerDialog.OnDateSetListener() {
+
+        b.acvCountry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                // set custom dialog
+                dialog.setContentView(R.layout.searchable_dropdown_item);
+
+                // set custom height and width
+                dialog.getWindow().setLayout(800, 900);
+
+                // set transparent background
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                // show dialog
+                dialog.show();
+
+                // Initialize and assign variable
+                EditText editText = dialog.findViewById(R.id.edit_text);
+                ListView listView = dialog.findViewById(R.id.list_view);
+
+                // Initialize array adapter
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, countryList);
+                // set adapter
+                listView.setAdapter(adapter);
+                editText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        adapter.getFilter().filter(s);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // when item selected from list
+                        // set selected item on textView
+                        b.acvCountry.setText(adapter.getItem(position));
+                        // Dismiss dialog
+                        dialog.dismiss();
+
+
+                    }
+                });
+
+            }
+        });
+
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
                 myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH,month);
-                myCalendar.set(Calendar.DAY_OF_MONTH,day);
+                myCalendar.set(Calendar.MONTH, month);
+                myCalendar.set(Calendar.DAY_OF_MONTH, day);
                 Calendar minAdultAge = new GregorianCalendar();
                 minAdultAge.add(Calendar.YEAR, -18);
 
                 if (minAdultAge.before(myCalendar)) {
-                    Toast.makeText(context, "Please Select valid date", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Age should be 18 or above", Toast.LENGTH_LONG).show();
                 } else {
                     updateLabel();
                 }
@@ -326,12 +384,11 @@ public class HoroscopeFragment extends Fragment {
         };
 
 
-
         b.etHoroscopeBirthDOB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               datePickerDialog= new DatePickerDialog(context,date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH));
-                       datePickerDialog.show();
+                datePickerDialog = new DatePickerDialog(context, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.show();
                 datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
 
                 datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
@@ -398,8 +455,8 @@ public class HoroscopeFragment extends Fragment {
     }
 
     private void updateLabel() {
-        String myFormat="dd/mm/yyyy";
-        SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
+        String myFormat = "dd/mm/yyyy";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.US);
         b.etHoroscopeBirthDOB.setText(dateFormat.format(myCalendar.getTime()));
 
     }
@@ -447,7 +504,7 @@ public class HoroscopeFragment extends Fragment {
         params.put("minutes", minutes);
         params.put("manglik", manglik);
         Log.e("params", String.valueOf(params));
-       final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url + sessionManager.getMemberId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -462,7 +519,7 @@ public class HoroscopeFragment extends Fragment {
                                 b.cvShowDetails.setVisibility(View.VISIBLE);
                                 b.cvEditDetails.setVisibility(View.GONE);
                                 // getData(urlGetHoroscope);
-                                 getData();
+                                getData();
                                 setData();
                                 setData1();
                             } else {
@@ -489,30 +546,13 @@ public class HoroscopeFragment extends Fragment {
         MySingleton.myGetMySingleton(context).myAddToRequest(request);
     }
 
-    private void getCountry() {
-        b.acvCountry.setItems(getCountryItems());
-        b.acvCountry.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(View view, boolean isSelected, int position) {
-//                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onSelectionCleared() {
-                Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    // dropDown With Search
-    private List getCountryItems() {
-        ArrayList<String> countryList = new ArrayList<>();
+    private void getCountry(String countryUrl) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 countryUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.e("response", String.valueOf(response));
+                //Log.e("response", String.valueOf(response));
+
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -520,8 +560,12 @@ public class HoroscopeFragment extends Fragment {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String country = jsonObject1.getString("country_name");
+                            //  Log.e("Country-list", String.valueOf(countryList));
+
                             countryList.add(country);
-                            Log.e("country-list", String.valueOf(countryList));
+                            stringArray = new String[]{country};
+
+
                         }
                     }
 
@@ -538,8 +582,7 @@ public class HoroscopeFragment extends Fragment {
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
-//            alphabetsList.add(Character.toString(i));
-        return countryList;
+
     }
 
     private void setDropDownData() {
@@ -607,67 +650,67 @@ public class HoroscopeFragment extends Fragment {
         });
 
 
-            final int[] checkedItem = {-1};
-            b.acvMinutes.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        final int[] checkedItem = {-1};
+        b.acvMinutes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    // AlertDialog builder instance to build the alert dialog
-                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+                // AlertDialog builder instance to build the alert dialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
-                    // set the custom icon to the alert dialog
-                    alertDialog.setIcon(R.drawable.ic_baseline_watch_later_24);
+                // set the custom icon to the alert dialog
+                alertDialog.setIcon(R.drawable.ic_baseline_watch_later_24);
 
-                    // title of the alert dialog
-                    alertDialog.setTitle("Choose Minutes");
+                // title of the alert dialog
+                alertDialog.setTitle("Choose Minutes");
 
-                    // list of the items to be displayed to
-                    // the user in the form of list
-                    // so that user can select the item from
-                    // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
-                    String[] minutes = getResources().getStringArray(R.array.minutes);
-                    // the function setSingleChoiceItems is the function which builds
-                    // the alert dialog with the single item selection
-                    alertDialog.setSingleChoiceItems(minutes, checkedItem[0], new DialogInterface.OnClickListener() {
+                // list of the items to be displayed to
+                // the user in the form of list
+                // so that user can select the item from
+                // final String[] listItems = new String[]{"Android Development", "Web Development", "Machine Learning"};
+                String[] minutes = getResources().getStringArray(R.array.minutes);
+                // the function setSingleChoiceItems is the function which builds
+                // the alert dialog with the single item selection
+                alertDialog.setSingleChoiceItems(minutes, checkedItem[0], new DialogInterface.OnClickListener() {
 
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                            // update the selected item which is selected by the user
-                            // so that it should be selected when user opens the dialog next time
-                            // and pass the instance to setSingleChoiceItems method
-                            checkedItem[0] = which;
+                        // update the selected item which is selected by the user
+                        // so that it should be selected when user opens the dialog next time
+                        // and pass the instance to setSingleChoiceItems method
+                        checkedItem[0] = which;
 
-                            // now also update the TextView which previews the selected item
-                            b.acvMinutes.setText(minutes[which]);
+                        // now also update the TextView which previews the selected item
+                        b.acvMinutes.setText(minutes[which]);
 
-                            // when selected an item the dialog should be closed with the dismiss method
-                            dialog.dismiss();
-                        }
-                    });
+                        // when selected an item the dialog should be closed with the dismiss method
+                        dialog.dismiss();
+                    }
+                });
 
-                    // set the negative button if the user
-                    // is not interested to select or change
-                    // already selected item
-                    alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
+                // set the negative button if the user
+                // is not interested to select or change
+                // already selected item
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
 
-                    // create and build the AlertDialog instance
-                    // with the AlertDialog builder instance
-                    AlertDialog customAlertDialog = alertDialog.create();
+                // create and build the AlertDialog instance
+                // with the AlertDialog builder instance
+                AlertDialog customAlertDialog = alertDialog.create();
 
-                    // show the alert dialog when the button is clicked
-                    customAlertDialog.show();
-                    Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
-                    buttonbackground.setBackgroundColor(Color.BLACK);
-                }
+                // show the alert dialog when the button is clicked
+                customAlertDialog.show();
+                Button buttonbackground = customAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                buttonbackground.setBackgroundColor(Color.BLACK);
+            }
 
 
-            });
+        });
 
         final int[] checkedItem2 = {-1};
         b.actvampm.setOnClickListener(new View.OnClickListener() {
@@ -802,24 +845,22 @@ public class HoroscopeFragment extends Fragment {
             b.tvCityofBirth.setText(model.city_of_birth);
             b.tvDateofBirth.setText(model.date_of_birth);
 
-            if((model.hours!=null && !model.hours.equals("")) && (model.minutes!=null && !model.minutes.equals("")) && (model.time!=null && !model.time.equals("")) && (model.time_status!=null || !model.time_status.equals("")))
-            {
-                b.tvTimeofBirth.setText(model.hours +":"+model.minutes + " "+model.time + ", "+model.time_status);
+            if ((model.hours != null && !model.hours.equals("")) && (model.minutes != null && !model.minutes.equals("")) && (model.time != null && !model.time.equals("")) && (model.time_status != null || !model.time_status.equals(""))) {
+                b.tvTimeofBirth.setText(model.hours + ":" + model.minutes + " " + model.time + ", " + model.time_status);
             }
             b.tvManglik.setText(model.manglik);
 
 
             if (checkLocationPermission()) {
                 if (ContextCompat.checkSelfPermission(context,
-                        Manifest.permission. ACCESS_FINE_LOCATION)
+                        Manifest.permission.ACCESS_FINE_LOCATION)
                         == PackageManager.PERMISSION_GRANTED) {
                     // do your stuff here
-                    getCityLatitude(context,model.city_of_birth);
+                    getCityLatitude(context, model.city_of_birth);
                 }
             }
         }
     }
-
 
 
     @Override

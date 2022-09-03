@@ -21,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,6 +49,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     Context context;
     MemberProfileModel model;
     String higherEducation = "";
+    String ug = "";
     String collegeAttends = "";
     String income = "";
     String workingWith = "";
@@ -59,24 +61,15 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     String pinCode = "";
     Dialog dialog;
     public String url = Utils.memberUrl + "app/professional-details/update/";
-    public String countryUrl = Utils.location + "country";
-    public String stateUrl = Utils.location + "state-name/by/country-name/";
-    public String cityUrl = Utils.location + "city-name/by/state-name/";
-    ArrayList<String> countryList = new ArrayList<>();
+
+
     String memberId;
-    String[] stringArray =new String[0];
-    String[] stringArray1 =new String[0];
-    String[] stringArray2 =new String[0];
-    ArrayAdapter<String> countryAdapter;
+
     ArrayList<String> workingAslist = new ArrayList<>();
-    ArrayList<String> stateList = new ArrayList<>();
-    ArrayAdapter<String> stateAdapter;
-    String countryName;
+
     SessionManager sessionManager;
 
-    ArrayList<String> cityList = new ArrayList<>();
-    ArrayAdapter<String> cityAdapter;
-    String stateName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,187 +97,26 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
 
         UserWorkingWith();
         listener();
-        getCountry(countryUrl);
-        getState();
-        getCity();
+
         setData();
 
     }
 
     private void setData() {
         if (model != null) {
-            b.etAddUserEducation.setText(model.highest_qualification);
+            b.etAddUserPGEducation.setText(model.highest_qualification);
             b.etAddUserCollegeAttended.setText(model.college_attended);
+            b.etAddUserUGEducation.setText(model.ug_education);
             b.etIncome.setText(model.annual_income);
             //   b.etAddUserCollegeAttended.setText(model.college_attended);
             b.etWorkingWith.setText(model.working_with);
             b.etWorkingAs.setText(model.working_as);
-            b.etCountry.setText(model.country_name);
-            b.etState.setText(model.state);
-            b.etCity.setText(model.city);
-            b.etAddUserCorigin.setText(model.ethnic_corigin);
-            b.etAddUserZipPinCode.setText(model.pincode);
+
 
         }
     }
 
-    private void getCity() {
-        b.etState.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                stateName = b.etState.getText().toString().trim();
-                cityList.clear();
-                cityList(cityUrl);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-    }
-
-    private void cityList(String cityUrl) {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                cityUrl + stateName, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-               // Log.e("response", String.valueOf(response));
-                try {
-                    String code = response.getString("results");
-                    if (code.equalsIgnoreCase("1")) {
-                        JSONArray jsonArray = response.getJSONArray("cities");
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            String city = jsonObject1.getString("city_name");
-                            cityList.add(city);
-                            //Log.e("city-list", String.valueOf(cityList));
-                            stringArray2 = cityList.toArray(new String[cityList.size()]);
-                        }
-                    }
-//                    cityAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, cityList);
-//                    // set adapter
-//                    cityAdapter.notifyDataSetChanged();
-//                    b.etAddUserResidenceStatus.setAdapter(cityAdapter);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
-    }
-
-    private void getState() {
-        b.etCountry.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                countryName = b.etCountry.getText().toString().trim();
-                stateList.clear();
-                stateList();
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-    }
-
-    private void stateList() {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                stateUrl + countryName, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-               // Log.e("response", String.valueOf(response));
-                try {
-                    String code = response.getString("results");
-                    if (code.equalsIgnoreCase("1")) {
-                        JSONArray jsonArray = response.getJSONArray("states");
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            String state = jsonObject1.getString("state_name");
-                           stateList.add(state);
-                           // Log.e("state-list Professional", String.valueOf(state));
-                         //   stringArray1 = new String[]{state};
-                             stringArray1 = stateList.toArray(new String[stateList.size()]);
-                        }
-                    }
-//                    stateAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, stateList);
-//                    // set adapter
-//                    stateAdapter.notifyDataSetChanged();
-//
-//                    b.etAddUserStateOfResidence.setAdapter(stateAdapter);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
-
-    }
-
-    private void getCountry(String countryUrl) {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                countryUrl, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                //Log.e("response", String.valueOf(response));
-
-                try {
-                    String code = response.getString("results");
-                    if (code.equalsIgnoreCase("1")) {
-                        JSONArray jsonArray = response.getJSONArray("country");
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            String country = jsonObject1.getString("country_name");
-                          //  Log.e("Country-list", String.valueOf(countryList));
-
-                            countryList.add(country);
-                             stringArray = new String[]{country};
-
-
-                        }
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
-
-    }
 
     private void userAnnualIncome() {
 
@@ -431,180 +263,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
             }
         });
 
-        b.etCountry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-
-                // set custom dialog
-                dialog.setContentView(R.layout.searchable_dropdown_item);
-
-                // set custom height and width
-                dialog.getWindow().setLayout(800, 900);
-
-                // set transparent background
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                // show dialog
-                dialog.show();
-
-                // Initialize and assign variable
-                EditText editText = dialog.findViewById(R.id.edit_text);
-                ListView listView = dialog.findViewById(R.id.list_view);
-
-                // Initialize array adapter
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, countryList);
-                // set adapter
-                listView.setAdapter(adapter);
-                editText.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        adapter.getFilter().filter(s);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-
-                    }
-                });
-
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        // when item selected from list
-                        // set selected item on textView
-                        b.etCountry.setText(adapter.getItem(position));
-                        // Dismiss dialog
-                        dialog.dismiss();
-
-
-                    }
-                });
-
-            }
-        });
-
-        b.etState.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                // set custom dialog
-                dialog.setContentView(R.layout.searchable_dropdown_item);
-
-                // set custom height and width
-                dialog.getWindow().setLayout(800, 900);
-
-                // set transparent background
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                // show dialog
-                dialog.show();
-
-                // Initialize and assign variable
-                EditText editText = dialog.findViewById(R.id.edit_text);
-                ListView listView = dialog.findViewById(R.id.list_view);
-
-                // Initialize array adapter
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, stateList);
-                // set adapter
-                listView.setAdapter(adapter);
-                editText.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        adapter.getFilter().filter(s);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-
-                    }
-                });
-
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        // when item selected from list
-                        // set selected item on textView
-                        b.etState.setText(adapter.getItem(position));
-                        // Dismiss dialog
-                        dialog.dismiss();
-
-
-                    }
-                });
-
-            }
-        });
-
-
-        b.etCity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                // set custom dialog
-                dialog.setContentView(R.layout.searchable_dropdown_item);
-
-                // set custom height and width
-                dialog.getWindow().setLayout(800, 900);
-
-                // set transparent background
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                // show dialog
-                dialog.show();
-
-                // Initialize and assign variable
-                EditText editText = dialog.findViewById(R.id.edit_text);
-                ListView listView = dialog.findViewById(R.id.list_view);
-
-                // Initialize array adapter
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, cityList);
-                // set adapter
-                listView.setAdapter(adapter);
-                editText.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        adapter.getFilter().filter(s);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-
-                    }
-                });
-
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        // when item selected from list
-                        // set selected item on textView
-                        b.etCity.setText(adapter.getItem(position));
-                        // Dismiss dialog
-                        dialog.dismiss();
-
-
-                    }
-                });
-
-            }
-        });
 
 
         b.etWorkingAs.setOnClickListener(new View.OnClickListener() {
@@ -673,7 +332,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
         View layout_dialog = LayoutInflater.from(context).inflate(R.layout.alert_sucess_dialog, null);
         builder.setView(layout_dialog);
 
-        AppCompatButton btnokSuccess = layout_dialog.findViewById(R.id.btnokSuccess);
+        TextView btnokSuccess = layout_dialog.findViewById(R.id.btnokSuccess);
         // show dialog
 
 
@@ -694,28 +353,21 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
         });
     }
     private void submitForm() {
-        higherEducation = b.etAddUserEducation.getText().toString().trim();
+        higherEducation = b.etAddUserPGEducation.getText().toString().trim();
+        ug = b.etAddUserUGEducation.getText().toString().trim();
         collegeAttends = b.etAddUserCollegeAttended.getText().toString().trim();
         income = b.etIncome.getText().toString().trim();
         workingWith = b.etWorkingWith.getText().toString().trim();
         workingAs = b.etWorkingAs.getText().toString().trim();
-        country = b.etCountry.getText().toString().trim();
-        state = b.etState.getText().toString().trim();
-        city = b.etCity.getText().toString().trim();
-        origin = b.etAddUserCorigin.getText().toString().trim();
-        pinCode = b.etAddUserZipPinCode.getText().toString().trim();
+
 
         Map<String, String> params = new HashMap<String, String>();
         params.put("highest_qualification", higherEducation);
+        params.put("ug_education", ug);
         params.put("college_attended", collegeAttends);
         params.put("working_with", workingWith);
         params.put("working_as", workingAs);
         params.put("annual_income", income);
-        params.put("pincode", pinCode);
-        params.put("city_name", city);
-        params.put("state_name", state);
-        params.put("ethnic_corigin", origin);
-        params.put("country_name", country);
         Log.e("params", String.valueOf(params));
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url + memberId, new JSONObject(params),
