@@ -127,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:text="Describe About Yourself"
                 android:textColor="@color/colorPrimary"
 
@@ -146,7 +146,8 @@
                 android:hint="Describe About Yourself"
                 android:imeOptions="actionDone"
                 android:lines="5"
-                android:maxLength="2000"
+                android:maxLength="1000"
+                android:fontFamily="@font/app_font"
                 android:maxLines="40"
                 android:scrollbars="vertical"
                 android:textColor="@color/black"
@@ -178,7 +179,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date Of Birth"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:textColor="@color/colorPrimary"
 
                 />
@@ -208,7 +209,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Age"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:textColor="@color/colorPrimary" />
 
             <LinearLayout
@@ -234,7 +235,7 @@
                     android:textColor="@color/black"
                     android:editable="false"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:hint="Select Your Age"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/transparent_edittext_border"
@@ -248,7 +249,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:textColor="@color/colorPrimary"
                 android:text="Marital Status" />
 
@@ -276,7 +277,7 @@
                     android:enabled="true"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                     android:gravity="center_vertical"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:background="@drawable/transparent_edittext_border"
                     tools:ignore="Deprecated,Suspicious0dp" />
 
@@ -312,7 +313,7 @@
                 android:id="@+id/tvHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginTop="10dp"
                 android:text="Height" />
@@ -334,7 +335,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:editable="true"
                     android:gravity="center_vertical"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"

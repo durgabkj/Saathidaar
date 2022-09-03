@@ -62,6 +62,7 @@
                                     android:drawablePadding="8dp"
                                     android:drawableTint="@color/colorPrimary"
                                     android:drawableStart="@drawable/ic_baseline_search_24"
+                                    android:hint=" Ex:-MSD121"
                                     />
 
                                 <TextView
@@ -598,7 +599,6 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/italic"
                     android:layout_marginTop="10dp"
-                    android:textColor="@color/colorPrimary"
                     android:text="Country living in" />
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -622,6 +622,7 @@
                             android:fontFamily="@font/italic"
                             android:focusableInTouchMode="false"
                             android:importantForAutofill="no"
+                            android:maxLines="1"
                             app:showSearch="true"
                             app:sort="true" />
 
@@ -697,7 +698,7 @@
                     android:layout_marginTop="10dp"
                     android:textColor="@color/colorPrimary"
                     android:fontFamily="@font/italic"
-                    android:text="City Living In" />
+                    android:text="City" />
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -796,6 +797,7 @@
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                             android:focusableInTouchMode="false"
                             android:importantForAutofill="no"
+                            android:maxLines="1"
                             app:showSearch="true"
                             app:sort="true" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -914,11 +916,11 @@
                     tools:ignore="UselessParent">
                     <TextView
                         android:id="@+id/etDietPreference"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
                         android:editable="false"
                         android:hint="Select Diet"
-                        android:padding="8dp"
                         android:gravity="center_vertical"
                         android:fontFamily="@font/italic"
                         android:textSize="14sp"
@@ -939,7 +941,7 @@
                     android:textColor="@color/colorPrimary"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Profile Created by" />
+                    android:text="Profile Created By" />
 
 
                 <LinearLayout

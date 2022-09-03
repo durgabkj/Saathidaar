@@ -24,7 +24,7 @@
     <style name="PersonalDataTextView" parent="Widget.AppCompat.TextView">
         <item name="android:layout_marginTop">6dp</item>
         <item name="android:drawablePadding">10dp</item>
-        <item name="fontFamily">@font/italic</item>
+        <item name="fontFamily">@font/app_font</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:drawableTint">@color/black</item>
         <item name="android:textSize">14sp</item>

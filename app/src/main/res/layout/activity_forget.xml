@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:fontFamily="@font/italic"/>
+        android:fontFamily="@font/app_font"/>
 
 </LinearLayout>
 
@@ -66,7 +66,7 @@
         android:layout_marginStart="40dp"
         android:layout_gravity="center"
         android:textSize="15sp"
-        android:fontFamily="@font/italic"/>
+        android:fontFamily="@font/app_font"/>
     <EditText
         android:id="@+id/etForgetPhone"
         style="@style/PersonalDataTextView"
@@ -76,7 +76,7 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/edt_text_border"
         android:drawableStart="@drawable/ic_email"
-        android:fontFamily="@font/italic"
+        android:fontFamily="@font/app_font"
         android:hint="Enter Email Id"
       />
 
@@ -127,6 +127,7 @@
         android:background="@drawable/button_hover"
         android:textAlignment="center"
         android:text="Submit"
+        android:textStyle="bold"
         android:fontFamily="@font/pt_serif_bold"
         android:translationZ="20dp"
         android:textColor="@color/white"

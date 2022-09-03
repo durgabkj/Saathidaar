@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/italic"
+            android:fontFamily="@font/app_font"
             android:text="Welcome to Saathidaar"
             android:textColor="#aeaeae"
             android:textSize="24sp" />
@@ -83,7 +83,7 @@
                         android:singleLine="true"
                         android:textCursorDrawable="@color/colorPrimary"
                         android:drawableStart="@drawable/ic_email"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:drawablePadding="8dp"
                         android:drawableTint="@color/black" />
 
@@ -114,7 +114,7 @@
                         android:singleLine="true"
                         android:textCursorDrawable="@color/colorPrimary"
                         android:drawableStart="@drawable/ic_baseline_key_24"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:drawablePadding="8dp"
                         android:drawableTint="@color/black" />
 
@@ -184,7 +184,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="15dp"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:text="Forgot password?"
                     android:textColor="@color/teal_700" />
 
