@@ -36,7 +36,7 @@ android:background="#0D000000"
         android:gravity="center"
         android:fontFamily="@font/app_font"
         android:layout_gravity="center"
-        android:text="Enter OTP Code sent to your mobile number "
+        android:text="Enter OTP code sent to your mobile number "
         android:textStyle="bold"/>
 
 

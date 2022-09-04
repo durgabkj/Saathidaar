@@ -93,6 +93,11 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         sessionManager = new SessionManager(context);
         // Now we will call setSelected() method
         // and pass boolean value as true
+        boolean ans = imagePathList.isEmpty();
+        if (ans == true) {
+            b.upload.setVisibility(View.INVISIBLE);
+        }
+
         b.marqueeText.setSelected(true);
         getData();
         listener();
@@ -218,9 +223,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                 imagePathList.clear();
                 if (data.getClipData() != null) {
                     countData = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
-//                   if(countData>=2) {
-//                       Toast.makeText(context, "You can Only upload two Images", Toast.LENGTH_SHORT).show();
-//                   }
+
 //                   else {
                     for (int i = 0; i < countData; i++) {
                         Uri imageUri = data.getClipData().getItemAt(i).getUri();
@@ -467,6 +470,9 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     @Override
     public void PickiTonCompleteListener(String path, boolean wasDriveFile, boolean wasUnknownProvider, boolean wasSuccessful, String Reason) {
         Log.e("durga", "path single: " + path);
+        if (path!=null) {
+            b.upload.setVisibility(View.VISIBLE);
+        }
         imagePathList.clear();
         imagePathList.add(path);
 
@@ -517,9 +523,6 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                     if (imageCount == 2 || imageCount >= 2) {
                         //hide
                         b.upload.setVisibility(View.INVISIBLE);
-                    } else {
-                        // unhine
-                        b.upload.setVisibility(View.VISIBLE);
                     }
 
                     setRecyclerView();
@@ -556,19 +559,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 
     }
 
-    private void refresh(int millisecond) {
 
-        final Handler handler = new Handler();
-        final Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                getData();
-            }
-        };
-
-        handler.postDelayed(runnable, millisecond);
-
-    }
 
 
 }
