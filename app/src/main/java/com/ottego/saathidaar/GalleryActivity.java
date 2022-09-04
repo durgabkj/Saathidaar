@@ -2,13 +2,10 @@ package com.ottego.saathidaar;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -61,14 +58,14 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public class GalleryActivity extends AppCompatActivity implements PickiTCallbacks {
+    private static final int REQUEST_STORAGE_PERMISSION = 100;
+    private static final int PICK_FILE_REQUEST = 1;
     ActivityGalleryBinding b;
     SessionManager sessionManager;
     DataModelImage dataModelImage;
@@ -76,17 +73,15 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     ProgressDialog progressDialog;
     String getImageURL = Utils.memberUrl + "app/get/photo/";
     Context context;
-    int countData=0;
+    int countData = 0;
     ImageAdapter adapter;
-    int imageCount=0;
+    int imageCount = 0;
     List<String> imagePathList = new ArrayList<>();
     GalleryViewModel viewModel;
-    int count=0;
+    int count = 0;
     long length;
-    private static final int REQUEST_STORAGE_PERMISSION = 100;
-    private static final int PICK_FILE_REQUEST = 1;
-
     PickiT pickiT;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +90,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         pickiT = new PickiT(this, this, this);
         viewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
         context = GalleryActivity.this;
-       sessionManager = new SessionManager(context);
+        sessionManager = new SessionManager(context);
         // Now we will call setSelected() method
         // and pass boolean value as true
         b.marqueeText.setSelected(true);
@@ -124,15 +119,15 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, PICK_FILE_REQUEST);
-                if (item.getItemId()==R.id.menu_top_add){
+                if (item.getItemId() == R.id.menu_top_add) {
                     Intent intent = new Intent();
                     intent.setType("image/*");
                     intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                     intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_FILE_REQUEST);
+                    startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_FILE_REQUEST);
                 }
                 return false;
-                }
+            }
 
         });
 
@@ -141,16 +136,14 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         b.upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int remaingImagesCount=2-imageCount;
-                if(remaingImagesCount>=countData)
-                {
+                int remaingImagesCount = 2 - imageCount;
+                if (remaingImagesCount >= countData) {
                     for (int i = 0; i < imagePathList.size(); i++) {
                         uploadInThread(imagePathList.get(i));
                     }
-                }else
-                {
+                } else {
                     imagePathList.clear();
-                    Toast.makeText(context,"you can't upload more than "+remaingImagesCount+" image",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "you can't upload more than " + remaingImagesCount + " image", Toast.LENGTH_LONG).show();
 
                 }
 
@@ -162,15 +155,14 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             @Override
             public void onClick(View view) {
 
-
-                AlertDialog.Builder builder=new AlertDialog.Builder(context);
-                View layout_dialog1= LayoutInflater.from(context).inflate(R.layout.layout_image_guid_lines,null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                View layout_dialog1 = LayoutInflater.from(context).inflate(R.layout.layout_image_guid_lines, null);
                 builder.setView(layout_dialog1);
 
-                AppCompatButton ok =layout_dialog1.findViewById(R.id.buttonOk);
+                AppCompatButton ok = layout_dialog1.findViewById(R.id.buttonOk);
                 // show dialog
 
-                AlertDialog dialog=builder.create();
+                AlertDialog dialog = builder.create();
                 dialog.show();
                 dialog.setCancelable(false);
 
@@ -188,13 +180,11 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     }
 
     // Function to check and request permission
-    public boolean checkPermission(String permission, int requestCode)
-    {
+    public boolean checkPermission(String permission, int requestCode) {
         // Checking if permission is not granted
         if (ContextCompat.checkSelfPermission(GalleryActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
-            ActivityCompat.requestPermissions(GalleryActivity.this, new String[] { permission }, requestCode);
-        }
-        else {
+            ActivityCompat.requestPermissions(GalleryActivity.this, new String[]{permission}, requestCode);
+        } else {
             Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Permission already granted", Snackbar.LENGTH_LONG);
             snackbar.show();
         }
@@ -204,24 +194,22 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions,
-                                           @NonNull int[] grantResults)
-    {
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         // Checking whether user granted the permission or not.
-         if (requestCode == REQUEST_STORAGE_PERMISSION) {
+        if (requestCode == REQUEST_STORAGE_PERMISSION) {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(GalleryActivity.this, "Storage Permission Granted", Toast.LENGTH_SHORT).show();
-            }
-            else {
+            } else {
                 Toast.makeText(GalleryActivity.this, "Storage Permission Denied", Toast.LENGTH_SHORT).show();
 
             }
         }
     }
 
-// pick image from gallery...
+    // pick image from gallery...
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -229,32 +217,30 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             if (requestCode == PICK_FILE_REQUEST) {
                 imagePathList.clear();
                 if (data.getClipData() != null) {
-                     countData = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
+                    countData = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
 //                   if(countData>=2) {
 //                       Toast.makeText(context, "You can Only upload two Images", Toast.LENGTH_SHORT).show();
 //                   }
 //                   else {
-                       for (int i = 0; i < countData; i++) {
-                           Uri imageUri = data.getClipData().getItemAt(i).getUri();
-                           pickiT.getPath(imageUri, Build.VERSION.SDK_INT);
+                    for (int i = 0; i < countData; i++) {
+                        Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                        pickiT.getPath(imageUri, Build.VERSION.SDK_INT);
 //
-                       }
+                    }
 //                   }
                 } else if (data.getData() != null) {
                     Uri imagePath = data.getData();
                     pickiT.getPath(imagePath, Build.VERSION.SDK_INT);
                 }
             }
-        }else
-        {
+        } else {
             Toast.makeText(context, "You haven't pick any image", Toast.LENGTH_SHORT).show();
         }
 
 
-
     }
 
-    public String saveBitmapToFile(String path){
+    public String saveBitmapToFile(String path) {
         try {
             File file = new File(path);
             // BitmapFactory options to downsize the image
@@ -269,11 +255,11 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             inputStream.close();
 
             // The new size we want to scale to
-            final int REQUIRED_SIZE=75;
+            final int REQUIRED_SIZE = 75;
 
             // Find the correct scale value. It should be the power of 2.
             int scale = 1;
-            while(o.outWidth / scale / 2 >= REQUIRED_SIZE &&
+            while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
                     o.outHeight / scale / 2 >= REQUIRED_SIZE) {
                 scale *= 2;
             }
@@ -292,13 +278,13 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             }
 
             String s = path.substring(path.lastIndexOf("/"));
-          //  Log.e("durgapath", s);
+            //  Log.e("durgapath", s);
             File f = new File(mFolder.getAbsolutePath(), s);
             String strMyImagePath = f.getAbsolutePath();
 
             FileOutputStream outputStream = new FileOutputStream(file);
 
-            selectedBitmap.compress(Bitmap.CompressFormat.JPEG, 100 , outputStream);
+            selectedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
 
             return strMyImagePath;
         } catch (Exception e) {
@@ -307,28 +293,28 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     }
 
     void uploadInThread(final String path) {
-
-        try{
+        progressDialog = ProgressDialog.show(GalleryActivity.this, null, "Image Uploading Please wait...", false, false);
+        try {
             File file = new File(String.valueOf(path));
             length = file.length();
-            length = length/1024;
-            Log.e("image size ","connect " + String.valueOf(length));
-        }catch(Exception e){
+            length = length / 1024;
+            Log.e("image size ", "connect " + String.valueOf(length));
+        } catch (Exception e) {
             System.out.println("File not found : " + e.getMessage() + e);
         }
 
 //        if(length<=105)
 //        {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Map<String, String> params = new HashMap<String, String>();
-                    params.put("member_id", sessionManager.getMemberId());
-                    Log.e("durga", "upload start: "+path);
-                    String result = multipartRequest(URL, params, path, "image", "image/jpeg");
-                    Log.e("durga",result);
-                }
-            }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("member_id", sessionManager.getMemberId());
+                Log.e("durga", "upload start: " + path);
+                String result = multipartRequest(URL, params, path, "image", "image/jpeg");
+                Log.e("durga", result);
+            }
+        }).start();
 //        }else
 //        {
 //            Toast.makeText(context,"Only 100 Kb image Accepted ",Toast.LENGTH_SHORT).show();
@@ -338,7 +324,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 
     public String multipartRequest(String urlTo, Map<String, String> parmas, String filepath, String filefield, String fileMimeType) {
         Log.e("params", String.valueOf(parmas));
-      //  Log.e("params1", filepath);
+        //  Log.e("params1", filepath);
         HttpURLConnection connection = null;
         DataOutputStream outputStream = null;
         InputStream inputStream = null;
@@ -416,10 +402,10 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 
                 runOnUiThread(new Runnable() {
                     public void run() {
-
-                      //  tv.setText("Upload Complete");
+                        progressDialog.dismiss();
+                        //  tv.setText("Upload Complete");
                         Toast.makeText(GalleryActivity.this,
-                                "File Upload Complete.", Toast.LENGTH_SHORT)
+                                        "Image  Uploaded.", Toast.LENGTH_LONG)
                                 .show();
                     }
                 });
@@ -432,14 +418,16 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             inputStream.close();
             outputStream.flush();
             outputStream.close();
-
             return result;
         } catch (Exception e) {
+            progressDialog.dismiss();
 //            logger.error(e);
 //            throw new CustomException(e)
         }
         return "error";
+
     }
+
     private String convertStreamToString(InputStream is) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
@@ -525,11 +513,11 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                 if (dataModelImage.results == 1) {
                     viewModel._list.postValue(dataModelImage.data);
 
-                    imageCount=dataModelImage.data.size();
-                    if(imageCount==2 || imageCount>=2){
+                    imageCount = dataModelImage.data.size();
+                    if (imageCount == 2 || imageCount >= 2) {
                         //hide
                         b.upload.setVisibility(View.INVISIBLE);
-                    }else{
+                    } else {
                         // unhine
                         b.upload.setVisibility(View.VISIBLE);
                     }
@@ -549,6 +537,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 //refresh(1000);
     }
+
     private void setRecyclerView() {
         GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);
         b.rvMyImage.setLayoutManager(layoutManager);
@@ -566,6 +555,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
 
 
     }
+
     private void refresh(int millisecond) {
 
         final Handler handler = new Handler();

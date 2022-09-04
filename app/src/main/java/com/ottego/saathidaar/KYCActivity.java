@@ -257,6 +257,8 @@ b.srlKyc.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
 
     void uploadInThread(final String path) {
+        progressDialog = ProgressDialog.show(KYCActivity.this, null, "Document Uploading Please wait...", false, false);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -351,10 +353,10 @@ b.srlKyc.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
                 runOnUiThread(new Runnable() {
                     public void run() {
-
+progressDialog.dismiss();
                         //  tv.setText("Upload Complete");
                         Toast.makeText(KYCActivity.this,
-                                        "File Upload Complete.", Toast.LENGTH_SHORT)
+                                        "Document Uploaded.", Toast.LENGTH_LONG)
                                 .show();
                     }
                 });
@@ -370,6 +372,7 @@ b.srlKyc.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
             return result;
         } catch (Exception e) {
+            progressDialog.dismiss();
             e.printStackTrace();
 //            logger.error(e);
 //            throw new CustomException(e)
