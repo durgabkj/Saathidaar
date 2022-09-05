@@ -84,44 +84,46 @@
                         </LinearLayout>
 
                     </FrameLayout>
-
                     <LinearLayout
-                        android:id="@+id/llNo_imageFemale"
+                        android:id="@+id/llPrivateMatchesDetailPhoto"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="gone"
-                        android:background="@drawable/line_gradient"
-                        android:orientation="horizontal" />
-
-                    <FrameLayout
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start">
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        android:orientation="vertical"
+                        android:layout_margin="20dp"
+                        android:gravity="center"
+                        >
 
-                        <LinearLayout
-                            android:id="@+id/llBack"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_margin="8dp"
-                            android:visibility="gone"
-                            android:background="@drawable/oval_bg"
-                            android:orientation="horizontal"
-                            android:padding="10dp">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:translationX="10dp"
+                            android:elevation="20dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/hideimage"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:shadowColor="#000000"
+                            android:shadowDx="4"
+                            android:shadowDy="4"
+                            android:inputType="textCapWords"
+                            android:fontFamily="@font/app_font"
+                            android:shadowRadius="7.8"
+                            android:layout_gravity="center"
+                            android:text=" This Profile Picture is Private"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_baseline_arrow_back_24" />
-
-                        </LinearLayout>
-
-                    </FrameLayout>
-
+                    </LinearLayout>
                     <LinearLayout
                         android:id="@+id/llPremiumMsgMatchesDetails"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:visibility="gone"
                         android:layout_margin="20dp"
                         android:orientation="vertical"
                         android:gravity="center"
@@ -138,11 +140,12 @@
                             android:layout_height="wrap_content"
                             android:shadowColor="#000000"
                             android:shadowDx="4"
+
                             android:shadowDy="4"
                             android:inputType="textCapWords"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:shadowRadius="7.6"
-                            android:text="Image show only to premium member"
+                            android:text="Image Shown to Premium Member's Only"
                             android:textColor="@color/white"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -236,58 +239,83 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
+                            android:layout_gravity="center_horizontal"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/tvNewMatchName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:maxLength="15"
                                 android:shadowColor="#000000"
                                 android:shadowDx="2"
+                                android:padding="2dp"
                                 android:shadowDy="2"
                                 android:shadowRadius="1.6"
                                 android:textColor="@color/white"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
 
+                            <ImageView
+                                android:id="@+id/ivMatchDot"
+                                android:layout_width="6dp"
+                                android:layout_height="6dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:alpha="0.6"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/circle_blue_fil" />
+
                             <TextView
                                 android:id="@+id/tvNewMatchAge"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
                                 android:fontFamily="@font/italic"
                                 android:shadowColor="#000000"
                                 android:shadowDx="1.5"
                                 android:shadowDy="1.3"
+                                android:padding="2dp"
                                 android:shadowRadius="1.6"
                                 android:textColor="@color/white"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/ivMatchDot1"
+                                android:layout_width="6dp"
+                                android:layout_height="6dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:alpha="0.6"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/circle_blue_fil" />
 
                             <TextView
                                 android:id="@+id/tvNewMatchHeight"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
                                 android:fontFamily="@font/italic"
                                 android:maxLength="15"
                                 android:shadowColor="#000000"
                                 android:shadowDx="1.5"
+                                android:padding="2dp"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
-
                                 android:textColor="@color/white"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:padding="2dp"
+                            android:background="@color/gray_dark"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:layout_gravity="center"
                             android:orientation="horizontal">
 
@@ -300,23 +328,36 @@
                                 android:maxLength="10"
                                 android:shadowColor="#000000"
                                 android:shadowDx="1.5"
-                                android:layout_marginEnd="8dp"
+                                android:padding="2dp"
+                                android:inputType="textCapWords"
                                 android:shadowDy="1.3"
                                 android:shadowRadius="1.6"
                                 android:textColor="@color/white"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
 
+
+                            <ImageView
+                                android:id="@+id/ivMatchDot2"
+                                android:layout_width="6dp"
+                                android:layout_height="6dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:alpha="0.6"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/circle_blue_fil" />
+
                             <TextView
                                 android:id="@+id/tvNewMatchWorkAsDetail"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:maxLength="25"
                                 android:shadowColor="#000000"
                                 android:shadowDx="1.5"
+                                android:inputType="textCapWords"
                                 android:shadowDy="1.3"
+                                android:padding="2dp"
                                 android:shadowRadius="1.6"
                                 android:textColor="@color/white"
                                 android:textSize="13sp"
@@ -353,7 +394,7 @@
                             android:id="@+id/tvNameUserDetails"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -363,8 +404,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:maxLines="4"
-                            android:fontFamily="@font/italic"
+                            android:maxLines="2"
+                            android:fontFamily="@font/app_font"
                             android:textColor="@color/black" />
 
                         <TextView
@@ -418,7 +459,7 @@
                             android:id="@+id/tvNameUserFamilyDetailsHeading"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -428,7 +469,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/italic"
+                            android:maxLines="2"
+                            android:fontFamily="@font/app_font"
                             android:textColor="@color/black" />
 
                         <TextView
@@ -481,7 +523,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Basic Details"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
@@ -494,25 +536,25 @@
 
                             <TextView
                                 android:id="@+id/tvCreatedBy"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/italic"
-                                android:textSize="12dp"
+                                android:fontFamily="@font/app_font"
+                                android:textSize="11dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="5dp" />
+                                android:padding="10sp" />
 
 
                             <TextView
                                 android:id="@+id/tvProfileID"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:textSize="12dp"
+                                android:textSize="11dp"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="5dp" />
+                                android:padding="10sp" />
 
                         </LinearLayout>
 
@@ -525,25 +567,25 @@
 
                             <TextView
                                 android:id="@+id/tvDetailAge"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp"
+                                android:textSize="12sp"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="5dp" />
+                                android:padding="10sp" />
 
 
                             <TextView
                                 android:id="@+id/tvDetailHeight"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:fontFamily="@font/italic"
-                                android:textSize="13sp"
+                                android:fontFamily="@font/app_font"
+                                android:textSize="12sp"
                                 android:layout_weight="1"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="5dp" />
+                                android:padding="9sp"/>
 
                         </LinearLayout>
 
@@ -582,7 +624,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Birth Date"
                                     android:textSize="14sp"
 
@@ -595,7 +637,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:drawablePadding="4dp"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textAlignment="center"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -636,7 +678,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Marital Status"
                                     android:textSize="14sp"
 
@@ -647,7 +689,7 @@
                                     android:id="@+id/tvDetailMaritalS"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -688,8 +730,8 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
-                                    android:text="Live In"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="Living In"
                                     android:textSize="14sp"
 
                                     />
@@ -699,7 +741,8 @@
                                     android:id="@+id/tvDetailLiveIn"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="Not Specified"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -739,8 +782,8 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
-                                    android:text="Religion &amp; MotherTongue"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="Religion &amp; Mother Tongue"
                                     android:textSize="14sp"
 
                                     />
@@ -750,7 +793,8 @@
                                     android:id="@+id/tvDetailReligionMotherTongue"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="Not Specified"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -790,7 +834,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Community"
                                     android:textSize="14sp"
 
@@ -801,8 +845,9 @@
                                     android:id="@+id/tvDetailCommunity"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
+                                    android:text="Not Specified"
                                     android:textSize="14sp" />
                             </LinearLayout>
 
@@ -841,7 +886,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Diet Preferences"
                                     android:textSize="14sp"
 
@@ -852,8 +897,9 @@
                                     android:id="@+id/tvDetailDiet"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
+                                    android:text="Not Specified"
                                     android:textSize="14sp" />
                             </LinearLayout>
 
@@ -871,22 +917,25 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/italic"
+                            android:id="@+id/tvbirth"
+                            android:visibility="gone"
+                            android:fontFamily="@font/app_font"
                             android:text="To unlock Birth date"
                             android:textColor="@color/black" />
 
 
                         <TextView
                             android:id="@+id/tvPremiumBirth"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:background="@drawable/edt_text_border"
                             android:elevation="20dp"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:padding="10dp"
-                            android:text="Go Upgrade Now"
+                            android:visibility="gone"
+                            android:text="Upgrade your membership"
                             android:textAlignment="center"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
@@ -920,7 +969,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Contact Details"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
@@ -959,7 +1008,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Contact No."
                                     android:textSize="14sp"
 
@@ -970,7 +1019,7 @@
                                     android:id="@+id/tvDetailCall"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1010,7 +1059,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Email ID"
                                     android:textSize="14sp"
 
@@ -1021,7 +1070,7 @@
                                     android:id="@+id/tvDetailEmailID"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1041,22 +1090,25 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/italic"
+                            android:id="@+id/tvcontacts"
+                            android:visibility="gone"
+                            android:fontFamily="@font/app_font"
                             android:text="To unlock Contact &amp; Email ID"
                             android:textColor="@color/black" />
 
 
                         <TextView
                             android:id="@+id/tvPremiumCollegeAndCompany"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:background="@drawable/edt_text_border"
                             android:elevation="20dp"
-                            android:fontFamily="@font/italic"
+                            android:visibility="gone"
+                            android:fontFamily="@font/app_font"
                             android:padding="10dp"
-                            android:text="Go Upgrade Now"
+                            android:text="Upgrade your membership"
                             android:textAlignment="center"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
@@ -1089,14 +1141,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
-                            android:text="HoroScope Details"
+                            android:fontFamily="@font/app_font"
+                            android:text="Horoscope Details"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:orientation="horizontal">
@@ -1126,7 +1178,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Place Of Birth"
                                     android:textSize="14sp"
 
@@ -1137,15 +1189,66 @@
                                     android:id="@+id/tvDetailPlaceOfBirth"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
+                                    android:text="Not Specified"
                                     android:textSize="14sp" />
                             </LinearLayout>
 
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_outline_date_range_24" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="Time of Birth"
+                                    android:textSize="14sp"
+
+                                    />
+
+
+                                <TextView
+                                    android:id="@+id/tvMatchDetailTime"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="Not Specified"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:orientation="horizontal">
@@ -1175,7 +1278,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Manglik"
                                     android:textSize="14sp"
 
@@ -1186,7 +1289,8 @@
                                     android:id="@+id/tvDetailManglik"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="Not Specified"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1222,7 +1326,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Career &amp; Education"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
@@ -1261,7 +1365,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Profession"
                                     android:textSize="14sp"
 
@@ -1272,8 +1376,9 @@
                                     android:id="@+id/tvDetailProfession"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
+                                    android:text="Not Specified"
                                     android:textSize="14sp" />
                             </LinearLayout>
 
@@ -1312,7 +1417,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Company Name"
                                     android:textSize="14sp"
 
@@ -1324,8 +1429,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textAlignment="center"
+                                    android:text="Not Specified"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1365,7 +1471,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Annual Income"
                                     android:textSize="14sp"
 
@@ -1376,8 +1482,9 @@
                                     android:id="@+id/tvDetailAnnualIncome"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
+                                    android:text="Not Specified"
                                     android:textSize="14sp" />
                             </LinearLayout>
 
@@ -1416,8 +1523,8 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
-                                    android:text="Highest Qualification"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="PG"
                                     android:textSize="14sp"
 
                                     />
@@ -1427,7 +1534,8 @@
                                     android:id="@+id/tvDetailHQualification"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="Not Specified"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1467,7 +1575,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Education Field"
                                     android:textSize="14sp"
 
@@ -1478,7 +1586,8 @@
                                     android:id="@+id/tvDetailEducationField"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:text="Not Specified"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1518,7 +1627,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="College Name"
                                     android:textSize="14sp"
 
@@ -1529,7 +1638,8 @@
                                     android:id="@+id/tvDetailCollege"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="Not Specified"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1648,7 +1758,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Age"
                                     android:textSize="14sp"
 
@@ -1659,7 +1769,7 @@
                                     android:id="@+id/tvDetailAgeMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1742,7 +1852,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Height"
                                     android:textSize="14sp"
 
@@ -1753,7 +1863,7 @@
                                     android:id="@+id/tvDetailHeightMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1838,7 +1948,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Marital Status"
                                     android:textSize="14sp"
 
@@ -1849,7 +1959,7 @@
                                     android:id="@+id/tvDetailMaritalStatusMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1934,8 +2044,8 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
-                                    android:text="Country Live in"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="Country Living in"
                                     android:textSize="14sp"
 
                                     />
@@ -1945,7 +2055,7 @@
                                     android:id="@+id/tvDetailCountryMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2030,8 +2140,8 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
-                                    android:text="State Live in"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="State Living in"
                                     android:textSize="14sp"
 
                                     />
@@ -2041,7 +2151,7 @@
                                     android:id="@+id/tvDetailStateMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2107,6 +2217,102 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/llCityMatch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="City Living In"
+                                    android:textSize="14sp"
+
+                                    />
+
+
+                                <TextView
+                                    android:id="@+id/tvDetailcityMatch"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="Not Specified"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvcheck13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_check" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDot13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/ic_dots" />
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvClear13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                app:cardBackgroundColor="@color/white"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                                app:strokeColor="@color/gray_dark"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:padding="5dp"
+                                    app:srcCompat="@drawable/close" />
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:id="@+id/llEducationMatch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -2125,7 +2331,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Education"
                                     android:textSize="14sp"
 
@@ -2136,7 +2342,7 @@
                                     android:id="@+id/tvDetailEducationMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2220,7 +2426,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Working With"
                                     android:textSize="14sp"
 
@@ -2231,7 +2437,7 @@
                                     android:id="@+id/tvDetailWorkingWithMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2410,7 +2616,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Annual Income"
                                     android:textSize="14sp"
 
@@ -2421,7 +2627,7 @@
                                     android:id="@+id/tvDetailIncomeMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2505,7 +2711,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Religion / Community"
                                     android:textSize="14sp"
 
@@ -2516,7 +2722,7 @@
                                     android:id="@+id/tvDetailReligionMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2600,8 +2806,8 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
-                                    android:text="MotherTongue"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="Mother Tongue"
                                     android:textSize="14sp"
 
                                     />
@@ -2611,7 +2817,7 @@
                                     android:id="@+id/tvDetailMotherTongueMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2695,7 +2901,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Manglik"
                                     android:textSize="14sp"
 
@@ -2706,7 +2912,7 @@
                                     android:id="@+id/tvDetailManglikMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2773,101 +2979,7 @@
 
 
 
-                        <LinearLayout
-                            android:id="@+id/llCityMatch"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:orientation="horizontal">
 
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
-                                    android:text="City"
-                                    android:textSize="14sp"
-
-                                    />
-
-
-                                <TextView
-                                    android:id="@+id/tvDetailcityMatch"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
-                                    android:text=""
-                                    android:textColor="@color/black"
-                                    android:textSize="14sp" />
-                            </LinearLayout>
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/cvcheck13"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:visibility="gone"
-                                app:cardBackgroundColor="@color/white"
-                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                                app:strokeColor="@color/gray_dark"
-                                app:strokeWidth="1dp">
-
-                                <ImageView
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"
-                                    android:layout_gravity="center"
-                                    android:padding="5dp"
-                                    app:srcCompat="@drawable/ic_check" />
-                            </com.google.android.material.card.MaterialCardView>
-
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/cvDot13"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:visibility="gone"
-                                app:cardBackgroundColor="@color/white"
-                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                                app:strokeColor="@color/gray_dark"
-                                app:strokeWidth="1dp">
-
-                                <ImageView
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"
-                                    android:layout_gravity="center"
-                                    android:padding="5dp"
-                                    app:srcCompat="@drawable/ic_dots" />
-                            </com.google.android.material.card.MaterialCardView>
-
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/cvClear13"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:visibility="gone"
-                                app:cardBackgroundColor="@color/white"
-                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                                app:strokeColor="@color/gray_dark"
-                                app:strokeWidth="1dp">
-
-                                <ImageView
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"
-                                    android:layout_gravity="center"
-                                    android:padding="5dp"
-                                    app:srcCompat="@drawable/close" />
-                            </com.google.android.material.card.MaterialCardView>
-
-                        </LinearLayout>
 
 
                     </LinearLayout>
@@ -2922,24 +3034,43 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="20dp"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:shadowColor="#000000"
                     android:text="Like this profile?"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvRequestSend"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="20dp"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:padding="6dp"
                     android:shadowColor="#000000"
                     android:shadowDx="2"
                     android:shadowDy="2"
                     android:shadowRadius="1.6"
-                    android:text="Connect Now"
+                    android:text="Send Request"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvRequestSent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/app_font"
+                    android:padding="6dp"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:visibility="gone"
+                    android:shadowDy="2"
+                    android:shadowRadius="1.6"
+                    android:text="Request Sent"
                     android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -2956,7 +3087,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@color/white"
-                        android:padding="6dp"
+                        android:padding="8dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_check_black_24dp" />
                 </androidx.cardview.widget.CardView>

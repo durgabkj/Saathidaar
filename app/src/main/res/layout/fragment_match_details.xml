@@ -109,7 +109,7 @@
                             android:shadowDx="4"
                             android:shadowDy="4"
                             android:inputType="textCapWords"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:shadowRadius="7.8"
                             android:layout_gravity="center"
                             android:text=" This Profile Picture is Private"
@@ -143,7 +143,7 @@
 
                             android:shadowDy="4"
                             android:inputType="textCapWords"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:shadowRadius="7.6"
                             android:text="Image Shown to Premium Member's Only"
                             android:textColor="@color/white"
@@ -246,7 +246,7 @@
                                 android:id="@+id/tvNewMatchName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:maxLength="15"
                                 android:shadowColor="#000000"
                                 android:shadowDx="2"
@@ -351,7 +351,7 @@
                                 android:id="@+id/tvNewMatchWorkAsDetail"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:maxLength="25"
                                 android:shadowColor="#000000"
                                 android:shadowDx="1.5"
@@ -394,7 +394,7 @@
                             android:id="@+id/tvNameUserDetails"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -405,7 +405,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:maxLines="2"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                              android:textColor="@color/black" />
 
                         <TextView
@@ -459,7 +459,7 @@
                             android:id="@+id/tvNameUserFamilyDetailsHeading"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -470,7 +470,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:maxLines="2"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                              android:textColor="@color/black" />
 
                         <TextView
@@ -523,7 +523,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Basic Details"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
@@ -538,11 +538,11 @@
                                 android:id="@+id/tvCreatedBy"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:textSize="11dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp" />
+                                android:padding="10sp" />
 
 
                             <TextView
@@ -552,9 +552,9 @@
                                 android:layout_marginStart="10dp"
                                 android:textSize="11dp"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp" />
+                                android:padding="10sp" />
 
                         </LinearLayout>
 
@@ -571,9 +571,9 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="12sp"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp" />
+                                android:padding="10sp" />
 
 
                             <TextView
@@ -581,11 +581,11 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:textSize="12sp"
                                 android:layout_weight="1"
                                 android:background="@drawable/edt_text_border"
-                                android:padding="10dp"/>
+                                android:padding="9sp"/>
 
                         </LinearLayout>
 
@@ -624,7 +624,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Birth Date"
                                     android:textSize="14sp"
 
@@ -637,7 +637,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:drawablePadding="4dp"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textAlignment="center"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -678,7 +678,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Marital Status"
                                     android:textSize="14sp"
 
@@ -689,7 +689,7 @@
                                     android:id="@+id/tvDetailMaritalS"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -730,7 +730,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Living In"
                                     android:textSize="14sp"
 
@@ -741,7 +741,7 @@
                                     android:id="@+id/tvDetailLiveIn"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Not Specified"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -782,7 +782,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Religion &amp; Mother Tongue"
                                     android:textSize="14sp"
 
@@ -793,7 +793,7 @@
                                     android:id="@+id/tvDetailReligionMotherTongue"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Not Specified"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -834,7 +834,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Community"
                                     android:textSize="14sp"
 
@@ -845,7 +845,7 @@
                                     android:id="@+id/tvDetailCommunity"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:text="Not Specified"
                                     android:textSize="14sp" />
@@ -886,7 +886,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Diet Preferences"
                                     android:textSize="14sp"
 
@@ -897,7 +897,7 @@
                                     android:id="@+id/tvDetailDiet"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:text="Not Specified"
                                     android:textSize="14sp" />
@@ -919,7 +919,7 @@
                             android:layout_marginTop="10dp"
                             android:id="@+id/tvbirth"
                             android:visibility="gone"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="To unlock Birth date"
                             android:textColor="@color/black" />
 
@@ -932,7 +932,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@drawable/edt_text_border"
                             android:elevation="20dp"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:padding="10dp"
                             android:visibility="gone"
                             android:text="Upgrade your membership"
@@ -969,7 +969,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Contact Details"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
@@ -1008,7 +1008,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Contact No."
                                     android:textSize="14sp"
 
@@ -1019,7 +1019,7 @@
                                     android:id="@+id/tvDetailCall"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1059,7 +1059,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Email ID"
                                     android:textSize="14sp"
 
@@ -1070,7 +1070,7 @@
                                     android:id="@+id/tvDetailEmailID"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1092,7 +1092,7 @@
                             android:layout_marginTop="10dp"
                             android:id="@+id/tvcontacts"
                             android:visibility="gone"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="To unlock Contact &amp; Email ID"
                             android:textColor="@color/black" />
 
@@ -1106,7 +1106,7 @@
                             android:background="@drawable/edt_text_border"
                             android:elevation="20dp"
                             android:visibility="gone"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:padding="10dp"
                             android:text="Upgrade your membership"
                             android:textAlignment="center"
@@ -1141,7 +1141,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Horoscope Details"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
@@ -1178,7 +1178,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Place Of Birth"
                                     android:textSize="14sp"
 
@@ -1189,7 +1189,7 @@
                                     android:id="@+id/tvDetailPlaceOfBirth"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:text="Not Specified"
                                     android:textSize="14sp" />
@@ -1229,7 +1229,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Time of Birth"
                                     android:textSize="14sp"
 
@@ -1240,7 +1240,7 @@
                                     android:id="@+id/tvMatchDetailTime"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Not Specified"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -1278,7 +1278,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Manglik"
                                     android:textSize="14sp"
 
@@ -1289,7 +1289,7 @@
                                     android:id="@+id/tvDetailManglik"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Not Specified"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -1326,7 +1326,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Career &amp; Education"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
@@ -1365,7 +1365,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Profession"
                                     android:textSize="14sp"
 
@@ -1376,7 +1376,7 @@
                                     android:id="@+id/tvDetailProfession"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:text="Not Specified"
                                     android:textSize="14sp" />
@@ -1417,7 +1417,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Company Name"
                                     android:textSize="14sp"
 
@@ -1429,7 +1429,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textAlignment="center"
                                     android:text="Not Specified"
                                     android:textColor="@color/black"
@@ -1471,7 +1471,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Annual Income"
                                     android:textSize="14sp"
 
@@ -1482,7 +1482,7 @@
                                     android:id="@+id/tvDetailAnnualIncome"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:text="Not Specified"
                                     android:textSize="14sp" />
@@ -1523,7 +1523,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="PG"
                                     android:textSize="14sp"
 
@@ -1534,7 +1534,7 @@
                                     android:id="@+id/tvDetailHQualification"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Not Specified"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -1575,7 +1575,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Education Field"
                                     android:textSize="14sp"
 
@@ -1587,7 +1587,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Not Specified"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1627,7 +1627,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="College Name"
                                     android:textSize="14sp"
 
@@ -1638,7 +1638,7 @@
                                     android:id="@+id/tvDetailCollege"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Not Specified"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -1758,7 +1758,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Age"
                                     android:textSize="14sp"
 
@@ -1769,7 +1769,7 @@
                                     android:id="@+id/tvDetailAgeMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1852,7 +1852,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Height"
                                     android:textSize="14sp"
 
@@ -1863,7 +1863,7 @@
                                     android:id="@+id/tvDetailHeightMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -1948,7 +1948,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Marital Status"
                                     android:textSize="14sp"
 
@@ -1959,7 +1959,7 @@
                                     android:id="@+id/tvDetailMaritalStatusMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2044,7 +2044,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Country Living in"
                                     android:textSize="14sp"
 
@@ -2055,7 +2055,7 @@
                                     android:id="@+id/tvDetailCountryMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2140,7 +2140,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="State Living in"
                                     android:textSize="14sp"
 
@@ -2151,7 +2151,7 @@
                                     android:id="@+id/tvDetailStateMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2234,7 +2234,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="City Living In"
                                     android:textSize="14sp"
 
@@ -2245,7 +2245,7 @@
                                     android:id="@+id/tvDetailcityMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Not Specified"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -2331,7 +2331,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Education"
                                     android:textSize="14sp"
 
@@ -2342,7 +2342,7 @@
                                     android:id="@+id/tvDetailEducationMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2426,7 +2426,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Working With"
                                     android:textSize="14sp"
 
@@ -2437,7 +2437,7 @@
                                     android:id="@+id/tvDetailWorkingWithMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2616,7 +2616,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Annual Income"
                                     android:textSize="14sp"
 
@@ -2627,7 +2627,7 @@
                                     android:id="@+id/tvDetailIncomeMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2711,7 +2711,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Religion / Community"
                                     android:textSize="14sp"
 
@@ -2722,7 +2722,7 @@
                                     android:id="@+id/tvDetailReligionMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2806,7 +2806,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Mother Tongue"
                                     android:textSize="14sp"
 
@@ -2817,7 +2817,7 @@
                                     android:id="@+id/tvDetailMotherTongueMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -2901,7 +2901,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Manglik"
                                     android:textSize="14sp"
 
@@ -2912,7 +2912,7 @@
                                     android:id="@+id/tvDetailManglikMatch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -3034,7 +3034,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="20dp"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:shadowColor="#000000"
                     android:text="Like this profile?"
                     android:textSize="14sp"
@@ -3046,7 +3046,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="20dp"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:padding="6dp"
                     android:shadowColor="#000000"
                     android:shadowDx="2"
@@ -3063,7 +3063,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="20dp"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:padding="6dp"
                     android:shadowColor="#000000"
                     android:shadowDx="2"

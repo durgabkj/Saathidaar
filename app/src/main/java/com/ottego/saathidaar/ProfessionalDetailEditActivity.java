@@ -87,7 +87,6 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
 
         String[] workingAs = getResources().getStringArray(R.array.workingAs);
 
-
         for (String string : workingAs) {
             workingAslist.add(string);
         }
@@ -117,9 +116,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
     }
 
 
-
     private void userAnnualIncome() {
-
         final int[] checkedItem = {-1};
         b.etIncome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -246,13 +243,10 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
             });
 
         }
-
-
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
-
 
     private void listener() {
         b.btnSaveData.setOnClickListener(new View.OnClickListener() {
@@ -262,9 +256,6 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
                 hideKeyboard(view);
             }
         });
-
-
-
 
         b.etWorkingAs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -326,7 +317,6 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
 
 
     }
-
     public void successDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View layout_dialog = LayoutInflater.from(context).inflate(R.layout.alert_sucess_dialog, null);

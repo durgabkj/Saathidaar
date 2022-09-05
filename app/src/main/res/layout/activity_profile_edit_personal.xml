@@ -369,7 +369,7 @@
                 android:id="@+id/tvBlood"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginTop="10dp"
                 android:text="Blood Group" />
@@ -389,7 +389,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:editable="false"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                     android:gravity="center_vertical"
@@ -408,7 +408,7 @@
             <TextView
                 android:id="@+id/tvDiet"
                 android:layout_width="match_parent"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -428,7 +428,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                     android:enabled="true"
                     android:textColor="@color/black"
@@ -446,7 +446,7 @@
             <TextView
                 android:id="@+id/tvGenderEdit"
                 android:layout_width="match_parent"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -466,7 +466,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                     android:enabled="true"
                     android:textColor="@color/black"
@@ -504,7 +504,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Mother Tongue"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:textColor="@color/colorPrimary"
 
                 />
@@ -515,7 +515,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:gravity="center_vertical"
                 android:hint="Select Mother Tongue"
                 android:padding="10dp" />
@@ -525,7 +525,7 @@
                 android:id="@+id/tvHealth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginTop="10dp"
                 android:text="Health Issue" />
@@ -550,7 +550,7 @@
                     android:textColor="@color/black"
                     android:layout_marginEnd="10dp"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:gravity="center_vertical"
                     android:hint="Health Details"
                     tools:ignore="Deprecated,Suspicious0dp" />
@@ -563,21 +563,21 @@
                                 android:layout_width="match_parent"
                                 android:layout_marginTop="10dp"
                                 android:visibility="gone"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:layout_height="40dp"
                                 android:hint="Write Health Issue" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/gradient_button"
                 >
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:textColor="@color/white"
                     android:layout_marginStart="8dp"
                     android:gravity="center_vertical"
@@ -590,7 +590,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Religion"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:textColor="@color/colorPrimary"
 
                 />
@@ -602,7 +602,7 @@
                 android:layout_height="40dp"
                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                 android:gravity="center_vertical"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:capitalize="words"
                 android:hint="Select Religion"
 
@@ -622,7 +622,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Caste"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:textColor="@color/colorPrimary"
 
                     />
@@ -631,7 +631,7 @@
                     android:id="@+id/tvUserCommunity"
                     style="@style/PersonalDataTextView"
                     android:layout_width="match_parent"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:layout_height="wrap_content"
                     android:capitalize="words"
                     android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
@@ -652,7 +652,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Sub Caste"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:textColor="@color/colorPrimary"
 
                 />
@@ -661,7 +661,7 @@
                 android:id="@+id/tvUserSubCommunity"
                 style="@style/PersonalDataTextView"
                 android:layout_width="match_parent"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:capitalize="words"
                 android:layout_height="40dp"
                 android:hint="Sub Caste" />
@@ -679,7 +679,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Gotra/Gotram"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:textColor="@color/colorPrimary"
 
                 />
@@ -690,7 +690,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:capitalize="words"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:hint="Enter Your Gotra" />
         </LinearLayout>
 
@@ -698,14 +698,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/gradient_button"
                 >
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:textColor="@color/white"
                     android:layout_marginStart="8dp"
                     android:gravity="center_vertical"
@@ -727,7 +727,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:text="Country Living In" />
 
                 <LinearLayout
@@ -749,7 +749,7 @@
                         android:capitalize="words"
                         android:background="@drawable/transparent_edittext_border"
                         android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:gravity="center_vertical"
                         android:hint="Country"
                         android:textColor="@color/black" />
@@ -785,7 +785,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:text="State Living In" />
 
                 <LinearLayout
@@ -807,7 +807,7 @@
                         android:capitalize="words"
                         android:background="@drawable/transparent_edittext_border"
                         android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:gravity="center_vertical"
                         android:hint="State"
                         android:textColor="@color/black" />
@@ -843,7 +843,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:text="City Living In" />
 
                 <LinearLayout
@@ -852,7 +852,7 @@
                     android:layout_centerInParent="true"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/bg_edit_text"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:orientation="horizontal"
                     tools:ignore="UselessParent">
 
@@ -865,7 +865,7 @@
                         android:capitalize="words"
                         android:background="@drawable/transparent_edittext_border"
                         android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:gravity="center_vertical"
                         android:hint="City"
                         android:textColor="@color/black" />
@@ -899,7 +899,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:text="Co-origin " />
 
                 <EditText
@@ -909,7 +909,7 @@
                     android:layout_height="40dp"
                     android:padding="10dp"
                     android:capitalize="words"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:hint=" Enter Your Co-origin"
                     android:textColor="@color/black" />
 
@@ -926,7 +926,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:text="Zip/PinCode" />
 
                 <EditText
@@ -945,14 +945,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/gradient_button"
                     >
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/white"
                         android:layout_marginStart="8dp"
                         android:gravity="center_vertical"
@@ -966,7 +966,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:textColor="@color/colorPrimary"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Country of Birth"
                             />
 
@@ -1019,7 +1019,7 @@
                                 android:editable="false"
                                 android:hint="Select Country"
                                 android:gravity="center_vertical"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:textSize="14sp"
                                 android:inputType="none"
                                 android:textColor="@color/black"
@@ -1036,7 +1036,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:textColor="@color/colorPrimary"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:inputType="none"
                             android:text="City of Birth" />
 
@@ -1045,7 +1045,7 @@
                             style="@style/PersonalDataTextView"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:hint="Enter city of birth" />
 
 
@@ -1055,7 +1055,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:textColor="@color/colorPrimary"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:inputType="none"
                             android:text="Date of Birth" />
 
@@ -1065,7 +1065,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:gravity="center_vertical"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:hint="Enter Date of birth" />
 
                         <TextView
@@ -1073,7 +1073,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:textColor="@color/colorPrimary"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Time of Birth"
 
                             />
@@ -1107,7 +1107,7 @@
                                         android:editable="false"
                                         android:hint="Hour"
                                         android:gravity="center_vertical"
-                                        android:fontFamily="@font/italic"
+                                        android:fontFamily="@font/app_font"
                                         android:textSize="14sp"
                                         android:inputType="none"
                                         android:textColor="@color/black"
@@ -1134,7 +1134,7 @@
                                         android:editable="false"
                                         android:hint="Minutes"
                                         android:gravity="center_vertical"
-                                        android:fontFamily="@font/italic"
+                                        android:fontFamily="@font/app_font"
                                         android:textSize="14sp"
                                         android:inputType="none"
                                         android:textColor="@color/black"
@@ -1159,9 +1159,9 @@
                                         android:layout_height="40dp"
                                         android:layout_weight="1"
                                         android:editable="false"
-                                        android:hint="A.M-P.M"
+                                        android:hint="AM_PM"
                                         android:gravity="center_vertical"
-                                        android:fontFamily="@font/italic"
+                                        android:fontFamily="@font/app_font"
                                         android:textSize="14sp"
                                         android:inputType="none"
                                         android:textColor="@color/black"
@@ -1202,7 +1202,7 @@
                                 android:editable="false"
                                 android:hint="Select"
                                 android:gravity="center_vertical"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:textSize="14sp"
                                 android:inputType="none"
                                 android:textColor="@color/black"
@@ -1218,7 +1218,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:textColor="@color/colorPrimary"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Manglik / Chevvai dosham
 "
 
@@ -1243,7 +1243,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Yes" />
 
                                 <RadioButton
@@ -1252,7 +1252,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginStart="10dp"
                                     android:layout_weight="1"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="No" />
 
                                 <RadioButton
@@ -1261,7 +1261,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginStart="10dp"
                                     android:layout_weight="1.3"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Don't Know" />
 
                             </RadioGroup>

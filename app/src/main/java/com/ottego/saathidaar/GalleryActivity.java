@@ -93,10 +93,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         sessionManager = new SessionManager(context);
         // Now we will call setSelected() method
         // and pass boolean value as true
-        boolean ans = imagePathList.isEmpty();
-        if (ans == true) {
-            b.upload.setVisibility(View.INVISIBLE);
-        }
+
 
         b.marqueeText.setSelected(true);
         getData();
@@ -150,6 +147,11 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                     imagePathList.clear();
                     Toast.makeText(context, "you can't upload more than " + remaingImagesCount + " image", Toast.LENGTH_LONG).show();
 
+                }
+
+                boolean ans = imagePathList.isEmpty();
+                if (ans == true) {
+                    Toast.makeText(context, "Please Select Image From Gallery", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -470,9 +472,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     @Override
     public void PickiTonCompleteListener(String path, boolean wasDriveFile, boolean wasUnknownProvider, boolean wasSuccessful, String Reason) {
         Log.e("durga", "path single: " + path);
-        if (path!=null) {
-            b.upload.setVisibility(View.VISIBLE);
-        }
+
         imagePathList.clear();
         imagePathList.add(path);
 
@@ -523,6 +523,9 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                     if (imageCount == 2 || imageCount >= 2) {
                         //hide
                         b.upload.setVisibility(View.INVISIBLE);
+                    }else
+                    {
+                        b.upload.setVisibility(View.VISIBLE);
                     }
 
                     setRecyclerView();

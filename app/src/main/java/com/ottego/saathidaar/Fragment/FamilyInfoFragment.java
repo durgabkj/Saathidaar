@@ -90,9 +90,6 @@ FragmentFamilyInfoBinding b;
         listener();
         sessionManager=new SessionManager(context);
         getMemberData();
-
-
-
         return b.getRoot();
     }
 
@@ -263,6 +260,16 @@ FragmentFamilyInfoBinding b;
             b.tvUserBrothersMarried.setText(model.married_male + " : Married");
             b.tvUserBrothersUMarried.setText(model.unmarried_male + " : UnMarried");
 
+
+            b.tvUserFatherCompany.setText(model.father_company_name);
+            b.tvUserFatherDesignation.setText(model.father_designation);
+            b.tvUserFatherNatureofBusiness.setText(model.father_business_name);
+
+            b.tvUserMotherCompany.setText(model.mother_company_name);
+            b.tvUserMotherDesignation.setText(model.mother_designation);
+            b.tvUserMotherNatureofBusiness.setText(model.mother_business_name);
+
+
             if(model.married_female.equalsIgnoreCase(""))
             {
                 b.tvUserSistersMarried.setVisibility(View.GONE);
@@ -290,7 +297,6 @@ FragmentFamilyInfoBinding b;
             b.tvUserFatherCompany.setText(model.father_company_name);
             b.tvUserFatherDesignation.setText(model.father_designation);
             b.tvUserFatherNatureofBusiness.setText(model.father_business_name);
-
             b.tvUserMotherCompany.setText(model.mother_company_name);
             b.tvUserMotherDesignation.setText(model.mother_designation);
             b.tvUserMotherNatureofBusiness.setText(model.mother_business_name);

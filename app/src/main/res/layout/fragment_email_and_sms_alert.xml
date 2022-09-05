@@ -45,7 +45,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:background="@drawable/gradient_button"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:padding="5dp"
                         android:text="Premium Matches Email"
                         android:textColor="@color/white"
@@ -56,14 +56,14 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:visibility="gone"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Alert you receive every time someone contacts you receive a response to a contact initiated by you Get" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/gray_dark"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:padding="5dp"
                         android:singleLine="false"
                         android:text="Alerts you receive every time a premium match contact you or you receive a response to a premium contact initiated by you."
@@ -79,7 +79,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
 
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Daily" />
 
                         <RadioButton
@@ -87,7 +87,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
 
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Weekly" />
 
                         <RadioButton
@@ -95,7 +95,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
 
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
 
                             android:text="Monthly" />
 
@@ -103,7 +103,7 @@
                             android:id="@+id/rbPremiumUnsubscribe"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Unsubscribe" />
                     </RadioGroup>
 
@@ -128,7 +128,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:background="@drawable/gradient_button"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:padding="5dp"
                         android:text="Recent Visitors Email"
                         android:textColor="@color/white"
@@ -140,7 +140,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/gray_dark"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:padding="5dp"
                         android:text="People who have visited your profile will be displayed through this email alert."
                         android:textStyle="bold" />
@@ -155,7 +155,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:checked="false"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Daily" />
 
                         <RadioButton
@@ -163,7 +163,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:checked="false"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Weekly" />
 
                         <RadioButton
@@ -171,7 +171,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:checked="false"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Monthly" />
 
                         <RadioButton
@@ -179,7 +179,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:checked="false"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Unsubscribe" />
                     </RadioGroup>
 
@@ -204,7 +204,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:background="@drawable/gradient_button"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:padding="5dp"
                         android:text="Today's Matches Email"
                         android:textColor="@color/white"
@@ -217,7 +217,7 @@
                         android:background="@color/gray_dark"
                         android:padding="5dp"
                         android:text="Today's matches will be sent through this email alert."
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:textStyle="bold" />
 
                     <RadioGroup
@@ -229,7 +229,7 @@
                             android:id="@+id/rbTodayMatchDaily"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:checked="false"
                             android:text="Daily" />
 
@@ -238,7 +238,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:checked="false"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Weekly" />
 
                         <RadioButton
@@ -246,7 +246,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:checked="false"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Monthly" />
 
                         <RadioButton
@@ -254,7 +254,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:checked="false"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Unsubscribe" />
                     </RadioGroup>
 

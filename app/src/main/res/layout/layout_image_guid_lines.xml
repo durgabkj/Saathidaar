@@ -3,27 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
 
         android:padding="16dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Image Guid Line"
-            android:textSize="16sp"
-            android:padding="10dp"
-            android:textColor="@color/white"
             android:background="@drawable/gradient_for_app"
+            android:fontFamily="@font/app_font"
+            android:padding="10dp"
+            android:text="Image Guid Line"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/italic"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/app_font"
             android:text="1.Add recent and clear photos."
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -32,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/italic"
+            android:fontFamily="@font/app_font"
             android:text="2.You can upload 2 photos to your profile. Each photo must be less than 100KB and in jpg format."
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -41,21 +45,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/app_font"
             android:text="Beyond these basic rules, here are some reasons we reject photos"
             android:textAlignment="center"
-            android:fontFamily="@font/italic"
-       android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/italic"
+            android:fontFamily="@font/app_font"
             android:text="1.Sideways or upside-down photos are likely to be rejected."
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -64,18 +66,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/italic"
+            android:fontFamily="@font/app_font"
             android:text="2.Watermarked, digitally enhanced, morphed photos or photos with your personal information will be rejected."
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-        <Button
+
+        <TextView
             android:id="@+id/buttonOk"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
+
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-        android:backgroundTint="@color/colorPrimary"
+            android:background="@drawable/button_hover"
+            android:padding="10dp"
             android:text="Ok"
-            android:textColor="#FFF" />
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

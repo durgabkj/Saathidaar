@@ -45,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:background="@drawable/gradient_button"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:padding="5dp"
                     android:textAlignment="center"
                     android:gravity="center"
@@ -58,7 +58,7 @@
                         android:id="@+id/chkbUnHide"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:textStyle="bold"
                         android:layout_gravity="center"
                         android:text="Hide Profile"/>
@@ -84,7 +84,7 @@
                         android:id="@+id/rbHideUnhideOneMonth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="One Month" />
 
 
@@ -93,14 +93,14 @@
                         android:id="@+id/rbHideUnhideThreeMonth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Three Months" />
 
                     <RadioButton
                         android:id="@+id/rbHideUnhideSixMonth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Six Months" />
 
                     <View
@@ -113,7 +113,7 @@
                         android:layout_width="wrap_content"
                         android:layout_gravity="center"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Unhide Profile" />
                 </RadioGroup>
 
@@ -170,7 +170,7 @@
                         android:layout_height="30dp"
                         android:layout_marginBottom="20dp"
                         android:background="@color/gray_dark"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:gravity="center"
                         android:text="Cancel"
                         android:visibility="gone"
@@ -204,7 +204,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:background="@drawable/gradient_button"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:padding="5dp"
                     android:gravity="center"
                     android:textAlignment="center"
@@ -225,7 +225,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:checked="false"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Activate Account" />
 
                     <RadioButton
@@ -233,7 +233,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:checked="false"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Deactivate Account" />
 
 

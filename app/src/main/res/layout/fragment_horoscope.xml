@@ -13,7 +13,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="30dp"
         android:background="@color/colorPrimary"
-        android:fontFamily="@font/italic"
+        android:fontFamily="@font/app_font"
         android:gravity="center"
         android:padding="10dp"
         android:text="Birth and Horoscope Details"
@@ -54,7 +54,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Country of Birth"
                             android:textStyle="bold" />
 
@@ -63,7 +63,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:hint="Add Details"
                             android:textColorHint="@color/colorPrimary"
                             tools:ignore="DuplicateIds" />
@@ -80,7 +80,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Date of Birth"
                             android:textStyle="bold" />
 
@@ -89,7 +89,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:hint="Add Details"
                             android:textColorHint="@color/colorPrimary" />
 
@@ -105,7 +105,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="City of Birth"
                             android:textStyle="bold" />
 
@@ -114,7 +114,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:hint="Add Details"
                             android:textColorHint="@color/colorPrimary" />
 
@@ -130,7 +130,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Time of Birth"
                             android:textStyle="bold" />
 
@@ -139,7 +139,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:hint="Add Details"
                             android:textColorHint="@color/colorPrimary" />
 
@@ -155,7 +155,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Manglik / Chevvai dosham  "
                             android:textStyle="bold" />
 
@@ -164,7 +164,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:hint="Add Details"
                             android:textColorHint="@color/colorPrimary" />
                     </LinearLayout>
@@ -177,7 +177,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Co-ordinate of city"
                             android:textStyle="bold" />
 
@@ -186,7 +186,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:hint="Add Details"
                             android:textColorHint="@color/colorPrimary" />
                     </LinearLayout>
@@ -200,7 +200,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:visibility="invisible"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Co-ordinate of city"
                             android:textStyle="bold" />
 
@@ -209,7 +209,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:hint="Add Details"
                             android:textColorHint="@color/colorPrimary" />
                     </LinearLayout>
@@ -264,7 +264,7 @@
                         android:id="@+id/tvc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Country Name"
 
                         />
@@ -290,7 +290,7 @@
                                 android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                                 android:focusable="true"
                                 android:focusableInTouchMode="false"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:importantForAutofill="no"
                                 android:maxLines="1"
                                 app:showSearch="true"
@@ -317,7 +317,7 @@
                             android:editable="false"
                             android:hint="Select Country"
                             android:gravity="center_vertical"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:textSize="14sp"
                             android:inputType="none"
                             android:textColor="@color/black"
@@ -333,7 +333,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:inputType="none"
                         android:text="City of Birth" />
 
@@ -342,7 +342,7 @@
                         style="@style/PersonalDataTextView"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:hint="Enter city of birth" />
 
 
@@ -361,14 +361,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:gravity="center_vertical"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:hint="Enter Date of birth" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Time of Birth"
 
                         />
@@ -400,7 +400,7 @@
                                     android:editable="false"
                                     android:hint="Hour"
                                     android:gravity="center_vertical"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textSize="14sp"
                                     android:inputType="none"
                                     android:textColor="@color/black"
@@ -427,7 +427,7 @@
                                     android:editable="false"
                                     android:hint="Minutes"
                                     android:gravity="center_vertical"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textSize="14sp"
                                     android:inputType="none"
                                     android:textColor="@color/black"
@@ -454,7 +454,7 @@
                                     android:editable="false"
                                     android:hint="A.M-P.M"
                                     android:gravity="center_vertical"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textSize="14sp"
                                     android:inputType="none"
                                     android:textColor="@color/black"
@@ -493,7 +493,7 @@
                             android:editable="false"
                             android:hint="Select"
                             android:gravity="center_vertical"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:textSize="14sp"
                             android:inputType="none"
                             android:textColor="@color/black"
@@ -508,7 +508,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Manglik / Chevvai dosham
 "
 
@@ -532,7 +532,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Yes" />
 
                             <RadioButton
@@ -541,7 +541,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginStart="10dp"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="No" />
 
                             <RadioButton
@@ -550,7 +550,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginStart="10dp"
                                 android:layout_weight="1.3"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Don't Know" />
 
                         </RadioGroup>
@@ -581,7 +581,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="10dp"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="or" />
 
 <!--                        <TextView-->

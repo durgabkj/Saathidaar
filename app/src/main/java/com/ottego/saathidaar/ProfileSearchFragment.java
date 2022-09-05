@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -26,6 +27,7 @@ import com.ottego.saathidaar.Model.HoroscopeModel;
 import com.ottego.saathidaar.Model.MemberPreferenceModel;
 import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.databinding.FragmentProfileSearchBinding;
+import com.ottego.saathidaar.viewmodel.InboxViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,18 +40,20 @@ import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public class ProfileSearchFragment extends DialogFragment implements ApiListener {
 
-FragmentProfileSearchBinding b;
+   FragmentProfileSearchBinding b;
     MemberPreferenceModel memberPreferenceModel;
     SessionManager sessionManager;
     MemberProfileModel model;
     public String memberDetail = Utils.memberUrl + "get-details/";
     public String PreferenceDetailUrl = Utils.memberUrl + "match/preference/";
     Context context;
+    InboxViewModel inboxViewModel;
+
     HoroscopeModel horoscopeModel;
     public String urlGetHoroscope = Utils.memberUrl + "horoscope/get/";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-ApiListener apiListener;
+    ApiListener apiListener;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -88,7 +92,7 @@ ApiListener apiListener;
         b=FragmentProfileSearchBinding.inflate(inflater,container,false);
         context = getContext();
         sessionManager = new SessionManager(context);
-
+        inboxViewModel = new ViewModelProvider(requireActivity()).get(InboxViewModel.class);
         listener();
         getPartnerData();
         getHoroscopeData();
@@ -131,17 +135,31 @@ ApiListener apiListener;
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
     }
+
     private void setHoroData() {
-        if((horoscopeModel.hours!=null && !horoscopeModel.hours.equals("")) && (horoscopeModel.minutes!=null && !horoscopeModel.minutes.equals("")) && (horoscopeModel.time!=null && !horoscopeModel.time.equals("")) && (horoscopeModel.country_of_birth!=null || !horoscopeModel.country_of_birth.equals("")) && (horoscopeModel.city_of_birth!=null || !horoscopeModel.city_of_birth.equals("")))
-        {
-            b.tvDetailPlaceOfBirth.setText(horoscopeModel.country_of_birth + " ," + horoscopeModel.city_of_birth + " ," + horoscopeModel.hours + " :" + horoscopeModel.minutes);
+        if(horoscopeModel!=null){
+            if ((horoscopeModel.hours != null && !horoscopeModel.hours.equals("")) && (horoscopeModel.minutes != null && !horoscopeModel.minutes.equals("")) && (horoscopeModel.time != null && !horoscopeModel.time.equals("")) && (horoscopeModel.country_of_birth != null || !horoscopeModel.country_of_birth.equals("")) && (horoscopeModel.city_of_birth != null || !horoscopeModel.city_of_birth.equals(""))) {
+                b.tvDetailPlaceOfBirth.setText(horoscopeModel.country_of_birth + " ," + horoscopeModel.city_of_birth);
+                b.tvMatchDetailTime.setText(horoscopeModel.hours + " :" + horoscopeModel.minutes + "," + horoscopeModel.time + "," + horoscopeModel.time_status);
+
+            }
+
+            if (!horoscopeModel.manglik.equalsIgnoreCase("") && !horoscopeModel.manglik.equalsIgnoreCase(null) && !horoscopeModel.manglik.isEmpty()) {
+
+                b.tvDetailManglik.setText(horoscopeModel.manglik);
+            } else {
+                b.tvDetailManglik.setText("Not Specified");
+            }
         }
 
-        b.tvDetailManglik.setText(horoscopeModel.manglik);
+
+
+
     }
+
     private void getMemberPreferenceData() {
         Log.e("params", String.valueOf(mParam1));
-        Log.e("prefParams", PreferenceDetailUrl + mParam1+ "/" + sessionManager.getMemberId());
+        Log.e("prefParams", PreferenceDetailUrl + mParam1 + "/" + sessionManager.getMemberId());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, PreferenceDetailUrl + mParam1 + "/" + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -337,17 +355,25 @@ ApiListener apiListener;
         b.tvAboutUserFamilyDetails.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String details =  b.tvAboutUserFamilyDetails.getText().toString().trim();
+                String details = b.tvAboutUserFamilyDetails.getText().toString().trim();
                 if (details.equals("")) {
                     b.mcvFamilyDetail.setVisibility(View.GONE);
-                }else
-                {
+                } else {
                     b.mcvFamilyDetail.setVisibility(View.VISIBLE);
                 }
+
+                int detailsCount = b.tvAboutUserFamilyDetails.getText().toString().length();
+                if (detailsCount <= 50) {
+                    b.tvViewMoreFamily.setVisibility(View.GONE);
+                } else {
+                    b.tvViewMoreFamily.setVisibility(View.VISIBLE);
+                }
+
             }
 
             @Override
@@ -365,12 +391,19 @@ ApiListener apiListener;
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String AboutDetails =  b.tvAboutUserDetails.getText().toString().trim();
+                String AboutDetails = b.tvAboutUserDetails.getText().toString().trim();
                 if (AboutDetails.equals("")) {
                     b.mcvAboutDetail.setVisibility(View.GONE);
-                }else
-                {
+                } else {
                     b.mcvAboutDetail.setVisibility(View.VISIBLE);
+                }
+
+
+                int AboutDetailsCount = b.tvAboutUserDetails.getText().toString().length();
+                if (AboutDetailsCount <= 50) {
+                    b.tvViewMore.setVisibility(View.GONE);
+                } else {
+                    b.tvViewMore.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -384,10 +417,7 @@ ApiListener apiListener;
         b.ivDetailsMatchConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.sentRequest(context, mParam1,apiListener);
-                b.ivDetailsMatchConnect.setVisibility(View.GONE);
-                b.ivDetailsMatchConnected.setVisibility(View.VISIBLE);
-                Toast.makeText(context, "Now,you connected", Toast.LENGTH_SHORT).show();
+                sendRequest();
             }
         });
 
@@ -417,7 +447,6 @@ ApiListener apiListener;
         });
 
 
-
         b.llShowMemberImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -428,11 +457,6 @@ ApiListener apiListener;
         });
 
 
-        b.llBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
         b.tvViewMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -457,20 +481,71 @@ ApiListener apiListener;
         b.tvViewLessFamily.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                b.tvAboutUserFamilyDetails.setMaxLines(4);
+                b.tvAboutUserFamilyDetails.setMaxLines(2);
                 b.tvViewLessFamily.setVisibility(View.GONE);
                 b.tvViewMoreFamily.setVisibility(View.VISIBLE);
             }
         });
+
+
         b.tvViewLess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                b.tvAboutUserDetails.setMaxLines(4);
+                b.tvAboutUserDetails.setMaxLines(2);
                 b.tvViewLess.setVisibility(View.GONE);
                 b.tvViewMore.setVisibility(View.VISIBLE);
             }
         });
+
+
     }
+
+    public void sendRequest() {
+        //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
+        String url = Utils.memberUrl + "send-request";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("request_from_id", new SessionManager(context).getMemberId());
+        params.put("request_to_id", model.member_id);
+        params.put("request_status", "Pending");
+        Log.e("params request sent", String.valueOf(params));
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //   progressDialog.dismiss();
+                        Log.e(" request sent response", String.valueOf((response)));
+                        try {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+                                b.ivDetailsMatchConnect.setVisibility(View.GONE);
+                                b.ivDetailsMatchConnected.setVisibility(View.VISIBLE);
+                                Toast.makeText(context, "Request Sent Successfully To " + model.first_name + " " + model.last_name, Toast.LENGTH_SHORT).show();
+                            } else {
+
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // progressDialog.dismiss();
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
+                    }
+                });
+
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
+
+    }
+
+
     private void getPartnerData() {
         Map<String, String> params = new HashMap<String, String>();
         Log.e("dataParams", memberDetail + mParam1);
@@ -483,7 +558,10 @@ ApiListener apiListener;
                     if (code.equalsIgnoreCase("1")) {
                         Gson gson = new Gson();
                         model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
+                        sessionManager.createSessionPremiumStatus(model.my_premium_status);
                         setData();
+
+
                     } else {
                         Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }
@@ -503,43 +581,117 @@ ApiListener apiListener;
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
     }
+
     private void setData() {
         if (model != null) {
-            b.tvNewMatchName.setText(Utils.nullToBlank((model.first_name)) + " " +Utils.nullToBlank(model.last_name).charAt(0));
+            b.ivMatchDot.setVisibility(View.VISIBLE);
+            b.ivMatchDot1.setVisibility(View.VISIBLE);
+            b.ivMatchDot2.setVisibility(View.VISIBLE);
+            b.llPrivateMatchesDetailPhoto.setVisibility(View.GONE);
 
-            if (model.age.equalsIgnoreCase("") && model.age.equalsIgnoreCase(null)) {
+            b.tvNewMatchName.setText(Utils.nullToBlank((model.first_name).substring(0, 1).toUpperCase() + model.first_name.substring(1)) + " " + Utils.nullToBlank(model.last_name).substring(0, 1).toUpperCase().charAt(0));
 
-            } else {
+            if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty()) {
                 b.tvNewMatchAge.setText(Utils.nullToBlank(model.age) + " " + "yrs");
+            } else {
+                b.tvNewMatchAge.setText("Age:-Not Specified");
             }
 
+            if (!model.city.equalsIgnoreCase("") && !model.city.equalsIgnoreCase(null) && !model.city.isEmpty()) {
+                b.tvMatchCityDetail.setText(Utils.nullToBlank(model.city));
+            } else {
+                b.tvMatchCityDetail.setText("Not Specified");
+            }
+
+
             b.tvNewMatchHeight.setText(Utils.nullToBlank(model.height));
-            b.tvMatchCityDetail.setText(Utils.nullToBlank(model.city));
+
             b.tvNewMatchWorkAsDetail.setText(Utils.nullToBlank(model.working_as));
-            b.tvNameUserDetails.setText("About" + "  " + Utils.nullToBlank(model.first_name)+" "+Utils.nullToBlank(model.last_name));
+            b.tvNameUserDetails.setText("About" + "  " + Utils.nullToBlank(model.first_name) + " " + Utils.nullToBlank(model.last_name));
             b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
             b.tvNameUserFamilyDetailsHeading.setText("About " + " Family");
             b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails));
-            b.tvCreatedBy.setText("Profile CreateBy" + " " + Utils.nullToBlank(model.profilecreatedby));
-            b.tvProfileID.setText("Profile ID" + " " + Utils.nullToBlank(model.profile_id));
-            b.tvDetailAge.setText(Utils.nullToBlank(model.age) + " yrs old");
-            b.tvDetailHeight.setText("Height - " + Utils.nullToBlank(model.height));
+            b.tvCreatedBy.setText("Create by:-" + " " + Utils.nullToBlank(model.profilecreatedby));
+            b.tvProfileID.setText("Profile ID:-" + " " + Utils.nullToBlank(model.profile_id));
+            if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty()) {
+                b.tvDetailAge.setText("Age:-" + Utils.nullToBlank(model.age) + " yrs old");
+            } else {
+                b.tvDetailAge.setText(" Age-Not Specified");
+            }
+            b.tvDetailHeight.setText("Height:- " + Utils.nullToBlank(model.height));
 
-            b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
-            b.tvDetailMaritalS.setText(Utils.nullToBlank(model.marital_status));
+            if (!model.date_of_birth.equalsIgnoreCase("") && !model.date_of_birth.equalsIgnoreCase(null) && !model.date_of_birth.isEmpty()) {
+
+                b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
+            } else {
+                b.tvDetailDob.setText("DOB:-Not Specified");
+            }
+
+
+            if (!model.marital_status.equalsIgnoreCase("") && !model.marital_status.equalsIgnoreCase(null) && !model.marital_status.isEmpty()) {
+                b.tvDetailMaritalS.setText(Utils.nullToBlank(model.marital_status));
+            } else {
+                b.tvDetailMaritalS.setText("Not Specified");
+            }
+
             b.tvDetailLiveIn.setText(Utils.nullToBlank(model.city) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.country_name));
-            b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + " " +Utils.nullToBlank(model.mother_tounge) );
-            b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + " " + Utils.nullToBlank(model.sub_caste_name));
-            b.tvDetailDiet.setText(Utils.nullToBlank(model.lifestyles));
-            b.tvDetailProfession.setText(Utils.nullToBlank(model.working_as));
-            b.tvDetailCompanyName.setText(Utils.nullToBlank(model.working_with));
-            b.tvDetailAnnualIncome.setText(Utils.nullToBlank(model.annual_income));
-            b.tvDetailEducationField.setText(Utils.nullToBlank(model.education));
-            b.tvDetailCollege.setText(Utils.nullToBlank(model.college_attended));
-            b.tvDetailEmailID.setText(Utils.nullToBlank(model.profile_email_id));
-            b.tvDetailCall.setText(Utils.nullToBlank(model.profile_contact_number));
+            b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + " " + Utils.nullToBlank(model.mother_tounge));
+
+
+            if (model.caste_name!=null&&  !model.caste_name.equalsIgnoreCase("") && !model.caste_name.equalsIgnoreCase(null) && !model.caste_name.isEmpty()) {
+                b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + " " + Utils.nullToBlank(model.sub_caste_name));
+            } else {
+                b.tvDetailCommunity.setText("Not Specified");
+            }
+
+
+            // b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + " " + Utils.nullToBlank(model.sub_caste_name));
+
+            if (!model.lifestyles.equalsIgnoreCase("") && !model.lifestyles.equalsIgnoreCase(null) && !model.lifestyles.isEmpty()) {
+                b.tvDetailDiet.setText(Utils.nullToBlank(model.lifestyles));
+            } else {
+                b.tvDetailDiet.setText("Not Specified");
+            }
+
+
+            if (!model.working_as.equalsIgnoreCase("") && !model.working_as.equalsIgnoreCase(null) && !model.working_as.isEmpty()) {
+                b.tvDetailProfession.setText(Utils.nullToBlank(model.working_as));
+            } else {
+                b.tvDetailProfession.setText("Not Specified");
+            }
+
+            if (!model.working_with.equalsIgnoreCase("") && !model.working_with.equalsIgnoreCase(null) && !model.working_with.isEmpty()) {
+                b.tvDetailCompanyName.setText(Utils.nullToBlank(model.working_with));
+            } else {
+                b.tvDetailCompanyName.setText("Not Specified");
+            }
+
+            if (model.annual_income!=null && !model.annual_income.equalsIgnoreCase("") && !model.annual_income.equalsIgnoreCase(null) && !model.annual_income.isEmpty()) {
+                b.tvDetailAnnualIncome.setText(Utils.nullToBlank(model.annual_income));
+            } else {
+                b.tvDetailAnnualIncome.setText("Not Specified");
+            }
+
+            if ( model.education!=null && !model.education.equalsIgnoreCase("") && !model.education.equalsIgnoreCase(null) && !model.education.isEmpty()) {
+                b.tvDetailEducationField.setText(Utils.nullToBlank(model.education));
+            } else {
+                b.tvDetailEducationField.setText("Not Specified");
+            }
+
+            if ( model.college_attended!=null && !model.college_attended.equalsIgnoreCase("") && !model.college_attended.equalsIgnoreCase(null) && !model.college_attended.isEmpty()) {
+                b.tvDetailCollege.setText(Utils.nullToBlank(model.college_attended));
+            } else {
+                b.tvDetailCollege.setText("Not Specified");
+            }
+
+            if ( model.highest_qualification!=null && !model.highest_qualification.equalsIgnoreCase("") && !model.highest_qualification.equalsIgnoreCase(null) && !model.highest_qualification.isEmpty()) {
+                b.tvDetailHQualification.setText(Utils.nullToBlank(model.highest_qualification));
+            } else {
+                b.tvDetailHQualification.setText("Not Specified");
+            }
+            b.tvDetailEmailID.setText(Utils.nullToBlank(model.email_id));
+            b.tvDetailCall.setText(Utils.nullToBlank(model.contact_number));
             b.tvImageCountDetail.setText(Utils.nullToBlank(model.images_count));
-            b.tvDetailHQualification.setText(Utils.nullToBlank(model.highest_qualification));
 
             //Login member photo......
 
@@ -578,7 +730,8 @@ ApiListener apiListener;
             } else if (model.photo_privacy.equalsIgnoreCase("3")) {
                 b.llShowMemberImage.setEnabled(false);
                 //  b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
-                b.llPremiumMsgMatchesDetails.setVisibility(View.VISIBLE);
+                b.llPrivateMatchesDetailPhoto.setVisibility(View.VISIBLE);
+                b.llPremiumMsgMatchesDetails.setVisibility(View.GONE);
                 //  b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(Utils.imageUrl + model.profile_photo)
@@ -607,38 +760,117 @@ ApiListener apiListener;
             }
 
 
-            Glide.with(context)
-                    .load(Utils.imageUrl + model.profile_photo)
-                    .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-                    .transform(model.photo_privacy.equals("2")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-                    .into(b.profileDetailPic1Partner);
 
+            //preference image set...
+            if (model.photo_privacy.equalsIgnoreCase("1")) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+//                        .transform(!model.profile_photo.equals("")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
+                        .into(b.profileDetailPic1Partner);
 
-            if (model.premium_status.equalsIgnoreCase("1")) {
+            } else if (model.photo_privacy.equalsIgnoreCase("3")) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(b.profileDetailPic1Partner);
+            } else if (model.photo_privacy.equalsIgnoreCase(model.my_premium_status)) {
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                        .into(b.profileDetailPic1Partner);
+            } else {
+                Glide.with(context)
+                        .load(Utils.imageUrl + model.profile_photo)
+                        .placeholder(model.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
+                        .transform(new BlurTransformation(20, 8))
+                        .into(b.profileDetailPic1Partner);
+            }
+
+// check privacy options
+            if (model.premium_status.equalsIgnoreCase("1") && model.my_premium_status.equalsIgnoreCase("2")) {
+                b.flPremiumMatchDetails.setVisibility(View.GONE);
+                b.tvLevelPremiumMatchDetails.setVisibility(View.GONE);
+                b.tvPremiumCollegeAndCompany.setVisibility(View.GONE);
+                b.tvPremiumBirth.setVisibility(View.GONE);
+                b.tvbirth.setVisibility(View.GONE);
+                b.tvcontacts.setVisibility(View.GONE);
+//            b.tvPremiumBirth.setVisibility(View.GONE);
+//            b.tvPremiumCollegeAndCompany.setVisibility(View.GONE);
+            } else if (model.premium_status.equalsIgnoreCase("1") && model.my_premium_status.equalsIgnoreCase("0")) {
                 b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
                 b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
+                b.tvPremiumCollegeAndCompany.setVisibility(View.VISIBLE);
+                b.tvPremiumBirth.setVisibility(View.VISIBLE);
+                b.tvbirth.setVisibility(View.VISIBLE);
+                b.tvcontacts.setVisibility(View.VISIBLE);
             }
+
 
             if (model.images_count.equalsIgnoreCase("0")) {
                 b.llPremiumMsgMatchesDetails.setVisibility(View.GONE);
             }
 
 //show request sent status
-            if((model.request_status!=null) && (!model.request_status.isEmpty()) && (!model.request_status.equals("")))
-            {
+            if ((model.request_status != null) && (!model.request_status.isEmpty()) && (!model.request_status.equals("")) && (!model.request_status.equalsIgnoreCase("null"))) {
                 b.ivDetailsMatchConnected.setVisibility(View.VISIBLE);
                 b.ivDetailsMatchConnect.setVisibility(View.GONE);
+                b.tvRequestSent.setVisibility(View.VISIBLE);
+                b.tvRequestSend.setVisibility(View.GONE);
+
             }
 
 
+//            if((model.age.equalsIgnoreCase(""))  || (model.age.equalsIgnoreCase("null")))
+//            {
+//                b.ivMatchDot.setVisibility(View.GONE);
+//            }
 
+
+            if ((model.height.equalsIgnoreCase("")) || (model.height.equalsIgnoreCase("null"))) {
+                b.ivMatchDot1.setVisibility(View.GONE);
+            }
+
+            if ((model.city.equalsIgnoreCase("")) || (model.city.equalsIgnoreCase("null"))) {
+                b.ivMatchDot2.setVisibility(View.GONE);
+            }
+
+            if ((model.working_as.equalsIgnoreCase("")) || (model.working_as.equalsIgnoreCase("null"))) {
+                b.ivMatchDot2.setVisibility(View.GONE);
+            }
+
+
+            //show badge of premium
+
+            if (model.premium_status.equalsIgnoreCase("1")) {
+                b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
+                b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
+
+            }
+
+
+            if (model.my_premium_status.equalsIgnoreCase("0")) {
+                b.ivDetailsMatchConnect.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(context, "Upgrade to premium if you want to connect", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
+                        context.startActivity(intent);
+                    }
+                });
+            }
         }
+
 
     }
 
     @Override
     public void onSuccess(int position) {
-
+        inboxViewModel.getDataCount();
+        getHoroscopeData();
+        getPartnerData();
+        getMemberPreferenceData();
     }
 
     @Override

@@ -44,7 +44,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Phone"
 
                         />
@@ -54,7 +54,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#494747"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Visible to all Premium Members"
                         android:textSize="16sp" />
 
@@ -66,7 +66,7 @@
                         android:layout_gravity="end"
                         android:padding="3dp"
                         android:text="Edit"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/teal_700"
                         android:textStyle="bold"
 
@@ -75,7 +75,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:background="@color/gray_dark" />
                 </LinearLayout>
 
@@ -90,7 +90,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Phone"
 
                         />
@@ -115,7 +115,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:visibility="gone"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Visible to all Member" />
 
                             <RadioButton
@@ -123,7 +123,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Visible to all Premium Members"/>
 
                             <RadioButton
@@ -132,7 +132,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:checked="false"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Keep this private" />
                         </RadioGroup>
 
@@ -185,7 +185,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Email"
 
                         />
@@ -195,7 +195,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#494747"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Visible to all Premium Members"
                         android:textSize="16sp" />
 
@@ -207,7 +207,7 @@
                         android:layout_gravity="end"
                         android:padding="3dp"
                         android:text="Edit"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/teal_700"
                         android:textStyle="bold"
 
@@ -229,7 +229,7 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:layout_height="wrap_content"
                         android:text="Email"
 
@@ -256,7 +256,7 @@
                                 android:layout_weight="1"
                                 android:checked="false"
                                 android:visibility="gone"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Visible to all Member" />
 
                             <RadioButton
@@ -265,7 +265,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:checked="false"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Visible to all Premium Members" />
 
                             <RadioButton
@@ -273,7 +273,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:checked="false"
                                 android:text="Keep this private" />
 
@@ -327,7 +327,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Photo"
 
                         />
@@ -337,7 +337,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#494747"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Visible to all Premium Members"
                         android:textSize="16sp" />
 
@@ -349,7 +349,7 @@
                         android:layout_gravity="end"
                         android:padding="3dp"
                         android:text="Edit"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/teal_700"
                         android:textStyle="bold"
 
@@ -371,7 +371,7 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:layout_height="wrap_content"
                         android:text="Photo"
 
@@ -388,7 +388,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="18dp"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:checkedButton="@id/radioButtonPhotoShowAllMembers"
                             android:weightSum="1">
 
@@ -399,7 +399,7 @@
                                 android:layout_weight="1"
                                 android:checked="false"
                                 android:visibility="gone"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Visible to all Member" />
 
                             <RadioButton
@@ -408,7 +408,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:checked="false"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Visible to all Premium Members" />
 
                             <RadioButton
@@ -417,7 +417,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:checked="false"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Keep this private" />
 
 
@@ -472,8 +472,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date Of Birth"
-                        android:fontFamily="@font/italic"
+                        android:text="Date of Birth"
+                        android:fontFamily="@font/app_font"
 
                         />
 
@@ -482,7 +482,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#494747"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Visible to all Premium Members"
                         android:textSize="16sp" />
 
@@ -494,7 +494,7 @@
                         android:layout_gravity="end"
                         android:padding="3dp"
                         android:text="Edit"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/teal_700"
                         android:textStyle="bold"
 
@@ -511,14 +511,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:orientation="horizontal"
                     >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Date of Birth"
 
                         />
@@ -533,7 +533,7 @@
                             android:id="@+id/radioGroupDOB"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:layout_marginTop="18dp"
                             android:checkedButton="@id/radioButtonDOBFullDOB"
                             android:weightSum="1">
@@ -544,7 +544,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:visibility="gone"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:checked="false"
                                 android:text="Visible to all Member" />
 
@@ -562,7 +562,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:checked="false"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Keep this private" />
 
 
@@ -616,7 +616,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Annual Income"
 
                         />
@@ -626,7 +626,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#494747"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Visible to all Premium Members"
                         android:textSize="16sp" />
 
@@ -638,7 +638,7 @@
                         android:layout_gravity="end"
                         android:padding="3dp"
                         android:text="Edit"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/teal_700"
                         android:textStyle="bold"
 
@@ -661,7 +661,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:text="Annual Income"
 
                         />
@@ -687,7 +687,7 @@
                                 android:layout_weight="1"
                                 android:visibility="gone"
                                 android:checked="false"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Visible to all Members" />
 
                             <RadioButton
@@ -695,7 +695,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:checked="false"
                                 android:text="Visible to all Premium Members"/>
                             <RadioButton
@@ -704,7 +704,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:checked="false"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Keep this private" />
 
 

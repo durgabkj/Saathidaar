@@ -23,6 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.ottego.saathidaar.databinding.ActivityLandingBinding;
 
@@ -80,10 +81,7 @@ public class LandingActivity extends AppCompatActivity {
 
         }
 
-
-
         private void listener() {
-
             binding.spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
                 @Override
@@ -306,8 +304,11 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
 
 
 
-            if (binding.spinner1.getSelectedItem().toString().trim().contains("Profile created By")) {
-                Toast.makeText(context, " please select one ", Toast.LENGTH_SHORT).show();
+            if (binding.spinner1.getSelectedItem().toString().trim().contains("Profile Created by")) {
+//                Toast.makeText(context, "Please Select Profile Created by ", Toast.LENGTH_LONG).show();
+                Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Please Select Profile Created by ", Snackbar.LENGTH_LONG);
+                snackbar.show();
+                return false;
             }
 
             if(binding.spinner1.getSelectedItem().toString().trim().equalsIgnoreCase("Franchise")) {
@@ -327,8 +328,6 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
 
             return true;
         }
-
-   //
         private void submitForm() {
             Map<String, String> params = new HashMap<String, String>();
             params.put("firstName", firstName);
@@ -378,8 +377,6 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
             request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             MySingleton.myGetMySingleton(context).myAddToRequest(request);
         }
-
-
     }
 
 

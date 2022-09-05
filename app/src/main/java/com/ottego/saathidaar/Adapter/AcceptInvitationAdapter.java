@@ -247,6 +247,26 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         if(item.request_sent_from.equals("1")){
             holder.llDeleteAccet.setVisibility(View.GONE);
         }
+
+
+
+
+        if (item.first_name.equals("") && item.last_name.equalsIgnoreCase("")) {
+            holder.ivAcceptDot.setVisibility(View.GONE);
+        }
+
+        if (item.height.equals("") || item.height.equalsIgnoreCase("null")) {
+            holder.ivAcceptDot2.setVisibility(View.GONE);
+        }
+
+        if (item.maritalStatus.equals("")) {
+            holder.ivAcceptDot2.setVisibility(View.GONE);
+        }
+
+        if (item.country.equals("")) {
+            holder.ivAcceptDot2.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
@@ -257,11 +277,16 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         TextView tvInvNewMatchName, tvPremiumAcceptMatch,tvInvNewMatchAge,tvPremiumDeleteMatch, tvInvitationAccetMessage, tvLevelPremiumAccept, tvImageCountAccept, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAsAccept, tvInvitationDate;
         LinearLayout llCAll, llWhatsApp,llItemAnimationAccept, llPhotoAccept,llPrivatePhoto, llMessageAccept, llBlockAccept, llBlockedAccept, llAcceptCallMsgDecline, llNo_imageFemaleListAccept, llDeleteAccet, llDeletedAccept, llPremiumMsgAccept;
         FrameLayout flNoImageMaleFemaleListAccept, flPremiumAccept;
-        ImageView ivNoImageMaleFemaleAccept, ivProfileAcceptInvi;
+        ImageView ivNoImageMaleFemaleAccept, ivProfileAcceptInvi,ivAcceptDot,ivAcceptDot1,ivAcceptDot2;
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
+
+            ivAcceptDot = itemView.findViewById(R.id.ivAcceptDot);
+            ivAcceptDot1 = itemView.findViewById(R.id.ivAcceptDot1);
+            ivAcceptDot2=itemView.findViewById(R.id.ivAcceptDot2);
+
             tvInvNewMatchAge = itemView.findViewById(R.id.tvInvNewMatchAge);
             tvInvNewMatchName = itemView.findViewById(R.id.tvInvNewMatchName);
             tvPremiumAcceptMatch=itemView.findViewById(R.id.tvPremiumAcceptMatch);

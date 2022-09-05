@@ -333,7 +333,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String country = jsonObject1.getString("country_name");
                             //  Log.e("Country-list", String.valueOf(countryList));
-
                             countryList.add(country);
                             stringArray = new String[]{country};
 
@@ -582,8 +581,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
     }
 
     private void listener() {
-
-
         b.acvCountry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

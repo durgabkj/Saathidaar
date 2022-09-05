@@ -97,7 +97,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="20dp"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Durga Singh"
                                 android:capitalize="words"
                                 android:textColor="@color/white" />
@@ -124,7 +124,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:text="Profile Created by :"
                                 android:textColor="@color/white" />
 
@@ -133,7 +133,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="3dp"
-                                android:fontFamily="@font/italic"
+                                android:fontFamily="@font/app_font"
                                 android:textColor="@color/white" />
 
                             <TextView
@@ -208,7 +208,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="Request Sent"
                                     android:textSize="13sp"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -218,7 +218,7 @@
                                     android:paddingTop="10dp"
                                     android:textStyle="bold"
                                     android:hint="0"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="15sp" />
 
@@ -239,7 +239,7 @@
                                     android:layout_height="wrap_content"
                                     android:text=" Profile Visitors"
                                     android:textSize="13sp"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -248,7 +248,7 @@
                                     android:layout_height="wrap_content"
                                     android:paddingTop="10dp"
                                     android:hint="0"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
@@ -270,7 +270,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="Request Accepted"
                                     android:textSize="13sp"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -279,7 +279,7 @@
                                     android:layout_height="wrap_content"
                                     android:paddingTop="10dp"
                                     android:hint="0"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
@@ -347,7 +347,7 @@
                                     android:textAlignment="center"
                                     android:textColor="@color/black"
                                     android:visibility="gone"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textSize="14sp"
                                     android:textStyle="bold" />
 
@@ -365,7 +365,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginTop="5dp"
                                     android:text="Text"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textAlignment="center"
                                     android:textSize="12sp" />
 
@@ -440,7 +440,7 @@
                                     android:layout_marginTop="8dp"
                                     android:text="View then now"
                                     android:visibility="gone"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black" />
 
 
@@ -495,7 +495,7 @@
                                     android:layout_marginTop="8dp"
                                     android:text="View then now"
                                     android:visibility="gone"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black" />
 
 
@@ -550,7 +550,7 @@
                                     android:layout_marginTop="8dp"
                                     android:text="View then now"
                                     android:visibility="gone"
-                                    android:fontFamily="@font/italic"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/black" />
 
 

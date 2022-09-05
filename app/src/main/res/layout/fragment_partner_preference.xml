@@ -38,7 +38,8 @@
                                     android:layout_height="30dp"
                                     android:layout_marginStart="8dp"
                                     android:padding="5dp"
-                                    android:fontFamily="@font/italic"
+                                    android:gravity="center_vertical"
+                                    android:fontFamily="@font/app_font"
                                     android:text="Search by Profile ID"
                                     android:textColor="@color/white"
                                     android:textSize="16sp" />
@@ -93,7 +94,8 @@
                         android:layout_height="30dp"
                         android:layout_marginStart="8dp"
                         android:padding="5dp"
-                        android:fontFamily="@font/italic"
+                        android:gravity="center_vertical"
+                        android:fontFamily="@font/app_font"
                         android:text=" Your Preferences"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
@@ -101,7 +103,7 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:layout_marginTop="10dp"
 
                     android:textColor="@color/colorPrimary"
@@ -131,7 +133,7 @@
                             android:layout_weight="1"
                             android:editable="false"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:enabled="true"
                             android:hint="Select"
                             android:textColor="@color/black"
@@ -175,7 +177,7 @@
                             android:textColor="@color/black"
                             android:editable="false"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:hint="Select"
                             android:gravity="center_vertical"
                             android:textSize="12dp"
@@ -193,7 +195,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
 
                     android:textColor="@color/colorPrimary"
                     android:layout_marginTop="10dp"
@@ -223,7 +225,7 @@
                             android:editable="false"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                             android:hint="Select"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:textSize="12dp"
                             android:layout_marginStart="8dp"
                             android:background="@drawable/transparent_edittext_border"
@@ -260,7 +262,7 @@
                             android:editable="false"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                             android:hint="Select"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:textSize="12dp"
                             android:layout_marginStart="8dp"
                             android:background="@drawable/transparent_edittext_border"
@@ -325,14 +327,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:text="Marital Status" />
 
                 <TextView
                     android:id="@+id/tvMultipleMaritalStatus"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:gravity="center_vertical"
                     style="@style/textInputLayoutStyle"
                     android:layout_centerInParent="true"
@@ -349,7 +351,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:text="Mother Tongue" />
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -362,7 +364,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:hint="Select Multiple Mother Tongue">
+                        android:hint="Select Mother Tongue">
 
 
 
@@ -373,7 +375,7 @@
                             android:clickable="true"
                             android:focusable="true"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:focusableInTouchMode="false"
                             android:importantForAutofill="no"
                             android:maxLines="1"
@@ -387,7 +389,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:textColor="@color/colorPrimary"
                     android:text="Manglik / Chevvai Dosham"
                     android:layout_marginTop="10dp"/>
@@ -407,14 +409,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:textSize="15sp"
                             android:text="Open to All" />
 
                         <RadioButton
                             android:id="@+id/mrbOnlyManglik"
                             android:layout_width="match_parent"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:layout_weight="1"
                             android:textSize="15sp"
                             android:layout_height="wrap_content"
@@ -427,7 +429,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:textSize="15sp"
                             android:text="No manglik" />
 
@@ -437,7 +439,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textSize="15sp"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Don't Know" />
 
 
@@ -449,7 +451,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/colorPrimary"
                     android:text="Religion" />
@@ -471,7 +473,7 @@
                         android:focusableInTouchMode="false"
                         android:importantForAutofill="no"
                         app:showSearch="true"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         app:sort="true" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -482,7 +484,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:text="Caste" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -503,7 +505,7 @@
                         android:importantForAutofill="no"
 
                         app:showSearch="true"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         app:sort="true" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -513,7 +515,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:text="Annual-Income" />
 
                 <LinearLayout
@@ -534,7 +536,7 @@
                         android:editable="false"
                         android:hint="Annual Income"
                         android:gravity="center_vertical"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:textSize="14sp"
                         android:textColor="@color/black"
                         android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
@@ -584,7 +586,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:padding="3dp"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:gravity="center_vertical"
                         android:textColor="@color/white"
                         android:layout_marginStart="8dp"
@@ -597,8 +599,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:layout_marginTop="10dp"
+                    android:textColor="@color/colorPrimary"
                     android:text="Country living in" />
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -610,7 +613,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:hint="Select Multiple Country">
+                        android:hint="Select Country">
 
                         <com.ottego.multipleselectionspinner.MultipleSelection
                             android:id="@+id/multi_SelectionCountry"
@@ -619,10 +622,9 @@
                             android:clickable="true"
                             android:focusable="true"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:focusableInTouchMode="false"
                             android:importantForAutofill="no"
-                            android:maxLines="1"
                             app:showSearch="true"
                             app:sort="true" />
 
@@ -637,7 +639,7 @@
                        android:drawablePadding="8dp"
                         android:visibility="gone"
                         android:drawableTint="@color/black"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:hint="Enter Your Country"
 
                         android:padding="8dp"
@@ -648,7 +650,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:text="State living in" />
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -660,14 +662,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:hint="Select Multiple State">
+                        android:hint="Select State">
 
                         <com.ottego.multipleselectionspinner.MultipleSelection
                             android:id="@+id/multi_SelectionState"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:focusable="true"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                             android:focusableInTouchMode="false"
@@ -684,7 +686,7 @@
                         android:layout_height="45dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/white_bg"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:visibility="gone"
                         android:inputType="textCapWords"
                         android:hint="Enter Your State"
@@ -697,7 +699,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:text="City" />
 
 
@@ -705,7 +707,7 @@
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:layout_centerInParent="true"
                     android:hint="Select city">
 
@@ -719,7 +721,7 @@
                         android:focusableInTouchMode="false"
                         android:importantForAutofill="no"
                         app:showSearch="true"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         app:sort="true" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -730,7 +732,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/white_bg"
                     android:drawableTint="@color/black"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:padding="8dp"
                     android:visibility="gone"
                     android:hint="Enter Your City"
@@ -747,7 +749,7 @@
                         android:layout_marginStart="8dp"
                         android:textSize="16sp"
                         android:gravity="center_vertical"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/white"
                         android:text="Education &amp; Professional  Details"/>
                 </LinearLayout>
@@ -757,7 +759,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:text="Qualification" />
 
 
@@ -784,7 +786,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:hint="Select Multiple Qualification">
+                        android:hint="Select Qualification">
 
 
                         <com.ottego.multipleselectionspinner.MultipleSelection
@@ -793,11 +795,10 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:focusable="true"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                             android:focusableInTouchMode="false"
                             android:importantForAutofill="no"
-                            android:maxLines="1"
                             app:showSearch="true"
                             app:sort="true" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -807,7 +808,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:textColor="@color/colorPrimary"
                     android:layout_marginTop="10dp"
                     android:text="Working with" />
@@ -831,7 +832,7 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:focusable="true"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                             android:focusableInTouchMode="false"
                             android:importantForAutofill="no"
@@ -845,7 +846,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:textColor="@color/colorPrimary"
                     android:layout_marginTop="10dp"
                     android:text="Profession" />
@@ -860,7 +861,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:hint="Select Multiple Profession Area">
+                        android:hint="Select Profession Area">
 
 
                         <com.ottego.multipleselectionspinner.MultipleSelection
@@ -869,7 +870,7 @@
                             android:layout_height="wrap_content"
                             android:clickable="true"
                             android:focusable="true"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                             android:focusableInTouchMode="false"
                             android:importantForAutofill="no"
@@ -888,7 +889,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:padding="3dp"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:gravity="center_vertical"
                         android:textColor="@color/white"
                         android:layout_marginStart="8dp"
@@ -899,7 +900,7 @@
                 <TextView
                     android:id="@+id/tvDiet"
                     android:layout_width="match_parent"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:textColor="@color/colorPrimary"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -922,7 +923,7 @@
                         android:editable="false"
                         android:hint="Select Diet"
                         android:gravity="center_vertical"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:textSize="14sp"
                         android:textColor="@color/black"
                         android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
@@ -937,11 +938,11 @@
                 <TextView
                     android:id="@+id/tvProfileCreated"
                     android:layout_width="match_parent"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:textColor="@color/colorPrimary"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Profile Created By" />
+                    android:text="Profile Created by" />
 
 
                 <LinearLayout
@@ -958,9 +959,9 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:editable="false"
-                        android:hint="Profile created By"
+                        android:hint="Profile created by"
                         android:gravity="center_vertical"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:textSize="14sp"
                         android:textColor="@color/black"
                         android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"

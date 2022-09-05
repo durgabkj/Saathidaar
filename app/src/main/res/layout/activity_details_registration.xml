@@ -332,7 +332,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                android:fontFamily="@font/app_font"
+                android:fontFamily="@font/pt_serif_bold"
                 android:text="Save"
                 android:textColor="@color/colorPrimary" />
 
@@ -345,7 +345,7 @@
                 android:drawableStart="@drawable/ic_baseline_star_rate_24"
                 android:drawablePadding="10dp"
                 android:drawableTint="@color/white"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:gravity="center_vertical"
                 android:text="All Fields are mandatory. "
                 android:textColor="@color/white"

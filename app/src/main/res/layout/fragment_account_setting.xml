@@ -39,7 +39,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:text="Email" />
 
             <TextView
@@ -50,7 +50,7 @@
                 android:gravity="center_vertical"
                 android:textStyle="bold"
                 android:background="#31918F8F"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 style="@style/PersonalDataTextView"/>
 <!--            <TextView-->
 <!--                android:layout_width="match_parent"-->
@@ -82,7 +82,7 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:layout_height="wrap_content"
                     android:text="Password" />
 
@@ -95,7 +95,7 @@
                     android:padding="10dp"
                     android:gravity="center_vertical"
 
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     style="@style/PersonalDataTextView"
                     android:text="**********" />
 
@@ -115,7 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:visibility="gone"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:layout_marginTop="10dp"
                     android:hint="New password"
                     android:text="" />
@@ -127,7 +127,7 @@
                     android:layout_gravity="end"
                     android:layout_margin="5dp"
                     android:text="Edit"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -206,7 +206,7 @@
                         android:text="or"
                         android:gravity="center"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -262,7 +262,7 @@
                 android:id="@+id/tvLandingCustomerSupport"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
@@ -301,7 +301,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="Call :-"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="10dp" />
@@ -342,7 +342,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="WhatsApp :- "
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:textAlignment="center"
                             android:gravity="center_horizontal"
                             android:textColor="@color/black"
@@ -378,7 +378,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="0dp"
                             android:text="Email :- "
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:textAlignment="center"
                             android:gravity="center_horizontal"
                             android:textColor="@color/black"
@@ -392,7 +392,7 @@
                             android:layout_marginStart="4dp"
                             android:text="info@saathidaar.com"
                             android:textAlignment="center"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:gravity="center_horizontal"
                             android:textColor="@color/black"
                             android:textSize="10dp" />

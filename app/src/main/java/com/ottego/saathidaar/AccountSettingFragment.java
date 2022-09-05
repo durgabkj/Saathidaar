@@ -230,12 +230,12 @@ public class AccountSettingFragment extends Fragment {
 
 
         if (oldPass.isEmpty()) {
-            b.etOldPassword.setError("Old password mandatory");
+            b.etOldPassword.setError("Old password  is mandatory");
             b.etOldPassword.setFocusableInTouchMode(true);
             b.etOldPassword.requestFocus();
             return false;
         } else if (oldPass.length() < 6) {
-            b.etOldPassword.setError("password must be at least 6 character");
+            b.etOldPassword.setError("Password must be at least 6 character");
             b.etOldPassword.setFocusableInTouchMode(true);
             b.etOldPassword.requestFocus();
             return false;
@@ -250,7 +250,7 @@ public class AccountSettingFragment extends Fragment {
             b.etNewPassword.requestFocus();
             return false;
         } else if (newPass.length() < 6) {
-            b.etNewPassword.setError("password must be at least 6 character");
+            b.etNewPassword.setError("Password must be at least 6 character");
             b.etNewPassword.setFocusableInTouchMode(true);
             b.etNewPassword.requestFocus();
             return false;

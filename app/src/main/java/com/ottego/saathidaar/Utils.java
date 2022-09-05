@@ -379,7 +379,7 @@ public class Utils {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
                                 apiListener.onSuccess(0);
-                                Toast.makeText(context,"Request Send Successfully",Toast.LENGTH_LONG).show();
+                                Toast.makeText(context,"Request Sent Successfully",Toast.LENGTH_LONG).show();
                             } else {
                                 apiListener.onFail(0);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();

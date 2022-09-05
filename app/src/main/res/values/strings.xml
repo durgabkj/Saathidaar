@@ -99,8 +99,8 @@
     </string-array>
 
     <string-array name="ampm">
-        <item>A.M</item>
-        <item>P.M</item>
+        <item>AM</item>
+        <item>PM</item>
     </string-array>
 
 
@@ -346,12 +346,6 @@
         <item>Customer Support / BPO / KPO Professional</item>
         <item>IAS / IRS / IES / IFS</item>
         <item>Indian Police Services (IPS)</item>
-        <item>BCom (Hons)</item>
-        <item>PGD Finance</item>
-        <item>BCA</item>
-        <item>B.IT</item>
-        <item>BCS"</item>
-        <item>BA Computer Science</item>
         <item>Law Enforcement Employee (Others)</item>
         <item>Airforce</item>
         <item>Army</item>
@@ -369,7 +363,6 @@
         <item>Non IT Engineer (Others)</item>
         <item>Chef / Sommelier / Food Critic</item>
         <item>Catering Professional</item>
-        <item>Hotel</item>
         <item>Software Developer / Programmer</item>
         <item>Software Consultant</item>
         <item>Hardware</item>
@@ -389,7 +382,7 @@
         <item>Veterinary Doctor</item>
         <item>Therapist (Others)</item>
         <item>Medical / Healthcare Professional (Others)</item>
-        <item>Merchant Naval Officer</item>
+        <item>Merchant Navy Officer</item>
         <item>Mariner</item>
         <item>Marketing Professional</item>
         <item>Sales Professional</item>
@@ -406,10 +399,8 @@
         <item>Politician</item>
         <item>Social Worker / Volunteer / NGO</item>
         <item>Sportsman</item>
-        <item>Travel</item>
+        <item>Traveller</item>
         <item>Writer</item>
-        <item>Student</item>
-        <item>Retired</item>
         <item>Not working</item>
     </string-array>
 

@@ -31,6 +31,7 @@
                     android:layout_margin="4dp"
                     android:padding="12dp"
                     app:chipCornerRadius="2dp"
+                    android:fontFamily="@font/app_font"
                     android:checkable="true"
                     style="@style/CustomChipChoiceStyle"
                     app:rippleColor="@color/colorPrimary"
@@ -46,6 +47,7 @@
                     android:layout_height="wrap_content"
                     android:elevation="10dp"
                     android:translationZ="10dp"
+                    android:fontFamily="@font/app_font"
                     android:layout_margin="4dp"
                     app:checkedIconEnabled="false"
                     style="@style/CustomChipChoiceStyle"
@@ -58,6 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
+                    android:fontFamily="@font/app_font"
                     app:checkedIconEnabled="false"
                     android:checkable="true"
                     android:elevation="10dp"
@@ -77,6 +80,7 @@
                     app:checkedIconEnabled="false"
                     style="@style/CustomChipChoiceStyle"
                     android:padding="12dp"
+                    android:fontFamily="@font/app_font"
                     android:text="Premium Matches" />
 
                 <com.google.android.material.chip.Chip
@@ -86,6 +90,7 @@
                     android:layout_margin="4dp"
                     android:checkable="true"
                     android:elevation="10dp"
+                    android:fontFamily="@font/app_font"
                     android:translationZ="10dp"
                     app:checkedIconEnabled="false"
                     style="@style/CustomChipChoiceStyle"
@@ -125,6 +130,7 @@
                     android:layout_margin="4dp"
                     android:checkable="true"
                     android:elevation="10dp"
+                    android:fontFamily="@font/app_font"
                     android:translationZ="10dp"
                     style="@style/CustomChipChoiceStyle"
                     app:checkedIconEnabled="false"
@@ -138,6 +144,7 @@
                     app:checkedIconEnabled="false"
                     android:checkable="true"
                     android:elevation="10dp"
+                    android:fontFamily="@font/app_font"
                     android:translationZ="10dp"
                     style="@style/CustomChipChoiceStyle"
                     android:text="Recently Viewed" />

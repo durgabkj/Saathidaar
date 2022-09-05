@@ -204,7 +204,7 @@
                     android:singleLine="true"
                     android:drawableTint="@color/black"
                     android:fontFamily="@font/app_font"
-                    android:hint="Email Id"
+                    android:hint="Email"
                     android:padding="8dp"
                     android:textColor="@color/black" />
 

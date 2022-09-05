@@ -44,7 +44,7 @@ android:orientation="vertical"
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/italic"/>
+                android:fontFamily="@font/app_font"/>
 
 
 

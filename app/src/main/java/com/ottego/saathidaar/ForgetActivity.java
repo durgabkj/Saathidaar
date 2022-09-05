@@ -54,7 +54,7 @@ public class ForgetActivity extends AppCompatActivity {
 
         SpannableStringBuilder builder = new SpannableStringBuilder();
 
-        SpannableString str1= new SpannableString("OTP will be sent to E-mail ID.\nIncase of any issue in Password Reset drop a mail on ");
+        SpannableString str1= new SpannableString("OTP will be sent to E-mail.\nIncase of any issue in Password Reset, Drop a mail on ");
         str1.setSpan(new ForegroundColorSpan(Color.BLACK), 0, str1.length(), 0);
         builder.append(str1);
 

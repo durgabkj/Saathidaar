@@ -16,6 +16,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:text="Item 1"
+        android:fontFamily="@font/app_font"
         android:textColor="#525252"
         android:textSize="14dp" />
 

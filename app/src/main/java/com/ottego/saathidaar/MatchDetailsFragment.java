@@ -138,8 +138,8 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
     private void setHoroData() {
         if(horoscopeModel!=null){
             if ((horoscopeModel.hours != null && !horoscopeModel.hours.equals("")) && (horoscopeModel.minutes != null && !horoscopeModel.minutes.equals("")) && (horoscopeModel.time != null && !horoscopeModel.time.equals("")) && (horoscopeModel.country_of_birth != null || !horoscopeModel.country_of_birth.equals("")) && (horoscopeModel.city_of_birth != null || !horoscopeModel.city_of_birth.equals(""))) {
-                b.tvDetailPlaceOfBirth.setText(horoscopeModel.country_of_birth + " ," + horoscopeModel.city_of_birth);
-                b.tvMatchDetailTime.setText(horoscopeModel.hours + " :" + horoscopeModel.minutes + "," + horoscopeModel.time + "," + horoscopeModel.time_status);
+                b.tvDetailPlaceOfBirth.setText(horoscopeModel.country_of_birth + ", " + horoscopeModel.city_of_birth);
+                b.tvMatchDetailTime.setText(horoscopeModel.hours + ":" + horoscopeModel.minutes + ", " + horoscopeModel.time + ", " + horoscopeModel.time_status);
 
             }
 
@@ -610,7 +610,7 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
             b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
             b.tvNameUserFamilyDetailsHeading.setText("About " + " Family");
             b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails));
-            b.tvCreatedBy.setText("Profile Create by:-" + " " + Utils.nullToBlank(model.profilecreatedby));
+            b.tvCreatedBy.setText("Create by:-" + " " + Utils.nullToBlank(model.profilecreatedby));
             b.tvProfileID.setText("Profile ID:-" + " " + Utils.nullToBlank(model.profile_id));
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty()) {
                 b.tvDetailAge.setText("Age:-" + Utils.nullToBlank(model.age) + " yrs old");

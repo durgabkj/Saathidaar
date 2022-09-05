@@ -37,6 +37,7 @@
                 app:checkedIconEnabled="false"
                 android:elevation="10dp"
                 android:textSelectHandle="@color/white"
+                android:fontFamily="@font/app_font"
                 android:translationZ="10dp"
                 android:text="Dashboard" />
 
@@ -46,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:elevation="10dp"
                 android:translationZ="10dp"
+                android:fontFamily="@font/app_font"
                 android:layout_margin="4dp"
                 app:checkedIconEnabled="false"
                 style="@style/CustomChipChoiceStyle"
@@ -58,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:fontFamily="@font/app_font"
                 app:checkedIconEnabled="false"
                 android:checkable="true"
                 android:elevation="10dp"

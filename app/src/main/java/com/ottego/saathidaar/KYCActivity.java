@@ -81,6 +81,11 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
         viewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
         context = KYCActivity.this;
         sessionManager = new SessionManager(context);
+
+        boolean ans = imagePathList.isEmpty();
+        if (ans == true) {
+            b.mcvUploadKyc.setVisibility(View.INVISIBLE);
+        }
         getData();
         listener();
     }
@@ -420,6 +425,9 @@ progressDialog.dismiss();
     @Override
     public void PickiTonCompleteListener(String path, boolean wasDriveFile, boolean wasUnknownProvider, boolean wasSuccessful, String Reason) {
         Log.e("durga", "path single: " + path);
+        if (path!=null) {
+            b.mcvUploadKyc.setVisibility(View.VISIBLE);
+        }
         imagePathList.add(path);
     }
 
@@ -494,6 +502,12 @@ progressDialog.dismiss();
                 b.tvKycStatus.setTextColor(Color.RED);
             }
 
+
+            if (model.data.get(0).document_type.equalsIgnoreCase("Aadhaar card")){
+                b.mrbAadhar.setChecked(true);
+            }else if (model.data.get(0).document_type.equalsIgnoreCase("pan card")) {
+                b.mrbPanCard.setChecked(true);
+            }
 
             if (model.data.get(0).kyc_status.equalsIgnoreCase("0") || model.data.get(0).kyc_status.equalsIgnoreCase("1")) {
                 b.mcvUploadKyc.setVisibility(View.GONE);
