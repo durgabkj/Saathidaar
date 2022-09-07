@@ -25,15 +25,19 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.androidbuts.multispinnerfilter.MultiSpinnerSearch;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.gson.Gson;
 import com.ottego.multipleselectionspinner.MultipleSelection;
+import com.ottego.saathidaar.Model.DataModelCountry;
 import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.Model.PartnerPreferenceModel;
 
@@ -55,7 +59,7 @@ public class PartnerPreferenceFragment extends Fragment {
     public String ReligionUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/religion-name";
     public String countryUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/country";
     public String castUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/all/cast";
-    public String stateUrl = Utils.location + "state-name/by/country-name/";
+    public String stateUrl = Utils.location + "multiple/state";
     public String cityUrl = Utils.location + "city-name/by/state-name/";
     public String updatePreference = Utils.memberUrl + "preference/update/";
     MultipleSelection tvMultipleCast, tvMultipleReligion, multi_SelectionProfessionArea, multi_SelectionCountry, multi_SelectionState, multi_SelectionMotherTongue, tvMultipleCity, multi_SelectionQualification, multi_SelectionWorkingWith;
@@ -79,7 +83,7 @@ public class PartnerPreferenceFragment extends Fragment {
     String[] MaritalStatusArray = {"Open to all", "Never Married", "Divorce", "Widowed", "Awaiting Divorce"};
     String[] DietStatusArray = {"Open to all", "Veg", "Non-Veg", "Jain", "Vegan", "Eggetarian", "Occasinonally Non-veg"};
     PartnerPreferenceModel model;
-
+    DataModelCountry countryModel;
     String fromAge = "";
     String toAge = "";
     String fromHeight = "";
@@ -98,7 +102,10 @@ public class PartnerPreferenceFragment extends Fragment {
     String createdBy;
     String city;
     String income;
-
+    int[] state_arr = new int[10];
+    int myCounter = 0;
+    int countryId;
+    MultiSpinnerSearch multiSelectSpinnerWithSearch;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -169,7 +176,8 @@ public class PartnerPreferenceFragment extends Fragment {
         etPreferenceState = view.findViewById(R.id.etPreferenceState);
         etPreferenceCity = view.findViewById(R.id.etPreferenceCity);
 
-        //tvSelectedItemPreview=view.findViewById(R.id.selectedItemPreview);
+
+
 
         multi_SelectionWorkingWith();
         multipleSelectionMotherTongue();
@@ -179,9 +187,9 @@ public class PartnerPreferenceFragment extends Fragment {
         multi_SelectionmultiProfessionArea();
         incomeSelection();
         multipleCastSelectionCheckBox();
-        multipleCountrySelectionCheckBox();
-        //multipleStateSelectionCheckBox();
-        // multipleCityCheckBox();
+        getCountryItems();
+
+
         Height();
         SpinnerAge();
         dietList();
@@ -193,11 +201,11 @@ public class PartnerPreferenceFragment extends Fragment {
         } else {
             etProfileSearch.setHint("E.g:-MSD001");
         }
-
-
         getData();
+//        getStateItems();
         return view;
     }
+
 
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -1047,108 +1055,7 @@ public class PartnerPreferenceFragment extends Fragment {
         ProfessionAreaList.add("Sale & Marketing");
         ProfessionAreaList.add("Science");
 
-
-//        ProfessionAreaList.add("Banking Professional");
-//        ProfessionAreaList.add("Chartered Accountant");
-//        ProfessionAreaList.add("Company Secretary");
-//        ProfessionAreaList.add("Finance Professional");
-//        ProfessionAreaList.add("M.Eng (Hons)");
-//        ProfessionAreaList.add("Engineering Diploma");
-//        ProfessionAreaList.add("Investment Professional");
-//        ProfessionAreaList.add("Accounting Professional");
-//        ProfessionAreaList.add("Admin Professional");
-//        ProfessionAreaList.add("Actor");
-//        ProfessionAreaList.add("Advertising Professional");
-//        ProfessionAreaList.add("Entertainment Professional");
-//        ProfessionAreaList.add("Event Manager");
-//        ProfessionAreaList.add("Journalist");
-//        ProfessionAreaList.add("Media Professional");
-//        ProfessionAreaList.add("Public Relations Professional");
-//        ProfessionAreaList.add("Farming");
-//        ProfessionAreaList.add("Horticulturist");
-//        ProfessionAreaList.add("Agricultural Professional (Others)");
-//        ProfessionAreaList.add("Air Hostess / Flight Attendant");
-//        ProfessionAreaList.add("Pilot / Co-Pilot");
-//        ProfessionAreaList.add("Other Airline Professional");
-//        ProfessionAreaList.add("Architect");
-//        ProfessionAreaList.add("Interior Designer");
-//        ProfessionAreaList.add("Landscape Architect");
-//        ProfessionAreaList.add("Animator");
-//        ProfessionAreaList.add("Commercial Artist");
-//        ProfessionAreaList.add("Web / UX Designers");
-//        ProfessionAreaList.add("Artist (Others)");
-//        ProfessionAreaList.add("Beautician");
-//        ProfessionAreaList.add("Fashion Designer");
-//        ProfessionAreaList.add("Hairstylist");
-//        ProfessionAreaList.add("Jewellery Designer");
-//        ProfessionAreaList.add("Designer (Others)");
-//        ProfessionAreaList.add("Customer Support / BPO / KPO Professional");
-//        ProfessionAreaList.add("IAS / IRS / IES / IFS");
-//        ProfessionAreaList.add("Indian Police Services (IPS)");
-//        ProfessionAreaList.add("BCom (Hons)");
-//        ProfessionAreaList.add("PGD Finance");
-//        ProfessionAreaList.add("BCA");
-//        ProfessionAreaList.add("B.IT");
-//        ProfessionAreaList.add("BCS");
-//        ProfessionAreaList.add("BA Computer Science");
-//        ProfessionAreaList.add("Law Enforcement Employee (Others)");
-//        ProfessionAreaList.add("Airforce");
-//        ProfessionAreaList.add("Army");
-//        ProfessionAreaList.add("Navy");
-//        ProfessionAreaList.add("Defense Services (Others)");
-//        ProfessionAreaList.add("Lecturer");
-//        ProfessionAreaList.add("Professor");
-//        ProfessionAreaList.add("Research Assistant");
-//        ProfessionAreaList.add("Research Scholar");
-//        ProfessionAreaList.add("Teacher");
-//        ProfessionAreaList.add("Training Professional (Others)");
-//        ProfessionAreaList.add("Civil Engineer");
-//        ProfessionAreaList.add("Electronics / Telecom Engineer");
-//        ProfessionAreaList.add("Mechanical / Production Engineer");
-//        ProfessionAreaList.add("Non IT Engineer (Others)");
-//        ProfessionAreaList.add("Chef / Sommelier / Food Critic");
-//        ProfessionAreaList.add("Catering Professional");
-//        ProfessionAreaList.add("Hotel");
-//        ProfessionAreaList.add("Software Developer / Programmer");
-//        ProfessionAreaList.add("Software Consultant");
-//        ProfessionAreaList.add("Hardware");
-//        ProfessionAreaList.add("Software Professional (Others)");
-//        ProfessionAreaList.add("Lawyer");
-//        ProfessionAreaList.add("Legal Professional (Others)");
-//        ProfessionAreaList.add("Legal Assistant");
-//        ProfessionAreaList.add("Dentist");
-//        ProfessionAreaList.add("Doctor");
-//        ProfessionAreaList.add("Medical Transcriptionist");
-//        ProfessionAreaList.add("Nurse");
-//        ProfessionAreaList.add("Pharmacist");
-//        ProfessionAreaList.add("Physician Assistant");
-//        ProfessionAreaList.add("Physiotherapist / Occupational Therapist");
-//        ProfessionAreaList.add("Psychologist");
-//        ProfessionAreaList.add("Surgeon");
-//        ProfessionAreaList.add("Veterinary Doctor");
-//        ProfessionAreaList.add("Therapist (Others)");
-//        ProfessionAreaList.add("Medical / Healthcare Professional (Others)T");
-//        ProfessionAreaList.add("Merchant Naval Officer");
-//        ProfessionAreaList.add("Mariner");
-//        ProfessionAreaList.add("Marketing Professional");
-//        ProfessionAreaList.add("Sales Professional");
-//        ProfessionAreaList.add("Biologist / Botanist");
-//        ProfessionAreaList.add("Physicist");
-//        ProfessionAreaList.add("Science Professional (Others)");
-//        ProfessionAreaList.add("CxO / Chairman / Director / President");
-//        ProfessionAreaList.add("VP / AVP / GM / DGM");
-//        ProfessionAreaList.add("Sr. Manager / Manager");
-//        ProfessionAreaList.add("Consultant / Supervisor / Team Leads");
-//        ProfessionAreaList.add("Team Member / Staff");
-//        ProfessionAreaList.add("Agent / Broker / Trader / Contractor");
-//        ProfessionAreaList.add("Business Owner / Entrepreneur");
-//        ProfessionAreaList.add("Politician");
-//        ProfessionAreaList.add("Social Worker / Volunteer / NGO");
-//        ProfessionAreaList.add("Sportsman");
-//        ProfessionAreaList.add("Traveller");
-//        ProfessionAreaList.add("Writer");
-//        ProfessionAreaList.add("Student");
-//        ProfessionAreaList.add("Not working");
+        ;
         return ProfessionAreaList;
     }
 
@@ -1201,93 +1108,6 @@ public class PartnerPreferenceFragment extends Fragment {
         qualificationList.add("Associate / Diploma");
         qualificationList.add("High School and below");
 
-//        qualificationList.add("B.E / B.Tech");
-//        qualificationList.add("M.E / M.Tech");
-//        qualificationList.add("M.S Engineering");
-//        qualificationList.add("B.Eng (Hons)");
-//        qualificationList.add("M.Eng (Hons)");
-//        qualificationList.add("Engineering Diploma");
-//        qualificationList.add("AE");
-//        qualificationList.add("AET");
-//        qualificationList.add("High school");
-//        qualificationList.add("B.A");
-//        qualificationList.add("B.Ed");
-//        qualificationList.add("BJMC");
-//        qualificationList.add("BFA");
-//        qualificationList.add("B.Arch");
-//        qualificationList.add("B.Des");
-//        qualificationList.add("BMM");
-//        qualificationList.add("MFA");
-//        qualificationList.add("M.Ed");
-//        qualificationList.add("M.A");
-//        qualificationList.add("MSW");
-//        qualificationList.add("MJMC");
-//        qualificationList.add("M.Arch");
-//        qualificationList.add("M.Des");
-//        qualificationList.add("BA (Hons)");
-//        qualificationList.add("DFA");
-//        qualificationList.add("D.Ed");
-//        qualificationList.add("D.Arch");
-//        qualificationList.add("AA");
-//        qualificationList.add("AFA");
-//        qualificationList.add("Less than high school");
-//        qualificationList.add("B.Com");
-//        qualificationList.add("CA / CPA");
-//        qualificationList.add("CFA");
-//        qualificationList.add("CS");
-//        qualificationList.add("BSc / BFin");
-//        qualificationList.add("M.Com");
-//        qualificationList.add("MSc / MFin / MS");
-//        qualificationList.add("BCom (Hons)");
-//        qualificationList.add("PGD Finance");
-//        qualificationList.add("BCA");
-//        qualificationList.add("B.IT");
-//        qualificationList.add("BCS");
-//        qualificationList.add("BA Computer Science");
-//        qualificationList.add("MCA");
-//        qualificationList.add("PGDCA");
-//        qualificationList.add("IT Diploma");
-//        qualificationList.add("ADIT");
-//        qualificationList.add("B.Sc");
-//        qualificationList.add("M.Sc");
-//        qualificationList.add("BSc (Hons)");
-//        qualificationList.add("MBBS");
-//        qualificationList.add("BDS");
-//        qualificationList.add("BPT");
-//        qualificationList.add("BAMS");
-//        qualificationList.add("BHMS");
-//        qualificationList.add("B.Pharma");
-//        qualificationList.add("BVSc");
-//        qualificationList.add("BSN / BScN");
-//        qualificationList.add("MDS");
-//        qualificationList.add("MCh");
-//        qualificationList.add("M.D");
-//        qualificationList.add("M.S Medicine");
-//        qualificationList.add("MPT");
-//        qualificationList.add("DM");
-//        qualificationList.add("M.Pharma");
-//        qualificationList.add("MMVSc");
-//        qualificationList.add("MMed");
-//        qualificationList.add("PGD Medicine");
-//        qualificationList.add("BBA");
-//        qualificationList.add("BHM");
-//        qualificationList.add("BBM");
-//        qualificationList.add("MBA");
-//        qualificationList.add("PGDM");
-//        qualificationList.add("ABA");
-//        qualificationList.add("ADBus");
-//        qualificationList.add("BL / LLB");
-//        qualificationList.add("ML / LLM");
-//        qualificationList.add("LLB (Hons)");
-//        qualificationList.add("ALA");
-//        qualificationList.add("Ph.D");
-//        qualificationList.add("M.Phil");
-//        qualificationList.add("Bachelor");
-//        qualificationList.add("Master");
-//        qualificationList.add("Diploma");
-//        qualificationList.add("Honours");
-//        qualificationList.add("Doctorate");
-//        qualificationList.add("Associate");
         return qualificationList;
     }
 
@@ -1310,8 +1130,6 @@ public class PartnerPreferenceFragment extends Fragment {
 
     private List getMotherTongueItems() {
         ArrayList<String> motherTongueList = new ArrayList<>();
-//        for (char i = 'A'; i <= 'Z'; i++)
-//            alphabetsList.add(Character.toString(i));
         motherTongueList.add("Hindi");
         motherTongueList.add("Marathi");
         motherTongueList.add("Punjabi");
@@ -1339,7 +1157,6 @@ public class PartnerPreferenceFragment extends Fragment {
         motherTongueList.add("Sanskrit");
         motherTongueList.add("Sindhi");
         motherTongueList.add("Other");
-
 
         return motherTongueList;
     }
@@ -1564,41 +1381,56 @@ public class PartnerPreferenceFragment extends Fragment {
     }
 
 
-    private void multipleCountrySelectionCheckBox() {
-        multi_SelectionCountry.setItems(getCountryItems());
-        multi_SelectionCountry.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(View view, boolean isSelected, int position) {
-                //  Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
-
-                country = multi_SelectionCountry.getText().toString().trim();
-                multipleStateSelectionCheckBox();
-            }
-
-            @Override
-            public void onSelectionCleared() {
-                Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
     // dropDown With Search
-    private List getCountryItems() {
+    private void getCountryItems() {
         ArrayList<String> countryList = new ArrayList<>();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 countryUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                // Log.e("response", String.valueOf(response));
+                Log.e("response country", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
+                        Gson gson = new Gson();
+                        countryModel = gson.fromJson(String.valueOf(response), DataModelCountry.class);
                         JSONArray jsonArray = response.getJSONArray("country");
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String country = jsonObject1.getString("country_name");
                             countryList.add(country);
                             // Log.e("country-list", String.valueOf(countryList));
+                            multi_SelectionCountry.setItems(countryList);
+                            multi_SelectionCountry.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
+                                @Override
+                                public void onItemSelected(View view, boolean isSelected, int position) {
+                                    //  Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
+                                    countryId = countryModel.country.get(position).country_id;
+                                    Log.e("countryId", String.valueOf(countryId));
+                                    state_arr[myCounter] = countryId;
+
+                                    Log.e("selected items", new Gson().toJson(multi_SelectionCountry.getSelectedItems()));
+
+                                    StringBuilder buffer = new StringBuilder();
+                                    for (int i = position; i < countryList.size(); i++) {
+                                        if (i > 0) {
+                                            buffer.append(',');
+                                        }
+                                        buffer.append(countryModel.country.get(i).country_id);
+                                    }
+                                    System.out.println(buffer);
+                                    Log.e("selected items", String.valueOf(buffer));
+
+
+                                  //  getStateItems();
+                                    getCityItems();
+                                }
+
+                                @Override
+                                public void onSelectionCleared() {
+                                    Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
                     }
 
@@ -1615,94 +1447,76 @@ public class PartnerPreferenceFragment extends Fragment {
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
-//            alphabetsList.add(Character.toString(i));
-        return countryList;
-    }
-
-    private void multipleStateSelectionCheckBox() {
-        multi_SelectionState.setItems(getStateItems());
-        multi_SelectionState.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(View view, boolean isSelected, int position) {
-//                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
-                multipleCityCheckBox();
-
-            }
-
-            @Override
-            public void onSelectionCleared() {
-                Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     // dropDown With Search
-    private List getStateItems() {
-        Log.e("dfghj", multi_SelectionCountry.getText().toString().trim());
+    private void getStateItems() {
         countryName = multi_SelectionCountry.getText().toString().trim();
         ArrayList<String> stateList = new ArrayList<>();
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                stateUrl + countryName, null, new Response.Listener<JSONObject>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://192.168.1.36:8088/api/get/multiples/state?country_ids=1", new Response.Listener<String>() {
             @Override
-            public void onResponse(JSONObject response) {
-                //  Log.e("response", String.valueOf(response));
+            public void onResponse(String response) {
+                Log.e("response", response);
                 try {
-                    String code = response.getString("results");
+                    JSONObject jsonObject = new JSONObject(response);
+                    String code = jsonObject.getString("result");
                     if (code.equalsIgnoreCase("1")) {
-                        JSONArray jsonArray = response.getJSONArray("states");
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            String state = jsonObject1.getString("state_name");
-                            stateList.add(state);
-                            // Log.e("state-list", String.valueOf(stateList));
-                        }
+                        JSONArray array = new JSONArray(response);
+                        array.getJSONArray(Integer.parseInt("state"));
+                                for (int i = 0; i < array.length(); i++) {
+                                    JSONObject jsonObject1 = array.getJSONObject(i);
+                                    String state = jsonObject1.getString("state_name");
+                                    stateList.add(state);
+
+                                    multi_SelectionState.setItems(stateList);
+                                    multi_SelectionState.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
+                                        @Override
+                                        public void onItemSelected(View view, boolean isSelected, int position) {
+                                            getCityItems();
+                                        }
+
+                                        @Override
+                                        public void onSelectionCleared() {
+                                            Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                            }else {
+                        Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                     }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },   new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
                 error.printStackTrace();
+                Toast.makeText(context, "Sorry, something went wrong. Please try again.", Toast.LENGTH_SHORT).show();
             }
-        });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
-//            alphabetsList.add(Character.toString(i));
-        return stateList;
-    }
-
-    private void multipleCityCheckBox() {
-        tvMultipleCity.setItems(getCityItems());
-        tvMultipleCity.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
+        }) {
             @Override
-            public void onItemSelected(View view, boolean isSelected, int position) {
-//                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
-
-
+            public Map<String, String> getParams() throws AuthFailureError{
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("country_ids", "1");
+                Log.e("params", String.valueOf(params));
+                return params;
             }
-
-            @Override
-            public void onSelectionCleared() {
-                Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(stringRequest);
     }
 
     // dropDown With Search
-    private List getCityItems() {
-        Log.e("dfghj", multi_SelectionState.getText().toString().trim());
-        cityName = multi_SelectionState.getText().toString().trim();
+    private void getCityItems() {
         ArrayList<String> cityList = new ArrayList<>();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                cityUrl + cityName, null, new Response.Listener<JSONObject>() {
+                "http://192.168.1.36:8088/api/get/multiples/state?country_ids=1", null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                //  Log.e("response", String.valueOf(response));
+                  Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -1711,7 +1525,21 @@ public class PartnerPreferenceFragment extends Fragment {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                             String city = jsonObject1.getString("city_name");
                             cityList.add(city);
-                            // Log.e("city-list", String.valueOf(cityList));
+
+                            tvMultipleCity.setItems(cityList);
+                            tvMultipleCity.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
+                                @Override
+                                public void onItemSelected(View view, boolean isSelected, int position) {
+//                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
+
+
+                                }
+
+                                @Override
+                                public void onSelectionCleared() {
+                                    Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
                     }
 
@@ -1729,6 +1557,9 @@ public class PartnerPreferenceFragment extends Fragment {
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
 //            alphabetsList.add(Character.toString(i));
-        return cityList;
+
     }
+
+
+
 }

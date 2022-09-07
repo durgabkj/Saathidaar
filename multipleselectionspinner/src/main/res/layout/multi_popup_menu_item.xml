@@ -25,10 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:checked="false"
-        android:gravity="center"
-        android:checkMarkTint="@color/purple_200"
         android:checkMark="@drawable/ic_check_black_24dp"
-        />
+        android:checkMarkTint="@color/purple_200"
+        android:checked="false"
+        android:gravity="center" />
 
 </RelativeLayout>

@@ -45,7 +45,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    implementation  project(':multipleselectionspinner')
+    implementation project(':multipleselectionspinner')
     implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -81,9 +81,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:21.1.0'
     implementation 'com.google.firebase:firebase-iid:21.1.0'
     implementation 'com.google.firebase:firebase-messaging:23.0.7'
-    implementation 'com.google.firebase:firebase-auth:21.0.7' // not necessary(required for signout and sign in)
-
-
+    implementation 'com.google.firebase:firebase-auth:21.0.7'
+    // not necessary(required for signout and sign in)
 
     implementation 'com.google.android.gms:play-services-location:17.0.0'
 
@@ -92,5 +91,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
 
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'com.github.pratikbutani:MultiSelectSpinner:1.0.1'
+
+
 
 }

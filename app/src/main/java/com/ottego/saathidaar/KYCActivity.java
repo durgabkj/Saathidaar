@@ -184,7 +184,6 @@ b.srlKyc.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
     private void submitForm() {
         for (int i = 0; i < imagePathList.size(); i++) {
             uploadInThread(imagePathList.get(i));
-
         }
     }
 

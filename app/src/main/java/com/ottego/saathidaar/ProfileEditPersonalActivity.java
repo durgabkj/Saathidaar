@@ -34,7 +34,6 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -44,6 +43,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.hbisoft.pickit.PickiT;
+import com.ottego.saathidaar.Model.CountryModel;
 import com.ottego.saathidaar.Model.DataModelReligion;
 import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.Model.UserModel;
@@ -1569,6 +1569,42 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         });
 
     }
+    private void getReligionList(String url) {
+        Log.e("url", url);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                ReligionUrl, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // Log.e("response", String.valueOf(response));
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        JSONArray jsonArray = response.getJSONArray("religion");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String religion = jsonObject1.getString("religion_name");
+                            religionList.add(religion);
+                            //  Log.e("Religion-list", String.valueOf(religionList));
+                        }
+                    }
+                    religionAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, religionList);
+                    // set adapter
+                    listView.setAdapter(religionAdapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+        // listView.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) context);
+    }
 
     private void communityData() {
         String selectedCommunity = b.tvUserReligion.getText().toString().trim();
@@ -1609,42 +1645,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
     }
 
-    private void getReligionList(String url) {
-        Log.e("url", url);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                ReligionUrl, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-               // Log.e("response", String.valueOf(response));
-                try {
-                    String code = response.getString("results");
-                    if (code.equalsIgnoreCase("1")) {
-                        JSONArray jsonArray = response.getJSONArray("religion");
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            String religion = jsonObject1.getString("religion_name");
-                            religionList.add(religion);
-                          //  Log.e("Religion-list", String.valueOf(religionList));
-                        }
-                    }
-                    religionAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, religionList);
-                    // set adapter
-                    listView.setAdapter(religionAdapter);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
-        // listView.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) context);
-    }
 
     private void communityList() {
         b.tvUserCommunity.setOnClickListener(new View.OnClickListener() {
