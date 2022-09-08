@@ -41,6 +41,7 @@ import com.ottego.saathidaar.Model.DataModelCountry;
 import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.Model.PartnerPreferenceModel;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,8 +49,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 public class PartnerPreferenceFragment extends Fragment {
@@ -106,7 +111,7 @@ public class PartnerPreferenceFragment extends Fragment {
     int myCounter = 0;
     int countryId;
     MultiSpinnerSearch multiSelectSpinnerWithSearch;
-
+    Set s1=new HashSet();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -175,8 +180,6 @@ public class PartnerPreferenceFragment extends Fragment {
         etPreferenceCountry = view.findViewById(R.id.etPreferenceCountry);
         etPreferenceState = view.findViewById(R.id.etPreferenceState);
         etPreferenceCity = view.findViewById(R.id.etPreferenceCity);
-
-
 
 
         multi_SelectionWorkingWith();
@@ -1407,23 +1410,27 @@ public class PartnerPreferenceFragment extends Fragment {
                                     //  Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
                                     countryId = countryModel.country.get(position).country_id;
                                     Log.e("countryId", String.valueOf(countryId));
-                                    state_arr[myCounter] = countryId;
 
                                     Log.e("selected items", new Gson().toJson(multi_SelectionCountry.getSelectedItems()));
 
-                                    StringBuilder buffer = new StringBuilder();
-                                    for (int i = position; i < countryList.size(); i++) {
-                                        if (i > 0) {
-                                            buffer.append(',');
-                                        }
-                                        buffer.append(countryModel.country.get(i).country_id);
+
+                                    multi_SelectionCountry.getSelectedItems();
+
+                                    List<String> ids = new ArrayList<>();    //  i.add(null);
+                                    for(int i=0;i < multi_SelectionCountry.getSelectedItems().size();i++){
+                                        ids.add(String.valueOf(countryId));
+                                        s1.add(String.valueOf(countryId));
                                     }
-                                    System.out.println(buffer);
-                                    Log.e("selected items", String.valueOf(buffer));
 
 
-                                  //  getStateItems();
-                                    getCityItems();
+
+                                    String result = String.join(",", s1);
+
+
+
+                                    Log.e("country id", result);
+
+                                      getStateItems(result);
                                 }
 
                                 @Override
@@ -1450,63 +1457,56 @@ public class PartnerPreferenceFragment extends Fragment {
     }
 
     // dropDown With Search
-    private void getStateItems() {
+    private void getStateItems(String ids) {
         countryName = multi_SelectionCountry.getText().toString().trim();
-        ArrayList<String> stateList = new ArrayList<>();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://192.168.1.36:8088/api/get/multiples/state?country_ids=1", new Response.Listener<String>() {
+
+//        Map<String, String> params = new HashMap<String, String>();
+//        params.put("country_ids", ids);
+//        Log.e("params", params.toString());
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "http://103.174.102.195:8080/saathidaar_backend/api/get/multiples/state?country_ids="+ids, new JSONObject(),
+                    new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(String response) {
-                Log.e("response", response);
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf(response));
                 try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    String code = jsonObject.getString("result");
+                    String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
-                        JSONArray array = new JSONArray(response);
-                        array.getJSONArray(Integer.parseInt("state"));
-                                for (int i = 0; i < array.length(); i++) {
-                                    JSONObject jsonObject1 = array.getJSONObject(i);
-                                    String state = jsonObject1.getString("state_name");
-                                    stateList.add(state);
+                        JSONArray jsonArray = response.getJSONArray("state");
+                        ArrayList<String> stateList = new ArrayList<>();
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String city = jsonObject1.getString("state_name");
+                            stateList.add(city);
 
-                                    multi_SelectionState.setItems(stateList);
-                                    multi_SelectionState.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
-                                        @Override
-                                        public void onItemSelected(View view, boolean isSelected, int position) {
-                                            getCityItems();
-                                        }
+                            tvMultipleCity.setItems(stateList);
+                            tvMultipleCity.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
+                                @Override
+                                public void onItemSelected(View view, boolean isSelected, int position) {
+//                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
 
-                                        @Override
-                                        public void onSelectionCleared() {
-                                            Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
+
                                 }
-                            }else {
-                        Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                    }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                                @Override
+                                public void onSelectionCleared() {
+                                    Toast.makeText(getContext(), "All items are unselected", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
                     }
-                },   new Response.ErrorListener() {
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
                 error.printStackTrace();
-                Toast.makeText(context, "Sorry, something went wrong. Please try again.", Toast.LENGTH_SHORT).show();
             }
-        }) {
-            @Override
-            public Map<String, String> getParams() throws AuthFailureError{
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("country_ids", "1");
-                Log.e("params", String.valueOf(params));
-                return params;
-            }
-        };
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(stringRequest);
+        });
+        request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(request);
     }
 
     // dropDown With Search
@@ -1516,7 +1516,7 @@ public class PartnerPreferenceFragment extends Fragment {
                 "http://192.168.1.36:8088/api/get/multiples/state?country_ids=1", null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                  Log.e("response", String.valueOf(response));
+                Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
@@ -1559,7 +1559,6 @@ public class PartnerPreferenceFragment extends Fragment {
 //            alphabetsList.add(Character.toString(i));
 
     }
-
 
 
 }
