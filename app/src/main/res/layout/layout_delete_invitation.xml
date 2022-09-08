@@ -53,6 +53,7 @@
         <FrameLayout
             android:id="@+id/flPremiumDelete"
             android:layout_width="wrap_content"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:layout_gravity="end">
 
@@ -313,7 +314,7 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:text="Block Member"/>
+                        android:text="Block"/>
 
                 </LinearLayout>
 

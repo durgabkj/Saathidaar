@@ -46,21 +46,16 @@ public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageG
         ImageModel item = list.get(position);
 //        Log.e(" New Matches model", new Gson().toJson(item));
 
-        if (item.photo_status.equals("0")) {
-            Glide.with(context)
-                    .load(Utils.imageUrl + item.member_images)
-                    .transform(new BlurTransformation(20, 8))
-                    .into(holder.ivUserImageMember);
-        } else {
+        if (!item.photo_status.equals("0")) {
             Glide.with(context)
                     .load(Utils.imageUrl + item.member_images)
                     .into(holder.ivUserImageMember);
         }
 
 
-        if (item.photo_status.equals("0")) {
-            holder.tvImageApproveStatus.setVisibility(View.VISIBLE);
-        }
+//        if (item.photo_status.equals("0")) {
+//            holder.tvImageApproveStatus.setVisibility(View.VISIBLE);
+//        }
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

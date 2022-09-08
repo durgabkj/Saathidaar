@@ -18,7 +18,6 @@
             android:background="@color/black"
             app:title="Gallery"
             app:menu="@menu/menu_delete"
-            app:navigationIcon="@drawable/ic_outline_arrow_back_24"
             app:titleTextColor="@color/black" />
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -615,7 +615,7 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty()) {
                 b.tvDetailAge.setText("Age:-" + Utils.nullToBlank(model.age) + " yrs old");
             } else {
-                b.tvDetailAge.setText(" Age-Not Specified");
+                b.tvDetailAge.setText("Age:- Not Specified");
             }
             b.tvDetailHeight.setText("Height:- " + Utils.nullToBlank(model.height));
 

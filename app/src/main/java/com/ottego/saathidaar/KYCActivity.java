@@ -91,12 +91,12 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
     }
 
     private void listener() {
-b.srlKyc.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-    @Override
-    public void onRefresh() {
-        getData();
-    }
-});
+        b.srlKyc.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData();
+            }
+        });
 
         b.llDocument.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetJavaScriptEnabled")
@@ -357,7 +357,8 @@ b.srlKyc.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
                 runOnUiThread(new Runnable() {
                     public void run() {
-progressDialog.dismiss();
+                        progressDialog.dismiss();
+                        getData();
                         //  tv.setText("Upload Complete");
                         Toast.makeText(KYCActivity.this,
                                         "Document Uploaded.", Toast.LENGTH_LONG)
@@ -424,7 +425,7 @@ progressDialog.dismiss();
     @Override
     public void PickiTonCompleteListener(String path, boolean wasDriveFile, boolean wasUnknownProvider, boolean wasSuccessful, String Reason) {
         Log.e("durga", "path single: " + path);
-        if (path!=null) {
+        if (path != null) {
             b.mcvUploadKyc.setVisibility(View.VISIBLE);
         }
         imagePathList.add(path);
@@ -502,9 +503,9 @@ progressDialog.dismiss();
             }
 
 
-            if (model.data.get(0).document_type.equalsIgnoreCase("Aadhaar card")){
+            if (model.data.get(0).document_type.equalsIgnoreCase("Aadhaar card")) {
                 b.mrbAadhar.setChecked(true);
-            }else if (model.data.get(0).document_type.equalsIgnoreCase("pan card")) {
+            } else if (model.data.get(0).document_type.equalsIgnoreCase("pan card")) {
                 b.mrbPanCard.setChecked(true);
             }
 

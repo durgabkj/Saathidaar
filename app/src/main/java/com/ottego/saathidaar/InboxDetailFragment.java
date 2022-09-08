@@ -565,7 +565,7 @@ public class InboxDetailFragment extends Fragment {
 
                 b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
             } else {
-                b.tvDetailDob.setText("DOB-Not Specified");
+                b.tvDetailDob.setText("DOB:-Not Specified");
             }
 
 

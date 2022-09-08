@@ -515,7 +515,7 @@ public class PrivacyOptionFragment extends Fragment {
                         String code = null;
                         if (model.results.equals("1")) {
 
-                            Toast.makeText(context, "Phone Privacy Updated", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Annual Income Privacy Updated", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(context, model.message, Toast.LENGTH_SHORT).show();
                         }
@@ -550,7 +550,7 @@ public class PrivacyOptionFragment extends Fragment {
 
                         if (model.results.equals("1")) {
 
-                            Toast.makeText(context, "Phone Privacy Updated", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "DOB Privacy Updated", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(context, model.message, Toast.LENGTH_SHORT).show();
                         }
@@ -584,7 +584,7 @@ public class PrivacyOptionFragment extends Fragment {
 
                         if (model.results.equals("1")) {
 
-                            Toast.makeText(context, "Phone Privacy Updated", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Photo Privacy Updated", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(context, model.message, Toast.LENGTH_SHORT).show();
                         }
@@ -617,7 +617,7 @@ public class PrivacyOptionFragment extends Fragment {
                         Log.e(" emailPrivacy response", String.valueOf((response)));
                         if (model.results.equals("1")) {
 
-                            Toast.makeText(context, "Phone Privacy Updated", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Email Privacy Updated", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(context, model.message, Toast.LENGTH_SHORT).show();
                         }
