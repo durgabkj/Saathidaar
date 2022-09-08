@@ -14,19 +14,49 @@
     >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
+        android:orientation="vertical"
         android:padding="5dp"
         android:background="@drawable/edt_text_border"
        >
         <ImageView
             android:id="@+id/ivUserImageMember"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="300dp"
             android:scaleType="centerCrop"
             android:src="@drawable/local" />
 
-    </LinearLayout>
 
+        <TextView
+            android:id="@+id/tvImageApproveStatus"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:visibility="gone"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/Red"
+            android:fontFamily="@font/app_font"
+            android:textStyle="bold"
+            android:text="Approval Status:- Pending" />
+
+
+        <TextView
+            android:id="@+id/tvImageMemberApproveStatus"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:visibility="gone"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/Red"
+            android:fontFamily="@font/app_font"
+            android:textStyle="bold"
+            android:text="Approval Status:- Pending" />
+
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
+
+
 </RelativeLayout>

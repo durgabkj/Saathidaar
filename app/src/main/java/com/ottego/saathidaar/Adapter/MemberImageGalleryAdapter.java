@@ -7,29 +7,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.ottego.saathidaar.GalleryPagerFragment;
 import com.ottego.saathidaar.MemberGalleryPagerFragment;
-import com.ottego.saathidaar.Model.GalleryModel;
 import com.ottego.saathidaar.Model.ImageModel;
-import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.BlurTransformation;
+
 public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageGalleryAdapter.ViewHolder> {
     Context context;
     List<ImageModel> list;
+
     public MemberImageGalleryAdapter(Context context, List<ImageModel> list) {
         this.context = context;
         this.list = list;
     }
+
     @NonNull
     @Override
     public MemberImageGalleryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,18 +46,35 @@ public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageG
         ImageModel item = list.get(position);
 //        Log.e(" New Matches model", new Gson().toJson(item));
 
-        Glide.with(context)
-                .load(Utils.imageUrl + item.member_images)
-                .into(holder.ivUserImageMember);
+        if (item.photo_status.equals("0")) {
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.member_images)
+                    .transform(new BlurTransformation(20, 8))
+                    .into(holder.ivUserImageMember);
+        } else {
+            Glide.with(context)
+                    .load(Utils.imageUrl + item.member_images)
+                    .into(holder.ivUserImageMember);
+        }
+
+
+        if (item.photo_status.equals("0")) {
+            holder.tvImageApproveStatus.setVisibility(View.VISIBLE);
+        }
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Log.e("position", String.valueOf(position));
-                MemberGalleryPagerFragment.newInstance(String.valueOf(position),"").show(((FragmentActivity) context).getSupportFragmentManager(), "gallery_pager_fragment");
+                if(item.photo_status.equals("0"))
+                {
+                    Toast.makeText(context, "Photo Approval Pending", Toast.LENGTH_SHORT).show();
+                }else{
+                    Log.e("position", String.valueOf(position));
+                    MemberGalleryPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "gallery_pager_fragment");
 
-
+                }
 
             }
         });
@@ -69,11 +89,13 @@ public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageG
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-ImageView ivUserImageMember;
+        ImageView ivUserImageMember;
+        TextView tvImageApproveStatus;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            ivUserImageMember=itemView.findViewById(R.id.ivUserImageMember);
+            tvImageApproveStatus = itemView.findViewById(R.id.tvImageMemberApproveStatus);
+            ivUserImageMember = itemView.findViewById(R.id.ivUserImageMember);
         }
     }
 }

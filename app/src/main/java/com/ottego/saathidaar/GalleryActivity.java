@@ -408,6 +408,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                 runOnUiThread(new Runnable() {
                     public void run() {
                         progressDialog.dismiss();
+                        getData();
                         //  tv.setText("Upload Complete");
                         Toast.makeText(GalleryActivity.this,
                                         "Image  Uploaded.", Toast.LENGTH_LONG)

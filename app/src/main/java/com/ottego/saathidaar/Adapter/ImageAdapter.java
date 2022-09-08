@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -24,7 +25,7 @@ import com.ottego.saathidaar.ShowImageFragment;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
-
+//Login User Gallery code
 public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {
 
         Context context;
@@ -54,9 +55,15 @@ public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.ViewHolder>
                 @Override
                 public void onClick(View view) {
                     Log.e("position", String.valueOf(position));
-                    GalleryPagerFragment.newInstance(String.valueOf(position),"").show(((FragmentActivity) context).getSupportFragmentManager(), "gallery_pager_fragment");
+                    GalleryPagerFragment.newInstance(String.valueOf(position),item.photo_status).show(((FragmentActivity) context).getSupportFragmentManager(), "gallery_pager_fragment");
                          }
             });
+
+
+            if(item.photo_status.equals("0"))
+            {
+                holder.tvImageApproveStatus.setVisibility(View.VISIBLE);
+            }
 
 
         }
@@ -70,12 +77,13 @@ public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.ViewHolder>
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivUserImage,ivUserImageMember1;
+            TextView tvImageApproveStatus;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
 
                 ivUserImage = itemView.findViewById(R.id.ivUserImageMember);
-               // ivUserImageMember1 = itemView.findViewById(R.id.ivUserImageMember1);
+                tvImageApproveStatus = itemView.findViewById(R.id.tvImageApproveStatus);
 
             }
         }

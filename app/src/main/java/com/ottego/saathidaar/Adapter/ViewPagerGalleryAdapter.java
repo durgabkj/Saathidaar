@@ -22,9 +22,10 @@ public class ViewPagerGalleryAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         Log.e("image_id", viewModel.list.getValue().get(position).image_id);
+        Log.e("image_id", viewModel.list.getValue().get(position).photo_status);
 
       //  MemberGalleryShowFragment.newInstance(viewModel.list.getValue().get(position).member_images, viewModel._list.getValue().get(position).image_id);
-        return ShowImageFragment.newInstance(viewModel.list.getValue().get(position).member_images, viewModel._list.getValue().get(position).image_id);
+        return ShowImageFragment.newInstance(viewModel.list.getValue().get(position).member_images, viewModel._list.getValue().get(position).image_id, viewModel._list.getValue().get(position).photo_status);
     }
 
     @Override

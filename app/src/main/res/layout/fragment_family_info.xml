@@ -543,9 +543,9 @@
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="No. Of Brothers"
+                        android:text="No. of Brothers"
                         android:textSize="14sp"
-                        android:fontFamily="@font/italic"
+                        android:fontFamily="@font/app_font"
                         android:textStyle="bold" />
 
                     <TextView
@@ -574,6 +574,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:layout_marginStart="8dp"
                         android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
                         android:textSize="13sp"
@@ -594,7 +595,7 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:text="No. Of Sisters"
+                    android:text="No. of Sisters"
                     android:fontFamily="@font/app_font"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -624,6 +625,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/app_font"
                     android:textColor="@color/black"
                     android:textSize="13sp"

@@ -41,18 +41,21 @@ FragmentShowImageBinding b;
     ImageModel model;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM3 = "param3";
     private String mParam1;
     private String mParam2;
+    private String mParam3;
     String member_id;
     public ShowImageFragment() {
         // Required empty public constructor
     }
 
-    public static ShowImageFragment newInstance(String param1, String param2) {
+    public static ShowImageFragment newInstance(String param1, String param2,String param3) {
         ShowImageFragment fragment = new ShowImageFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PARAM3, param3);
         fragment.setArguments(args);
         return fragment;
     }
@@ -63,6 +66,7 @@ FragmentShowImageBinding b;
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam3 = getArguments().getString(ARG_PARAM3);
         }
     }
 
@@ -76,6 +80,7 @@ FragmentShowImageBinding b;
         member_id=sessionManager.getMemberId();
         Log.e("image_path", mParam1);
         Log.e("image_id", mParam2);
+        Log.e("image status", mParam3);
         setData();
         listener();
         return b.getRoot();
@@ -94,7 +99,16 @@ FragmentShowImageBinding b;
         b.tvMakeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setProfile();
+
+                if(mParam3.equals("0"))
+                {
+                    Toast.makeText(context,"Photo Approval Pending",Toast.LENGTH_LONG).show();
+                }else
+                {
+                    setProfile();
+                }
+
+
             }
         });
         b.mcvImageGuidLines.setOnClickListener(new View.OnClickListener() {
