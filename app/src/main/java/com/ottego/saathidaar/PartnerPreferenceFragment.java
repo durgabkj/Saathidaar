@@ -38,6 +38,7 @@ import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.gson.Gson;
 import com.ottego.multipleselectionspinner.MultipleSelection;
 import com.ottego.saathidaar.Model.DataModelCountry;
+import com.ottego.saathidaar.Model.DataModelState;
 import com.ottego.saathidaar.Model.MemberProfileModel;
 import com.ottego.saathidaar.Model.PartnerPreferenceModel;
 
@@ -65,7 +66,7 @@ public class PartnerPreferenceFragment extends Fragment {
     public String countryUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/country";
     public String castUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/all/cast";
     public String stateUrl = Utils.location + "multiple/state";
-    public String cityUrl = Utils.location + "city-name/by/state-name/";
+    public String cityUrl = Utils.location + "get/multiples/city?state_ids=";
     public String updatePreference = Utils.memberUrl + "preference/update/";
     MultipleSelection tvMultipleCast, tvMultipleReligion, multi_SelectionProfessionArea, multi_SelectionCountry, multi_SelectionState, multi_SelectionMotherTongue, tvMultipleCity, multi_SelectionQualification, multi_SelectionWorkingWith;
     TextView etFromAgePartnerPreference, tvSearchButton, etToAgePartnerPreference, tvMultipleMaritalStatus, tvPartnerPreferencesBtn, etIncomePartnerPreference, etProfilePreference, etDietPreference, tvProfileCreated;
@@ -89,6 +90,7 @@ public class PartnerPreferenceFragment extends Fragment {
     String[] DietStatusArray = {"Open to all", "Veg", "Non-Veg", "Jain", "Vegan", "Eggetarian", "Occasinonally Non-veg"};
     PartnerPreferenceModel model;
     DataModelCountry countryModel;
+    DataModelState modelState;
     String fromAge = "";
     String toAge = "";
     String fromHeight = "";
@@ -112,6 +114,7 @@ public class PartnerPreferenceFragment extends Fragment {
     int countryId;
     MultiSpinnerSearch multiSelectSpinnerWithSearch;
     Set s1=new HashSet();
+    Set s2=new HashSet();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -1471,19 +1474,37 @@ public class PartnerPreferenceFragment extends Fragment {
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
+                        Gson gson = new Gson();
+                        modelState = gson.fromJson(String.valueOf(response), DataModelState.class);
                         JSONArray jsonArray = response.getJSONArray("state");
                         ArrayList<String> stateList = new ArrayList<>();
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            String city = jsonObject1.getString("state_name");
-                            stateList.add(city);
-
-                            tvMultipleCity.setItems(stateList);
-                            tvMultipleCity.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
+                            String state_name = jsonObject1.getString("state_name");
+                            stateList.add(state_name);
+                            multi_SelectionState.setItems(stateList);
+                            multi_SelectionState.setOnItemSelectedListener(new MultipleSelection.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(View view, boolean isSelected, int position) {
 //                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
+                                   int stateId = modelState.state.get(position).state_id;
+                                    multi_SelectionState.getSelectedItems();
 
+                                    List<String> ids1 = new ArrayList<>();    //  i.add(null);
+                                    for(int i=0;i < multi_SelectionState.getSelectedItems().size();i++){
+                                        ids1.add(String.valueOf(stateId));
+                                        s2.add(String.valueOf(stateId));
+                                    }
+
+
+
+                                    String result_state = String.join(",", s2);
+
+
+
+                                    Log.e("state id", result_state);
+
+                                    getCityItems(result_state);
 
                                 }
 
@@ -1510,10 +1531,10 @@ public class PartnerPreferenceFragment extends Fragment {
     }
 
     // dropDown With Search
-    private void getCityItems() {
+    private void getCityItems(String ids1) {
         ArrayList<String> cityList = new ArrayList<>();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                "http://192.168.1.36:8088/api/get/multiples/state?country_ids=1", null, new Response.Listener<JSONObject>() {
+                "http://103.174.102.195:8080/saathidaar_backend/api/get/multiples/city?state_ids="+ids1, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", String.valueOf(response));
