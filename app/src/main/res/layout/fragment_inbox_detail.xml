@@ -581,7 +581,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:layout_weight="1"
+                                android:layout_weight="1.2"
                                 android:background="@drawable/edt_text_border"
                                 android:fontFamily="@font/app_font"
                                 android:padding="10sp"
@@ -605,7 +605,7 @@
                                 android:fontFamily="@font/app_font"
                                 android:padding="10dp"
                                 android:text="Age:- Not Specified"
-                                android:textSize="10sp" />
+                                android:textSize="11sp" />
 
 
                             <TextView
@@ -613,7 +613,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:layout_weight="1"
+                                android:layout_weight="1.2"
                                 android:background="@drawable/edt_text_border"
                                 android:fontFamily="@font/app_font"
                                 android:padding="10sp"
@@ -667,10 +667,9 @@
                                     android:id="@+id/tvDetailDob"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
                                     android:drawablePadding="4dp"
                                     android:fontFamily="@font/app_font"
-                                    android:textAlignment="center"
+                                    android:gravity="center_vertical"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
                             </LinearLayout>

@@ -401,8 +401,6 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp">
 
-
-
                         <RadioButton
                             android:id="@+id/mrbOpenToAll"
                             android:layout_width="match_parent"
@@ -811,7 +809,7 @@
                     android:fontFamily="@font/app_font"
                     android:textColor="@color/colorPrimary"
                     android:layout_marginTop="10dp"
-                    android:text="Working with" />
+                    android:text="Working With" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
