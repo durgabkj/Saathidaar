@@ -232,13 +232,43 @@ public class PersonalInfoFragment extends Fragment {
 
                 String religion = binding.tvUserReligion.getText().toString().trim();
                 if (religion.equalsIgnoreCase("Hindu")) {
+                    binding.llProfileCast.setVisibility(View.VISIBLE);
+                    binding.llProfileSubCast.setVisibility(View.VISIBLE);
                     binding.llGotra.setVisibility(View.VISIBLE);
-                } else {
+                }
+
+                if (religion.equalsIgnoreCase("Muslim")) {
+                    binding.llProfileCast.setVisibility(View.VISIBLE);
+                    binding.llProfileSubCast.setVisibility(View.VISIBLE);
                     binding.llGotra.setVisibility(View.GONE);
                 }
 
+                if (religion.equalsIgnoreCase("Parsi")) {
+                    binding.llProfileCast.setVisibility(View.GONE);
+                    binding.tvUserSubCommunity.setVisibility(View.GONE);
+                    binding.llGotra.setVisibility(View.GONE);
+                }
+                if (religion.equalsIgnoreCase("Jain")) {
+                    binding.llProfileCast.setVisibility(View.VISIBLE);
+                    binding.tvUserSubCommunity.setVisibility(View.VISIBLE);
+                    binding.llGotra.setVisibility(View.VISIBLE);
+                }
 
+                if (religion.equalsIgnoreCase("Buddhist")) {
+                    binding.llProfileCast.setVisibility(View.GONE);
+                    binding.llProfileSubCast.setVisibility(View.GONE);
+                    binding.llGotra.setVisibility(View.GONE);
+                }
+
+                if (religion.equalsIgnoreCase("Christian")) {
+                    binding.llProfileCast.setVisibility(View.GONE);
+                    binding.llProfileSubCast.setVisibility(View.GONE);
+                    binding.llGotra.setVisibility(View.GONE);
+                }
             }
+
+
+
 
             @Override
             public void afterTextChanged(Editable editable) {

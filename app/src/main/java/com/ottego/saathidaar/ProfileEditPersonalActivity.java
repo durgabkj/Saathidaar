@@ -657,8 +657,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             }
 
         };
-
-
         b.etHoroscopeBirthDOB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -670,10 +668,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
         b.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -689,7 +683,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 }
             }
         });
-
         b.etCountry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -747,7 +740,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
             }
         });
-
         b.etCountry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -805,7 +797,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
             }
         });
-
         b.etState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -863,8 +854,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
             }
         });
-
-
         b.etCity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -922,8 +911,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
             }
         });
-
-
         b.etHealth.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -947,8 +934,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
             }
         });
-
-
         b.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1644,8 +1629,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
     }
-
-
 
     private void communityList() {
         b.tvUserCommunity.setOnClickListener(new View.OnClickListener() {

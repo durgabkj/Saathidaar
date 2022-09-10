@@ -673,9 +673,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llProfileCast"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     android:padding="10dp">
 
                     <TextView
@@ -711,9 +713,11 @@
 
 
                 <LinearLayout
+                    android:id="@+id/llProfileSub_Cast"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     android:padding="10dp">
 
                     <TextView

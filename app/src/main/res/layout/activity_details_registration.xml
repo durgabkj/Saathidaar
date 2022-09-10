@@ -139,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/app_font"
-                android:text="Date Of Birth"
+                android:text="Date of Birth"
 
                 android:textColor="@color/white"
 

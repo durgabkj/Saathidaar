@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -295,6 +296,15 @@ public class MultipleSelection extends TextInputEditText {
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
             itemsAdapter = new MultipleSelection.ItemsAdapter(originalList == null ? new ArrayList<>() : originalList, mOnItemSelectedListener);
             mRecyclerView.setAdapter(itemsAdapter);
+
+
+            if(itemsAdapter.getItemCount()==0)
+            {
+                ImageView clear_selectionNoData =  view.findViewById(R.id.clear_selectionNoData);
+                clear_selectionNoData.setVisibility(VISIBLE);
+                mRecyclerView.setVisibility(GONE);
+            }
+
 
             final EditText searchBox = (EditText) view.findViewById(R.id.search_field);
             if (showSearch) {
