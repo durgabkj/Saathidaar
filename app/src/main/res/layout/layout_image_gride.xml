@@ -13,6 +13,7 @@
     android:translationZ="12dp"
     >
     <LinearLayout
+        android:id="@+id/llGalleyBorder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -24,8 +25,7 @@
             android:id="@+id/ivUserImageMember"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/local" />
+            android:scaleType="centerCrop"/>
 
 
         <TextView

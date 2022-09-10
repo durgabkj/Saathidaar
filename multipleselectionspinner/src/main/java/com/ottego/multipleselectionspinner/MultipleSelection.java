@@ -248,7 +248,7 @@ public class MultipleSelection extends TextInputEditText {
                     builder.append(mSelectedItems.get(0));
                     if (mSelectedItems.size() > 1) {
                         for (int i = 1; i < mSelectedItems.size(); i++) {
-                            builder.append(", ").append(mSelectedItems.get(i));
+                            builder.append(",").append(mSelectedItems.get(i));
                         }
                     }
 

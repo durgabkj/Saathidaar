@@ -714,10 +714,10 @@ public class PartnerPreferenceFragment extends Fragment {
         String diet1 = etDietPreference.getText().toString().trim();
         diet = diet1.replace(",", "");
 
-        income = etIncomePartnerPreference.getText().toString().toString();
+        income = etIncomePartnerPreference.getText().toString().trim();
         country = multi_SelectionCountry.getText().toString().trim();
         state = multi_SelectionState.getText().toString().trim();
-        city = tvMultipleCity.getText().toString().toString();
+        city = tvMultipleCity.getText().toString().trim();
 
 
         return true;

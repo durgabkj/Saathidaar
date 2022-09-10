@@ -621,9 +621,9 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
 
             if (!model.date_of_birth.equalsIgnoreCase("") && !model.date_of_birth.equalsIgnoreCase(null) && !model.date_of_birth.isEmpty()) {
 
-                b.tvDetailDob.setText("Born on" + " " + Utils.nullToBlank(model.date_of_birth));
+                b.tvDetailDob.setText(Utils.nullToBlank(model.date_of_birth));
             } else {
-                b.tvDetailDob.setText("DOB:-Not Specified");
+                b.tvDetailDob.setText("Not Specified");
             }
 
 

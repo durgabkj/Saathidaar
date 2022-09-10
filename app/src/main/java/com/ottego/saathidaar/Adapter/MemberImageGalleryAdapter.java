@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,8 +22,6 @@ import com.ottego.saathidaar.R;
 import com.ottego.saathidaar.Utils;
 
 import java.util.List;
-
-import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageGalleryAdapter.ViewHolder> {
     Context context;
@@ -50,6 +49,8 @@ public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageG
             Glide.with(context)
                     .load(Utils.imageUrl + item.member_images)
                     .into(holder.ivUserImageMember);
+        } else {
+            holder.llGalleyBorder.setVisibility(View.GONE);
         }
 
 
@@ -62,10 +63,9 @@ public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageG
             @Override
             public void onClick(View view) {
 
-                if(item.photo_status.equals("0"))
-                {
+                if (item.photo_status.equals("0")) {
                     Toast.makeText(context, "Photo Approval Pending", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     Log.e("position", String.valueOf(position));
                     MemberGalleryPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "gallery_pager_fragment");
 
@@ -83,7 +83,7 @@ public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageG
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
+        LinearLayout llGalleyBorder;
         ImageView ivUserImageMember;
         TextView tvImageApproveStatus;
 
@@ -91,6 +91,7 @@ public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageG
             super(itemView);
             tvImageApproveStatus = itemView.findViewById(R.id.tvImageMemberApproveStatus);
             ivUserImageMember = itemView.findViewById(R.id.ivUserImageMember);
+            llGalleyBorder = itemView.findViewById(R.id.llGalleyBorder);
         }
     }
 }

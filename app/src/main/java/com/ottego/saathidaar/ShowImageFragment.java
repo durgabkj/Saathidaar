@@ -151,7 +151,7 @@ FragmentShowImageBinding b;
                             try {
                                 String code = response.getString("results");
                                 if (code.equalsIgnoreCase("1")) {
-                                    Toast.makeText(context, "Image Deleted Successfully,Refresh Gallery", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(context, "Image Deleted Successfully", Toast.LENGTH_LONG).show();
                                 Intent intent=new Intent(context,GalleryActivity.class);
                                 intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 context.startActivity(intent);

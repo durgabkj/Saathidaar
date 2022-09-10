@@ -17,7 +17,7 @@
             android:background="@drawable/gradient_for_app"
             android:fontFamily="@font/app_font"
             android:padding="10dp"
-            android:text="Image Guid Line"
+            android:text="Image Guidelines"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="@color/white"
