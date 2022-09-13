@@ -313,8 +313,6 @@
         <item>Chartered Accountant</item>
         <item>Company Secretary</item>
         <item>Finance Professional</item>
-        <item>M.Eng (Hons)</item>
-        <item>Engineering Diploma</item>
         <item>Investment Professional</item>
         <item>Accounting Professional</item>
         <item>Admin Professional</item>
@@ -389,7 +387,7 @@
         <item>Biologist / Botanist</item>
         <item>Physicist</item>
         <item>Science Professional (Others)</item>
-        <item>CxO / Chairman / Director / President</item>
+        <item>Cxo / Chairman / Director / President</item>
         <item>VP / AVP / GM / DGM</item>
         <item>Sr. Manager / Manager</item>
         <item>Consultant / Supervisor / Team Leads</item>
@@ -401,7 +399,6 @@
         <item>Sportsman</item>
         <item>Traveller</item>
         <item>Writer</item>
-        <item>Not working</item>
     </string-array>
 
 

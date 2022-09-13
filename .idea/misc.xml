@@ -299,6 +299,7 @@
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_file.xml" value="0.171" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_gmail_icon__2020_.xml" value="0.179" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_kyc.xml" value="0.161" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_no_data.xml" value="0.153" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_no_image__female_.xml" value="0.156" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_whatsapp.xml" value="0.1555" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/progress_bar_states.xml" value="0.174" />
@@ -389,7 +390,7 @@
         <entry key="..\:/saathidaar/app/src/main/res/layout/layout_religion_item.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/layout_remove_shortlist.xml" value="0.22826086956521738" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/layout_sent_item.xml" value="0.264" />
-        <entry key="..\:/saathidaar/app/src/main/res/layout/layout_upgrade_page.xml" value="0.264" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/layout_upgrade_page.xml" value="0.4" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/otp_verification_layout.xml" value="0.264" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/recentlyview.xml" value="0.25" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/searchable_dropdown_item.xml" value="0.23802083333333332" />
@@ -397,6 +398,7 @@
         <entry key="..\:/saathidaar/app/src/main/res/menu/menu_delete.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.128" />
         <entry key="..\:/saathidaar/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1645" />
+        <entry key="..\:/saathidaar/multipleselectionspinner/src/main/res/drawable/ic_no_data.xml" value="0.153" />
         <entry key="..\:/saathidaar/multipleselectionspinner/src/main/res/layout/activity_multiple_selection.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/multipleselectionspinner/src/main/res/layout/multi_popup_menu_item.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/multipleselectionspinner/src/main/res/layout/popup_menu.xml" value="0.23802083333333332" />

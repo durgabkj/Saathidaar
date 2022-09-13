@@ -198,9 +198,53 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         getState();
         getCity();
         setDropDownData();
+
+
+        countryName=b.etCountry.getText().toString().trim();
+        stateList();
+        Log.e("ngDigital",countryName);
     }
 
 
+
+
+    private void getCountry(String countryUrl) {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                countryUrl, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                //Log.e("response", String.valueOf(response));
+
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        JSONArray jsonArray = response.getJSONArray("country");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String country = jsonObject1.getString("country_name");
+                            //  Log.e("Country-list", String.valueOf(countryList));
+                            countryList.add(country);
+                            stringArray = new String[]{country};
+
+
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+
+    }
     private void getCity() {
         b.etState.addTextChangedListener(new TextWatcher() {
             @Override
@@ -318,43 +362,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
 
     }
-    private void getCountry(String countryUrl) {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                countryUrl, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                //Log.e("response", String.valueOf(response));
 
-                try {
-                    String code = response.getString("results");
-                    if (code.equalsIgnoreCase("1")) {
-                        JSONArray jsonArray = response.getJSONArray("country");
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            String country = jsonObject1.getString("country_name");
-                            //  Log.e("Country-list", String.valueOf(countryList));
-                            countryList.add(country);
-                            stringArray = new String[]{country};
-
-
-                        }
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
-
-
-    }
     private void setData() {
         if (model != null) {
             b.etAddUserDescription.setText(model.about_ourself);
@@ -774,6 +782,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
                         adapter.getFilter().filter(s);
+
                     }
 
                     @Override
@@ -2132,4 +2141,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
 
     }
+
+
+
 }

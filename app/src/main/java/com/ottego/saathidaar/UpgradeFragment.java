@@ -22,6 +22,7 @@ import com.ottego.saathidaar.Adapter.UpgradeAdapter;
 import com.ottego.saathidaar.Model.DataModelUpgrade;
 import com.ottego.saathidaar.databinding.FragmentUpgradeBinding;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -78,10 +79,15 @@ public class UpgradeFragment extends Fragment {
                 progressDialog.dismiss();
                 Log.e("Upgrade response", String.valueOf(response));
                 Gson gson = new Gson();
-                data = gson.fromJson(String.valueOf(response), DataModelUpgrade.class);
+                if(response!=null)
+                {
+                    data = gson.fromJson(String.valueOf(response), DataModelUpgrade.class);
+                    setRecyclerView();
+                }
+
                 // model = new Gson().fromJson(String.valueOf(response), new TypeToken<List<UpgradeModel>>() {}.getType());
                 Log.e("response", String.valueOf(response));
-               setRecyclerView();
+
             }
         }, new Response.ErrorListener() {
             @Override

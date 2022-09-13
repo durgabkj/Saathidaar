@@ -205,72 +205,72 @@
                     android:background="#F3CDDC"
                     android:orientation="horizontal">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:elevation="10dp"
-                        android:translationZ="5dp"
-                        app:cardBackgroundColor="#F3CDDC">
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/cvClearFeature"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_margin="4dp"
-                            android:visibility="gone"
-                            app:cardBackgroundColor="@color/white"
-                            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                            app:strokeColor="@color/gray_dark"
-                            app:strokeWidth="1dp">
-
-                            <ImageView
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
-                                android:layout_gravity="center"
-                                android:padding="5dp"
-                                app:srcCompat="@drawable/close" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/cvCheckFeature"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            android:layout_gravity="center_vertical"
-                            android:layout_margin="4dp"
-                            app:cardBackgroundColor="@color/white"
-                            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                            app:strokeColor="@color/gray_dark"
-                            app:strokeWidth="1dp">
-
-                            <ImageView
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
-                                android:layout_gravity="center"
-                                android:padding="5dp"
-                                app:srcCompat="@drawable/ic_check_black_24dp" />
-                        </com.google.android.material.card.MaterialCardView>
-
-
-                        <TextView
-                            android:id="@+id/tvPlanFearure"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="30dp"
-                            android:drawablePadding="5dp"
-                            android:fontFamily="@font/app_font"
-                            android:gravity="center_vertical"
-                            android:padding="5dp"
-                            android:text="Send unlimited messages"
-                            android:textAllCaps="true"
-                            android:textColor="@color/black"
-                            android:textSize="12dp" />
-                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="10dp"
+                    android:translationZ="5dp"
+                    app:cardBackgroundColor="#F3CDDC">
 
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvClearFeature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="4dp"
+                        android:visibility="gone"
+                        app:cardBackgroundColor="@color/white"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                        app:strokeColor="@color/gray_dark"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            app:srcCompat="@drawable/close" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvCheckFeature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="4dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+                        app:strokeColor="@color/gray_dark"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            app:srcCompat="@drawable/ic_check_black_24dp" />
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                    <TextView
+                        android:id="@+id/tvPlanFearure"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="30dp"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/app_font"
+                        android:gravity="center_vertical"
+                        android:padding="5dp"
+                        android:text="Send unlimited messages"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="12dp" />
+                </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
