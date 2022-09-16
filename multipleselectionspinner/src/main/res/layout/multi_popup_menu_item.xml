@@ -11,13 +11,14 @@
 
     <TextView
         android:id="@+id/popup_item_title"
-        android:layout_width="wrap_content"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:text="Item 1"
         android:fontFamily="@font/app_font"
+        android:text="Item 1"
         android:textColor="#525252"
+        android:background="@drawable/cardview_design"
         android:textSize="14dp" />
 
     <com.google.android.material.checkbox.MaterialCheckBox

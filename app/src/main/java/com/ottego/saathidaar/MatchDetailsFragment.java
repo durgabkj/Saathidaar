@@ -599,13 +599,20 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
             if (!model.city.equalsIgnoreCase("") && !model.city.equalsIgnoreCase(null) && !model.city.isEmpty()) {
                 b.tvMatchCityDetail.setText(Utils.nullToBlank(model.city));
             } else {
-                b.tvMatchCityDetail.setText("Not Specified");
+                b.tvMatchCityDetail.setText("City-Not Specified");
             }
 
 
             b.tvNewMatchHeight.setText(Utils.nullToBlank(model.height));
 
-            b.tvNewMatchWorkAsDetail.setText(Utils.nullToBlank(model.working_as));
+            if (!model.working_as.equalsIgnoreCase("") && !model.working_as.equalsIgnoreCase(null) && !model.working_as.isEmpty()) {
+                b.tvNewMatchWorkAsDetail.setText(Utils.nullToBlank(model.working_as));
+            } else {
+                b.tvMatchCityDetail.setText("Working as-Not Specified");
+            }
+
+
+
             b.tvNameUserDetails.setText("About" + "  " + Utils.nullToBlank(model.first_name) + " " + Utils.nullToBlank(model.last_name));
             b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
             b.tvNameUserFamilyDetailsHeading.setText("About " + " Family");
@@ -633,7 +640,7 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
                 b.tvDetailMaritalS.setText("Not Specified");
             }
 
-            b.tvDetailLiveIn.setText(Utils.nullToBlank(model.city) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.country_name));
+            b.tvDetailLiveIn.setText(Utils.nullToBlank(model.country_name) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.city));
             b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + " " + Utils.nullToBlank(model.mother_tounge));
 
 
@@ -863,7 +870,6 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
 
 
     }
-
     @Override
     public void onSuccess(int position) {
         inboxViewModel.getDataCount();
@@ -871,7 +877,6 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
         getPartnerData();
         getMemberPreferenceData();
     }
-
     @Override
     public void onFail(int position) {
 

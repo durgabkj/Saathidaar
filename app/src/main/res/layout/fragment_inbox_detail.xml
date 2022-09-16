@@ -567,24 +567,22 @@
 
                             <TextView
                                 android:id="@+id/tvCreatedBy"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:background="@drawable/edt_text_border"
                                 android:fontFamily="@font/app_font"
-                                android:padding="10sp"
+                                android:padding="12sp"
                                 android:textSize="12sp" />
 
 
                             <TextView
                                 android:id="@+id/tvProfileID"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:layout_weight="1.2"
                                 android:background="@drawable/edt_text_border"
                                 android:fontFamily="@font/app_font"
-                                android:padding="10sp"
+                                android:padding="12sp"
                                 android:textSize="12sp" />
 
                         </LinearLayout>
@@ -598,22 +596,20 @@
 
                             <TextView
                                 android:id="@+id/tvDetailAge"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:background="@drawable/edt_text_border"
                                 android:fontFamily="@font/app_font"
                                 android:padding="10dp"
                                 android:text="Age:- Not Specified"
-                                android:textSize="11sp" />
+                                android:textSize="12sp" />
 
 
                             <TextView
                                 android:id="@+id/tvDetailHeight"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:layout_weight="1.2"
                                 android:background="@drawable/edt_text_border"
                                 android:fontFamily="@font/app_font"
                                 android:padding="10sp"
@@ -2430,7 +2426,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/app_font"
-                                    android:text="Working With"
+                                    android:text="Working with"
                                     android:textSize="14sp"
 
                                     />

@@ -1389,7 +1389,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
 
         if (description.isEmpty()) {
-            b.etAddUserDescription.setError("Please write about you");
+            b.etAddUserDescription.setError("Please write about yourself");
             b.etAddUserDescription.setFocusableInTouchMode(true);
             b.etAddUserDescription.requestFocus();
             return false;

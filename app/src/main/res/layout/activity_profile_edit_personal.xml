@@ -295,7 +295,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/italic"
+                    android:fontFamily="@font/app_font"
                     android:textColor="@color/colorPrimary"
                     android:text="Number Of Child" />
 
@@ -304,6 +304,8 @@
                     style="@style/PersonalDataTextView"
                     android:layout_width="match_parent"
                    android:fontFamily="@font/italic"
+                    android:inputType="number"
+                    android:maxLength="2"
                     android:layout_height="40dp"
                     android:hint="No.of child" />
             </LinearLayout>
@@ -563,6 +565,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_marginTop="10dp"
                                 android:visibility="gone"
+                                android:inputType="textCapWords"
                                 android:fontFamily="@font/app_font"
                                 android:layout_height="40dp"
                                 android:hint="Write Health Issue" />
@@ -908,6 +911,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:padding="10dp"
+                    android:inputType="textCapWords"
                     android:capitalize="words"
                     android:fontFamily="@font/app_font"
                     android:hint=" Enter Your Co-origin"
@@ -1045,6 +1049,7 @@
                             style="@style/PersonalDataTextView"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
+                            android:inputType="textCapWords"
                             android:fontFamily="@font/app_font"
                             android:hint="Enter city of birth" />
 
@@ -1159,7 +1164,7 @@
                                         android:layout_height="40dp"
                                         android:layout_weight="1"
                                         android:editable="false"
-                                        android:hint="AM_PM"
+                                        android:hint="AM / PM"
                                         android:gravity="center_vertical"
                                         android:fontFamily="@font/app_font"
                                         android:textSize="14sp"
@@ -1181,7 +1186,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:textColor="@color/colorPrimary"
-                            android:fontFamily="@font/italic"
+                            android:fontFamily="@font/app_font"
                             android:text="Timing Status"
 
                             />

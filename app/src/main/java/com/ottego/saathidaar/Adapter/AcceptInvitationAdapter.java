@@ -237,7 +237,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
             holder.llBlockAccept.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Upgrade your profile to add this profile in blockList", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Upgrade your profile to add this profile in Blocklist", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
                     context.startActivity(intent);
                 }
@@ -282,11 +282,9 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
-
             ivAcceptDot = itemView.findViewById(R.id.ivAcceptDot);
             ivAcceptDot1 = itemView.findViewById(R.id.ivAcceptDot1);
             ivAcceptDot2=itemView.findViewById(R.id.ivAcceptDot2);
-
             tvInvNewMatchAge = itemView.findViewById(R.id.tvInvNewMatchAge);
             tvInvNewMatchName = itemView.findViewById(R.id.tvInvNewMatchName);
             tvPremiumAcceptMatch=itemView.findViewById(R.id.tvPremiumAcceptMatch);

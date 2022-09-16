@@ -424,7 +424,7 @@
                                         android:id="@+id/etAddUserBrotherNotMarried"
                                         style="@style/PersonalDataTextView"
                                         android:maxLength="2"
-                                        android:inputType="textCapWords"
+                                        android:inputType="number"
                                         android:textAlignment="center"
                                         android:layout_gravity="center"
                                      />
@@ -473,6 +473,7 @@
                                         android:id="@+id/etAddUserBrotherMarried"
                                         style="@style/PersonalDataTextView"
                                         android:maxLength="2"
+                                        android:inputType="number"
                                         android:textAlignment="center"
                                         android:layout_gravity="center"
                                         />
@@ -518,8 +519,8 @@
                                         android:layout_height="25dp"
                                         android:layout_gravity="center"
                                         android:layout_weight="1"
-
                                         android:maxLength="2"
+                                        android:inputType="number"
                                         android:textAlignment="center" />
 
                                     <TextView
@@ -565,7 +566,8 @@
                                         android:layout_height="25dp"
                                         android:layout_gravity="center"
                                         android:layout_weight="1"
-                                        android:maxLength="1"
+                                        android:maxLength="2"
+                                        android:inputType="number"
                                         android:textAlignment="center" />
 
                                     <TextView

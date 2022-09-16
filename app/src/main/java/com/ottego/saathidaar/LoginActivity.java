@@ -131,22 +131,9 @@ public class LoginActivity extends AppCompatActivity {
        });
 
     }
-//    private void buttonProgress() {
-//        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-//            @SuppressLint("ResourceAsColor")
-//            @Override
-//            public void run() {
-//                b.btnSaveDetails.setText("Done");
-//                b.progressBar.setVisibility(View.INVISIBLE);
-//                b.btnSaveDetails.setTextColor((R.color.Green));
-//                requireActivity().finish();
-//
-//            }
-//        },4000);
-//    }
 
     private void submitForm() {
-      final ProgressDialog progressDialog = ProgressDialog.show(context, null, "checking credential please wait....", false, false);
+      final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Checking credential please wait....", false, false);
         Map<String, String> params = new HashMap<String, String>();
         params.put("username", email);
         params.put("password", password);

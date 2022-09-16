@@ -262,7 +262,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:fontFamily="@font/app_font"
-                    android:text="Working With"
+                    android:text="Working with"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"
                     />
@@ -299,7 +299,7 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:text="Working As"
+                    android:text="Working as"
                     android:fontFamily="@font/app_font"
                     android:layout_marginStart="5dp"
                     android:textStyle="bold"

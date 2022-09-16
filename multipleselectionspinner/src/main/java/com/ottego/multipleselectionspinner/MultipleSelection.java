@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -140,6 +141,7 @@ public class MultipleSelection extends TextInputEditText {
         @Override
         public void setOnClickListener(View.OnClickListener l) {
             // disable external click listeners
+
         }
 
         public void setItems(List objects) {
@@ -164,6 +166,7 @@ public class MultipleSelection extends TextInputEditText {
                     });
                 }
             }
+
         }
 
         public void clear() {
@@ -300,10 +303,11 @@ public class MultipleSelection extends TextInputEditText {
 
             if(itemsAdapter.getItemCount()==0)
             {
-                ImageView clear_selectionNoData =  view.findViewById(R.id.clear_selectionNoData);
+                LinearLayout clear_selectionNoData =  view.findViewById(R.id.clear_selectionNoData);
                 clear_selectionNoData.setVisibility(VISIBLE);
                 mRecyclerView.setVisibility(GONE);
             }
+
 
 
             final EditText searchBox = (EditText) view.findViewById(R.id.search_field);
@@ -334,8 +338,8 @@ public class MultipleSelection extends TextInputEditText {
                     public void onClick(View v) {
                         if (mSelectedItems == null) {
 
-                            setText("");
 
+                            setText("");
                             clearSelection.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -377,11 +381,9 @@ public class MultipleSelection extends TextInputEditText {
             popupWindow.setClippingEnabled(true);
             popupWindow.update();
             popupWindow.showAsDropDown(this, 0, 0);
-
         }
 
         public class ItemsAdapter extends RecyclerView.Adapter<MultipleSelection.ItemsAdapter.ItemViewHolder> implements Filterable {
-
             List<Object> filteredList;
             MultipleSelection.OnItemSelectedListener menuItemClickListener;
             private Filter mFilter;
@@ -389,7 +391,6 @@ public class MultipleSelection extends TextInputEditText {
             public ItemsAdapter(List<Object> objects, MultipleSelection.OnItemSelectedListener listener) {
                 this.filteredList = new ArrayList<>();
                 this.filteredList.addAll(objects);
-
                 this.menuItemClickListener = listener;
                 this.mFilter = new MultipleSelection.ItemsAdapter.SearchFilter(this);
             }
@@ -405,7 +406,6 @@ public class MultipleSelection extends TextInputEditText {
             @Override
             public void onBindViewHolder(MultipleSelection.ItemsAdapter.ItemViewHolder holder, int position) {
                 holder.mTextView.setText(filteredList.get(position).toString());
-
                 if (mSelectedItems != null) {
                     boolean isSelected = false;
                     for (Object selectedItem : mSelectedItems) {
@@ -465,6 +465,7 @@ public class MultipleSelection extends TextInputEditText {
                     }
                     holder.checkBox.setChecked(isSelected);
                 }
+
             }
 
             @Override

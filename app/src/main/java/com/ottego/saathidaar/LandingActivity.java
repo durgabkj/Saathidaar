@@ -25,11 +25,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.Adapter.SliderAdapter;
+import com.ottego.saathidaar.Model.SliderModel;
 import com.ottego.saathidaar.databinding.ActivityLandingBinding;
+import com.smarteist.autoimageslider.SliderView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,7 +54,8 @@ public class LandingActivity extends AppCompatActivity {
     String profilecreatedby = "";
     String franciseCode="";
     SessionManager sessionManager;
-
+    // we are creating array list for storing our image urls.
+    ArrayList<SliderModel> sliderDataArrayList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +73,9 @@ public class LandingActivity extends AppCompatActivity {
 
             for (int i = 0; i < imgarray.length; i++)
                 showimage(imgarray[i]);
+
+
+            imageSlider();
         }
 
         public void showimage(int img) {
@@ -377,6 +386,64 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
             request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             MySingleton.myGetMySingleton(context).myAddToRequest(request);
         }
+    private void imageSlider() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                "http://103.174.102.195:8080/saathidaar_backend/api/admin/success/story/get", null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf(response));
+
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        JSONArray jsonArray = response.getJSONArray("data");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String imagesPath = jsonObject1.getString("images_path");
+                            //  Log.e("Country-list", String.valueOf(countryList));
+
+                            // adding the urls inside array list
+                            sliderDataArrayList.add(new SliderModel(imagesPath));
+
+                        }
+
+                        // passing this array list inside our adapter class.
+                        SliderAdapter adapter = new SliderAdapter(context, sliderDataArrayList);
+
+                        // below method is used to set auto cycle direction in left to
+                        // right direction you can change according to requirement.
+                        binding.slider.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
+
+                        // below method is used to
+                        // setadapter to sliderview.
+                        binding.slider.setSliderAdapter(adapter);
+
+                        // below method is use to set
+                        // scroll time in seconds.
+                        binding.slider.setScrollTimeInSec(3);
+
+                        // to set it scrollable automatically
+                        // we use below method.
+                        binding.slider.setAutoCycle(true);
+
+                        // to start autocycle below method is used.
+                        binding.slider.startAutoCycle();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+    }
     }
 
 

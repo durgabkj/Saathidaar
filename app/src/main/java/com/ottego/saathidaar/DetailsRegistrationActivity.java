@@ -56,6 +56,7 @@ import java.util.Map;
 public class DetailsRegistrationActivity extends AppCompatActivity {
     private static final int SELECT_PICTURE = 100;
     private static final String TAG = "SelectImageActivity";
+    private static String age;
     public String countryUrl = Utils.location + "country";
     public String ReligionUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/religion-name";
     public String Updateurl = Utils.memberUrl + "short-registration/update/";
@@ -97,6 +98,37 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
     String country = "";
     private String format = "";
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+
+    public static int getPerfectAgeInYears(int year, int month, int date) {
+
+        Calendar dobCalendar = Calendar.getInstance();
+
+        dobCalendar.set(Calendar.YEAR, year);
+        dobCalendar.set(Calendar.MONTH, month);
+        dobCalendar.set(Calendar.DATE, date);
+
+        int ageInteger = 0;
+
+        Calendar today = Calendar.getInstance();
+
+        ageInteger = today.get(Calendar.YEAR) - dobCalendar.get(Calendar.YEAR);
+
+        if (today.get(Calendar.MONTH) == dobCalendar.get(Calendar.MONTH)) {
+
+            if (today.get(Calendar.DAY_OF_MONTH) < dobCalendar.get(Calendar.DAY_OF_MONTH)) {
+
+                ageInteger = ageInteger - 1;
+            }
+
+        } else if (today.get(Calendar.MONTH) < dobCalendar.get(Calendar.MONTH)) {
+
+            ageInteger = ageInteger - 1;
+
+        }
+        Log.e("Age", String.valueOf(ageInteger));
+        age = String.valueOf(ageInteger);
+        return ageInteger;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -396,7 +428,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
                     b.mbDatePicker.setText(dateFormatted);
                 }
 
-                getPerfectAgeInYears(year,month,day);
+                getPerfectAgeInYears(year, month, day);
             }
         };
     }
@@ -469,6 +501,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
 
         return true;
     }
+
     private void submitForm() {
         Map<String, String> params = new HashMap<String, String>();
         params.put("date_of_birth", Dob);
@@ -477,8 +510,9 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
         params.put("religion", Religion);
         params.put("country_name", country);
         params.put("lifestyles", Diet);
+        params.put("age", age);
         Log.e("params", String.valueOf(params));
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "please wait....", false, false);
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Please wait....", false, false);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Updateurl + sessionManager.getUserMemberRegId(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -524,9 +558,8 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
 
                 // Initialize dialog
                 dialog = new Dialog(context);
-
-                // set custom dialog
-                dialog.setContentView(R.layout.searchable_dropdown_item);
+                    // set custom dialog
+                    dialog.setContentView(R.layout.searchable_dropdown_item);
 
                 // set custom height and width
                 dialog.getWindow().setLayout(800, 900);
@@ -570,12 +603,14 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
                         Log.e("position", religionAdapter.getItem((int) id));
                         religionList.clear();
 
-                       // communityData();
+                        // communityData();
 
                         // Dismiss dialog
                         dialog.dismiss();
                     }
                 });
+
+
             }
         });
 
@@ -656,6 +691,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
 
         // listView.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) context);
     }
+
     private void communityList() {
         b.tvUserCommunity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -720,6 +756,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
         });
 
     }
+
     private void userHeight() {
         final int[] checkedItem = {-1};
         b.etHeight.setOnClickListener(new View.OnClickListener() {
@@ -781,6 +818,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
             }
         });
     }
+
     private void maritalStatus() {
 
         final int[] checkedItem = {-1};
@@ -843,37 +881,5 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-
-
-    public static int getPerfectAgeInYears(int year, int month, int date) {
-
-        Calendar dobCalendar = Calendar.getInstance();
-
-        dobCalendar.set(Calendar.YEAR, year);
-        dobCalendar.set(Calendar.MONTH, month);
-        dobCalendar.set(Calendar.DATE, date);
-
-        int ageInteger = 0;
-
-        Calendar today = Calendar.getInstance();
-
-        ageInteger = today.get(Calendar.YEAR) - dobCalendar.get(Calendar.YEAR);
-
-        if (today.get(Calendar.MONTH) == dobCalendar.get(Calendar.MONTH)) {
-
-            if (today.get(Calendar.DAY_OF_MONTH) < dobCalendar.get(Calendar.DAY_OF_MONTH)) {
-
-                ageInteger = ageInteger - 1;
-            }
-
-        } else if (today.get(Calendar.MONTH) < dobCalendar.get(Calendar.MONTH)) {
-
-            ageInteger = ageInteger - 1;
-
-        }
-Log.e("Age", String.valueOf(ageInteger));
-        return ageInteger;
     }
 }

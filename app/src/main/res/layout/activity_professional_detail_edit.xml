@@ -184,7 +184,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
                             android:fontFamily="@font/app_font"
-                            android:text="Working With" />
+                            android:text="Working with" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -231,7 +231,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="0.8"
                             android:fontFamily="@font/app_font"
-                            android:text="Working As" />
+                            android:text="Working as" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -257,7 +257,7 @@
                                 android:textColor="@color/black"
                                 android:fontFamily="@font/app_font"
                                 android:gravity="center_vertical"
-                                android:hint="WorkingAs" />
+                                android:hint="Working as" />
 
 
                         </LinearLayout>

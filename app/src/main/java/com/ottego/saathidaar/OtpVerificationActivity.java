@@ -1,6 +1,7 @@
 package com.ottego.saathidaar;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -57,17 +58,19 @@ public class OtpVerificationActivity extends AppCompatActivity {
         Map<String, String> params = new HashMap<String, String>();
         params.put("phone_number", phone);
         Log.e("params", String.valueOf(params));
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Please wait while new OTP is sending on your registered mobile number", false, false);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, otpSentUrl, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        progressDialog.dismiss();
                         Log.e(" otp receive response", String.valueOf(response));
 
                         try {
                             String code = response.getString("status");
                             if (code.equalsIgnoreCase("success")) {
 
-                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "OTP Sent Successfully", Toast.LENGTH_SHORT).show();
                              //   Intent intent = new Intent(context, LoginActivity.class);
                               //  startActivity(intent);
                             } else {
@@ -82,6 +85,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
                         if (null != error.networkResponse) {
                             Log.e("Error Response", String.valueOf(error));
                         }
@@ -91,7 +95,6 @@ public class OtpVerificationActivity extends AppCompatActivity {
         request.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.myGetMySingleton(context).myAddToRequest(request);
     }
-
     private void listener() {
         binding.btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +115,6 @@ public class OtpVerificationActivity extends AppCompatActivity {
 
 
     }
-
     private boolean checkForm() {
         otp = binding.edtOtpCode.getText().toString().trim();
         if (otp.isEmpty() || otp.length() < 4) {
@@ -125,8 +127,6 @@ public class OtpVerificationActivity extends AppCompatActivity {
         }
         return true;
     }
-
-
     public void successDialog()
     {
         AlertDialog.Builder builder=new AlertDialog.Builder(context);
@@ -153,7 +153,6 @@ public class OtpVerificationActivity extends AppCompatActivity {
             }
         });
     }
-
     private void submitFormOtp() {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, OtpVerifyUrl + otp + "/" + phone, new JSONObject(),
                 new Response.Listener<JSONObject>() {

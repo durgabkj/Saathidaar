@@ -69,6 +69,7 @@ public class PartnerPreferenceFragment extends Fragment {
     boolean[] selectedLanguage;
     SessionManager sessionManager;
     ChipGroup cpChild;
+    ArrayList<String> workingWithItemsList;
     RadioGroup rgManglikType;
     MaterialRadioButton mrbNoManglik, mrbOpenToAll, mrbOnlyManglik, mrbDontNoManglik;
     String id;
@@ -1032,7 +1033,6 @@ public class PartnerPreferenceFragment extends Fragment {
 
     private List getProfessionAreaItems() {
         ArrayList<String> ProfessionAreaList = new ArrayList<>();
-
         ProfessionAreaList.add("Open to all");
         ProfessionAreaList.add("Accounting,Banking & Finance");
         ProfessionAreaList.add("Administration & HR");
@@ -1055,8 +1055,6 @@ public class PartnerPreferenceFragment extends Fragment {
         ProfessionAreaList.add("Non Working");
         ProfessionAreaList.add("Sale & Marketing");
         ProfessionAreaList.add("Science");
-
-        ;
         return ProfessionAreaList;
     }
 
@@ -1066,6 +1064,7 @@ public class PartnerPreferenceFragment extends Fragment {
             @Override
             public void onItemSelected(View view, boolean isSelected, int position) {
 //                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -1073,10 +1072,12 @@ public class PartnerPreferenceFragment extends Fragment {
 //                Toast.makeText(MainActivity.this, "All items are unselected", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     private List getWorkingWithItems() {
-        ArrayList<String> workingWithItemsList = new ArrayList<>();
+       workingWithItemsList = new ArrayList<>();
+
         workingWithItemsList.add("Open to all");
         workingWithItemsList.add("Private Company");
         workingWithItemsList.add("Government / Public Sector");
@@ -1118,7 +1119,6 @@ public class PartnerPreferenceFragment extends Fragment {
             @Override
             public void onItemSelected(View view, boolean isSelected, int position) {
 //                Toast.makeText(MainActivity.this, "On Item selected : " + isSelected, Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
@@ -1584,6 +1584,4 @@ public class PartnerPreferenceFragment extends Fragment {
 //            alphabetsList.add(Character.toString(i));
 
     }
-
-
 }

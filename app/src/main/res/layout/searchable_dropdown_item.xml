@@ -10,22 +10,13 @@
     >
 
     <!-- Text view to show the text Select course-->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select your choice"
-        android:fontFamily="@font/app_font"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        />
-
     <!-- Edit text to allow user to type name
            of item he/she wants to search-->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_text"
-        android:hint="Search..."
+        android:hint="Search"
         android:padding="12dp"
         android:singleLine="true"
         android:fontFamily="@font/app_font"

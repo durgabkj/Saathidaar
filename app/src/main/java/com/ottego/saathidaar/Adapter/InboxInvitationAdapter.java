@@ -266,7 +266,7 @@ holder.llPrivateInvitationPhoto.setVisibility(View.GONE);
             holder.llBlockInvitation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Upgrade Your Profile To Add This Profile In BlockList", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Upgrade Your Profile To Add This Profile In Blocklist", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
                     context.startActivity(intent);
                 }

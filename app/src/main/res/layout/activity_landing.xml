@@ -48,7 +48,7 @@
                     android:layout_marginTop="210dp"
                     android:fontFamily="@font/app_font"
                     android:gravity="center"
-                    android:text="...because a marriage is between two families"
+                    android:text="...because marriage is between two families"
                     android:textColor="@color/white"
                     android:textSize="20dp" />
             </RelativeLayout>
@@ -256,7 +256,7 @@
                     android:drawableTint="@color/black"
                     android:fontFamily="@font/italic"
                     android:hint="Franchise Code"
-                    android:maxLength="10"
+                    android:maxLength="4"
                     android:inputType="number"
                     android:padding="8dp"
                     android:textColor="@color/black" />
@@ -452,12 +452,32 @@
                     android:orientation="vertical">
 
 
+                    <com.smarteist.autoimageslider.SliderView
+                        android:id="@+id/slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="4dp"
+                        app:sliderAnimationDuration="600"
+                        app:sliderAutoCycleDirection="back_and_forth"
+                        app:sliderIndicatorAnimationDuration="600"
+                        app:sliderIndicatorEnabled="true"
+                        app:sliderIndicatorGravity="center_horizontal|bottom"
+                        app:sliderIndicatorMargin="15dp"
+                        app:sliderIndicatorOrientation="horizontal"
+                        app:sliderIndicatorPadding="3dp"
+                        app:sliderIndicatorRadius="2dp"
+                        app:sliderIndicatorSelectedColor="#5A5A5A"
+                        app:sliderIndicatorUnselectedColor="#FFF"
+                        app:sliderScrollTimeInSec="1" />
+
                     <ViewFlipper
                         android:id="@+id/flipper"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_gravity="center"
-                        android:padding="8dp" />
+                        android:padding="8dp"
+                        android:visibility="gone" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </RelativeLayout>
 
@@ -501,7 +521,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
                         android:fontFamily="@font/app_font"
-                        android:text=" Terms and Conditions |   "
+                        android:text=" Terms &amp; Conditions |   "
                         android:textColor="@color/black"
                         android:textSize="10dp" />
 
@@ -535,7 +555,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/app_font"
                     android:textStyle="bold"
-                    android:text=" Customer Support:-"
+                    android:layout_marginBottom="5dp"
+                    android:text=" Customer Support"
                     android:textColor="@color/colorPrimary"
                     android:textSize="10dp" />
 

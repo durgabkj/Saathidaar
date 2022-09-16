@@ -347,7 +347,7 @@
                 android:drawableTint="@color/white"
                 android:fontFamily="@font/app_font"
                 android:gravity="center_vertical"
-                android:text="All Fields are mandatory. "
+                android:text="All fields are mandatory. "
                 android:textColor="@color/white"
                 android:textSize="14sp" />
         </LinearLayout>
