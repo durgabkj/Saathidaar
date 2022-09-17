@@ -326,6 +326,7 @@
         <pl.droidsonroids.gif.GifImageView
             android:layout_width="35dp"
             android:layout_height="25dp"
+            android:layout_marginBottom="3dp"
             android:layout_gravity="center_vertical"
             android:background="#10FFC107"
             android:layout_marginStart="10dp"

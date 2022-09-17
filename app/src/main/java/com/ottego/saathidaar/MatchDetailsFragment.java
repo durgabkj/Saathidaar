@@ -624,7 +624,7 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
             } else {
                 b.tvDetailAge.setText("Age:- Not Specified");
             }
-            b.tvDetailHeight.setText("Height:- " + Utils.nullToBlank(model.height));
+            b.tvDetailHeight.setText("Height:-" + Utils.nullToBlank(model.height));
 
             if (!model.date_of_birth.equalsIgnoreCase("") && !model.date_of_birth.equalsIgnoreCase(null) && !model.date_of_birth.isEmpty()) {
 
@@ -640,8 +640,37 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
                 b.tvDetailMaritalS.setText("Not Specified");
             }
 
-            b.tvDetailLiveIn.setText(Utils.nullToBlank(model.country_name) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.city));
-            b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + " " + Utils.nullToBlank(model.mother_tounge));
+            //set data to living in
+            String livingIn="";
+
+            if(!Utils.nullToBlank(model.country_name).equals("")){
+                livingIn=model.country_name;
+            }
+
+            if(!Utils.nullToBlank(model.country_name).equals("") && !Utils.nullToBlank(model.state).equals((""))){
+                livingIn=livingIn+","+model.state;
+            }
+
+            if(!Utils.nullToBlank(model.country_name).equals("") && !Utils.nullToBlank(model.state).equals(("")) && !Utils.nullToBlank(model.city).equals((""))){
+                livingIn=livingIn+","+model.city;
+            }
+
+            b.tvDetailLiveIn.setText(Utils.nullToBlank(livingIn));
+
+            Log.e("living","living"+model.country_name+model.state+model.city);
+            // set data to religion
+
+            String religion="";
+
+            if(!Utils.nullToBlank(model.religion_name).equals("")){
+                religion=model.religion_name;
+            }
+
+            if(!Utils.nullToBlank(model.religion_name).equals("") && !Utils.nullToBlank(model.mother_tounge).equals((""))){
+                religion=religion+","+model.mother_tounge;
+            }
+
+            b.tvDetailReligionMotherTongue.setText(religion);
 
 
             if (model.caste_name!=null&&  !model.caste_name.equalsIgnoreCase("") && !model.caste_name.equalsIgnoreCase(null) && !model.caste_name.isEmpty()) {

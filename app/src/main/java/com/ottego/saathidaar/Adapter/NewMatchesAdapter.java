@@ -80,7 +80,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
 
         holder.tvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
         holder.tvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
-        holder.tvNewMatchWorkAs.setText(Utils.nullToBlank(item.city));
+        holder.tvNewMatchWorkAs.setText(Utils.nullToBlank(item.country));
         holder.tvImageCount.setText(item.images_count);
 
         holder.llPrivateMatchesPhoto.setVisibility(View.GONE);

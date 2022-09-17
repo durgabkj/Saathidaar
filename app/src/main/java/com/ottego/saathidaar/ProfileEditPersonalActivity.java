@@ -20,12 +20,14 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
@@ -34,6 +36,7 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -681,10 +684,10 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.radio_button_1:
-                        manglik = "yes";
+                        manglik = "Yes";
                         break;
                     case R.id.radio_button_2:
-                        manglik = "no";
+                        manglik = "No";
                         break;
                     case R.id.radio_button_3:
                         manglik = "Don't Know";
@@ -700,7 +703,9 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 dialog.setContentView(R.layout.searchable_dropdown_item);
 
                 // set custom height and width
-                dialog.getWindow().setLayout(800, 900);
+             //  dialog.getWindow().setLayout(300, 700);
+                Window window = dialog.getWindow();
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 700);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -725,64 +730,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
                         adapter.getFilter().filter(s);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-
-                    }
-                });
-
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        // when item selected from list
-                        // set selected item on textView
-                        b.acvCountry.setText(adapter.getItem(position));
-                        // Dismiss dialog
-                        dialog.dismiss();
-
-
-                    }
-                });
-
-            }
-        });
-        b.etCountry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                // set custom dialog
-                dialog.setContentView(R.layout.searchable_dropdown_item);
-
-                // set custom height and width
-                dialog.getWindow().setLayout(800, 900);
-
-                // set transparent background
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                // show dialog
-                dialog.show();
-
-                // Initialize and assign variable
-                EditText editText = dialog.findViewById(R.id.edit_text);
-                ListView listView = dialog.findViewById(R.id.list_view);
-
-                // Initialize array adapter
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, countryList);
-                // set adapter
-                listView.setAdapter(adapter);
-                editText.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        adapter.getFilter().filter(s);
-
                     }
 
                     @Override
@@ -806,6 +753,64 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
             }
         });
+//        b.etCountry.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//                // set custom dialog
+//                dialog.setContentView(R.layout.searchable_dropdown_item);
+//
+//                // set custom height and width
+//                dialog.getWindow().setLayout(800, 900);
+//
+//                // set transparent background
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//
+//                // show dialog
+//                dialog.show();
+//
+//                // Initialize and assign variable
+//                EditText editText = dialog.findViewById(R.id.edit_text);
+//                ListView listView = dialog.findViewById(R.id.list_view);
+//
+//                // Initialize array adapter
+//                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, countryList);
+//                // set adapter
+//                listView.setAdapter(adapter);
+//                editText.addTextChangedListener(new TextWatcher() {
+//                    @Override
+//                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                        adapter.getFilter().filter(s);
+//
+//                    }
+//
+//                    @Override
+//                    public void afterTextChanged(Editable s) {
+//
+//                    }
+//                });
+//
+//                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                        // when item selected from list
+//                        // set selected item on textView
+//                        b.etCountry.setText(adapter.getItem(position));
+//                        // Dismiss dialog
+//                        dialog.dismiss();
+//
+//
+//                    }
+//                });
+//
+//            }
+//        });
         b.etState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -815,7 +820,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 dialog.setContentView(R.layout.searchable_dropdown_item);
 
                 // set custom height and width
-                dialog.getWindow().setLayout(800, 900);
+                Window window = dialog.getWindow();
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 700);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -872,7 +878,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 dialog.setContentView(R.layout.searchable_dropdown_item);
 
                 // set custom height and width
-                dialog.getWindow().setLayout(800, 900);
+                Window window = dialog.getWindow();
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 700);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -1512,7 +1519,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 dialog.setContentView(R.layout.searchable_dropdown_item);
 
                 // set custom height and width
-                dialog.getWindow().setLayout(800, 900);
+                Window window = dialog.getWindow();
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 700);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -1653,7 +1661,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 dialog.setContentView(R.layout.searchable_dropdown_item);
 
                 // set custom height and width
-                dialog.getWindow().setLayout(800, 900);
+                Window window = dialog.getWindow();
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 700);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

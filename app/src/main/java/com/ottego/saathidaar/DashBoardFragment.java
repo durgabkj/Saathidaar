@@ -237,11 +237,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://103.174.102.195:8080/saathidaar/#/help-mobile"));
+                intent.setData(Uri.parse("http://103.174.102.195:8080/saathidaar/#/help"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://103.174.102.195:8080/saathidaar/#/help-mobile"));
+                    intent.setData(Uri.parse("http://103.174.102.195:8080/saathidaar/#/help"));
                 }
             }
         });
@@ -265,11 +265,11 @@ public class DashBoardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://103.174.102.195:8080/saathidaar/#/term-mobile"));
+                intent.setData(Uri.parse("http://103.174.102.195:8080/saathidaar/#/term-condition"));
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
-                    intent.setData(Uri.parse("http://103.174.102.195.33:8080/saathidaar/#/term-mobile"));
+                    intent.setData(Uri.parse("http://103.174.102.195.33:8080/saathidaar/#/term-condition"));
                 }
             }
         });

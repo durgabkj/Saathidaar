@@ -1,5 +1,6 @@
 package com.ottego.saathidaar;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -348,10 +349,12 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
             params.put("role", Utils.role_user);
             params.put("profilecreatedby", profilecreatedby);
             Log.e("params", String.valueOf(params));
+            final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Please wait....", false, false);
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, registerurl, new JSONObject(params),
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
+                            progressDialog.dismiss();
                             Log.e("response", String.valueOf((response)));
                             try {
                                 String code = response.getString("results");
@@ -359,7 +362,7 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
                                     Gson gson = new Gson();
                                     //  UserModel sessionModel = gson.fromJson(String.valueOf((response)), UserModel.class);
                                     sessionManager.createSUserMemberId(response.getString("user_id"));
-                                     Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
+                                //     Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();  // sessionManager.createSessionLogin(userId);
                                       //Intent intent = new Intent(context, OtpVerificationActivity.class);
                                     Intent intent = new Intent(context, DetailsRegistrationActivity.class);
                                     intent.putExtra("mobile", phone);
@@ -377,6 +380,7 @@ binding.llWhatsApp.setOnClickListener(new View.OnClickListener() {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
+                            progressDialog.dismiss();
                             if (null != error.networkResponse) {
                                 Log.e("Error response", String.valueOf(error));
                             }

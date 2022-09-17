@@ -71,7 +71,7 @@ public class UpgradeFragment extends Fragment {
     }
 
     public void getData() {
-       final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 UpgradeUrl, null, new Response.Listener<JSONObject>() {
             @Override

@@ -15,11 +15,13 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -190,7 +192,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
                     // set the custom icon to the alert dialog
-                    alertDialog.setIcon(R.drawable.ic_baseline_work_24);
+                    alertDialog.setIcon(R.drawable.work);
 
                     // title of the alert dialog
                     alertDialog.setTitle("Choose Working with");
@@ -266,7 +268,8 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
                 dialog.setContentView(R.layout.searchable_dropdown_item);
 
                 // set custom height and width
-                dialog.getWindow().setLayout(800, 900);
+                Window window = dialog.getWindow();
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 700);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

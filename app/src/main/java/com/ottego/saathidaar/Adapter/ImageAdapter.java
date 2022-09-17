@@ -65,7 +65,6 @@ public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.ViewHolder>
                 holder.tvImageApproveStatus.setVisibility(View.VISIBLE);
             }
 
-
         }
 
         @Override

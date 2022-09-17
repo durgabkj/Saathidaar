@@ -92,7 +92,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
 
             holder.tvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
             holder.tvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
-            holder.tvNewMatchWorkAs.setText(Utils.nullToBlank(item.income));
+            holder.tvNewMatchWorkAs.setText(Utils.nullToBlank(item.country));
             holder.tvImageCountRecentView.setText(Utils.nullToBlank(item.images_count));
 
 
@@ -252,10 +252,10 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
 //                holder.ivRecentDot.setVisibility(View.GONE);
 //            }
 
-            if(item.income.equalsIgnoreCase(""))
-            {
-                holder.ivRecentDot1.setVisibility(View.GONE);
-            }
+//            if(item.income.equalsIgnoreCase(""))
+//            {
+//                holder.ivRecentDot1.setVisibility(View.GONE);
+//            }
 
             //For free user...Apply Conditions
             if(item.my_premium_status.equalsIgnoreCase("0"))

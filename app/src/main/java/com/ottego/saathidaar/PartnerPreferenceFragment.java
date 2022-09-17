@@ -573,75 +573,7 @@ public class PartnerPreferenceFragment extends Fragment {
 
             }
         });
-
-
-//        multi_SelectionCountry.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                if(multi_SelectionCountry.getText().toString().trim().contains("Other"))
-//                {
-//                    etPreferenceCountry.setVisibility(View.VISIBLE);
-//                }else
-//                {
-//                    etPreferenceCountry.setVisibility(View.GONE);
-//                }
-//            }
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
-//            }
-//        });
-
-
-//        multi_SelectionState.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                if(multi_SelectionState.getText().toString().trim().contains("Other"))
-//                {
-//                    etPreferenceState.setVisibility(View.VISIBLE);
-//                }else
-//                {
-//                    etPreferenceState.setVisibility(View.GONE);
-//                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
-//            }
-//        });
-
-//        tvMultipleCity.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                if(tvMultipleCity.getText().toString().trim().contains("Other"))
-//                {
-//                    etPreferenceCity.setVisibility(View.VISIBLE);
-//                }else
-//                {
-//                    etPreferenceCity.setVisibility(View.GONE);
-//                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
-//            }
-//        });
+        
         etProfileSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

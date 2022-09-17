@@ -75,7 +75,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
 
         holder.tvNewMatchHeightRs.setText(Utils.nullToBlank(item.religion));
         holder.tvNewMatchCityRs.setText(Utils.nullToBlank(item.maritalStatus));
-        holder.tvNewMatchWorkAsRs.setText(Utils.nullToBlank(item.income));
+        holder.tvNewMatchWorkAsRs.setText(Utils.nullToBlank(item.country));
         holder.tvImageCountRemoveShortList.setText(Utils.nullToBlank(item.images_count));
 
         holder.llPrivateRemoveShortListPhoto.setVisibility(View.GONE);
@@ -148,34 +148,6 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
                     //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(holder.ivRemoveShortList);
 
-//        }
-//        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
-//            holder.llPhotoShortList.setEnabled(false);
-//            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-//            holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
-//            holder.llPrivateRemoveShortListPhoto.setVisibility(View.VISIBLE);
-//            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-//            Glide.with(context)
-//                    .load(Utils.imageUrl + item.profile_photo)
-//                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-//                    .transform(new BlurTransformation(20, 8))
-//                    .into(holder.ivRemoveShortList);
-//
-//        }
-//        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("2"))) {
-//            holder.llPhotoShortList.setEnabled(false);
-//            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-//            holder.llPremiumMsgRemoveShortlist.setVisibility(View.GONE);
-//            holder.llPrivateRemoveShortListPhoto.setVisibility(View.VISIBLE);
-//            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-//            Glide.with(context)
-//                    .load(Utils.imageUrl + item.profile_photo)
-//                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-//                    .transform(new BlurTransformation(20, 8))
-//                    .into(holder.ivRemoveShortList);
-//
-//
-
 
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {
             holder.llPhotoShortList.setEnabled(false);
@@ -245,9 +217,9 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         if (item.maritalStatus.equals("")) {
             holder.ivShortlistDot2.setVisibility(View.GONE);
         }
-        if (item.income.equals("") || item.income.equalsIgnoreCase("null")) {
-            holder.ivShortlistDot2.setVisibility(View.GONE);
-        }
+//        if (item.income.equals("") || item.income.equalsIgnoreCase("null")) {
+//            holder.ivShortlistDot2.setVisibility(View.GONE);
+//        }
 
         //For free user...Apply Conditions
         if (item.my_premium_status.equalsIgnoreCase("0")) {

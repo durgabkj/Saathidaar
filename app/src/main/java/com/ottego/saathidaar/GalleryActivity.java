@@ -118,22 +118,6 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
         });
 
 
-//        b.mtGalleryToolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, PICK_FILE_REQUEST);
-//                if (item.getItemId() == R.id.menu_top_add) {
-//                    Intent intent = new Intent();
-//                    intent.setType("image/*");
-//                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-//                    intent.setAction(Intent.ACTION_GET_CONTENT);
-//                    startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_FILE_REQUEST);
-//                }
-//                return false;
-//            }
-//
-//        });
-
 
 // Upload image file..
         b.upload.setOnClickListener(new View.OnClickListener() {

@@ -165,15 +165,29 @@ public class Utils {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                       // progressDialog.dismiss();
-                        Log.e(" Shortlist remove response", String.valueOf((response)));
                         apiListener.onSuccess(0);
+                        Log.e(" remove shortlist response", String.valueOf((response)));
+                        try {
+                            String code = response.getString("results");
+                            if (code.equalsIgnoreCase("1")) {
+
+                                Toast.makeText(context, "Profile remove from Shortlist", Toast.LENGTH_LONG).show();
+                            } else {
+                                apiListener.onFail(0);
+                                Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Something went wrong, try again.", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 },
-                error -> {
-                    if (null != error.networkResponse) {
-                      //  progressDialog.dismiss();
-                        Log.e("Error response", String.valueOf(error));
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (null != error.networkResponse) {
+                            Log.e("Error response", String.valueOf(error));
+                        }
                     }
                 });
 
@@ -272,7 +286,7 @@ public class Utils {
     }
 
     public static void deleteRequest(Context context, String member_id, ApiListener apiListener) {
-       final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Processing...", false, false);
         String url = Utils.memberUrl + "request-accept-reject";
         Map<String, String> params = new HashMap<String, String>();
         params.put("request_from_id",member_id);
@@ -317,7 +331,7 @@ public class Utils {
     }
 
     public static void cancelRequest(Context context, String member_id, ApiListener apiListener) {
-        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Processing...", false, false);
         String url = Utils.memberUrl + "request-accept-reject";
         Map<String, String> params = new HashMap<String, String>();
         params.put("request_from_id",new SessionManager(context).getMemberId());

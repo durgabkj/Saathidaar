@@ -142,21 +142,6 @@ int count=0;
 //refresh(1000);
     }
 
-    private void refresh(int millisecond) {
-
-        final Handler handler= new Handler();
-        final  Runnable runnable=new Runnable() {
-            @Override
-            public void run() {
-                getData();
-            }
-        };
-
-        handler.postDelayed(runnable,millisecond);
-
-
-
-    }
 
     @Override
     public void onSuccess(int position) {

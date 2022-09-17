@@ -209,7 +209,7 @@ FragmentFamilyInfoBinding b;
     }
 
     private void getMemberData() {
-       final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
+       final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override

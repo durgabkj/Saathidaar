@@ -378,7 +378,6 @@
                             android:fontFamily="@font/app_font"
                             android:focusableInTouchMode="false"
                             android:importantForAutofill="no"
-
                             app:showSearch="true"
                             app:sort="true" />
 

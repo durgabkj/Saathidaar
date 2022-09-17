@@ -559,7 +559,7 @@ public class InboxDetailFragment extends Fragment {
             b.tvCreatedBy.setText("Create by:-" + " " + Utils.nullToBlank(model.profilecreatedby));
             b.tvProfileID.setText("Profile ID:-" + " " + Utils.nullToBlank(model.profile_id));
 
-            b.tvDetailHeight.setText("Height:- " + Utils.nullToBlank(model.height));
+            b.tvDetailHeight.setText("Height:-" + Utils.nullToBlank(model.height));
 
             if ( model.date_of_birth!=null && !model.date_of_birth.equalsIgnoreCase("") && !model.date_of_birth.equalsIgnoreCase(null) && !model.date_of_birth.isEmpty()) {
 
@@ -575,9 +575,36 @@ public class InboxDetailFragment extends Fragment {
                 b.tvDetailMaritalS.setText("Not Specified");
             }
 
-            b.tvDetailLiveIn.setText(Utils.nullToBlank(model.city) + " " + Utils.nullToBlank(model.state_name) + " " + Utils.nullToBlank(model.country_name));
-            b.tvDetailReligionMotherTongue.setText(Utils.nullToBlank(model.religion_name) + " " + Utils.nullToBlank(model.mother_tounge));
+            String livingIn="";
 
+            if(!Utils.nullToBlank(model.country_name).equals("")){
+                livingIn=model.country_name;
+            }
+
+            if(!Utils.nullToBlank(model.country_name).equals("") && !Utils.nullToBlank(model.state_name).equals((""))){
+                livingIn=livingIn+","+model.state_name;
+            }
+
+            if(!Utils.nullToBlank(model.country_name).equals("") && !Utils.nullToBlank(model.state_name).equals(("")) && !Utils.nullToBlank(model.city).equals((""))){
+                livingIn=livingIn+","+model.city;
+            }
+
+            b.tvDetailLiveIn.setText(Utils.nullToBlank(livingIn));
+
+
+
+
+            String religion="";
+
+            if(!Utils.nullToBlank(model.religion_name).equals("")){
+                religion=model.religion_name;
+            }
+
+            if(!Utils.nullToBlank(model.religion_name).equals("") && !Utils.nullToBlank(model.mother_tounge).equals((""))){
+                religion=religion+","+model.mother_tounge;
+            }
+
+            b.tvDetailReligionMotherTongue.setText(religion);
 
             if (model.caste_name!=null &&!model.caste_name.equalsIgnoreCase("") && !model.caste_name.equalsIgnoreCase(null) && !model.caste_name.isEmpty()) {
                 b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + " " + Utils.nullToBlank(model.sub_caste_name));

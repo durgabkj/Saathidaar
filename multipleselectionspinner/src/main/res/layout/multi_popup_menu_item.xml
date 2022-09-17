@@ -18,7 +18,6 @@
         android:fontFamily="@font/app_font"
         android:text="Item 1"
         android:textColor="#525252"
-        android:background="@drawable/cardview_design"
         android:textSize="14dp" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
