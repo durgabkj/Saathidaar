@@ -163,7 +163,6 @@ public class FamilyProfileActivity extends AppCompatActivity {
 
 
     }
-
     private void FamilyAffluence() {
 
         final int[] checkedItem = {-1};
@@ -227,12 +226,9 @@ public class FamilyProfileActivity extends AppCompatActivity {
             }
         });
     }
-
     private void fatherAndMotherStatus() {
         final int[] checkedItem = {-1};
-
         final int[] checkedItem1 = {-1};
-
         b.etFStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -377,26 +373,42 @@ public class FamilyProfileActivity extends AppCompatActivity {
                     b.llMCompany.setVisibility(View.VISIBLE);
                     b.llMDesignation.setVisibility(View.VISIBLE);
                     b.llMNatureBusiness.setVisibility(View.GONE);
+                    b.etMotherCompanyName.setText("");
+                    b.etMotherDesignation.setText("");
+                    b.etMotherNatureBusiness.setText("");
+
                 }
                 if (motherStatus.equalsIgnoreCase("Employed")) {
                     b.llMCompany.setVisibility(View.VISIBLE);
                     b.llMDesignation.setVisibility(View.VISIBLE);
                     b.llMNatureBusiness.setVisibility(View.GONE);
+                    b.etMotherCompanyName.setText("");
+                    b.etMotherDesignation.setText("");
+                    b.etMotherNatureBusiness.setText("");
                 }
                 if (motherStatus.equalsIgnoreCase("Business")) {
                     b.llMNatureBusiness.setVisibility(View.VISIBLE);
                     b.llMCompany.setVisibility(View.GONE);
                     b.llMDesignation.setVisibility(View.GONE);
+                    b.etMotherCompanyName.setText("");
+                    b.etMotherDesignation.setText("");
+                    b.etMotherNatureBusiness.setText("");
                 }
                 if (motherStatus.equalsIgnoreCase("Not Employed")) {
                     b.llMNatureBusiness.setVisibility(View.GONE);
                     b.llMCompany.setVisibility(View.GONE);
                     b.llMDesignation.setVisibility(View.GONE);
+                    b.etMotherCompanyName.setText("");
+                    b.etMotherDesignation.setText("");
+                    b.etMotherNatureBusiness.setText("");
                 }
                 if (motherStatus.equalsIgnoreCase("Pass Away")) {
                     b.llMNatureBusiness.setVisibility(View.GONE);
                     b.llMCompany.setVisibility(View.GONE);
                     b.llMDesignation.setVisibility(View.GONE);
+                    b.etMotherCompanyName.setText("");
+                    b.etMotherDesignation.setText("");
+                    b.etMotherNatureBusiness.setText("");
                 }
             }
 
@@ -419,23 +431,35 @@ public class FamilyProfileActivity extends AppCompatActivity {
                     b.llCompanyName.setVisibility(View.VISIBLE);
                     b.llDesignation.setVisibility(View.VISIBLE);
                     b.llBusiness.setVisibility(View.GONE);
+                    b.etFatherCompanyName.setText("");
+                    b.etFatherDesignation.setText("");
+                    b.etFatherNatureBusiness.setText("");
                 }
 
                 if (fatherStatus.equalsIgnoreCase("Employed")) {
                     b.llCompanyName.setVisibility(View.VISIBLE);
                     b.llDesignation.setVisibility(View.VISIBLE);
                     b.llBusiness.setVisibility(View.GONE);
+                    b.etFatherCompanyName.setText("");
+                    b.etFatherDesignation.setText("");
+                    b.etFatherNatureBusiness.setText("");
                 }
                 if (fatherStatus.equalsIgnoreCase("Business")) {
                     b.llBusiness.setVisibility(View.VISIBLE);
                     b.llCompanyName.setVisibility(View.GONE);
                     b.llDesignation.setVisibility(View.GONE);
+                    b.etFatherCompanyName.setText("");
+                    b.etFatherDesignation.setText("");
+                    b.etFatherNatureBusiness.setText("");
                 }
 
                 if (fatherStatus.equalsIgnoreCase("Not Employed")) {
                     b.llBusiness.setVisibility(View.GONE);
                     b.llCompanyName.setVisibility(View.GONE);
                     b.llDesignation.setVisibility(View.GONE);
+                    b.etFatherCompanyName.setText("");
+                    b.etFatherDesignation.setText("");
+                    b.etFatherNatureBusiness.setText("");
                 }
 
 
@@ -443,6 +467,9 @@ public class FamilyProfileActivity extends AppCompatActivity {
                     b.llBusiness.setVisibility(View.GONE);
                     b.llCompanyName.setVisibility(View.GONE);
                     b.llDesignation.setVisibility(View.GONE);
+                    b.etFatherCompanyName.setText("");
+                    b.etFatherDesignation.setText("");
+                    b.etFatherNatureBusiness.setText("");
                 }
             }
 

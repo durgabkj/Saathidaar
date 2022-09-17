@@ -137,9 +137,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -176,8 +176,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -213,8 +214,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -253,8 +255,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -285,16 +288,16 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/app_font"
-                        android:text="No of Child "
+                        android:text="No of Children"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvdas4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -330,8 +333,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -406,8 +410,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -439,12 +444,12 @@
                         android:text="Diet"
                         android:textSize="14sp"
                         android:textStyle="bold" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -481,8 +486,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -520,8 +526,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -651,8 +658,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="50dp"
+                            android:layout_marginStart="30dp"
                             android:text="-"
+                            android:fontFamily="@font/app_font"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -732,8 +740,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -772,8 +781,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="30dp"
                         android:text="-"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -830,11 +840,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
                             android:text="-"
-                            android:layout_marginStart="50dp"
+                            android:fontFamily="@font/app_font"
                             android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
                         <TextView
                             android:id="@+id/tvUserCurrentResi"
                             android:layout_width="match_parent"
@@ -871,11 +882,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
                         android:text="-"
-                        android:layout_marginStart="50dp"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
-
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
                     <TextView
                         android:id="@+id/tvUserStateOfResidence"
                         android:layout_width="match_parent"
@@ -912,15 +924,15 @@
                         android:layout_marginStart="5dp"
                         android:textStyle="bold"
                         />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
                         android:text="-"
-                        android:layout_marginStart="50dp"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
                     <TextView
                         android:id="@+id/tvUserResidenceStatus"
                         android:layout_width="match_parent"
@@ -957,10 +969,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
                         android:text="-"
-                        android:layout_marginStart="50dp"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tvUserPinCode"
@@ -997,10 +1011,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
                         android:text="-"
-                        android:layout_marginStart="50dp"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tvUserorigin"
@@ -1050,10 +1066,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
                             android:text="-"
-                            android:layout_marginStart="50dp"
+                            android:fontFamily="@font/app_font"
                             android:textColor="@color/black"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
                         <TextView
                             android:id="@+id/tvCountryOfBirth"
                             android:layout_width="match_parent"
@@ -1083,10 +1101,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
                             android:text="-"
-                            android:layout_marginStart="50dp"
+                            android:fontFamily="@font/app_font"
                             android:textColor="@color/black"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
                         <TextView
                             android:id="@+id/tvDateofBirth"
                             android:layout_width="match_parent"
@@ -1116,10 +1136,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
                             android:text="-"
-                            android:layout_marginStart="50dp"
+                            android:fontFamily="@font/app_font"
                             android:textColor="@color/black"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
                         <TextView
                             android:id="@+id/tvCityofBirth"
                             android:layout_width="match_parent"
@@ -1150,10 +1172,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
                             android:text="-"
-                            android:layout_marginStart="50dp"
+                            android:fontFamily="@font/app_font"
                             android:textColor="@color/black"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
                         <TextView
                             android:id="@+id/tvTimeofBirth"
                             android:layout_width="match_parent"
@@ -1184,10 +1208,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
                             android:text="-"
-                            android:layout_marginStart="50dp"
+                            android:fontFamily="@font/app_font"
                             android:textColor="@color/black"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
                         <TextView
                             android:id="@+id/tvManglik"
                             android:layout_width="match_parent"
@@ -1210,15 +1236,17 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/app_font"
                             android:layout_marginStart="5dp"
-                            android:text="Coordinate of city"
+                            android:text="Coordinates of city"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
                             android:text="-"
-                            android:layout_marginStart="50dp"
+                            android:fontFamily="@font/app_font"
                             android:textColor="@color/black"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
                         <TextView
                             android:id="@+id/tvCoordinate"
                             android:layout_width="match_parent"
@@ -1245,11 +1273,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
                             android:text="-"
-                            android:layout_marginStart="50dp"
-                            android:textColor="@color/black"
                             android:visibility="invisible"
-                            android:textSize="16sp"/>
+                            android:fontFamily="@font/app_font"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
                         <TextView
                             android:id="@+id/tvCoordinateLong"
                             android:layout_width="match_parent"

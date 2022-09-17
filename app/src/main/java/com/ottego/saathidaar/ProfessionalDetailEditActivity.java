@@ -263,7 +263,6 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 // set custom dialog
                 dialog.setContentView(R.layout.searchable_dropdown_item);
 
@@ -282,13 +281,13 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
                 ListView listView = dialog.findViewById(R.id.list_view);
 
                 // Initialize array adapter
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, workingAslist);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.dropdown_item, workingAslist);
                 // set adapter
                 listView.setAdapter(adapter);
                 editText.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                        adapter.getFilter().filter(s);
                     }
 
                     @Override
@@ -340,7 +339,9 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
             public void onClick(View view) {
                 dialog.dismiss();
                 Intent intent=new Intent(context,ProfessionalDetaisShowActivity.class);
+//                intent.addFlags(Intent.F | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+
 
             }
         });

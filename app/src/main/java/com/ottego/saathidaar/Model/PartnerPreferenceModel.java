@@ -20,4 +20,10 @@ public class PartnerPreferenceModel {
     public String partner_qualification;
     public  String partner_city;
 
+    public String religions_ids;
+    public  String country_ids;
+    public String city_ids;
+    public  String caste_ids;
+    public  String state_ids;
+
 }

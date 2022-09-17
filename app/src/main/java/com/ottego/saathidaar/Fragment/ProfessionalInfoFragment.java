@@ -78,7 +78,10 @@ public class ProfessionalInfoFragment extends Fragment {
         listener();
         getMemberData();
 
-
+if(b.tvUserCollegeName.getText().toString().equalsIgnoreCase(""))
+{
+    b.llCollege.setVisibility(View.GONE);
+}
 
         return b.getRoot();
     }

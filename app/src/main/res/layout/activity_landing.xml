@@ -445,11 +445,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:background="@drawable/bg_edit_text"
-                    android:orientation="vertical">
+
 
 
                     <com.smarteist.autoimageslider.SliderView
@@ -478,7 +474,6 @@
                         android:layout_gravity="center"
                         android:padding="8dp"
                         android:visibility="gone" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
             </RelativeLayout>
 
             <LinearLayout

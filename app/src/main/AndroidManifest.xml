@@ -48,6 +48,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Saathidaar"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name="com.ottego.saathidaar.DetailsRegistrationActivity"
             android:exported="false" />

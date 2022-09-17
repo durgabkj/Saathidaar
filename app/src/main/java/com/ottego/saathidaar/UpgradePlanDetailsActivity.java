@@ -121,7 +121,7 @@ public class UpgradePlanDetailsActivity extends AppCompatActivity implements Pay
 
 
     private void setData() {
-        if(model!=null)
+        if(model!=null && model.features != null && model.features.size() > 0)
         {
             b.tvMembershipPlan.setText(model.plan_price);
             b.tvMembershipPlan1.setText(model.plan_price);

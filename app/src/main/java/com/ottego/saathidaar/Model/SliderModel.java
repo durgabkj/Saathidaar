@@ -4,12 +4,9 @@ public class SliderModel {
     public SliderModel(String images_path) {
         this.images_path = images_path;
     }
-
     public String images_path;
     public String description;
     public String image_id;
-
-
 
 
     public String getImages_path() {

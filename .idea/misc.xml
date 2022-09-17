@@ -308,7 +308,11 @@
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_no_image__female_.xml" value="0.156" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/ic_whatsapp.xml" value="0.1555" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/progress_bar_states.xml" value="0.174" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/radio_normal.xml" value="0.1725" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/radio_selected.xml" value="0.1725" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/radio_selector.xml" value="0.1725" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/search_bg.xml" value="0.243" />
+        <entry key="..\:/saathidaar/app/src/main/res/drawable/seleted.xml" value="0.1725" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/tab_background_selected.xml" value="0.159" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/tab_background_unselected.xml" value="0.159" />
         <entry key="..\:/saathidaar/app/src/main/res/drawable/tab_selector.xml" value="0.159" />
@@ -350,7 +354,7 @@
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_dash_board.xml" value="0.264" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_delete_inbox.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_email_and_sms_alert.xml" value="0.23802083333333332" />
-        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_family_info.xml" value="0.23802083333333332" />
+        <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_family_info.xml" value="0.35006435006435005" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_gallery_pager.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_hide_delete_profile.xml" value="0.23802083333333332" />
         <entry key="..\:/saathidaar/app/src/main/res/layout/fragment_home.xml" value="0.23802083333333332" />

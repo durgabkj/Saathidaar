@@ -31,12 +31,20 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.Adapter.AdvertisementAdapter;
+import com.ottego.saathidaar.Adapter.SliderAdapter;
+import com.ottego.saathidaar.Model.AdvertisementModel;
 import com.ottego.saathidaar.Model.DataModelDashboard;
 import com.ottego.saathidaar.Model.ImageModel;
 import com.ottego.saathidaar.Model.MemberProfileModel;
+import com.ottego.saathidaar.Model.SliderModel;
+import com.smarteist.autoimageslider.SliderView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 public class DashBoardFragment extends Fragment {
@@ -51,6 +59,8 @@ public class DashBoardFragment extends Fragment {
     Context context;
     ImageModel imageModel;
     int count = 0;
+    SliderView ivAds;
+    ArrayList<AdvertisementModel> sliderDataArrayList = new ArrayList<>();
     public String url = "http://103.174.102.195:8080/saathidaar_backend/api/request/count/accept-request/";
     public static String Profile_url = Utils.memberUrl + "my-profile/";
     int[] images = {R.drawable.smartphone, R.drawable.upload, R.drawable.global};
@@ -97,6 +107,8 @@ public class DashBoardFragment extends Fragment {
         context = getContext();
         sessionManager = new SessionManager(context);
 //
+        ivAds = view.findViewById(R.id.ivAds);
+
       tvPremiumButton = view.findViewById(R.id.tvPremiumButton);
         ivPremiumImage = view.findViewById(R.id.ivPremiumImage);
         tvPremiumText = view.findViewById(R.id.tvPremiumText);
@@ -142,6 +154,7 @@ public class DashBoardFragment extends Fragment {
         });
         animator.start();
         getData();
+        imageSlider();
          setPreloadData();
         //  setData();
         listener();
@@ -465,5 +478,66 @@ srlDashboard.setRefreshing(false);
             }
         }
         return true;
+    }
+
+
+
+    private void imageSlider() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                "http://103.174.102.195:8080/saathidaar_backend/api/admin/advertisement/app/get", null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf(response));
+
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        JSONArray jsonArray = response.getJSONArray("data");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String imagesPath = jsonObject1.getString("member_images");
+                            //  Log.e("Country-list", String.valueOf(countryList));
+
+                            // adding the urls inside array list
+                            sliderDataArrayList.add(new AdvertisementModel(imagesPath));
+
+                        }
+
+                        // passing this array list inside our adapter class.
+                        AdvertisementAdapter adapter = new AdvertisementAdapter(context, sliderDataArrayList);
+
+                        // below method is used to set auto cycle direction in left to
+                        // right direction you can change according to requirement.
+                        ivAds.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
+
+                        // below method is used to
+                        // setadapter to sliderview.
+                        ivAds.setSliderAdapter(adapter);
+
+                        // below method is use to set
+                        // scroll time in seconds.
+                        ivAds.setScrollTimeInSec(3);
+
+                        // to set it scrollable automatically
+                        // we use below method.
+                        ivAds.setAutoCycle(true);
+
+                        // to start autocycle below method is used.
+                        ivAds.startAutoCycle();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
     }
 }

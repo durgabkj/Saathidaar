@@ -141,11 +141,11 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:capitalize="words"
                 android:gravity="left"
                 android:padding="3dp"
                 android:imeOptions="actionDone"
                 android:lines="5"
+                android:capitalize="sentences"
                 android:maxLength="1000"
                 android:fontFamily="@font/app_font"
                 android:maxLines="40"
@@ -297,7 +297,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/app_font"
                     android:textColor="@color/colorPrimary"
-                    android:text="Number Of Child" />
+                    android:text="Number Of Children" />
 
                 <EditText
                     android:id="@+id/etAddUserNoOfChild"

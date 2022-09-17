@@ -135,7 +135,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/llTvFCompany"
+                android:id="@+id/llFCompany"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -181,7 +181,7 @@
 
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/llTvFDesignation"
+                android:id="@+id/llFDesignation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -294,6 +294,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:text="-"
+                    android:fontFamily="@font/app_font"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -312,13 +313,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/llTvMCompany"
+                android:id="@+id/llMCompany"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/llMCompany"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -358,13 +358,12 @@
 
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/llTvMDesignation"
+                android:id="@+id/llMDesignation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                     android:id="@+id/llMDesignation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -404,13 +403,12 @@
 
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/llTvMBusiness"
+                android:id="@+id/llMNatureBusiness"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/llMNatureBusiness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -510,6 +508,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:text="-"
+                    android:fontFamily="@font/app_font"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -605,6 +604,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:text="-"
+                    android:fontFamily="@font/app_font"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />

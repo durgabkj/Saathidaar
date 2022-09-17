@@ -204,12 +204,14 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
 
         countryName=b.etCountry.getText().toString().trim();
+
+        if(b.etAddUserNoOfChild.getText().toString().equalsIgnoreCase("")){
+            b.llNoChild.setVisibility(View.GONE);
+        }
+
         stateList();
         Log.e("ngDigital",countryName);
     }
-
-
-
 
     private void getCountry(String countryUrl) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
@@ -601,7 +603,8 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 dialog.setContentView(R.layout.searchable_dropdown_item);
 
                 // set custom height and width
-                dialog.getWindow().setLayout(800, 900);
+                Window window = dialog.getWindow();
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 800);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -614,7 +617,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 ListView listView = dialog.findViewById(R.id.list_view);
 
                 // Initialize array adapter
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, countryList);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.dropdown_item, countryList);
                 // set adapter
                 listView.setAdapter(adapter);
                 editText.addTextChangedListener(new TextWatcher() {
@@ -718,7 +721,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 ListView listView = dialog.findViewById(R.id.list_view);
 
                 // Initialize array adapter
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, countryList);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.dropdown_item, countryList);
                 // set adapter
                 listView.setAdapter(adapter);
                 editText.addTextChangedListener(new TextWatcher() {
@@ -753,64 +756,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
             }
         });
-//        b.etCountry.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//                // set custom dialog
-//                dialog.setContentView(R.layout.searchable_dropdown_item);
-//
-//                // set custom height and width
-//                dialog.getWindow().setLayout(800, 900);
-//
-//                // set transparent background
-//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//
-//                // show dialog
-//                dialog.show();
-//
-//                // Initialize and assign variable
-//                EditText editText = dialog.findViewById(R.id.edit_text);
-//                ListView listView = dialog.findViewById(R.id.list_view);
-//
-//                // Initialize array adapter
-//                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, countryList);
-//                // set adapter
-//                listView.setAdapter(adapter);
-//                editText.addTextChangedListener(new TextWatcher() {
-//                    @Override
-//                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                        adapter.getFilter().filter(s);
-//
-//                    }
-//
-//                    @Override
-//                    public void afterTextChanged(Editable s) {
-//
-//                    }
-//                });
-//
-//                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                        // when item selected from list
-//                        // set selected item on textView
-//                        b.etCountry.setText(adapter.getItem(position));
-//                        // Dismiss dialog
-//                        dialog.dismiss();
-//
-//
-//                    }
-//                });
-//
-//            }
-//        });
+
         b.etState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -821,7 +767,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
                 // set custom height and width
                 Window window = dialog.getWindow();
-                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 700);
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 800);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -834,7 +780,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 ListView listView = dialog.findViewById(R.id.list_view);
 
                 // Initialize array adapter
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, stateList);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.dropdown_item, stateList);
                 // set adapter
                 listView.setAdapter(adapter);
                 editText.addTextChangedListener(new TextWatcher() {
@@ -879,7 +825,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
                 // set custom height and width
                 Window window = dialog.getWindow();
-                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 700);
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 800);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -892,7 +838,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 ListView listView = dialog.findViewById(R.id.list_view);
 
                 // Initialize array adapter
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, cityList);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.dropdown_item, cityList);
                 // set adapter
                 listView.setAdapter(adapter);
                 editText.addTextChangedListener(new TextWatcher() {

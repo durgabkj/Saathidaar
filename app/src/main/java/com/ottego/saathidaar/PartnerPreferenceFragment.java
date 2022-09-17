@@ -33,6 +33,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.androidbuts.multispinnerfilter.MultiSpinnerSearch;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.radiobutton.MaterialRadioButton;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.ottego.multipleselectionspinner.MultipleSelection;
 import com.ottego.saathidaar.Model.DataModelCountry;
@@ -63,6 +64,7 @@ public class PartnerPreferenceFragment extends Fragment {
     public String stateUrl = Utils.location + "multiple/state";
     public String cityUrl = Utils.location + "get/multiples/city?state_ids=";
     public String updatePreference = Utils.memberUrl + "preference/update/";
+    TextInputLayout tlCity;
     MultipleSelection tvMultipleCast, tvMultipleReligion, multi_SelectionProfessionArea, multi_SelectionCountry, multi_SelectionState, multi_SelectionMotherTongue, tvMultipleCity, multi_SelectionQualification, multi_SelectionWorkingWith;
     TextView etFromAgePartnerPreference, tvSearchButton, etToAgePartnerPreference, tvMultipleMaritalStatus, tvPartnerPreferencesBtn, etIncomePartnerPreference, etProfilePreference, etDietPreference, tvProfileCreated;
     EditText etfromHeightPartnerPreference, etToHeightPartnerPreference, etProfileSearch, etPreferenceCountry, etPreferenceState, etPreferenceCity;
@@ -164,7 +166,7 @@ public class PartnerPreferenceFragment extends Fragment {
         multi_SelectionProfessionArea = view.findViewById(R.id.multi_SelectionProfessionArea);
         rgManglikType = view.findViewById(R.id.rgManglikType);
         tvMultipleCity = view.findViewById(R.id.tvMultipleCity);
-//        tvEditDietPreference = view.findViewById(R.id.etDietPreference);
+      tlCity = view.findViewById(R.id.tlCity);
         etProfilePreference = view.findViewById(R.id.etProfilePreference);
         etDietPreference = view.findViewById(R.id.etDietPreference);
         etIncomePartnerPreference = view.findViewById(R.id.etIncomePartnerPreference);
@@ -190,13 +192,15 @@ public class PartnerPreferenceFragment extends Fragment {
         incomeSelection();
         multipleCastSelectionCheckBox();
         getCountryItems();
-
-
         Height();
         SpinnerAge();
         dietList();
         profileCreatedBy();
         listener();
+
+
+
+
 
         if (sessionManager.getUserGender().equalsIgnoreCase("male")) {
             etProfileSearch.setHint("E.g:-FSD001");
@@ -563,6 +567,7 @@ public class PartnerPreferenceFragment extends Fragment {
     }
 
     private void listener() {
+
         tvPartnerPreferencesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -793,9 +798,16 @@ public class PartnerPreferenceFragment extends Fragment {
                 //  Log.e("response", String.valueOf((response)));
                 if (response != null) {
                     Log.e("preference", String.valueOf(response));
+                    try {
+                        getCityItems(response.getString("state_ids"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                     Gson gson = new Gson();
                     model = gson.fromJson(String.valueOf(response), PartnerPreferenceModel.class);
                     setData();
+                  //  getCityItems(model.state_ids);
+
                 }
             }
         }, new Response.ErrorListener() {
@@ -839,6 +851,8 @@ public class PartnerPreferenceFragment extends Fragment {
         } else if (model.partner_manglik_all != null && model.partner_manglik_all.equalsIgnoreCase("Don't Know")) {
             mrbDontNoManglik.setChecked(true);
         }
+
+
     }
 
     private void multipleCastSelectionCheckBox() {
@@ -1312,8 +1326,6 @@ public class PartnerPreferenceFragment extends Fragment {
             }
         });
     }
-
-
     // dropDown With Search
     private void getCountryItems() {
         ArrayList<String> countryList = new ArrayList<>();

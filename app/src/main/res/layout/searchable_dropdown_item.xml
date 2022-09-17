@@ -22,7 +22,7 @@
         android:fontFamily="@font/app_font"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@android:drawable/editbox_background"
+        android:background="@drawable/edt_text_border"
         />
 
     <!-- List view to insert list of items-->

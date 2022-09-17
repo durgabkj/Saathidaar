@@ -142,71 +142,57 @@ public class UpgradeAdapter  extends RecyclerView.Adapter<UpgradeAdapter.ViewHol
 
             }
         });
-        if (item.features.get(0).features_valid.equalsIgnoreCase("1"))
-        {
-            holder.cvCheckFeature.setVisibility(View.VISIBLE);
-        }else
-        {
-            holder.cvClearFeature.setVisibility(View.VISIBLE);
+
+        if (item.features != null && item.features.size() > 0) {
+            if (item.features.get(0).features_valid.equalsIgnoreCase("1")) {
+                holder.cvCheckFeature.setVisibility(View.VISIBLE);
+            } else {
+                holder.cvClearFeature.setVisibility(View.VISIBLE);
+            }
+
+            if (item.features.get(1).features_valid.equalsIgnoreCase("1")) {
+                holder.cvCheckFeature1.setVisibility(View.VISIBLE);
+            } else {
+                holder.cvClearFeature1.setVisibility(View.VISIBLE);
+            }
+
+            if (item.features.get(2).features_valid.equalsIgnoreCase("1")) {
+                holder.cvCheckFeature2.setVisibility(View.VISIBLE);
+            } else {
+                holder.cvClearFeature2.setVisibility(View.VISIBLE);
+            }
+
+            if (item.features.get(3).features_valid.equalsIgnoreCase("1")) {
+                holder.cvCheckFeature3.setVisibility(View.VISIBLE);
+            } else {
+                holder.cvClearFeature3.setVisibility(View.VISIBLE);
+            }
+
+            if (item.features.get(4).features_valid.equalsIgnoreCase("1")) {
+                holder.cvCheckFeature4.setVisibility(View.VISIBLE);
+            } else {
+                holder.cvClearFeature4.setVisibility(View.VISIBLE);
+            }
+
+            if (item.features.get(5).features_valid.equalsIgnoreCase("1")) {
+                holder.cvCheckFeature5.setVisibility(View.VISIBLE);
+            } else {
+                holder.cvClearFeature5.setVisibility(View.VISIBLE);
+            }
+
+            if (item.features.get(6).features_valid.equalsIgnoreCase("1")) {
+                holder.cvCheckFeature6.setVisibility(View.VISIBLE);
+            } else {
+                holder.cvClearFeature6.setVisibility(View.VISIBLE);
+            }
+
+            if (item.features.get(7).features_valid.equalsIgnoreCase("1")) {
+                holder.cvCheckFeature7.setVisibility(View.VISIBLE);
+            } else {
+                holder.cvClearFeature7.setVisibility(View.VISIBLE);
+            }
+
         }
-
-        if (item.features.get(1).features_valid.equalsIgnoreCase("1"))
-        {
-            holder.cvCheckFeature1.setVisibility(View.VISIBLE);
-        }else
-        {
-            holder.cvClearFeature1.setVisibility(View.VISIBLE);
-        }
-
-        if (item.features.get(2).features_valid.equalsIgnoreCase("1"))
-        {
-            holder.cvCheckFeature2.setVisibility(View.VISIBLE);
-        }else
-        {
-            holder.cvClearFeature2.setVisibility(View.VISIBLE);
-        }
-
-        if (item.features.get(3).features_valid.equalsIgnoreCase("1"))
-        {
-            holder.cvCheckFeature3.setVisibility(View.VISIBLE);
-        }else
-        {
-            holder.cvClearFeature3.setVisibility(View.VISIBLE);
-        }
-
-        if (item.features.get(4).features_valid.equalsIgnoreCase("1"))
-        {
-            holder.cvCheckFeature4.setVisibility(View.VISIBLE);
-        }else
-        {
-            holder.cvClearFeature4.setVisibility(View.VISIBLE);
-        }
-
-        if (item.features.get(5).features_valid.equalsIgnoreCase("1"))
-        {
-            holder.cvCheckFeature5.setVisibility(View.VISIBLE);
-        }else
-        {
-            holder.cvClearFeature5.setVisibility(View.VISIBLE);
-        }
-
-        if (item.features.get(6).features_valid.equalsIgnoreCase("1"))
-        {
-            holder.cvCheckFeature6.setVisibility(View.VISIBLE);
-        }else
-        {
-            holder.cvClearFeature6.setVisibility(View.VISIBLE);
-        }
-
-        if (item.features.get(7).features_valid.equalsIgnoreCase("1"))
-        {
-            holder.cvCheckFeature7.setVisibility(View.VISIBLE);
-        }else
-        {
-            holder.cvClearFeature7.setVisibility(View.VISIBLE);
-        }
-
-
 
 //        holder.btnPrevious.setOnClickListener(new View.OnClickListener() {
 //            @Override

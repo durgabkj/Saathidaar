@@ -146,7 +146,7 @@ FragmentFamilyInfoBinding b;
                     b.llMDesignation.setVisibility(View.GONE);
                 }
 
-                if (motherStatus.equalsIgnoreCase("House Wife")) {
+                if (motherStatus.equalsIgnoreCase("Home Maker")) {
                     b.llMNatureBusiness.setVisibility(View.GONE);
                     b.llMCompany.setVisibility(View.GONE);
                     b.llMDesignation.setVisibility(View.GONE);
@@ -166,36 +166,36 @@ FragmentFamilyInfoBinding b;
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                fatherStatus = b.tvUserFatherStatus.getText().toString();
+                fatherStatus =b.tvUserFatherStatus.getText().toString();
 
                 if (fatherStatus.equalsIgnoreCase("Retired")) {
-                    b.llCompanyName.setVisibility(View.VISIBLE);
-                    b.llDesignation.setVisibility(View.VISIBLE);
+                    b.llFCompany.setVisibility(View.VISIBLE);
+                    b.llFDesignation.setVisibility(View.VISIBLE);
                     b.llBusiness.setVisibility(View.GONE);
                 }
 
                 if (fatherStatus.equalsIgnoreCase("Employed")) {
-                    b.llCompanyName.setVisibility(View.VISIBLE);
-                    b.llDesignation.setVisibility(View.VISIBLE);
+                    b.llFCompany.setVisibility(View.VISIBLE);
+                    b.llFDesignation.setVisibility(View.VISIBLE);
                     b.llBusiness.setVisibility(View.GONE);
                 }
                 if (fatherStatus.equalsIgnoreCase("Business")) {
                     b.llBusiness.setVisibility(View.VISIBLE);
-                    b.llCompanyName.setVisibility(View.GONE);
-                    b.llDesignation.setVisibility(View.GONE);
+                    b.llFCompany.setVisibility(View.GONE);
+                    b.llFDesignation.setVisibility(View.GONE);
                 }
 
                 if (fatherStatus.equalsIgnoreCase("Not Employed")) {
                     b.llBusiness.setVisibility(View.GONE);
-                    b.llCompanyName.setVisibility(View.GONE);
-                    b.llDesignation.setVisibility(View.GONE);
+                    b.llFCompany.setVisibility(View.GONE);
+                    b.llFDesignation.setVisibility(View.GONE);
                 }
 
 
                 if (fatherStatus.equalsIgnoreCase("Passed Away")) {
                     b.llBusiness.setVisibility(View.GONE);
-                    b.llCompanyName.setVisibility(View.GONE);
-                    b.llDesignation.setVisibility(View.GONE);
+                    b.llFCompany.setVisibility(View.GONE);
+                    b.llFDesignation.setVisibility(View.GONE);
                 }
             }
 
