@@ -805,9 +805,9 @@ public class PartnerPreferenceFragment extends Fragment {
                     }
                     Gson gson = new Gson();
                     model = gson.fromJson(String.valueOf(response), PartnerPreferenceModel.class);
+                   getCityItems(model.state_ids);
+                   getStateItems(model.country_ids);
                     setData();
-                  //  getCityItems(model.state_ids);
-
                 }
             }
         }, new Response.ErrorListener() {

@@ -145,7 +145,7 @@ public class MultipleSelection extends TextInputEditText {
         }
 
         public void setItems(List objects) {
-            clear();
+           // clear();
             this.originalList = objects;
             if (sort) {
                 if (this.originalList != null && this.originalList.size() > 0) {

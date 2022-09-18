@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -118,7 +119,7 @@ FragmentShowImageBinding b;
                 View layout_dialog1= LayoutInflater.from(context).inflate(R.layout.layout_image_guid_lines,null);
                 builder.setView(layout_dialog1);
 
-                AppCompatButton ok =layout_dialog1.findViewById(R.id.buttonOk);
+                TextView ok =layout_dialog1.findViewById(R.id.buttonOk);
                 // show dialog
 
                 AlertDialog dialog=builder.create();
