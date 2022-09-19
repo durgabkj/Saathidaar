@@ -204,12 +204,15 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
 
         countryName=b.etCountry.getText().toString().trim();
+        stateName = b.etState.getText().toString().trim();
+
 
         if(b.etAddUserNoOfChild.getText().toString().equalsIgnoreCase("")){
             b.llNoChild.setVisibility(View.GONE);
         }
 
         stateList();
+        cityList();
         Log.e("ngDigital",countryName);
     }
 
@@ -260,7 +263,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 stateName = b.etState.getText().toString().trim();
                 cityList.clear();
-                cityList(cityUrl);
+                cityList();
             }
 
             @Override
@@ -270,7 +273,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         });
     }
 
-    private void cityList(String cityUrl) {
+    private void cityList() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 cityUrl + stateName, null, new Response.Listener<JSONObject>() {
             @Override
@@ -522,8 +525,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                Intent intent=new Intent(context,PersonalInfoShowActivity.class);
-                startActivity(intent);
+                finish();
 
             }
         });
@@ -1466,7 +1468,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
                 // set custom height and width
                 Window window = dialog.getWindow();
-                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 700);
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 900);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -1608,7 +1610,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
                 // set custom height and width
                 Window window = dialog.getWindow();
-                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 700);
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 900);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -1777,18 +1779,14 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         motherTongueList.add("Sindhi");
         motherTongueList.add("Other");
 
-
         b.tvMotherTongue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 // set custom dialog
                 dialog.setContentView(R.layout.searchable_dropdown_item);
 
                 // set custom height and width
-                dialog.getWindow().setLayout(800, 900);
-
+                dialog.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 900);
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
@@ -1800,7 +1798,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 ListView listView = dialog.findViewById(R.id.list_view);
 
                 // Initialize array adapter
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, motherTongueList);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.dropdown_item, motherTongueList);
                 // set adapter
                 listView.setAdapter(adapter);
                 editText.addTextChangedListener(new TextWatcher() {

@@ -605,8 +605,7 @@ public class FamilyProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                Intent intent=new Intent(context,FamilyDetailShowActivity.class);
-                startActivity(intent);
+                finish();
 
             }
         });

@@ -232,20 +232,17 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
             if (remaingImagesCount >= countData) {
                 for (int i = 0; i < imagePathList.size(); i++) {
                     uploadInThread(imagePathList.get(i));
+                    Log.e("image_size", String.valueOf(imagePathList.size()));
                 }
             } else {
                 imagePathList.clear();
-                Toast.makeText(context, "you can't upload more than " + remaingImagesCount + " image", Toast.LENGTH_LONG).show();
-
+                Toast.makeText(context, "you can't upload more than " + remaingImagesCount + " images", Toast.LENGTH_LONG).show();
             }
 
             boolean ans = imagePathList.isEmpty();
             if (ans == true) {
                 Toast.makeText(context, "Please Select Image From Gallery", Toast.LENGTH_SHORT).show();
             }
-
-
-
         } else {
             Toast.makeText(context, "You haven't pick any image", Toast.LENGTH_SHORT).show();
         }
@@ -417,7 +414,7 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
                         getData();
                         //  tv.setText("Upload Complete");
                         Toast.makeText(GalleryActivity.this,
-                                        "Image  Uploaded.", Toast.LENGTH_LONG)
+                                        "Image  Uploaded", Toast.LENGTH_LONG)
                                 .show();
                     }
                 });
@@ -479,7 +476,6 @@ public class GalleryActivity extends AppCompatActivity implements PickiTCallback
     @Override
     public void PickiTonCompleteListener(String path, boolean wasDriveFile, boolean wasUnknownProvider, boolean wasSuccessful, String Reason) {
         Log.e("durga", "path single: " + path);
-
         imagePathList.clear();
         imagePathList.add(path);
 

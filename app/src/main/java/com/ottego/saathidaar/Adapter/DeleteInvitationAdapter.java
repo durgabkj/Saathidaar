@@ -240,7 +240,7 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
             holder.llDelete1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Upgrade your profile to delete Invitation", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Upgrade your profile to accept Invitation", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(view.getContext(), UpgradeOnButtonActivity.class);
                     context.startActivity(intent);
                 }

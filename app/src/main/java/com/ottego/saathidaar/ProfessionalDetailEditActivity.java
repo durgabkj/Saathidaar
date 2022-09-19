@@ -268,7 +268,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
 
                 // set custom height and width
                 Window window = dialog.getWindow();
-                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 700);
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 900);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -338,9 +338,7 @@ public class ProfessionalDetailEditActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                Intent intent=new Intent(context,ProfessionalDetaisShowActivity.class);
-//                intent.addFlags(Intent.F | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                finish();
 
 
             }

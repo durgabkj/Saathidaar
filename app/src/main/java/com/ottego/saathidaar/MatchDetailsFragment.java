@@ -151,9 +151,6 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
             }
         }
 
-
-
-
     }
 
     private void getMemberPreferenceData() {
@@ -351,6 +348,10 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
     }
 
     private void listener() {
+
+
+
+
         b.tvAboutUserFamilyDetails.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -619,21 +620,20 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
             b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails));
             b.tvCreatedBy.setText("Create by:-" + " " + Utils.nullToBlank(model.profilecreatedby));
             b.tvProfileID.setText("Profile ID:-" + " " + Utils.nullToBlank(model.profile_id));
+
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty()) {
-                b.tvDetailAge.setText("Age:-" + Utils.nullToBlank(model.age) + " yrs old");
+                b.tvDetailAge.setText("Age:-" +(model.age) + " yrs old");
             } else {
                 b.tvDetailAge.setText("Age:- Not Specified");
             }
+
             b.tvDetailHeight.setText("Height:-" + Utils.nullToBlank(model.height));
 
             if (!model.date_of_birth.equalsIgnoreCase("") && !model.date_of_birth.equalsIgnoreCase(null) && !model.date_of_birth.isEmpty()) {
 
-                b.tvDetailDob.setText(Utils.nullToBlank(model.date_of_birth));
             } else {
                 b.tvDetailDob.setText("Not Specified");
             }
-
-
             if (!model.marital_status.equalsIgnoreCase("") && !model.marital_status.equalsIgnoreCase(null) && !model.marital_status.isEmpty()) {
                 b.tvDetailMaritalS.setText(Utils.nullToBlank(model.marital_status));
             } else {
@@ -672,12 +672,26 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
 
             b.tvDetailReligionMotherTongue.setText(religion);
 
+            // caste set
+            String caste="";
 
-            if (model.caste_name!=null&&  !model.caste_name.equalsIgnoreCase("") && !model.caste_name.equalsIgnoreCase(null) && !model.caste_name.isEmpty()) {
-                b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + " " + Utils.nullToBlank(model.sub_caste_name));
-            } else {
-                b.tvDetailCommunity.setText("Not Specified");
+            if(!Utils.nullToBlank(model.caste).equals("")){
+                caste=model.caste;
             }
+
+            if(!Utils.nullToBlank(model.caste).equals("") && !Utils.nullToBlank(model.sub_caste_name).equals((""))){
+                caste=caste+","+model.sub_caste_name;
+            }
+
+            b.tvDetailCommunity.setText(caste);
+
+
+//
+//            if (model.caste!=null&&  !model.caste.equalsIgnoreCase("") && !model.caste.equalsIgnoreCase(null) && !model.caste.isEmpty()) {
+//                b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste) + " " + Utils.nullToBlank(model.sub_caste_name));
+//            } else {
+//                b.tvDetailCommunity.setText("Not Specified");
+//            }
 
 
           // b.tvDetailCommunity.setText(Utils.nullToBlank(model.caste_name) + " " + Utils.nullToBlank(model.sub_caste_name));
@@ -701,8 +715,8 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
                 b.tvDetailCompanyName.setText("Not Specified");
             }
 
-            if (model.annual_income!=null && !model.annual_income.equalsIgnoreCase("") && !model.annual_income.equalsIgnoreCase(null) && !model.annual_income.isEmpty()) {
-                b.tvDetailAnnualIncome.setText(Utils.nullToBlank(model.annual_income));
+            if (model.income!=null && !model.income.equalsIgnoreCase("") && !model.income.equalsIgnoreCase(null) && !model.income.isEmpty()) {
+                b.tvDetailAnnualIncome.setText(Utils.nullToBlank(model.income));
             } else {
                 b.tvDetailAnnualIncome.setText("Not Specified");
             }

@@ -1478,7 +1478,6 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/app_font"
                                     android:textColor="@color/black"
-                                    android:text="Not Specified"
                                     android:textSize="14sp" />
                             </LinearLayout>
 

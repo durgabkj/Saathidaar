@@ -134,10 +134,10 @@ public class DashBoardFragment extends Fragment {
         getMemberData();
         set();
         Log.e("hey_member", sessionManager.getMemberId());
-        final ValueAnimator animator = ValueAnimator.ofFloat(0.0f, 1.0f);
+        final ValueAnimator animator = ValueAnimator.ofFloat(0.0f, 2.0f);
         animator.setRepeatCount(ValueAnimator.INFINITE);
         //  animator.setInterpolator(new LinearInterpolator());
-        animator.setDuration(3000);
+        animator.setDuration(5000);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -324,7 +324,6 @@ public class DashBoardFragment extends Fragment {
     }
 
     private void getData() {
-
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
@@ -365,7 +364,7 @@ public class DashBoardFragment extends Fragment {
         if (countDownTimer != null) {
             countDownTimer.cancel();
         }
-        countDownTimer = new CountDownTimer(2 * 3000, 2000) {
+        countDownTimer = new CountDownTimer(5 * 3000, 5000) {
             public void onTick(long millisUntilFinished) {
                 // Text_t_speech();
                 if (position < text.length) {

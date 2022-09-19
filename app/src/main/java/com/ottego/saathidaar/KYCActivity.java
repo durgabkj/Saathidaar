@@ -164,6 +164,7 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
                 intent.setType("*/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_FILE_REQUEST);
+
             }
 
         });
@@ -459,7 +460,6 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
 
 
     private void getData() {
-
         //  final ProgressDialog progressDialog = ProgressDialog.show(context, null, "processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 getDocumentURL + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
@@ -496,7 +496,7 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
                 b.tvKycStatus.setTextColor(Color.BLUE);
             } else if (model.data.get(0).kyc_status.equalsIgnoreCase("1")) {
                 b.tvKycStatus.setText("Accepted");
-                b.tvKycStatus.setTextColor(Color.GREEN);
+                b.tvKycStatus.setTextColor(getResources().getColor(R.color.Green));
             } else {
                 b.tvKycStatus.setText("Rejected");
                 b.tvKycStatus.setTextColor(Color.RED);
@@ -505,7 +505,7 @@ public class KYCActivity extends AppCompatActivity implements PickiTCallbacks {
 
             if (model.data.get(0).document_type.equalsIgnoreCase("Aadhaar card")) {
                 b.mrbAadhar.setChecked(true);
-            } else if (model.data.get(0).document_type.equalsIgnoreCase("pan card")) {
+            } else if (model.data.get(0).document_type.equalsIgnoreCase("pan-card")) {
                 b.mrbPanCard.setChecked(true);
             }
 

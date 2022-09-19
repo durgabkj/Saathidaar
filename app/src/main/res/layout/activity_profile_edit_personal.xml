@@ -521,6 +521,7 @@
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
                 android:padding="8dp"
+                android:textColor="@color/black"
                 android:background="@drawable/bg_edit_text"
                 android:drawableTint="#E4616060"
                 android:hint="Select Mother Tongue" />
@@ -568,7 +569,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_marginTop="10dp"
                                 android:visibility="gone"
-                                android:inputType="textCapWords"
+                                android:inputType="textCapSentences"
                                 android:fontFamily="@font/app_font"
                                 android:layout_height="40dp"
                                 android:hint="Write Health Issue" />

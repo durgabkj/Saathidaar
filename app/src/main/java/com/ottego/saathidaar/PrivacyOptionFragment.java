@@ -19,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
+import com.ottego.saathidaar.Model.DataModelDashboard;
 import com.ottego.saathidaar.Model.DataModelPrivacyOption;
 import com.ottego.saathidaar.databinding.FragmentPrivacyOptionBinding;
 
@@ -42,6 +43,8 @@ public class PrivacyOptionFragment extends Fragment {
     Context context;
     FragmentPrivacyOptionBinding b;
     String radioText;
+    public String url = "http://103.174.102.195:8080/saathidaar_backend/api/request/count/accept-request/";
+    DataModelDashboard model1;
     String radioText1;
     String radioText2;
     DataModelPrivacyOption model;
@@ -83,18 +86,43 @@ public class PrivacyOptionFragment extends Fragment {
         sessionManager = new SessionManager(context);
         listener();
         getData();
-
+        getPremium();
 
         //condition for non premium member
-        if (sessionManager.getUserPremiumStatus().equalsIgnoreCase("0")) {
-            b.llshowEmailPrivacy.setVisibility(View.GONE);
-            b.llshowIncomePrivacy.setVisibility(View.GONE);
-            b.llshowDOBPrivacy.setVisibility(View.GONE);
-        }
+//        if (sessionManager.getUserPremiumStatus().equalsIgnoreCase("0")) {
+//            b.llshowEmailPrivacy.setVisibility(View.GONE);
+//            b.llshowIncomePrivacy.setVisibility(View.GONE);
+//            b.llshowDOBPrivacy.setVisibility(View.GONE);
+//        }
 
         return b.getRoot();
     }
+    private void getPremium() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("response", String.valueOf((response)));
+                Gson gson = new Gson();
+                model1 = gson.fromJson(String.valueOf(response), DataModelDashboard.class);
 
+                if(model1.data.get(0).my_premium_status.equals(0))
+                {
+                    b.llshowEmailPrivacy.setVisibility(View.GONE);
+                    b.llshowIncomePrivacy.setVisibility(View.GONE);
+                    b.llshowDOBPrivacy.setVisibility(View.GONE);
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+    }
     private void listener() {
 
         b.srlPrivacy.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

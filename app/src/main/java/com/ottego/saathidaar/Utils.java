@@ -71,7 +71,7 @@ public class Utils {
 
 
     public static String nullToBlank(String val){
-        if(val!=null && !val.equals("null"))
+        if(val!=null && !val.equalsIgnoreCase("null"))
             return val;
         return "";
     }
