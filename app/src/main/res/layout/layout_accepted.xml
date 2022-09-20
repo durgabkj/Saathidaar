@@ -360,7 +360,7 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:text="Call"/>
+                        android:text=" Call "/>
 
                 </LinearLayout>
 
@@ -619,6 +619,8 @@
                     android:layout_weight="1"
                     android:shadowColor="@color/wallet_holo_blue_light"
                     android:shadowDx="2"
+                    android:capitalize="sentences"
+                    android:inputType="textCapSentences"
                     android:shadowDy="2"
                     android:fontFamily="@font/italic"
                     android:shadowRadius="1.6"

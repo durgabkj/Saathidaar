@@ -90,6 +90,16 @@ FragmentFamilyInfoBinding b;
         listener();
         sessionManager=new SessionManager(context);
         getMemberData();
+
+        if(b.tvUserBrothersMarried.getText().toString().equalsIgnoreCase("")) {
+            b.tvUserBrothersMarried.setVisibility(View.GONE);
+        }
+
+        if(b.tvUserBrothersUMarried.getText().toString().equalsIgnoreCase("")) {
+            b.tvUserBrothersUMarried.setVisibility(View.GONE);
+        }
+
+
         return b.getRoot();
     }
 

@@ -18,12 +18,14 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -562,7 +564,8 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
                     dialog.setContentView(R.layout.searchable_dropdown_item);
 
                 // set custom height and width
-                dialog.getWindow().setLayout(800, 900);
+                Window window = dialog.getWindow();
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 800);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -574,7 +577,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
                 listView = dialog.findViewById(R.id.list_view);
                 EditText editText = dialog.findViewById(R.id.edit_text);
                 // Initialize array adapter
-                // ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1);
+                 ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.dropdown_item);
 
 
                 editText.addTextChangedListener(new TextWatcher() {

@@ -617,7 +617,7 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
             b.tvNameUserDetails.setText("About" + "  " + Utils.nullToBlank(model.first_name) + " " + Utils.nullToBlank(model.last_name));
             b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
             b.tvNameUserFamilyDetailsHeading.setText("About " + " Family");
-            b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails));
+            b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails).trim());
             b.tvCreatedBy.setText("Create by:-" + " " + Utils.nullToBlank(model.profilecreatedby));
             b.tvProfileID.setText("Profile ID:-" + " " + Utils.nullToBlank(model.profile_id));
 
@@ -630,7 +630,7 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
             b.tvDetailHeight.setText("Height:-" + Utils.nullToBlank(model.height));
 
             if (!model.date_of_birth.equalsIgnoreCase("") && !model.date_of_birth.equalsIgnoreCase(null) && !model.date_of_birth.isEmpty()) {
-
+                b.tvDetailDob.setText(Utils.nullToBlank(model.date_of_birth));
             } else {
                 b.tvDetailDob.setText("Not Specified");
             }

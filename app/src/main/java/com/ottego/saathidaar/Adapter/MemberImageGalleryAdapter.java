@@ -45,7 +45,7 @@ public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageG
         ImageModel item = list.get(position);
 //        Log.e(" New Matches model", new Gson().toJson(item));
 
-        if (!item.photo_status.equals("0")) {
+        if (!item.photo_status.equalsIgnoreCase("0")) {
             Glide.with(context)
                     .load(Utils.imageUrl + item.member_images)
                     .into(holder.ivUserImageMember);
@@ -64,16 +64,15 @@ public class MemberImageGalleryAdapter extends RecyclerView.Adapter<MemberImageG
             public void onClick(View view) {
 
                 if (item.photo_status.equals("0")) {
-                    Toast.makeText(context, "Photo Approval Pending", Toast.LENGTH_SHORT).show();
+
                 } else {
                     Log.e("position", String.valueOf(position));
-                    MemberGalleryPagerFragment.newInstance(String.valueOf(position), "").show(((FragmentActivity) context).getSupportFragmentManager(), "gallery_pager_fragment");
+                    MemberGalleryPagerFragment.newInstance(String.valueOf(position), item.photo_status).show(((FragmentActivity) context).getSupportFragmentManager(), "gallery_pager_fragment");
 
                 }
 
             }
         });
-
 
     }
 

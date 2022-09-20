@@ -124,6 +124,12 @@ public class MemberGalleryPagerFragment extends DialogFragment {
         });
 
 
+
+        if(viewModel._list.getValue().get(0).photo_status.equalsIgnoreCase("0")){
+
+        }b.llNextImage.setVisibility(View.GONE);
+
+
         b.llNextImage.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -131,7 +137,6 @@ public class MemberGalleryPagerFragment extends DialogFragment {
                 b.vp2DetailsImage.setCurrentItem(b.vp2DetailsImage.getCurrentItem() + 1, true);
             }
         });
-
         b.llPreviousImage.setOnClickListener(new View.OnClickListener() {
 
             @Override

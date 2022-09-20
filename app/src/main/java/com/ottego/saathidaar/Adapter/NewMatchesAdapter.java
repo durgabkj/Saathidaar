@@ -99,34 +99,6 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(holder.ivUserMatch);
-
-//        }
-//        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
-//            holder.llPhotoMyMatches.setEnabled(false);
-//            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-//            holder.llPremiumMsgMatches.setVisibility(View.GONE);
-//            holder.llPrivateMatchesPhoto.setVisibility(View.VISIBLE);
-//            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-//            Glide.with(context)
-//                    .load(Utils.imageUrl + item.profile_photo)
-//                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-//                    .transform(new BlurTransformation(20, 8))
-//                    .into(holder.ivUserMatch);
-//
-//        }
-//        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.my_premium_status.equalsIgnoreCase("2"))) {
-//            holder.llPhotoMyMatches.setEnabled(false);
-//            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-//            holder.llPremiumMsgMatches.setVisibility(View.GONE);
-//            holder.llPrivateMatchesPhoto.setVisibility(View.VISIBLE);
-//            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-//            Glide.with(context)
-//                    .load(Utils.imageUrl + item.profile_photo)
-//                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-//                    .transform(new BlurTransformation(20, 8))
-//                    .into(holder.ivUserMatch);
-
-
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {
             holder.llPhotoMyMatches.setEnabled(false);
             // holder.flPremiumMatch.setVisibility(View.VISIBLE);

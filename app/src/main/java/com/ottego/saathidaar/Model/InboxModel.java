@@ -22,6 +22,7 @@ public class InboxModel {
     public String subcaste;
     public String photo_privacy;
     public String state;
+    public String phone_privacy;
     public String premium_status;
     public String height;
     public String profile_photo;

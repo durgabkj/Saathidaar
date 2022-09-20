@@ -3,6 +3,7 @@ package com.ottego.saathidaar.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,7 +74,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
             holder.tvInvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
             holder.tvInvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
             holder.tvInvNewMatchWorkAsAccept.setText(Utils.nullToBlank(item.country));
-            holder.tvInvitationAccetMessage.setText(Utils.nullToBlank(item.request_message));
+            holder.tvInvitationAccetMessage.setText(Utils.nullToBlank(item.request_message).trim());
             holder.tvImageCountAccept.setText(Utils.nullToBlank(item.images_count));
 
         }
@@ -244,11 +245,9 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
             });
         }
 
-        if(item.request_sent_from.equals("1")){
+        if (item.request_sent_from.equals("1")) {
             holder.llDeleteAccet.setVisibility(View.GONE);
         }
-
-
 
 
         if (item.first_name.equals("") && item.last_name.equalsIgnoreCase("")) {
@@ -267,33 +266,75 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
             holder.ivAcceptDot2.setVisibility(View.GONE);
         }
 
+        //Calling function
+
+        holder.llCAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (item.my_premium_status.equalsIgnoreCase(item.phone_privacy)) {
+                    String call = item.contact_number;
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + call));
+                    context.startActivity(intent);
+                } else {
+                    Toast.makeText(context, "Can't connect because user has decided to keep phone number private", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+//WhatsApp function
+
+        holder.llWhatsApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (item.my_premium_status.equalsIgnoreCase(item.phone_privacy)) {
+                    try {
+                        String text = "Hello";// Replace with your message.
+
+                        String toNumber = "+91 "+item.contact_number; // Replace with mobile phone number without +Sign or leading zeros, but with country code
+                        //Suppose your country is India and your phone number is “xxxxxxxxxx”, then you need to send “91xxxxxxxxxx”.
+
+                        toNumber = toNumber.replace("+", "").replace(" ", "");
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse("http://api.whatsapp.com/send?phone=" + toNumber + "&text=" + text));
+                        context.startActivity(intent);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(context, "It may be " +item.first_name+" don't have whatsApp", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(context, "Can't connect because user has decided to keep phone number private", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return list.size();
     }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvInvNewMatchName, tvPremiumAcceptMatch,tvInvNewMatchAge,tvPremiumDeleteMatch, tvInvitationAccetMessage, tvLevelPremiumAccept, tvImageCountAccept, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAsAccept, tvInvitationDate;
-        LinearLayout llCAll, llWhatsApp,llItemAnimationAccept, llPhotoAccept,llPrivatePhoto, llMessageAccept, llBlockAccept, llBlockedAccept, llAcceptCallMsgDecline, llNo_imageFemaleListAccept, llDeleteAccet, llDeletedAccept, llPremiumMsgAccept;
+        TextView tvInvNewMatchName, tvPremiumAcceptMatch, tvInvNewMatchAge, tvPremiumDeleteMatch, tvInvitationAccetMessage, tvLevelPremiumAccept, tvImageCountAccept, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAsAccept, tvInvitationDate;
+        LinearLayout llCAll, llWhatsApp, llItemAnimationAccept, llPhotoAccept, llPrivatePhoto, llMessageAccept, llBlockAccept, llBlockedAccept, llAcceptCallMsgDecline, llNo_imageFemaleListAccept, llDeleteAccet, llDeletedAccept, llPremiumMsgAccept;
         FrameLayout flNoImageMaleFemaleListAccept, flPremiumAccept;
-        ImageView ivNoImageMaleFemaleAccept, ivProfileAcceptInvi,ivAcceptDot,ivAcceptDot1,ivAcceptDot2;
+        ImageView ivNoImageMaleFemaleAccept, ivProfileAcceptInvi, ivAcceptDot, ivAcceptDot1, ivAcceptDot2;
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
             ivAcceptDot = itemView.findViewById(R.id.ivAcceptDot);
             ivAcceptDot1 = itemView.findViewById(R.id.ivAcceptDot1);
-            ivAcceptDot2=itemView.findViewById(R.id.ivAcceptDot2);
+            ivAcceptDot2 = itemView.findViewById(R.id.ivAcceptDot2);
             tvInvNewMatchAge = itemView.findViewById(R.id.tvInvNewMatchAge);
             tvInvNewMatchName = itemView.findViewById(R.id.tvInvNewMatchName);
-            tvPremiumAcceptMatch=itemView.findViewById(R.id.tvPremiumAcceptMatch);
+            tvPremiumAcceptMatch = itemView.findViewById(R.id.tvPremiumAcceptMatch);
             tvInvNewMatchHeight = itemView.findViewById(R.id.tvInvNewMatchHeight);
             tvInvNewMatchCity = itemView.findViewById(R.id.tvInvNewMatchCity);
             tvInvNewMatchWorkAsAccept = itemView.findViewById(R.id.tvInvNewMatchWorkAsAccept);
             llCAll = itemView.findViewById(R.id.llCAll);
-            llItemAnimationAccept=itemView.findViewById(R.id.llItemAnimationAccept);
-            tvPremiumDeleteMatch=itemView.findViewById(R.id.tvPremiumDeleteMatch);
+            llItemAnimationAccept = itemView.findViewById(R.id.llItemAnimationAccept);
+            tvPremiumDeleteMatch = itemView.findViewById(R.id.tvPremiumDeleteMatch);
             tvInvitationAccetMessage = itemView.findViewById(R.id.tvInvitationAccetMessage);
             llPhotoAccept = itemView.findViewById(R.id.llPhotoAccept);
             llWhatsApp = itemView.findViewById(R.id.llWhatsApp);
@@ -302,7 +343,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
             llBlockedAccept = itemView.findViewById(R.id.llBlockedAccept);
             llAcceptCallMsgDecline = itemView.findViewById(R.id.llAcceptCallMsgDecline);
             tvImageCountAccept = itemView.findViewById(R.id.tvImageCountAccept);
-           // tvInvitationAccetMessage = itemView.findViewById(R.id.tvInvitationAccetMessage);
+            // tvInvitationAccetMessage = itemView.findViewById(R.id.tvInvitationAccetMessage);
             tvInvitationDate = itemView.findViewById(R.id.tvInvitationDate);
             llNo_imageFemaleListAccept = itemView.findViewById(R.id.llNo_imageFemaleList);
             flNoImageMaleFemaleListAccept = itemView.findViewById(R.id.flNoImageMaleFemaleList);
@@ -312,7 +353,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
             llDeleteAccet = itemView.findViewById(R.id.llDeleteAccet);
             llDeletedAccept = itemView.findViewById(R.id.llDeletedAccept);
             llPremiumMsgAccept = itemView.findViewById(R.id.llPremiumMsgAccept);
-            llPrivatePhoto=itemView.findViewById(R.id.llPrivateAcceptPhoto);
+            llPrivatePhoto = itemView.findViewById(R.id.llPrivateAcceptPhoto);
             tvLevelPremiumAccept = itemView.findViewById(R.id.tvLevelPremiumAccept);
 
         }

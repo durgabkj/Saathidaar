@@ -214,7 +214,7 @@ public class Utils {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
                                 listener.onSuccess(0);
-                                Toast.makeText(context," Profile Short Listed",Toast.LENGTH_LONG).show();
+                                Toast.makeText(context," Profile shortlisted",Toast.LENGTH_LONG).show();
                             } else {
                                 listener.onFail(0);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -259,7 +259,7 @@ public class Utils {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
                                // apiListener.onSuccess(0);
-                                Toast.makeText(context,"You accepted Request ",Toast.LENGTH_LONG).show();
+                                Toast.makeText(context,"Request accepted",Toast.LENGTH_LONG).show();
                             } else {
                                 apiListener.onFail(0);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -349,7 +349,7 @@ public class Utils {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
 
-                                Toast.makeText(context,"You Canceled Your Invitation",Toast.LENGTH_LONG).show();
+                                Toast.makeText(context,"You canceled your Invitation",Toast.LENGTH_LONG).show();
                             } else {
                                 apiListener.onFail(0);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -393,7 +393,7 @@ public class Utils {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
                                 apiListener.onSuccess(0);
-                                Toast.makeText(context,"Request Sent Successfully",Toast.LENGTH_LONG).show();
+                                Toast.makeText(context,"Request sent successfully",Toast.LENGTH_LONG).show();
                             } else {
                                 apiListener.onFail(0);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -438,7 +438,7 @@ public class Utils {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
                                 apiListener.onSuccess(0);
-                                Toast.makeText(context, "Profile Blocked",Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Profile blocked",Toast.LENGTH_LONG).show();
                             } else {
                                 apiListener.onFail(0);
                                 Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -483,7 +483,7 @@ public class Utils {
                             String code = response.getString("results");
                             if (code.equalsIgnoreCase("1")) {
                                 apiListener.onSuccess(0);
-                                Toast.makeText(context, "Profile Unblocked",Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Profile unblocked",Toast.LENGTH_LONG).show();
                             } else {
                                 apiListener.onFail(0);
                                 Toast.makeText(context, "Try Again", Toast.LENGTH_SHORT).show();

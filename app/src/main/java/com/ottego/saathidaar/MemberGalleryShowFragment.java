@@ -22,18 +22,23 @@ FragmentMemberGalleryShowBinding b;
     SessionManager sessionManager;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM3 = "param3";
     private String mParam1;
     private String mParam2;
+    private String mParam3;
 
+
+    String status;
     public MemberGalleryShowFragment() {
         // Required empty public constructor
     }
 
-    public static MemberGalleryShowFragment newInstance(String param1, String param2) {
+    public static MemberGalleryShowFragment newInstance(String param1, String param2,String param3) {
         MemberGalleryShowFragment fragment = new MemberGalleryShowFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PARAM3, param3);
         fragment.setArguments(args);
         return fragment;
     }
@@ -44,6 +49,7 @@ FragmentMemberGalleryShowBinding b;
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam3 = getArguments().getString(ARG_PARAM3);
         }
     }
 
@@ -58,15 +64,23 @@ FragmentMemberGalleryShowBinding b;
 
         Log.e("image_path", mParam1);
         Log.e("image_id", mParam2);
-        setData();
-        listener();
+        Log.e("status", mParam3);
+        status=mParam3;
+
+        if(!mParam3.equalsIgnoreCase("0"))
+        {
+            Glide.with(getActivity())
+                    .load(Utils.imageUrl + mParam1)
+                    .into(b.ivProfilePic);
+        }else{
+            Glide.with(getActivity())
+                    .load("")
+                    .into(b.ivProfilePic);
+        }
+
+
+
         return b.getRoot();
     }
-    private void listener() {
-    }
-    private void setData() {
-        Glide.with(getActivity())
-                .load(Utils.imageUrl + mParam1)
-                .into(b.ivProfilePic);
-    }
+
 }

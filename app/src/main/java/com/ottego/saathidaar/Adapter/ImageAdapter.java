@@ -59,7 +59,6 @@ public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.ViewHolder>
                          }
             });
 
-
             if(item.photo_status.equals("0"))
             {
                 holder.tvImageApproveStatus.setVisibility(View.VISIBLE);

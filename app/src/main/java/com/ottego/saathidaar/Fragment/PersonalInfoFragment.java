@@ -109,6 +109,29 @@ public class PersonalInfoFragment extends Fragment {
             binding.tvLocatonOfPartner.setPaintFlags(binding.tvLocatonOfPartner.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         }
 
+        if (binding.tvUserCommunity.getText().toString().equalsIgnoreCase("")) {
+            binding.llProfileCast.setVisibility(View.GONE);
+        }
+
+
+        if (binding.tvUserSubCommunity.getText().toString().equalsIgnoreCase("")) {
+            binding.llProfileSubCast.setVisibility(View.GONE);
+        }
+
+        if (binding.tvUserGotra.getText().toString().equalsIgnoreCase("")) {
+            binding.llGotra.setVisibility(View.GONE);
+        }
+
+
+        if (binding.tvUserorigin.getText().toString().equalsIgnoreCase("")) {
+            binding.llcoorigin.setVisibility(View.GONE);
+        }
+
+        if (binding.tvUserPinCode.getText().toString().equalsIgnoreCase("")) {
+            binding.llPinCode.setVisibility(View.GONE);
+        }
+
+
         return binding.getRoot();
     }
 
@@ -195,29 +218,29 @@ public class PersonalInfoFragment extends Fragment {
             }
         });
 
-        binding.tvDob.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                String dob = binding.tvDob.getText().toString().trim();
-                if (dob.equalsIgnoreCase("")) {
-                    binding.tvGender.setVisibility(View.GONE);
-                } else {
-                    binding.tvGender.setVisibility(View.VISIBLE);
-                }
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+//        binding.tvDob.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//                String dob = binding.tvDob.getText().toString().trim();
+//                if (dob.equalsIgnoreCase("")) {
+//                    binding.tvGender.setVisibility(View.GONE);
+//                } else {
+//                    binding.tvGender.setVisibility(View.VISIBLE);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//            }
+//        });
 
 
         binding.tvUserReligion.addTextChangedListener(new TextWatcher() {
@@ -266,8 +289,6 @@ public class PersonalInfoFragment extends Fragment {
                     binding.llGotra.setVisibility(View.GONE);
                 }
             }
-
-
 
 
             @Override

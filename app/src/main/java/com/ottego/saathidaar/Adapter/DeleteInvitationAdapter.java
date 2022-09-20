@@ -61,6 +61,8 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
         InboxModel item = list.get(position);
         Log.e(" Inbox model", new Gson().toJson(item));
 
+        holder.llBlockAcceptButton.setVisibility(View.GONE);
+
         holder.tvLevelPremiumDelete.setVisibility(View.GONE);
         holder.flPremiumDelete.setVisibility(View.GONE);
 
@@ -211,9 +213,9 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
         }
 
 
-        if(item.request_message.contains("declined") || item.request_message.contains("canceled") )
+        if(item.request_message.contains("His") || item.request_message.contains("Her") || item.request_message.contains("cancelled"))
         {
-            holder.llBlockAcceptButton.setVisibility(View.GONE);
+            holder.llBlockAcceptButton.setVisibility(View.VISIBLE);
         }
 
         holder.tvPremiumDeleteMatch.setOnClickListener(new View.OnClickListener() {
