@@ -800,7 +800,7 @@
                             android:focusableInTouchMode="false"
                             android:importantForAutofill="no"
                             app:showSearch="true"
-                            app:sort="true" />
+                            app:sort="false" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
@@ -837,7 +837,7 @@
                             android:focusableInTouchMode="false"
                             android:importantForAutofill="no"
                             app:showSearch="true"
-                            app:sort="true" />
+                            app:sort="false" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
@@ -875,7 +875,7 @@
                             android:focusableInTouchMode="false"
                             android:importantForAutofill="no"
                             app:showSearch="true"
-                            app:sort="true" />
+                            app:sort="false" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
@@ -975,7 +975,7 @@
 
                 <TextView
                     android:id="@+id/tvPartnerPreferencesBtn"
-                    android:layout_width="150dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:text="Update"
                     android:padding="10dp"
@@ -984,7 +984,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:textStyle="bold"
-                    android:fontFamily="@font/pt_serif_bold"
+                    android:fontFamily="@font/app_font"
                     android:background="@drawable/button_hover"
                     android:textColor="@color/white"/>
 

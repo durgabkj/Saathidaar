@@ -618,7 +618,7 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
             b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
             b.tvNameUserFamilyDetailsHeading.setText("About " + " Family");
             b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails).trim());
-            b.tvCreatedBy.setText("Create by:-" + " " + Utils.nullToBlank(model.profilecreatedby));
+            b.tvCreatedBy.setText("Created by:-" + " " + Utils.nullToBlank(model.profilecreatedby));
             b.tvProfileID.setText("Profile ID:-" + " " + Utils.nullToBlank(model.profile_id));
 
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty()) {

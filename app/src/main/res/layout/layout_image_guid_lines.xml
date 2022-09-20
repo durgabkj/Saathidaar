@@ -80,6 +80,7 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/button_hover"
             android:padding="10dp"
+            android:fontFamily="@font/app_font"
             android:text="Ok"
             android:textColor="@color/white"
             android:textAlignment="center"

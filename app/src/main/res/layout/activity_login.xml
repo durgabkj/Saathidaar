@@ -166,12 +166,12 @@
 
                 <TextView
                     android:id="@+id/mtbLogin"
-                    android:layout_width="150dp"
+                    android:layout_width="250dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
                     android:gravity="center"
-                    android:fontFamily="@font/pt_serif_bold"
+                    android:fontFamily="@font/app_font"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:background="@drawable/button_hover"
@@ -192,14 +192,14 @@
 
                 <TextView
                     android:id="@+id/mbLoginRegister"
-                    android:layout_width="150dp"
+                    android:layout_width="250dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:layout_marginTop="2dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:fontFamily="@font/pt_serif_bold"
+                    android:fontFamily="@font/app_font"
                     android:background="@drawable/button_hover"
                     android:text="Register" />
 

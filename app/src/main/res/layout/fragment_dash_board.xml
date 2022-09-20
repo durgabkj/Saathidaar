@@ -155,7 +155,7 @@
                             android:layout_marginTop="30dp"
                             android:background="@drawable/white_button_bg"
                             android:drawablePadding="10dp"
-                            android:fontFamily="@font/pt_serif_bold"
+                            android:fontFamily="@font/app_font"
                             android:gravity="center_vertical"
                             android:padding="10dp"
                             android:text="KYC"
@@ -341,7 +341,7 @@
             android:text="Upgrade Now"
             android:layout_marginEnd="8dp"
             android:textAlignment="center"
-            android:fontFamily="@font/pt_serif_bold"
+            android:fontFamily="@font/app_font"
             android:textColor="@color/colorPrimary"
             android:textSize="14dp"
             android:textStyle="bold" />
@@ -464,7 +464,8 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/pt_serif_bold" android:drawablePadding="8dp"
+                                    android:fontFamily="@font/app_font"
+                                    android:drawablePadding="8dp"
                                     android:drawableStart="@drawable/ic_baseline_privacy_tip_24"
                                     android:text="Privacy Policy"
                                     android:textSize="15sp"
@@ -518,7 +519,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/pt_serif_bold" android:text="Help Page"
+                                    android:fontFamily="@font/app_font" android:text="Help Page"
                                     android:drawablePadding="8dp"
                                     android:layout_gravity="center_vertical"
                                     android:drawableStart="@drawable/ic_baseline_live_help_24"
@@ -573,7 +574,8 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/pt_serif_bold"  android:text="Terms &amp; Conditions"
+                                    android:fontFamily="@font/app_font"
+                                    android:text="Terms &amp; Conditions"
                                     android:drawablePadding="8dp"
                                     android:drawableTint="@color/colorPrimary"
                                     android:drawableStart="@drawable/ic_baseline_library_books_24"
@@ -639,7 +641,8 @@
                                     android:drawableStart="@drawable/ic_baseline_star_rate_24"
                                     android:drawablePadding="8dp"
                                     android:layout_gravity="center_vertical"
-                                    android:fontFamily="@font/pt_serif_bold" android:textColor="@color/colorPrimary"
+                                    android:fontFamily="@font/app_font"
+                                    android:textColor="@color/colorPrimary"
                                     android:textStyle="bold"
                                     android:textSize="15sp"
                                     android:text="Rate Us"
@@ -694,7 +697,7 @@
                                     android:textSize="15sp"
                                     android:textStyle="bold"
                                     android:layout_gravity="center_vertical"
-                                    android:fontFamily="@font/pt_serif_bold"
+                                    android:fontFamily="@font/app_font"
                                     android:textColor="@color/colorPrimary"
 
                                     />

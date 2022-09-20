@@ -80,13 +80,13 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
 
         holder.tvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
         holder.tvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
-        holder.tvNewMatchWorkAs.setText(Utils.nullToBlank(item.country));
+        holder.tvNewMatchWorkAs.setText(Utils.nullToBlank(item.city));
         holder.tvImageCount.setText(item.images_count);
 
         holder.llPrivateMatchesPhoto.setVisibility(View.GONE);
-        holder.ivMatchDot.setVisibility(View.VISIBLE);
-        holder.ivMatchDot2.setVisibility(View.VISIBLE);
-        holder.ivMatchDot1.setVisibility(View.VISIBLE);
+//        holder.ivMatchDot.setVisibility(View.VISIBLE);
+//        holder.ivMatchDot2.setVisibility(View.VISIBLE);
+//        holder.ivMatchDot1.setVisibility(View.VISIBLE);
 
         if (item.photo_privacy.equalsIgnoreCase("1")) {
             holder.llPhotoMyMatches.setEnabled(true);

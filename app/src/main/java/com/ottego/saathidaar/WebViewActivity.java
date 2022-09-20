@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.webkit.WebChromeClient;
@@ -58,7 +60,14 @@ public class WebViewActivity extends AppCompatActivity {
         webview.getSettings().setDatabaseEnabled(true);
         webview.setWebViewClient(new WebViewClient());
         String url = "https://docs.google.com/gview?embedded=true&url="+data;
-        webview.loadUrl(url);
+
+        if (url.endsWith(".pdf"))
+        {
+            webview.loadUrl(url);
+        } else
+        {
+            webview.loadUrl(data);
+        }
 
     }
 

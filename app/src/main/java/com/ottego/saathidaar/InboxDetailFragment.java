@@ -556,7 +556,7 @@ public class InboxDetailFragment extends Fragment {
             b.tvAboutUserDetails.setText(Utils.nullToBlank(model.about_ourself));
             b.tvNameUserFamilyDetails.setText("About " + " Family");
             b.tvAboutUserFamilyDetails.setText(Utils.nullToBlank(model.FamilyDetails));
-            b.tvCreatedBy.setText("Create by:-" + " " + Utils.nullToBlank(model.profilecreatedby));
+            b.tvCreatedBy.setText("Created by:-" + " " + Utils.nullToBlank(model.profilecreatedby));
             b.tvProfileID.setText("Profile ID:-" + " " + Utils.nullToBlank(model.profile_id));
 
             if (!model.age.equalsIgnoreCase("") && !model.age.equalsIgnoreCase(null) && !model.age.isEmpty()) {

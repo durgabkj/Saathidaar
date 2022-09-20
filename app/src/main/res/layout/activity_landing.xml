@@ -263,14 +263,14 @@
 
                 <TextView
                     android:id="@+id/btn_register"
-                    android:layout_width="150dp"
+                    android:layout_width="250dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/button_hover"
                     android:padding="8dp"
                     android:gravity="center"
-                    android:fontFamily="@font/pt_serif_bold"
+                    android:fontFamily="@font/app_font"
                     android:text="Register"
                     android:textAlignment="center"
                     android:textAllCaps="false"
@@ -280,12 +280,12 @@
 
                     <TextView
                         android:id="@+id/btn_login"
-                        android:layout_width="150dp"
+                        android:layout_width="250dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:text="Login"
-                        android:fontFamily="@font/pt_serif_bold"
+                        android:fontFamily="@font/app_font"
                         android:textColor="@color/white"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/button_hover"

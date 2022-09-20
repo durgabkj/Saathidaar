@@ -29,6 +29,8 @@ import com.ottego.saathidaar.SessionManager;
 import com.ottego.saathidaar.UpgradeOnButtonActivity;
 import com.ottego.saathidaar.Utils;
 
+import org.xml.sax.Parser;
+
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
@@ -291,12 +293,10 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
                     try {
                         String text = "Hello";// Replace with your message.
 
-                        String toNumber = "+91 "+item.contact_number; // Replace with mobile phone number without +Sign or leading zeros, but with country code
-                        //Suppose your country is India and your phone number is “xxxxxxxxxx”, then you need to send “91xxxxxxxxxx”.
 
-                        toNumber = toNumber.replace("+", "").replace(" ", "");
+                        Log.e("contact",item.contact_number);
                         Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse("http://api.whatsapp.com/send?phone=" + toNumber + "&text=" + text));
+                        intent.setData(Uri.parse("http://api.whatsapp.com/send?phone=" +item.contact_number+ "&text=" + text));
                         context.startActivity(intent);
                     } catch (Exception e) {
                         e.printStackTrace();

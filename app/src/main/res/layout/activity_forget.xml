@@ -129,7 +129,7 @@
         android:textAlignment="center"
         android:text="Submit"
         android:textStyle="bold"
-        android:fontFamily="@font/pt_serif_bold"
+        android:fontFamily="@font/app_font"
         android:translationZ="20dp"
         android:textColor="@color/white"
         android:textSize="16dp" />

@@ -1023,12 +1023,11 @@ public class PartnerPreferenceFragment extends Fragment {
 
     private List getWorkingWithItems() {
        workingWithItemsList = new ArrayList<>();
-
         workingWithItemsList.add("Open to all");
-        workingWithItemsList.add("Private Company");
-        workingWithItemsList.add("Government / Public Sector");
-        workingWithItemsList.add("Defense / Civil Services");
         workingWithItemsList.add("Business / Self Employed");
+        workingWithItemsList.add("Defense / Civil Services");
+        workingWithItemsList.add("Government / Public Sector");
+        workingWithItemsList.add("Private Company");
         workingWithItemsList.add("Not Working");
         return workingWithItemsList;
     }
@@ -1051,11 +1050,10 @@ public class PartnerPreferenceFragment extends Fragment {
     private List getQualificationItems() {
         ArrayList<String> qualificationList = new ArrayList<>();
         qualificationList.add("Open to all");
-        qualificationList.add("Master");
-        qualificationList.add("Bachelor / undergraduate");
         qualificationList.add("Associate / Diploma");
+        qualificationList.add("Bachelor / undergraduate");
         qualificationList.add("High School and below");
-
+        qualificationList.add("Master");
         return qualificationList;
     }
 
@@ -1077,32 +1075,33 @@ public class PartnerPreferenceFragment extends Fragment {
 
     private List getMotherTongueItems() {
         ArrayList<String> motherTongueList = new ArrayList<>();
-        motherTongueList.add("Hindi");
-        motherTongueList.add("Marathi");
-        motherTongueList.add("Punjabi");
-        motherTongueList.add("Bengali");
-        motherTongueList.add("Gujarati");
-        motherTongueList.add("Telugu");
-        motherTongueList.add("Urdu");
-        motherTongueList.add("Kannada");
-        motherTongueList.add("English");
-        motherTongueList.add("Tamil");
-        motherTongueList.add("Odia");
-        motherTongueList.add("Marwari");
+        motherTongueList.add("Open to all");
         motherTongueList.add("Arunachali");
         motherTongueList.add("Assamese");
         motherTongueList.add("Awadhi");
         motherTongueList.add("Bhojpuri");
+        motherTongueList.add("Bengali");
         motherTongueList.add("Chattisgarhi");
-        motherTongueList.add("Haryanavi");
+        motherTongueList.add("English");
+        motherTongueList.add("Gujarati");
+        motherTongueList.add("Hindi");
         motherTongueList.add("Himachali/Pahari");
+        motherTongueList.add("Haryanavi");
+        motherTongueList.add("Kannada");
         motherTongueList.add("Kashmiri");
-        motherTongueList.add("Malayalam");
         motherTongueList.add("Khandesi");
+        motherTongueList.add("Marwari");
+        motherTongueList.add("Marathi");
+        motherTongueList.add("Malayalam");
         motherTongueList.add("Manipuri");
+        motherTongueList.add("Odia");
+        motherTongueList.add("Punjabi");
         motherTongueList.add("Rajasthani");
         motherTongueList.add("Sanskrit");
         motherTongueList.add("Sindhi");
+        motherTongueList.add("Tamil");
+        motherTongueList.add("Telugu");
+        motherTongueList.add("Urdu");
         motherTongueList.add("Other");
 
         return motherTongueList;
