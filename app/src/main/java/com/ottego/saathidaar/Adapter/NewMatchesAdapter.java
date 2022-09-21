@@ -70,6 +70,15 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
 
 
 
+        holder.llViewProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MatchPagerFragment.newInstance(String.valueOf(position), String.valueOf(list.size())).show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
+            }
+        });
+
+
+
         holder.tvNewMatchName.setText(Utils.nullToBlank(item.first_name) + " " + Utils.nullToBlank(item.last_name).charAt(0));
 
         if (item.mage.equalsIgnoreCase("null") && !item.mage.equalsIgnoreCase("")) {
@@ -81,6 +90,7 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         holder.tvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
         holder.tvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
         holder.tvNewMatchWorkAs.setText(Utils.nullToBlank(item.city));
+        holder.tvNewMatchState.setText(Utils.nullToBlank(item.state));
         holder.tvImageCount.setText(item.images_count);
 
         holder.llPrivateMatchesPhoto.setVisibility(View.GONE);
@@ -262,9 +272,9 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivUserMatch, ivNoImageMaleFemaleMatch, ivMatchDot, ivMatchDot1, ivMatchDot2;
-        TextView tvNewMatchName, tvNewMatchAge, tvPremiumContactMatch, tvLevelPremiumMatch, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs, tvImageCount;
+        TextView tvNewMatchName, tvNewMatchAge, tvPremiumContactMatch, tvLevelPremiumMatch, tvNewMatchHeight, tvNewMatchCity,tvNewMatchState, tvNewMatchWorkAs, tvImageCount;
         LinearLayout llMess, llShortListRemove, llPrivateMatchesPhoto, llShortList, llPhotoMyMatches, llShortBlock, llBlocked, llItemAnimation;
-        LinearLayout ivLike, llConnect, llNo_imageFemaleList, llPremiumMsgMatches;
+        LinearLayout ivLike,llViewProfile, llConnect, llNo_imageFemaleList, llPremiumMsgMatches;
         FrameLayout flNoImageMaleFemaleList, flPremiumMatch;
         Spinner SpMenu;
 
@@ -288,9 +298,9 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             llConnect = itemView.findViewById(R.id.llConnect);
             llShortBlock = itemView.findViewById(R.id.llShortBlock);
             llBlocked = itemView.findViewById(R.id.llBlocked);
-            llNo_imageFemaleList = itemView.findViewById(R.id.llNo_imageFemaleList);
-            flNoImageMaleFemaleList = itemView.findViewById(R.id.flNoImageMaleFemaleList);
-            ivNoImageMaleFemaleMatch = itemView.findViewById(R.id.ivNoImageMaleFemaleMatch);
+            llViewProfile = itemView.findViewById(R.id.llViewProfile);
+           tvNewMatchState = itemView.findViewById(R.id.tvNewMatchState);
+//            ivNoImageMaleFemaleMatch = itemView.findViewById(R.id.ivNoImageMaleFemaleMatch);
             tvImageCount = itemView.findViewById(R.id.tvImageCount);
             llItemAnimation = itemView.findViewById(R.id.llItemAnimation);
             flPremiumMatch = itemView.findViewById(R.id.flPremiumMatch);

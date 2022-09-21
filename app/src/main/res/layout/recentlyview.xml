@@ -15,7 +15,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mcv_All_Played_Match"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="250dp"
         app:cardBackgroundColor="@color/white"
         app:cardElevation="2dp"
         app:cardCornerRadius="10dp"
@@ -29,7 +29,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_no_image__female_"
            />
 
 
@@ -148,7 +147,7 @@
                     android:id="@+id/llShortBlockRecentV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/gray_transparent_bg"
                     >
 
@@ -165,7 +164,7 @@
                     android:id="@+id/llBlockedRecentV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:background="@drawable/gray_transparent_bg">
 
@@ -186,7 +185,7 @@
                     android:layout_width="60dp"
                     android:layout_height="30dp"
                     android:background="@drawable/oval_bg"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -309,7 +308,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:padding="20dp"
+                android:padding="3dp"
                 android:background="@drawable/bg_gradient"
                 android:orientation="vertical"
                 android:paddingHorizontal="20dp"
@@ -387,11 +386,7 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginEnd="90dp"
-                    android:background="@color/gray_dark"/>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -445,92 +440,142 @@
                         android:textStyle="bold" />
 
                 </LinearLayout>
-            </LinearLayout>
 
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/line_gradient"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="3dp"
+    >
 
-            <LinearLayout
-                android:id="@+id/llConnectedRecently"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
-                android:visibility="gone"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="10dp"
-                android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/llViewProfileRecentlyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:layout_marginStart="70dp"
+        android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:cardCornerRadius="100dp"
-                    >
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="100dp">
 
-                    <ImageView
-                        android:id="@+id/ivAccept"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@color/white"
-                        android:padding="8dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_check_black_24dp" />
-                </androidx.cardview.widget.CardView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:shadowColor="#000000"
-                    android:shadowDx="2"
-                    android:shadowDy="2"
-                    android:fontFamily="@font/app_font"
-                    android:shadowRadius="1.6"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:text="Request Sent"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:padding="3dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile" />
+        </androidx.cardview.widget.CardView>
 
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ivLikeRecentVisitors"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_gravity="end|bottom"
-                android:layout_marginVertical="10dp"
-                android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/app_font"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="1.6"
+            android:text="View Profile"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:textStyle="bold" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:cardCornerRadius="100dp"
-                    >
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@color/white"
-                        android:padding="3dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_checkmark" />
-                </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:shadowColor="#000000"
-                    android:shadowDx="2"
-                    android:shadowDy="2"
-                    android:shadowRadius="1.6"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/app_font"
-                    android:textStyle="bold"
-                    android:text="Send Request"/>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+    <LinearLayout
+        android:id="@+id/llConnectedRecently"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:visibility="gone"
+        android:layout_marginEnd="70dp"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="100dp"
+            >
+
+            <ImageView
+                android:id="@+id/ivAccept"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:padding="8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_check_black_24dp" />
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:fontFamily="@font/app_font"
+            android:shadowRadius="1.6"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="Request Sent"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ivLikeRecentVisitors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
+        android:layout_gravity="end|bottom"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="100dp"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:padding="3dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_checkmark" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="1.6"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:fontFamily="@font/app_font"
+            android:textStyle="bold"
+            android:text="Send Request"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
 
             </LinearLayout>
         </FrameLayout>
-
 
     </com.google.android.material.card.MaterialCardView>
     <ImageView

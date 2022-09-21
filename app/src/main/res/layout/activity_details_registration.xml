@@ -76,6 +76,125 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/llState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/app_font"
+                        android:text="State Living In" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/white_bg"
+                        android:orientation="horizontal"
+                        tools:ignore="UselessParent">
+
+                        <TextView
+                            android:id="@+id/etState"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:padding="10dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:capitalize="words"
+                            android:background="@drawable/transparent_edittext_border"
+                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                            android:fontFamily="@font/app_font"
+                            android:gravity="center_vertical"
+                            android:hint="State"
+                            android:textColor="@color/black" />
+
+                        <!--                            <Spinner-->
+                        <!--                                android:id="@+id/etAddUserStateOfResidence"-->
+                        <!--                                android:layout_width="0dp"-->
+                        <!--                                android:layout_height="30dp"-->
+                        <!--                                android:layout_weight=".2"-->
+                        <!--                                android:clickable="true"-->
+                        <!--                                android:focusable="true"-->
+                        <!--                                android:focusableInTouchMode="false"-->
+                        <!--                                android:importantForAutofill="no"-->
+                        <!--                                android:maxLines="1"-->
+                        <!--                                app:showSearch="true"-->
+                        <!--                                app:sort="true" />-->
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:orientation="vertical"
+                    >
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/app_font"
+                        android:text="City Living In" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/white_bg"
+                        android:fontFamily="@font/app_font"
+                        android:orientation="horizontal"
+                        tools:ignore="UselessParent">
+
+                        <TextView
+                            android:id="@+id/etCity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:layout_marginStart="8dp"
+                            android:capitalize="words"
+                            android:background="@drawable/transparent_edittext_border"
+                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                            android:fontFamily="@font/app_font"
+                            android:gravity="center_vertical"
+                            android:hint="City"
+                            android:textColor="@color/black" />
+
+                        <!--                            <Spinner-->
+                        <!--                                android:id="@+id/etAddUserResidenceStatus"-->
+                        <!--                                android:layout_width="0dp"-->
+                        <!--                                android:layout_height="30dp"-->
+                        <!--                                android:clickable="true"-->
+                        <!--                                android:layout_weight=".2"-->
+                        <!--                                android:focusable="true"-->
+                        <!--                                android:focusableInTouchMode="false"-->
+                        <!--                                android:importantForAutofill="no"-->
+                        <!--                                android:maxLines="1"-->
+                        <!--                                app:showSearch="true"-->
+                        <!--                                app:sort="true" />-->
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
                 <EditText
                     android:id="@+id/etCountryNameShortReg"
                     android:layout_width="match_parent"
@@ -155,7 +274,7 @@
                 android:background="@drawable/white_bg"
                 android:drawableEnd="@drawable/ic_outline_date_range_24"
                 android:drawableTint="@color/colorPrimary"
-                android:fontFamily="@font/pt_serif_bold"
+                android:fontFamily="@font/app_font"
                 android:gravity="center"
                 android:hint="Select D.O.B"
                 android:padding="8dp"

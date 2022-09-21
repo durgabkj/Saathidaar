@@ -60,12 +60,20 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
     private static final String TAG = "SelectImageActivity";
     private static String age;
     public String countryUrl = Utils.location + "country";
+    public String stateUrl = Utils.location + "state-name/by/country-name/";
+    public String cityUrl = Utils.location + "city-name/by/state-name/";
     public String ReligionUrl = "http://103.174.102.195:8080/saathidaar_backend/api/get/religion-name";
     public String Updateurl = Utils.memberUrl + "short-registration/update/";
     ActivityDetailsRegistrationBinding b;
     ArrayList<String> countryList = new ArrayList<>();
+    ArrayList<String> cityList = new ArrayList<>();
+    ArrayList<String> stateList = new ArrayList<>();
     SessionManager sessionManager;
     Context context;
+    String stateName;
+    String countryName;
+    String state="";
+    String city="";
     UserModel userModel;
     ArrayList<String> AgeList = new ArrayList<String>();
     ArrayAdapter<String> minAdapter;
@@ -82,6 +90,8 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
     ArrayAdapter<String> religionAdapter;
     ArrayList<String> communityList = new ArrayList<>();
     ArrayAdapter<String> communityAdapter;
+    String[] stringArray1 =new String[0];
+    String[] stringArray2 =new String[0];
     EditText editText;
     ListView listView;
     List<String> imagePathList = new ArrayList<>();
@@ -153,7 +163,8 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
         maritalStatus();
         userHeight();
         getCountry(countryUrl);
-
+        getState();
+        getCity();
         religionList();
         communityList();
         dietList();
@@ -198,6 +209,127 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
 
 
     }
+
+    private void getCity() {
+        b.etState.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                stateName = b.etState.getText().toString().trim();
+                cityList.clear();
+                cityList();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
+
+    private void cityList() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                cityUrl + stateName, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // Log.e("response", String.valueOf(response));
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        JSONArray jsonArray = response.getJSONArray("cities");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String city = jsonObject1.getString("city_name");
+                            cityList.add(city);
+                            //Log.e("city-list", String.valueOf(cityList));
+                            stringArray2 = cityList.toArray(new String[cityList.size()]);
+                        }
+                    }
+//                    cityAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, cityList);
+//                    // set adapter
+//                    cityAdapter.notifyDataSetChanged();
+//                    b.etAddUserResidenceStatus.setAdapter(cityAdapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+    }
+
+    private void getState() {
+        b.etCountry.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                countryName = b.etCountry.getText().toString().trim();
+                stateList.clear();
+                stateList();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
+
+    private void stateList() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                stateUrl + countryName, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // Log.e("response", String.valueOf(response));
+                try {
+                    String code = response.getString("results");
+                    if (code.equalsIgnoreCase("1")) {
+                        JSONArray jsonArray = response.getJSONArray("states");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            String state = jsonObject1.getString("state_name");
+                            stateList.add(state);
+                            // Log.e("state-list Professional", String.valueOf(state));
+                            //   stringArray1 = new String[]{state};
+                            stringArray1 = stateList.toArray(new String[stateList.size()]);
+                        }
+                    }
+//                    stateAdapter = new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, stateList);
+//                    // set adapter
+//                    stateAdapter.notifyDataSetChanged();
+//
+//                    b.etAddUserStateOfResidence.setAdapter(stateAdapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
+
+
+    }
+
+
+
 
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -303,8 +435,8 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (b.etCountry.getText().toString().trim().equalsIgnoreCase("other")) {
-                    b.etCountryNameShortReg.setVisibility(View.VISIBLE);
+                if (!b.etCountry.getText().toString().trim().equalsIgnoreCase("")) {
+                    b.llState.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -314,6 +446,143 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
             }
         });
 
+
+
+        b.etState.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (!b.etState.getText().toString().trim().equalsIgnoreCase("")) {
+                    b.llCity.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        b.etState.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                // set custom dialog
+                dialog.setContentView(R.layout.searchable_dropdown_item);
+
+                // set custom height and width
+                Window window = dialog.getWindow();
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 800);
+
+                // set transparent background
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                // show dialog
+                dialog.show();
+
+                // Initialize and assign variable
+                EditText editText = dialog.findViewById(R.id.edit_text);
+                ListView listView = dialog.findViewById(R.id.list_view);
+
+                // Initialize array adapter
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.dropdown_item, stateList);
+                // set adapter
+                listView.setAdapter(adapter);
+                editText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        adapter.getFilter().filter(s);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // when item selected from list
+                        // set selected item on textView
+                        b.etState.setText(adapter.getItem(position));
+                        // Dismiss dialog
+                        dialog.dismiss();
+
+
+                    }
+                });
+
+            }
+        });
+        b.etCity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                // set custom dialog
+                dialog.setContentView(R.layout.searchable_dropdown_item);
+
+                // set custom height and width
+                Window window = dialog.getWindow();
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 800);
+
+                // set transparent background
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                // show dialog
+                dialog.show();
+
+                // Initialize and assign variable
+                EditText editText = dialog.findViewById(R.id.edit_text);
+                ListView listView = dialog.findViewById(R.id.list_view);
+
+                // Initialize array adapter
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.dropdown_item, cityList);
+                // set adapter
+                listView.setAdapter(adapter);
+                editText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        adapter.getFilter().filter(s);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // when item selected from list
+                        // set selected item on textView
+                        b.etCity.setText(adapter.getItem(position));
+                        // Dismiss dialog
+                        dialog.dismiss();
+
+
+                    }
+                });
+
+            }
+        });
 
         b.tvUserReligion.addTextChangedListener(new TextWatcher() {
             @Override
@@ -342,7 +611,8 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
                 dialog.setContentView(R.layout.searchable_dropdown_item);
 
                 // set custom height and width
-                dialog.getWindow().setLayout(800, 900);
+                Window window = dialog.getWindow();
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 800);
 
                 // set transparent background
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -355,7 +625,7 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
                 ListView listView = dialog.findViewById(R.id.list_view);
 
                 // Initialize array adapter
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, countryList);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.dropdown_item, countryList);
                 // set adapter
                 listView.setAdapter(adapter);
                 editText.addTextChangedListener(new TextWatcher() {
@@ -441,6 +711,9 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
         } else {
             country = b.etCountry.getText().toString().trim();
         }
+
+        state = b.etState.getText().toString().trim();
+        city = b.etCity.getText().toString().trim();
         Dob = b.mbDatePicker.getText().toString().trim();
         Marital_status = b.etMaritalStatus.getText().toString().trim();
         Height = b.etHeight.getText().toString().trim();
@@ -456,6 +729,30 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
             b.etCountry.setError(null);
 
         }
+
+
+        if (state.isEmpty()) {
+            b.etState.setError("Please select state");
+            b.etState.setFocusableInTouchMode(true);
+            b.etState.requestFocus();
+            return false;
+        } else {
+            b.etState.setError(null);
+
+        }
+
+
+        if (city.isEmpty()) {
+            b.etCity.setError("Please select city");
+            b.etCity.setFocusableInTouchMode(true);
+            b.etCity.requestFocus();
+            return false;
+        } else {
+            b.etCity.setError(null);
+
+        }
+
+
 
 
         if (Marital_status.isEmpty()) {
@@ -513,6 +810,9 @@ public class DetailsRegistrationActivity extends AppCompatActivity {
         params.put("country_name", country);
         params.put("lifestyles", Diet);
         params.put("age", age);
+        params.put("state_name", state);
+        params.put("city_name", city);
+
         Log.e("params", String.valueOf(params));
         final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Please wait....", false, false);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Updateurl + sessionManager.getUserMemberRegId(), new JSONObject(params),

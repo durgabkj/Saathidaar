@@ -106,7 +106,7 @@ public class PrivacyOptionFragment extends Fragment {
                 Gson gson = new Gson();
                 model1 = gson.fromJson(String.valueOf(response), DataModelDashboard.class);
 
-                if(model1.data.get(0).my_premium_status.equals(0))
+                if(model1.data.get(0).my_premium_status.equalsIgnoreCase("0"))
                 {
                     b.llshowEmailPrivacy.setVisibility(View.GONE);
                     b.llshowIncomePrivacy.setVisibility(View.GONE);

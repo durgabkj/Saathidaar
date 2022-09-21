@@ -345,9 +345,9 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
             tvImageCountAccept = itemView.findViewById(R.id.tvImageCountAccept);
             // tvInvitationAccetMessage = itemView.findViewById(R.id.tvInvitationAccetMessage);
             tvInvitationDate = itemView.findViewById(R.id.tvInvitationDate);
-            llNo_imageFemaleListAccept = itemView.findViewById(R.id.llNo_imageFemaleList);
-            flNoImageMaleFemaleListAccept = itemView.findViewById(R.id.flNoImageMaleFemaleList);
-            ivNoImageMaleFemaleAccept = itemView.findViewById(R.id.ivNoImageMaleFemaleMatch);
+//            llNo_imageFemaleListAccept = itemView.findViewById(R.id.llNo_imageFemaleList);
+//            flNoImageMaleFemaleListAccept = itemView.findViewById(R.id.flNoImageMaleFemaleList);
+//            ivNoImageMaleFemaleAccept = itemView.findViewById(R.id.ivNoImageMaleFemaleMatch);
             ivProfileAcceptInvi = itemView.findViewById(R.id.ivProfileAcceptInvi);
             flPremiumAccept = itemView.findViewById(R.id.flPremiumAccept);
             llDeleteAccet = itemView.findViewById(R.id.llDeleteAccet);

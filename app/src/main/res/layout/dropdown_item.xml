@@ -1,10 +1,14 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/textView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:ellipsize="end"
     android:fontFamily="@font/app_font"
     android:maxLines="1"
-    android:padding="10dp"
-    android:textAppearance="?attr/textAppearanceSubtitle1" />
+    android:textStyle="bold"
+    android:text="saathidaar"
+    android:padding="13dp"
+    android:textAppearance="?attr/textAppearanceSubtitle1"
+    tools:ignore="TextViewEdits" />
 

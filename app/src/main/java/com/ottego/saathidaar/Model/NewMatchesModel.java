@@ -13,6 +13,7 @@ public class NewMatchesModel {
     public String block_status;
     public String country;
     public String city;
+    public String state;
     public String premium_status;
     public String my_premium_status;
     public String profile_photo;

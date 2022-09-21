@@ -475,37 +475,45 @@
                         app:sort="true" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+<LinearLayout
+ android:id="@+id/llCaste"
+    android:layout_width="match_parent"
+    android:visibility="gone"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="@font/app_font"
+        android:text="Caste" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/textInputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="Select caste">
+
+        <com.ottego.multipleselectionspinner.MultipleSelection
+            android:id="@+id/tvMultipleCaste"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:importantForAutofill="no"
+
+            app:showSearch="true"
+            android:fontFamily="@font/app_font"
+            app:sort="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/app_font"
-                    android:text="Caste" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/textInputLayoutStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:hint="Select caste">
-
-                    <com.ottego.multipleselectionspinner.MultipleSelection
-                        android:id="@+id/tvMultipleCaste"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="false"
-                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:importantForAutofill="no"
-
-                        app:showSearch="true"
-                        android:fontFamily="@font/app_font"
-                        app:sort="true" />
-                </com.google.android.material.textfield.TextInputLayout>
 
 
                 <TextView
@@ -592,8 +600,6 @@
                         android:text="Location Details"/>
                 </LinearLayout>
 
-
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -634,7 +640,7 @@
                         android:layout_height="45dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/white_bg"
-                       android:drawablePadding="8dp"
+                        android:drawablePadding="8dp"
                         android:visibility="gone"
                         android:drawableTint="@color/black"
                         android:fontFamily="@font/app_font"
@@ -643,6 +649,12 @@
                         android:padding="8dp"
                         android:textColor="@color/black" />
                 </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -692,38 +704,49 @@
                         android:padding="8dp"
                         android:textColor="@color/black" />
                 </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/app_font"
-                    android:text="City" />
+            </LinearLayout>
 
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/textInputLayoutStyle"
+
+                <LinearLayout
+                    android:id="@+id/llCity"
                     android:layout_width="match_parent"
-                    android:id="@+id/tlCity"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/app_font"
-                    android:layout_centerInParent="true"
-                    android:hint="Select city">
-
-                    <com.ottego.multipleselectionspinner.MultipleSelection
-                        android:id="@+id/tvMultipleCity"
-                        android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:clickable="false"
-                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:importantForAutofill="no"
-                        app:showSearch="true"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/colorPrimary"
                         android:fontFamily="@font/app_font"
-                        app:sort="true" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:text="City" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/textInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:id="@+id/tlCity"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/app_font"
+                        android:layout_centerInParent="true"
+                        android:hint="Select city">
+
+                        <com.ottego.multipleselectionspinner.MultipleSelection
+                            android:id="@+id/tvMultipleCity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:importantForAutofill="no"
+                            app:showSearch="true"
+                            android:fontFamily="@font/app_font"
+                            app:sort="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+
 
                 <EditText
                     android:id="@+id/etPreferenceCity"

@@ -144,13 +144,12 @@
                         android:drawableStart="@drawable/ic_baseline_user_24"
                         android:drawablePadding="8dp"
                         android:singleLine="true"
-                        android:capitalize="words"
                         android:drawableTint="@color/black"
                         android:fontFamily="@font/app_font"
                         android:hint="First Name"
                         android:inputType="textCapWords"
                         android:padding="8dp"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
                         android:textColor="@color/black" />
 
                     <Space
@@ -172,7 +171,7 @@
                         android:capitalize="words"
                         android:inputType="textCapWords"
                         android:singleLine="true"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz  "
                         android:padding="8dp"
                         android:textColor="@color/black" />
                 </LinearLayout>

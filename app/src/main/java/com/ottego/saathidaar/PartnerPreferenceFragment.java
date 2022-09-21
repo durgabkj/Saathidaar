@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,6 +70,7 @@ public class PartnerPreferenceFragment extends Fragment {
     TextView etFromAgePartnerPreference, tvSearchButton, etToAgePartnerPreference, tvMultipleMaritalStatus, tvPartnerPreferencesBtn, etIncomePartnerPreference, etProfilePreference, etDietPreference, tvProfileCreated;
     EditText etfromHeightPartnerPreference, etToHeightPartnerPreference, etProfileSearch, etPreferenceCountry, etPreferenceState, etPreferenceCity;
     boolean[] selectedLanguage;
+    LinearLayout llCaste, llState, llCity;
     SessionManager sessionManager;
     ChipGroup cpChild;
     ArrayList<String> workingWithItemsList;
@@ -166,7 +168,7 @@ public class PartnerPreferenceFragment extends Fragment {
         multi_SelectionProfessionArea = view.findViewById(R.id.multi_SelectionProfessionArea);
         rgManglikType = view.findViewById(R.id.rgManglikType);
         tvMultipleCity = view.findViewById(R.id.tvMultipleCity);
-      tlCity = view.findViewById(R.id.tlCity);
+        tlCity = view.findViewById(R.id.tlCity);
         etProfilePreference = view.findViewById(R.id.etProfilePreference);
         etDietPreference = view.findViewById(R.id.etDietPreference);
         etIncomePartnerPreference = view.findViewById(R.id.etIncomePartnerPreference);
@@ -181,7 +183,9 @@ public class PartnerPreferenceFragment extends Fragment {
         etPreferenceCountry = view.findViewById(R.id.etPreferenceCountry);
         etPreferenceState = view.findViewById(R.id.etPreferenceState);
         etPreferenceCity = view.findViewById(R.id.etPreferenceCity);
-
+        llCaste = view.findViewById(R.id.llCaste);
+        llState = view.findViewById(R.id.llState);
+        llCity = view.findViewById(R.id.llCity);
 
         multi_SelectionWorkingWith();
         multipleSelectionMotherTongue();
@@ -197,9 +201,6 @@ public class PartnerPreferenceFragment extends Fragment {
         dietList();
         profileCreatedBy();
         listener();
-
-
-
 
 
         if (sessionManager.getUserGender().equalsIgnoreCase("male")) {
@@ -568,6 +569,64 @@ public class PartnerPreferenceFragment extends Fragment {
 
     private void listener() {
 
+        tvMultipleReligion.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (!tvMultipleReligion.getText().toString().equalsIgnoreCase("")) {
+                    llCaste.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        multi_SelectionCountry.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (!multi_SelectionCountry.getText().toString().equalsIgnoreCase("")) {
+                    llState.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        multi_SelectionState.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (!multi_SelectionState.getText().toString().equalsIgnoreCase("")) {
+                    llCity.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
         tvPartnerPreferencesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -578,7 +637,7 @@ public class PartnerPreferenceFragment extends Fragment {
 
             }
         });
-        
+
         etProfileSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -805,8 +864,8 @@ public class PartnerPreferenceFragment extends Fragment {
                     }
                     Gson gson = new Gson();
                     model = gson.fromJson(String.valueOf(response), PartnerPreferenceModel.class);
-                   getCityItems(model.state_ids);
-                   getStateItems(model.country_ids);
+                    getCityItems(model.state_ids);
+                    getStateItems(model.country_ids);
                     setData();
                 }
             }
@@ -1022,7 +1081,7 @@ public class PartnerPreferenceFragment extends Fragment {
     }
 
     private List getWorkingWithItems() {
-       workingWithItemsList = new ArrayList<>();
+        workingWithItemsList = new ArrayList<>();
         workingWithItemsList.add("Open to all");
         workingWithItemsList.add("Business / Self Employed");
         workingWithItemsList.add("Defense / Civil Services");
@@ -1325,6 +1384,7 @@ public class PartnerPreferenceFragment extends Fragment {
             }
         });
     }
+
     // dropDown With Search
     private void getCountryItems() {
         ArrayList<String> countryList = new ArrayList<>();
