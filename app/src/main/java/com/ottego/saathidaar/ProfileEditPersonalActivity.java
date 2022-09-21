@@ -654,20 +654,24 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
             }
         });
-
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
+                Calendar userAge = new GregorianCalendar(year, month, day);
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, month);
                 myCalendar.set(Calendar.DAY_OF_MONTH, day);
                 Calendar minAdultAge = new GregorianCalendar();
                 minAdultAge.add(Calendar.YEAR, -18);
+                SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+                fmt.setCalendar(userAge);
+                String dateFormatted = fmt.format(userAge.getTime());
 
                 if (minAdultAge.before(myCalendar)) {
                     Toast.makeText(context, "Age should be 18 or above", Toast.LENGTH_LONG).show();
                 } else {
-                    updateLabel();
+                    b.etHoroscopeBirthDOB.setText(dateFormatted);
+                    b.mbDatePicker.setText(dateFormatted);
                 }
 
             }
@@ -679,9 +683,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(context, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH));
                 datePickerDialog.show();
                 datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
-
                 datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
-
             }
         });
         b.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -921,6 +923,7 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
+
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -936,9 +939,11 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                     Toast.makeText(context, "Age should be 18 or above", Toast.LENGTH_LONG).show();
                 } else {
                     b.mbDatePicker.setText(dateFormatted);
+                    b.etHoroscopeBirthDOB.setText(dateFormatted);
                 }
             }
         };
+
         b.tvUserReligion.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -1033,12 +1038,12 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         });
     }
 
-    private void updateLabel() {
-        String myFormat = "dd/mm/yyyy";
-        SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.US);
-        b.etHoroscopeBirthDOB.setText(dateFormat.format(myCalendar.getTime()));
-
-    }
+//    private void updateLabel() {
+//        String myFormat = "dd/mm/yyyy";
+//        SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.US);
+//        b.etHoroscopeBirthDOB.setText(dateFormat.format(myCalendar.getTime()));
+//
+//    }
     private void setDropDownData() {
 
         final int[] checkedItem1 = {-1};

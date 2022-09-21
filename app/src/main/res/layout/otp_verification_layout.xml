@@ -53,21 +53,26 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/pt_serif_bold"
                 android:gravity="center"
-                android:text="Your OTP is verified. Please click on the link sent to your registered email Id to use credentials for login"
+                android:text="Your OTP is verified. Credentials sent to your registered email Id for login"
                 android:textColor="@color/colorPrimary"
                 android:textSize="12dp"
                 android:textStyle="bold" />
 
 
-            <Button
+            <TextView
                 android:id="@+id/btnokSuccess"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
+                android:background="@drawable/button_hover"
+                android:padding="5dp"
+                android:textSize="17sp"
+                android:gravity="center"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="@color/colorPrimary"
-                android:fontFamily="@font/pt_serif_bold"
-                android:text="ok" />
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:fontFamily="@font/app_font"
+                android:text="Ok" />
 
 
         </LinearLayout>

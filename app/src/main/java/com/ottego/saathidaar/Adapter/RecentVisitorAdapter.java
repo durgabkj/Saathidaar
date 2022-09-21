@@ -92,7 +92,8 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
 
             holder.tvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
             holder.tvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
-            holder.tvNewMatchWorkAs.setText(Utils.nullToBlank(item.country));
+            holder.tvNewMatchWorkAs.setText(Utils.nullToBlank(item.city));
+            holder.tvRecentViewState.setText(Utils.nullToBlank(item.state));
             holder.tvImageCountRecentView.setText(Utils.nullToBlank(item.images_count));
 
 
@@ -132,6 +133,15 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 }
             });
 
+
+            holder.llViewProfileRecentlyView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MatchPagerFragment.newInstance(String.valueOf(position), String.valueOf(list.size())).show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
+
+                }
+            });
+
             holder.llPhotoRecentV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -161,31 +171,6 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                         //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                         .into(holder.ivRecentViewImage);
 
-//            }
-//            else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
-//                holder.llPhotoRecentV.setEnabled(false);
-//                // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-//                holder.llPremiumMsgRecentlyView.setVisibility(View.GONE);
-//                holder.llPrivateRecentlyViewPhoto.setVisibility(View.VISIBLE);
-//                // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-//                Glide.with(context)
-//                        .load(Utils.imageUrl + item.profile_photo)
-//                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-//                        .transform(new BlurTransformation(20, 8))
-//                        .into(holder.ivRecentViewImage);
-//
-//            }
-//            else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("2"))) {
-//                holder.llPhotoRecentV.setEnabled(false);
-//                // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-//                holder.llPremiumMsgRecentlyView.setVisibility(View.GONE);
-//                holder.llPrivateRecentlyViewPhoto.setVisibility(View.VISIBLE);
-//                // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-//                Glide.with(context)
-//                        .load(Utils.imageUrl + item.profile_photo)
-//                        .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-//                        .transform(new BlurTransformation(20, 8))
-//                        .into(holder.ivRecentViewImage);
 
             } else if (item.photo_privacy.equalsIgnoreCase("3")) {
                 holder.llPhotoRecentV.setEnabled(false);
@@ -297,8 +282,8 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             ImageView ivRecentViewImage,ivNoImageMaleFemaleRecentView,tvPremiumShortlistMatch,ivRecentDot,ivRecentDot1;
-            TextView tvNewMatchName,tvPremiumrecentlyViewMatch, tvNewMatchAge,tvLevelPremiumRecent, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs,tvImageCountRecentView;
-            LinearLayout llPhotoRecentV,llShortBlockRecentV,llPrivateRecentlyViewPhoto,llConnectShortList,llShortListRecent,llBlockedRecentV,llPremiumMsgRecentlyView,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove,llNo_imageFemaleListRecentView,llConnectedRecently;
+            TextView tvNewMatchName,tvPremiumrecentlyViewMatch,tvRecentViewState, tvNewMatchAge,tvLevelPremiumRecent, tvNewMatchHeight, tvNewMatchCity, tvNewMatchWorkAs,tvImageCountRecentView;
+            LinearLayout llPhotoRecentV,llViewProfileRecentlyView,llShortBlockRecentV,llPrivateRecentlyViewPhoto,llConnectShortList,llShortListRecent,llBlockedRecentV,llPremiumMsgRecentlyView,ivLikeRecentVisitors,llShortListRecentV,llShortListRemove,llNo_imageFemaleListRecentView,llConnectedRecently;
             FrameLayout flNoImageMaleFemaleListRecentView,flPremiumRecentView;
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -307,7 +292,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 llConnectShortList=itemView.findViewById(R.id.llConnectShortList);
                ivRecentDot=itemView.findViewById(R.id.ivRecentDot);
                 ivRecentDot1=itemView.findViewById(R.id.ivRecentDot1);
-
+                llViewProfileRecentlyView=itemView.findViewById(R.id.llViewProfileRecentlyView);
                 tvNewMatchAge = itemView.findViewById(R.id.tvRecentViewAgeRs);
                 tvNewMatchName = itemView.findViewById(R.id.ivRecentViewNameRs);
                 tvNewMatchHeight = itemView.findViewById(R.id.tvRecentViewHeightRs);
@@ -329,6 +314,7 @@ public class RecentVisitorAdapter extends RecyclerView.Adapter<RecentVisitorAdap
                 tvImageCountRecentView=itemView.findViewById(R.id.tvImageCountRecentView);
                 llPremiumMsgRecentlyView=itemView.findViewById(R.id.llPremiumMsgRecentlyView);
                 tvLevelPremiumRecent=itemView.findViewById(R.id.tvLevelPremiumRecent);
+                tvRecentViewState=itemView.findViewById(R.id.tvRecentViewState);
             }
         }
     }

@@ -8,7 +8,7 @@
     android:maxLines="1"
     android:textStyle="bold"
     android:text="saathidaar"
-    android:padding="13dp"
+    android:padding="10dp"
     android:textAppearance="?attr/textAppearanceSubtitle1"
     tools:ignore="TextViewEdits" />
 

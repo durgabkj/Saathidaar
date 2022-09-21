@@ -80,8 +80,9 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
 
         holder.tvInvDeleteHeight.setText(Utils.nullToBlank(item.religion));
         holder.tvInvDeleteCity.setText(Utils.nullToBlank(item.maritalStatus));
-        holder.tvInvDeleteWorkAs.setText(Utils.nullToBlank(item.country));
+        holder.tvInvDeleteWorkAs.setText(Utils.nullToBlank(item.city));
         holder.tvImageCountDelete.setText((item.images_count));
+        holder.tvInvDeleteState.setText(item.state);
         holder.tvInvitationDeleteMessageInbox.setText(Utils.nullToBlank(item.request_message));
 
 
@@ -259,7 +260,7 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvInvDeleteWorkAs, tvInvDeleteCity,tvLevelPremiumDelete, tvPremiumDeleteMatch,tvImageCountDelete, tvInvDeleteHeight, tvInvDeleteName, tvInvDeleteAge, tvInvitationDeleteMessageInbox;
+        TextView tvInvDeleteWorkAs, tvInvDeleteState,tvInvDeleteCity,tvLevelPremiumDelete, tvPremiumDeleteMatch,tvImageCountDelete, tvInvDeleteHeight, tvInvDeleteName, tvInvDeleteAge, tvInvitationDeleteMessageInbox;
         LinearLayout llBlocked,llBlockDelete, llPrivateDeletePhoto,llDeletedInvitation,llBlockAcceptButton,llPremiumMsgDelete, llDelete1, llPhotoDelete, llNo_imageFemaleListDeleteInvi;
         ImageView ivDeleteInvitation, ivNoImageMaleFemaleDeleteInvi;
         FrameLayout flNoImageMaleFemaleListDeleteInvi,flPremiumDelete;
@@ -290,6 +291,7 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
             tvLevelPremiumDelete=itemView.findViewById(R.id.tvLevelPremiumDelete);
             flPremiumDelete=itemView.findViewById(R.id.flPremiumDelete);
             llPremiumMsgDelete=itemView.findViewById(R.id.llPremiumMsgDelete);
+            tvInvDeleteState=itemView.findViewById(R.id.tvInvDeleteState);
         }
     }
 }

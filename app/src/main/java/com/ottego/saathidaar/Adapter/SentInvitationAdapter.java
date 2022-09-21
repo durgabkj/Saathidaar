@@ -75,7 +75,8 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
 
         holder.tvInvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
         holder.tvInvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
-        holder.tvInvNewMatchWorkAs.setText(Utils.nullToBlank(item.country));
+        holder.tvInvNewMatchWorkAs.setText(Utils.nullToBlank(item.city));
+        holder.tvInvNewState.setText(Utils.nullToBlank(item.state));
         holder.tvImageCountSent.setText(Utils.nullToBlank(item.images_count));
 
 //            holder.llAccept.setOnClickListener(new View.OnClickListener() {
@@ -259,7 +260,7 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvInvNewMatchName, tvPremiumSentMatch, tvInvNewMatchAge, tvInvNewMatchHeight, tvLevelPremiumSent, tvInvNewMatchCity, tvInvNewMatchWorkAs, tvInvitationMessageSent, tvImageCountSent;
+        TextView tvInvNewMatchName, tvPremiumSentMatch,tvInvNewState, tvInvNewMatchAge, tvInvNewMatchHeight, tvLevelPremiumSent, tvInvNewMatchCity, tvInvNewMatchWorkAs, tvInvitationMessageSent, tvImageCountSent;
         LinearLayout llAccept, llDelete, llAccepted, llPrivateSentPhoto, llDeleted, llPremiumMsgSent, llPhotoSent, llBlockSent, llBlockedSent, llNo_imageFemaleSentInvitation, llMsgDateSent;
         ImageView ivNoImageMaleFemaleSentInvitation, ivSentInvitation, ivSentDot, ivSentDot1, ivSentDot2;
         FrameLayout flNoImageMaleFemaleSentInvitation, flPremiumSent;
@@ -271,7 +272,7 @@ public class SentInvitationAdapter extends RecyclerView.Adapter<SentInvitationAd
             ivSentDot = itemView.findViewById(R.id.ivSentDot);
             ivSentDot1 = itemView.findViewById(R.id.ivSentDot1);
             ivSentDot2 = itemView.findViewById(R.id.ivSentDot2);
-
+            tvInvNewState=itemView.findViewById(R.id.tvInvNewState);
             llPrivateSentPhoto = itemView.findViewById(R.id.llPrivateSentPhoto);
             tvLevelPremiumSent = itemView.findViewById(R.id.tvLevelPremiumSent);
             flPremiumSent = itemView.findViewById(R.id.flPremiumSent);

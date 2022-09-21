@@ -75,9 +75,10 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 
             holder.tvInvNewMatchHeight.setText(Utils.nullToBlank(item.religion));
             holder.tvInvNewMatchCity.setText(Utils.nullToBlank(item.maritalStatus));
-            holder.tvInvNewMatchWorkAsAccept.setText(Utils.nullToBlank(item.country));
+            holder.tvInvNewMatchWorkAsAccept.setText(Utils.nullToBlank(item.city));
             holder.tvInvitationAccetMessage.setText(Utils.nullToBlank(item.request_message).trim());
             holder.tvImageCountAccept.setText(Utils.nullToBlank(item.images_count));
+            holder.tvInvNewMatchState.setText(Utils.nullToBlank(item.state));
 
         }
         holder.llPrivatePhoto.setVisibility(View.GONE);
@@ -315,7 +316,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvInvNewMatchName, tvPremiumAcceptMatch, tvInvNewMatchAge, tvPremiumDeleteMatch, tvInvitationAccetMessage, tvLevelPremiumAccept, tvImageCountAccept, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAsAccept, tvInvitationDate;
+        TextView tvInvNewMatchName,tvInvNewMatchState, tvPremiumAcceptMatch, tvInvNewMatchAge, tvPremiumDeleteMatch, tvInvitationAccetMessage, tvLevelPremiumAccept, tvImageCountAccept, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAsAccept, tvInvitationDate;
         LinearLayout llCAll, llWhatsApp, llItemAnimationAccept, llPhotoAccept, llPrivatePhoto, llMessageAccept, llBlockAccept, llBlockedAccept, llAcceptCallMsgDecline, llNo_imageFemaleListAccept, llDeleteAccet, llDeletedAccept, llPremiumMsgAccept;
         FrameLayout flNoImageMaleFemaleListAccept, flPremiumAccept;
         ImageView ivNoImageMaleFemaleAccept, ivProfileAcceptInvi, ivAcceptDot, ivAcceptDot1, ivAcceptDot2;
@@ -343,7 +344,7 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
             llBlockedAccept = itemView.findViewById(R.id.llBlockedAccept);
             llAcceptCallMsgDecline = itemView.findViewById(R.id.llAcceptCallMsgDecline);
             tvImageCountAccept = itemView.findViewById(R.id.tvImageCountAccept);
-            // tvInvitationAccetMessage = itemView.findViewById(R.id.tvInvitationAccetMessage);
+            tvInvNewMatchState = itemView.findViewById(R.id.tvInvNewMatchState);
             tvInvitationDate = itemView.findViewById(R.id.tvInvitationDate);
 //            llNo_imageFemaleListAccept = itemView.findViewById(R.id.llNo_imageFemaleList);
 //            flNoImageMaleFemaleListAccept = itemView.findViewById(R.id.flNoImageMaleFemaleList);

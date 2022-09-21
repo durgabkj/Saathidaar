@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -133,7 +134,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
         View layout_dialog= LayoutInflater.from(context).inflate(R.layout.otp_verification_layout,null);
         builder.setView(layout_dialog);
 
-        AppCompatButton btnokSuccess =layout_dialog.findViewById(R.id.btnokSuccess);
+        TextView btnokSuccess =layout_dialog.findViewById(R.id.btnokSuccess);
         // show dialog
 
         AlertDialog dialog=builder.create();

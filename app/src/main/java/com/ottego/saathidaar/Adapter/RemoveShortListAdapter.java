@@ -125,6 +125,18 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
 
             }
         });
+
+
+        holder.llViewProfileR_shortlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("position", String.valueOf(position));
+                MatchPagerFragment.newInstance(String.valueOf(position), String.valueOf(list.size())).show(((FragmentActivity) context).getSupportFragmentManager(), "match_pager_fragment");
+
+            }
+        });
+
+
         holder.llPhotoShortList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -264,7 +276,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
         ImageView ivRemoveShortList, ivNoImageMaleFemaleRemoveShortList,ivShortlistDot,ivShortlistDot1,ivShortlistDot2;
         TextView tvNewMatchNameRs,tvPremiumShortlistMatch,tvLevelPremiumRemoveShortList, tvNewMatchAgeRs, tvNewMatchHeightRs, tvNewMatchCityRs, tvNewMatchWorkAsRs, tvImageCountRemoveShortList;
         LinearLayout llMess, llShortListRemove1, llShortList1, llPhotoShortList, llNo_imageFemaleRemoveShortList;
-        LinearLayout ivLikeShortList, llBlockShortList,llPrivateRemoveShortListPhoto, llPremiumMsgRemoveShortlist,llBlockedShortList, llConnectShortList;
+        LinearLayout ivLikeShortList,llViewProfileR_shortlist, llBlockShortList,llPrivateRemoveShortListPhoto, llPremiumMsgRemoveShortlist,llBlockedShortList, llConnectShortList;
         FrameLayout flNoImageMaleFemaleRemoveShortList,flPremiumRemove_shortList;
 
         public ViewHolder(@NonNull View itemView) {
@@ -273,7 +285,7 @@ public class RemoveShortListAdapter extends RecyclerView.Adapter<RemoveShortList
             llPrivateRemoveShortListPhoto=itemView.findViewById(R.id.llPrivateRemoveShortListPhoto);
             tvLevelPremiumRemoveShortList = itemView.findViewById(R.id.tvLevelPremiumRemoveShortList);
             flPremiumRemove_shortList = itemView.findViewById(R.id.flPremiumRemove_shortList);
-
+            llViewProfileR_shortlist=itemView.findViewById(R.id.llViewProfileR_shortlist);
             ivShortlistDot=itemView.findViewById(R.id.ivShortlistDot);
             ivShortlistDot1 = itemView.findViewById(R.id.ivShortlistDot1);
             ivShortlistDot2 = itemView.findViewById(R.id.ivShortlistDot2);

@@ -79,80 +79,7 @@
                 android:padding="10dp"
                 android:orientation="vertical"
                 >
-                <LinearLayout
-                    android:id="@+id/llBlockedSent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                   android:visibility="gone"
-                    android:layout_marginTop="8dp"
-                    android:orientation="vertical">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        app:cardCornerRadius="100dp"
-                        >
-                        <ImageView
-                            android:id="@+id/ivBlocked"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:background="@color/white"
-                            android:padding="3dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/block" />
-                    </androidx.cardview.widget.CardView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:shadowColor="#000000"
-                        android:shadowDx="2"
-                        android:shadowDy="2"
-                        android:visibility="invisible"
-                        android:shadowRadius="1.6"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:text=" Member Blocked"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llBlockSent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        app:cardCornerRadius="100dp"
-                        >
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:background="@color/white"
-                            android:padding="3dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/block_menber" />
-                    </androidx.cardview.widget.CardView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:shadowColor="#000000"
-                        android:shadowDx="2"
-                        android:visibility="gone"
-                        android:shadowDy="2"
-                        android:fontFamily="@font/italic"
-                        android:shadowRadius="1.6"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:text="Block Member"/>
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/llPhotoSent"
@@ -331,6 +258,7 @@
                         android:id="@+id/llCAllSent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:orientation="vertical">
 
                         <androidx.cardview.widget.CardView
@@ -370,6 +298,7 @@
                         android:id="@+id/llWhatsApp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:layout_marginStart="30dp"
                         android:orientation="vertical">
 
@@ -405,6 +334,79 @@
 
                     </LinearLayout>
 
+
+                    <LinearLayout
+                        android:id="@+id/llBlockedSent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:cardCornerRadius="100dp"
+                            >
+                            <ImageView
+                                android:id="@+id/ivBlocked"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:background="@color/white"
+                                android:padding="3dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/block" />
+                        </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:shadowColor="#000000"
+                            android:shadowDx="2"
+                            android:shadowDy="2"
+                            android:fontFamily="@font/app_font"
+                            android:visibility="invisible"
+                            android:shadowRadius="1.6"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:text=" Member Blocked"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llBlockSent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:cardCornerRadius="100dp"
+                            >
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:background="@color/white"
+                                android:padding="3dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/block_menber" />
+                        </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:shadowColor="#000000"
+                            android:shadowDx="2"
+                            android:shadowDy="2"
+                            android:fontFamily="@font/app_font"
+                            android:shadowRadius="1.6"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:text="Block Member"/>
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/llDelete"
@@ -595,6 +597,32 @@
                     android:src="@drawable/circle_blue_fil" />
                 <TextView
                     android:id="@+id/tvInvNewMatchWorkAs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:shadowColor="#000000"
+                    android:shadowDx="1.5"
+                    android:shadowDy="1.3"
+                    android:fontFamily="@font/app_font"
+                    android:maxLength="20"
+                    android:shadowRadius="1.6"
+                    android:inputType = "textCapWords"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:id="@+id/ivSentDot3"
+                    android:layout_width="6dp"
+                    android:layout_height="6dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:alpha="0.6"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/circle_blue_fil" />
+                <TextView
+                    android:id="@+id/tvInvNewState"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"

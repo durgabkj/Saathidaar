@@ -218,15 +218,6 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
             holder.llPremiumMsgMatches.setVisibility(View.GONE);
         }
 
-        if (item.first_name.equals("") && item.last_name.equalsIgnoreCase("")) {
-            holder.ivMatchDot.setVisibility(View.GONE);
-        }
-        if (item.mage.equals("")) {
-            holder.ivMatchDot1.setVisibility(View.GONE);
-        }
-        if (item.city.equalsIgnoreCase("")) {
-            holder.ivMatchDot2.setVisibility(View.GONE);
-        }
 
         //For free user...Apply Conditions
         if(item.my_premium_status.equalsIgnoreCase("0"))

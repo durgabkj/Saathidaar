@@ -134,7 +134,7 @@
                 android:background="@drawable/gray_transparent_bg"
                 android:drawableStart="@drawable/ic_baseline_arrow_drop_up_24"
                 android:drawableTint="@color/white"
-                android:fontFamily="@font/italic"
+                android:fontFamily="@font/app_font"
                 android:gravity="center"
                 android:visibility="gone"
                 android:layout_marginBottom="8dp"
