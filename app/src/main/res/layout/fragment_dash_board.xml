@@ -125,6 +125,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/app_font"
+                                android:textSize="11sp"
                                 android:text="Profile Created by :"
                                 android:textColor="@color/white" />
 
@@ -132,6 +133,7 @@
                                 android:id="@+id/tvDashBoardUserAccountType"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textSize="11sp"
                                 android:fontFamily="@font/app_font"
                                 android:textColor="@color/white" />
 
@@ -140,6 +142,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="3dp"
+                                android:textSize="11sp"
                                 android:fontFamily="@font/pt_serif_bold"
                                 android:textColor="#F3BF44" />
 
@@ -642,6 +645,7 @@
                                     android:drawablePadding="8dp"
                                     android:layout_gravity="center_vertical"
                                     android:fontFamily="@font/app_font"
+                                    android:textAlignment="center"
                                     android:textColor="@color/colorPrimary"
                                     android:textStyle="bold"
                                     android:textSize="15sp"

@@ -99,13 +99,13 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
         });
 
 
-        holder.llDelete1.setOnClickListener(new View.OnClickListener() {
+        holder.ivLikeDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.acceptRequest(context, item.member_id,clickListener);
+                Utils.sentRequest(context, item.member_id,clickListener);
                 //  holder.llAccept.setVisibility(View.GONE);
-                holder.llDelete1.setVisibility(View.GONE);
-                holder.llDeletedInvitation.setVisibility(View.VISIBLE);
+                holder.llDelete1.setVisibility(View.VISIBLE);
+                holder.ivLikeDelete.setVisibility(View.GONE);
 
             }
         });
@@ -129,12 +129,6 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
         });
 
 
-//        Glide.with(context)
-//                .load(Utils.imageUrl + item.profile_photo)
-//                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
-//                .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-//                .into(holder.ivDeleteInvitation);
-
         if (item.photo_privacy.equalsIgnoreCase("1")) {
             holder.llPhotoDelete.setEnabled(true);
            // holder.flPremiumDelete.setVisibility(View.GONE);
@@ -146,32 +140,6 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
                     //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(holder.ivDeleteInvitation);
 
-
-//        }
-//        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
-//            holder.llPhotoDelete.setEnabled(false);
-//            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-//            holder.llPremiumMsgDelete.setVisibility(View.GONE);
-//            holder.llPrivateDeletePhoto.setVisibility(View.VISIBLE);
-//            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-//            Glide.with(context)
-//                    .load(Utils.imageUrl + item.profile_photo)
-//                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-//                    .transform(new BlurTransformation(20, 8))
-//                    .into(holder.ivDeleteInvitation);
-//
-//        }
-//        else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("2"))) {
-//            holder.llPhotoDelete.setEnabled(false);
-//            // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-//            holder.llPremiumMsgDelete.setVisibility(View.GONE);
-//            holder.llPrivateDeletePhoto.setVisibility(View.VISIBLE);
-//            // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-//            Glide.with(context)
-//                    .load(Utils.imageUrl + item.profile_photo)
-//                    .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-//                    .transform(new BlurTransformation(20, 8))
-//                    .into(holder.ivDeleteInvitation);
 
 
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {
@@ -217,6 +185,7 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
         if(item.request_message.contains("His") || item.request_message.contains("Her") || item.request_message.contains("cancelled"))
         {
             holder.llBlockAcceptButton.setVisibility(View.VISIBLE);
+            holder.view.setVisibility(View.VISIBLE);
         }
 
         holder.tvPremiumDeleteMatch.setOnClickListener(new View.OnClickListener() {
@@ -261,13 +230,14 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvInvDeleteWorkAs, tvInvDeleteState,tvInvDeleteCity,tvLevelPremiumDelete, tvPremiumDeleteMatch,tvImageCountDelete, tvInvDeleteHeight, tvInvDeleteName, tvInvDeleteAge, tvInvitationDeleteMessageInbox;
-        LinearLayout llBlocked,llBlockDelete, llPrivateDeletePhoto,llDeletedInvitation,llBlockAcceptButton,llPremiumMsgDelete, llDelete1, llPhotoDelete, llNo_imageFemaleListDeleteInvi;
+        LinearLayout llBlocked,llBlockDelete,ivLikeDelete, llPrivateDeletePhoto,llDeletedInvitation,llBlockAcceptButton,llPremiumMsgDelete, llDelete1, llPhotoDelete, llNo_imageFemaleListDeleteInvi;
         ImageView ivDeleteInvitation, ivNoImageMaleFemaleDeleteInvi;
         FrameLayout flNoImageMaleFemaleListDeleteInvi,flPremiumDelete;
-
+View  view;
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
+            ivLikeDelete=itemView.findViewById(R.id.ivLikeDelete);
             llPrivateDeletePhoto=itemView.findViewById(R.id.llPrivateDeletePhoto);
             llBlockAcceptButton=itemView.findViewById(R.id.llBlockAcceptButton);
             llPremiumMsgDelete=itemView.findViewById(R.id.llPremiumMsgDelete);
@@ -292,6 +262,7 @@ public class DeleteInvitationAdapter extends RecyclerView.Adapter<DeleteInvitati
             flPremiumDelete=itemView.findViewById(R.id.flPremiumDelete);
             llPremiumMsgDelete=itemView.findViewById(R.id.llPremiumMsgDelete);
             tvInvDeleteState=itemView.findViewById(R.id.tvInvDeleteState);
+            view=itemView.findViewById(R.id.view);
         }
     }
 }

@@ -75,6 +75,10 @@ public class FamilyProfileActivity extends AppCompatActivity {
         FamilyAffluence();
         listener();
         setData();
+
+
+
+
     }
 
     private void setData() {

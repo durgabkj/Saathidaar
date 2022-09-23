@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -34,7 +33,12 @@ import org.json.JSONObject;
 
 
 public class FamilyInfoFragment extends Fragment {
-FragmentFamilyInfoBinding b;
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    public static String url = Utils.memberUrl + "my-profile/";
+    FragmentFamilyInfoBinding b;
     MemberProfileModel model;
     Context context;
     SessionManager sessionManager;
@@ -47,13 +51,6 @@ FragmentFamilyInfoBinding b;
     String companyNameM = "";
     String designationM = "";
     String natureBusinessM = "";
-
-    public static String url = Utils.memberUrl + "my-profile/";
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -86,18 +83,10 @@ FragmentFamilyInfoBinding b;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         b = FragmentFamilyInfoBinding.inflate(inflater, container, false);
-        context=getContext();
+        context = getContext();
         listener();
-        sessionManager=new SessionManager(context);
+        sessionManager = new SessionManager(context);
         getMemberData();
-
-        if(b.tvUserBrothersMarried.getText().toString().equalsIgnoreCase("")) {
-            b.tvUserBrothersMarried.setVisibility(View.GONE);
-        }
-
-        if(b.tvUserBrothersUMarried.getText().toString().equalsIgnoreCase("")) {
-            b.tvUserBrothersUMarried.setVisibility(View.GONE);
-        }
 
 
         return b.getRoot();
@@ -176,7 +165,7 @@ FragmentFamilyInfoBinding b;
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                fatherStatus =b.tvUserFatherStatus.getText().toString();
+                fatherStatus = b.tvUserFatherStatus.getText().toString();
 
                 if (fatherStatus.equalsIgnoreCase("Retired")) {
                     b.llFCompany.setVisibility(View.VISIBLE);
@@ -219,21 +208,21 @@ FragmentFamilyInfoBinding b;
     }
 
     private void getMemberData() {
-       final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Processing...", false, false);
+        final ProgressDialog progressDialog = ProgressDialog.show(context, null, "Processing...", false, false);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                url+sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
+                url + sessionManager.getMemberId(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-             progressDialog.dismiss();
+                progressDialog.dismiss();
                 b.srlRecycleViewFamilyDetails.setRefreshing(false);
-               Log.e("response", String.valueOf(response));
+                Log.e("response", String.valueOf(response));
                 try {
                     String code = response.getString("results");
                     if (code.equalsIgnoreCase("1")) {
                         Gson gson = new Gson();
                         model = gson.fromJson(String.valueOf(response.getJSONObject("data")), MemberProfileModel.class);
-                       setData();
-                    }else {
+                        setData();
+                    } else {
                         Toast.makeText(context, response.getString("message"), Toast.LENGTH_SHORT).show();
                     }
 
@@ -265,8 +254,8 @@ FragmentFamilyInfoBinding b;
             b.tvUserMotherStatus.setText(model.mother_status);
             b.tvUserFamilyLocation.setText(model.family_location);
             b.tvUserNativePlace.setText(model.native_place);
-            b.tvUserSistersMarried.setText(model.married_female+" : Married");
-            b.tvUserSistersUMarried.setText(model.unmarried_female+" : UnMarried");
+            b.tvUserSistersMarried.setText(model.married_female + " : Married");
+            b.tvUserSistersUMarried.setText(model.unmarried_female + " : UnMarried");
             b.tvUserBrothersMarried.setText(model.married_male + " : Married");
             b.tvUserBrothersUMarried.setText(model.unmarried_male + " : UnMarried");
 
@@ -280,29 +269,36 @@ FragmentFamilyInfoBinding b;
             b.tvUserMotherNatureofBusiness.setText(model.mother_business_name);
 
 
-            if(model.married_female.equalsIgnoreCase(""))
-            {
+            if (model.married_female.equalsIgnoreCase("")) {
                 b.tvUserSistersMarried.setVisibility(View.GONE);
             }
 
 
-            if(model.unmarried_female.equalsIgnoreCase(""))
-            {
+            if (model.unmarried_female.equalsIgnoreCase("")) {
                 b.tvUserSistersUMarried.setVisibility(View.GONE);
             }
 
-            if(model.married_male.equalsIgnoreCase(""))
-            {
+            if (model.married_male.equalsIgnoreCase("")) {
                 b.tvUserBrothersMarried.setVisibility(View.GONE);
             }
 
-            if(model.unmarried_male.equalsIgnoreCase(""))
-            {
+            if (model.unmarried_male.equalsIgnoreCase("")) {
                 b.tvUserBrothersUMarried.setVisibility(View.GONE);
+            }
+            if (model.married_female.equalsIgnoreCase("") && model.unmarried_female.equalsIgnoreCase("")) {
+                b.llSister.setVisibility(View.GONE);
+            }else{
+                b.llSister.setVisibility(View.VISIBLE);
             }
 
 
-           b.tvUserFamilyType.setText(model.family_type);
+            if (model.married_male.equalsIgnoreCase("") && model.unmarried_male.equalsIgnoreCase("")) {
+                b.llNoOfSibling.setVisibility(View.GONE);
+            }else{
+                b.llNoOfSibling.setVisibility(View.VISIBLE);
+            }
+
+            b.tvUserFamilyType.setText(model.family_type);
             b.tvUserFamilyAffluence.setText(model.family_affluence);
             b.tvUserFatherCompany.setText(model.father_company_name);
             b.tvUserFatherDesignation.setText(model.father_designation);
@@ -311,7 +307,6 @@ FragmentFamilyInfoBinding b;
             b.tvUserMotherDesignation.setText(model.mother_designation);
             b.tvUserMotherNatureofBusiness.setText(model.mother_business_name);
         }
-
 
 
     }

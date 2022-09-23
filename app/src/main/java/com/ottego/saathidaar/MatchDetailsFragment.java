@@ -348,10 +348,6 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
     }
 
     private void listener() {
-
-
-
-
         b.tvAboutUserFamilyDetails.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -838,7 +834,7 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
             }
 
 // check privacy options
-            if (model.premium_status.equalsIgnoreCase("1") && model.my_premium_status.equalsIgnoreCase("2")) {
+            if (model.my_premium_status.equalsIgnoreCase("2")) {
                 b.flPremiumMatchDetails.setVisibility(View.GONE);
                 b.tvLevelPremiumMatchDetails.setVisibility(View.GONE);
                 b.tvPremiumCollegeAndCompany.setVisibility(View.GONE);
@@ -847,7 +843,7 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
                 b.tvcontacts.setVisibility(View.GONE);
 //            b.tvPremiumBirth.setVisibility(View.GONE);
 //            b.tvPremiumCollegeAndCompany.setVisibility(View.GONE);
-            } else if (model.premium_status.equalsIgnoreCase("1") && model.my_premium_status.equalsIgnoreCase("0")) {
+            } else if (!model.my_premium_status.equals(2)) {
                 b.flPremiumMatchDetails.setVisibility(View.VISIBLE);
                 b.tvLevelPremiumMatchDetails.setVisibility(View.VISIBLE);
                 b.tvPremiumCollegeAndCompany.setVisibility(View.VISIBLE);

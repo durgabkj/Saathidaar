@@ -191,8 +191,6 @@ public class NewMatchesAdapter extends RecyclerView.Adapter<NewMatchesAdapter.Vi
         holder.llShortBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Animation animation = AnimationUtils.loadAnimation(context, R.anim.move);
-                holder.llItemAnimation.startAnimation(animation);
                 Utils.blockMember(context, item.member_id, clickListener);
                 holder.llShortBlock.setVisibility(View.GONE);
                 holder.llBlocked.setVisibility(View.VISIBLE);

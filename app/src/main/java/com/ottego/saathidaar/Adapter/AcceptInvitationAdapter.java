@@ -101,7 +101,6 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
             }
         });
 
-
         holder.llDeleteAccet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +110,12 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
             }
         });
 
+        holder.llCancelAccet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.cancelRequest(context, item.member_id, clickListener);
+            }
+        });
 
         holder.llBlockAccept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,14 +126,6 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
                 holder.llAcceptCallMsgDecline.setVisibility(View.GONE);
             }
         });
-
-
-//        Glide.with(context)
-//                .load(Utils.imageUrl + item.profile_photo)
-//                .placeholder(sessionManager.getKeyGender().equalsIgnoreCase("male")?R.drawable.ic_no_image__female_:R.drawable.ic_no_image__male_)
-//                .transform(item.premium_status.equalsIgnoreCase("1")?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
-//                .into(holder.ivProfileAcceptInvi);
-
 
         if (item.photo_privacy.equalsIgnoreCase("1")) {
             holder.llPhotoAccept.setEnabled(true);
@@ -141,33 +138,6 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
                     .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
                     //  .transform(!item.my_premium_status.equals(item.premium_status)?new BlurTransformation(20, 8):new BlurTransformation(1, 1))
                     .into(holder.ivProfileAcceptInvi);
-
-//
-//    }
-//         else if (item.photo_privacy.equalsIgnoreCase("3") && (item.premium_status.equalsIgnoreCase("0"))) {
-//        holder.llPhotoAccept.setEnabled(false);
-//        // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-//        holder.llPremiumMsgAccept.setVisibility(View.GONE);
-//        holder.llPrivatePhoto.setVisibility(View.VISIBLE);
-//        // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-//        Glide.with(context)
-//                .load(Utils.imageUrl + item.profile_photo)
-//                .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-//                .transform(new BlurTransformation(20, 8))
-//                .into(holder.ivProfileAcceptInvi);
-//
-//    }
-//         else if (item.photo_privacy.equalsIgnoreCase("3") && (item.my_premium_status.equalsIgnoreCase("2"))) {
-//        holder.llPhotoAccept.setEnabled(false);
-//        // holder.flPremiumMatch.setVisibility(View.VISIBLE);
-//        holder.llPremiumMsgAccept.setVisibility(View.GONE);
-//        holder.llPrivatePhoto.setVisibility(View.VISIBLE);
-//        // holder.tvLevelPremiumMatch.setVisibility(View.VISIBLE);
-//        Glide.with(context)
-//                .load(Utils.imageUrl + item.profile_photo)
-//                .placeholder(item.gender.equalsIgnoreCase("male") ? R.drawable.ic_no_image__male_ : R.drawable.ic_no_image__female_)
-//                .transform(new BlurTransformation(20, 8))
-//                .into(holder.ivProfileAcceptInvi);
 
         } else if (item.photo_privacy.equalsIgnoreCase("3")) {
             holder.llPhotoAccept.setEnabled(false);
@@ -249,7 +219,9 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
         }
 
         if (item.request_sent_from.equals("1")) {
-            holder.llDeleteAccet.setVisibility(View.GONE);
+            holder.llCancelAccet.setVisibility(View.VISIBLE);
+        }else {
+            holder.llDeleteAccet.setVisibility(View.VISIBLE);
         }
 
 
@@ -317,13 +289,14 @@ public class AcceptInvitationAdapter extends RecyclerView.Adapter<AcceptInvitati
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvInvNewMatchName,tvInvNewMatchState, tvPremiumAcceptMatch, tvInvNewMatchAge, tvPremiumDeleteMatch, tvInvitationAccetMessage, tvLevelPremiumAccept, tvImageCountAccept, tvInvNewMatchHeight, tvInvNewMatchCity, tvInvNewMatchWorkAsAccept, tvInvitationDate;
-        LinearLayout llCAll, llWhatsApp, llItemAnimationAccept, llPhotoAccept, llPrivatePhoto, llMessageAccept, llBlockAccept, llBlockedAccept, llAcceptCallMsgDecline, llNo_imageFemaleListAccept, llDeleteAccet, llDeletedAccept, llPremiumMsgAccept;
+        LinearLayout llCAll, llWhatsApp,llCancelAccet, llItemAnimationAccept, llPhotoAccept, llPrivatePhoto, llMessageAccept, llBlockAccept, llBlockedAccept, llAcceptCallMsgDecline, llNo_imageFemaleListAccept, llDeleteAccet, llDeletedAccept, llPremiumMsgAccept;
         FrameLayout flNoImageMaleFemaleListAccept, flPremiumAccept;
         ImageView ivNoImageMaleFemaleAccept, ivProfileAcceptInvi, ivAcceptDot, ivAcceptDot1, ivAcceptDot2;
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
+            llCancelAccet=itemView.findViewById(R.id.llCancelAccet);
             ivAcceptDot = itemView.findViewById(R.id.ivAcceptDot);
             ivAcceptDot1 = itemView.findViewById(R.id.ivAcceptDot1);
             ivAcceptDot2 = itemView.findViewById(R.id.ivAcceptDot2);

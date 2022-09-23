@@ -88,6 +88,7 @@ public class AccountSettingFragment extends Fragment {
         //changeEmail();
         changePassword();
         b.tvEmailShow.setText(sessionManager.getEmail());
+        b.tvPhoneShow.setText(sessionManager.getPhone1());
         return b.getRoot();
     }
 

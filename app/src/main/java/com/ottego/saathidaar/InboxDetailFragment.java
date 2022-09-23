@@ -483,10 +483,7 @@ public class InboxDetailFragment extends Fragment {
                 {
                     b.tvViewMore.setVisibility(View.VISIBLE);
                 }
-
-
             }
-
             @Override
             public void afterTextChanged(Editable editable) {
 
@@ -767,19 +764,20 @@ public class InboxDetailFragment extends Fragment {
 
             //upgrade premium plans condition
 
-            if (model.premium_status.equalsIgnoreCase("1") && model.my_premium_status.equalsIgnoreCase("2")) {
-                b.flPremiumInboxDetails.setVisibility(View.GONE);
-                b.tvLevelPremiumInboxDetails.setVisibility(View.GONE);
+            if (model.my_premium_status.equalsIgnoreCase("2")) {
+//                b.flPremiumInboxDetails.setVisibility(View.GONE);
+//                b.tvLevelPremiumInboxDetails.setVisibility(View.GONE);
                 b.  tvPremiumBirth.setVisibility(View.GONE);
                 b.tvbirth.setVisibility(View.GONE);
-                b.tvcontacts.setVisibility(View.GONE);
-//            b.tvPremiumBirth.setVisibility(View.GONE);
+                b.tvPremiumContact.setVisibility(View.GONE);
+            b.tvcontacts.setVisibility(View.GONE);
 //            b.tvPremiumCollegeAndCompany.setVisibility(View.GONE);
-            }else if(model.premium_status.equalsIgnoreCase("1") && model.my_premium_status.equalsIgnoreCase("0")){
-                b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
-                b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
+            }else if(!model.my_premium_status.equalsIgnoreCase("2")){
+//                b.flPremiumInboxDetails.setVisibility(View.VISIBLE);
+//                b.tvLevelPremiumInboxDetails.setVisibility(View.VISIBLE);
                 b.  tvPremiumBirth.setVisibility(View.VISIBLE);
                 b.tvbirth.setVisibility(View.VISIBLE);
+                b.tvPremiumContact.setVisibility(View.VISIBLE);
                 b.tvcontacts.setVisibility(View.VISIBLE);
             }
 //image count condition

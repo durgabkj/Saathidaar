@@ -52,6 +52,25 @@
                 android:background="#31918F8F"
                 android:fontFamily="@font/app_font"
                 style="@style/PersonalDataTextView"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/app_font"
+                android:text="Phone" />
+
+            <TextView
+                android:id="@+id/tvPhoneShow"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:background="#31918F8F"
+                android:fontFamily="@font/app_font"
+                style="@style/PersonalDataTextView"/>
 <!--            <TextView-->
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="wrap_content"-->
@@ -138,8 +157,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:visibility="gone"
+                    android:layout_marginBottom="10dp"
                     android:layout_gravity="center"
                     android:orientation="horizontal">
 
@@ -154,55 +173,12 @@
                         android:fontFamily="@font/app_font"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textStyle="bold"
-                        android:translationZ="20dp" />
-
-<!--                    <com.google.android.material.card.MaterialCardView-->
-<!--                        android:id="@+id/upload1"-->
-<!--                        android:layout_width="250dp"-->
-<!--                        android:layout_height="40dp"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        app:cardBackgroundColor="@color/colorPrimary"-->
-<!--                        android:elevation="20dp"-->
-<!--                        android:focusable="true">-->
-
-
-<!--                        <RelativeLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            >-->
-
-<!--                            <ProgressBar-->
-<!--                                android:id="@+id/progress_bar"-->
-<!--                                android:layout_width="25dp"-->
-<!--                                android:layout_height="25dp"-->
-<!--                                android:visibility="gone"-->
-<!--                                android:layout_centerVertical="true"-->
-<!--                                android:layout_toLeftOf="@id/btnSave"-->
-<!--                                android:indeterminate="false"-->
-<!--                                android:indeterminateTint="@color/white"-->
-<!--                                android:progressDrawable="@drawable/progress_bar_states">-->
-
-
-<!--                            </ProgressBar>-->
-
-<!--                            <TextView-->
-<!--                                android:id="@+id/btnSave"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_centerInParent="true"-->
-<!--                                android:elevation="20dp"-->
-<!--                                android:padding="10dp"-->
-<!--                                android:text="Edit Details"-->
-<!--                                android:textColor="@color/black" />-->
-
-<!--                        </RelativeLayout>-->
-<!--                    </com.google.android.material.card.MaterialCardView>-->
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
+                        android:layout_height="30dp"
+                        android:padding="5dp"
                         android:text="or"
                         android:gravity="center"
                         android:layout_gravity="center"
@@ -211,17 +187,7 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/tvCancelPass"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:padding="5dp"-->
-<!--                        android:text="Cancel"-->
-<!--                        android:gravity="center"-->
-<!--                        android:fontFamily="@font/italic"-->
-<!--                        android:textAlignment="center"-->
-<!--                        android:textColor="#00BFA5"-->
-<!--                        android:textStyle="bold" />-->
+
 
 
                     <TextView
@@ -232,9 +198,11 @@
                         android:fontFamily="@font/app_font"
                         android:padding="5dp"
                         android:text="Cancel"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:translationZ="20dp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

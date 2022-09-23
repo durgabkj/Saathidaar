@@ -36,7 +36,7 @@ public class MemberGalleryActivity extends AppCompatActivity {
 ActivityMemberGalleryBinding b;
     SessionManager sessionManager;
     DataModelImage dataModelImage;
-    String getImageURL = Utils.memberUrl + "app/get/photo/";
+    String getImageURL = Utils.memberUrl + "app/get/approve/photo/";
     Context context;
     GalleryViewModel viewModel;
     String member_id;

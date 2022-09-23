@@ -574,7 +574,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="15dp"
                         android:fontFamily="@font/app_font"
                         android:textColor="@color/black"
                         android:textSize="13sp"
@@ -586,6 +586,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llSister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -626,7 +627,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="15dp"
                     android:fontFamily="@font/app_font"
                     android:textColor="@color/black"
                     android:textSize="13sp"

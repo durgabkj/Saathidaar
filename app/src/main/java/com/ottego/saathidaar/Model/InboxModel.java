@@ -33,6 +33,7 @@ public class InboxModel {
     public String date_of_birth;
     public String city;
     public String gender;
+    public String request_send_from;
     public String request_status_date;
     public String country;
     public List<GalleryModel> images;

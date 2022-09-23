@@ -1111,10 +1111,11 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/italic"
+                            android:visibility="gone"
+                            android:fontFamily="@font/app_font"
                             android:text="To Unlock Contact &amp; Email ID"
                             android:textColor="@color/black"
-                            android:visibility="gone" />
+                            />
 
 
                         <TextView
@@ -1127,12 +1128,13 @@
                             android:elevation="20dp"
                             android:fontFamily="@font/app_font"
                             android:padding="10dp"
+                            android:visibility="gone"
                             android:text="Upgrade Your Membership"
                             android:textAlignment="center"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
                             android:translationZ="20dp"
-                            android:visibility="gone" />
+                             />
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>

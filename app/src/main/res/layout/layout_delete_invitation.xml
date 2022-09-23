@@ -234,6 +234,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:paddingTop="10dp"
             android:background="@drawable/bg_gradient"
             android:orientation="vertical">
 
@@ -242,7 +243,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:visibility="gone"
                 android:layout_gravity="center|bottom"
                 android:orientation="horizontal"
                 >
@@ -319,12 +319,48 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/ivLikeDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:orientation="vertical">
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:cardCornerRadius="100dp">
 
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@color/white"
+                            android:padding="3dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_checkmark" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/app_font"
+                        android:shadowColor="#000000"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:layout_marginTop="2dp"
+                        android:shadowRadius="1.6"
+                        android:text="Connect"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/llDelete1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_marginStart="30dp"
                     android:orientation="vertical">
 
@@ -354,7 +390,7 @@
                         android:textSize="14sp"
                         android:fontFamily="@font/app_font"
                         android:textStyle="bold"
-                        android:text="Accept"/>
+                        android:text="Connected"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -387,7 +423,7 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:text="Accepted"/>
+                        android:text="Connected"/>
 
                 </LinearLayout>
 
@@ -395,8 +431,10 @@
 
 
             <View
+                android:id="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:visibility="gone"
                 android:background="@drawable/line_gradient"/>
 
             <LinearLayout
