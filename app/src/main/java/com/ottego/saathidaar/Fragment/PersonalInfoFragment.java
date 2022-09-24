@@ -498,15 +498,11 @@ public class PersonalInfoFragment extends Fragment {
             binding.tvGender.setText(new StringBuilder().append(model.gender.substring(0, 1).toUpperCase()).append(model.gender.substring(1)).toString());
             binding.tvUserSubCommunity.setText(model.sub_caste_name);
             binding.tvUserGotra.setText(model.gothra);
-
-
             binding.tvUserCurrentResi.setText(model.country_name);
             binding.tvUserStateOfResidence.setText(model.state);
             binding.tvUserResidenceStatus.setText(model.city);
             binding.tvUserPinCode.setText(model.pincode);
             binding.tvUserorigin.setText(model.ethnic_corigin);
-
-
             binding.tvCountryOfBirth.setText(model.country_of_birth);
             binding.tvCityofBirth.setText(model.city_of_birth);
             binding.tvDateofBirth.setText(model.date_of_birth);
@@ -525,6 +521,8 @@ public class PersonalInfoFragment extends Fragment {
                     getCityLatitude(context, model.city_of_birth);
                 }
             }
+
+
         }
 
     }

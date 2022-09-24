@@ -272,7 +272,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             }
         });
     }
-
     private void cityList() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 cityUrl + stateName, null, new Response.Listener<JSONObject>() {
@@ -309,7 +308,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
         MySingleton.myGetMySingleton(context).myAddToRequest(jsonObjectRequest);
 
     }
-
     private void getState() {
         b.etCountry.addTextChangedListener(new TextWatcher() {
             @Override
@@ -330,7 +328,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
             }
         });
     }
-
     private void stateList() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 stateUrl + countryName, null, new Response.Listener<JSONObject>() {
@@ -370,7 +367,6 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
 
 
     }
-
     private void setData() {
         if (model != null) {
             b.etAddUserDescription.setText(model.about_ourself);
@@ -701,66 +697,65 @@ public class ProfileEditPersonalActivity extends AppCompatActivity {
                 }
             }
         });
-//        b.etCountry.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//                // set custom dialog
-//                dialog.setContentView(R.layout.searchable_dropdown_item);
-//
-//                // set custom height and width
-//             //  dialog.getWindow().setLayout(300, 700);
-//                Window window = dialog.getWindow();
-//                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 700);
-//
-//                // set transparent background
-//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//
-//                // show dialog
-//                dialog.show();
-//
-//                // Initialize and assign variable
-//                EditText editText = dialog.findViewById(R.id.edit_text);
-//                ListView listView = dialog.findViewById(R.id.list_view);
-//
-//                // Initialize array adapter
-//                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.dropdown_item, countryList);
-//                // set adapter
-//                listView.setAdapter(adapter);
-//                editText.addTextChangedListener(new TextWatcher() {
-//                    @Override
-//                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                        adapter.getFilter().filter(s);
-//                    }
-//
-//                    @Override
-//                    public void afterTextChanged(Editable s) {
-//
-//                    }
-//                });
-//
-//                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                        // when item selected from list
-//                        // set selected item on textView
-//                        b.etCountry.setText(adapter.getItem(position));
-//                        // Dismiss dialog
-//                        dialog.dismiss();
-//
-//
-//                    }
-//                });
-//
-//            }
-//        });
+        b.etCountry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+
+                // set custom dialog
+                dialog.setContentView(R.layout.searchable_dropdown_item);
+
+                // set custom height and width
+             //  dialog.getWindow().setLayout(300, 700);
+                Window window = dialog.getWindow();
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, 700);
+
+                // set transparent background
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                // show dialog
+                dialog.show();
+
+                // Initialize and assign variable
+                EditText editText = dialog.findViewById(R.id.edit_text);
+                ListView listView = dialog.findViewById(R.id.list_view);
+
+                // Initialize array adapter
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.dropdown_item, countryList);
+                // set adapter
+                listView.setAdapter(adapter);
+                editText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        adapter.getFilter().filter(s);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // when item selected from list
+                        // set selected item on textView
+                        b.etCountry.setText(adapter.getItem(position));
+                        // Dismiss dialog
+                        dialog.dismiss();
+
+
+                    }
+                });
+
+            }
+        });
         b.etState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

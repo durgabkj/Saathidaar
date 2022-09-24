@@ -739,7 +739,9 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
             b.tvImageCountDetail.setText(Utils.nullToBlank(model.images_count));
 
             //Login member photo......
-
+            if(model.caste.equals("")){
+                b.tvDetailCommunity.setVisibility(View.GONE);
+            }
 
             if (model.my_profile_photo != null && !model.my_profile_photo.isEmpty()) {
                 Glide.with(context)
@@ -758,7 +760,6 @@ public class MatchDetailsFragment extends Fragment implements ApiListener {
 
                 }
             }
-
 
             if (model.photo_privacy.equalsIgnoreCase("1")) {
                 b.llShowMemberImage.setEnabled(true);
